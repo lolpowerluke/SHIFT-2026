@@ -2,7 +2,9 @@
 
 [live website]()
 
-> !! CREATE BRANCHES FROM EITHER FRONT OR BACK AS `[base]/f/[featName]`  
+> ### !! CREATE BRANCHES
+>
+> FROM EITHER FRONT-main OR BACK-main AS `[base]/f/[featName]`
 > Replace `[base]` with `FRONT` or `BACK`  
 > Replace `[featName]` with your branch name
 
@@ -21,7 +23,7 @@
 ### Backend
 
 - **Runtime:** Node.js 18+
-- **Framework:** Express
+- **Framework:** Express ^5.2.1
 
 ### Frontend
 
@@ -31,8 +33,8 @@
 
 #### Backend
 
-- cors
-- dotenv
+- cors ^2.8.6
+- dotenv ^17.2.4
 
 #### Frontend
 
