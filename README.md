@@ -17,7 +17,7 @@
 ### Backend
 
 - **Runtime:** Node.js 18+
-- **Framework:** Express
+- **Framework:** Express ^5.2.1
 
 ### Frontend
 
@@ -27,8 +27,8 @@
 
 #### Backend
 
-- cors
-- dotenv
+- cors ^2.8.6
+- dotenv ^17.2.4
 
 #### Frontend
 
