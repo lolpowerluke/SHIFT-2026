@@ -27,6 +27,9 @@
 
 #### Backend
 
+- cors
+- dotenv
+
 #### Frontend
 
 ## Sources
