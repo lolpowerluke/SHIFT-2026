@@ -21,7 +21,7 @@
 
 ### Frontend
 
-- **Build Tool:** Vite
+- **Build Tool:** Vite ^7.3.1
 
 ### Used Packages
 
