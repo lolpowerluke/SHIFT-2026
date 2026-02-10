@@ -16,9 +16,6 @@ const env = {
   frontend: {
     url: requireEnv("FRONTEND_URL")
   },
-  // session: {
-  //   secret: requireEnv("SESSION_SECRET")
-  // },
   database: {
     host: requireEnv("DB_HOST"),
     user: requireEnv("DB_USER"),
