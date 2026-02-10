@@ -6,6 +6,10 @@
 > Replace `[base]` with `FRONT` or `BACK`  
 > Replace `[featName]` with your branch name
 
+> !! Create HTML elements in different pages:
+>
+> > use .fragment.html as extension instead of .html
+
 ## Tech Stack
 
 ### Languages
@@ -31,5 +35,9 @@
 - dotenv
 
 #### Frontend
+
+- [vite-plugin-html-inject](https://www.npmjs.com/package/vite-plugin-html-inject) ^1.1.2
+    - Dev Dependency
+    - used for modular HTML elements
 
 ## Sources
