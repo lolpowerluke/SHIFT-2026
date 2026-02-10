@@ -1,0 +1,30 @@
+/* use recognisable names. Start with the main purpose of the var (like bg = background or hl = highlight) followed by a descriptor (primary for default colour, secondary for its alternative or descriptive of when it should be used */
+:root {
+	/* background colours */
+	--bg-primary: whitesmoke;
+
+	/* text colours */
+	--txt-primary: black;
+	--txt-secondary: green;
+	--txt-danger: red;
+
+	/* highlight colours */
+	--hl-primary: yellow;
+
+	/* border colours */
+	--border-primary: var(--txt-primary);
+
+	/* shadow colours */
+	--shadow-primary: rgba(13, 57, 116, 0.4);
+
+	/* Buttons */
+	--btn-primary-bg: green;
+}
+
+/* 
+Example how to use in other css files:
+> import:
+> > @import url(./cssComponents/colours.css);
+> use vars:
+> > color: var(--bg-primary);
+*/
