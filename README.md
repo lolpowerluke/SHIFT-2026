@@ -2,7 +2,9 @@
 
 [live website]()
 
-> !! CREATE BRANCHES FROM EITHER FRONT OR BACK AS `[base]/f/[featName]`  
+> ### !! CREATE BRANCHES
+>
+> FROM EITHER FRONT-main OR BACK-main AS `[base]/f/[featName]`
 > Replace `[base]` with `FRONT` or `BACK`  
 > Replace `[featName]` with your branch name
 
