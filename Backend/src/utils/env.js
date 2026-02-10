@@ -19,12 +19,12 @@ const env = {
   // session: {
   //   secret: requireEnv("SESSION_SECRET")
   // },
-  // database: {
-  //   host: requireEnv("DB_HOST"),
-  //   user: requireEnv("DB_USER"),
-  //   password: requireEnv("DB_PASS"),
-  //   name: requireEnv("DB_NAME")
-  // }
+  database: {
+    host: requireEnv("DB_HOST"),
+    user: requireEnv("DB_USER"),
+    password: requireEnv("DB_PASS"),
+    name: requireEnv("DB_NAME")
+  }
 };
 
 export default env;
