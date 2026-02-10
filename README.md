@@ -2,6 +2,10 @@
 
 [live website]()
 
+> !! CREATE BRANCHES FROM EITHER FRONT OR BACK AS `[base]/f/[featName]`  
+> Replace `[base]` with `FRONT` or `BACK`  
+> Replace `[featName]` with your branch name
+
 ## Tech Stack
 
 ### Languages
