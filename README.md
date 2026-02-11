@@ -11,6 +11,10 @@
 > ### !! Create HTML elements in different pages:
 >
 > > use .fragment.html as extension instead of .html
+>
+> How to use:
+>
+> > `<load file="relativeFilePath">`
 
 > ### !! CSS variables
 >
