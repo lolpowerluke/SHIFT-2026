@@ -11,8 +11,20 @@ const db = mysql.createPool({
 });
 
 await db.query(`
-  CREATE TABLE IF NOT EXISTS test (
+  CREATE TABLE IF NOT EXISTS users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255)
+    email VARCHAR(255) UNIQUE,
+    ticket VARCHAR(255)
   )
 `)
+
+db.getConnection()
+  .then(connection => {
+    console.log('MySQL Database connected successfully');
+    connection.release();
+  })
+  .catch(err => {
+    console.error('MySQL Database connection failed:', err.message);
+  });
+
+export default db;

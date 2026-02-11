@@ -11,7 +11,8 @@ function requireEnv(key) {
 const env = {
   server: {
     port: requireEnv("PORT"),
-    baseUrl: requireEnv("BASE_URL")
+    baseUrl: requireEnv("BASE_URL"),
+    environment: requireEnv("NODE_ENV")
   },
   frontend: {
     url: requireEnv("FRONTEND_URL")
@@ -21,6 +22,10 @@ const env = {
     user: requireEnv("DB_USER"),
     password: requireEnv("DB_PASS"),
     name: requireEnv("DB_NAME")
+  },
+  jwt: {
+    secret: requireEnv("JWT_SECRET"),
+    expiresIn: requireEnv("JWT_EXPIRES_IN")
   }
 };
 
