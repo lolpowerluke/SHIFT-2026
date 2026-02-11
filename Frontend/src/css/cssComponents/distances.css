@@ -1,0 +1,14 @@
+/* use recognisable names. Start with the main purpose of the var (spacing/gap for example) followed by a descriptor (relative size of the distance like s/m/l for example) */
+:root {
+	--spacing-xs: 1rem;
+}
+
+/* 
+Example how to use in other css files:
+> import:
+> > @import url(./cssComponents/distances.css);
+> use vars:
+> > padding: var(--spacing-xs);
+> recalculate vars for relative distances:
+> > padding-right: calc(var(--spacing-xs) /3)
+*/

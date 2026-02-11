@@ -8,9 +8,13 @@
 > Replace `[base]` with `FRONT` or `BACK`  
 > Replace `[featName]` with your branch name
 
-> !! Create HTML elements in different pages:
+> ### !! Create HTML elements in different pages:
 >
 > > use .fragment.html as extension instead of .html
+
+> ### !! CSS variables
+>
+> Load in variable files in style.css since these will most likely be used on every page, no need to load them into individual css files
 
 ## Tech Stack
 

@@ -25,7 +25,7 @@ Use the right tool at the right time, prioritising delivery over technology.
 ### Deliverables
 
 - Countdown timer page (live deployment)
-- Signup etc ready
+- Ticket page for email capture
 - Redirect logic when timer reaches zero
 - Mobile-first responsive design
 - Project structure with modular CSS & JS
@@ -50,7 +50,7 @@ Use the right tool at the right time, prioritising delivery over technology.
 ## Phase 2: Event Page Development (Week 3-4)
 
 **Technology: Vanilla JS (Primary) with React Evaluation**  
-**Milestone: After React Course Module**
+**Milestone: Team can build independent components that can be combined without issues**
 
 ### Deliverables
 
@@ -58,25 +58,27 @@ Use the right tool at the right time, prioritising delivery over technology.
 - Voting tracking (localStorage feature)
 - Event schedule/timetable
 - project pages
-  - all projects (with filters)
-  - individual project
+    - all projects (with filters)
+    - individual project
 - MCT info page
 - awards page (hidden until after event)
 - Navigation between pages
 
 ### Strategic Decision Point
 
+**If the first React modules went smooth and prove to be faster/better suited for our usecase, we will consider the following:**
+
 #### Candidates for React Refactoring
 
-1. **Venue Map Component** (if interactive)
-   - _Why React helps:_ Complex state (zoom levels, marker selection, filter toggles)
-   - _Vanilla JS challenge:_ Manual DOM updates across multiple interactions
-   - _React benefit:_ Declarative rendering of map state
+1. **Venue Map Component** (increase interactivity)
+    - _Why React helps:_ Complex state (zoom levels, marker selection, filter toggles)
+    - _Vanilla JS challenge:_ Manual DOM updates across multiple interactions
+    - _React benefit:_ Declarative rendering of map state
 
 2. **Event Schedule/Filter System**
-   - _Why React helps:_ Real-time filtering, sorting, search across event data
-   - _Vanilla JS challenge:_ Coordinating filter state with DOM updates
-   - _React benefit:_ Component reusability for event cards
+    - _Why React helps:_ Real-time filtering, sorting, search across event data
+    - _Vanilla JS challenge:_ Coordinating filter state with DOM updates
+    - _React benefit:_ Component reusability for event cards
 
 #### Stay Vanilla JS
 
@@ -91,6 +93,10 @@ If React components are approved:
 - **Isolated integration:** React islands within Vite app (not full rewrite)
 - **Preserve existing code:** Vanilla JS pages remain untouched
 - **Team division:** Assign React components to students who've grasped course concepts
+
+### Rollback if React integration fails
+
+**If React components aren't production ready within 5 days in this phase, revert to vanilla+ implementation**
 
 ---
 
@@ -136,7 +142,15 @@ If React components are approved:
 
 ## Technical Integration Strategy
 
-### If React Components Are Introduced
+### React Components Are Introduced
+
+```
+Does the component need state that updates the UI?
+├─ No → Vanilla JS (.js)
+└─ Yes → Does it have >3 interconnected state pieces?
+    ├─ No → Vanilla JS with object state
+    └─ Yes → Consider React (.jsx)
+```
 
 #### Architecture
 

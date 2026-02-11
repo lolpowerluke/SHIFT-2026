@@ -27,4 +27,6 @@ Example how to use in other css files:
 > > @import url(./cssComponents/colours.css);
 > use vars:
 > > color: var(--bg-primary);
+> make vars transparent:
+> > color-mix(in srgb, var(--bg-primary) [opacity 0-100]%, transparent)
 */
