@@ -14,7 +14,7 @@ await db.query(`
   CREATE TABLE IF NOT EXISTS users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) UNIQUE,
-    ticket VARCHAR(255)
+    ticket VARCHAR(255) UNIQUE
   )
 `)
 
