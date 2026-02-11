@@ -29,6 +29,7 @@
 
 - cors
 - dotenv
+- jsonwebtoken ^9.0.3
 
 #### Frontend
 
