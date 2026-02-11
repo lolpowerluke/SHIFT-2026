@@ -13,7 +13,7 @@ This roadmap proposes a **phased approach** that:
 - Identifies specific components where React adds genuine value
 - Maintains project velocity whilst building proper React foundations
 
-**Key Principle:** Use the right tool at the right time, prioritising delivery over technology.
+Use the right tool at the right time, prioritising delivery over technology.
 
 ---
 
@@ -24,14 +24,15 @@ This roadmap proposes a **phased approach** that:
 
 ### Deliverables
 
-- ✅ Countdown timer page (live deployment)
-- ✅ Redirect logic when timer reaches zero
-- ✅ Mobile-first responsive design
-- ✅ Project structure with modular CSS
+- Countdown timer page (live deployment)
+- Signup etc ready
+- Redirect logic when timer reaches zero
+- Mobile-first responsive design
+- Project structure with modular CSS & JS
 
-### Rationale
+### Reasoning
 
-- **Team readiness:** No React experience yet, structured learning begins next week
+- **Team readiness:** No React experience yet, structured learning begins next week (for most of us)
 - **Risk mitigation:** Vanilla JS ensures we hit our first deadline with confidence
 - **Foundation building:** Establishes git workflow, deployment pipeline, and collaboration patterns
 
@@ -54,13 +55,16 @@ This roadmap proposes a **phased approach** that:
 ### Deliverables
 
 - Venue map integration
-- Attendance tracking (localStorage feature)
+- Voting tracking (localStorage feature)
 - Event schedule/timetable
+- project pages
+  - all projects (with filters)
+  - individual project
+- MCT info page
+- awards page (hidden until after event)
 - Navigation between pages
 
 ### Strategic Decision Point
-
-**After completing the React course module, evaluate:**
 
 #### Candidates for React Refactoring
 
@@ -76,7 +80,7 @@ This roadmap proposes a **phased approach** that:
 
 #### Stay Vanilla JS
 
-- **Attendance tracking:** localStorage wrapper is simpler without React overhead
+- **Voting tracking:** localStorage wrapper is simpler without React overhead
 - **Static content sections:** No state management needed
 - **Navigation:** Fragment system already works well
 
@@ -96,7 +100,7 @@ If React components are approved:
 
 ### Deliverables
 
-- Voting interface
+- Voting interface (rework)
 - Real-time results display (if applicable)
 - Prize/winner announcements
 
@@ -139,20 +143,63 @@ If React components are approved:
 ```
 src/
 ├── pages/
-│   ├── countdown/          # Vanilla JS (Phase 1)
-│   ├── event/              # Hybrid (Phase 2)
-│   │   ├── map.jsx         # React component
-│   │   ├── schedule.jsx    # React component
-│   │   └── tracking.js     # Vanilla JS (localStorage)
-│   └── results/            # Hybrid (Phase 3)
-├── components/             # Shared React components
-└── fragments/              # Vanilla HTML fragments
+│   ├── countdown/              # Vanilla JS (Phase 1)
+│   │   ├── countdown.js
+│   │   └── countdown.css
+│   │
+│   ├── projects/               # Hybrid (Phase 2)
+│   │   ├── all-projects.jsx    # React - PRIMARY CANDIDATE
+│   │   │
+│   │   ├── project-detail.js   # Vanilla - static content display
+│   │   └── projects.css
+│   │
+│   ├── venue/                  # Decision Point (Phase 2)
+│   │   ├── map.jsx             # React IF interactive markers/filters
+│   │   │                       # Vanilla IF Google Maps embed
+│   │   └── venue.css
+│   │
+│   ├── schedule/               # Vanilla First (Phase 2)
+│   │   ├── timetable.js        # Vanilla unless filtering required
+│   │   │                       # Upgrade to React if complex interactions
+│   │   └── schedule.css
+│   │
+│   ├── voting/                 # Vanilla (Phase 2)
+│   │   ├── tracking.js         # localStorage wrapper - no React needed
+│   │   └── voting.css
+│   │
+│   ├── info/                   # Vanilla (Phase 2)
+│   │   ├── mct-info.js         # Static content - no state management
+│   │   └── info.css
+│   │
+│   └── awards/                 # Evaluate (Phase 3)
+│       ├── awards.js           # Vanilla unless animated reveals
+│       │                       # React IF choreographed state changes
+│       └── awards.css
+│
+├── components/                 # Shared React Components
+│   ├── ProjectCard.jsx         # Reusable card for all-projects
+│   ├── FilterPanel.jsx         # Filter UI for projects page
+│   └── SearchBar.jsx           # Search input with debouncing
+│
+├── fragments/                  # Vanilla HTML Fragments
+│   ├── nav.fragment.html
+│   ├── footer.fragment.html
+│   └── header.fragment.html
+│
+├── utils/                      # Shared Utilities
+│   ├── localStorage.js         # Voting tracking helpers
+│   └── constants.js            # Shared config/constants
+│
+└── styles/
+    ├── colours.css
+    ├── typo.css
+    └── distances.css
 ```
 
 #### Vite Configuration
 
 - Use `@vitejs/plugin-react` for `.jsx` files
-- Maintain separate entry points (no forced migration)
+- Maintain separate base.js and react plugin file
 - Keep build output lean (tree-shaking for unused React code)
 
 #### CSS Strategy
@@ -165,7 +212,7 @@ src/
 
 - **Feature branches per component**
 - Vanilla JS developers continue parallel work unaffected
-- React components reviewed by students who've completed course exercises
+- React components reviewed by students who are more comfortable with React
 
 ---
 
@@ -194,21 +241,20 @@ src/
 
 ### Phase 1 (Vanilla JS)
 
-- ✅ Countdown deployed on time
-- ✅ All team members successfully contributed via git
-- ✅ Mobile performance: <2s load time on 3G
+- Countdown deployed on time
+- All team members successfully contributed via git
+- Mobile performance: <2s load time on 3G
 
 ### Phase 2 (Evaluation Point)
 
-- Team completed React course module with understanding
+- Team has basic understanding of React
 - If React introduced: Component works, no performance regression
 - If vanilla maintained: Feature completed faster than React estimate
 
 ### Phase 3 (Final Delivery)
 
-- All three pages live and functional
+- All pages live and functional
 - Mobile-optimised across devices
-- Code documented for next year's cohort
 - Team can articulate technology choices (not just "we used React")
 
 ---
@@ -226,32 +272,16 @@ The festival website is a **vehicle for learning**, not a React showcase. If Rea
 
 ---
 
-## Recommendation to Teaching Staff
+## When is React useful:
 
-**Start vanilla, evaluate after structured React learning.**
-
-This approach:
-
-- Guarantees first deadline is met
-- Aligns React adoption with course curriculum (not premature experimentation)
-- Teaches students to choose tools based on requirements, not assumptions
-- Produces a working festival site regardless of technology stack
-
-**The question isn't "React or vanilla JS?"**  
-**It's "What delivers the best outcome for this team, this timeline, this project?"**
-
----
-
-## Appendix: When React is Worth the Overhead
-
-React justifies its complexity when:
+justified React complexity:
 
 - **State complexity:** >5 pieces of interdependent state
 - **Frequent updates:** UI changes based on user interactions (not static rendering)
 - **Component reuse:** Same UI pattern appears 3+ times with different data
 - **Developer experience:** Team has React foundation and values DX improvements
 
-React is overhead when:
+React is overkill for:
 
 - Simple pages with minimal interaction
 - One-time event site with 6-month lifespan
