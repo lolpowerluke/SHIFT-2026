@@ -10,9 +10,9 @@
 
 ### Languages
 
-- JavaScript (ES6+)
-- HTML5
-- CSS3
+- **JavaScript (ES6+)**
+- **HTML5**
+- **CSS3**
 
 ### Backend
 
@@ -22,14 +22,13 @@
 ### Frontend
 
 - **Build Tool:** Vite
-
 ### Used Packages
 
-#### Backend
+### Backend
 
-- cors
-- dotenv
+- **cors**
+- **dotenv**
 
-#### Frontend
+### Frontend
 
 ## Sources
