@@ -1,14 +1,17 @@
 const API_URL = import.meta.env.VITE_API_URL;
 
-const countdownString = "2026-03-26T00:00:00";
-const countDownDate = new Date(countdownString).getTime();
 const secondInMs = 1000;
 const minuteInMs = secondInMs * 60;
 const hourInMs = minuteInMs * 60;
 const dayInMs = hourInMs * 24;
 
+
+const countdownString = "2026-03-26T00:00:00";
+
 // base from W3schools
 // https://www.w3schools.com/howto/howto_js_countdown.asp
+
+const countDownDate = new Date(countdownString).getTime();
 const x = setInterval(function () {
 	const now = new Date().getTime();
 
