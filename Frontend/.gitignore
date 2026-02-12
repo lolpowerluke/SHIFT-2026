@@ -23,7 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-dist
-
 .env*
 !.env.example
