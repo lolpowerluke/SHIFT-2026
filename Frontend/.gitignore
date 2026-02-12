@@ -25,4 +25,5 @@ dist-ssr
 
 dist
 
-.env
+.env*
+!.env.example
