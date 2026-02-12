@@ -10,9 +10,11 @@ import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
 
+const allowedOrigins = env.frontend.url ? env.frontend.url.split(',').map(origin => origin.trim()) : [];
+
 app.use(cors({
-  origin: env.frontend.url,
-}))
+  origin: allowedOrigins,
+}));
 app.use(express.json());
 
 app.use("/api", apiRoutes);
