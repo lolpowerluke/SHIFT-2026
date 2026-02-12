@@ -3,30 +3,29 @@
 
 const countdownString = "2026-03-26T00:00:00";
 const countDownDate = new Date(countdownString).getTime();
+const secondInMs = 1000;
+const minuteInMs = secondInMs * 60;
+const hourInMs = minuteInMs * 60;
+const dayInMs = hourInMs * 24;
 
 // Update the count down every 1 second
 const x = setInterval(function () {
-	// Get today's date and time
 	const now = new Date().getTime();
 
-	// Find the distance between now and the count down date
 	const distance = countDownDate - now;
 
 	// Time calculations for days, hours, minutes and seconds
-	const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	const hours = Math.floor(
-		(distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-	);
-	const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	const days = Math.floor(distance / dayInMs);
+	const hours = Math.floor((distance % dayInMs) / hourInMs);
+	const minutes = Math.floor((distance % hourInMs) / minuteInMs);
+	const seconds = Math.floor((distance % minuteInMs) / secondInMs);
 
-	// Display the result in the element with id="demo"
 	document.getElementById("demo").innerHTML =
 		days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-	// If the count down is finished, write some text
-	if (distance < 0) {
+	// When countdown finishes
+	if (distance <= 0) {
 		clearInterval(x);
 		document.getElementById("demo").innerHTML = "EXPIRED";
 	}
-}, 1000);
+}, secondInMs);
