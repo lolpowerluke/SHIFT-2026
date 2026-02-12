@@ -35,5 +35,5 @@ const x = setInterval(function () {
 async function backendLink(endPoint) {
 	const response = await fetch(`API_URL/api/${endPoint}`);
 	const data = await response.json();
-	return data;
+	return data.date;
 }
