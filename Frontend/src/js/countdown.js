@@ -6,7 +6,10 @@ const hourInMs = minuteInMs * 60;
 const dayInMs = hourInMs * 24;
 
 // fetch API time from /api/countdown
-const countdownString = backendLink("/api/countdown");
+const APICountdownString = backendLink("/api/countdown");
+const countdownString = APICountdownString.date
+	? APICountdownString.date
+	: "2026-03-26T00:00:00";
 
 // base from W3schools
 // https://www.w3schools.com/howto/howto_js_countdown.asp
@@ -34,7 +37,12 @@ const x = setInterval(function () {
 }, secondInMs);
 
 async function backendLink(endPoint) {
-	const response = await fetch(`API_URL/api/${endPoint}`);
-	const data = await response.json();
-	return data.date;
+	let data;
+	try {
+		const response = await fetch(`API_URL/api/${endPoint}`);
+		data = await response.json();
+	} catch (e) {
+		console.log(e.message);
+	}
+	return data;
 }
