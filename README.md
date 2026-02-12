@@ -2,6 +2,8 @@
 
 [live website]()
 
+## Conventions
+
 > ### !! CREATE BRANCHES
 >
 > FROM EITHER `FRONT-main` OR `BACK-main` AS `[base]/f/[featName]`  
@@ -10,7 +12,7 @@
 
 > ### !! Create HTML elements in different pages:
 >
-> > use .fragment.html as extension instead of .html
+> > use `.fragment.html` as extension instead of `.html`
 >
 > How to use:
 >
