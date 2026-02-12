@@ -53,3 +53,6 @@
     - used for modular HTML elements
 
 ## Sources
+
+- [countdown timer from w3](https://www.w3schools.com/howto/howto_js_countdown.asp)
+    - used in countdown.js
