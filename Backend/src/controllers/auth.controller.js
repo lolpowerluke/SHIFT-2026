@@ -1,7 +1,7 @@
 import { generateToken } from "../utils/jwt.js";
 import db from "../config/db.js";
 
-const register = async () => {
+const register = async (req, res) => {
   try {
     const { email, ticket } = req.body;
     if (!email, !ticket) {
@@ -46,6 +46,14 @@ const register = async () => {
       message: 'Registration failed',
       error: error.message
     });
+  }
+}
+
+const login = async (req, res) => {
+  try {
+    res.send("yes");
+  } catch (error) {
+
   }
 }
 
