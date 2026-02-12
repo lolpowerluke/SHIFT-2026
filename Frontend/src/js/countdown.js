@@ -6,7 +6,7 @@ const hourInMs = minuteInMs * 60;
 const dayInMs = hourInMs * 24;
 
 // fetch API time from /api/countdown
-const countdownString = backendLink("/api/countdown");
+const countdownString = await backendLink("/api/countdown");
 
 // base from W3schools
 // https://www.w3schools.com/howto/howto_js_countdown.asp
@@ -22,19 +22,17 @@ const x = setInterval(function () {
 	const minutes = Math.floor((distance % hourInMs) / minuteInMs);
 	const seconds = Math.floor((distance % minuteInMs) / secondInMs);
 
-	document.getElementById("timer").innerHTML =
-		days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+	document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
 	// When countdown finishes
 	if (distance <= 0) {
 		clearInterval(x);
 		document.getElementById("timer").innerHTML = "EXPIRED";
-		window.location = "/home";
 	}
 }, secondInMs);
 
 async function backendLink(endPoint) {
-	const response = await fetch(`API_URL/api/${endPoint}`);
+	const response = await fetch(`${API_URL}${endPoint}`);
 	const data = await response.json();
 	return data.date;
 }
