@@ -5,12 +5,11 @@ const minuteInMs = secondInMs * 60;
 const hourInMs = minuteInMs * 60;
 const dayInMs = hourInMs * 24;
 
-
-const countdownString = "2026-03-26T00:00:00";
+// fetch API time from /api/countdown
+const countdownString = backendLink("/api/countdown");
 
 // base from W3schools
 // https://www.w3schools.com/howto/howto_js_countdown.asp
-
 const countDownDate = new Date(countdownString).getTime();
 const x = setInterval(function () {
 	const now = new Date().getTime();
@@ -32,3 +31,9 @@ const x = setInterval(function () {
 		document.getElementById("timer").innerHTML = "EXPIRED";
 	}
 }, secondInMs);
+
+async function backendLink(endPoint) {
+	const response = await fetch(`API_URL/api/${endPoint}`);
+	const data = await response.json();
+	return data;
+}
