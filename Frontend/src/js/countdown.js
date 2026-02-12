@@ -20,12 +20,12 @@ const x = setInterval(function () {
 	const minutes = Math.floor((distance % hourInMs) / minuteInMs);
 	const seconds = Math.floor((distance % minuteInMs) / secondInMs);
 
-	document.getElementById("demo").innerHTML =
+	document.getElementById("timer").innerHTML =
 		days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
 	// When countdown finishes
 	if (distance <= 0) {
 		clearInterval(x);
-		document.getElementById("demo").innerHTML = "EXPIRED";
+		document.getElementById("timer").innerHTML = "EXPIRED";
 	}
 }, secondInMs);
