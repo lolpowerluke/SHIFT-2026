@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 100vw;
+  min-height: 100dvh;
+  display: flex;
+}
+
+.wrap {
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+}

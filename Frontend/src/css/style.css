@@ -1,6 +1,7 @@
-@import url(./cssComponents/colours.css);
-@import url(./cssComponents/distances.css);
+@import url(./cssComponents/vars/colours.css);
+@import url(./cssComponents/vars/distances.css);
 @import url(./cssComponents/typo.css);
+@import url(./cssComponents/layout.css);
 
 .hidden {
   visibility: hidden;
