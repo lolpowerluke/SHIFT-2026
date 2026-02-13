@@ -21,7 +21,8 @@ await db.query(`
 await db.query(`
   CREATE TABLE IF NOT EXISTS countdown (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    date DATETIME
+    date DATETIME NOT NULL,
+    type ENUM('countdown', 'release', 'during-event', 'after-event') NOT NULL
   )
 `)
 
@@ -29,15 +30,10 @@ const [rows] = await db.query('SELECT COUNT(*) as count FROM countdown');
 
 if (rows[0].count === 0) {
   await db.query(`
-    INSERT INTO countdown (date) VALUES
-      ('2025-12-25 00:00:00'),
-      ('2026-01-01 00:00:00'),
-      ('2026-02-14 18:00:00'),
-      ('2026-03-15 12:00:00'),
-      ('2026-07-04 16:00:00'),
-      ('2026-10-31 20:00:00'),
-      ('2026-12-25 00:00:00'),
-      ('2027-01-01 00:00:00')
+    INSERT INTO countdown (date, type) VALUES
+      ('2026-03-26 10:30:00', 'countdown'),
+      ('2026-06-19 17:00:00', 'release'),
+      ('2026-06-19 21:00:00', 'during-event')
   `);
 }
 
