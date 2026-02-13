@@ -5,20 +5,20 @@ import injectHTML from "vite-plugin-html-inject";
 
 export default defineConfig({
 	plugins: [injectHTML({ tagName: "load", sourceAttr: "file" })],
-  server: {
-    proxy: {
-      "^/countdown":{
-        target: "http://localhost:5173",
-        rewrite: () => "/pages/countdown/index.html"
-      }
-    }
-  },
+	server: {
+		proxy: {
+			"^/$": {
+				target: "http://localhost:5173",
+				rewrite: () => "/pages/countdown/index.html",
+			},
+		},
+	},
 	build: {
 		outDir: "dist",
 		emptyOutDir: true,
 		rollupOptions: {
 			input: {
-				countdown: resolve(__dirname, "./pages/countdown/index.html"),
+				index: resolve(__dirname, "./pages/countdown/index.html"),
 			},
 		},
 	},
