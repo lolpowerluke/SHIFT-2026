@@ -8,11 +8,13 @@ let previousMinute = null;
 
 // fetch API time from /api/countdown
 
-const APICountdownString = await backendLink("/api/countdown");
-console.log(APICountdownString.date);
-const countdownString = APICountdownString.date
-	? APICountdownString.date
-	: "2026-03-26T10:30:00";
+// const APICountdownString = await backendLink("/api/countdown");
+// console.log(APICountdownString.date);
+// const countdownString = APICountdownString.date
+// 	? APICountdownString.date
+// : "2026-03-26T10:30:00";
+
+const countdownString = "2026-03-26T10:30:00";
 
 const timer = document.getElementById("timer");
 
