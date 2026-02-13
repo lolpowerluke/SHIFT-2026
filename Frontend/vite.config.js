@@ -1,17 +1,24 @@
-import { resolve, dirname } from "path";
+import { resolve } from "path";
 import { defineConfig } from "vite";
 import injectHTML from "vite-plugin-html-inject";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+// import mpa from "@zhoumutou/vite-plugin-mpa";
 
 export default defineConfig({
 	plugins: [injectHTML({ tagName: "load", sourceAttr: "file" })],
+  server: {
+    proxy: {
+      "^/countdown":{
+        target: "http://localhost:5173",
+        rewrite: () => "/pages/countdown/index.html"
+      }
+    }
+  },
 	build: {
 		outDir: "dist",
 		emptyOutDir: true,
 		rollupOptions: {
 			input: {
-				countdown: resolve(__dirname, "pages/countdown/countdown.html"),
+				countdown: resolve(__dirname, "./pages/countdown/index.html"),
 			},
 		},
 	},
