@@ -7,6 +7,9 @@
 }
 
 #timer {
-	font-size: x-large;
 	font-weight: bold;
+}
+
+.xlarge {
+	font-size: x-large;
 }

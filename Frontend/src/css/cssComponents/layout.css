@@ -1,16 +1,35 @@
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  min-width: 100vw;
-  min-height: 100dvh;
-  display: flex;
+	min-width: 100vw;
+	min-height: 100dvh;
+	display: flex;
 }
 
 .wrap {
-  margin: auto;
-  justify-content: center;
-  text-align: center;
+	margin: auto;
+	justify-content: center;
+	text-align: center;
+}
+
+/* form could be exported to its own css file for easier maintenance */
+form {
+	margin: 2rem 0;
+	display: flex;
+	flex-direction: column;
+	input {
+		background-color: var(--txt-primary);
+		border-radius: 5px;
+		border: 0px;
+	}
+	label {
+		margin-bottom: 0.5rem;
+	}
+	input {
+		padding: 0.2rem 0.5rem;
+		color: var(--bg-primary);
+	}
 }

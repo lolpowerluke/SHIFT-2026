@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="modulepreload" href="../../src/js/countdown.js" />
+		<link rel="preload" as="image" href="../../ehb_wit.png" />
 		<link rel="stylesheet" href="../../src/css/style.css" />
 		<script type="module" src="../../src/js/countdown.js"></script>
 		<title>Shift - countdown</title>
@@ -13,18 +14,38 @@
 			<img
 				src="/placeholders/placeholderLogo.png"
 				id="heroLogo"
-				height="100px"
+				height="100"
 			/>
 			<h3>Multimedia & Creatieve Technologie</h3>
 			<h2>SAVE THE DATE</h2>
-			<span id="timer" class="hidden"><span id="days">10</span>D <span id="hours">00</span>H <span id="minutes">00</span>M <span id="seconds">00</span>S</span>
+			<span id="timer" class="hidden"
+				><span id="days">10</span>D <span id="hours">00</span>H
+				<span id="minutes" class="xlarge">00</span>M
+				<span id="seconds">00</span>S</span
+			>
+			<form>
+				<label for="email">
+					Stay up to date for the official release!
+				</label>
+				<input
+					type="email"
+					name="email"
+					id="email"
+					placeholder="email@example.com"
+				/>
+			</form>
 			<p>Official release:<br />26 maart 2026</p>
 			<br />
 			<h3>SHIFT</h3>
 			<p class="time">19 juni 2026<br />17:00 - 21:00</p>
 			<div id="socialLinks"></div>
 			<br />
-			<img src="../../ehb_wit.png" id="EhBLogo" height="150px" />
+			<img
+				src="../../ehb_wit.png"
+				id="EhBLogo"
+				height="150"
+				fetchpriority="high"
+			/>
 			<p>Nijverheidskaai 170, 1070 Anderlecht</p>
 		</div>
 	</body>

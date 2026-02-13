@@ -47,7 +47,7 @@ const x = setInterval(function () {
 		blink("hours", 500, 2);
 	}
 
-	timer.innerHTML = `${days}D <span id="hours">${hours}</span>H <span id="minutes">${minutes}</span>M <span id="seconds">${seconds}</span>S`;
+	timer.innerHTML = `<span class="xlarge">${days}</span>D <span id="hours" class="xlarge">${hours}</span>H <span id="minutes" class="xlarge">${minutes}</span>M <span id="seconds" class="xlarge">${seconds}</span>S`;
 
 	if (timer.classList.contains("hidden")) timer.classList.remove("hidden");
 
