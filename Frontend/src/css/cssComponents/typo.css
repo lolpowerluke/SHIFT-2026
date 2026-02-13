@@ -1,1 +1,12 @@
 /* typography styles */
+
+* {
+	font-family: monospace;
+	background-color: var(--bg-primary);
+	color: var(--txt-primary);
+}
+
+#timer {
+	font-size: x-large;
+	font-weight: bold;
+}
