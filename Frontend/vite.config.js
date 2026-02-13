@@ -17,7 +17,7 @@ export default defineConfig({
 		emptyOutDir: true,
 		rollupOptions: {
 			input: {
-				index: resolve(__dirname, "pages/countdown/index.html"),
+				countdown: resolve(__dirname, "pages/countdown/index.html"),
 			},
 		},
 	},
