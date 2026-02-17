@@ -1,0 +1,39 @@
+body {
+  min-height: 100dvh;
+  display: flex;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+  min-height: 80dvh;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.posBottom {
+  margin-top: auto;
+}
+
+/* form could be exported to its own css file for easier maintenance */
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  input {
+    background-color: var(--txt-primary);
+    border-radius: 5px;
+    border: 0px;
+  }
+  label {
+    margin-bottom: 0.5rem;
+  }
+  input {
+    padding: 0.2rem 0.5rem;
+    color: var(--bg-primary);
+  }
+}
