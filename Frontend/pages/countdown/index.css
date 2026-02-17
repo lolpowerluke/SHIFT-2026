@@ -22,18 +22,35 @@ form {
   display: flex;
   flex-direction: column;
   margin: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  input {
+
+  input,
+  button {
     background-color: var(--txt-primary);
-    border-radius: 5px;
     border: 0px;
+
+    color: var(--bg-primary);
   }
+  input {
+    border-radius: 5px 0 0 5px;
+  }
+
+  input[type="email"] {
+    width: 95%;
+    padding: 0.2rem 0.5rem;
+  }
+
+  button {
+    width: 5%;
+    border-radius: 0 5px 5px 0;
+    padding: 0.2rem 0;
+  }
+
   label {
     margin-bottom: 0.5rem;
   }
-  input {
-    padding: 0.2rem 0.5rem;
-    color: var(--bg-primary);
-  }
+}
+
+.emailWrap {
+  display: flex;
+  flex-direction: row;
 }
