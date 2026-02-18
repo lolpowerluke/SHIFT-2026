@@ -15,7 +15,18 @@ agree.addEventListener("change", function () {
 signupForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!agree.checked) return;
-  const email = Object.fromEntries(new FormData(signupForm));
-  //   const result = await fetch(`${API_URL}/mail/signup`);
-  console.log(email);
+
+  const { email } = Object.fromEntries(new FormData(signupForm));
+
+  try {
+    const result = await fetch(`${API_URL}/mail/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+
+    if (!result.ok) throw new Error(result.statusText);
+  } catch (e) {
+    console.error(e.message);
+  }
 });
