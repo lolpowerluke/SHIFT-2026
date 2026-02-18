@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="modulepreload" href="../../src/js/countdown.js" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="modulepreload" href="../../src/js/countdown.js" />
+    <script type="module" src="../../src/js/countdown.js"></script>
     <link rel="preload" as="image" href="../../ehb_wit.png" />
     <link rel="stylesheet" href="../../src/css/style.css" />
     <link rel="stylesheet" href="./index.css" />
-    <script type="module" src="../../src/js/countdown.js"></script>
     <script type="module" src="./index.js"></script>
     <title>Shift - countdown</title>
   </head>
@@ -26,7 +26,7 @@
           <span id="minutes" class="xlarge">00</span>M
           <span id="seconds">00</span>S</span
         >
-        <form>
+        <form id="signup">
           <label for="email"> Stay up to date for the official release! </label>
           <div class="emailWrap">
             <input
