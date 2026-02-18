@@ -1,5 +1,4 @@
 // TODO: email submission
-// email can only be submitted if keep me up to date box is also checked
 
 const agree = document.getElementById("check");
 const submitButton = document.getElementById("submit");
