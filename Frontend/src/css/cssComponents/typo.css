@@ -1,1 +1,15 @@
 /* typography styles */
+
+* {
+	font-family: monospace;
+	background-color: var(--bg-primary);
+	color: var(--txt-primary);
+}
+
+#timer {
+	font-weight: bold;
+}
+
+.xlarge {
+	font-size: x-large;
+}

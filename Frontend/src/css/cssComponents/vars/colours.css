@@ -1,10 +1,10 @@
 /* use recognisable names. Start with the main purpose of the var (like bg = background or hl = highlight) followed by a descriptor (primary for default colour, secondary for its alternative or descriptive of when it should be used */
 :root {
 	/* background colours */
-	--bg-primary: whitesmoke;
+	--bg-primary: black;
 
 	/* text colours */
-	--txt-primary: black;
+	--txt-primary: whitesmoke;
 	--txt-secondary: green;
 	--txt-danger: red;
 

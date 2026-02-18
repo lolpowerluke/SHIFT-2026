@@ -1,31 +1,85 @@
+const API_URL = import.meta.env.VITE_API_URL;
+
+const secondInMs = 1000;
+const minuteInMs = secondInMs * 60;
+const hourInMs = minuteInMs * 60;
+const dayInMs = hourInMs * 24;
+let previousMinute = null;
+
+// fetch API time from /api/countdown
+
+// const APICountdownString = await backendLink("/api/countdown");
+// console.log(APICountdownString.date);
+// const countdownString = APICountdownString.date
+// 	? APICountdownString.date
+// : "2026-03-26T10:30:00";
+
+const countdownString = "2026-03-26T10:30:00";
+
+const timer = document.getElementById("timer");
+
 // base from W3schools
 // https://www.w3schools.com/howto/howto_js_countdown.asp
+const countDownDate = new Date(countdownString).getTime();
 
-var countDownDate = new Date("2026-07-19T15:37:25").getTime();
+const x = setInterval(function () {
+	const now = new Date().getTime();
+	const distance = countDownDate - now;
 
-// Update the count down every 1 second
-var x = setInterval(function () {
-	// Get today's date and time
-	var now = new Date().getTime();
+	const days = Math.floor(distance / dayInMs)
+		.toString()
+		.padStart(2, 0);
+	const hours = Math.floor((distance % dayInMs) / hourInMs)
+		.toString()
+		.padStart(2, 0);
+	const minutes = Math.floor((distance % hourInMs) / minuteInMs)
+		.toString()
+		.padStart(2, 0);
+	const seconds = Math.floor((distance % minuteInMs) / secondInMs)
+		.toString()
+		.padStart(2, 0);
 
-	// Find the distance between now and the count down date
-	var distance = countDownDate - now;
+	blink("seconds", 500, 2);
 
-	// Time calculations for days, hours, minutes and seconds
-	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	var hours = Math.floor(
-		(distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-	);
-	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-	// Display the result in the element with id="demo"
-	document.getElementById("demo").innerHTML =
-		days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-	// If the count down is finished, write some text
-	if (distance < 0) {
-		clearInterval(x);
-		document.getElementById("demo").innerHTML = "EXPIRED";
+	if (seconds === "00") {
+		blink("minutes", 500, 2);
 	}
-}, 1000);
+
+	if (minutes === "00" && seconds === "00") {
+		blink("hours", 500, 2);
+	}
+
+	timer.innerHTML = `<span class="xlarge">${days}</span>D <span id="hours" class="xlarge">${hours}</span>H <span id="minutes" class="xlarge">${minutes}</span>M <span id="seconds" class="xlarge">${seconds}</span>S`;
+
+	if (timer.classList.contains("hidden")) timer.classList.remove("hidden");
+
+	// When countdown finishes
+	if (distance <= 0) {
+		clearInterval(x);
+		timer.innerHTML = "EXPIRED";
+	}
+}, secondInMs);
+
+const blink = (target, time, count) => {
+	let blinks = 0;
+	const blinking = setInterval(() => {
+		document.getElementById(target).classList.toggle("hidden");
+		blinks++;
+		if (blinks >= count) {
+			clearInterval(blinking);
+			document.getElementById(target).classList.toggle("hidden");
+		}
+	}, time);
+};
+
+async function backendLink(endPoint) {
+	let data;
+	try {
+		const response = await fetch(`${API_URL}${endPoint}`);
+		data = await response.json();
+	} catch (e) {
+		console.log(e.message);
+		return {};
+	}
+	return data;
+}

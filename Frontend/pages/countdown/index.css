@@ -1,0 +1,56 @@
+body {
+  min-height: 100dvh;
+  display: flex;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+  min-height: 80dvh;
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.posBottom {
+  margin-top: auto;
+}
+
+/* form could be exported to its own css file for easier maintenance */
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+
+  input,
+  button {
+    background-color: var(--txt-primary);
+    border: 0px;
+
+    color: var(--bg-primary);
+  }
+  input {
+    border-radius: 5px 0 0 5px;
+  }
+
+  input[type="email"] {
+    width: 95%;
+    padding: 0.2rem 0.5rem;
+  }
+
+  button {
+    width: 5%;
+    border-radius: 0 5px 5px 0;
+    padding: 0.2rem 0;
+  }
+
+  label {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.emailWrap {
+  display: flex;
+  flex-direction: row;
+}
