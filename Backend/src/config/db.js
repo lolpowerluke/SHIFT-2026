@@ -37,6 +37,13 @@ if (rows[0].count === 0) {
   `);
 }
 
+await db.query(`
+  CREATE TABLE IF NOT EXISTS mailsignup (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE
+  )
+`)
+
 db.getConnection()
   .then(connection => {
     console.log('MySQL Database connected successfully');
