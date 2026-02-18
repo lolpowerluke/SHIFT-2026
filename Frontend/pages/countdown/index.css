@@ -43,10 +43,18 @@ form {
     width: 5%;
     border-radius: 0 5px 5px 0;
     padding: 0.2rem 0;
+    cursor: pointer;
+  }
+
+  button[value="submit"]:disabled {
+    background-color: var(--btn-disabled-bg);
+    color: var(--txt-primary);
+    cursor: not-allowed;
   }
 
   label {
     margin-bottom: 0.5rem;
+    cursor: pointer;
   }
 }
 
