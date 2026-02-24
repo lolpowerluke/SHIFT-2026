@@ -9,12 +9,8 @@ body {
   max-width: 80vw;
   min-height: 80dvh;
   margin: auto;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-}
-
-.posBottom {
-  margin-top: auto;
 }
 
 /* form could be exported to its own css file for easier maintenance */
@@ -53,4 +49,10 @@ form {
 .emailWrap {
   display: flex;
   flex-direction: row;
+}
+
+.socialLinks {
+  margin: auto 0;
+  display: flex;
+  justify-content: space-evenly;
 }
