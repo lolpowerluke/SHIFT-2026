@@ -54,5 +54,11 @@ form {
 .socialLinks {
   margin: auto 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.social {
+  width: 3rem;
+  margin: 0 1rem;
 }
