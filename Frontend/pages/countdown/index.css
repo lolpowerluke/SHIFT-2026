@@ -7,7 +7,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	max-width: 80vw;
-	min-height: 80dvh;
+	height: 100%;
 	margin: auto;
 	justify-content: space-between;
 	text-align: center;
@@ -61,4 +61,14 @@ form {
 .social {
 	width: 3rem;
 	margin: 0 1rem;
+}
+
+#heroLogo {
+	height: 10rem;
+}
+
+@media only screen and (max-width: 800px) {
+	.wrap:first-child {
+		margin-top: 1rem;
+	}
 }

@@ -4,20 +4,19 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="modulepreload" href="../../src/js/countdown.js" />
+		<link rel="modulepreload" href="./index.js" />
+		<link rel="preload" as="image" href="../../ehb_wit.png" />
 		<link rel="preload" as="image" href="../../ehb_wit.png" />
 		<link rel="stylesheet" href="../../src/css/style.css" />
 		<link rel="stylesheet" href="./index.css" />
 		<script type="module" src="../../src/js/countdown.js"></script>
+		<script type="module" src="./index.js"></script>
 		<title>Shift - countdown</title>
 	</head>
 	<body>
 		<div class="wrap">
 			<div>
-				<img
-					src="/placeholders/placeholderLogo.png"
-					id="heroLogo"
-					height="100"
-				/>
+				<img src="../../assets/shift_logo.svg" id="heroLogo" />
 				<h3>Multimedia & Creatieve Technologie</h3>
 				<h2>SAVE THE DATE</h2>
 				<span id="timer" class="hidden"
@@ -25,7 +24,7 @@
 					<span id="minutes" class="xlarge">00</span>M
 					<span id="seconds">00</span>S</span
 				>
-				<form>
+				<form id="signup">
 					<label for="email">
 						Stay up to date for the official release!
 					</label>
@@ -36,7 +35,7 @@
 							id="email"
 							placeholder="email@example.com"
 						/>
-						<button value="submit">→</button>
+						<button value="submit" id="submit">x</button>
 					</div>
 					<br />
 					<label for="check">
