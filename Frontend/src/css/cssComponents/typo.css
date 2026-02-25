@@ -2,6 +2,9 @@
 
 * {
 	font-family: monospace;
+}
+
+body {
 	background-color: var(--bg-primary);
 	color: var(--txt-primary);
 }
