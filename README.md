@@ -56,3 +56,6 @@
 
 - [countdown timer from w3](https://www.w3schools.com/howto/howto_js_countdown.asp)
     - used in countdown.js
+
+- [Plus & Minus input from Codepen](https://codepen.io/Rajesh-Pal-the-scripter/pen/QWzEWjG)
+    - Used in [Ticket page (html, css & js)](Frontend/pages/tickets)
