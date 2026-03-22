@@ -1,6 +1,9 @@
+@import url(../../src/css/style.css);
+
 body {
   min-height: 100dvh;
   display: flex;
+  background-color: var(--bg-shift-primary);
 }
 
 .wrap {
