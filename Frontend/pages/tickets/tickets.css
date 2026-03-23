@@ -41,6 +41,7 @@ body {
   margin-right: 15px;
   margin-left: 15px;
   box-shadow: 5px 5px black;
+  transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .quantity button {
@@ -59,6 +60,11 @@ body {
   background-color: var(--bg-shift-alt);
 }
 
+.quantity:active {
+      transform: translateY(3px);
+      box-shadow: 2px 2px 0 1px black;
+    }
+
 .input-box {
   width: 100%;
   text-align: center;
@@ -75,4 +81,23 @@ body {
 .input-box::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 15px;
+  margin-left: 15px;
+  
+  p {
+    margin-top: 10px;
+  }
+}
+
+.blue {
+  background-color: var(--bg-shift-secondary);
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 60px;
 }

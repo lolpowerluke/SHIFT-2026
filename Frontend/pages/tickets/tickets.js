@@ -47,3 +47,20 @@
     console.log("Quantity changed:", value);
   }
 })();
+
+
+document.querySelector(".button-form").addEventListener('click', (e) => {
+  e.preventDefault();
+
+  setTimeout(() => {
+    window.location.href = "../"
+  }, 400);
+});
+
+document.querySelector(".button-program").addEventListener('click', (e) => {
+  e.preventDefault();
+
+  setTimeout(() => {
+    window.location.href = "../programma/";
+  }, 400);
+});
