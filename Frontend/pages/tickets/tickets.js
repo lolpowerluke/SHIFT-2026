@@ -53,7 +53,7 @@ document.querySelector(".button-form").addEventListener('click', (e) => {
   e.preventDefault();
 
   setTimeout(() => {
-    window.location.href = "../"
+    window.location.href = "#"
   }, 400);
 });
 
