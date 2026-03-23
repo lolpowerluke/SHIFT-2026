@@ -34,9 +34,9 @@
     #menuToggle {
   display: block;
   /* You can also use absolute here if you want to stay on the top */
-  position: fixed;
+  position: absolute;
   top: 50px;
-  right: 50px;
+  right: 25px;
   
   z-index: 1;
   
@@ -50,11 +50,6 @@
   color: #232323;
   
   transition: color 0.3s ease;
-}
-
-#menuToggle a:hover
-{
-  color: tomato;
 }
 
 #menuToggle input {
@@ -83,8 +78,9 @@
   margin-bottom: 5px;
   position: relative;
   
-  background: #cdcdcd;
+  background: var(--bg-shift-secondary);
   border-radius: 3px;
+  border: black solid 1.5px;
   
   z-index: 1;
   
@@ -111,6 +107,7 @@
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
   background: #232323;
+  border: none;
 }
 
 /*
@@ -145,7 +142,7 @@
   
   box-sizing: border-box;
   overflow-y: auto;
-  background: #ededed;
+  background: var(--bg-shift-primary);
   list-style-type: none;
   
   -webkit-font-smoothing: antialiased;
@@ -161,6 +158,7 @@
 {
   padding: 10px 0;
   font-size: 22px;
+  margin-bottom: 25px;
 }
 
 #menu li label
@@ -174,4 +172,23 @@
 #menuToggle input:checked ~ ul {
   transform: none;
   opacity: 1;
+}
+
+
+.header-color {
+  background-color: var(--bg-shift-alt);
+}
+
+header {
+  padding-bottom: 25px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+
+  a {
+    width: fit-content;
+    margin-left: 25px;
+  }
+
 }

@@ -10,6 +10,7 @@
     <title>Shift - info</title>
 </head>
 <body>
+    <header class="header-color" id="header"></header>
     <div class="hero">
     <h1>Informatie</h1>
     </div>
@@ -40,5 +41,12 @@
         <h2>Bekijk de programma voor de festival</h3>
         <a class="button-program" href="#">Bekijk de programma</a>
     </div>
+    <script>
+        fetch('../../htmlComponents/header.fragment.html')
+            .then(res => res.text())
+            .then(html => {
+            document.getElementById('header').innerHTML = html;
+            });
+    </script>
 </body>
 </html>

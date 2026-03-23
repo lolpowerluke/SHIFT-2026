@@ -101,3 +101,7 @@ body {
   padding-bottom: 20px;
   margin-top: 60px;
 }
+
+.header-color {
+  background-color: var(--bg-shift-alt);
+}

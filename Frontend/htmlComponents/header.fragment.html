@@ -1,6 +1,6 @@
-<header>
-    <nav role="navigation">
-        <div id="menuToggle">
+<a href="../pages/countdown/">SHIFT</a>
+<nav role="navigation">
+    <div id="menuToggle">
         <!--
         A fake / hidden checkbox is used as click reciever,
         so you can use the :checked selector on it.
@@ -27,25 +27,15 @@
         does require a slight bit of JS.
         -->
         <li>
-            <a href="#">
+            <a href="../pages/countdown/">
             <label for="menuCheckbox" onclick="this.parentNode.click();">Home</label>
             </a>
         </li>
         <li>
-            <a href="#about">
-            <label for="menuCheckbox" onclick="this.parentNode.click();">About</label>
+            <a href="../pages/info/">
+            <label for="menuCheckbox" onclick="this.parentNode.click();">Meer info</label>
             </a>
-        </li>
-        
-        <!-- These just close the menu -->
-        <li><label for="menuCheckbox"><a>Info</a></label></li>
-        <li><label for="menuCheckbox"><a>Contact</a></label></li>
-        
-        <!-- Or just use regular URLs -->
-        <li>
-            <a href="https://erikterwan.com/" target="_blank">Show me more</a>
         </li>
         </ul>
     </div>
 </nav>
-</header>
