@@ -59,3 +59,6 @@
 
 - [Plus & Minus input from Codepen](https://codepen.io/Rajesh-Pal-the-scripter/pen/QWzEWjG)
     - Used in [Ticket page (html, css & js)](Frontend/pages/tickets)
+
+- [Hamburger Menu](https://codepen.io/erikterwan/pen/grOZxx)
+    - Used in [Style.css](Frontend/src/css/style.css)
