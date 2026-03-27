@@ -6,15 +6,7 @@ const hourInMs = minuteInMs * 60;
 const dayInMs = hourInMs * 24;
 let previousMinute = null;
 
-// fetch API time from /api/countdown
-
-// const APICountdownString = await backendLink("/api/countdown");
-// console.log(APICountdownString.date);
-// const countdownString = APICountdownString.date
-// 	? APICountdownString.date
-// : "2026-03-26T10:30:00";
-
-const countdownString = "2026-03-26T10:30:00";
+const countdownString = "2026-06-19T17:00:00";
 
 const timer = document.getElementById("timer");
 

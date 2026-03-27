@@ -16,3 +16,11 @@ body {
 .xlarge {
 	font-size: x-large;
 }
+
+sub {
+	font-size: small;
+}
+
+p {
+	font-size: large;
+}

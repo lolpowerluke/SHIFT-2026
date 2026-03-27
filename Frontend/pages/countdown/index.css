@@ -72,3 +72,12 @@ form {
 #heroLogo {
 	height: 10rem;
 }
+
+.main {
+	font-size: xx-large;
+	font-weight: 900;
+}
+
+a {
+	color: yellow;
+}
