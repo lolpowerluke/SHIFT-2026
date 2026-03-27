@@ -79,5 +79,5 @@ form {
 }
 
 a {
-	color: yellow;
+	color: var(--hl-primary);
 }
