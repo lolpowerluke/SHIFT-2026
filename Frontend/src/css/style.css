@@ -7,15 +7,15 @@
   visibility: hidden;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
   touch-action: pan-y;
 }
 
-
 /* For buttons*/
 
-    a {
+/* a {
       background-color: var(--bg-shift-secondary);
       border: 5px solid black;
       font-size: 20pt;
@@ -27,34 +27,32 @@ html, body {
       transition: transform 0.1s, box-shadow 0.1s;
       align-self: center;
       
-    }
+    } */
 
-    a:active {
-      transform: translateY(3px);
-      box-shadow: 2px 2px 0 1px black;
-    }
+/* a:active {
+  transform: translateY(3px);
+  box-shadow: 2px 2px 0 1px black;
+} */
 
+/*For hamburger menu*/
 
-    /*For hamburger menu*/
-
-    #menuToggle {
+#menuToggle {
   display: block;
   /* You can also use absolute here if you want to stay on the top */
   position: absolute;
   top: 50px;
   right: 25px;
-  
+
   z-index: 2;
-  
+
   -webkit-user-select: none;
   user-select: none;
 }
 
-#menuToggle a
-{
+#menuToggle a {
   text-decoration: none;
   color: #232323;
-  
+
   transition: color 0.3s ease;
 }
 
@@ -65,12 +63,12 @@ html, body {
   position: absolute;
   top: -7px;
   left: -5px;
-  
+
   cursor: pointer;
-  
+
   opacity: 0; /* hide this */
   z-index: 2; /* and place it over the hamburger */
-  
+
   -webkit-touch-callout: none;
 }
 
@@ -83,18 +81,19 @@ html, body {
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  
+
   background: var(--bg-shift-secondary);
   border-radius: 3px;
   border: black solid 1.5px;
-  
+
   z-index: 1;
-  
+
   transform-origin: 4px 0px;
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              opacity 0.55s ease;
+
+  transition:
+    transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+    opacity 0.55s ease;
 }
 
 #menuToggle span:first-child {
@@ -145,30 +144,28 @@ html, body {
   padding: 50px;
   padding-top: 125px;
   right: -100px;
-  
+
   box-sizing: border-box;
   overflow-y: auto;
   background: var(--bg-shift-primary);
   list-style-type: none;
-  
+
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
-  
+
   transform-origin: 0% 0%;
   transform: translate(100%, 0);
-  
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
-#menu li
-{
+#menu li {
   padding: 10px 0;
   font-size: 22px;
   margin-bottom: 25px;
 }
 
-#menu li label
-{
+#menu li label {
   cursor: pointer;
 }
 
@@ -179,7 +176,6 @@ html, body {
   transform: none;
   opacity: 1;
 }
-
 
 .header-color {
   background-color: var(--bg-shift-alt);
@@ -196,5 +192,4 @@ header {
     width: fit-content;
     margin-left: 25px;
   }
-
 }
