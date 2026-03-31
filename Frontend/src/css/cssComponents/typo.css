@@ -1,12 +1,19 @@
 /* typography styles */
+@import url("https://use.typekit.net/pei0pzi.css");
 
 * {
-  font-family: monospace;
-}
-
-body {
+  font-family: "futura-pt";
   background-color: var(--bg-primary);
   color: var(--txt-primary);
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 30pt;
+}
+
+p {
+  font-size: 14pt;
 }
 
 #timer {
