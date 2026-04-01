@@ -33,14 +33,19 @@ window.addEventListener("load", () =>
   window.scrollTo({ top: 100, behavior: "smooth" }),
 );
 
+// document.getElementById("std").addEventListener("click", function () {
+//   const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+//   const url = URL.createObjectURL(blob);
+
+//   const link = document.createElement("a");
+//   link.href = url;
+//   link.download = "shiftCalendar.ics";
+//   link.click();
+
+//   URL.revokeObjectURL(url);
+// });
 document.getElementById("std").addEventListener("click", function () {
-  const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
+  const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=SHIFT+-+Save+the+Date&dates=20260619T150000Z/20260619T190000Z&details=Our+third+year+students+are+showing+off+their+final+projects!&location=Nijverheidskaai+170,+1070+Anderlecht`;
 
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = "shiftCalendar.ics";
-  link.click();
-
-  URL.revokeObjectURL(url);
+  window.open(gcalUrl, "_blank");
 });
