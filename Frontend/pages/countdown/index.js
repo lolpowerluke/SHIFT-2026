@@ -44,8 +44,16 @@ window.addEventListener("load", () =>
 
 //   URL.revokeObjectURL(url);
 // });
+const pageURL = "localhost:5173/pages/countdown/";
 document.getElementById("std").addEventListener("click", function () {
-  const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=SHIFT+-+Save+the+Date&dates=20260619T150000Z/20260619T190000Z&details=Our+third+year+students+are+showing+off+their+final+projects!&location=Nijverheidskaai+170,+1070+Anderlecht`;
+  const isApple = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent);
+  if (isApple) {
+    const link = document.createElement("a");
+    link.href = `webcal://${pageURL}/shiftCalendar.ics`;
+    link.click();
+  } else {
+    const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=SHIFT+-+Save+the+Date&dates=20260619T150000Z/20260619T190000Z&details=Our+third+year+students+are+showing+off+their+final+projects!&location=Nijverheidskaai+170,+1070+Anderlecht`;
 
-  window.open(gcalUrl, "_blank");
+    window.open(gcalUrl, "_blank");
+  }
 });
