@@ -10,7 +10,7 @@
     <title>Shift - project form 3de jaars</title>
 </head>
 <body>
-    <header class="header-color" id="header"></header>
+    <load file="../../htmlComponents/header.fragment.html">
     <h1>Project formulier</h1>
     <div class="form">
     <h3>Vul het korte formulier in om je project op de Shift festival website te plaatsen.</h3>
@@ -32,11 +32,4 @@
         <a id="submit" href="">Submit</a>
     </div>
 </body>
-<script>
-        fetch('../../htmlComponents/header.fragment.html')
-            .then(res => res.text())
-            .then(html => {
-            document.getElementById('header').innerHTML = html;
-            });
-    </script>
 </html>
