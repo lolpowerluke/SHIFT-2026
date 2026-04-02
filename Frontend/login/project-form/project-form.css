@@ -82,6 +82,12 @@ body {
     height: auto; 
     display: block;   
     }
+
+    input[type="file"]::file-selector-button {
+        background-color: var(--bg-shift-alt);
+        border-radius: 10px;
+        border: 5px solid black;
+    }
 }
 
 
