@@ -1,82 +1,95 @@
 @import url(../../src/css/style.css);
 
 body {
-  min-height: 100dvh;
-  display: flex;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.2)), url("../../assets/shift_logo.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  backdrop-filter: blur(50px);
-  margin: 0;
+	min-height: 100dvh;
+	display: flex;
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.2)), url("../../assets/shift_logo.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	backdrop-filter: blur(50px);
+	margin: 0;
 }
 
 .wrap {
-  display: flex;
-  flex-direction: column;
-  max-width: 80vw;
-  min-height: 90dvh;
-  margin: auto;
-  justify-content: space-between;
-  text-align: center;
+	display: flex;
+	flex-direction: column;
+	max-width: 80vw;
+	min-height: 90dvh;
+	margin: auto;
+	justify-content: space-between;
+	text-align: center;
 }
 
 /* form could be exported to its own css file for easier maintenance */
 form {
-  display: flex;
-  flex-direction: column;
-  margin: 2rem 0;
+	display: flex;
+	flex-direction: column;
+	margin: 2rem 0;
 
-  input,
-  button {
-    background-color: var(--txt-primary);
-    border: 0px;
+	input,
+	button {
+		background-color: color-mix(
+			in srgb,
+			var(--bg-shift-primary),
+			transparent 60%
+		);
+		border: 0px;
+		color: var(--txt-shift);
+	}
 
-    color: var(--bg-primary);
-  }
-  input {
-    border-radius: 5px 0 0 5px;
-  }
+	input {
+		border-radius: 5px 0 0 5px;
+	}
 
-  input[type="email"] {
-    width: 95%;
-    padding: 0.2rem 0.5rem;
-  }
+	input[type="email"] {
+		width: 95%;
+		padding: 0.2rem 0.5rem;
+	}
 
-  button {
-    width: 5%;
-    border-radius: 0 5px 5px 0;
-    padding: 0.2rem 0;
-  }
+	button {
+		border-radius: 0 5px 5px 0;
+		padding: 0.2rem 0.2rem;
+		width: 2rem;
+		text-align: center;
+	}
 
-  label {
-    margin-bottom: 0.5rem;
-  }
+	button:disabled {
+		background-color: var(--btn-disabled-bg);
+	}
+
+	label {
+		margin-bottom: 0.5rem;
+	}
+}
+
+input::placeholder {
+	color: color-mix(in srgb, var(--txt-shift), transparent 40%);
 }
 
 .emailWrap {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .socialLinks {
-  margin: auto 0;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+	margin: auto 0;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 }
 
 .social {
-  width: 3rem;
-  margin: 0 1rem;
+	width: 3rem;
+	margin: 0 1rem;
 }
 
 #heroLogo {
-  height: 10rem;
+	height: 10rem;
 }
 
 .main {
-  font-size: xx-large;
-  font-weight: 900;
+	font-size: xx-large;
+	font-weight: 900;
 }
