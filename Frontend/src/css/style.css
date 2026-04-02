@@ -1,3 +1,4 @@
+/* files for variables */
 @import url(./cssComponents/vars/colours.css);
 @import url(./cssComponents/vars/distances.css);
 /* everything typography, font sizes/weights/link styling/list styling/etc */
@@ -8,6 +9,7 @@
 @import url(./cssComponents/layout.css);
 
 /* This file is for the main styles like using colours, adding stuff that doesn't belong to the other files */
+
 .hidden {
 	visibility: hidden;
 }
@@ -198,4 +200,3 @@ header {
 		margin-left: 25px;
 	}
 }
-
