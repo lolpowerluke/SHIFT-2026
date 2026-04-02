@@ -1,5 +1,3 @@
-const API_URL = import.meta.env.VITE_API_URL;
-
 const secondInMs = 1000;
 const minuteInMs = secondInMs * 60;
 const hourInMs = minuteInMs * 60;
@@ -63,15 +61,3 @@ const blink = (target, time, count) => {
 		}
 	}, time);
 };
-
-async function backendLink(endPoint) {
-	let data;
-	try {
-		const response = await fetch(`${API_URL}${endPoint}`);
-		data = await response.json();
-	} catch (e) {
-		console.log(e.message);
-		return {};
-	}
-	return data;
-}
