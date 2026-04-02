@@ -1,37 +1,34 @@
-/* typography styles */
+/* everything typography, font sizes/weights/link styling/list styling/etc */
 @import url("https://use.typekit.net/pei0pzi.css");
+/* TODO: import futura properly */
 
 * {
-  font-family: "futura-pt";
-  background-color: var(--bg-primary);
-  color: var(--txt-primary);
+	font-family: "futura-pt";
+	background-color: var(--bg-primary);
+	color: var(--txt-primary);
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 30pt;
+	font-weight: bold;
+	font-size: 30px;
 }
 
 p {
-  font-size: 14pt;
+	font-size: 14px;
 }
 
 #timer {
-  font-weight: bold;
-}
-
-.xlarge {
-  font-size: x-large;
+	font-weight: bold;
 }
 
 sub {
-  font-size: small;
-}
-
-p {
-  font-size: large;
+	font-size: 10px;
 }
 
 a {
-  color: var(--hl-primary);
+	color: var(--hl-primary);
+}
+
+.xlarge {
+	font-size: x-large;
 }
