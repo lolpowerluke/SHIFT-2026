@@ -17,6 +17,7 @@
 > How to use:
 >
 > > `<load file="relativeFilePath" />`
+> > `<load file="relativeFilePath" />`
 
 > ### !! CSS variables
 >
