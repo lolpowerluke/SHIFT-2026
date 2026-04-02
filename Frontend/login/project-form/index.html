@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../src/css/style.css">
+    <link rel="stylesheet" href="project-form.css">
+    <script type="module" src="project-form.js"></script>
+    <script type="module" src="../../src/js/main.js"></script>
+    <title>Shift - project form 3de jaars</title>
+</head>
+<body>
+    <header class="header-color" id="header"></header>
+    <h1>Project formulier</h1>
+    <div class="form">
+    <h3>Vul het korte formulier in om je project op de Shift festival website te plaatsen.</h3>
+    <input type="text" name="name" id="name" placeholder="Naam..."/>
+    <input type="text" name="project-name" id="project-name" placeholder="Naam project..."/>
+    <textarea name="description" id="description" placeholder="Project description..."></textarea>
+    </div>
+    <div class="imageSelector">
+        <label for="choose-file">Kies een foto van je project</label>
+        <input type="file" accept="image/*" id="choose-projectFile" name="choose-projectFile"/>
+        <div id="img-preview"></div>
+    </div>
+    <div class="imageSelector">
+        <label for="choose-file">Kies een selfie (optioneel)</label>
+        <input type="file" accept="image/*" id="choose-selfieFile" name="choose-selfieFile"/>
+        <div id="selfie-preview"></div>
+    </div>
+    <div class="submitDiv">
+        <a id="submit" href="">Submit</a>
+    </div>
+</body>
+<script>
+        fetch('../../htmlComponents/header.fragment.html')
+            .then(res => res.text())
+            .then(html => {
+            document.getElementById('header').innerHTML = html;
+            });
+    </script>
+</html>
