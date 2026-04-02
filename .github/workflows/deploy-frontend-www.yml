@@ -2,7 +2,7 @@ name: Deploy Frontend
 
 on:
     push:
-        branches: [FRONT/f/cpCD]
+        branches: [FRONT-main]
 
 jobs:
     deploy:
@@ -19,5 +19,5 @@ jobs:
                   username: ${{ secrets.FTP_USERNAME }}
                   password: ${{ secrets.FTP_PASSWORD }}
                   local-dir: Frontend/dist/
-                  server-dir: /subsites/dev.shiftfestival.be/
+                  server-dir: /www/
                   dangerous-clean-slate: true
