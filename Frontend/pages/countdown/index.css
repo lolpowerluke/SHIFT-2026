@@ -3,12 +3,7 @@
 body {
 	min-height: 100dvh;
 	display: flex;
-	background-image:
-		linear-gradient(rgba(0, 0, 0, 0.2)), url("../../assets/shift_logo.svg");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-	backdrop-filter: blur(50px);
+	background-repeat: repeat;
 	margin: 0;
 }
 
@@ -30,13 +25,9 @@ form {
 
 	input,
 	button {
-		background-color: color-mix(
-			in srgb,
-			var(--bg-shift-primary),
-			transparent 60%
-		);
+		background-color: var(--bg-shift-primary);
 		border: 0px;
-		color: var(--txt-shift);
+		color: var(--txt-shift-primary);
 	}
 
 	input {
@@ -65,7 +56,7 @@ form {
 }
 
 input::placeholder {
-	color: color-mix(in srgb, var(--txt-shift), transparent 40%);
+	color: var(--txt-shift-primary);
 }
 
 .emailWrap {
@@ -86,10 +77,10 @@ input::placeholder {
 }
 
 #heroLogo {
-	height: 10rem;
+	height: 21rem;
+	margin: -70px -95px -40px;
 }
 
-.main {
-	font-size: xx-large;
-	font-weight: 900;
+.rotatedText {
+	transform: rotate(-14deg);
 }

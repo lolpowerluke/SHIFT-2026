@@ -5,12 +5,28 @@
 * {
 	font-family: "futura-pt";
 	background-color: var(--bg-primary);
-	color: var(--txt-primary);
+	color: var(--txt-shift-primary);
 }
 
 h1 {
 	font-weight: bold;
-	font-size: 30px;
+	font-size: 44px;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: 36px;
+}
+
+h3 {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+h4 {
+	font-weight: bold;
+	font-size: 18px;
 }
 
 p {
@@ -28,7 +44,7 @@ sub {
 a {
 	color: var(--hl-primary);
 }
-
+	
 .xlarge {
 	font-size: x-large;
 }
