@@ -19,4 +19,5 @@ jobs:
                   username: ${{ secrets.SSH_USERNAME }}
                   key: ${{ secrets.SSH_KEY }}
                   source: Frontend/dist/
-                  target: ~/
+                  target: ~/www/
+                  strip_components: 2
