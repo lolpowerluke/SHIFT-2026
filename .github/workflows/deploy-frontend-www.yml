@@ -13,6 +13,12 @@ jobs:
               working-directory: Frontend
             - run: npm run build
               working-directory: Frontend
+            - uses: appleboy/ssh-action@v1.0.3
+              with:
+                  host: ${{ secrets.SSH_HOST }}
+                  username: ${{ secrets.SSH_USERNAME }}
+                  key: ${{ secrets.SSH_KEY }}
+                  script: rm -rf ~/www/*
             - uses: appleboy/scp-action@v0.1.7
               with:
                   host: ${{ secrets.SSH_HOST }}
@@ -21,4 +27,3 @@ jobs:
                   source: Frontend/dist/
                   target: ~/www/
                   strip_components: 2
-                  rm: true
