@@ -13,9 +13,7 @@ const app = express();
 
 const allowedOrigins = env.frontend.url ? env.frontend.url.split(',').map(origin => origin.trim()) : [];
 
-app.use(cors({
-  origin: allowedOrigins,
-}));
+app.use(cors());
 app.use(express.json());
 
 app.use("/api", apiRoutes);

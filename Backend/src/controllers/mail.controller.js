@@ -30,7 +30,7 @@ const mailSignUp = async (req, res) => {
     });
   }
 }
-async function mailConfirm() {
+const mailConfirm = async (req, res) => {
   try {
     let { email } = req.body;
     if (!email) {
@@ -66,7 +66,7 @@ async function mailConfirm() {
     });
   }
 }
-async function mailCancel() {
+const mailCancel = async (req, res) => {
   try {
     let { email } = req.body;
     if (!email) {

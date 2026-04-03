@@ -37,7 +37,7 @@ await db.query(`
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
     description TEXT,
-    course ENUM('Website', 'Installatie', 'Mobile app', 'VR & AR', '3D games', 'Motion'),
+    course ENUM('Website', 'Installatie', 'Mobile app', 'VR & AR', '3D games', 'Motion')
   )
 `)
 
@@ -46,12 +46,12 @@ await db.query(`
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user BIGINT UNSIGNED,
     project BIGINT UNSIGNED,
-    CONSTRAINT fk_user
+    CONSTRAINT fk_pu_user
       FOREIGN KEY(user)
       REFERENCES users(id)
       ON DELETE CASCADE
-      ON UPDATE CASCADE
-    CONSTRAINT fk_project
+      ON UPDATE CASCADE,
+    CONSTRAINT fk_pu_project
       FOREIGN KEY(project)
       REFERENCES projects(id)
       ON DELETE CASCADE
@@ -64,7 +64,7 @@ await db.query(`
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user BIGINT UNSIGNED,
     social VARCHAR(255) UNIQUE,
-    CONSTRAINT fk_user
+    CONSTRAINT fk_s_user
       FOREIGN KEY(user)
       REFERENCES users(id)
       ON DELETE CASCADE
