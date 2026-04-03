@@ -20,6 +20,16 @@ body {
 	touch-action: pan-y;
 }
 
+html {
+	background-image: url(../../assets/wallOverlayBlue.png);
+	background-size: cover;
+}
+
+body {
+	/* background-color: color-mix(var(--bg-shift-primary), transparent 30%); */
+	background-image: url(../../assets/iconsOverlay.svg);
+}
+
 /* For buttons*/
 
 /* a {
