@@ -15,9 +15,9 @@ jobs:
               working-directory: Frontend
             - uses: SamKirkland/FTP-Deploy-Action@v4.3.6
               with:
-                  server: ${{ secrets.FTP_SERVER }}
-                  username: ${{ secrets.FTP_USERNAME }}
-                  password: ${{ secrets.FTP_PASSWORD }}
+                  host: ${{ secrets.SSH_HOST }}
+                  username: ${{ secrets.SSH_USERNAME }}
+                  password: ${{ secrets.SSH_KEY }}
                   local-dir: Frontend/dist/
                   server-dir: /www/
                   dangerous-clean-slate: true
