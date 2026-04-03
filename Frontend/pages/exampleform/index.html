@@ -5,9 +5,9 @@
 		const response = await fetch("http://10.2.89.210:3000/mail/cancel", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
-			body: {
+			body: JSON.stringify({
 				email: document.querySelector("input").value,
-			},
+			}),
 		});
 	});
 </script>
