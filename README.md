@@ -23,6 +23,10 @@
 >
 > Load in variable files in style.css since these will most likely be used on every page, no need to load them into individual css files
 
+> ### TESTING:
+>
+> `FRONT-test` can be used to test deploy to dev.shiftfestival.be for now
+
 ## Tech Stack
 
 ### Languages
