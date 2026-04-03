@@ -21,3 +21,4 @@ jobs:
                   source: Frontend/dist/
                   target: ~/www/
                   strip_components: 2
+                  rm: true
