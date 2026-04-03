@@ -39,11 +39,25 @@ form {
 		padding: 0.2rem 0.5rem;
 	}
 
-	button {
-		border-radius: 0 5px 5px 0;
+	/*button {
+		border-radius: 10px 10px 10px 10px;
 		padding: 0.2rem 0.2rem;
 		width: 2rem;
 		text-align: center;
+	}*/
+
+	button {
+	  background-color: var(--bg-shift-alt);
+      border: 5px solid black;
+	  border-radius: 10px;
+      font-size: 18pt;
+      padding: 5px;
+	  margin-left: 5px;
+      box-shadow: 5px 5px 0 1px black;
+      text-decoration: none;
+      width: 70%;
+      transition: transform 0.1s, box-shadow 0.1s;
+      align-self: center;
 	}
 
 	button:disabled {
@@ -56,7 +70,7 @@ form {
 }
 
 input::placeholder {
-	color: var(--txt-shift-primary);
+	color: var(--txt-shift-secondary);
 }
 
 .emailWrap {
@@ -109,4 +123,26 @@ input::placeholder {
 
 .topSpacer {
 	margin-top: var(--spacing-top);
+}
+
+
+.orange-button {
+	font-weight: bold;
+	margin-bottom: 25px;
+}
+
+.privacy-policy {
+	margin-bottom: 25px;
+}
+
+.timerDiv {
+	margin-top: 75px;
+}
+
+span {
+	font-size: 24pt;
+}
+
+.xlarge, #hours, #minutes, #seconds {
+	font-size: 24pt;
 }

@@ -40,6 +40,7 @@
 						</div>
 					</div>
 				</div>
+				<div class="timerDiv">
 				<span id="timer" class="hidden"
 					><span id="days">10</span>D <span id="hours">00</span>H
 					<span id="minutes" class="xlarge">00</span>M
@@ -50,17 +51,17 @@
 					<h3>VRIJDAG 19 JUNI</h3>
 					<h3>17:00 - 21:30</h3>
 				</div>
-				<button id="std">SAVE THE DATE</button>
+				</div>
 				<form id="signup">
 					<label for="email"> Stay up to date for the event!</label>
 					<div class="emailWrap">
-						<input
+						<input class="white-input"
 							type="email"
 							name="email"
 							id="email"
-							placeholder="Laat hier uw email achter..."
+							placeholder="E-mail..."
 						/>
-						<button value="submit" id="submit">x</button>
+						<button value="submit" id="submit">Schrijf je in!</button>
 					</div>
 					<br />
 					<label for="check">
@@ -68,45 +69,17 @@
 						Keep me up to date.
 					</label>
 				</form>
-				<p>
+				<h3>Wil je er zeker bij zijn?</h3>
+				<h3>Plaatst het nu al in je aganda.</h3>
+				<button class="orange-button" id="std">Save the date!</button>
+				<p class="privacy-policy">
 					Jouw data blijft van jou. Check het
 					<a href="/pages/privacy/nl/" class="languageLink"
 						>Privacybeleid</a
 					>.
 				</p>
 			</div>
-			<footer>
-				<div id="socialLinks">
-					<a
-						href="https://www.instagram.com/multimedia.ehb"
-						title="official EhB Instagram"
-						><img
-							class="social"
-							src="../../assets/Instagram_Glyph_White.svg"
-							alt="Instagram"
-					/></a>
-					<a
-						href="https://www.tiktok.com/@multimedia.ehb"
-						title="official EhB TikTok"
-						><img
-							class="social"
-							src="../../assets/TikTok_Logo_Alternative_0.svg"
-							alt="TikTok"
-					/></a>
-				</div>
-				<div class="posBottom">
-					<a
-						href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
-					>
-						<img
-							src="../../ehb_wit.png"
-							id="EhBLogo"
-							height="150"
-							fetchpriority="high"
-					/></a>
-					<p>Nijverheidskaai 170, 1070 Anderlecht</p>
-				</div>
-			</footer>
+			<load file="../../htmlComponents/footer.fragment.html"/>
 		</div>
 	</body>
 </html>
