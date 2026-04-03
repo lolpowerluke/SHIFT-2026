@@ -1,0 +1,12 @@
+<input type="email"><button>submit</button>
+
+<script>
+  document.querySelector('button').addEventListener('click', async () => {
+    const response = await fetch('http://10.2.89.210:3000/mail/cancel', {
+      method: 'POST',
+      body: {
+        email: document.querySelector('input').value
+      }
+    })
+  })
+</script>
