@@ -3,8 +3,6 @@
 body {
 	min-height: 100dvh;
 	display: flex;
-	background-color: var(--bg-shift-primary);
-	background-image: url(../../public/assets/iconsOverlay.svg);
 	background-repeat: repeat;
 	margin: 0;
 }
@@ -30,7 +28,7 @@ form {
 		background-color: color-mix(
 			in srgb,
 			var(--bg-shift-primary),
-			transparent 60%
+			transparent 0%
 		);
 		border: 0px;
 		color: var(--txt-shift-primary);
