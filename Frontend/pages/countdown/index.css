@@ -3,12 +3,9 @@
 body {
 	min-height: 100dvh;
 	display: flex;
-	background-image:
-		linear-gradient(rgba(0, 0, 0, 0.2)), url("../../assets/shift_logo.svg");
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-	backdrop-filter: blur(50px);
+	background-color: var(--bg-shift-primary);
+	background-image: url(../../public/assets/iconsOverlay.svg);
+	background-repeat: repeat;
 	margin: 0;
 }
 
@@ -86,14 +83,10 @@ input::placeholder {
 }
 
 #heroLogo {
-	height: 25rem;
+	height: 21rem;
+	margin: -70px -95px -40px;
 }
 
 .rotatedText {
 	transform: rotate(-14deg);
-}
-
-.main {
-	font-size: xx-large;
-	font-weight: 900;
 }
