@@ -82,5 +82,31 @@ input::placeholder {
 }
 
 .rotatedText {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.heroText {
+	display: flex;
+	flex-direction: row;
+}
+
+.bsWrapper {
+	height: max-content;
+	margin-bottom: var(--spacing-s);
 	transform: rotate(-14deg);
+}
+
+/* todo: standardise distances, use vars */
+.topLeft {
+	position: absolute;
+	top: 10px;
+	left: 16px;
+	height: 50px;
+}
+
+.topSpacer {
+	margin-top: var(--spacing-top);
 }
