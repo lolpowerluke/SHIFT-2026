@@ -1,0 +1,23 @@
+name: Deploy dev site
+
+on:
+    push:
+        branches: [FRONT/f/cpCD]
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - run: npm ci
+              working-directory: Frontend
+            - run: npm run build
+              working-directory: Frontend
+            - uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  local-dir: Frontend/dist/
+                  server-dir: /subsites/dev.shiftfestival.be/
+                  dangerous-clean-slate: true
