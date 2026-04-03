@@ -2,7 +2,7 @@ name: Deploy dev site
 
 on:
     push:
-        branches: [FRONT/f/cpCD]
+        branches: [FRONT-test]
 
 jobs:
     deploy:
