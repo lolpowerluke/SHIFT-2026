@@ -36,7 +36,7 @@ form {
 			transparent 60%
 		);
 		border: 0px;
-		color: var(--txt-shift);
+		color: var(--txt-shift-primary);
 	}
 
 	input {
@@ -65,7 +65,7 @@ form {
 }
 
 input::placeholder {
-	color: color-mix(in srgb, var(--txt-shift), transparent 40%);
+	color: color-mix(in srgb, var(--txt-shift-primary), transparent 40%);
 }
 
 .emailWrap {
@@ -86,7 +86,11 @@ input::placeholder {
 }
 
 #heroLogo {
-	height: 10rem;
+	height: 25rem;
+}
+
+.rotatedText {
+	transform: rotate(-14deg);
 }
 
 .main {

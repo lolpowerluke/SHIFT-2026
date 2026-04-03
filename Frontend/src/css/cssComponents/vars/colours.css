@@ -1,12 +1,13 @@
 /* use recognisable names. Start with the main purpose of the var (like bg = background or hl = highlight) followed by a descriptor (primary for default colour, secondary for its alternative or descriptive of when it should be used */
 :root {
 	/* background colours */
-	--bg-shift-primary: #fbf8cd;
-	--bg-shift-secondary: #fbb042;
-	--bg-shift-alt: #55c6d2;
+	--bg-shift-primary: #55c6d2;
+	--bg-shift-secondary: #fbf8cd;
+	--bg-shift-alt: #fbb042;
 
 	/* text colours */
-	--txt-shift: black;
+	--txt-shift-primary: #fbf8cd;
+	--txt-shift-secondary: black;
 
 	/* highlight colours */
 	--hl-primary: yellow;
