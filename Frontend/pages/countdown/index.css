@@ -111,7 +111,7 @@ input::placeholder {
 
 .heroWrapper {
 	height: max-content;
-	margin-bottom: var(--spacing-s);
+	margin-bottom: var(--spacing-heroWrapper);
 	transform: rotate(-14deg);
 }
 

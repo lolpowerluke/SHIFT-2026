@@ -4,6 +4,10 @@
 	--spacing-s: 2rem;
 
 	--spacing-top: 3rem;
+
+	/* specifics */
+	--spacing-heroWrapper: var(--spacing-s);
+	--spacing-footer: var(--spacing-s);
 }
 
 /* 
