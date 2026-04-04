@@ -109,7 +109,7 @@ input::placeholder {
 	flex-direction: row;
 }
 
-.bsWrapper {
+.heroWrapper {
 	height: max-content;
 	margin-bottom: var(--spacing-s);
 	transform: rotate(-14deg);
