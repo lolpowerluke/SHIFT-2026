@@ -1,8 +1,8 @@
 name: Deploy live website
 
-on:
-    push:
-        branches: [FRONT-main]
+# on:
+#     push:
+#         branches: [main]
 
 # jobs:
 #     deploy:
