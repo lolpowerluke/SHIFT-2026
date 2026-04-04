@@ -11,6 +11,12 @@ export default defineConfig({
 			input: {
 				main: resolve(__dirname, "index.html"),
 				countdown: resolve(__dirname, "pages/countdown/index.html"),
+				privacyEN: resolve(__dirname, "pages/privacy/en/index.html"),
+				privacyNL: resolve(__dirname, "pages/privacy/nl/index.html"),
+				emailConfirm: resolve(
+					__dirname,
+					"pages/email_confirmation/index.html",
+				),
 			},
 		},
 	},
