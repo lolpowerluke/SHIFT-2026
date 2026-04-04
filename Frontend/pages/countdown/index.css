@@ -47,17 +47,19 @@ form {
 	}*/
 
 	button {
-	  background-color: var(--bg-shift-alt);
-      border: 5px solid black;
-	  border-radius: 10px;
-      font-size: 18pt;
-      padding: 5px;
-	  margin-left: 5px;
-      box-shadow: 5px 5px 0 1px black;
-      text-decoration: none;
-      width: 70%;
-      transition: transform 0.1s, box-shadow 0.1s;
-      align-self: center;
+		background-color: var(--bg-shift-alt);
+		border: 5px solid black;
+		border-radius: 10px;
+		font-size: 18pt;
+		padding: 5px;
+		margin-left: 5px;
+		box-shadow: 5px 5px 0 1px black;
+		text-decoration: none;
+		width: 70%;
+		transition:
+			transform 0.1s,
+			box-shadow 0.1s;
+		align-self: center;
 	}
 
 	button:disabled {
@@ -65,7 +67,7 @@ form {
 	}
 
 	label {
-		margin-bottom: 0.5rem;
+		margin-bottom: var(--spacing-xs);
 	}
 }
 
@@ -117,7 +119,7 @@ input::placeholder {
 .topLeft {
 	position: absolute;
 	top: 10px;
-	left: 16px;
+	left: 10px;
 	height: 50px;
 }
 
@@ -125,13 +127,8 @@ input::placeholder {
 	margin-top: var(--spacing-top);
 }
 
-
 .orange-button {
 	font-weight: bold;
-	margin-bottom: 25px;
-}
-
-.privacy-policy {
 	margin-bottom: 25px;
 }
 
@@ -143,6 +140,13 @@ span {
 	font-size: 24pt;
 }
 
-.xlarge, #hours, #minutes, #seconds {
+.xlarge,
+#hours,
+#minutes,
+#seconds {
 	font-size: 24pt;
+}
+
+.txtLeft {
+	text-align: left;
 }

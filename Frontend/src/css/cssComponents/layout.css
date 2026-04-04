@@ -8,3 +8,7 @@
 	margin: auto;
 	width: 85%;
 }
+
+.xsMarginTop {
+	margin-top: var(--spacing-xs);
+}

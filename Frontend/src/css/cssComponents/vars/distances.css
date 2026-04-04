@@ -1,6 +1,6 @@
 /* use recognisable names. Start with the main purpose of the var (spacing/gap for example) followed by a descriptor (relative size of the distance like s/m/l for example) */
 :root {
-	--spacing-xs: 1rem;
+	--spacing-xs: 0.5rem;
 	--spacing-s: 2rem;
 
 	--spacing-top: 3rem;

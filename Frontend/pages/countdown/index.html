@@ -41,45 +41,52 @@
 					</div>
 				</div>
 				<div class="timerDiv">
-				<span id="timer" class="hidden"
-					><span id="days">10</span>D <span id="hours">00</span>H
-					<span id="minutes" class="xlarge">00</span>M
-					<span id="seconds">00</span>S
-				</span>
-				<br />
-				<div class="main">
-					<h3>VRIJDAG 19 JUNI</h3>
-					<h3>17:00 - 21:30</h3>
-				</div>
+					<span id="timer" class="hidden"
+						><span id="days">10</span>D <span id="hours">00</span>H
+						<span id="minutes" class="xlarge">00</span>M
+						<span id="seconds">00</span>S
+					</span>
+					<br />
+					<div class="main">
+						<h3>VRIJDAG 19 JUNI</h3>
+						<h3>17:00 - 21:30</h3>
+					</div>
 				</div>
 				<form id="signup">
 					<label for="email"> Stay up to date for the event!</label>
 					<div class="emailWrap">
-						<input class="white-input"
+						<input
+							class="white-input"
 							type="email"
 							name="email"
 							id="email"
 							placeholder="E-mail..."
 						/>
-						<button value="submit" id="submit">Schrijf je in!</button>
+						<button value="submit" id="submit">
+							Schrijf je in!
+						</button>
 					</div>
-					<br />
-					<label for="check">
-						<input type="checkbox" name="check" id="check" />
+					<label for="check" class="txtLeft">
+						<input
+							type="checkbox"
+							name="check"
+							id="check"
+							class="xsMarginTop"
+						/>
 						Keep me up to date.
 					</label>
+					<p class="privacy-policy">
+						Jouw data blijft van jou. Check het
+						<a href="/pages/privacy/nl/" class="languageLink"
+							>Privacybeleid</a
+						>.
+					</p>
 				</form>
 				<h3>Wil je er zeker bij zijn?</h3>
 				<h3>Plaatst het nu al in je aganda.</h3>
 				<button class="orange-button" id="std">Save the date!</button>
-				<p class="privacy-policy">
-					Jouw data blijft van jou. Check het
-					<a href="/pages/privacy/nl/" class="languageLink"
-						>Privacybeleid</a
-					>.
-				</p>
 			</div>
-			<load file="../../htmlComponents/footer.fragment.html"/>
+			<load file="../../htmlComponents/footer.fragment.html" />
 		</div>
 	</body>
 </html>
