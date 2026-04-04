@@ -48,3 +48,6 @@ a {
 .xlarge {
 	font-size: 32px;
 }
+.bold {
+	font-weight: bold;
+}

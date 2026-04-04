@@ -5,10 +5,10 @@ const agree = document.getElementById("check");
 const submitButton = document.getElementById("submit");
 const signupForm = document.getElementById("signup");
 
-agree.addEventListener("change", function () {
-	submitButton.disabled = !this.checked;
-	if (this.checked) submitButton.innerText = "→";
-	else submitButton.innerText = "x";
+signupForm.addEventListener("change", function () {
+	const checkedAgreement = agree.checked;
+	const validEmail = document.getElementById("email").validity.valid;
+	submitButton.disabled = !(checkedAgreement && validEmail);
 });
 
 signupForm.addEventListener("submit", async (e) => {
@@ -47,6 +47,7 @@ document.getElementById("std").addEventListener("click", function () {
 	}
 });
 
+// code for ics file download so people can add the event to their own agendas if they wanna be special and don't use google or apple calendar
 // document.getElementById("std").addEventListener("click", function () {
 //   const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
 //   const url = URL.createObjectURL(blob);
