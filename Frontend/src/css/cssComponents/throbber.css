@@ -1,0 +1,72 @@
+.throbber-wrap {
+	position: relative;
+	display: inline-block;
+	margin: var(--spacing-top) auto 0;
+}
+
+.throbber {
+	width: 50px;
+	height: auto;
+	transform-origin: center;
+	animation: jump-spin 1.2s linear infinite;
+}
+
+.throbberShadow {
+	position: relative;
+	bottom: -6px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30%;
+	height: 8px;
+	border-radius: 50%;
+	background: #000;
+	animation: shadow-pulse 1.2s linear infinite;
+}
+
+@keyframes shadow-pulse {
+	0% {
+		transform: translateX(-50%) scaleX(1);
+		opacity: 0.25;
+	}
+	30% {
+		transform: translateX(-50%) scaleX(0.4);
+		opacity: 0.08;
+	}
+	60% {
+		transform: translateX(-50%) scaleX(1);
+		opacity: 0.25;
+	}
+	75% {
+		transform: translateX(-50%) scaleX(0.8);
+		opacity: 0.18;
+	}
+	90% {
+		transform: translateX(-50%) scaleX(1);
+		opacity: 0.25;
+	}
+	100% {
+		transform: translateX(-50%) scaleX(1);
+		opacity: 0.25;
+	}
+}
+
+@keyframes jump-spin {
+	0% {
+		transform: translateY(0px) rotate(0deg);
+	}
+	30% {
+		transform: translateY(-40px) rotate(180deg);
+	}
+	60% {
+		transform: translateY(0px) rotate(360deg);
+	}
+	75% {
+		transform: translateY(-8px) rotate(360deg);
+	}
+	90% {
+		transform: translateY(0px) rotate(360deg);
+	}
+	100% {
+		transform: translateY(0px) rotate(360deg);
+	}
+}

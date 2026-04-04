@@ -7,6 +7,8 @@
 @import url(./cssComponents/layout.css);
 /* button styling in here */
 @import url(./cssComponents/buttons.css);
+/* throbber css */
+@import url(./cssComponents/throbber.css);
 
 /* This file is for the main styles like using colours, adding stuff that doesn't belong to the other files */
 
