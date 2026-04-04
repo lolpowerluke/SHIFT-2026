@@ -12,3 +12,7 @@
 .xsMarginTop {
 	margin-top: var(--spacing-xs);
 }
+
+footer {
+	margin-top: var(--spacing-s);
+}

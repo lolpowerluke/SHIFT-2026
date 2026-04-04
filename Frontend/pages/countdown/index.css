@@ -118,6 +118,7 @@ input::placeholder {
 /* todo: standardise distances, use vars */
 .topLeft {
 	position: absolute;
+	z-index: 1;
 	top: 10px;
 	left: 10px;
 	height: 50px;
@@ -134,17 +135,6 @@ input::placeholder {
 
 .timerDiv {
 	margin-top: 75px;
-}
-
-span {
-	font-size: 24pt;
-}
-
-.xlarge,
-#hours,
-#minutes,
-#seconds {
-	font-size: 24pt;
 }
 
 .txtLeft {
