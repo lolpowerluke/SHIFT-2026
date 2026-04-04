@@ -14,6 +14,11 @@
 	visibility: hidden;
 }
 
+.fullPage {
+	width: 100vw;
+	min-height: 100dvh;
+}
+
 html,
 body {
 	overflow-x: hidden;
@@ -190,7 +195,6 @@ header {
 }
 
 footer {
-
 	.text-info {
 		text-align: left;
 	}

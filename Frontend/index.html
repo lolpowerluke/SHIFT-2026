@@ -3,11 +3,31 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link type="stylesheet" href="./src/css/style.css" />
+		<link rel="stylesheet" href="./src/css/style.css" />
 		<script>
-			window.location.href = "/pages/countdown/";
+			const path = window.location.pathname;
+			const isPrivacy =
+				path === "/pages/privacy" || path === "/pages/privacy/";
+			if (!path.endsWith("/")) {
+				window.location.replace(path + "/");
+			} else if (isPrivacy) {
+				const lang = navigator.language.slice(0, 2);
+				const supported = ["en", "nl"];
+				const target = supported.includes(lang) ? lang : "en";
+				window.location.href = `/pages/privacy/${target}/`;
+			} else {
+				window.location.href = "/pages/countdown/";
+			}
 		</script>
 		<title>SHIFT</title>
 	</head>
-	<body></body>
+	<body>
+		<div class="fullPage">
+			<a href="/pages/countdown/">
+				<button>
+					click if you don't get rerouted to the website :)
+				</button>
+			</a>
+		</div>
+	</body>
 </html>
