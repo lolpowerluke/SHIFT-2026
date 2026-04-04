@@ -29,10 +29,6 @@ signupForm.addEventListener("submit", async (e) => {
 	}
 });
 
-window.addEventListener("load", () =>
-	window.scrollTo({ top: 100, behavior: "smooth" }),
-);
-
 const pageURL = "localhost:5173/pages/countdown/";
 document.getElementById("std").addEventListener("click", function () {
 	const isApple = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent);
