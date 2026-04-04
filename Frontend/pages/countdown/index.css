@@ -97,7 +97,7 @@ input::placeholder {
 	display: flex;
 	flex-direction: row;
 
-	& > div {
+	div {
 		font-weight: bold;
 	}
 
