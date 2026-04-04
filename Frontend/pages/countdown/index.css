@@ -69,18 +69,6 @@ input::placeholder {
 	flex-direction: row;
 }
 
-.socialLinks {
-	margin: auto 0;
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-}
-
-.social {
-	width: 3rem;
-	margin: 0 1rem;
-}
-
 #heroLogo {
 	height: 21rem;
 	margin: -70px -95px -40px;
@@ -117,12 +105,23 @@ input::placeholder {
 }
 
 /* todo: standardise distances, use vars */
-.topLeft {
-	position: absolute;
-	z-index: 1;
-	top: 10px;
-	left: 10px;
-	height: 50px;
+.logoWrap {
+	position: relative;
+	display: inline-block;
+
+	& > img:first-child {
+		position: absolute;
+		z-index: 1;
+		top: -40px;
+		left: -60px;
+		height: 50px;
+		z-index: 1;
+	}
+
+	& > img:last-child {
+		position: relative;
+		z-index: 2;
+	}
 }
 
 .topSpacer {
