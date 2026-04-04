@@ -96,6 +96,18 @@ input::placeholder {
 .heroText {
 	display: flex;
 	flex-direction: row;
+
+	& > div {
+		font-weight: bold;
+	}
+
+	& > div:first-child {
+		font-size: 1.5rem;
+	}
+
+	& > div:last-child {
+		font-size: 3rem;
+	}
 }
 
 .heroWrapper {
