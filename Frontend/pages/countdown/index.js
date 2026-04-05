@@ -13,9 +13,10 @@ signupForm.addEventListener("change", function () {
 
 signupForm.addEventListener("submit", async (e) => {
 	e.preventDefault();
-	const validEmail = document.getElementById("email").validity.valid;
 
+	const validEmail = document.getElementById("email").validity.valid;
 	if (!agree.checked && validEmail) return;
+
 	const { email } = Object.fromEntries(new FormData(signupForm));
 
 	try {
