@@ -4,35 +4,40 @@ const API_URL = import.meta.env.VITE_API_URL;
 const confirmBtn = document.getElementById("confirmBtn");
 const preConfirm = document.getElementById("preconfirmation");
 const postConfirm = document.getElementById("postconfirmation");
+const previouslyConfirmed = document.getElementById("previouslyConfirmed");
 
 // TODO: add backend check
-
-const swapToConfirmedEmail = () => {
-	preConfirm.classList.add("hidden");
-	postConfirm.classList.remove("hidden");
+const swapContent = (result) => {
+	switch (result) {
+		case "success":
+			preConfirm.classList.add("hidden");
+			postConfirm.classList.remove("hidden");
+			break;
+		case "previously confirmed":
+			preConfirm.classList.add("hidden");
+			previouslyConfirmed.classList.remove("hidden");
+			break;
+		case "error":
+			// todo: add smth went wrong
+			break;
+		default:
+			console.warn(`unhandled case: ${result}`);
+	}
 };
 
 confirmBtn.addEventListener("click", () => {
+	let response;
 	try {
-		emailConfirmation();
+		response = emailConfirmation();
 	} catch (e) {
-		// todo
+		console.error(e.message);
 	}
-
-	checkEmailConfirmation();
 });
-
-function checkEmailConfirmation() {
-	if (confirmed) {
-		//TODO: fetch
-		swapToConfirmedEmail();
-	}
-}
 
 async function emailConfirmation() {
 	const response = await fetch(`${API_URL}/mail/confirm`, {
 		headers: { "Content-Type": "application/json" },
-		method: "POST",
+		method: "GET",
 		body: JSON.stringify(`token: ${params.get("token")}`),
 	});
 	const data = await response.json();
