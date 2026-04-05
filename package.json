@@ -1,0 +1,9 @@
+{
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "cd Backend && npm ci",
+    "serve": "cd Backend && node src/server.js"
+  }
+}

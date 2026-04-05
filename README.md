@@ -31,6 +31,7 @@
 - dotenv
 - jsonwebtoken ^9.0.3
 - mysql2 ^3.16.3
+- validator ^13.15.35
 
 #### Frontend
 

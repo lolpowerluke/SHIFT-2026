@@ -5,6 +5,6 @@ const router = Router();
 
 router.post("/signup", mailSignUp);
 router.post("/cancel", mailCancel);
-router.post("/confirm", mailConfirm);
+router.get("/confirm", mailConfirm);
 
 export default router;
