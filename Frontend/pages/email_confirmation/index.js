@@ -1,6 +1,4 @@
 const params = new URLSearchParams(window.location.search);
-const paramArr = [...params.entries()];
-const key = params.get("key");
 const API_URL = "localhost:5173";
 
 const confirmBtn = document.getElementById("confirmBtn");
@@ -16,7 +14,7 @@ const swapToConfirmedEmail = () => {
 
 confirmBtn.addEventListener("click", () => {
 	try {
-		// fetch function
+		emailConfirmation();
 	} catch (e) {
 		// todo
 	}
@@ -31,6 +29,15 @@ function checkEmailConfirmation() {
 	}
 }
 
-async function emailConfirmation() {}
+async function emailConfirmation() {
+	const response = await fetch(API_URL, {
+		headers: { "Content-Type": "application/json" },
+		method: "POST",
+		body: JSON.stringify(`token: ${params.get("token")}`),
+	});
+	const data = await response.json();
+
+	return data;
+}
 
 console.log(key);
