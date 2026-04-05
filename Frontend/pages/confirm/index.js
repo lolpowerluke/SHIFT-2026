@@ -46,7 +46,7 @@ confirmBtn.addEventListener("click", async () => {
 
 async function emailConfirmation() {
 	const response = await fetch(
-		`${API_URL}/mail/confirm?token${params.get("token")}`,
+		`${API_URL}/mail/confirm?token=${params.get("token")}`,
 	);
 	const data = await response.json();
 
