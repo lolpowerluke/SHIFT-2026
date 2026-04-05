@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const confirmBtn = document.getElementById("confirmBtn");
 const preConfirm = document.getElementById("preconfirmation");
 const postConfirm = document.getElementById("postconfirmation");
-const previouslyConfirmed = document.getElementById("previouslyConfirmed");
+const previouslyConfirmed = document.getElementById("previouslyconfirmed");
 
 // TODO: add backend check
 const swapContent = (result) => {
