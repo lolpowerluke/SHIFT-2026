@@ -9,12 +9,28 @@
 			href="../../favicon/shift_icon.svg"
 		/>
 		<link rel="stylesheet" href="../../src/css/style.css" />
+		<link rel="stylesheet" href="./index.css" />
+		<script type="module" src="./index.js"></script>
 		<title>Bevestiging</title>
 	</head>
 	<body>
 		<load file="../../htmlComponents/header.fragment.html" />
 		<div class="ctx">
-			<h1>Email bevestiging</h1>
+			<h1>Bevestig je inschrijving</h1>
+			<br />
+			<div id="preconfirmation">
+				<p>Klik op de knop om je emailadres te bevestigen.</p>
+				<button id="confirmBtn">Bevestig</button>
+			</div>
+			<div id="postconfirmation" class="hidden">
+				<p>
+					inschrijving bevestigd. Klik op de knop om naar de
+					homepagina te gaan.
+				</p>
+				<a href="/">
+					<button>naar de homepagina</button>
+				</a>
+			</div>
 		</div>
 	</body>
 </html>
