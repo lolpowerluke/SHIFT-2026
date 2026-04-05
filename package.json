@@ -1,6 +1,6 @@
 {
   "scripts": {
     "build": "cd Backend && npm ci",
-    "serve": "cd Backend && node src/server.js"
+    "serve": "node src/server.js"
   }
 }
