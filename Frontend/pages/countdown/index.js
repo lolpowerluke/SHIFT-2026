@@ -15,10 +15,10 @@ signupForm.addEventListener("submit", async (e) => {
 	e.preventDefault();
 
 	const validEmail = document.getElementById("email").validity.valid;
-	if (!agree.checked && validEmail) return;
+	if (!agree.checked || !validEmail) return;
 
 	const { email } = Object.fromEntries(new FormData(signupForm));
-
+	console.log(email);
 	try {
 		const result = await fetch(`${API_URL}/mail/signup`, {
 			method: "POST",
