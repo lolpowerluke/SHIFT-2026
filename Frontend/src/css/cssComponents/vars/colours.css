@@ -13,10 +13,10 @@
 	--hl-primary: yellow;
 
 	/* border colours */
-	--border-primary: var(--txt-shift);
+	--border-primary: black;
 
 	/* shadow colours */
-	--shadow-primary: rgba(13, 57, 116, 0.4);
+	--shadow-primary: black;
 
 	/* Buttons */
 	--btn-primary-bg: var(--bg-shift-alt);

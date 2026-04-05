@@ -2,7 +2,7 @@ name: Deploy live website
 
 on:
     push:
-        branches: [FRONT-main]
+        branches: [main]
 
 # jobs:
 #     deploy:

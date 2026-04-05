@@ -6,12 +6,20 @@
 /* Everything layout goes here. margins, display grid/flex ideally too. Use your brain. */
 @import url(./cssComponents/layout.css);
 /* button styling in here */
-@import url(./cssComponents/layout.css);
+@import url(./cssComponents/buttons.css);
+/* throbber css */
+@import url(./cssComponents/throbber.css);
 
 /* This file is for the main styles like using colours, adding stuff that doesn't belong to the other files */
 
 .hidden {
 	visibility: hidden;
+	height: 0;
+}
+
+.fullPage {
+	width: 100vw;
+	min-height: 100dvh;
 }
 
 html,
@@ -28,28 +36,8 @@ html {
 body {
 	/* background-color: color-mix(var(--bg-shift-primary), transparent 30%); */
 	background-image: url(../../assets/iconsOverlay.svg);
+	min-height: 100dvh;
 }
-
-/* For buttons*/
-
-/* a {
-      background-color: var(--bg-shift-secondary);
-      border: 5px solid black;
-      font-size: 20pt;
-      margin-top: 20px;
-      padding: 5px;
-      box-shadow: 5px 5px 0 1px black;
-      text-decoration: none;
-      width: 70%;
-      transition: transform 0.1s, box-shadow 0.1s;
-      align-self: center;
-      
-    } */
-
-/* a:active {
-  transform: translateY(3px);
-  box-shadow: 2px 2px 0 1px black;
-} */
 
 /*For hamburger menu*/
 
@@ -207,5 +195,23 @@ header {
 
 	a {
 		width: fit-content;
+	}
+}
+
+footer {
+	.text-info {
+		text-align: left;
+	}
+
+	.socialLinks {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
+	p {
+		margin-bottom: 15px;
 	}
 }

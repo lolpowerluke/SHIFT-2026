@@ -1,20 +1,15 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="modulepreload" href="../../src/js/countdown.js" />
 		<link rel="modulepreload" href="./index.js" />
-		<link rel="preload" as="image" href="../../ehb_wit.png" />
+		<link rel="preload" as="image" href="../../assets/logos/ehb_wit.png" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link
-			rel="preload"
-			as="image"
-			href="../../assets/TikTok_Logo_Alternative_0.svg"
-		/>
-		<link
-			rel="preload"
-			as="image"
-			href="../../assets/Instagram_Glyph_White.svg"
+			rel="icon"
+			type="image/x-icon"
+			href="../../favicon/shift_icon.svg"
 		/>
 		<link rel="stylesheet" href="../../src/css/style.css" />
 		<link rel="stylesheet" href="./index.css" />
@@ -24,85 +19,123 @@
 		<title>Shift - countdown</title>
 	</head>
 	<body>
-		<div class="wrap">
+		<div class="wrap topSpacer">
 			<div>
-				<img src="../../ehb_wit.png" height="50" fetchpriority="high" />
-				<img src="../../assets/shift_logo.svg" id="heroLogo" />
-				<div class="heroText rotatedText">
-					<h1>Eindprojecten</h1>
-					<h3>
-						OPLEIDING MULTIMEDIA<br />
-						CREATIEVE TECHNOLOGIE
-					</h3>
-					<h2>&</h2>
+				<div class="logoWrap">
+					<img
+						src="../../assets/logos/ehb_wit.png"
+						fetchpriority="high"
+					/>
+					<img
+						src="../../assets/logos/shift_logo.svg"
+						id="heroLogo"
+						fetchpriority="high"
+					/>
 				</div>
-				<span id="timer" class="hidden"
-					><span id="days">10</span>D <span id="hours">00</span>H
-					<span id="minutes" class="xlarge">00</span>M
-					<span id="seconds">00</span>S
-				</span>
-				<br />
-				<div class="main">
-					<h3>VRIJDAG 19 JUNI</h3>
-					<h3>17:00 - 21:30</h3>
+				<div class="heroWrapper">
+					<div class="rotatedText">
+						<h1>Eindprojecten</h1>
+						<div class="heroText">
+							<div>
+								OPLEIDING MULTIMEDIA<br />
+								CREATIEVE TECHNOLOGIE
+							</div>
+							<div>&</div>
+						</div>
+					</div>
 				</div>
-				<button id="std">SAVE THE DATE</button>
+				<div class="timerDiv xlarge">
+					<span id="timer" class="hidden"
+						><span id="days">10</span>D <span id="hours">00</span>H
+						<span id="minutes">00</span>M
+						<span id="seconds">00</span>S
+					</span>
+					<br />
+					<div class="main">
+						<h3>VRIJDAG 19 JUNI</h3>
+						<h3>17:00 - 21:30</h3>
+					</div>
+				</div>
 				<form id="signup">
-					<label for="email"> Stay up to date for the event!</label>
+					<label for="email"> Blijf op de hoogte van SHIFT!</label>
 					<div class="emailWrap">
 						<input
+							class="white-input"
 							type="email"
 							name="email"
 							id="email"
-							placeholder="Laat hier uw email achter..."
+							placeholder="E-mail..."
+							autocomplete="email"
+							required
 						/>
-						<button value="submit" id="submit">x</button>
+						<button value="submit" id="submit" disabled>
+							Schrijf je in!
+						</button>
 					</div>
-					<br />
-					<label for="check">
-						<input type="checkbox" name="check" id="check" />
+					<label for="check" class="txtLeft">
+						<input
+							type="checkbox"
+							name="check"
+							id="check"
+							class="xsMarginTop"
+						/>
 						Keep me up to date.
 					</label>
+					<p class="privacy-policy">
+						Jouw data blijft van jou. Check het
+						<a href="/pages/privacy/nl/" class="languageLink"
+							>Privacybeleid</a
+						>.
+					</p>
 				</form>
-				<p>
-					Jouw data blijft van jou. Check het
-					<a href="/pages/privacy/nl/" class="languageLink"
-						>Privacybeleid</a
-					>.
-				</p>
+				<div class="copy-text">
+					<h2>Shift Festival 2026</h2>
+					<p>
+						Shift Festival is een jaarlijks evenement georganiseerd
+						door
+						<a href="https://www.erasmushogeschool.be/nl">
+							Erasmus <br />
+							Hogeschool Brussel
+						</a>
+						en de opleiding
+						<a
+							href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
+						>
+							Multimedia & Creatieve Technologie </a
+						>.
+					</p>
+					<p>
+						Kom de indrukwekkende eindprojecten van de derdejaars
+						<br />
+						bewonderen en breng je stem uit op je favoriete
+						projecten, <br />zodat ze tijdens een awardshow een
+						prijs kunnen winnen.
+					</p>
+					<h3>Wat is MCT?</h3>
+					<p>
+						<a
+							href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
+							>Multimedia & creatieve technologie</a
+						>
+						is een professionele <br />
+						bacheloropleiding aan de Erasmus hogeschool Brussel.
+						Deze <br />opleiding combineert creativiteit met
+						techniek, gericht op het <br />ontwikkelen van digitale
+						ervaringen, interactieve toepassingen,<br />
+						webtechnologieën en creatieve IT-oplossingen.
+					</p>
+				</div>
+				<div>
+					<p class="xlarge bold">
+						Wil je er zeker bij zijn?<br />Plaats het nu al in je
+						agenda.
+					</p>
+				</div>
+				<button class="bold agendaButton" id="std">
+					Save the date!
+				</button>
 			</div>
-			<footer>
-				<div id="socialLinks">
-					<a
-						href="https://www.instagram.com/multimedia.ehb"
-						title="official EhB Instagram"
-						><img
-							class="social"
-							src="../../assets/Instagram_Glyph_White.svg"
-							alt="Instagram"
-					/></a>
-					<a
-						href="https://www.tiktok.com/@multimedia.ehb"
-						title="official EhB TikTok"
-						><img
-							class="social"
-							src="../../assets/TikTok_Logo_Alternative_0.svg"
-							alt="TikTok"
-					/></a>
-				</div>
-				<div class="posBottom">
-					<a
-						href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
-					>
-						<img
-							src="../../ehb_wit.png"
-							id="EhBLogo"
-							height="150"
-							fetchpriority="high"
-					/></a>
-					<p>Nijverheidskaai 170, 1070 Anderlecht</p>
-				</div>
-			</footer>
+			<load file="../../htmlComponents/footer.fragment.html" />
 		</div>
 	</body>
 </html>
