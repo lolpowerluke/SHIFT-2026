@@ -23,36 +23,23 @@ form {
 	flex-direction: column;
 	margin: var(--spacing-s) 0;
 
-	input,
-	button {
-		background-color: var(--bg-shift-primary);
-		border: 0px;
-		color: var(--txt-shift-primary);
-	}
-
 	input[type="email"] {
-		width: 95%;
-		padding: 0.2rem 0.5rem;
-	}
-
-	button {
-		background-color: var(--bg-shift-alt);
+		background-color: var(--bg-shift-secondary);
 		border: 5px solid black;
 		border-radius: 10px;
-		font-size: 18px;
+		color: black;
+		font-size: 14pt;
 		padding: 5px;
-		margin-left: 5px;
-		box-shadow: 5px 5px 0 1px black;
 		text-decoration: none;
-		width: 70%;
+		width: 100%;
 		transition:
 			transform 0.1s,
 			box-shadow 0.1s;
 		align-self: center;
 	}
 
-	button:disabled {
-		background-color: var(--btn-disabled-bg);
+	button {
+		margin-left: 5px;
 	}
 
 	label {
@@ -67,6 +54,25 @@ input::placeholder {
 .emailWrap {
 	display: flex;
 	flex-direction: row;
+}
+
+.logoWrap {
+	position: relative;
+	display: inline-block;
+
+	& > img:first-child {
+		position: absolute;
+		z-index: 1;
+		top: -35px;
+		left: -60px;
+		height: 50px;
+		z-index: 1;
+	}
+
+	& > img:last-child {
+		position: relative;
+		z-index: 2;
+	}
 }
 
 #heroLogo {
@@ -104,26 +110,6 @@ input::placeholder {
 	transform: rotate(-14deg);
 }
 
-/* todo: standardise distances, use vars */
-.logoWrap {
-	position: relative;
-	display: inline-block;
-
-	& > img:first-child {
-		position: absolute;
-		z-index: 1;
-		top: -40px;
-		left: -60px;
-		height: 50px;
-		z-index: 1;
-	}
-
-	& > img:last-child {
-		position: relative;
-		z-index: 2;
-	}
-}
-
 .topSpacer {
 	margin-top: var(--spacing-top);
 }
@@ -134,4 +120,8 @@ input::placeholder {
 
 .txtLeft {
 	text-align: left;
+}
+
+.agendaButton {
+	margin-top: 20px;
 }
