@@ -56,7 +56,6 @@ const mailSignUp = async (req, res) => {
 const mailConfirm = async (req, res) => {
   try {
     const { token } = req.query;
-    console.log(token)
     const [result] = await db.query(
       'SELECT status FROM users WHERE token = ?',
       [token]
