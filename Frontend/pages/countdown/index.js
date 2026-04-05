@@ -5,15 +5,17 @@ const agree = document.getElementById("check");
 const submitButton = document.getElementById("submit");
 const signupForm = document.getElementById("signup");
 
+const checkedAgreement = agree.checked;
+const validEmail = document.getElementById("email").validity.valid;
+const validForm = checkedAgreement && validEmail;
+
 signupForm.addEventListener("change", function () {
-	const checkedAgreement = agree.checked;
-	const validEmail = document.getElementById("email").validity.valid;
-	submitButton.disabled = !(checkedAgreement && validEmail);
+	submitButton.disabled = !validForm;
 });
 
 signupForm.addEventListener("submit", async (e) => {
 	e.preventDefault();
-	if (!agree.checked) return;
+	if (!validForm) return;
 	const { email } = Object.fromEntries(new FormData(signupForm));
 
 	try {
