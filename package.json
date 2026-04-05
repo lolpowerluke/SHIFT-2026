@@ -5,6 +5,6 @@
   },
   "scripts": {
     "build": "cd Backend && npm ci",
-    "serve": "cd Backend && node src/server.js"
+    "serve": "npm run --prefix Backend start"
   }
 }
