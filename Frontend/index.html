@@ -9,7 +9,9 @@
 			const path = window.location.pathname;
 			const isPrivacy =
 				path === "/pages/privacy" || path === "/pages/privacy/";
-			if (!path.includes("/confirm/")) {
+			function rerouting() {
+				if (path.includes("/confirm/")) return;
+
 				if (!path.endsWith("/")) {
 					window.location.replace(path + "/");
 				} else if (isPrivacy) {
@@ -21,6 +23,7 @@
 					window.location.href = "/pages/countdown/";
 				}
 			}
+			rerouting();
 		</script>
 		<title>SHIFT</title>
 	</head>
