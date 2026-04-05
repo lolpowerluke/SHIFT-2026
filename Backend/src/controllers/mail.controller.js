@@ -34,7 +34,7 @@ const mailSignUp = async (req, res) => {
         [email, token]
       );
     }
-    const confirmUrl = `${env.frontend.url}/pages/confirm?token=${token}`;
+    const confirmUrl = `${env.frontend.url}/pages/confirm/?token=${token}`;
     // send email with link to mailConfirm function
     const info = await transporter.sendMail({
       from: 'info@shiftfestival.be',
@@ -56,18 +56,19 @@ const mailSignUp = async (req, res) => {
 const mailConfirm = async (req, res) => {
   try {
     const { token } = req.query;
+    console.log(token)
     const [result] = await db.query(
       'SELECT status FROM users WHERE token = ?',
       [token]
     );
     if (result.length == 0) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: "Invalid token"
       })
     }
-    if (result[1].status == 'confirmed') {
-      res.status(400).json({
+    if (result[0].status == 'confirmed') {
+      return res.status(400).json({
         success: false,
         message: "Mail is already signed up!"
       });
