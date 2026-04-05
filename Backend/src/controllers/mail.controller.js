@@ -64,13 +64,15 @@ const mailConfirm = async (req, res) => {
     if (result.length == 0) {
       return res.status(400).json({
         success: false,
-        message: "Invalid token"
+        message: "Invalid token",
+        short: "error"
       })
     }
     if (result[0].status == 'confirmed') {
       return res.status(400).json({
         success: false,
-        message: "Mail is already signed up!"
+        message: "Mail is already signed up!",
+        short: "error"
       });
     }
     await db.query(
@@ -78,12 +80,16 @@ const mailConfirm = async (req, res) => {
       WHERE token = ?`,
       [token]
     );
-    res.status(200).json({ success: true })
+    res.status(200).json({
+      success: true,
+      short: "success"
+    })
   } catch (error) {
     console.error(' error:', error);
     res.status(500).json({
       success: false,
       message: "Failed to confirm signup",
+      short: "error",
       error: error.message
     });
   }
