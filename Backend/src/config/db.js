@@ -20,11 +20,37 @@ await db.query(`
 `)
 
 await db.query(`
+  CREATE TABLE IF NOT EXISTS images (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    url VARCHAR(255) NOT NULL
+  )
+`)
+
+await db.query(`
+  CREATE TABLE IF NOT EXISTS image_user (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user BIGINT UNSIGNED,
+    image BIGINT UNSIGNED,
+    CONSTRAINT fk_iu_user
+      FOREIGN KEY(user)
+      REFERENCES users(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+    CONSTRAINT fk_iu_image
+      FOREIGN KEY(image)
+      REFERENCES images(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+
+  )
+`)
+
+await db.query(`
   CREATE TABLE IF NOT EXISTS tickets (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user BIGINT UNSIGNED,
     code VARCHAR(255) UNIQUE,
-    CONSTRAINT fk_user
+    CONSTRAINT fk_ticket_user
       FOREIGN KEY(user)
       REFERENCES users(id)
       ON DELETE CASCADE
@@ -38,6 +64,24 @@ await db.query(`
     name VARCHAR(255),
     description TEXT,
     course ENUM('Website', 'Installatie', 'Mobile app', 'VR & AR', '3D games', 'Motion')
+  )
+`)
+
+await db.query(`
+  CREATE TABLE IF NOT EXISTS image_project (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    project BIGINT UNSIGNED,
+    image BIGINT UNSIGNED,
+    CONSTRAINT fk_ip_project
+      FOREIGN KEY(project)
+      REFERENCES projects(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE,
+    CONSTRAINT fk_ip_image
+      FOREIGN KEY(image)
+      REFERENCES images(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
   )
 `)
 
@@ -64,7 +108,7 @@ await db.query(`
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user BIGINT UNSIGNED,
     social VARCHAR(255) UNIQUE,
-    CONSTRAINT fk_s_user
+    CONSTRAINT fk_social_user
       FOREIGN KEY(user)
       REFERENCES users(id)
       ON DELETE CASCADE
