@@ -125,3 +125,14 @@ input::placeholder {
 .agendaButton {
 	margin-top: 20px;
 }
+
+.copy-text {
+	margin-top: 35px;
+	margin-bottom: 35px;
+
+	h3, p {
+		margin-top: 15px;
+	}
+
+
+}
