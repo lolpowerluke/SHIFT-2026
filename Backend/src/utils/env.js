@@ -3,7 +3,8 @@ import "dotenv/config";
 function requireEnv(key) {
   const value = process.env[key];
   if (!value) {
-    throw new Error(`Missing required environment variable: ${key}`);
+    console.error(`Missing required environment variable: ${key}`);
+    process.exit(1);
   }
   return value;
 }
