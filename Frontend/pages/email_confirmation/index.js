@@ -43,4 +43,4 @@ async function emailConfirmation() {
 	return data;
 }
 
-document.getElementById("throbber").showModal();
+// document.getElementById("throbber").showModal();
