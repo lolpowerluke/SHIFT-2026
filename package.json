@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "cd Backend && npm add -g pnpm && pnpm ci",
+    "build": "cd Backend && pnpm ci",
     "serve": "cd Backend && node index.js"
   }
 }
