@@ -1,5 +1,5 @@
 const params = new URLSearchParams(window.location.search);
-const API_URL = "localhost:5173";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const confirmBtn = document.getElementById("confirmBtn");
 const preConfirm = document.getElementById("preconfirmation");
@@ -30,7 +30,7 @@ function checkEmailConfirmation() {
 }
 
 async function emailConfirmation() {
-	const response = await fetch(API_URL, {
+	const response = await fetch(`${API_URL}/mail/confirm`, {
 		headers: { "Content-Type": "application/json" },
 		method: "POST",
 		body: JSON.stringify(`token: ${params.get("token")}`),
