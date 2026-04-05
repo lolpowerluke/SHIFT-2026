@@ -24,3 +24,7 @@ footer {
 	text-align: center;
 	margin-top: 45dvh;
 }
+
+.gutter-s {
+	gap: var(--spacing-s);
+}
