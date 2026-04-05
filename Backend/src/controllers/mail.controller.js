@@ -60,7 +60,7 @@ const mailConfirm = async (req, res) => {
       'SELECT status FROM users WHERE token = ?',
       [token]
     );
-    if (result.length > 0) {
+    if (result.length == 0) {
       res.status(400).json({
         success: false,
         message: "Invalid token"
