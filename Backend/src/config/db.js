@@ -13,8 +13,10 @@ const db = mysql.createPool({
 await db.query(`
   CREATE TABLE IF NOT EXISTS users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    role ENUM('visitor', 'admin', '3rdyear', 'prof') NOT NULL,
+    role ENUM('visitor', 'admin', '3rdyear', 'prof') DEFAULT 'visitor',
     email VARCHAR(255) UNIQUE,
+    token VARCHAR(64) UNIQUE,
+    status ENUM('pending', 'confirmed') DEFAULT 'pending',
     password VARCHAR(255)
   )
 `)
@@ -90,13 +92,6 @@ if (rows[0].count === 0) {
       ('2026-06-19 21:00:00', 'during-event')
   `);
 }
-
-await db.query(`
-  CREATE TABLE IF NOT EXISTS mailsignup (
-    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) UNIQUE
-  )
-`)
 
 db.getConnection()
   .then(connection => {

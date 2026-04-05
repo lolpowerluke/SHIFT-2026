@@ -1,67 +1,88 @@
 import db from "../config/db.js";
+import env from "../utils/env.js";
+import { randomBytes } from 'crypto';
+import validator from 'validator';
+import { transporter } from "../utils/mailer.js";
 
 const mailSignUp = async (req, res) => {
   try {
-    let { email } = req.body;
+    const { email } = req.body;
     if (!email) {
       return res.status(400).json({
         success: false,
         message: 'Please provide an email.'
       });
     }
-    const [result] = await db.query(
-      'SELECT id FROM mailsignup WHERE email = ?',
-      [email]
-    );
-    if (result.length > 0) {
+    if (!validator.isEmail(email)) {
       return res.status(400).json({
         success: false,
-        message: 'Email already exists in database'
+        message: 'Please provide a valid email.'
       });
     }
+    const [result] = await db.query(
+      'SELECT token FROM users WHERE email = ?',
+      [email]
+    );
+    let token;
+    if (result.length > 0) {
+      token = result[0].token;
+    } else {
+      token = randomBytes(32).toString('hex');
+      await db.query(
+        `INSERT INTO users (email, token)
+        VALUES(?, ?)`,
+        [email, token]
+      );
+    }
+    const confirmUrl = `${env.frontend.url}/pages/confirm?token=${token}`;
     // send email with link to mailConfirm function
-    res.send("OK");
+    const info = await transporter.sendMail({
+      from: 'info@shiftfestival.be',
+      to: email,
+      subject: 'Confirm signup',
+      text: `Click to confirm:\n${confirmUrl}\n\nYou can safely ignore this if you didn't subscribe.`,
+      html: `<p>Click <a href="${confirmUrl}">here</a> to confirm</p><p>You can safely ignore this if you didn't subscribe.`
+    })
+    res.status(200).json({ success: true });
   } catch (error) {
     console.error(' error:', error);
     res.status(500).json({
       success: false,
-      message: 'Sign up for mail failed',
+      message: "Sign up for mail failed",
       error: error.message
     });
   }
 }
 const mailConfirm = async (req, res) => {
   try {
-    let { email } = req.body;
-    if (!email) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please provide an email.'
-      });
-    }
+    const { token } = req.query;
     const [result] = await db.query(
-      'SELECT id FROM mailsignup WHERE email = ?',
-      [email]
+      'SELECT status FROM users WHERE token = ?',
+      [token]
     );
     if (result.length > 0) {
-      return res.status(400).json({
+      res.status(400).json({
         success: false,
-        message: 'Email already exists in database'
+        message: "Invalid token"
+      })
+    }
+    if (result[1].status == 'confirmed') {
+      res.status(400).json({
+        success: false,
+        message: "Mail is already signed up!"
       });
     }
-    const [insertResult] = await db.query(
-      'INSERT INTO mailsignup (email) VALUES (?)',
-      [email]
-    )
-    res.status(200).json({
-      success: true,
-      message: 'Succesfully sign up for emails'
-    })
+    await db.query(
+      `UPDATE users SET status = 'confirmed'
+      WHERE token = ?`,
+      [token]
+    );
+    res.status(200).json({ success: true })
   } catch (error) {
     console.error(' error:', error);
     res.status(500).json({
       success: false,
-      message: 'Failed to confirm signup',
+      message: "Failed to confirm signup",
       error: error.message
     });
   }
@@ -72,11 +93,11 @@ const mailCancel = async (req, res) => {
     if (!email) {
       return res.status(400).json({
         success: false,
-        message: 'Please provide an email.'
+        message: "Please provide an email."
       });
     }
     const [result] = await db.query(
-      'SELECT id FROM mailsignup WHERE email = ?',
+      'SELECT id FROM users WHERE email = ?',
       [email]
     );
     if (result.length > 0) {
@@ -86,7 +107,7 @@ const mailCancel = async (req, res) => {
       });
     }
     const [deleteResult] = await db.query(
-      'DELETE FROM mailsignup WHERE email = ?',
+      'DELETE FROM users WHERE email = ?',
       [email]
     )
     res.send('Succesfully cancelled email subscription')
