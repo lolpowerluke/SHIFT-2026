@@ -182,16 +182,13 @@ body {
 	opacity: 1;
 }
 
-.header-color {
-	background-color: var(--bg-shift-alt);
-}
-
 header {
 	padding-bottom: 25px;
 	padding-top: 20px;
 	display: flex;
 	flex-direction: row;
 	justify-content: start;
+	background-color: var(--bg-shift-alt);
 
 	a {
 		width: fit-content;
