@@ -71,3 +71,6 @@
 
 - [Display image from input file tag from W3Collective](https://w3collective.com/preview-selected-img-file-input-js/)
     - Used in [project-form (html, css, js)](Frontend\login\project-form)
+
+- [remove `/pages/` from links and paths in build while keeping the file structure automation]()
+    - used in vite.config.js

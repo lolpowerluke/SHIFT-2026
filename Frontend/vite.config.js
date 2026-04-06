@@ -4,6 +4,8 @@ import injectHTML from "vite-plugin-html-inject";
 import fs from "fs";
 import path from "path";
 
+// script built with claude.ai
+// add link when sharing works again (in readme too)
 function removePagesSegment() {
 	return {
 		name: "remove pages segment",
