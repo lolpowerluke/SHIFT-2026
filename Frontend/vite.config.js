@@ -5,7 +5,7 @@ import fs from "fs";
 import path from "path";
 
 // script built with claude.ai
-// add link when sharing works again (in readme too)
+// link to chat in README.md
 function removePagesSegment() {
 	return {
 		name: "remove pages segment",
