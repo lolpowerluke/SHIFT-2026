@@ -63,7 +63,7 @@ input::placeholder {
   & > img:first-child {
     position: absolute;
     z-index: 1;
-    top: -35px;
+    top: -30px;
     left: -60px;
     height: 50px;
     z-index: 1;
