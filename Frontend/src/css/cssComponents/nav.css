@@ -4,98 +4,94 @@
 
 /* Code based on JoachimGautama's web2-course-project-front-end-JoachimGautama */
 .nav {
-	ul {
-		list-style-type: none;
-	}
-}
-
-.nav {
-	width: 100%;
-	ul {
-		max-width: 350px;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		margin-bottom: 0;
-	}
+  display: flex;
+  align-items: flex-end;
+  ul {
+    list-style-type: none;
+    max-width: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
 }
 
 .navItem {
-	text-align: center;
-	background-color: unset;
-	padding: 5px 10px 0px;
-	margin-bottom: 5px;
-	color: var(--text-secondary);
+  text-align: center;
+  background-color: unset;
+  padding: 5px 10px 0px;
+  margin-bottom: 5px;
+  color: var(--text-secondary);
 }
 
 .navItem.active {
-	background-color: var(--primary-bg);
-	color: var(--text-primary);
-	margin-bottom: unset;
-	border-radius: 10px 10px 0px 0px;
+  background-color: var(--primary-bg);
+  color: var(--text-primary);
+  margin-bottom: unset;
+  border-radius: 10px 10px 0px 0px;
 }
 
 #hamburgerNav,
 #hamburgerNav + label {
-	display: none;
+  display: none;
 }
 
 /* lines */
 .line {
-	width: 2rem;
-	height: 0.3rem;
-	background-color: black;
-	transition: all 0.2s ease;
+  width: 2rem;
+  height: 0.3rem;
+  background-color: black;
+  transition: all 0.2s ease;
 }
 
 .l2 {
-	margin: 0.3rem 0;
+  margin: 0.3rem 0;
 }
 
 #hamburgerNav + label {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 #hamburgerNav:checked + label > .l1 {
-	transform: rotate(45deg) translateY(0.85rem);
+  transform: rotate(45deg) translateY(0.85rem);
 }
 
 #hamburgerNav:checked + label > .l2 {
-	opacity: 0;
-	transform: rotate(45deg);
+  opacity: 0;
+  transform: rotate(45deg);
 }
 
 #hamburgerNav:checked + label > .l3 {
-	transform: rotate(-45deg) translateY(-0.85rem);
+  transform: rotate(-45deg) translateY(-0.85rem);
 }
 /* responsiveness */
 
 @media only screen and (max-width: 1180px) {
-	#hamburgerNav + label {
-		position: relative;
-		display: block;
-		z-index: 2;
-	}
+  #hamburgerNav + label {
+    position: relative;
+    display: block;
+    z-index: 2;
+  }
 
-	ul:has(+ #hamburgerNav) {
-		display: none;
-	}
+  ul:has(+ #hamburgerNav) {
+    display: none;
+  }
 
-	ul:has(+ #hamburgerNav:checked) {
-		display: block;
-		position: absolute;
-		width: 100vw;
-		height: 100vh;
-		left: 0;
-		top: 0;
-		background-color: var(--secondary-bg);
-		margin: 0;
-		z-index: 1;
-		overflow: hidden;
-		padding: 0;
-		align-content: center;
-		.active {
-			background-color: unset;
-		}
-	}
+  ul:has(+ #hamburgerNav:checked) {
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: var(--secondary-bg);
+    margin: 0;
+    z-index: 1;
+    overflow: hidden;
+    padding: 0;
+    align-content: center;
+    .active {
+      background-color: unset;
+    }
+  }
 }
