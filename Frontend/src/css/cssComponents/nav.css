@@ -84,12 +84,13 @@
     height: 100vh;
     left: 0;
     top: 0;
-    background-color: var(--secondary-bg);
+    background-color: var(--bg-shift-alt);
     margin: 0;
     z-index: 1;
     overflow: hidden;
     padding: 0;
     align-content: center;
+    max-width: unset;
     .active {
       background-color: unset;
     }
