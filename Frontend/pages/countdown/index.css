@@ -1,138 +1,137 @@
 @import url(../../src/css/style.css);
 
 body {
-	min-height: 100dvh;
-	display: flex;
-	background-repeat: repeat;
-	margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  background-repeat: repeat;
+  margin: 0;
 }
 
 .wrap {
-	display: flex;
-	flex-direction: column;
-	max-width: 80vw;
-	min-height: 90dvh;
-	margin: auto;
-	justify-content: space-between;
-	text-align: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+  min-height: 90dvh;
+  margin: auto;
+  justify-content: space-between;
+  text-align: center;
 }
 
 /* form could be exported to its own css file for easier maintenance */
 form {
-	display: flex;
-	flex-direction: column;
-	margin: var(--spacing-s) 0;
+  display: flex;
+  flex-direction: column;
+  margin: var(--spacing-s) 0;
 
-	input[type="email"] {
-		background-color: var(--bg-shift-secondary);
-		border: 5px solid black;
-		border-radius: 10px;
-		color: black;
-		font-size: 14pt;
-		padding: 5px;
-		text-decoration: none;
-		width: 100%;
-		transition:
-			transform 0.1s,
-			box-shadow 0.1s;
-		align-self: center;
-	}
+  input[type="email"] {
+    background-color: var(--bg-shift-secondary);
+    border: 5px solid black;
+    border-radius: 10px;
+    color: black;
+    font-size: 14pt;
+    padding: 5px;
+    text-decoration: none;
+    width: 100%;
+    transition:
+      transform 0.1s,
+      box-shadow 0.1s;
+    align-self: center;
+  }
 
-	button {
-		margin-left: 5px;
-	}
+  button {
+    margin-left: 5px;
+  }
 
-	label {
-		margin-bottom: var(--spacing-xs);
-	}
+  label {
+    margin-bottom: var(--spacing-xs);
+  }
 }
 
 input::placeholder {
-	color: var(--txt-shift-secondary);
+  color: var(--txt-shift-secondary);
 }
 
 .emailWrap {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .logoWrap {
-	position: relative;
-	display: inline-block;
+  position: relative;
+  display: inline-block;
 
-	& > img:first-child {
-		position: absolute;
-		z-index: 1;
-		top: -35px;
-		left: -60px;
-		height: 50px;
-		z-index: 1;
-	}
+  & > img:first-child {
+    position: absolute;
+    z-index: 1;
+    top: -35px;
+    left: -60px;
+    height: 50px;
+    z-index: 1;
+  }
 
-	& > img:last-child {
-		position: relative;
-		z-index: 2;
-	}
+  & > img:last-child {
+    position: relative;
+    z-index: 2;
+  }
 }
 
 #heroLogo {
-	height: 21rem;
-	margin: -70px -95px -40px;
+  height: 21rem;
+  margin: -70px -95px -40px;
 }
 
 .rotatedText {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .heroText {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-	div {
-		font-weight: bold;
-	}
+  div {
+    font-weight: bold;
+  }
 
-	& > div:first-child {
-		font-size: 1.5rem;
-	}
+  & > div:first-child {
+    font-size: 1.5rem;
+  }
 
-	& > div:last-child {
-		font-size: 3rem;
-	}
+  & > div:last-child {
+    font-size: 3rem;
+  }
 }
 
 .heroWrapper {
-	height: max-content;
-	margin-bottom: var(--spacing-heroWrapper);
-	transform: rotate(-14deg);
+  height: max-content;
+  margin-bottom: var(--spacing-heroWrapper);
+  transform: rotate(-14deg);
 }
 
 .topSpacer {
-	margin-top: var(--spacing-top);
+  margin-top: var(--spacing-top);
 }
 
 .timerDiv {
-	margin-top: 75px;
+  margin-top: 75px;
 }
 
 .txtLeft {
-	text-align: left;
+  text-align: left;
 }
 
 .agendaButton {
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 .copy-text {
-	margin-top: 35px;
-	margin-bottom: 35px;
+  margin-top: 35px;
+  margin-bottom: 35px;
 
-	h3, p {
-		margin-top: 15px;
-	}
-
-
+  h3,
+  p {
+    margin-top: 15px;
+  }
 }
