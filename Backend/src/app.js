@@ -8,17 +8,21 @@ import "./config/db.js";
 import apiRoutes from "./routes/api.routes.js"
 import authRoutes from "./routes/auth.routes.js";
 import mailRoutes from "./routes/mail.routes.js";
+import projectRoutes from "./routes/project.routes.js";
 
 const app = express();
 
 const allowedOrigins = env.frontend.url ? env.frontend.url.split(',').map(origin => origin.trim()) : [];
 
-app.use(cors());
+app.use(cors({
+  origin: allowedOrigins
+}));
 app.use(express.json());
 
 app.use("/api", apiRoutes);
 app.use("/auth", authRoutes);
-app.use("/mail", mailRoutes)
+app.use("/mail", mailRoutes);
+app.use("/project", projectRoutes);
 
 app.get('/health', async (req, res) => {
   try {
