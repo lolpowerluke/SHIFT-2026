@@ -1,5 +1,7 @@
 
-/* Sources in README*/
+/* Code used from [https://w3collective.com/preview-selected-img-file-input-js/]
+Complete source in *README*
+*/
 
 const choose_projectFile = document.getElementById("choose-projectFile");
 const choose_selfieFile = document.getElementById("choose-selfieFile");
