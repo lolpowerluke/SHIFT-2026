@@ -1,13 +1,2 @@
+<script src="./index.js"></script>
 <input type="email" /><button>submit</button>
-
-<script>
-	document.querySelector("button").addEventListener("click", async () => {
-		const response = await fetch("http://10.2.89.210:3000/mail/cancel", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				email: document.querySelector("input").value,
-			}),
-		});
-	});
-</script>
