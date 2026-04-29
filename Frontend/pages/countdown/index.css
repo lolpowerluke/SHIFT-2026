@@ -123,9 +123,8 @@ input::placeholder {
 }
 
 #scrollPointer {
-	transform: scale(1, -1);
 	width: 50px;
-	animation: MoveUpDown 1.5s linear infinite;
+	animation: MoveUpDown 1.25s linear infinite;
 }
 
 @keyframes MoveUpDown {
