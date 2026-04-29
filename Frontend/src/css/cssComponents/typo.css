@@ -3,56 +3,58 @@
 /* TODO: import futura properly */
 
 * {
-  font-family: "futura-pt";
-  background-color: var(--bg-primary);
-  color: var(--txt-shift-primary);
+	font-family: "futura-pt";
+	background-color: var(--bg-primary);
+	color: var(--txt-shift-primary);
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 44px;
-  text-transform: uppercase;
+	font-weight: bold;
+	font-size: 44px;
+	text-transform: uppercase;
 }
 
 h2 {
-  font-weight: bold;
-  font-size: 36px;
+	font-weight: bold;
+	font-size: 36px;
+  margin: 15px 0px;
 }
 
 h3 {
-  font-weight: bold;
-  font-size: 24px;
+	font-weight: bold;
+	font-size: 24px;
+	margin: 15px 0px;
 }
 
 h4 {
-  font-weight: bold;
-  font-size: 18px;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 p {
-  font-size: 16px;
+	font-size: 16px;
 }
 
 #timer {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 sub {
-  font-size: 10px;
+	font-size: 10px;
 }
 
 a {
-  color: var(--hl-primary);
+	color: var(--hl-primary);
 }
 
 .xlarge {
-  font-size: 32px;
+	font-size: 32px;
 }
 
 .bold {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .centeredTxt {
-  text-align: center;
+	text-align: center;
 }

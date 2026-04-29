@@ -58,3 +58,15 @@ document.getElementById("std").addEventListener("click", function () {
 
 //   URL.revokeObjectURL(url);
 // });
+
+//Scrolldown pointer
+document.getElementById("scrollPointer").addEventListener("click", function () {
+	const next = document.querySelector(".copy-text");
+
+	if (next) {
+		next.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	}
+});
