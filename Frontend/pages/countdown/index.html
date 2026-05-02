@@ -18,7 +18,11 @@
     <div class="wrap topSpacer">
       <div>
         <div class="logoWrap">
-          <img src="../../assets/logos/ehb_wit.png" fetchpriority="high" />
+          <img
+            src="../../assets/logos/ehb_wit.png"
+            id=""
+            fetchpriority="high"
+          />
           <img
             src="../../assets/logos/shift_logo.svg"
             id="heroLogo"
@@ -29,7 +33,7 @@
           <div class="rotatedText">
             <h1>Eindprojecten</h1>
             <div class="heroText">
-              <div>
+              <div class="courseHeroText">
                 OPLEIDING MULTIMEDIA<br />
                 CREATIEVE TECHNOLOGIE
               </div>
@@ -62,7 +66,7 @@
             />
             <button value="submit" id="submit" disabled>Schrijf je in!</button>
           </div>
-          <label for="check" class="txtLeft">
+          <label for="check">
             <input
               type="checkbox"
               name="check"
@@ -71,31 +75,36 @@
             />
             Hou me op de hoogte!
           </label>
-          <sub class="privacy-policy">
+          <sub>
             Jouw data blijft van jou. Check het
             <a href="/pages/privacy/nl/" class="languageLink">Privacybeleid</a>.
           </sub>
+          <sub>
+            Wens je niet langer emails te ontvangen? Afmelden kan
+            <a href="/pages/unsubscribe/" class="languageLink">hier</a>.
+          </sub>
         </form>
+        <div>
+          <img id="scrollPointer" src="../../assets/icons/pointer2.svg" />
+        </div>
         <div class="copy-text">
           <h2>Shift Festival 2026</h2>
           <p>
             Shift Festival is een jaarlijks evenement georganiseerd door
             <a href="https://www.erasmushogeschool.be/nl">
-              Erasmus <br />
-              Hogeschool Brussel
+              Erasmus Hogeschool Brussel
             </a>
             en de opleiding
             <a
               href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
             >
-              Multimedia & Creatieve Technologie </a
+              Multimedia & Creatieve Technologie</a
             >.
           </p>
           <p>
-            Kom de indrukwekkende eindprojecten van de derdejaars
-            <br />
-            bewonderen en breng je stem uit op je favoriete projecten,
-            <br />zodat ze tijdens een awardshow een prijs kunnen winnen.
+            Kom de indrukwekkende eindprojecten van de derdejaars bewonderen en
+            breng je stem uit op je favoriete projecten, zodat ze tijdens een
+            awardshow een prijs kunnen winnen.
           </p>
           <h3>Wat is MCT?</h3>
           <p>
@@ -103,17 +112,15 @@
               href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
               >Multimedia & creatieve technologie</a
             >
-            is een professionele <br />
-            bacheloropleiding aan de Erasmus hogeschool Brussel. Deze
-            <br />opleiding combineert creativiteit met techniek, gericht op het
-            <br />ontwikkelen van digitale ervaringen, interactieve
-            toepassingen,<br />
-            webtechnologieën en creatieve IT-oplossingen.
+            is een professionele bacheloropleiding aan de Erasmus hogeschool
+            Brussel. Deze opleiding combineert creativiteit met techniek,
+            gericht op het ontwikkelen van digitale ervaringen, interactieve
+            toepassingen, webtechnologieën en creatieve IT-oplossingen.
           </p>
         </div>
         <div>
           <p class="xlarge bold">
-            Wil je er zeker bij zijn?<br />Plaats het nu al in je agenda.
+            Wil je er zeker bij zijn? Plaats het in je agenda.
           </p>
         </div>
         <button class="bold agendaButton" id="std">Save the date!</button>
