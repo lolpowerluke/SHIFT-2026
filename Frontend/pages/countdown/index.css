@@ -1,152 +1,190 @@
 @import url(../../src/css/style.css);
 
 body {
-	min-height: 100dvh;
-	display: flex;
-	background-repeat: repeat;
-	margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  background-repeat: repeat;
+  margin: 0;
 }
 
 .wrap {
-	display: flex;
-	flex-direction: column;
-	max-width: 80vw;
-	min-height: 90dvh;
-	margin: auto;
-	justify-content: space-between;
-	text-align: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+  min-height: 90dvh;
+  margin: auto;
+  justify-content: space-between;
+  text-align: center;
 }
 
-.main h3 {
-	margin: 0px;
+.main p {
+  margin: 0px;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 /* form could be exported to its own css file for easier maintenance */
 form {
-	display: flex;
-	flex-direction: column;
-	margin: var(--spacing-s) 0;
+  display: flex;
+  flex-direction: column;
+  margin: var(--spacing-s) 0;
 
-	input[type="email"] {
-		background-color: var(--bg-shift-secondary);
-		border: 5px solid black;
-		border-radius: 10px;
-		color: black;
-		font-size: 14pt;
-		padding: 5px;
-		text-decoration: none;
-		width: 100%;
-		transition:
-			transform 0.1s,
-			box-shadow 0.1s;
-		align-self: center;
-	}
+  input[type="email"] {
+    background-color: var(--bg-shift-secondary);
+    border: 5px solid black;
+    border-radius: 10px;
+    color: black;
+    font-size: 14px;
+    padding: 5px;
+    text-decoration: none;
+    width: 100%;
+    transition:
+      transform 0.1s,
+      box-shadow 0.1s;
+    align-self: center;
+  }
 
-	button {
-		margin-left: 5px;
-	}
+  button {
+    margin-left: 5px;
+  }
 
-	label {
-		margin-bottom: var(--spacing-xs);
-	}
+  label {
+    margin-bottom: var(--spacing-xs);
+  }
 }
 
 input::placeholder {
-	color: var(--txt-shift-secondary);
+  color: var(--txt-shift-secondary);
 }
 
 .emailWrap {
-	display: flex;
-	flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .logoWrap {
-	position: relative;
-	display: inline-block;
+  position: relative;
+  display: inline-block;
 
-	& > img:first-child {
-		position: absolute;
-		z-index: 1;
-		top: -30px;
-		left: -30px;
-		height: 50px;
-		z-index: 1;
-	}
+  & > img:first-child {
+    position: absolute;
+    z-index: 1;
+    top: -30px;
+    left: -30px;
+    height: 50px;
+    z-index: 1;
+  }
 }
 
 #heroLogo {
-	height: 21rem;
-	margin: -30px -95px -40px;
+  height: var(--shift-logo-height);
+  margin: -30px -85px -40px;
 }
 
 .rotatedText {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.rotatedText > * {
+  margin: 0 auto;
 }
 
 .heroText {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: row;
 
-	.courseHeroText {
-		width: 300px;
-	}
+  .courseHeroText {
+    width: 300px;
 
-	div {
-		font-weight: bold;
-	}
+    h1 {
+      font-size: 24px;
+    }
+  }
 
-	& > div:first-child {
-		font-size: 1.5rem;
-	}
+  div {
+    font-weight: bold;
+  }
 
-	& > div:last-child {
-		font-size: 3rem;
-	}
+  & > div:first-child {
+    font-size: 1.5rem;
+  }
+
+  & > div:last-child {
+    font-size: 3rem;
+  }
 }
 
 .heroWrapper {
-	height: max-content;
-	margin-bottom: var(--spacing-heroWrapper);
-	transform: rotate(-14deg);
+  height: max-content;
+  margin-bottom: var(--spacing-heroWrapper);
+  transform: rotate(-13.3deg);
+  transform-origin: 50% calc(var(--shift-logo-height) / -2);
 }
 
 .topSpacer {
-	margin-top: var(--spacing-top);
+  margin-top: var(--spacing-top);
 }
 
 .timerDiv {
-	margin-top: 60px;
+  margin-top: 60px;
 }
 
 #scrollPointer {
-	width: 50px;
-	animation: MoveUpDown 1.25s linear infinite;
+  width: 50px;
+  animation: MoveUpDown 1.25s linear infinite;
 }
 
 @keyframes MoveUpDown {
-	0%,
-	100% {
-		transform: scale(1, -1) translateY(5px);
-	}
-	50% {
-		transform: scale(1, -1) translateY(-5px);
-	}
+  0%,
+  100% {
+    transform: scale(1, -1) translateY(5px);
+  }
+  50% {
+    transform: scale(1, -1) translateY(-5px);
+  }
 }
 
 .agendaButton {
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 .copy-text {
-	margin-top: 35px;
-	margin-bottom: 35px;
-	text-align: left;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  text-align: left;
 
-	h2 {
-		margin-top: -10px;
-	}
+  h2 {
+    margin-top: -10px;
+  }
+}
+
+.linkBtn {
+  display: inline-block;
+  width: fit-content;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 1024px) {
+  /* .wrap {
+    text-align: left;
+  } */
+
+  .logoWrap {
+    & > img:first-child {
+      left: -165px;
+      height: 60px;
+    }
+  }
+
+  #heroLogo {
+    height: var(--shift-logo-height);
+  }
+
+  .rotatedText {
+    align-items: start;
+  }
 }
