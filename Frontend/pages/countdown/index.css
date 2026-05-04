@@ -161,6 +161,13 @@ input::placeholder {
   }
 }
 
+.linkBtn {
+  display: inline-block;
+  width: fit-content;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 @media (min-width: 1024px) {
   /* .wrap {
     text-align: left;
