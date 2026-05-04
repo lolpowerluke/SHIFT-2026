@@ -30,6 +30,11 @@ jobs:
             **/.git*/**
             **/node_modules/**
 
+      - name: Create restart file
+        run: |
+          mkdir -p .github/restart
+          date > .github/restart/restart.txt
+
       - name: Restart Passenger app
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
