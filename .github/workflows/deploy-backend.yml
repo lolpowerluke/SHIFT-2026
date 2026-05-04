@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: Backend/
           server-dir: /subsites/api.shiftfestival.be/
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
           exclude: |
             **/.git*
             **/.git*/**
