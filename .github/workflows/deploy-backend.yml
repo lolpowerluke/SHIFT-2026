@@ -38,10 +38,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            find ~ -name "server.js" 2>/dev/null
-            ls ~/subsites/
-            # ps aux | grep node
-            # mkdir -p ~/subsites/api.shiftfestival.be/logs
-            # cd ~/subsites/api.shiftfestival.be
-            # kill -f "node src/server.js" || true
-            # nohup node src/server.js > ~/subsites/api.shiftfestival.be/logs/app.log 2>&1 &
+            ps aux | grep node
+            mkdir -p ~/subsites/api.shiftfestival.be/logs
+            cd ~/subsites/api.shiftfestival.be
+            kill -f "node src/server.js" || true
+            nohup node src/server.js > ~/subsites/api.shiftfestival.be/logs/app.log 2>&1 &
