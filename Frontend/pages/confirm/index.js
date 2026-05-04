@@ -47,6 +47,6 @@ async function emailConfirmation() {
     `${API_URL}/mail/confirm?token=${params.get("token")}`,
   );
   const data = await response.json();
-
+  console.log(data);
   return data;
 }
