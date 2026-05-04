@@ -9,7 +9,6 @@ const error = document.getElementById("error");
 const throbber = document.getElementById("throbber");
 
 const swapContent = (result) => {
-  console.log(result);
   switch (result) {
     case "success":
       preConfirm.classList.add("hidden");
@@ -29,6 +28,7 @@ const swapContent = (result) => {
 };
 
 confirmBtn.addEventListener("click", async () => {
+  confirmBtn.disabled = true;
   let response;
   throbber.showModal();
   try {
@@ -38,14 +38,24 @@ confirmBtn.addEventListener("click", async () => {
   } finally {
     throbber.close();
   }
-  let shortRes = response.short;
-  swapContent(shortRes);
+  swapContent(response.short);
 });
 
 async function emailConfirmation() {
+  if (!params.get("token")) {
+    swapContent("error");
+    return;
+  }
+
   const response = await fetch(
     `${API_URL}/mail/confirm?token=${params.get("token")}`,
   );
+
+  if (!response.ok) {
+    swapContent("error");
+    return;
+  }
+
   const data = await response.json();
   console.log(data);
   return data;
