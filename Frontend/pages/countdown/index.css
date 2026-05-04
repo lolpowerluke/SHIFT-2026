@@ -155,9 +155,9 @@ input::placeholder {
 }
 
 @media (min-width: 1024px) {
-  .wrap {
-    /* text-align: left; */
-  }
+  /* .wrap {
+    text-align: left;
+  } */
 
   .logoWrap {
     & > img:first-child {
