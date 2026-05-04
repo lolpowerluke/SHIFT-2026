@@ -8,9 +8,6 @@ const previouslyConfirmed = document.getElementById("previouslyconfirmed");
 const error = document.getElementById("error");
 const throbber = document.getElementById("throbber");
 
-// TODO: check if works
-// TODO: add throbber while loading the backend check
-
 const swapContent = (result) => {
   console.log(result);
   switch (result) {
@@ -38,11 +35,11 @@ confirmBtn.addEventListener("click", async () => {
     response = await emailConfirmation();
   } catch (e) {
     console.error("unsuccessful:", e.message);
-    response = "error";
   } finally {
     throbber.close();
   }
-  swapContent(response);
+  let shortRes = response.short;
+  swapContent(shortRes);
 });
 
 async function emailConfirmation() {
@@ -53,5 +50,3 @@ async function emailConfirmation() {
 
   return data;
 }
-
-// document.getElementById("throbber").showModal();
