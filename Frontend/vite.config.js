@@ -52,7 +52,7 @@ export default defineConfig({
         privacyEN: resolve(__dirname, "pages/privacy/en/index.html"),
         privacyNL: resolve(__dirname, "pages/privacy/nl/index.html"),
         emailConfirm: resolve(__dirname, "pages/confirm/index.html"),
-        emailCancel: resolve(__dirname, "/pages/unsubscribe/index.html"),
+        emailCancel: resolve(__dirname, "pages/unsubscribe/index.html"),
       },
     },
   },
