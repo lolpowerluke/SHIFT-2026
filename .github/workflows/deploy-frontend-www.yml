@@ -1,29 +1,31 @@
 name: Deploy live website
 
 on:
-    push:
-        branches: [main]
+  push:
+    branches: [main]
 
-# jobs:
-#     deploy:
-#         runs-on: ubuntu-latest
-#         steps:
-#             - uses: actions/checkout@v4
-#             - run: npm ci
-#               working-directory: Frontend
-#             - run: npm run build
-#               working-directory: Frontend
-#             - uses: appleboy/ssh-action@v1.0.3
-#               with:
-#                   host: ${{ secrets.SSH_HOST }}
-#                   username: ${{ secrets.SSH_USERNAME }}
-#                   key: ${{ secrets.SSH_KEY }}
-#                   script: rm -rf /www/*
-#             - uses: appleboy/scp-action@v0.1.7
-#               with:
-#                   host: ${{ secrets.SSH_HOST }}
-#                   username: ${{ secrets.SSH_USERNAME }}
-#                   key: ${{ secrets.SSH_KEY }}
-#                   source: Frontend/dist/
-#                   target: ~/www/
-#                   strip_components: 2
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+        working-directory: Frontend
+      - run: npm run build
+        working-directory: Frontend
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      - uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: rm -rf /www/*
+      - uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          source: Frontend/dist/
+          target: ~/www/
+          strip_components: 2
