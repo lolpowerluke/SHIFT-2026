@@ -71,7 +71,7 @@ const mailConfirm = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "Mail is already signed up!",
-        short: "error"
+        short: "confirmed"
       });
     }
     await db.query(
