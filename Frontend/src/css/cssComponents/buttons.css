@@ -6,6 +6,8 @@ button {
   border: 5px solid var(--border-primary);
   border-radius: 10px;
   font-size: 18px;
+  font-weight: bold;
+  color: var(--txt-shift-primary);
   padding: 5px;
   box-shadow: 5px 5px 0 1px var(--shadow-primary);
   text-decoration: none;
@@ -16,13 +18,9 @@ button {
   align-self: center;
 }
 
-.linkBtn,
+.linkBtn:active,
 button:active {
   transform: translateY(3px);
   box-shadow: 2px 2px 0 1px var(--shadow-primary);
-}
-
-.linkBtn,
-button:disabled {
-  background-color: var(--btn-disabled-bg);
+  color: var(--txt-shift-primary);
 }
