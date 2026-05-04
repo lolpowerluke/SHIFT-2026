@@ -5,6 +5,7 @@ on:
     branches: [BACK-main]
     paths:
       - "Backend/**"
+  workflow_dispatch:
 
 jobs:
   deploy:
