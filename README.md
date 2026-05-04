@@ -31,9 +31,9 @@
 
 ### Languages
 
-- JavaScript (ES6+)
-- HTML5
-- CSS3
+- **JavaScript (ES6+)**
+- **HTML5**
+- **CSS3**
 
 ### Backend
 
@@ -46,12 +46,12 @@
 
 ### Used Packages
 
-#### Backend
+### Backend
 
 - cors ^2.8.6
 - dotenv ^17.2.4
 
-#### Frontend
+### Frontend
 
 - [vite-plugin-html-inject](https://www.npmjs.com/package/vite-plugin-html-inject) ^1.1.2
     - Dev Dependency
