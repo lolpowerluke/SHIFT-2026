@@ -16,7 +16,7 @@ services:
       - db_data:/var/lib/mysql
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
+    container_name: phpmyadmin_FP4
     restart: always
     environment:
       PMA_HOST: db

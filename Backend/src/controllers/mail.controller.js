@@ -34,7 +34,7 @@ const mailSignUp = async (req, res) => {
         [email, token]
       );
     }
-    const confirmUrl = `${env.frontend.url}/pages/confirm/?token=${token}`;
+    const confirmUrl = `${env.frontend.url}/confirm/?token=${token}`;
     // send email with link to mailConfirm function
     const info = await transporter.sendMail({
       from: 'info@shiftfestival.be',
