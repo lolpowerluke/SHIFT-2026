@@ -38,3 +38,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             ps aux | grep node
+            mkdir -p /subsites/api.shiftfestival.be/logs
+            cd /subsites/api.shiftfestival.be
+            pkill -f "node src/server.js" || true
+            nohup node src/server.js > /subsites/api.shiftfestival.be/logs/app.log 2>&1 &
