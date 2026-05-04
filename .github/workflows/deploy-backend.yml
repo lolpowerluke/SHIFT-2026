@@ -30,16 +30,11 @@ jobs:
             **/.git*/**
             **/node_modules/**
 
-      - name: Create restart file
-        run: |
-          mkdir -p .github/restart
-          date > .github/restart/restart.txt
-
-      - name: Restart Passenger app
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+      - name: Restart backend via SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: .github/restart/
-          server-dir: /subsites/api.shiftfestival.be/tmp/
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            ps aux | grep node
