@@ -41,7 +41,6 @@ jobs:
             mkdir -p ~/subsites/api.shiftfestival.be/logs
             cd ~/subsites/api.shiftfestival.be
             kill $(pgrep -f "node src/server.js") 2>/dev/null || true
-            nohup node src/server.js > ~/subsites/api.shiftfestival.be/logs/app.log 2>&1 &
-            disown
+            setsid node src/server.js > ~/subsites/api.shiftfestival.be/logs/app.log 2>&1 &
             sleep 2
             pgrep -f "node src/server.js" && echo "Node running" || echo "Node NOT running"
