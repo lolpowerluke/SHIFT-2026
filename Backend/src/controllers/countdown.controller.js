@@ -27,4 +27,3 @@ const getCountDown = async (req, res) => {
 };
 
 export { getCountDown };
-// pls update

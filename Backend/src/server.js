@@ -4,5 +4,3 @@ import env from "./utils/env.js";
 app.listen(env.server.port, () => {
   console.log(`Shift backend running on port ${env.server.port}`);
 });
-
-// trigger pipeline again x3

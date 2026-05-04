@@ -25,4 +25,3 @@ const login = async (req, res) => {
 };
 
 export { register };
-// pls update

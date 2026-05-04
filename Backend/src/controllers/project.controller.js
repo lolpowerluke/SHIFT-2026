@@ -237,4 +237,3 @@ export {
   updateProject,
   deleteProject,
 };
-// pls update

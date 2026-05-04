@@ -125,5 +125,3 @@ const mailCancel = async (req, res) => {
 };
 
 export { mailCancel, mailConfirm, mailSignUp };
-
-// pls update
