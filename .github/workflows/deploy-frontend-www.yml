@@ -3,6 +3,8 @@ name: Deploy live website
 on:
   push:
     branches: [main]
+    paths:
+      - "Frontend/**"
 
 jobs:
   deploy:
