@@ -89,7 +89,6 @@ input::placeholder {
 .heroText {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
 
 	.courseHeroText {
 		width: 300px;
@@ -148,5 +147,26 @@ input::placeholder {
 
 	h2 {
 		margin-top: -10px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.wrap {
+		text-align: left;
+	}
+
+	.logoWrap {
+		& > img:first-child {
+			left: -165px;
+			height: 60px;
+		}
+	}
+
+	#heroLogo {
+		height: 27rem;
+	}
+
+	.rotatedText {
+		align-items: start;
 	}
 }
