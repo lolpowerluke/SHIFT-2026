@@ -29,3 +29,12 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+
+      - name: Restart Passenger app
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: .github/restart/
+          server-dir: /subsites/api.shiftfestival.be/tmp/
