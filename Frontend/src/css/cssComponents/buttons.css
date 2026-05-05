@@ -16,6 +16,7 @@ button {
     transform 0.1s,
     box-shadow 0.1s;
   align-self: center;
+  cursor: pointer;
 }
 
 .linkBtn:active,
@@ -23,4 +24,16 @@ button:active {
   transform: translateY(3px);
   box-shadow: 2px 2px 0 1px var(--shadow-primary);
   color: var(--txt-shift-primary);
+}
+
+.fitContent {
+  width: fit-content;
+  min-width: max-content;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: var(--btn-disabled-bg);
+  transform: translate(0px);
+  box-shadow: unset;
 }

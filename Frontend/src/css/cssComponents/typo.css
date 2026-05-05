@@ -3,58 +3,85 @@
 /* TODO: import futura properly */
 
 * {
-	font-family: "futura-pt";
-	background-color: var(--bg-primary);
-	color: var(--txt-shift-primary);
+  font-family: "futura-pt";
+  background-color: var(--bg-primary);
+  color: var(--txt-shift-primary);
 }
 
 h1 {
-	font-weight: bold;
-	font-size: 44px;
-	text-transform: uppercase;
+  font-weight: bold;
+  font-size: 44px;
+  text-transform: uppercase;
 }
 
 h2 {
-	font-weight: bold;
-	font-size: 36px;
-  margin: 15px 0px;
+  font-weight: bold;
+  font-size: 36px;
+  margin: 1rem 0px;
 }
 
 h3 {
-	font-weight: bold;
-	font-size: 24px;
-	margin: 15px 0px 0px;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 1rem 0px 0px;
 }
 
 h4 {
-	font-weight: bold;
-	font-size: 18px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 p {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 #timer {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 small {
-	font-size: 12px;
+  font-size: 12px;
 }
 
 a {
-	color: var(--hl-primary);
+  /* color: var(--hl-primary); */
+  font-weight: bold;
 }
 
 .xlarge {
-	font-size: 32px;
+  font-size: 32px;
 }
 
 .bold {
-	font-weight: bold;
+  font-weight: bold;
+}
+
+.footerCopyright {
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  small {
+    font-size: 14px;
+  }
+
+  label,
+  p {
+    font-size: 18px;
+  }
 }
 
 .centeredTxt {
 	text-align: center;
+}
+
+@media (min-width: 1024px) {
+	small {
+		font-size: 14px;
+	}
+
+	label,
+	p {
+		font-size: 18px;
+	}
 }
