@@ -1,140 +1,142 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<link rel="modulepreload" href="../../src/js/countdown.js" />
-		<link rel="modulepreload" href="./index.js" />
-		<link rel="preload" as="image" href="../../assets/logos/ehb_wit.png" />
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/x-icon" href="../../favicon/shift_icon.svg" />
-		<link rel="stylesheet" href="../../src/css/style.css" />
-		<link rel="stylesheet" href="./index.css" />
-		<script type="module" src="../../src/js/countdown.js"></script>
-		<script type="module" src="../../src/js/language.js"></script>
-		<script type="module" src="./index.js"></script>
-		<title>Shift - countdown</title>
-	</head>
-	<body>
-		<div class="wrap topSpacer">
-			<div>
-				<div class="logoWrap">
-					<img
-						src="../../assets/logos/ehb_wit.png"
-						id=""
-						fetchpriority="high"
-					/>
-					<img
-						src="../../assets/logos/shift_logo.svg"
-						id="heroLogo"
-						fetchpriority="high"
-					/>
-				</div>
-				<div class="heroWrapper">
-					<div class="rotatedText">
-						<h1>Eindprojecten</h1>
-						<div class="heroText">
-							<div class="courseHeroText">
-								<h1>
-									OPLEIDING MULTIMEDIA<br />
-									CREATIEVE TECHNOLOGIE
-								</h1>
-							</div>
-							<div>&</div>
-						</div>
-					</div>
-				</div>
-				<div class="timerDiv xlarge">
-					<span id="timer" class="hidden"
-						><span id="days">10</span>D <span id="hours">00</span>H
-						<span id="minutes">00</span>M <span id="seconds">00</span>S
-					</span>
-					<br />
-					<div class="main">
-						<p>VRIJDAG 19 JUNI</p>
-						<p>17:00 - 21:30</p>
-					</div>
-				</div>
-				<form id="signup">
-					<label for="email"><b>Blijf op de hoogte van SHIFT!</b></label>
-					<div class="emailWrap">
-						<input
-							class="white-input"
-							type="email"
-							name="email"
-							id="email"
-							placeholder="E-mail..."
-							autocomplete="email"
-							required
-						/>
-						<button value="submit" id="submit" disabled>Schrijf je in!</button>
-					</div>
-					<label for="check">
-						<input
-							type="checkbox"
-							name="check"
-							id="check"
-							class="xsMarginTop"
-						/>
-						Hou me op de hoogte!
-					</label>
-					<small>
-						Jouw data blijft van jou. Check het
-						<a href="/pages/privacy/nl/" class="languageLink">Privacybeleid</a>.
-					</small>
-					<small>
-						Wens je niet langer emails te ontvangen?
-						<a href="/pages/unsubscribe/" class="languageLink"
-							>Afmelden kan hier</a
-						>.
-					</small>
-				</form>
-				<div>
-					<img id="scrollPointer" src="../../assets/icons/pointer2.svg" />
-				</div>
-				<div class="copy-text">
-					<div class="shiftCopy">
-						<h2>Shift Festival 2026</h2>
-						<p>
-							Shift Festival is een jaarlijks evenement georganiseerd door
-							<a href="https://www.erasmushogeschool.be/nl">
-								Erasmushogeschool Brussel
-							</a>
-							en de opleiding
-							<a
-								href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
-							>
-								Multimedia & Creatieve Technologie</a
-							>.
-						</p>
-						<p>
-							Kom de indrukwekkende eindprojecten van de derdejaars bewonderen
-							en breng je stem uit op je favoriete projecten, zodat ze tijdens
-							een awardshow een prijs kunnen winnen.
-						</p>
-					</div>
-					<div class="mctCopy">
-						<h2>Wat is MCT?</h2>
-						<p>
-							<a
-								href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
-								>Multimedia & creatieve technologie</a
-							>
-							is een professionele bacheloropleiding aan de Erasmushogeschool
-							Brussel. Deze opleiding combineert creativiteit met techniek,
-							gericht op het ontwikkelen van digitale ervaringen, interactieve
-							toepassingen, webtechnologieën en creatieve IT-oplossingen.
-						</p>
-					</div>
-				</div>
-				<div>
-					<p class="xlarge bold">
-						Wil je er zeker bij zijn? Plaats het in je agenda.
-					</p>
-				</div>
-				<br />
-				<a class="linkBtn" id="std" href="">Save the date!</a>
-			</div>
-			<load file="../../htmlComponents/footer.fragment.html" />
-		</div>
-	</body>
+  <head>
+    <link rel="modulepreload" href="../../src/js/countdown.js" />
+    <link rel="modulepreload" href="./index.js" />
+    <link rel="preload" as="image" href="../../assets/logos/ehb_wit.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../../favicon/shift_icon.svg" />
+    <link rel="stylesheet" href="../../src/css/style.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <script type="module" src="../../src/js/countdown.js"></script>
+    <script type="module" src="../../src/js/language.js"></script>
+    <script type="module" src="./index.js"></script>
+    <title>Shift - countdown</title>
+  </head>
+  <body>
+    <div class="wrap topSpacer">
+      <div>
+        <div class="logoWrap">
+          <img
+            src="../../assets/logos/ehb_wit.png"
+            id=""
+            fetchpriority="high"
+          />
+          <img
+            src="../../assets/logos/shift_logo.svg"
+            id="heroLogo"
+            fetchpriority="high"
+          />
+        </div>
+        <div class="heroWrapper">
+          <div class="rotatedText">
+            <h1>Eindprojecten</h1>
+            <div class="heroText">
+              <div class="courseHeroText">
+                <h1>
+                  OPLEIDING MULTIMEDIA<br />
+                  CREATIEVE TECHNOLOGIE
+                </h1>
+              </div>
+              <div>&</div>
+            </div>
+          </div>
+        </div>
+        <div class="timerDiv xlarge">
+          <span id="timer" class="hidden"
+            ><span id="days">10</span>D <span id="hours">00</span>H
+            <span id="minutes">00</span>M <span id="seconds">00</span>S
+          </span>
+          <br />
+          <div class="main">
+            <p>VRIJDAG 19 JUNI</p>
+            <p>17:00 - 21:30</p>
+          </div>
+        </div>
+        <form id="signup">
+          <label for="email"><b>Blijf op de hoogte van SHIFT!</b></label>
+          <div class="emailWrap">
+            <input
+              class="white-input"
+              type="email"
+              name="email"
+              id="email"
+              placeholder="E-mail..."
+              autocomplete="email"
+              required
+            />
+            <button value="submit" id="submit" class="fitContent" disabled>
+              Schrijf je in!
+            </button>
+          </div>
+          <label for="check">
+            <input
+              type="checkbox"
+              name="check"
+              id="check"
+              class="xsMarginTop"
+            />
+            Hou me op de hoogte!
+          </label>
+          <small>
+            Jouw data blijft van jou. Check het
+            <a href="/pages/privacy/nl/" class="languageLink">Privacybeleid</a>.
+          </small>
+          <small>
+            Wens je niet langer emails te ontvangen?
+            <a href="/pages/unsubscribe/" class="languageLink"
+              >Afmelden kan hier</a
+            >.
+          </small>
+        </form>
+        <div>
+          <img id="scrollPointer" src="../../assets/icons/pointer2.svg" />
+        </div>
+        <div class="copy-text">
+          <div class="shiftCopy">
+            <h2>Shift Festival 2026</h2>
+            <p>
+              Shift Festival is een jaarlijks evenement georganiseerd door
+              <a href="https://www.erasmushogeschool.be/nl">
+                Erasmushogeschool Brussel
+              </a>
+              en de opleiding
+              <a
+                href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
+              >
+                Multimedia & Creatieve Technologie</a
+              >.
+            </p>
+            <p>
+              Kom de indrukwekkende eindprojecten van de derdejaars bewonderen
+              en breng je stem uit op je favoriete projecten, zodat ze tijdens
+              een awardshow een prijs kunnen winnen.
+            </p>
+          </div>
+          <div class="mctCopy">
+            <h2>Wat is MCT?</h2>
+            <p>
+              <a
+                href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
+                >Multimedia & creatieve technologie</a
+              >
+              is een professionele bacheloropleiding aan de Erasmushogeschool
+              Brussel. Deze opleiding combineert creativiteit met techniek,
+              gericht op het ontwikkelen van digitale ervaringen, interactieve
+              toepassingen, webtechnologieën en creatieve IT-oplossingen.
+            </p>
+          </div>
+        </div>
+        <div>
+          <p class="xlarge bold">
+            Wil je er zeker bij zijn? Plaats het in je agenda.
+          </p>
+        </div>
+        <br />
+        <a class="linkBtn" id="std" href="">Save the date!</a>
+      </div>
+      <load file="../../htmlComponents/footer.fragment.html" />
+    </div>
+  </body>
 </html>
