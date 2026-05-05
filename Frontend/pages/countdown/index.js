@@ -13,9 +13,15 @@ signupForm.addEventListener("change", function () {
 
 signupForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  document.getElementById("warningTxt").classList.add("hidden");
+
   const validEmail = document.getElementById("email").validity.valid;
   if (!agree.checked || !validEmail) {
-    emailFormErrors("noAgree");
+    if (!agree.checked) {
+      emailFormErrors("noAgree");
+    } else {
+      emailFormErrors("invalidEmail");
+    }
     return;
   }
 
@@ -30,6 +36,7 @@ signupForm.addEventListener("submit", async (e) => {
     if (!result.ok) throw new Error(result.statusText);
   } catch (e) {
     console.error(e.message);
+    emailFormErrors("serverError");
   }
 });
 
