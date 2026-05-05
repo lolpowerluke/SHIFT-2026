@@ -70,3 +70,18 @@ a {
     font-size: 18px;
   }
 }
+
+.centeredTxt {
+	text-align: center;
+}
+
+@media (min-width: 1024px) {
+	small {
+		font-size: 14px;
+	}
+
+	label,
+	p {
+		font-size: 18px;
+	}
+}
