@@ -1,0 +1,71 @@
+/* everything typography, font sizes/weights/link styling/list styling/etc */
+@import url("https://use.typekit.net/pei0pzi.css");
+/* TODO: import futura properly */
+
+* {
+	font-family: "futura-pt";
+	background-color: var(--bg-primary);
+	color: var(--txt-shift-primary);
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 44px;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-weight: bold;
+	font-size: 36px;
+	margin: 15px 0px;
+}
+
+h3 {
+	font-weight: bold;
+	font-size: 24px;
+	margin: 15px 0px 0px;
+}
+
+h4 {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+p {
+	font-size: 16px;
+}
+
+#timer {
+	font-weight: bold;
+}
+
+small {
+	font-size: 12px;
+}
+
+a {
+	color: var(--hl-primary);
+}
+
+.xlarge {
+	font-size: 32px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.centeredTxt {
+	text-align: center;
+}
+
+@media (min-width: 1024px) {
+	small {
+		font-size: 14px;
+	}
+
+	label,
+	p {
+		font-size: 18px;
+	}
+}

@@ -1,0 +1,217 @@
+body {
+    text-align: center;
+    background-color: var(--bg-shift-primary);
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 15px 0;
+}
+
+.hero-datum {
+    background-color: var(--bg-shift-alt);
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 16px;
+    font-weight: bold;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    margin-bottom: 10px;
+}
+
+.hero p {
+    margin-bottom: 10px;
+}
+
+.button-primary {
+    background-color: var(--bg-shift-secondary);
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.button-secondary {
+    background-color: var(--bg-shift-primary);
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    width: 70%;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px 15px;
+    border: 3px solid black;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.stats-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px;
+    border: 1px solid black;
+}
+
+.stats-number {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.stats-label {
+    font-size: 14px;
+}
+
+.awards-section {
+    margin: 10px 15px 0;
+    text-align: left;
+}
+
+.awards-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.award-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    background-color: var(--bg-shift-primary);
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 5px 5px 0 1px black;
+}
+
+.award-card img {
+    width: 45px;
+    height: 45px;
+}
+
+.award-card-content {
+    flex: 1;
+}
+
+.award-card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.award-card-top h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.badge {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 10px;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.badge-orange {
+    background-color: var(--bg-shift-secondary);
+}
+
+.badge-green {
+    background-color: #a8e6a3;
+}
+
+.badge-blue {
+    background-color: var(--bg-shift-alt);
+}
+
+.badge-pink {
+    background-color: #f9a8d4;
+}
+
+.stemmen-section {
+    background-color: var(--bg-shift-alt);
+    padding: 30px 15px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+ 
+.stemmen-section h2,
+.stemmen-section > p {
+    background-color: var(--bg-shift-alt);
+  
+}
+
+.stemmen-section > p {
+    font-size: 16px;
+    max-width: 320px;
+}
+
+.stemmen-icon {
+    width: 60px;
+    height: 60px;
+    filter: invert(100%)
+}
+
+.stemmen-card {
+    background-color: #3aabb5;
+    border: 3px solid black;
+    border-radius: 15px;
+    padding: 20px 15px;
+    width: 100%;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 0 1px black;
+}
+
+.stemmen-card h3,
+.stemmen-card p {
+    background-color: #3aabb5;
+    color: white;
+}
+
+.stemmen-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: black
+}
+
+.stemmen-card p {
+    font-size: 16px;
+    color: black
+}
+
+.stemmen-card-icon {
+    width: 45px;
+    height: 45px;
+    filter: invert(100%)
+}
+
+.projecten-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 15px 50px;
+}
+
+.projecten-cta p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,159 @@
+@import url(../../src/css/style.css);
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  background-repeat: repeat;
+  margin: 0;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+  min-height: 90dvh;
+  margin: auto;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.main p {
+  margin: 0px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.logoWrap {
+  position: relative;
+  display: inline-block;
+
+  & > img:first-child {
+    position: absolute;
+    z-index: 1;
+    top: -30px;
+    left: -30px;
+    height: 50px;
+    z-index: 1;
+  }
+}
+
+#heroLogo {
+  height: var(--shift-logo-height);
+  margin: -30px -85px -40px;
+}
+
+.rotatedText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: row;
+
+  .courseHeroText {
+    width: 300px;
+
+    h1 {
+      font-size: 24px;
+    }
+  }
+
+  div {
+    font-weight: bold;
+  }
+
+  & > div:first-child {
+    font-size: 1.5rem;
+  }
+
+  & > div:last-child {
+    font-size: 3rem;
+  }
+}
+
+.heroWrapper {
+  transform: rotate(-14deg);
+}
+
+.topSpacer {
+  margin-top: var(--spacing-top);
+}
+
+.timerDiv {
+  margin-top: 60px;
+}
+
+#scrollPointer {
+  width: 50px;
+  animation: MoveUpDown 1.25s linear infinite;
+}
+
+@keyframes MoveUpDown {
+  0%,
+  100% {
+    transform: scale(1, -1) translateY(5px);
+  }
+  50% {
+    transform: scale(1, -1) translateY(-5px);
+  }
+}
+
+.agendaButton {
+  margin-top: 20px;
+}
+
+.copy-text {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  text-align: left;
+
+  h2 {
+    margin-top: -10px;
+  }
+}
+
+.linkBtn {
+  display: inline-block;
+  width: fit-content;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 1024px) {
+  /* .wrap {
+    text-align: left;
+  } */
+
+  .logoWrap {
+    & > img:first-child {
+      left: -165px;
+      height: 60px;
+    }
+  }
+
+  #heroLogo {
+    height: var(--shift-logo-height);
+  }
+
+  .heroWrapper {
+    transform-origin: 50% calc(var(--shift-logo-height) / -12);
+    margin-bottom: var(--spacing-heroWrapper);
+    height: max-content;
+  }
+
+  .copy-text {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .shiftCopy {
+    max-width: 45%;
+  }
+
+  .mctCopy {
+    max-width: 45%;
+  }
+}

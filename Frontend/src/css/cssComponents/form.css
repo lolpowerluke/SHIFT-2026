@@ -1,0 +1,48 @@
+form {
+  display: flex;
+  flex-direction: column;
+  margin: var(--spacing-s) 0;
+
+  input[type="email"] {
+    background-color: var(--bg-shift-secondary);
+    border: 5px solid black;
+    border-radius: 10px;
+    color: black;
+    font-size: 14px;
+    padding: 5px;
+    text-decoration: none;
+    width: 50%;
+    transition:
+      transform 0.1s,
+      box-shadow 0.1s;
+    align-self: center;
+  }
+
+  button {
+    margin-left: 5px;
+  }
+
+  label {
+    margin-bottom: var(--spacing-xs);
+  }
+}
+
+input::placeholder {
+  color: var(--txt-shift-secondary);
+}
+
+@media screen and (min-width: 1024px) {
+  form {
+    input[type="email"] {
+      width: 50%;
+    }
+    .emailWrap {
+      margin: auto;
+    }
+  }
+
+  .emailWrap {
+    display: flex;
+    flex-direction: row;
+  }
+}
