@@ -31,9 +31,9 @@
 
 ### Languages
 
-- JavaScript (ES6+)
-- HTML5
-- CSS3
+- **JavaScript (ES6+)**
+- **HTML5**
+- **CSS3**
 
 ### Backend
 
@@ -46,12 +46,12 @@
 
 ### Used Packages
 
-#### Backend
+### Backend
 
 - cors ^2.8.6
 - dotenv ^17.2.4
 
-#### Frontend
+### Frontend
 
 - [vite-plugin-html-inject](https://www.npmjs.com/package/vite-plugin-html-inject) ^1.1.2
     - Dev Dependency
@@ -65,8 +65,12 @@
 - [Plus & Minus input from Codepen](https://codepen.io/Rajesh-Pal-the-scripter/pen/QWzEWjG)
     - Used in [Ticket page (html, css & js)](Frontend/pages/tickets)
 
-- [Hamburger Menu from Codepen](https://codepen.io/erikterwan/pen/grOZxx)
-    - Used in [Style.css](Frontend/src/css/style.css) & [header.fragments.html](Frontend/htmlComponents/header.fragment.html)
+- [hamburger menu from earlier project](https://github.com/EHB-MCT/web2-course-project-front-end-JoachimGautama)
+    - used in nav.css
+    - used in header.fragment.html
 
 - [Display image from input file tag from W3Collective](https://w3collective.com/preview-selected-img-file-input-js/)
     - Used in [project-form (html, css, js)](Frontend\login\project-form)
+
+- [remove `/pages/` from links and paths in build while keeping the file structure automation](https://claude.ai/share/44dab821-2592-4ca3-8bc7-5f12b0bfd702)
+    - used in vite.config.js removePageSegment()

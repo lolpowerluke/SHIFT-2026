@@ -1,10 +1,40 @@
 /* Everything layout goes here. margins, display grid/flex ideally too. Use your brain. */
 
 * {
-	margin: 0;
+  margin: 0;
 }
 
 .ctx {
-	margin: auto;
-	width: 85%;
+  margin: auto;
+  width: 85%;
+}
+
+.xsMarginTop {
+  margin-top: var(--spacing-xs);
+}
+
+footer {
+  margin-top: var(--spacing-footer);
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  margin-top: 45dvh;
+}
+
+.gutter-s {
+  gap: var(--spacing-s);
+}
+
+.flexSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerLogo {
+  position: relative;
+  z-index: 3;
 }
