@@ -109,10 +109,6 @@ body {
   margin-top: 35px;
   margin-bottom: 35px;
   text-align: left;
-
-  h2 {
-    margin-top: -10px;
-  }
 }
 
 .linkBtn {
@@ -120,6 +116,13 @@ body {
   width: fit-content;
   outline: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+p#warningTxt {
+  margin: 0 auto 0.5rem;
+  max-width: 290px;
+  font-size: 1rem;
+  color: var(--txt-warning);
 }
 
 @media (min-width: 1024px) {
