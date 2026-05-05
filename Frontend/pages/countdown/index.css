@@ -23,45 +23,6 @@ body {
   font-size: 24px;
 }
 
-/* form could be exported to its own css file for easier maintenance */
-form {
-  display: flex;
-  flex-direction: column;
-  margin: var(--spacing-s) 0;
-
-  input[type="email"] {
-    background-color: var(--bg-shift-secondary);
-    border: 5px solid black;
-    border-radius: 10px;
-    color: black;
-    font-size: 14px;
-    padding: 5px;
-    text-decoration: none;
-    width: 100%;
-    transition:
-      transform 0.1s,
-      box-shadow 0.1s;
-    align-self: center;
-  }
-
-  button {
-    margin-left: 5px;
-  }
-
-  label {
-    margin-bottom: var(--spacing-xs);
-  }
-}
-
-input::placeholder {
-  color: var(--txt-shift-secondary);
-}
-
-.emailWrap {
-  display: flex;
-  flex-direction: row;
-}
-
 .logoWrap {
   position: relative;
   display: inline-block;
@@ -86,10 +47,6 @@ input::placeholder {
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.rotatedText > * {
-  margin: 0 auto;
 }
 
 .heroText {
@@ -118,10 +75,7 @@ input::placeholder {
 }
 
 .heroWrapper {
-  height: max-content;
-  margin-bottom: var(--spacing-heroWrapper);
-  transform: rotate(-13.3deg);
-  transform-origin: 50% calc(var(--shift-logo-height) / -2);
+  transform: rotate(-14deg);
 }
 
 .topSpacer {
@@ -184,7 +138,22 @@ input::placeholder {
     height: var(--shift-logo-height);
   }
 
-  .rotatedText {
-    align-items: start;
+  .heroWrapper {
+    transform-origin: 50% calc(var(--shift-logo-height) / -12);
+    margin-bottom: var(--spacing-heroWrapper);
+    height: max-content;
+  }
+
+  .copy-text {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .shiftCopy {
+    max-width: 45%;
+  }
+
+  .mctCopy {
+    max-width: 45%;
   }
 }

@@ -13,6 +13,10 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 0;
+    font-size: 18px;
+    li {
+      color: var(--txt-shift-secondary);
+    }
   }
 }
 
@@ -67,11 +71,15 @@
 }
 /* responsiveness */
 
-@media only screen and (max-width: 1180px) {
+@media only screen and (max-width: 1024px) {
   #hamburgerNav + label {
     position: relative;
     display: block;
     z-index: 2;
+  }
+
+  ul {
+    font-size: 32px;
   }
 
   ul:has(+ #hamburgerNav) {

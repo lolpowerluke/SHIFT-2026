@@ -17,7 +17,7 @@ h1 {
 h2 {
 	font-weight: bold;
 	font-size: 36px;
-  margin: 15px 0px;
+	margin: 15px 0px;
 }
 
 h3 {
@@ -57,4 +57,15 @@ a {
 
 .centeredTxt {
 	text-align: center;
+}
+
+@media (min-width: 1024px) {
+	small {
+		font-size: 14px;
+	}
+
+	label,
+	p {
+		font-size: 18px;
+	}
 }
