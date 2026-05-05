@@ -1,0 +1,31 @@
+/* general button styling */
+
+.linkBtn,
+button {
+  background-color: var(--bg-shift-alt);
+  border: 5px solid var(--border-primary);
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--txt-shift-primary);
+  padding: 5px;
+  box-shadow: 5px 5px 0 1px var(--shadow-primary);
+  text-decoration: none;
+  width: 70%;
+  transition:
+    transform 0.1s,
+    box-shadow 0.1s;
+  align-self: center;
+}
+
+.linkBtn:active,
+button:active {
+  transform: translateY(3px);
+  box-shadow: 2px 2px 0 1px var(--shadow-primary);
+  color: var(--txt-shift-primary);
+}
+
+.fitContent {
+  width: fit-content;
+  min-width: max-content;
+}

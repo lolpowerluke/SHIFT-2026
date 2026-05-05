@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="../../favicon/shift_icon.svg" />
+    <link rel="stylesheet" href="../../src/css/style.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <script type="module" src="./index.js"></script>
+    <title>Bevestiging</title>
+  </head>
+  <body>
+    <load file="../../htmlComponents/header.fragment.html" />
+    <div class="ctx">
+      <h1>Bevestig je inschrijving</h1>
+      <br />
+      <div id="preconfirmation">
+        <p>Klik op de knop om uw emailadres te bevestigen.</p>
+        <button id="confirmBtn" class="fitContent">Bevestig</button>
+      </div>
+      <div id="postconfirmation" class="hidden">
+        <p>
+          Dankuwel om uw inschrijving te bevestigen.<br />Klik op de knop
+          hieronder om terug naar de homepagina te keren.
+        </p>
+        <a href="/">
+          <button>naar de homepagina</button>
+        </a>
+      </div>
+      <div id="previouslyconfirmed" class="hidden">
+        <p>
+          U hebt uw emailadres al bevestigd. Dankuwel voor uw interesse in
+          SHIFT.<br />Klik op de knop hieronder om terug naar de homepagina te
+          keren.
+        </p>
+        <a href="/">
+          <button>naar de homepagina</button>
+        </a>
+      </div>
+      <div id="error" class="hidden">
+        <p>
+          Er valt zich een probleem voor. Probeer het later opnieuw.<br />
+          Indien dit blijft gebeuren, gelieve contact op te nemen met
+          <a
+            href="mailto:joachim.gautama@student.ehb.be?subject=SHIFT%20email%20confirmation%20failed"
+          >
+            joachim.gautama@student.ehb.be
+          </a>
+          <br />
+          Klik op de knop hieronder om terug naar de homepagina te keren.
+        </p>
+        <a href="/">
+          <button>naar de homepagina</button>
+        </a>
+      </div>
+    </div>
+    <dialog id="throbber">
+      <load file="../../htmlComponents/throbber.fragment.html" />
+    </dialog>
+  </body>
+</html>

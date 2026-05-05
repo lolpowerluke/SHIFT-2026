@@ -1,0 +1,75 @@
+/* files for variables */
+@import url(./cssComponents/vars/colours.css);
+@import url(./cssComponents/vars/distances.css);
+/* everything typography, font sizes/weights/link styling/list styling/etc */
+@import url(./cssComponents/typo.css);
+/* Everything layout goes here. margins, display grid/flex ideally too. Use your brain. */
+@import url(./cssComponents/layout.css);
+/* button styling in here */
+@import url(./cssComponents/buttons.css);
+/* throbber css */
+@import url(./cssComponents/throbber.css);
+/* nav + hamburger css */
+@import url(./cssComponents/nav.css);
+/* form css */
+@import url(./cssComponents/form.css);
+
+/* This file is for the main styles like using colours, adding stuff that doesn't belong to the other files */
+
+.hidden {
+  visibility: hidden;
+  height: 0;
+}
+
+.fullPage {
+  width: 100vw;
+  min-height: 100dvh;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  touch-action: pan-y;
+}
+
+html {
+  background-image: url(../../assets/wallOverlayBlue.png);
+  background-size: cover;
+}
+
+body {
+  /* background-color: color-mix(var(--bg-shift-primary), transparent 30%); */
+  background-image: url(../../assets/iconsOverlay.svg);
+  min-height: 100dvh;
+}
+
+header {
+  padding-bottom: 25px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  background-color: var(--bg-shift-alt);
+
+  a {
+    width: fit-content;
+  }
+}
+
+footer {
+  .text-info {
+    text-align: left;
+  }
+
+  .socialLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+}
