@@ -20,6 +20,16 @@
   visibility: hidden;
   height: 0;
 }
+#unChecked {
+  background-color: color-mix(var(--bg-shift-alt), transparent 80%);
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+#unChecked.invisible {
+  opacity: 0;
+}
 
 .fullPage {
   width: 100vw;
