@@ -8,49 +8,55 @@ const previouslyConfirmed = document.getElementById("previouslyconfirmed");
 const error = document.getElementById("error");
 const throbber = document.getElementById("throbber");
 
-// TODO: check if works
-// TODO: add throbber while loading the backend check
-
 const swapContent = (result) => {
-	switch (result) {
-		case "success":
-			preConfirm.classList.add("hidden");
-			postConfirm.classList.remove("hidden");
-			break;
-		case "confirmed":
-			preConfirm.classList.add("hidden");
-			previouslyConfirmed.classList.remove("hidden");
-			break;
-		case "error":
-			preConfirm.classList.add("hidden");
-			error.classList.remove("hidden");
-			break;
-		default:
-			console.warn(`unhandled case: ${result}`);
-	}
+  switch (result) {
+    case "success":
+      preConfirm.classList.add("hidden");
+      postConfirm.classList.remove("hidden");
+      break;
+    case "confirmed":
+      preConfirm.classList.add("hidden");
+      previouslyConfirmed.classList.remove("hidden");
+      break;
+    case "error":
+      preConfirm.classList.add("hidden");
+      error.classList.remove("hidden");
+      break;
+    default:
+      console.warn(`unhandled case: ${result}`);
+  }
 };
 
 confirmBtn.addEventListener("click", async () => {
-	let response;
-	throbber.showModal();
-	try {
-		response = await emailConfirmation();
-	} catch (e) {
-		console.error("unsuccessful:", e.message);
-		response = "error";
-	} finally {
-		throbber.close();
-	}
-	swapContent(response);
+  confirmBtn.disabled = true;
+  let response;
+  throbber.showModal();
+  try {
+    response = await emailConfirmation();
+  } catch (e) {
+    console.error("unsuccessful:", e.message);
+  } finally {
+    throbber.close();
+  }
+  swapContent(response.short);
 });
 
 async function emailConfirmation() {
-	const response = await fetch(
-		`${API_URL}/mail/confirm?token=${params.get("token")}`,
-	);
-	const data = await response.json();
+  if (!params.get("token")) {
+    swapContent("error");
+    return;
+  }
 
-	return data;
+  const response = await fetch(
+    `${API_URL}/mail/confirm?token=${params.get("token")}`,
+  );
+
+  if (!response.ok) {
+    swapContent("error");
+    return;
+  }
+
+  const data = await response.json();
+  console.log(data);
+  return data;
 }
-
-// document.getElementById("throbber").showModal();
