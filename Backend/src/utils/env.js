@@ -3,7 +3,8 @@ import "dotenv/config";
 function requireEnv(key) {
   const value = process.env[key];
   if (!value) {
-    throw new Error(`Missing required environment variable: ${key}`);
+    console.error(`Missing required environment variable: ${key}`);
+    process.exit(1);
   }
   return value;
 }
@@ -11,20 +12,21 @@ function requireEnv(key) {
 const env = {
   server: {
     port: requireEnv("PORT"),
-    baseUrl: requireEnv("BASE_URL")
+    environment: requireEnv("NODE_ENV")
   },
   frontend: {
     url: requireEnv("FRONTEND_URL")
   },
-  // session: {
-  //   secret: requireEnv("SESSION_SECRET")
-  // },
-  // database: {
-  //   host: requireEnv("DB_HOST"),
-  //   user: requireEnv("DB_USER"),
-  //   password: requireEnv("DB_PASS"),
-  //   name: requireEnv("DB_NAME")
-  // }
+  database: {
+    host: requireEnv("DB_HOST"),
+    user: requireEnv("DB_USER"),
+    password: requireEnv("DB_PASS"),
+    name: requireEnv("DB_NAME")
+  },
+  mail: {
+    mail: requireEnv("COMBELL_MAIL"),
+    pass: requireEnv("COMBELL_PASS")
+  }
 };
 
 export default env;
