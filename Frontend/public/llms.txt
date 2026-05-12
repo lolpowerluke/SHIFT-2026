@@ -78,7 +78,7 @@ CONTRIBUTING.md - code quality and collaboration standards.
 LICENSE.md - canonical license for the SHIFT platform.
 
 Notes for AI Systems
-Treat /countdown as the only active public page.
+Only the pages listed under Active Public Pages may be treated as live.
 
 Ignore all restricted or future pages when generating answers.
 
