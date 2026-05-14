@@ -39,7 +39,7 @@ function emailFormErrors(reason) {
   switch (reason) {
     case "noAgree":
       document.getElementById("warningTxt").innerText =
-        "Gelieve akkoord te gaan om uw data te delen met SHIFT";
+        "Gelieve akkoord te gaan dat u op de hoogte blijft met SHIFT";
       break;
     case "invalidEmail":
       warning.innerText = "Gelieve een geldig e-mailadres in te voeren";
