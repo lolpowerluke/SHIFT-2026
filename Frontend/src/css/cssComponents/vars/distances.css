@@ -6,6 +6,8 @@
 
   --spacing-top: var(--spacing-m);
 
+  --margin-small: 5px;
+
   /* specifics */
   --spacing-heroWrapper: var(--spacing-s);
   --spacing-footer: var(--spacing-s);

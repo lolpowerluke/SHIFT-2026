@@ -7,7 +7,7 @@ body {
 .wrap {
 	display: flex;
 	flex-direction: column;
-	max-width: 80vw;
+	max-width: 85vw;
 	min-height: 90dvh;
 	margin: auto;
 	justify-content: space-between;
@@ -15,7 +15,7 @@ body {
 }
 
 .main p {
-	margin: 0px;
+	margin: 0;
 	font-weight: bold;
 	font-size: 24px;
 }
@@ -105,6 +105,10 @@ body {
 	margin-top: 35px;
 	margin-bottom: 35px;
 	text-align: left;
+
+	.shiftCopy {
+		margin-bottom: 25px;
+	}
 }
 
 .linkBtn {
@@ -115,8 +119,7 @@ body {
 }
 
 p#warningTxt {
-	margin: 0 auto 0.5rem;
-	max-width: 290px;
+	margin-bottom: var(--margin-small);
 	font-size: 1rem;
 	color: var(--txt-warning);
 }
@@ -152,13 +155,15 @@ p#warningTxt {
 	.copy-text {
 		display: flex;
 		justify-content: space-between;
-	}
+		align-items: center;
 
-	.shiftCopy {
-		max-width: 45%;
-	}
+		.shiftCopy {
+			max-width: 45%;
+			margin-bottom: 0px;
+		}
 
-	.mctCopy {
-		max-width: 45%;
+		.mctCopy {
+			max-width: 45%;
+		}
 	}
 }

@@ -8,7 +8,7 @@ button {
   font-size: 18px;
   font-weight: bold;
   color: var(--txt-shift-primary);
-  padding: 5px;
+  padding: 10px;
   box-shadow: 5px 5px 0 1px var(--shadow-primary);
   text-decoration: none;
   width: 70%;
