@@ -19,7 +19,7 @@
 		<div class="logoWrap">
 			<img src="../../assets/logos/ehb_wit.png" fetchpriority="high" />
 		</div>
-		<div class="wrap topSpacer">
+		<div class="wrap topSpacer flexSpaceBetween">
 			<div class="heroLayout">
 				<div>
 					<img
@@ -45,53 +45,60 @@
 					</div>
 				</div>
 			</div>
-			<div class="timerDiv xlarge">
-				<span id="timer" class="hidden"
-					><span id="days">10</span>D <span id="hours">00</span>H
-					<span id="minutes">00</span>M <span id="seconds">00</span>S
-				</span>
-				<br />
-				<div class="main">
-					<p>VRIJDAG 19 JUNI</p>
-					<p>17:00 - 21:30</p>
+			<div class="section">
+				<div class="timerDiv xlarge">
+					<span id="timer" class="hidden"
+						><span id="days">10</span>D <span id="hours">00</span>H
+						<span id="minutes">00</span>M <span id="seconds">00</span>S
+					</span>
+					<br />
+					<div class="main">
+						<p>VRIJDAG 19 JUNI</p>
+						<p>17:00 - 21:30</p>
+					</div>
 				</div>
+				<form id="signup">
+					<label for="email"><b>Blijf op de hoogte van SHIFT!</b></label>
+					<p id="warningTxt" class="hidden"></p>
+					<div class="emailWrap">
+						<input
+							class="white-input"
+							type="email"
+							name="email"
+							id="email"
+							placeholder="E-mail..."
+							autocomplete="email"
+							required
+						/>
+						<button value="submit" id="submit" class="fitContent">
+							Schrijf je in!
+						</button>
+					</div>
+					<label for="check">
+						<input
+							type="checkbox"
+							name="check"
+							id="check"
+							class="xsMarginTop"
+						/>
+						Hou me op de hoogte!
+					</label>
+					<small>
+						Jouw data blijft van jou. Check het
+						<a href="/pages/privacy/nl/" class="languageLink">Privacybeleid</a>.
+					</small>
+					<small>
+						Wens je niet langer emails te ontvangen?
+						<a href="/pages/unsubscribe/" class="languageLink"
+							>Afmelden kan hier</a
+						>.
+					</small>
+				</form>
 			</div>
-			<form id="signup">
-				<label for="email"><b>Blijf op de hoogte van SHIFT!</b></label>
-				<p id="warningTxt" class="hidden"></p>
-				<div class="emailWrap">
-					<input
-						class="white-input"
-						type="email"
-						name="email"
-						id="email"
-						placeholder="E-mail..."
-						autocomplete="email"
-						required
-					/>
-					<button value="submit" id="submit" class="fitContent">
-						Schrijf je in!
-					</button>
-				</div>
-				<label for="check">
-					<input type="checkbox" name="check" id="check" class="xsMarginTop" />
-					Hou me op de hoogte!
-				</label>
-				<small style="margin-bottom: 5px">
-					Jouw data blijft van jou. Check het
-					<a href="/pages/privacy/nl/" class="languageLink">Privacybeleid</a>.
-				</small>
-				<small>
-					Wens je niet langer emails te ontvangen?
-					<a href="/pages/unsubscribe/" class="languageLink"
-						>Afmelden kan hier</a
-					>.
-				</small>
-			</form>
 			<div>
 				<img id="scrollPointer" src="/assets/icons/pointer2.svg" />
 			</div>
-			<div class="copy-text">
+			<div class="copy-text section">
 				<div class="shiftCopy cardDiv">
 					<h2>Shift Festival 2026</h2>
 					<p>
@@ -106,7 +113,7 @@
 							Multimedia & Creatieve Technologie</a
 						>.
 					</p>
-          <br />
+					<br />
 					<p>
 						Kom de indrukwekkende eindprojecten van de derdejaars bewonderen en
 						breng je stem uit op je favoriete projecten, zodat ze tijdens de
@@ -127,16 +134,18 @@
 					</p>
 				</div>
 			</div>
-			<div>
-				<p class="xlarge bold">
-					Wil je er zeker bij zijn? Plaats het in je agenda.
-				</p>
+			<div section>
+				<div>
+					<p class="xlarge bold">
+						Wil je er zeker bij zijn? Plaats het in je agenda.
+					</p>
+				</div>
+				<br />
+				<a class="linkBtn" id="std" title="Add this event to your calendar">
+					Save the date!
+				</a>
+				<load file="../../htmlComponents/footer.fragment.html" />
 			</div>
-			<br />
-			<a class="linkBtn" id="std" title="Add this event to your calendar">
-				Save the date!
-			</a>
-			<load file="../../htmlComponents/footer.fragment.html" />
 		</div>
 	</body>
 </html>

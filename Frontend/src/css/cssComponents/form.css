@@ -1,7 +1,7 @@
 form {
 	display: flex;
 	flex-direction: column;
-	margin: var(--spacing-s) 0;
+	margin-top: var(--margin-between);
 
 	input[type="email"] {
 		background-color: var(--bg-shift-secondary);
@@ -19,7 +19,7 @@ form {
 	}
 
 	button {
-		margin-left: 5px;
+		margin-left: var(--margin-small);
 	}
 
 	label {
