@@ -5,12 +5,10 @@ body {
 }
 
 .wrap {
-	display: flex;
 	flex-direction: column;
 	max-width: 85vw;
 	min-height: 90dvh;
 	margin: auto;
-	justify-content: space-between;
 	text-align: center;
 }
 
@@ -79,7 +77,7 @@ body {
 }
 
 .timerDiv {
-	margin-top: 60px;
+	margin-top: 20px;
 }
 
 #scrollPointer {
@@ -97,17 +95,11 @@ body {
 	}
 }
 
-.agendaButton {
-	margin-top: 20px;
-}
-
 .copy-text {
-	margin-top: 35px;
-	margin-bottom: 35px;
 	text-align: left;
 
 	.shiftCopy {
-		margin-bottom: 25px;
+		margin-bottom: var(--margin-between);
 	}
 }
 
@@ -155,7 +147,6 @@ p#warningTxt {
 	.copy-text {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
 
 		.shiftCopy {
 			max-width: 45%;

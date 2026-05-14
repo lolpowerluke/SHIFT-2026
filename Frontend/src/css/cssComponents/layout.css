@@ -50,3 +50,7 @@ footer {
 	border-radius: 10px;
 	box-shadow: 5px 5px 0 1px var(--shadow-primary);
 }
+
+.section {
+	margin: var(--margin-section) 0;
+}
