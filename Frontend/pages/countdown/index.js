@@ -5,16 +5,6 @@ const agree = document.getElementById("check");
 const submitButton = document.getElementById("submit");
 const signupForm = document.getElementById("signup");
 
-signupForm.addEventListener("change", function () {
-  const checkedAgreement = agree.checked;
-  const validEmail = document.getElementById("email").validity.valid;
-  submitButton.disabled = !(checkedAgreement && validEmail);
-
-  if (checkedAgreement)
-    document.getElementById("unChecked").classList.add("invisible");
-  else document.getElementById("unChecked").classList.remove("invisible");
-});
-
 signupForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   document.getElementById("warningTxt").classList.add("hidden");
@@ -49,7 +39,7 @@ function emailFormErrors(reason) {
   switch (reason) {
     case "noAgree":
       document.getElementById("warningTxt").innerText =
-        "Gelieve akkoord te gaan om uw data te delen met SHIFT";
+        "Gelieve akkoord te gaan dat u op de hoogte blijft met SHIFT";
       break;
     case "invalidEmail":
       warning.innerText = "Gelieve een geldig e-mailadres in te voeren";

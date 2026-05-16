@@ -1,40 +1,56 @@
 /* Everything layout goes here. margins, display grid/flex ideally too. Use your brain. */
 
 * {
-  margin: 0;
+	margin: 0;
 }
 
 .ctx {
-  margin: auto;
-  width: 85%;
+	margin: auto;
+	width: 85%;
 }
 
 .xsMarginTop {
-  margin-top: var(--spacing-xs);
+	margin-top: var(--spacing-xs);
 }
 
 footer {
-  margin: var(--spacing-footer) 0;
+	margin: var(--spacing-footer) 0;
 }
 
 .centered {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  text-align: center;
-  margin-top: 45dvh;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	text-align: center;
+	margin-top: 45dvh;
 }
 
 .gutter-s {
-  gap: var(--spacing-s);
+	gap: var(--spacing-s);
 }
 
 .flexSpaceBetween {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .headerLogo {
-  position: relative;
-  z-index: 3;
+	position: relative;
+	z-index: 3;
+}
+
+.cardDiv {
+	h2 {
+		margin-top: 0;
+	}
+
+	background-color: var(--bg-shift-alt);
+	border: 5px solid black;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 0 1px var(--shadow-primary);
+}
+
+.section {
+	margin: var(--margin-section) 0;
 }
