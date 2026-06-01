@@ -1,5 +1,5 @@
 import env from "./env.js"
-const BASE_URL = env.SERVER_URL
+const BASE_URL = env.server.url
 
 async function keepAlive() {
     try {
