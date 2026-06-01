@@ -132,14 +132,20 @@ const updateProject = async (req, res) => {
     const { id } = req.params;
     const { name, description, course, memberIds, imageIds } = req.body;
 
-    const [existing] = await db.query("SELECT id FROM projects WHERE id = ?", [
-      id,
-    ]);
+    const [existing] = await db.query("SELECT id FROM projects WHERE id = ?", [id]);
     if (!existing.length) {
       return res.status(404).json({
         success: false,
         message: `Project ${id} doesn't exist`,
       });
+    }
+
+    const [membership] = await db.query(
+      "SELECT id FROM project_user WHERE project = ? AND user = ?",
+      [id, req.user.id]
+    );
+    if (!membership.length) {
+      return res.status(403).json({ success: false, message: "Not a project owner" });
     }
 
     const fields = [];
@@ -199,13 +205,17 @@ const deleteProject = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const [existing] = await db.query("SELECT id FROM projects WHERE id = ?", [
-      id,
-    ]);
+    const [existing] = await db.query("SELECT id FROM projects WHERE id = ?", [id]);
     if (!existing.length) {
-      return res
-        .status(404)
-        .json({ success: false, message: `Project ${id} doesn't exist` });
+      return res.status(404).json({ success: false, message: `Project ${id} doesn't exist` });
+    }
+
+    const [membership] = await db.query(
+      "SELECT id FROM project_user WHERE project = ? AND user = ?",
+      [id, req.user.id]
+    );
+    if (!membership.length) {
+      return res.status(403).json({ success: false, message: "Not a project owner" });
     }
 
     await db.query(

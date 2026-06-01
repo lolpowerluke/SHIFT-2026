@@ -27,6 +27,10 @@ const env = {
   mail: {
     mail: requireEnv("COMBELL_MAIL"),
     pass: requireEnv("COMBELL_PASS")
+  },
+  jwt: {
+    secret: requireEnv("JWT_SECRET"),
+    expiresIn: requireEnv("JWT_EXPIRES_IN")
   }
 };
 
