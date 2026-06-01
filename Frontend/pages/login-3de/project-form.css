@@ -37,3 +37,32 @@ form {
 			justify-content: center;
 		}
 	}
+
+    .submitDiv {
+	margin-top: var(--margin-section);
+    display: flex;
+    flex-direction: column;
+	justify-content: center;
+	text-align: center;
+    
+
+    a {
+      background-color: var(--hl-primary);
+      border: 5px solid black;
+      font-size: 15pt;
+      padding: 5px;
+      box-shadow: 5px 5px 0 1px black;
+      text-decoration: none;
+      width: 20%;
+      transition: transform 0.1s, box-shadow 0.1s;
+      align-self: center;
+      color: var(--txt-shift);
+      border-radius: 10px;
+      
+    }
+
+    a:active {
+    transform: translateY(3px);
+    box-shadow: 2px 2px 0 1px black;
+    } 
+}
