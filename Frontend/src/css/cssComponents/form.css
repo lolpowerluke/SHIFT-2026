@@ -18,6 +18,21 @@ form {
 		align-self: center;
 	}
 
+	input[type="text"] {
+		background-color: var(--bg-shift-secondary);
+		border: 5px solid black;
+		border-radius: 10px;
+		color: black;
+		font-size: 14px;
+		padding: 10px;
+		text-decoration: none;
+		width: 50%;
+		transition:
+			transform 0.1s,
+			box-shadow 0.1s;
+		align-self: center;
+	}
+
 	button {
 		margin-left: var(--margin-small);
 	}
@@ -33,7 +48,7 @@ input::placeholder {
 
 @media screen and (min-width: 1024px) {
 	form {
-    input[type="email"] {
+    input[type="email"], input[type="text"] {
       width: 100%;
     }
 
@@ -44,4 +59,34 @@ input::placeholder {
       margin: 0 auto;
 		}
 	}
+}
+
+
+.submitDiv {
+    display: flex;
+    flex-direction: column;
+	justify-content: center;
+	text-align: center;
+    
+
+    a {
+      background-color: var(--hl-primary);
+      border: 5px solid black;
+      font-size: 15pt;
+      margin-top: 20px;
+      padding: 5px;
+      box-shadow: 5px 5px 0 1px black;
+      text-decoration: none;
+      width: 20%;
+      transition: transform 0.1s, box-shadow 0.1s;
+      align-self: center;
+      color: var(--txt-shift);
+      border-radius: 10px;
+      
+    }
+
+    a:active {
+    transform: translateY(3px);
+    box-shadow: 2px 2px 0 1px black;
+    } 
 }

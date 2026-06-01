@@ -1,0 +1,39 @@
+h1, input {
+    text-align: center;
+    margin-top: 15px;
+}
+
+h3 {
+    text-align: center;
+}
+
+form {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.section {
+    margin-left: var(--margin-section);
+    margin-right: var(--margin-section);
+}
+
+.footer {
+    margin-left: var(--margin-section);
+    margin-right: var(--margin-section)
+
+}
+
+	form {
+    input[type="email"], input[type="text"] {
+      width: 40%;
+    }
+		.textWrap{
+      		display: flex;
+      		justify-content: center;
+		}
+
+		.emailDiv {
+			display: flex;
+			justify-content: center;
+		}
+	}
