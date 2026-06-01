@@ -3,6 +3,7 @@ import PageLayout from "./layouts/PageLayout.jsx";
 import BareLayout from "./layouts/BareLayout.jsx";
 import SearchLayout from "./layouts/SearchLayout.jsx";
 
+// TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter(
     [
         {
