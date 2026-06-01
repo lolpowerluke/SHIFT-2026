@@ -12,7 +12,8 @@ function requireEnv(key) {
 const env = {
   server: {
     port: requireEnv("PORT"),
-    environment: requireEnv("NODE_ENV")
+    environment: requireEnv("NODE_ENV"),
+    url: requireEnv("BASE_URL")
   },
   frontend: {
     url: requireEnv("FRONTEND_URL")
