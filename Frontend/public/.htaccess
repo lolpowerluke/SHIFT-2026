@@ -1,10 +1,11 @@
 Options -MultiViews
 RewriteEngine On
 
-# Redirect ALL non-www requests before anything loads
+# non-www → www
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 
+# React: serve real files, else fall back to index.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([^/]+)/?$ /$1/index.html [L]
+RewriteRule ^ /index.html [L]
