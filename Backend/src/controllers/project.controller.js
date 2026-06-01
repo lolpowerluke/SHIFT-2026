@@ -37,7 +37,7 @@ const PROJECT_QUERY = `SELECT
 const getAllProjects = async (req, res) => {
   try {
     const [result] = await db.query(
-      PROJECT_QUERY + `GROUP BY p.id, p.name, p.description, p.course;`,
+      PROJECT_QUERY + ` GROUP BY p.id, p.name, p.description, p.course;`,
     );
     res.status(200).json({
       success: true,
@@ -56,7 +56,7 @@ const getAllProjects = async (req, res) => {
 const getProject = async (req, res) => {
   try {
     const { id } = req.params;
-    const [result] = await db.query(PROJECT_QUERY + `WHERE p.id = ?;`, [id]);
+    const [result] = await db.query(PROJECT_QUERY + ` WHERE p.id = ?;`, [id]);
     if (result.length === 0) {
       return res.status(404).json({
         success: false,
