@@ -1,5 +1,8 @@
 import env from "./env.js"
-const BASE_URL = env.server.url
+let BASE_URL = env.server.url
+if (env.server.environment == "development") {
+    BASE_URL = `${env.server.url}:${env.server.port}`
+}
 
 async function keepAlive() {
     try {
@@ -11,4 +14,6 @@ async function keepAlive() {
     }
 }
 
-setInterval(keepAlive, 60000);
+export {
+    keepAlive
+}

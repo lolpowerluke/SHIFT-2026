@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import env from "./utils/env.js";
 import db from "./config/db.js";
+import { keepAlive } from "./utils/keepAlive.js";
 
 import "./config/db.js";
 
@@ -41,5 +42,7 @@ app.use((err, req, res, next) => {
     error: env.server.environment === 'development' ? err.message : undefined
   });
 });
+
+setInterval(keepAlive, 60000);
 
 export default app;
