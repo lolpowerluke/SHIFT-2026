@@ -1,4 +1,23 @@
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Code used from [https://w3collective.com/preview-selected-img-file-input-js/]
 Complete source in *README*
 */
