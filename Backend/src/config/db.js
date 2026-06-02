@@ -13,34 +13,36 @@ const db = mysql.createPool({
 await db.query(`
   CREATE TABLE IF NOT EXISTS users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(255),
+    lastname VARCHAR(255),
     role ENUM('visitor', 'admin', '3rdyear', 'prof') DEFAULT 'visitor',
     email VARCHAR(255) UNIQUE,
     token VARCHAR(64) UNIQUE,
-    status ENUM('pending', 'confirmed') DEFAULT 'pending',
+    -- status ENUM('pending', 'confirmed') DEFAULT 'pending',
     password VARCHAR(255)
   )
 `)
 
 await db.query(`
-  CREATE TABLE IF NOT EXISTS images (
+  CREATE TABLE IF NOT EXISTS media (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     url VARCHAR(255) NOT NULL
   )
 `)
 
 await db.query(`
-  CREATE TABLE IF NOT EXISTS image_user (
+  CREATE TABLE IF NOT EXISTS media_user (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user BIGINT UNSIGNED,
-    image BIGINT UNSIGNED,
-    CONSTRAINT fk_iu_user
+    media BIGINT UNSIGNED,
+    CONSTRAINT fk_mu_user
       FOREIGN KEY(user)
       REFERENCES users(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
-    CONSTRAINT fk_iu_image
-      FOREIGN KEY(image)
-      REFERENCES images(id)
+    CONSTRAINT fk_mu_media
+      FOREIGN KEY(media)
+      REFERENCES media(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE
 
@@ -70,18 +72,19 @@ await db.query(`
 `)
 
 await db.query(`
-  CREATE TABLE IF NOT EXISTS image_project (
+  CREATE TABLE IF NOT EXISTS media_project (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     project BIGINT UNSIGNED,
-    image BIGINT UNSIGNED,
-    CONSTRAINT fk_ip_project
+    type ENUM('Video', 'Image', 'Magazine'),
+    media BIGINT UNSIGNED,
+    CONSTRAINT fk_mp_project
       FOREIGN KEY(project)
       REFERENCES projects(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE,
-    CONSTRAINT fk_ip_image
-      FOREIGN KEY(image)
-      REFERENCES images(id)
+    CONSTRAINT fk_mp_media
+      FOREIGN KEY(media)
+      REFERENCES media(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE
   )

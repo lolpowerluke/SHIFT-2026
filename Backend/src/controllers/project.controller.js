@@ -1,19 +1,22 @@
 import db from "../config/db.js";
 
-const PROJECT_QUERY = `SELECT
+const PROJECT_QUERY = `
+      SELECT
         p.id,
         p.name,
         p.description,
         p.course,
         (
           SELECT JSON_ARRAYAGG(JSON_OBJECT('id', i.id, 'url', i.url))
-          FROM (SELECT DISTINCT img.id, img.url FROM images img
-                JOIN image_project ip2 ON ip2.image = img.id
+          FROM (SELECT DISTINCT img.id, img.url FROM media img
+                JOIN media_project ip2 ON ip2.media = img.id
                 WHERE ip2.project = p.id) i
-        ) AS images,
+        ) AS media,
         (
           SELECT JSON_ARRAYAGG(JSON_OBJECT(
             'id', u2.id,
+            'firstname', u2.firstname,
+            'lastname', u2.lastname,
             'email', u2.email,
             'role', u2.role,
             'picture', u2.picture,
@@ -21,9 +24,9 @@ const PROJECT_QUERY = `SELECT
           ))
           FROM (
             SELECT DISTINCT
-              u3.id, u3.email, u3.role,
-              (SELECT img2.url FROM images img2
-               JOIN image_user iu ON iu.image = img2.id
+              u3.id, u3.firstname, u3.lastname, u3.email, u3.role,
+              (SELECT img2.url FROM media img2
+               JOIN media_user iu ON iu.media = img2.id
                WHERE iu.user = u3.id LIMIT 1) AS picture,
               (SELECT JSON_ARRAYAGG(s.social) FROM socials s
                WHERE s.user = u3.id) AS socials
@@ -84,7 +87,7 @@ const createProject = async (req, res) => {
       description,
       course,
       memberIds = [],
-      imageIds = [],
+      mediaIds = [],
     } = req.body;
 
     if (!name || !description || !course || memberIds.length === 0) {
@@ -106,10 +109,10 @@ const createProject = async (req, res) => {
       ]);
     }
 
-    if (imageIds.length) {
-      const imageRows = imageIds.map((iid) => [insertId, iid]);
-      await db.query("INSERT INTO image_project (project, image) VALUES ?", [
-        imageRows,
+    if (mediaIds.length) {
+      const mediaRows = mediaIds.map((iid) => [insertId, iid]);
+      await db.query("INSERT INTO media_project (project, media) VALUES ?", [
+        mediaRows,
       ]);
     }
 
@@ -130,7 +133,7 @@ const createProject = async (req, res) => {
 const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description, course, memberIds, imageIds } = req.body;
+    const { name, description, course, memberIds, mediaIds } = req.body;
 
     const [existing] = await db.query("SELECT id FROM projects WHERE id = ?", [id]);
     if (!existing.length) {
@@ -150,18 +153,9 @@ const updateProject = async (req, res) => {
 
     const fields = [];
     const values = [];
-    if (name) {
-      fields.push("name = ?");
-      values.push(name);
-    }
-    if (description) {
-      fields.push("description = ?");
-      values.push(description);
-    }
-    if (course) {
-      fields.push("course = ?");
-      values.push(course);
-    }
+    if (name) { fields.push("name = ?"); values.push(name); }
+    if (description) { fields.push("description = ?"); values.push(description); }
+    if (course) { fields.push("course = ?"); values.push(course); }
 
     if (fields.length) {
       await db.query(`UPDATE projects SET ${fields.join(", ")} WHERE id = ?`, [
@@ -174,19 +168,15 @@ const updateProject = async (req, res) => {
       await db.query("DELETE FROM project_user WHERE project = ?", [id]);
       if (memberIds.length) {
         const rows = memberIds.map((uid) => [uid, id]);
-        await db.query("INSERT INTO project_user (user, project) VALUES ?", [
-          rows,
-        ]);
+        await db.query("INSERT INTO project_user (user, project) VALUES ?", [rows]);
       }
     }
 
-    if (imageIds) {
-      await db.query("DELETE FROM image_project WHERE project = ?", [id]);
-      if (imageIds.length) {
-        const rows = imageIds.map((iid) => [id, iid]);
-        await db.query("INSERT INTO image_project (project, image) VALUES ?", [
-          rows,
-        ]);
+    if (mediaIds) {
+      await db.query("DELETE FROM media_project WHERE project = ?", [id]);
+      if (mediaIds.length) {
+        const rows = mediaIds.map((iid) => [id, iid]);
+        await db.query("INSERT INTO media_project (project, media) VALUES ?", [rows]);
       }
     }
 
@@ -219,11 +209,9 @@ const deleteProject = async (req, res) => {
     }
 
     await db.query(
-      `
-      DELETE FROM images WHERE id IN (
-        SELECT image FROM image_project WHERE project = ?
-      )
-    `,
+      `DELETE FROM media WHERE id IN (
+        SELECT media FROM media_project WHERE project = ?
+      )`,
       [id],
     );
 
