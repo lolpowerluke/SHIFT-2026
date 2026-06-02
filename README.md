@@ -77,3 +77,6 @@
 
 - [remove `/pages/` from links and paths in build while keeping the file structure automation](https://claude.ai/share/44dab821-2592-4ca3-8bc7-5f12b0bfd702)
     - used in vite.config.js removePageSegment()
+
+- [Claude conversation on 02/06/2026](https://claude.ai/share/c02ead92-f949-4440-8a09-0c1276af52e9)
+    - Used in [login-3de/index.js](Frontend/pages/login-3de/index.js)
