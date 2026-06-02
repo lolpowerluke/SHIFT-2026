@@ -33,6 +33,21 @@ form {
 		align-self: center;
 	}
 
+	input[type="password"] {
+		background-color: var(--bg-shift-secondary);
+		border: 5px solid black;
+		border-radius: 10px;
+		color: black;
+		font-size: 14px;
+		padding: 10px;
+		text-decoration: none;
+		width: 50%;
+		transition:
+			transform 0.1s,
+			box-shadow 0.1s;
+		align-self: center;
+	}
+
 	button {
 		margin-left: var(--margin-small);
 	}
@@ -58,5 +73,35 @@ input::placeholder {
       justify-content: space-between;
       margin: 0 auto;
 		}
+	}
+}
+
+
+.submitDiv {
+	margin-top: var(--margin-section);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+
+	button {
+		background-color: var(--hl-primary);
+		border: 5px solid black;
+		font-size: 15pt;
+		padding: 5px;
+		box-shadow: 5px 5px 0 1px black;
+		text-decoration: none;
+		width: 20%;
+		transition:
+			transform 0.1s,
+			box-shadow 0.1s;
+		align-self: center;
+		color: var(--txt-shift);
+		border-radius: 10px;
+	}
+
+	button:active {
+		transform: translateY(3px);
+		box-shadow: 2px 2px 0 1px black;
 	}
 }
