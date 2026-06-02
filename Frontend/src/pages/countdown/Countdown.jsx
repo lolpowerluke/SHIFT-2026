@@ -62,43 +62,6 @@ export default function Countdown() {
                             <p>17:00 - 21:30</p>
                         </div>
                     </div>
-                    <form id="signup">
-                        <label htmlFor="email"><b>Blijf op de hoogte van SHIFT!</b></label>
-                        <p id="warningTxt" className="hidden"></p>
-                        <div className="emailWrap">
-                            <input
-                                className="white-input"
-                                type="email"
-                                name="email"
-                                id="email"
-                                placeholder="E-mail..."
-                                autoComplete="email"
-                                required
-                            />
-                            <button value="submit" id="submit" className="fitContent">
-                                Schrijf je in!
-                            </button>
-                        </div>
-                        <label htmlFor="check">
-                            <input
-                                type="checkbox"
-                                name="check"
-                                id="check"
-                                className="xsMarginTop"
-                            />
-                            Hou me op de hoogte!
-                        </label>
-                        <small>
-                            Jouw data blijft van jou. Check het <Link to="/privacy/"
-                                                                   className="languageLink">Privacybeleid</Link>.
-                        </small>
-                        <small>
-                            Wens je niet langer emails te ontvangen? <a href="/pages/unsubscribe/"
-                                                                        className="languageLink"
-                        >Afmelden kan hier</a
-                        >.
-                        </small>
-                    </form>
                 </div>
                 <a href="#copy-text">
                     <div>
