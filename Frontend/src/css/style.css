@@ -45,6 +45,7 @@ body {
 html {
 	background-image: url(/assets/wallOverlayBlue.png);
 	background-size: cover;
+	scroll-behavior: smooth;
 }
 
 body {
