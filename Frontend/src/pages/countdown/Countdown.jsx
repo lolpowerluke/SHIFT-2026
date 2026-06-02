@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css"
 import Footer from "../../components/Footer.jsx";
 import {useCountdown} from "../../js/countdown.js";
+import {Link} from "react-router";
 
 export default function Countdown() {
     const pageURL = "shiftfestival.be";
@@ -88,8 +89,8 @@ export default function Countdown() {
                             Hou me op de hoogte!
                         </label>
                         <small>
-                            Jouw data blijft van jou. Check het <a href="/pages/privacy/nl/"
-                                                                   className="languageLink">Privacybeleid</a>.
+                            Jouw data blijft van jou. Check het <Link to="/privacy/"
+                                                                   className="languageLink">Privacybeleid</Link>.
                         </small>
                         <small>
                             Wens je niet langer emails te ontvangen? <a href="/pages/unsubscribe/"

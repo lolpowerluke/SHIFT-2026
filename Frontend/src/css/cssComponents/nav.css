@@ -25,12 +25,12 @@
   background-color: unset;
   padding: 5px 10px 0px;
   margin-bottom: 5px;
-  color: var(--text-secondary);
+  color: var(--text-secondary); /*TODO: colour needs to be adjusted*/
   text-decoration: none;
 }
 
 .navItem.active {
-  background-color: var(--primary-bg);
+  background-color: var(--primary-bg); /*TODO: adjust colours*/
   color: var(--text-primary);
   margin-bottom: unset;
   border-radius: 10px 10px 0px 0px;

@@ -1,11 +1,12 @@
 import {Link} from "react-router";
+import Routes from "../../../routes/constants/Routes.js"
 
 export default function PrivacyNL() {
     return (
         <>
             <div className="ctx">
                 <h1>Privacybeleid</h1>
-                <Link to="/en">Also available in English.</Link>
+                <Link to={Routes.privacyEN}>Also available in English.</Link>
                 <h2>1. Inleiding</h2>
                 <p>
                     Deze website is gemaakt voor <b>Shift</b>, georganiseerd door studenten

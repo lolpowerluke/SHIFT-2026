@@ -1,4 +1,4 @@
-import {NavLink} from "react-router";
+import {Link, NavLink} from "react-router";
 import {NavRoutes} from "../routes/constants/NavRoutes.js";
 
 
@@ -7,18 +7,20 @@ export default function Header() {
         <header>
             <script type="module" src="/src/js/language.js"></script>
             <div className="ctx flexSpaceBetween">
-                <a href="/pages/countdown/">
+                <Link to="/">
                     <img
                         src="/favicon/shift_icon.svg"
                         width="90"
                         alt="Shift Icon"
                         className="headerLogo"
                     />
-                </a>
+                </Link>
                 <div className="nav">
                     <ul>
                         {
-                            NavRoutes.map((link) => <NavLink key={link.route} to={link.route}>${link.label}</NavLink>)
+                            NavRoutes.map((link) => <NavLink key={link.route} to={link.route}>
+                                <li>{link.label}</li>
+                            </NavLink>)
                         }
                     </ul>
                 {/* Code based on JoachimGautama's web2-course-project-front-end-JoachimGautama */}
