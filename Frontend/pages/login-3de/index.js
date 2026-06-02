@@ -28,8 +28,8 @@ function projectForm() {
 							type="text"
 							name="nameProject"
 							id="nameStudent"
-							placeholder="Naam project..."
               required
+							placeholder="Naam project..."
 						/>
 					</div>
           <div class="textWrap">
