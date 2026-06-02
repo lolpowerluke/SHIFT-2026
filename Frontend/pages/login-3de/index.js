@@ -1,19 +1,14 @@
 
+function projectForm() {
+    document.getElementById("#submit").addEventListener("click", function() {
+        document.querySelector(".3de-form").innerHTML = 
+        `
+        
+        `
+    })
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+projectForm();
 
 
 
