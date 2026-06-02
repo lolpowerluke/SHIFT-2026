@@ -1,4 +1,4 @@
-import react from "@vitejs/plugin-react";
+import react from "react";
 import {resolve} from "path";
 import {defineConfig} from "vite";
 import injectHTML from "vite-plugin-html-inject";

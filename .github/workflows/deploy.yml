@@ -11,6 +11,8 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm ci
         working-directory: Frontend
+      - run: npm install @vitejs/plugin-react --save-dev
+        working-directory: Frontend
       - run: npm run build
         working-directory: Frontend
         env:
