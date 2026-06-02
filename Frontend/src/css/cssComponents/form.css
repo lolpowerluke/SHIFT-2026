@@ -48,6 +48,41 @@ form {
 		align-self: center;
 	}
 
+	.projectInfo {
+		background-color: var(--bg-shift-secondary);
+		border: 5px solid black;
+		border-radius: 10px;
+		color: black;
+		font-size: 14px;
+		padding: 10px;
+		text-decoration: none;
+		width: 40%;
+		transition:
+		transform 0.1s,
+		box-shadow 0.1s;
+		align-self: center;
+	}
+
+
+	.courseSelect {
+		background-color: var(--bg-shift-secondary);
+		border: 5px solid black;
+		border-radius: 10px;
+		color: black;
+		font-size: 14px;
+		padding: 10px;
+		text-decoration: none;
+		width: 42%;
+		transition:
+		transform 0.1s,
+		box-shadow 0.1s;
+		align-self: center;
+
+		option {
+			color: black;
+		}
+	}
+
 	button {
 		margin-left: var(--margin-small);
 	}
