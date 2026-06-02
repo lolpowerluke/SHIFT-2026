@@ -7,16 +7,16 @@ import SearchLayout from "./layouts/SearchLayout.jsx";
 const router = createBrowserRouter(
     [
         {
-            element: <SearchLayout/>,
-            children: [
-                {path: "/projects", element: "Projects"},
-            ]
-        },
-        {
             element: <PageLayout/>,
             children: [
                 {path: Routes.Home, element: "Home"},
                 {path: Routes.Privacy, element: "Privacy"},
+                {
+                    element: <SearchLayout/>,
+                    children: [
+                        {path: "/projects", element: "Projects"},
+                    ]
+                },
             ]
         },
         {
