@@ -1,9 +1,33 @@
 
 function projectForm() {
-    document.getElementById("#submit").addEventListener("click", function() {
-        document.querySelector(".3de-form").innerHTML = 
+    document.querySelector(".submit").addEventListener("click", function() {
+        document.querySelector(".form-3de").innerHTML = 
         `
-        
+        <div class="textWrap">
+						<input
+							type="text"
+							name="nameStudent"
+							id="nameStudent"
+							placeholder="Naam student..."
+							required
+						/>
+					</div>
+					<div class="textWrap">
+						<input
+							type="text"
+							name="nameProject"
+							id="nameStudent"
+							placeholder="Naam project..."
+						/>
+            <textarea 
+            name="description" 
+            id="description" 
+            placeholder="Project description...">
+            </textarea>
+					</div>
+					<div class="submitDiv">
+						<a id="submit" href="">Login</a>
+					</div>
         `
     })
 }
