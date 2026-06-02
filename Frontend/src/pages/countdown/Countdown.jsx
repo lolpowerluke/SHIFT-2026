@@ -1,6 +1,7 @@
 import React from "react";
 import "./index.css"
 import Footer from "../../components/Footer.jsx";
+import {useCountdown} from "../../js/countdown.js";
 
 export default function Countdown() {
     const pageURL = "shiftfestival.be";
@@ -15,6 +16,8 @@ export default function Countdown() {
             window.open(gcalUrl, "_blank");
         }
     }
+
+    const {timeLeft, blinking} = useCountdown()
 
     return (
         <>
@@ -49,10 +52,9 @@ export default function Countdown() {
                 </div>
                 <div className="section">
                     <div className="timerDiv xlarge">
-					<span id="timer" className="hidden"
-                    ><span id="days">10</span>D <span id="hours">00</span>H
-						<span id="minutes">00</span>M <span id="seconds">00</span>S
-					</span>
+                        {timeLeft? <span id="timer"
+                        ><span id="days">{timeLeft.days}</span>D <span id="hours">{timeLeft.hours}</span>H <span id="minutes">{timeLeft.minutes}</span>M <span id="seconds">{timeLeft.seconds}</span>S
+					</span> : "LIVE NOW!"}
                         <br/>
                         <div className="main">
                             <p>VRIJDAG 19 JUNI</p>
