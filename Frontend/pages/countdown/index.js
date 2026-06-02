@@ -1,4 +1,3 @@
-import { icsContent } from "../../src/js/comp/calendar";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const agree = document.getElementById("check");
@@ -39,7 +38,7 @@ function emailFormErrors(reason) {
   switch (reason) {
     case "noAgree":
       document.getElementById("warningTxt").innerText =
-        "Gelieve akkoord te gaan dat u op de hoogte blijft met SHIFT";
+          "Gelieve akkoord te gaan dat u op de hoogte blijft met SHIFT";
       break;
     case "invalidEmail":
       warning.innerText = "Gelieve een geldig e-mailadres in te voeren";
@@ -49,7 +48,7 @@ function emailFormErrors(reason) {
       break;
     default:
       warning.innerText =
-        "Er is een onbekende fout opgetreden. Probeer later opnieuw.";
+          "Er is een onbekende fout opgetreden. Probeer later opnieuw.";
   }
   document.getElementById("warningTxt").classList.remove("hidden");
 }

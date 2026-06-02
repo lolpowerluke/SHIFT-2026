@@ -1,26 +1,15 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/css/style.css" />
-    <link rel="icon" type="image/x-icon" href="/favicon/shift_icon.svg" />
-    <script type="module" src="src/js/comp/routing.js"></script>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="./src/css/style.css"/>
+    <link rel="icon" type="image/x-icon" href="/favicon/shift_icon.svg"/>
+<!--    <script type="module" src="src/js/comp/routing.js"></script>-->
     <title>SHIFT</title>
-  </head>
-  <body>
-    <div class="fullPage">
-      <div class="ctx centered gutter-s">
-        <load file="/htmlComponents/throbber.fragment.html" />
-        <a href="/pages/countdown/">
-          <button class="orange-button">
-            click here if you don't get rerouted to the website.
-          </button>
-        </a>
-        <p class="topSpacer">
-          This website is best enjoyed by unblocking javascript :)
-        </p>
-      </div>
-    </div>
-  </body>
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="./src/main.jsx"></script>
+</body>
 </html>

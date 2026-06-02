@@ -4,6 +4,14 @@ body {
 	margin: 0;
 }
 
+.wrap {
+	flex-direction: column;
+	max-width: 85vw;
+	min-height: 90dvh;
+	margin: auto;
+	text-align: center;
+}
+
 .main p {
 	margin: 0;
 	font-weight: bold;

@@ -13,15 +13,8 @@ node_modules
 dist
 dist-ssr
 *.local
-.ssh
+ssh
 .ssh.*
-
-# Server & build artifacts
-.htaccess
-sitemap.xml
-sitemap-*.xml
-llms/
-*.llm
 
 # Editor directories and files
 .vscode/*
