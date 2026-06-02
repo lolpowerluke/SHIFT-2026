@@ -13,7 +13,7 @@ node_modules
 dist
 dist-ssr
 *.local
-.ssh
+ssh
 .ssh.*
 
 # Editor directories and files
