@@ -43,6 +43,9 @@
 ### Frontend
 
 - **Build Tool:** Vite ^7.3.1
+- React ^19.2.6
+- react-dom ^19.2.7
+- react-router ^7.16.0
 
 ### Used Packages
 
