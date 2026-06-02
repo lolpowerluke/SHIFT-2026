@@ -3,31 +3,80 @@ function projectForm() {
     document.querySelector(".submit").addEventListener("click", function() {
         document.querySelector(".form-3de").innerHTML = 
         `
+        <div class="form-wrap">
+        <div class="firstHalf">
+        <label>In duo gewerkt? Graag hier het e-mailadres van de tweede persoon invullen.</label>
         <div class="textWrap">
 						<input
-							type="text"
-							name="nameStudent"
-							id="nameStudent"
-							placeholder="Naam student..."
-							required
-						/>
+							type="email"
+							name="emailDuo"
+							id="emailDuo"
+							placeholder="email van tweede persoon..."
+              />
+					</div>
+          <div class="textWrap">
+						<select class="courseSelect">
+              <option disabled selected>Kies een kategorie</option>
+              <option value="Website">Website</option>
+              <option>Installatie</option>
+              <option>Mobile App</option>
+              <option>VR & AR</option>
+              <option>3D Games</option>
+              <option>Motion</option>
+            </select>
 					</div>
 					<div class="textWrap">
 						<input
 							type="text"
 							name="nameProject"
 							id="nameStudent"
+              required
 							placeholder="Naam project..."
 						/>
-            <textarea 
+					</div>
+          <div class="textWrap">
+            <textarea class="projectInfo" 
             name="description" 
-            id="description" 
-            placeholder="Project description...">
-            </textarea>
+            id="description"
+            maxlength="250"
+            rows="5"
+            placeholder="Project description..."
+            required ></textarea>
+          </div>
+          </div>
+          <div class="secondHalf">
+          <div class="textWrap">
+						<input
+							type="text"
+							name="imgURL"
+							id="imgURL"
+              required
+							placeholder="Image URL..."
+						/>
 					</div>
+          <div class="textWrap">
+						<input
+							type="text"
+							name="videoURL"
+							id="videoURL"
+              required
+							placeholder="Video URL..."
+						/>
+					</div>
+          <div class="textWrap">
+						<input
+							type="text"
+							name="magazineURL"
+							id="magazineURL"
+              required
+							placeholder="Magazine URL..."
+						/>
+					</div>
+          </div>
 					<div class="submitDiv">
-						<a id="submit" href="">Login</a>
+            <button class="submit" type="submit">Submit</button>
 					</div>
+          </div>
         `
     })
 }
@@ -36,11 +85,11 @@ projectForm();
 
 
 
-
 /* Code used from [https://w3collective.com/preview-selected-img-file-input-js/]
 Complete source in *README*
 */
 
+/*
 const choose_projectFile = document.getElementById("choose-projectFile");
 const choose_selfieFile = document.getElementById("choose-selfieFile");
 const imgPreview = document.getElementById("img-preview");
@@ -79,3 +128,5 @@ function getSelfieData() {
     });    
   }
 }
+
+*/
