@@ -54,3 +54,11 @@ footer {
 .section {
 	margin: var(--margin-section) 0;
 }
+
+.wrap {
+	flex-direction: column;
+	max-width: 85vw;
+	min-height: 90dvh;
+	margin: auto;
+	text-align: center;
+}

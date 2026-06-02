@@ -66,7 +66,7 @@
 ## Sources
 
 - [countdown timer from w3](https://www.w3schools.com/howto/howto_js_countdown.asp)
-    - used in countdown.js
+    - used in [countdown.js](Frontend/src/js/countdown.js)
 
 - [Plus & Minus input from Codepen](https://codepen.io/Rajesh-Pal-the-scripter/pen/QWzEWjG)
     - Used in [Ticket page (html, css & js)](Frontend/pages/tickets)
@@ -76,7 +76,7 @@
     - used in header.fragment.html
 
 - [Display image from input file tag from W3Collective](https://w3collective.com/preview-selected-img-file-input-js/)
-    - Used in [project-form (html, css, js)](Frontend\login\project-form)
+    - Used in [login-3de (html, css, js)](Frontend/pages/login-3de)
 
 - [remove `/pages/` from links and paths in build while keeping the file structure automation](https://claude.ai/share/44dab821-2592-4ca3-8bc7-5f12b0bfd702)
     - used in vite.config.js removePageSegment()
