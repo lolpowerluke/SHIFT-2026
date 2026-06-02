@@ -1,9 +1,10 @@
 import { Outlet } from "react-router"
+import Header from "../components/Header.jsx";
 
 export default function PageLayout() {
     return (
         <>
-            <load file="../../htmlComponents/header.fragment.html"/>
+            <Header/>
             <Outlet />
             <load file="../../htmlComponents/footer.fragment.html"/>
         </>
