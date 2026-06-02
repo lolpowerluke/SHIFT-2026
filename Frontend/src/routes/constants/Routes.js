@@ -2,6 +2,6 @@ const Routes = {
     Root: "",
     Privacy: "/privacy/",
     CountDown: "/countdown/",
-    Login3e: "/login-3e/",
+    Login3e: "/projecten-3e/login",
 }
 export default Routes;

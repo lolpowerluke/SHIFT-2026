@@ -3,7 +3,7 @@ import {createBrowserRouter} from "react-router";
 import PageLayout from "./layouts/PageLayout.jsx";
 import BareLayout from "./layouts/BareLayout.jsx";
 import SearchLayout from "./layouts/SearchLayout.jsx";
-import Countdown from "./components/Countdown.jsx";
+import Countdown from "./pages/countdown/Countdown.jsx";
 import Routes from "./routes/constants/Routes.js";
 
 // TODO: add actual page elements instead of placeholder strings
