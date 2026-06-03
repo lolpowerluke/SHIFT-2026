@@ -1,9 +1,15 @@
 import React from 'react';
+import {Link} from "react-router";
+import Routes from "../routes/constants/Routes.js";
 
 export default function Footer()
 {
     return (
         <footer>
+            <div className="ctx">
+                <small>
+                    Jouw data blijft van jou. Check het <Link to={Routes.Privacy}>Privacybeleid</Link>.
+                </small>
             <hr/>
             <div className="text-info">
                 <p>
@@ -48,6 +54,7 @@ export default function Footer()
                 2026 SHIFT — Erasmushogeschool Brussel. <br/>
                 Alle rechten voorbehouden.
             </small>
+            </div>
         </footer>
     )
 }

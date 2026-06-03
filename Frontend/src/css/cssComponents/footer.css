@@ -1,4 +1,13 @@
 footer {
+    .ctx{
+        display: flex;
+        flex-direction: column;
+    }
+
+    small{
+        text-align: center;
+    }
+
     hr {
         color: var(--bg-shift-alt);
         margin-bottom: 15px;

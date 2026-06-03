@@ -22,9 +22,6 @@ export default function Countdown() {
 
     return (
         <>
-            <div className="logoWrap">
-                <img src="../../assets/logos/ehb_wit.png" fetchPriority="high"/>
-            </div>
             <div className="wrap topSpacer flexSpaceBetween">
                 <div className="heroLayout">
                     <div>
@@ -114,7 +111,6 @@ export default function Countdown() {
                     <a className="linkBtn" id="std" onClick={handleSTDClick} title="Add this event to your calendar">
                         Save the date!
                     </a>
-                    <Footer/>
                 </div>
             </div>
         </>
