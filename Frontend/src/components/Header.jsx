@@ -25,7 +25,7 @@ export default function Header() {
                     {/* Code based on JoachimGautama's web2-course-project-front-end-JoachimGautama */}
                     <input type="checkbox" id="hamburgerNav"/>
                     <label htmlFor="hamburgerNav">
-                        <div className="flexCtx">
+                        <div className="flexCtx btn">
                             <div className="l1 line"></div>
                             <div className="l2 line"></div>
                             <div className="l3 line"></div>

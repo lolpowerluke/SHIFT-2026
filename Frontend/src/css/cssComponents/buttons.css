@@ -1,6 +1,6 @@
 /* general button styling */
 
-.linkBtn,
+.linkBtn, .btn,
 button {
   background-color: var(--bg-shift-alt);
   border: 5px solid var(--border-primary);
@@ -11,7 +11,6 @@ button {
   padding: 10px;
   box-shadow: 5px 5px 0 1px var(--shadow-primary);
   text-decoration: none;
-  width: 70%;
   transition:
     transform 0.1s,
     box-shadow 0.1s;
@@ -19,7 +18,7 @@ button {
   cursor: pointer;
 }
 
-.linkBtn:active,
+.linkBtn:active, .btn:active,
 button:active {
   transform: translateY(3px);
   box-shadow: 2px 2px 0 1px var(--shadow-primary);

@@ -2,8 +2,8 @@
 @import url(./nav.css);
 
 header {
-    padding-bottom: 25px;
-    padding-top: 20px;
+    padding-bottom: 2rem;
+    padding-top: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: start;

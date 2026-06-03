@@ -16,6 +16,9 @@
     li {
       color: var(--txt-shift-secondary);
     }
+    a{
+      text-decoration: none;
+    }
   }
 }
 
@@ -55,15 +58,15 @@
 }
 
 .line {
-  width: 90%;
-  height: 0.3rem;
+  width: 2rem;
+  height: 5px;
   background-color: var(--bg-shift-secondary);
   transition: all 0.2s ease;
   border-radius: 0.2rem;
 }
 
 .l2 {
-  margin: 0.3rem 0;
+  margin: .4rem 0;
   width: 60%;
 }
 
@@ -71,17 +74,19 @@
   cursor: pointer;
 }
 
-#hamburgerNav:checked + label > .l1 {
-  transform: rotate(45deg) translateY(0.85rem);
+#hamburgerNav:checked + label > .flexCtx > .l1 {
+  transform: translate(0, .85rem) rotate(45deg);
+  margin: auto;
 }
 
-#hamburgerNav:checked + label > .l2 {
+#hamburgerNav:checked + label > .flexCtx > .l2 {
   opacity: 0;
   transform: rotate(45deg);
 }
 
-#hamburgerNav:checked + label > .l3 {
-  transform: rotate(-45deg) translateY(-0.85rem);
+#hamburgerNav:checked + label > .flexCtx > .l3 {
+  transform: translate(0, -.75rem) rotate(-45deg);
+  margin: auto;
 }
 /* responsiveness */
 
