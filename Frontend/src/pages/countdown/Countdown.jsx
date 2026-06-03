@@ -84,16 +84,7 @@ export default function Countdown() {
                     <div className="shiftCopy cardDiv">
                         <h2>Shift Festival 2026</h2>
                         <p>
-                            SHIFT FESTIVAL is een jaarlijks evenement georganiseerd door
-                            <a href="https://www.erasmushogeschool.be/nl">
-                                Erasmushogeschool Brussel</a
-                            >
-                            en de opleiding
-                            <a
-                                href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
-                            >
-                                Multimedia & Creatieve Technologie</a
-                            >.
+                            SHIFT FESTIVAL is een jaarlijks evenement georganiseerd door <a href="https://www.erasmushogeschool.be/nl">Erasmushogeschool Brussel</a> en de opleiding <a href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie">Multimedia & Creatieve Technologie</a>.
                         </p>
                         <br/>
                         <p>
@@ -105,12 +96,8 @@ export default function Countdown() {
                     <div className="mctCopy cardDiv">
                         <h2>Wat is MCT?</h2>
                         <p>
-                            <a
-                                href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
-                            >Multimedia & creatieve technologie</a
-                            >
-                            is een professionele bacheloropleiding aan de Erasmushogeschool
-                            Brussel. Deze opleiding combineert creativiteit met techniek,
+                            <a href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie">Multimedia & creatieve technologie</a> is een professionele bacheloropleiding aan de Erasmushogeschool
+                            Brussel.<br/><br/>Deze opleiding combineert creativiteit met techniek,
                             gericht op het ontwikkelen van digitale ervaringen, interactieve
                             toepassingen, webtechnologieën en creatieve IT-oplossingen.
                         </p>

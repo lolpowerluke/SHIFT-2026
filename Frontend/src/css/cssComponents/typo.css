@@ -43,7 +43,7 @@ small {
 }
 
 a {
-  /* color: var(--hl-primary); */
+   color: var(--bg-shift-secondary);
   font-weight: bold;
 }
 
