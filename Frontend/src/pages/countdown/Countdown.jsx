@@ -51,24 +51,24 @@ export default function Countdown() {
                     <div className="timerDiv xlarge">
                         {timeLeft ? <div id="timer">
                             <div className="timerBox">
+                                <span>{timeLeft.days}</span>
+                                <span>Dagen</span>
+                            </div>
+                            <div className="timerBox">
+                            <span>{timeLeft.hours}</span>
+                                <span>Uren</span>
+                            </div>
+                            <div className="timerBox">
                             <span>
-                                {timeLeft.days}
-                            </span>
-                            </div>
-                            <div className="timerBox">
-                            <span className={blinkingH === "hours" ? "hidden" : ""}>
-                                {timeLeft.hours}
-                            </span>
-                            </div>
-                            <div className="timerBox">
-                            <span className={blinkingM === "minutes" ? "hidden" : ""}>
                                 {timeLeft.minutes}
                             </span>
+                                <span>Minuten</span>
                             </div>
                             <div className="timerBox">
-                            <span className={blinkingS === "seconds" ? "hidden" : ""}>
-                                {timeLeft.seconds}
+                            <span>
+                                <span className={blinkingS === "seconds" ? "hidden" : ""}>{timeLeft.seconds}</span>
                             </span>
+                                <span>Seconds</span>
                             </div>
                         </div> : "LIVE NOW!"}
                         <br/>
