@@ -41,6 +41,7 @@ body {
 	/* background-color: color-mix(var(--bg-shift-primary), transparent 30%); */
 	background-image: url(/assets/iconsOverlay.svg);
 	min-height: 100dvh;
+	color: var(--txt-shift-primary);
 }
 
 #root{

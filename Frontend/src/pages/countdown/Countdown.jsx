@@ -1,8 +1,7 @@
 import React from "react";
 import "./index.css";
-import Footer from "../../components/Footer.jsx";
+import "../../css/style.css"
 import {useCountdown} from "../../js/countdown.js";
-import {Link} from "react-router";
 
 export default function Countdown() {
     const pageURL = "shiftfestival.be";
@@ -49,21 +48,29 @@ export default function Countdown() {
                     </div>
                 </div>
                 <div className="section">
-                    <div className="timerDiv xlarge darkText">
-                        {timeLeft? <div id="timer">
+                    <div className="timerDiv xlarge">
+                        {timeLeft ? <div id="timer">
+                            <div className="timerBox">
                             <span>
                                 {timeLeft.days}
-                            </span>:
+                            </span>
+                            </div>
+                            <div className="timerBox">
                             <span className={blinkingH === "hours" ? "hidden" : ""}>
                                 {timeLeft.hours}
-                            </span>:
+                            </span>
+                            </div>
+                            <div className="timerBox">
                             <span className={blinkingM === "minutes" ? "hidden" : ""}>
                                 {timeLeft.minutes}
-                            </span>:
+                            </span>
+                            </div>
+                            <div className="timerBox">
                             <span className={blinkingS === "seconds" ? "hidden" : ""}>
                                 {timeLeft.seconds}
                             </span>
-					</div> : "LIVE NOW!"}
+                            </div>
+                        </div> : "LIVE NOW!"}
                         <br/>
                         <div className="main">
                             <p>VRIJDAG 19 JUNI</p>
