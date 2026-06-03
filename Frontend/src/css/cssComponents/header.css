@@ -1,3 +1,6 @@
+/* nav + hamburger css */
+@import url(./nav.css);
+
 header {
     padding-bottom: 25px;
     padding-top: 20px;
