@@ -6,8 +6,8 @@ function projectForm() {
         <div class="textWrap">
 			<input
 				type="text"
-				name="nameStudent"
-				id="nameStudent"
+				name="secondNameStudent"
+				id="secondNameStudent"
 				required
 				placeholder="Jouw volledige naam..."
 				/>
@@ -15,8 +15,8 @@ function projectForm() {
 		<div class="emailDiv">
 				<input
 				type="email"
-				name="email"
-				id="email"
+				name="secondEmail"
+				id="secondEmail"
 				placeholder="E-mail..."
 				autocomplete="email"
 				required
@@ -25,15 +25,15 @@ function projectForm() {
         <div class="textWrap">
 			<input
 				type="text"
-				name="linkedinURL"
-				id="linkedinURL"
+				name="secondLinkedinURL"
+				id="secondLinkedinURL"
 				required
 				placeholder="URL naar LinkedIn profiel..."
 				/>
 			</div>
 			<div class="imageSelector">
-				<label for="choose-file">Selfie</label>
-				<input type="file" accept="image/*" id="choose-selfieFile" name="choose-selfieFile"/>
+				<label for="choose-file">2de Selfie</label>
+				<input type="file" accept="image/*" id="choose-secondSelfieFile" name="choose-secondSelfieFile"/>
 				<div id="file-list"></div>
 			</div>
         `
