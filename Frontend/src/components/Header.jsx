@@ -10,7 +10,6 @@ export default function Header() {
                 <Link to="/">
                     <img
                         src="/favicon/shift_icon.svg"
-                        width="90"
                         alt="Shift Icon"
                         className="headerLogo"
                     />
@@ -23,12 +22,14 @@ export default function Header() {
                             </NavLink>)
                         }
                     </ul>
-                {/* Code based on JoachimGautama's web2-course-project-front-end-JoachimGautama */}
+                    {/* Code based on JoachimGautama's web2-course-project-front-end-JoachimGautama */}
                     <input type="checkbox" id="hamburgerNav"/>
                     <label htmlFor="hamburgerNav">
-                        <div className="l1 line"></div>
-                        <div className="l2 line"></div>
-                        <div className="l3 line"></div>
+                        <div className="flexCtx">
+                            <div className="l1 line"></div>
+                            <div className="l2 line"></div>
+                            <div className="l3 line"></div>
+                        </div>
                     </label>
                 </div>
             </div>

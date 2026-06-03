@@ -7,9 +7,14 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: start;
-    background-color: var(--bg-shift-alt);
 
     a {
         width: fit-content;
+    }
+
+    .headerLogo {
+        position: relative;
+        z-index: 3;
+        height: 100%;
     }
 }

@@ -1,6 +1,5 @@
 /* TODO: fix positioning of hamburger menu */
 /* TODO: fix styling of hamburger menu */
-/* TODO: switch responsiveness to mobile first */
 
 /* Code based on JoachimGautama's web2-course-project-front-end-JoachimGautama */
 .nav {
@@ -42,15 +41,30 @@
 }
 
 /* lines */
-.line {
+.flexCtx{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+
+  aspect-ratio: 1 / 1;
   width: 2rem;
+  background-color: var(--bg-shift-alt);
+  padding: .5rem;
+  border-radius: 8px;
+}
+
+.line {
+  width: 90%;
   height: 0.3rem;
-  background-color: black;
+  background-color: var(--bg-shift-secondary);
   transition: all 0.2s ease;
+  border-radius: 0.2rem;
 }
 
 .l2 {
   margin: 0.3rem 0;
+  width: 60%;
 }
 
 #hamburgerNav + label {

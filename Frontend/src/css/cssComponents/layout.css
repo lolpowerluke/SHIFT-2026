@@ -34,11 +34,6 @@ footer {
 	justify-content: space-between;
 }
 
-.headerLogo {
-	position: relative;
-	z-index: 3;
-}
-
 .cardDiv {
 	h2 {
 		margin-top: 0;
