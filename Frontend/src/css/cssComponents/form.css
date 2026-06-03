@@ -27,6 +27,11 @@ form {
 		}
 	}
 
+	textarea {
+		resize: vertical;
+		min-height: 150px;
+	}
+
 	input[type="file"] {
 		border-radius: 10px;
 		color: var(--txt-shift-secondary);
