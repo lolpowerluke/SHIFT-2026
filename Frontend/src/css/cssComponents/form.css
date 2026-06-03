@@ -112,7 +112,7 @@ input::placeholder {
 }
 
 
-.submitDiv {
+.submitDiv, .extraButton {
 	margin-top: var(--margin-section);
 	display: flex;
 	flex-direction: column;

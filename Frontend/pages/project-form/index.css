@@ -39,18 +39,21 @@ input, textarea, select {
 	}
 
 	label {
-		font-size: 15px;
+		font-size: 20pt;
 		font-weight: bold;
 	}
 }
 
+.extraButton {
+	margin-bottom: 15px;
+}
 
 
 /* Code used from [https://w3collective.com/preview-selected-img-file-input-js/]
 Complete source in *README*
 */
 
-/*
+
 .imageSelector, .videoSelector, .documentSelector {
     display: flex;
     flex-direction: column;
@@ -72,11 +75,6 @@ Complete source in *README*
 		transform 0.1s,
 		box-shadow 0.1s;
 		align-self: center;
-    }
-
-    label {
-        font-size: 20pt;
-		font-weight: bold;
     }
 
     #img-preview {
@@ -109,5 +107,3 @@ Complete source in *README*
         border: 5px solid black;
     }
 }
-
-*/
