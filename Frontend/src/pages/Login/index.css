@@ -2,16 +2,11 @@ input, textarea, select {
 	margin: 15px;
 }
 
-
-.section>div,
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.removeFile {
+	width: min-content;
 }
 
-
-#user-form {
+ .form-3de {
 	margin-bottom: 100px;
 	display: flex;
 

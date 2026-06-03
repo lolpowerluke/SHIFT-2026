@@ -26,7 +26,7 @@ function observe(input) {
 }
 
 document.querySelectorAll('.img-upload-zone, .social-zone').forEach(setupDynamicInputs);
-document.querySelector("button").addEventListener("click", () => {
+document.querySelector("button").addEventListener("click", async () => {
   let firstName = document.querySelector(".firstName").value;
   let lastName = document.querySelector(".lastName").value;
   let imgElements = document.querySelectorAll(".img");
@@ -63,10 +63,10 @@ document.querySelector("button").addEventListener("click", () => {
     media: imgArray,
     socials: socialArray
   }
-  const req = fetch(import.meta.env.VITE_API_URL + "/api/user", {
+  const req = await fetch(import.meta.env.VITE_API_URL + "/api/user", {
     method: "PUT",
     body: body
   });
-  const res = req.json();
+  const res = await req.json();
   console.log(res);
 });

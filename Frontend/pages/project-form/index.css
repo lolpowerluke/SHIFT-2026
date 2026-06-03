@@ -1,0 +1,98 @@
+.removeFile {
+	width: min-content;
+}
+
+.form-3de {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	.emailDiv {
+		display: flex;
+		justify-content: center;
+		font-size: 15pt;
+	}
+
+	textarea {
+		display: flex;
+		justify-content: center;
+		font-size: 15pt;
+	}
+}
+
+.part {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	background-color: var(--bg-shift-secondary);
+	border: 5px solid black;
+	border-radius: 10px;
+	text-align: start;
+
+	h3,
+	span,
+	label {
+		color: var(--txt-shift-secondary);
+		margin: 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+/* Code used from [https://w3collective.com/preview-selected-img-file-input-js/]
+Complete source in *README*
+*/
+
+#img-preview {
+	display: none;
+	border: 10px double var(--bg-shift-alt);
+	margin: 30px;
+}
+
+#img-preview img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
+
+.extraPersonForm {
+	display: none;
+}
+
+#extraPersonToggle:checked~.extraPersonForm {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+#extraPersonToggle:checked+label {
+	.line:first-child {
+		transform: translateY(13px) rotate(-45deg);
+	}
+
+	.line:last-child {
+		transform: translateY(13px) rotate(45deg);
+	}
+}
+
+.addPerson {
+	height: 30px;
+	width: 30px;
+	position: relative;
+
+	.line {
+		position: absolute;
+		height: 4px;
+		width: 30px;
+	}
+
+	.line:first-child {
+		transform: translateY(13px);
+	}
+
+	.line:last-child {
+		transform: translateY(13px) rotate(90deg);
+	}
+}

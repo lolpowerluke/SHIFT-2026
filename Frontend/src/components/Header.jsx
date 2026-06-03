@@ -1,6 +1,6 @@
-import {Link, NavLink} from "react-router";
-import {NavRoutes} from "../routes/constants/NavRoutes.js";
-
+import React from "react";
+import { Link, NavLink } from "react-router";
+import { NavRoutes } from "../routes/NavRoutes.js";
 
 export default function Header() {
     return (
@@ -23,7 +23,7 @@ export default function Header() {
                         }
                     </ul>
                     {/* Code based on JoachimGautama's web2-course-project-front-end-JoachimGautama */}
-                    <input type="checkbox" id="hamburgerNav"/>
+                    <input type="checkbox" id="hamburgerNav" />
                     <label htmlFor="hamburgerNav">
                         <div className="flexCtx btn">
                             <div className="l1 line"></div>

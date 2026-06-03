@@ -6,5 +6,6 @@ const Routes = {
     CountDown: "/countdown",
     Login3e: "/projecten-3e/login",
     uMoeder: "/uMoeder",
+    Project: "/project",
 }
 export default Routes;
