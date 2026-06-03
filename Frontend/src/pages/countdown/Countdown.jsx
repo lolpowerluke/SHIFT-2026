@@ -77,7 +77,7 @@ export default function Countdown() {
                             <p>17:00 - 21:30</p>
                         </div>
                         <br/>
-                        <a href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" className="btn" target="_blank">Schrijf je gratis in</a>
+                        <a href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" className="btn" target="_blank">Schrijf je gratis in!</a>
                     </div>
                 </div>
                 <div className="copy-text section darkText" id="copy-text">
