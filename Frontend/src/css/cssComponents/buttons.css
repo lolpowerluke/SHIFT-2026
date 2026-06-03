@@ -7,7 +7,7 @@ button {
   border-radius: 10px;
   font-size: 18px;
   font-weight: bold;
-  color: var(--txt-shift-primary);
+  color: var(--txt-shift-secondary);
   padding: 10px;
   box-shadow: 5px 5px 0 1px var(--shadow-primary);
   text-decoration: none;
@@ -22,7 +22,7 @@ button {
 button:active {
   transform: translateY(3px);
   box-shadow: 2px 2px 0 1px var(--shadow-primary);
-  color: var(--txt-shift-primary);
+  color: var(--txt-shift-secondary);
 }
 
 .fitContent {

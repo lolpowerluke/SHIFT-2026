@@ -18,7 +18,7 @@ export default function Countdown() {
         }
     }
 
-    const {timeLeft, blinking} = useCountdown()
+    const {timeLeft, blinkingS, blinkingM, blinkingH} = useCountdown()
 
     return (
         <>
@@ -49,10 +49,21 @@ export default function Countdown() {
                     </div>
                 </div>
                 <div className="section">
-                    <div className="timerDiv xlarge">
-                        {timeLeft? <span id="timer"
-                        ><span id="days">{timeLeft.days}</span>D <span id="hours">{timeLeft.hours}</span>H <span id="minutes">{timeLeft.minutes}</span>M <span id="seconds">{timeLeft.seconds}</span>S
-					</span> : "LIVE NOW!"}
+                    <div className="timerDiv xlarge darkText">
+                        {timeLeft? <div id="timer">
+                            <span>
+                                {timeLeft.days}
+                            </span>:
+                            <span className={blinkingH === "hours" ? "hidden" : ""}>
+                                {timeLeft.hours}
+                            </span>:
+                            <span className={blinkingM === "minutes" ? "hidden" : ""}>
+                                {timeLeft.minutes}
+                            </span>:
+                            <span className={blinkingS === "seconds" ? "hidden" : ""}>
+                                {timeLeft.seconds}
+                            </span>
+					</div> : "LIVE NOW!"}
                         <br/>
                         <div className="main">
                             <p>VRIJDAG 19 JUNI</p>
@@ -65,7 +76,7 @@ export default function Countdown() {
                         <img id="scrollPointer" src="/assets/icons/pointer2.svg"/>
                     </div>
                 </a>
-                <div className="copy-text section" id="copy-text">
+                <div className="copy-text section darkText" id="copy-text">
                     <div className="shiftCopy cardDiv">
                         <h2>Shift Festival 2026</h2>
                         <p>
@@ -103,8 +114,8 @@ export default function Countdown() {
                 </div>
                 <div>
                     <div>
-                        <p className="xlarge bold">
-                            Wil je er zeker bij zijn? Plaats het in je agenda.
+                        <p className="xlarge bold darkText">
+                            Wil je er zeker bij zijn?<br/>Plaats het nu al in je agenda!
                         </p>
                     </div>
                     <br/>
