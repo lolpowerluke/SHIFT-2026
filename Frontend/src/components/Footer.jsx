@@ -28,7 +28,7 @@ export default function Footer()
                     />
                 </a>
                 <a href="https://www.tiktok.com/@erasmushogeschool">
-                    <img src="/tiktok_icon_white.svg" height="40" alt="TikTok Icon"/>
+                    <img src="/assets/logos/tiktok_icon_white.svg" height="40" alt="TikTok Icon"/>
                 </a>
                 <a href="https://www.erasmushogeschool.be/nl">
                     <img src="/assets/logos/ehb_wit.png" height="60" alt="EhB Logo"/>

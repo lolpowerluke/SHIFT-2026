@@ -105,7 +105,7 @@ export default function Countdown() {
                 </div>
                 <div>
                     <div>
-                        <p className="xlarge bold darkText">
+                        <p className="xlarge bold">
                             Wil je er zeker bij zijn?<br/>Plaats het nu al in je agenda!
                         </p>
                     </div>
