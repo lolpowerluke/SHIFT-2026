@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css"
+import "./index.css";
 import Footer from "../../components/Footer.jsx";
 import {useCountdown} from "../../js/countdown.js";
 import {Link} from "react-router";

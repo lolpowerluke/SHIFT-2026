@@ -22,6 +22,7 @@ const router = createBrowserRouter(
                     {path: Routes.privacyNL, element: <PrivacyNL/>},
                 ]},
                 {path: Routes.Login3e, element: "Login3e"},
+                {path: Routes.uMoeder, element: "isDik"}, //same as {path: "/uMoeder", element: "isDik"
                 {
                     element: <SearchLayout/>,
                     children: [
