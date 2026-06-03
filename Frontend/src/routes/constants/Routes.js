@@ -4,6 +4,6 @@ const Routes = {
     privacyEN: "/privacy/en",
     privacyNL: "/privacy/nl",
     CountDown: "/countdown",
-    Login3e: "/projecten-3e/login",
+    Project: "/project",
 }
 export default Routes;

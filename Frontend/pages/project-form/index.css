@@ -57,18 +57,6 @@ Complete source in *README*
 	display: block;
 }
 
-#selfie-preview {
-	display: none;
-	border: 10px double var(--bg-shift-alt);
-	margin: 30px;
-}
-
-#selfie-preview img {
-	width: 100%;
-	height: auto;
-	display: block;
-}
-
 .extraPersonForm {
 	display: none;
 }
