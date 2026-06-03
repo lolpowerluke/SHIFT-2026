@@ -21,10 +21,11 @@ const router = createBrowserRouter(
                     {path: Routes.privacyEN, element: <PrivacyEN/>},
                     {path: Routes.privacyNL, element: <PrivacyNL/>},
                 ]},
+                {path: Routes.Root, element: <Countdown/>},
                 {path: Routes.Login3e, element: "Login3e"},
                 {path: Routes.uMoeder, element: "isDik"}, //same as {path: "/uMoeder", element: "isDik"
                 {
-                    element: <SearchLayout/>,
+                    element: <SearchLayout/>, //this will hold all search logic for the projects
                     children: [
                         {path: "/projects", element: "Projects"},
                     ]
@@ -32,9 +33,7 @@ const router = createBrowserRouter(
             ]
         },
         {
-            element: <BareLayout/>, children: [
-                {path: Routes.Root, element: <Countdown/>},
-            ]
+            element: <BareLayout/>, children: [] //just in case, this has no header
         }
     ]
 )
