@@ -77,11 +77,6 @@ Complete source in *README*
 		align-self: center;
     }
 
-    label {
-        font-size: 20pt;
-		font-weight: bold;
-    }
-
     #img-preview {
     display: none;   
     border: 10px double var(--bg-shift-alt);
