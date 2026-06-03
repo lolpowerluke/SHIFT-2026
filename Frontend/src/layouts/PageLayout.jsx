@@ -6,7 +6,7 @@ import Footer from "../components/Footer.jsx";
 export default function PageLayout() {
     return (
         <>
-            <Header/>
+            {/*<Header/>*/}
             <Outlet/>
             <Footer/>
         </>

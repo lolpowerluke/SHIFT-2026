@@ -76,13 +76,10 @@ export default function Countdown() {
                             <p>VRIJDAG 19 JUNI</p>
                             <p>17:00 - 21:30</p>
                         </div>
+                        <br/>
+                        <a href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" className="btn" target="_blank">Schrijf je gratis in</a>
                     </div>
                 </div>
-                <a href="#copy-text">
-                    <div>
-                        <img id="scrollPointer" src="/assets/icons/pointer2.svg"/>
-                    </div>
-                </a>
                 <div className="copy-text section darkText" id="copy-text">
                     <div className="shiftCopy cardDiv">
                         <h2>Shift Festival 2026</h2>
