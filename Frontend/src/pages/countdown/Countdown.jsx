@@ -68,7 +68,7 @@ export default function Countdown() {
                             <span>
                                 <span className={blinkingS === "seconds" ? "hidden" : ""}>{timeLeft.seconds}</span>
                             </span>
-                                <span>Seconds</span>
+                                <span>Seconden</span>
                             </div>
                         </div> : "LIVE NOW!"}
                         <br/>
@@ -82,7 +82,7 @@ export default function Countdown() {
                 </div>
                 <div className="copy-text section darkText" id="copy-text">
                     <div className="shiftCopy cardDiv">
-                        <h2>Shift Festival 2026</h2>
+                        <h2>SHIFT Festival 2026</h2>
                         <p>
                             SHIFT FESTIVAL is een jaarlijks evenement georganiseerd door <a href="https://www.erasmushogeschool.be/nl">Erasmushogeschool Brussel</a> en de opleiding <a href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie">Multimedia & Creatieve Technologie</a>.
                         </p>
