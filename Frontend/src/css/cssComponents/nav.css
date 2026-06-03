@@ -13,6 +13,7 @@
     justify-content: space-between;
     margin-bottom: 0;
     font-size: 18px;
+    gap: 1rem;
     li {
       color: var(--txt-shift-secondary);
     }

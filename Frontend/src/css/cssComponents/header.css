@@ -2,8 +2,10 @@
 @import url(./nav.css);
 
 header {
-    padding-bottom: 3rem;
-    padding-top: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding: 1rem 0 2rem;
     display: flex;
     flex-direction: row;
     justify-content: start;
