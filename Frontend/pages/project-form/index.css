@@ -1,30 +1,11 @@
-input, textarea, select {
-	margin: 15px;
-}
-
-.wrap {
-	min-height: 70vh;
-}
-
-
 .removeFile {
 	width: min-content;
 }
 
- .form-3de {
-	margin-bottom: 100px;
+.form-3de {
 	display: flex;
-
-	input[type="email"],
-	input[type="password"],
-	input[type="text"] {
-		width: 40%;
-	}
-	.textWrap {
-		display: flex;
-		justify-content: center;
-		font-size: 15pt;
-	}
+	flex-direction: column;
+	gap: 10px;
 
 	.emailDiv {
 		display: flex;
@@ -37,78 +18,93 @@ input, textarea, select {
 		justify-content: center;
 		font-size: 15pt;
 	}
+}
 
+.part {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	background-color: var(--bg-shift-secondary);
+	border: 5px solid black;
+	border-radius: 10px;
+	text-align: start;
+
+	h3,
+	span,
 	label {
-		font-size: 20pt;
-		font-weight: bold;
+		color: var(--txt-shift-secondary);
+		margin: 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 	}
 }
-
-.extraButton {
-	margin-bottom: 15px;
-}
-
 
 /* Code used from [https://w3collective.com/preview-selected-img-file-input-js/]
 Complete source in *README*
 */
 
+#img-preview {
+	display: none;
+	border: 10px double var(--bg-shift-alt);
+	margin: 30px;
+}
 
-.imageSelector, .videoSelector, .documentSelector {
-    display: flex;
-    flex-direction: column;
-    margin-right: 15px;
-    margin-left: 15px;
-    margin-bottom: 20px;
+#img-preview img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
 
+#selfie-preview {
+	display: none;
+	border: 10px double var(--bg-shift-alt);
+	margin: 30px;
+}
 
-     input {
-        background-color: var(--bg-shift-secondary);
-		border: 5px solid black;
-		border-radius: 10px;
-		color: black;
-		font-size: 14px;
-		padding: 10px;
-		text-decoration: none;
-		width: 40%;
-		transition:
-		transform 0.1s,
-		box-shadow 0.1s;
-		align-self: center;
-    }
+#selfie-preview img {
+	width: 100%;
+	height: auto;
+	display: block;
+}
 
-    label {
-        font-size: 20pt;
-		font-weight: bold;
-    }
+.extraPersonForm {
+	display: none;
+}
 
-    #img-preview {
-    display: none;   
-    border: 10px double var(--bg-shift-alt);
-    margin: 30px;
-    }
+#extraPersonToggle:checked~.extraPersonForm {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
 
-    #img-preview img {  
-    width: 100%;
-    height: auto; 
-    display: block;   
-    }
+#extraPersonToggle:checked+label {
+	.line:first-child {
+		transform: translateY(13px) rotate(-45deg);
+	}
 
-    #selfie-preview {
-    display: none;   
-    border: 10px double var(--bg-shift-alt);
-    margin: 30px;
-    }
+	.line:last-child {
+		transform: translateY(13px) rotate(45deg);
+	}
+}
 
-    #selfie-preview img {  
-    width: 100%;
-    height: auto; 
-    display: block;   
-    }
+.addPerson {
+	height: 30px;
+	width: 30px;
+	position: relative;
 
-    input[type="file"]::file-selector-button {
-        background-color: var(--bg-shift-alt);
-        border-radius: 10px;
-        border: 5px solid black;
-    }
+	.line {
+		position: absolute;
+		height: 4px;
+		width: 30px;
+	}
+
+	.line:first-child {
+		transform: translateY(13px);
+	}
+
+	.line:last-child {
+		transform: translateY(13px) rotate(90deg);
+	}
 }

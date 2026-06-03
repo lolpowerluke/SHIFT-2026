@@ -1,49 +1,3 @@
-
-function projectForm() {
-    document.querySelector("#extraPerson").addEventListener("click", function() {
-        document.querySelector(".extraPersonForm").innerHTML = 
-        `
-        <div class="textWrap">
-			<input
-				type="text"
-				name="secondNameStudent"
-				id="secondNameStudent"
-				required
-				placeholder="Jouw volledige naam..."
-				/>
-            </div>
-		<div class="emailDiv">
-				<input
-				type="email"
-				name="secondEmail"
-				id="secondEmail"
-				placeholder="E-mail..."
-				autocomplete="email"
-				required
-				/>
-			</div>
-        <div class="textWrap">
-			<input
-				type="text"
-				name="secondLinkedinURL"
-				id="secondLinkedinURL"
-				required
-				placeholder="URL naar LinkedIn profiel..."
-				/>
-			</div>
-			<div class="imageSelector">
-				<label for="choose-file">2de Selfie</label>
-				<input type="file" accept="image/*" id="choose-secondSelfieFile" name="choose-secondSelfieFile"/>
-				<div id="file-list"></div>
-			</div>
-        `
-    })
-}
-
-projectForm();
-
-
-
 /* Code used from [https://w3collective.com/preview-selected-img-file-input-js/]
 Complete source in *README*
 */
@@ -56,36 +10,39 @@ const selfiePreview = document.getElementById("selfie-preview");
 
 
 choose_projectFile.addEventListener("change", function () {
-  getImgData();
+	getImgData();
 });
 
 choose_selfieFile.addEventListener("change", function () {
-  getSelfieData();
+	getSelfieData();
 });
 
 
 function getImgData() {
-  const files = choose_projectFile.files[0];
-  if (files) {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(files);
-    fileReader.addEventListener("load", function () {
-      imgPreview.style.display = "block";
-      imgPreview.innerHTML = '<img src="' + this.result + '" />';
-    });    
-  }
+	const files = choose_projectFile.files[0];
+	if (files) {
+		const fileReader = new FileReader();
+		fileReader.readAsDataURL(files);
+		fileReader.addEventListener("load", function () {
+			imgPreview.style.display = "block";
+			imgPreview.innerHTML = '<img src="' + this.result + '" />';
+		});    
+	}
 }
 
 function getSelfieData() {
-  const files = choose_selfieFile.files[0];
-  if (files) {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(files);
-    fileReader.addEventListener("load", function () {
-      selfiePreview.style.display = "block";
-      selfiePreview.innerHTML = '<img src="' + this.result + '" />';
-    });    
-  }
+	const files = choose_selfieFile.files[0];
+	if (files) {
+		const fileReader = new FileReader();
+		fileReader.readAsDataURL(files);
+		fileReader.addEventListener("load", function () {
+			selfiePreview.style.display = "block";
+			selfiePreview.innerHTML = '<img src="' + this.result + '" />';
+		});    
+	}
 }
 
 */
+
+
+
