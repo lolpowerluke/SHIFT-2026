@@ -39,7 +39,7 @@ input, textarea, select {
 	}
 
 	label {
-		font-size: 15px;
+		font-size: 20pt;
 		font-weight: bold;
 	}
 }
@@ -50,7 +50,7 @@ input, textarea, select {
 Complete source in *README*
 */
 
-/*
+
 .imageSelector, .videoSelector, .documentSelector {
     display: flex;
     flex-direction: column;
@@ -109,5 +109,3 @@ Complete source in *README*
         border: 5px solid black;
     }
 }
-
-*/

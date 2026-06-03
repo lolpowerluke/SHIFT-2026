@@ -1,6 +1,45 @@
+input, textarea, select {
+	margin: 15px;
+}
+
+
 .section>div,
 .section {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+
+#user-form {
+	margin-bottom: 100px;
+	display: flex;
+
+	input[type="email"],
+	input[type="password"],
+	input[type="text"] {
+		width: 40%;
+	}
+	.textWrap {
+		display: flex;
+		justify-content: center;
+		font-size: 15pt;
+	}
+
+	.emailDiv {
+		display: flex;
+		justify-content: center;
+		font-size: 15pt;
+	}
+
+	textarea {
+		display: flex;
+		justify-content: center;
+		font-size: 15pt;
+	}
+
+	label {
+		font-size: 15px;
+		font-weight: bold;
+	}
 }
