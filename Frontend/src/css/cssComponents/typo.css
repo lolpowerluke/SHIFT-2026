@@ -62,6 +62,9 @@ a {
 
 .darkText {
   color: var(--txt-shift-secondary);
+  a {
+    color: var(--txt-shift-secondary);
+  }
 }
 
 @media (min-width: 1024px) {
