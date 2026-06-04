@@ -3,9 +3,25 @@ import { uploadFile } from "../utils/cloudinary.js";
 
 const getUser = async (req, res) => {
   try {
-    const userId = req.user?.id;
-    if (!userId) {
+    const requesterId = req.user?.id;
+    const userRole = req.user?.role;
+
+    if (!requesterId) {
       return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    if (userRole !== "3rdyear" && userRole !== "admin") {
+      return res.status(403).json({ success: false, message: "Forbidden" });
+    }
+
+    let whereClause = "u.id = ?";
+    let whereValue;
+
+    if (req.query.email) {
+      whereClause = "u.email = ?";
+      whereValue = req.query.email;
+    } else {
+      whereValue = req.query.id ? Number(req.query.id) : requesterId;
     }
 
     const [rows] = await db.query(
@@ -23,8 +39,8 @@ const getUser = async (req, res) => {
           WHERE s.user = u.id
         ) AS socials
       FROM users u
-      WHERE u.id = ?`,
-      [userId]
+      WHERE ${whereClause}`,
+      [whereValue]
     );
 
     if (!rows.length) {
@@ -40,16 +56,18 @@ const getUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const userId = req.user?.id;
+    const requesterId = req.user?.id;
     const userRole = req.user?.role;
 
-    if (!userId) {
+    if (!requesterId) {
       return res.status(401).json({ success: false, message: "Unauthorized" });
     }
 
     if (userRole !== "3rdyear" && userRole !== "admin") {
       return res.status(403).json({ success: false, message: "Only 3rdyear students can edit their profile" });
     }
+
+    const userId = req.query.id ? Number(req.query.id) : requesterId;
 
     const { firstname, lastname, socials } = req.body;
     const imageFile = req.file ?? null;
@@ -64,7 +82,6 @@ const updateUser = async (req, res) => {
     }
 
     if (imageFile) {
-      // Replace existing image
       await db.query(
         `DELETE FROM media WHERE id IN (SELECT media FROM media_user WHERE user = ?)`,
         [userId]
@@ -76,12 +93,9 @@ const updateUser = async (req, res) => {
       await db.query("INSERT INTO media_user (user, media) VALUES (?, ?)", [userId, insertId]);
     }
 
-    if (socials !== undefined) {
+    if (socials) {
       await db.query("DELETE FROM socials WHERE user = ?", [userId]);
-      if (Array.isArray(socials) && socials.length) {
-        const rows = socials.map((s) => [userId, s]);
-        await db.query("INSERT INTO socials (user, social) VALUES ?", [rows]);
-      }
+      await db.query("INSERT INTO socials (user, social) VALUES (?, ?)", [userId, socials]);
     }
 
     res.status(200).json({ success: true, message: "Profile updated" });

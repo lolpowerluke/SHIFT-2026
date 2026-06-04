@@ -7,6 +7,7 @@ const PROJECT_QUERY = `
         p.name,
         p.description,
         p.course,
+        p.promoter,
         (
           SELECT JSON_ARRAYAGG(JSON_OBJECT('id', i.id, 'url', i.url))
           FROM (SELECT DISTINCT img.id, img.url FROM media img
@@ -20,6 +21,13 @@ const PROJECT_QUERY = `
           WHERE mp3.project = p.id AND mp3.type = 'magazine'
           LIMIT 1
         ) AS magazine,
+        (
+          SELECT JSON_OBJECT('id', mv.id, 'url', mv.url)
+          FROM media mv
+          JOIN media_project mp4 ON mp4.media = mv.id
+          WHERE mp4.project = p.id AND mp4.type = 'video'
+          LIMIT 1
+        ) AS video,
         (
           SELECT JSON_ARRAYAGG(JSON_OBJECT(
             'id', u2.id,
@@ -73,21 +81,32 @@ const getProject = async (req, res) => {
 
 const createProject = async (req, res) => {
   try {
-    const { name, description, course, memberIds = [] } = req.body;
+    const { name, description, course, promoter, memberIds = [], videoURL } = req.body;
     const files = req.files?.files ?? [];
     const [magazineFile] = req.files?.magazine ?? [];
 
-    if (!name || !description || !course || memberIds.length === 0) {
+    const userId = req.user?.id;
+    const userRole = req.user?.role;
+
+    if (!userId) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    if (userRole !== "3rdyear" && userRole !== "admin") {
+      return res.status(403).json({ success: false, message: "Only 3rdyear students can create a project" });
+    }
+
+    if (!name || !description || !course || !promoter || memberIds.length === 0) {
       return res.status(412).json({ success: false, message: "Body incomplete" });
     }
 
     const [{ insertId }] = await db.query(
-      "INSERT INTO projects (name, description, course) VALUES (?, ?, ?)",
-      [name, description, course],
+      "INSERT INTO projects (name, description, course, promoter) VALUES (?, ?, ?, ?)",
+      [name, description, course, promoter],
     );
 
     if (memberIds.length) {
-      const memberRows = memberIds.map((uid) => [uid, insertId]);
+      const memberRows = JSON.parse(memberIds).map(uid => [uid, insertId]);
       await db.query("INSERT INTO project_user (user, project) VALUES ?", [memberRows]);
     }
 
@@ -104,8 +123,13 @@ const createProject = async (req, res) => {
 
     if (magazineFile) {
       const { url } = await uploadFile(magazineFile.buffer, { resource_type: "raw" });
-      const [[{ insertId: mediaId }]] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
+      const [{ insertId: mediaId }] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
       await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [insertId, mediaId]);
+    }
+
+    if (videoURL) {
+      const [r] = await db.query("INSERT INTO media (url) VALUES (?)", [videoURL]);
+      await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [[[insertId, r.insertId, 'video']]]);
     }
 
     res.status(201).json({ success: true, projectId: insertId });
@@ -117,10 +141,23 @@ const createProject = async (req, res) => {
 
 const updateProject = async (req, res) => {
   try {
+    console.log(req.body);
     const { id } = req.params;
-    const { name, description, course, memberIds } = req.body;
+    const { name, description, course, promoter, videoURL, memberIds,
+      imageURL, magazineURL } = req.body;
     const files = req.files?.files ?? [];
     const [magazineFile] = req.files?.magazine ?? [];
+
+    const userId = req.user?.id;
+    const userRole = req.user?.role;
+
+    if (!userId) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    if (userRole !== "3rdyear" && userRole !== "admin") {
+      return res.status(403).json({ success: false, message: "Only 3rdyear students can edit a project" });
+    }
 
     const [existing] = await db.query("SELECT id FROM projects WHERE id = ?", [id]);
     if (!existing.length) {
@@ -129,7 +166,7 @@ const updateProject = async (req, res) => {
 
     const [membership] = await db.query(
       "SELECT id FROM project_user WHERE project = ? AND user = ?",
-      [id, req.user.id]
+      [id, userId]
     );
     if (!membership.length) {
       return res.status(403).json({ success: false, message: "Not a project owner" });
@@ -140,6 +177,7 @@ const updateProject = async (req, res) => {
     if (name) { fields.push("name = ?"); values.push(name); }
     if (description) { fields.push("description = ?"); values.push(description); }
     if (course) { fields.push("course = ?"); values.push(course); }
+    if (promoter) { fields.push("promoter = ?"); values.push(promoter); }
 
     if (fields.length) {
       await db.query(`UPDATE projects SET ${fields.join(", ")} WHERE id = ?`, [...values, id]);
@@ -148,8 +186,22 @@ const updateProject = async (req, res) => {
     if (memberIds) {
       await db.query("DELETE FROM project_user WHERE project = ?", [id]);
       if (memberIds.length) {
-        const rows = memberIds.map((uid) => [uid, id]);
+        const rows = JSON.parse(memberIds).map(uid => [uid, id]);
         await db.query("INSERT INTO project_user (user, project) VALUES ?", [rows]);
+      }
+    }
+
+    // Video: accept URL directly
+    if (videoURL !== undefined) {
+      await db.query(
+        `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'video')`,
+        [id]
+      );
+      await db.query("DELETE FROM media_project WHERE project = ? AND type = 'video'", [id]);
+
+      if (videoURL) {
+        const [r] = await db.query("INSERT INTO media (url) VALUES (?)", [videoURL]);
+        await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [[[id, r.insertId, 'video']]]);
       }
     }
 
@@ -168,6 +220,21 @@ const updateProject = async (req, res) => {
       );
       const mediaRows = mediaInserts.map((mid) => [id, mid, 'image']);
       await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [mediaRows]);
+    } else if (imageURL === "") {
+      await db.query(
+        `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'image')`,
+        [id]
+      );
+      await db.query("DELETE FROM media_project WHERE project = ? AND type = 'image'", [id]);
+    } else if (imageURL) {
+      await db.query(
+        `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'image')`,
+        [id]
+      );
+      await db.query("DELETE FROM media_project WHERE project = ? AND type = 'image'", [id]);
+
+      const [r] = await db.query("INSERT INTO media (url) VALUES (?)", [imageURL]);
+      await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [[[id, r.insertId, 'image']]]);
     }
 
     if (magazineFile) {
@@ -178,8 +245,23 @@ const updateProject = async (req, res) => {
       await db.query("DELETE FROM media_project WHERE project = ? AND type = 'magazine'", [id]);
 
       const { url } = await uploadFile(magazineFile.buffer, { resource_type: "raw" });
-      const [[{ insertId: mediaId }]] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
+      const [{ insertId: mediaId }] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
       await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [id, mediaId]);
+    } else if (magazineURL === "") {
+      await db.query(
+        `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'magazine')`,
+        [id]
+      );
+      await db.query("DELETE FROM media_project WHERE project = ? AND type = 'magazine'", [id]);
+    } else if (magazineURL) {
+      await db.query(
+        `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'magazine')`,
+        [id]
+      );
+      await db.query("DELETE FROM media_project WHERE project = ? AND type = 'magazine'", [id]);
+
+      const [r] = await db.query("INSERT INTO media (url) VALUES (?)", [magazineURL]);
+      await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [id, r.insertId]);
     }
 
     res.status(200).json({ success: true, message: "Project updated" });
@@ -192,6 +274,17 @@ const updateProject = async (req, res) => {
 const deleteProject = async (req, res) => {
   try {
     const { id } = req.params;
+
+    const userId = req.user?.id;
+    const userRole = req.user?.role;
+
+    if (!userId) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    if (userRole !== "3rdyear" && userRole !== "admin") {
+      return res.status(403).json({ success: false, message: "Only 3rdyear students can delete a project" });
+    }
 
     const [existing] = await db.query("SELECT id FROM projects WHERE id = ?", [id]);
     if (!existing.length) {

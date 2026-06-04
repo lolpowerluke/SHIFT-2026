@@ -66,8 +66,9 @@ await db.query(`
   CREATE TABLE IF NOT EXISTS projects (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
+    promoter ENUM("Dennis Baptist","Maaike Beuten","Joni De Borger","Peter Dickx","Jan Everaert","Bert Heyman","Jan Snoekx","Stefan Tilburgs","Els Vande Kerckhove","An Vanlierde","Kobe Vermeire","Ben Verschooris"),
     description TEXT,
-    course ENUM('Website', 'Installatie', 'Mobile app', 'VR & AR', '3D games', 'Motion')
+    course ENUM('XR & 3D', 'Experience Design', 'Web & Mobile', 'Digital Deisgn')
   )
 `)
 
@@ -75,7 +76,7 @@ await db.query(`
   CREATE TABLE IF NOT EXISTS media_project (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     project BIGINT UNSIGNED,
-    type ENUM('Video', 'Image', 'Magazine'),
+    type ENUM('video', 'image', 'magazine'),
     media BIGINT UNSIGNED,
     CONSTRAINT fk_mp_project
       FOREIGN KEY(project)
