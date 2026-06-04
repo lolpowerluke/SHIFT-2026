@@ -12,33 +12,30 @@ import Login from "./pages/login/Login.jsx";
 import ProjectForm from "./pages/project/ProjectForm.jsx";
 
 // TODO: add actual page elements instead of placeholder strings
-const router = createBrowserRouter(
-    [
-        {
-            element: <PageLayout />,
-            children: [
-                {
-                    path: Routes.Privacy, element: <PrivacyRedirect />,
-                    children: [
-                        { index: true, element: <PrivacyRedirect /> },
-                        { path: Routes.privacyEN, element: <PrivacyEN /> },
-                        { path: Routes.privacyNL, element: <PrivacyNL /> },
-                    ]
-                },
-                { path: Routes.Root, element: <Countdown /> },
-                { path: Routes.Login, element: <Login /> },
-                { path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
-                {
-                    element: <SearchLayout />, //this will hold all search logic for the projects
-                    children: [
-                        { path: "/projects", element: "Projects" },
-                    ]
-                },
-            ]
-        },
-        {
-            element: <BareLayout />,
-            children: [{ path: Routes.Root, element: <Countdown /> }],
-        },
-    ]);
+const router = createBrowserRouter([
+	{
+		element: <PageLayout />,
+		children: [
+			{
+				path: Routes.Privacy,
+				element: <PrivacyRedirect />,
+				children: [
+					{ index: true, element: <PrivacyRedirect /> },
+					{ path: Routes.privacyEN, element: <PrivacyEN /> },
+					{ path: Routes.privacyNL, element: <PrivacyNL /> },
+				],
+			},
+			{ path: Routes.Root, element: <Countdown /> },
+			{ path: Routes.Login, element: <Login /> },
+			{
+				element: <SearchLayout />, //this will hold all search logic for the projects
+				children: [{ path: "/projects", element: "Projects" }],
+			},
+		],
+	},
+	{
+		element: <BareLayout />,
+		children: [{ path: Routes.Root, element: <Countdown /> }],
+	},
+]);
 export default router;
