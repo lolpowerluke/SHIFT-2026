@@ -14,7 +14,7 @@
 }
 
 footer {
-	margin: var(--spacing-footer) 0;
+	padding: var(--spacing-footer) 0;
 }
 
 .centered {

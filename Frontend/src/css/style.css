@@ -33,13 +33,13 @@ body {
 
 html {
 	background-image: url(/assets/wallOverlayBlue.png);
-	background-size: cover;
+	background-size: 4096px;
 	scroll-behavior: smooth;
 }
 
 body {
-	/* background-color: color-mix(var(--bg-shift-primary), transparent 30%); */
 	background-image: url(/assets/iconsOverlay.svg);
+	background-size: 1500px;
 	min-height: 100dvh;
 	color: var(--txt-shift-primary);
 }

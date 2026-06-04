@@ -73,7 +73,7 @@ body {
 }
 
 .topSpacer {
-    margin-top: var(--spacing-top);
+    padding-top: var(--spacing-top);
 }
 
 .timerDiv {
