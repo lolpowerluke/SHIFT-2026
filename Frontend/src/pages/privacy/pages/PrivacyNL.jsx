@@ -1,6 +1,8 @@
 import {Link} from "react-router";
 import Routes from "../../../routes/constants/Routes.js"
 
+// TODO: remove part about removing data
+
 export default function PrivacyNL() {
     return (
         <>

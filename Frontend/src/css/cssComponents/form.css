@@ -1,82 +1,27 @@
-form {
+.form {
 	display: flex;
 	flex-direction: column;
 	margin-top: var(--margin-between);
+	gap: 10px;
+	max-width: 600px;
+	margin-inline: auto;
 
-	input[type="email"] {
+	button,
+	select,
+	textarea,
+	input:not([type="file"]) {
 		background-color: var(--bg-shift-secondary);
 		border: 5px solid black;
 		border-radius: 10px;
-		color: black;
+		color: var(--txt-shift-secondary);
 		font-size: 14px;
 		padding: 10px;
 		text-decoration: none;
-		width: 50%;
 		transition:
 			transform 0.1s,
 			box-shadow 0.1s;
-		align-self: center;
-	}
-
-	input[type="text"] {
-		background-color: var(--bg-shift-secondary);
-		border: 5px solid black;
-		border-radius: 10px;
-		color: black;
-		font-size: 14px;
-		padding: 10px;
-		text-decoration: none;
-		width: 50%;
-		transition:
-			transform 0.1s,
-			box-shadow 0.1s;
-		align-self: center;
-	}
-
-	input[type="password"] {
-		background-color: var(--bg-shift-secondary);
-		border: 5px solid black;
-		border-radius: 10px;
-		color: black;
-		font-size: 14px;
-		padding: 10px;
-		text-decoration: none;
-		width: 50%;
-		transition:
-			transform 0.1s,
-			box-shadow 0.1s;
-		align-self: center;
-	}
-
-	.projectInfo {
-		background-color: var(--bg-shift-secondary);
-		border: 5px solid black;
-		border-radius: 10px;
-		color: black;
-		font-size: 14px;
-		padding: 10px;
-		text-decoration: none;
-		width: 40%;
-		transition:
-		transform 0.1s,
-		box-shadow 0.1s;
-		align-self: center;
-	}
-
-
-	.courseSelect {
-		background-color: var(--bg-shift-secondary);
-		border: 5px solid black;
-		border-radius: 10px;
-		color: black;
-		font-size: 14px;
-		padding: 10px;
-		text-decoration: none;
-		width: 42%;
-		transition:
-		transform 0.1s,
-		box-shadow 0.1s;
-		align-self: center;
+		width: 100%;
+		box-sizing: border-box;
 
 		option {
 			color: black;
@@ -84,59 +29,62 @@ form {
 	}
 
 	button {
-		margin-left: var(--margin-small);
+		width: fit-content;
+		padding: 5px 10px;
 	}
 
-	label {
-		margin-bottom: var(--spacing-xs);
+	textarea {
+		resize: vertical;
+		min-height: 150px;
 	}
-}
 
-input::placeholder {
-	color: var(--txt-shift-secondary);
-}
-
-@media screen and (min-width: 1024px) {
-	form {
-    input[type="email"], input[type="text"] {
-      width: 100%;
-    }
-
-		.emailWrap {
-      width: 50%;
-      display: flex;
-      justify-content: space-between;
-      margin: 0 auto;
-		}
+	input[type="file"] {
+		border-radius: 10px;
+		color: var(--txt-shift-secondary);
+		border: 5px solid black;
+		font-size: 14px;
+		text-decoration: none;
+		width: 100%;
+		box-sizing: border-box;
 	}
-}
 
-
-.submitDiv {
-	margin-top: var(--margin-section);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	text-align: center;
+	input[type="file"]::file-selector-button {
+		background-color: var(--bg-shift-alt);
+		border-radius: 5px;
+		padding: 10px;
+		border: none;
+	}
 
 	button {
 		background-color: var(--hl-primary);
-		border: 5px solid black;
 		font-size: 15pt;
-		padding: 5px;
 		box-shadow: 5px 5px 0 1px black;
-		text-decoration: none;
-		width: 20%;
-		transition:
-			transform 0.1s,
-			box-shadow 0.1s;
-		align-self: center;
-		color: var(--txt-shift);
-		border-radius: 10px;
+		margin-left: var(--margin-small);
 	}
 
 	button:active {
 		transform: translateY(3px);
 		box-shadow: 2px 2px 0 1px black;
 	}
+}
+
+@media screen and (min-width: 1024px) {
+	form {
+		.emailWrap {
+			width: 50%;
+			display: flex;
+			justify-content: space-between;
+			margin: 0 auto;
+		}
+	}
+}
+
+
+.extraButton {
+	margin-top: var(--margin-section);
+	text-align: center;
+}
+
+*::placeholder {
+	opacity: 0.7;
 }

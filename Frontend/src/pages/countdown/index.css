@@ -1,5 +1,4 @@
 body {
-    min-height: 100dvh;
     background-repeat: repeat;
     margin: 0;
 }
@@ -22,7 +21,7 @@ body {
     position: relative;
     display: inline-block;
 
-    & > img:first-child {
+    &>img:first-child {
         position: absolute;
         height: 35px;
         transform: none;
@@ -59,11 +58,11 @@ body {
         font-weight: bold;
     }
 
-    & > div:first-child {
+    &>div:first-child {
         font-size: 1.5rem;
     }
 
-    & > div:last-child {
+    &>div:last-child {
         font-size: 3rem;
     }
 }
@@ -89,7 +88,7 @@ body {
             flex-direction: column;
             color: var(--txt-shift-secondary);
 
-            & > :first-child {
+            &> :first-child {
                 padding: .5rem;
                 border-radius: .5rem;
                 margin: 0 .5rem;
@@ -98,7 +97,8 @@ body {
                 box-shadow: 5px 5px 0 1px var(--shadow-primary);
                 border: 5px solid var(--border-primary);
             }
-            & > :last-child {
+
+            &> :last-child {
                 margin-top: 1rem;
                 font-size: small;
             }
@@ -112,10 +112,12 @@ body {
 }
 
 @keyframes MoveUpDown {
+
     0%,
     100% {
         transform: scale(1, -1) translateY(5px);
     }
+
     50% {
         transform: scale(1, -1) translateY(-5px);
     }
@@ -154,33 +156,38 @@ p#warningTxt {
     .logoWrap {
         align-self: flex-start;
 
-        & > img:first-child {
+        &>img:first-child {
             height: 60px;
             left: 30px;
         }
     }
 
-    #heroLogo {
-        height: var(--shift-logo-height);
+    &>img:first-child {
+        height: 60px;
+        left: 30px;
+    }
+}
+
+#heroLogo {
+    height: var(--shift-logo-height);
+}
+
+.heroWrapper {
+    transform-origin: 50% calc(var(--shift-logo-height) / -12);
+    margin-bottom: var(--spacing-heroWrapper);
+    height: max-content;
+}
+
+.copy-text {
+    display: flex;
+    justify-content: space-between;
+
+    .shiftCopy {
+        max-width: 45%;
+        margin-bottom: 0px;
     }
 
-    .heroWrapper {
-        transform-origin: 50% calc(var(--shift-logo-height) / -12);
-        margin-bottom: var(--spacing-heroWrapper);
-        height: max-content;
-    }
-
-    .copy-text {
-        display: flex;
-        justify-content: space-between;
-
-        .shiftCopy {
-            max-width: 45%;
-            margin-bottom: 0px;
-        }
-
-        .mctCopy {
-            max-width: 45%;
-        }
+    .mctCopy {
+        max-width: 45%;
     }
 }
