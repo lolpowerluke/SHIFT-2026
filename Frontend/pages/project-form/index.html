@@ -125,17 +125,24 @@
 						<input type="file" accept="image/*" id="choose-projectFile" name="choose-projectFile" />
 						<label class="subtext">Gelieve in een 16:9 aspect ratio in te dienen</label>
 					</div>
-					<div>
-						<label for="choose-file">Plaats je video op YouTube en plaats de link hier onder (niet privé)</label>
-						<input type="text" name="videoURL" id="videoURL" required
-							placeholder="YouTube link van je project footage..." />
+					<div class="part">
+						<h3>Project media</h3>
+						<div>
+							<label for="choose-file">Projectbeeld</label>
+							<input type="file" accept="image/*" id="choose-projectFile" name="choose-projectFile" />
+						</div>
+						<div>
+							<label for="choose-file">Plaats je video op YouTube en plaats de link hier onder (niet
+								privé)</label>
+							<input type="text" name="videoURL" id="videoURL" required
+								placeholder="YouTube link van je project footage..." />
+						</div>
+						<div>
+							<label for="choose-file">Magazine (pdf)</label>
+							<input type="file" accept=".pdf/*" id="choose-magazineFile" name="choose-magazineFile" />
+						</div>
 					</div>
-					<div>
-						<label for="choose-file">Magazine (pdf)</label>
-						<input type="file" accept=".pdf/*" id="choose-magazineFile" name="choose-magazineFile" />
-					</div>
-				</div>
-				<button class="submit" type="submit">Submit</button>
+					<button class="submit" type="submit">Submit</button>
 			</form>
 		</div>
 		<load file="../../htmlComponents/footer.fragment.html" />

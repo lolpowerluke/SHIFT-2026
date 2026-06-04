@@ -8,7 +8,8 @@ import Routes from "./routes/constants/Routes.js";
 import PrivacyRedirect from "./pages/privacy/PrivacyRedirect.jsx";
 import PrivacyEN from "./pages/privacy/pages/PrivacyEN.jsx";
 import PrivacyNL from "./pages/privacy/pages/PrivacyNL.jsx";
-import Login from "./pages/Login/Login.jsx";
+import Login from "./pages/login/Login.jsx";
+import ProjectForm from "./pages/project/ProjectForm.jsx";
 
 // TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter([
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
 				],
 			},
 			{ path: Routes.Login, element: <Login /> },
+			{ path: Routes.ProjectForm, element: <ProjectForm /> },
 			{
 				element: <SearchLayout />,
 				children: [{ path: "/projects", element: "Projects" }],
