@@ -27,33 +27,35 @@ export default function Countdown() {
                     <img src="/assets/heroContent/heroImg.jpg" alt="EhB SHIFT festival hero image"/>
                 </video>
             </div>
-            <div className="heroLayout">
+            <div className="landingWrap">
                 <div>
-                    <img
-                        src="../../assets/logos/shift_logo.svg"
-                        id="heroLogo"
-                        fetchPriority="high"
-                    />
-                </div>
-                <div>
-                    <div className="heroWrapper">
-                        <div className="rotatedText">
-                            <h1>Eindprojecten</h1>
-                            <div className="heroText">
-                                <div className="courseHeroText">
-                                    <h1>
-                                        OPLEIDING MULTIMEDIA
-                                        <br/>
-                                        CREATIEVE TECHNOLOGIE
-                                    </h1>
+                    <div className="heroLayout">
+                        <div>
+                            <img
+                                src="../../assets/logos/shift_logo.svg"
+                                id="heroLogo"
+                                fetchPriority="high"
+                            />
+                        </div>
+                        <div>
+                            <div className="heroWrapper">
+                                <div className="rotatedText">
+                                    <h1>Eindprojecten</h1>
+                                    <div className="heroText">
+                                        <div className="courseHeroText">
+                                            <h1>
+                                                OPLEIDING MULTIMEDIA
+                                                <br/>
+                                                CREATIEVE TECHNOLOGIE
+                                            </h1>
+                                        </div>
+                                        <div>&</div>
+                                    </div>
                                 </div>
-                                <div>&</div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div className="wrap flexSpaceBetween">
                 <div className="timerDiv xlarge">
                     {timeLeft ? (<>
                             <div className="cd darkText">
@@ -95,13 +97,15 @@ export default function Countdown() {
                         "LIVE NOW!"
                     )}
                 </div>
-                    {/*TODO: J past aan tot hier*/}
-                    <div className="section">
-                        <div className="main">
-                            <p>VRIJDAG 19 JUNI</p>
-                            <p>17:00 - 21:30</p>
-                        </div>
+            </div>
+            {/*TODO: J past aan tot hier*/}
+            <div className="wrap topSpacer flexSpaceBetween">
+                <div className="section">
+                    <div className="main">
+                        <p>VRIJDAG 19 JUNI</p>
+                        <p>17:00 - 21:30</p>
                     </div>
+                </div>
                 <div className="copy-text section darkText" id="copy-text">
                     <div className="shiftCopy cardDiv">
                         <h2>SHIFT Festival 2026</h2>

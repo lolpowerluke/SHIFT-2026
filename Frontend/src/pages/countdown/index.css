@@ -171,6 +171,18 @@ p#warningTxt {
 }
 
 @media (min-width: 1024px) {
+    .landingWrap{
+        display: flex;
+        flex-direction: row;
+        height: 80vh;
+        width: 92.5dvw;
+        justify-content: space-between;
+        .timerDiv{
+            align-self: flex-end;
+            margin: 0 0 2rem 0;
+        }
+    }
+
     .heroContent {
         display: block;
         position: absolute;
