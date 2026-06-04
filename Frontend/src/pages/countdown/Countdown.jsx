@@ -53,7 +53,7 @@ export default function Countdown() {
                     </div>
                 </div>
             </div>
-            <div className="wrap topSpacer flexSpaceBetween">
+            <div className="wrap flexSpaceBetween">
                 <div className="timerDiv xlarge">
                     {timeLeft ? (<>
                             <div className="cd darkText">
@@ -94,6 +94,7 @@ export default function Countdown() {
                     ) : (
                         "LIVE NOW!"
                     )}
+                </div>
                     {/*TODO: J past aan tot hier*/}
                     <div className="section">
                         <div className="main">
@@ -101,7 +102,6 @@ export default function Countdown() {
                             <p>17:00 - 21:30</p>
                         </div>
                     </div>
-                </div>
                 <div className="copy-text section darkText" id="copy-text">
                     <div className="shiftCopy cardDiv">
                         <h2>SHIFT Festival 2026</h2>
