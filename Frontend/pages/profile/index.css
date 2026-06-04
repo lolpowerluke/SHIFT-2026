@@ -1,13 +1,15 @@
-input, textarea, select {
+input,
+textarea,
+select {
 	margin: 15px;
 }
 
 
 .section>div,
 .section {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 }
 
 
@@ -20,6 +22,7 @@ input, textarea, select {
 	input[type="text"] {
 		width: 40%;
 	}
+
 	.textWrap {
 		display: flex;
 		justify-content: center;

@@ -1,12 +1,8 @@
-input, textarea, select {
-	margin: 15px;
-}
-
 .removeFile {
 	width: min-content;
 }
 
- .form-3de {
+.form-3de {
 	margin-bottom: 100px;
 	display: flex;
 
@@ -15,6 +11,7 @@ input, textarea, select {
 	input[type="text"] {
 		width: 40%;
 	}
+
 	.textWrap {
 		display: flex;
 		justify-content: center;

@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = "https://api.shiftfestival.be";
 
 const token = localStorage.getItem("token");
 if (!token) {
@@ -17,6 +17,10 @@ async function apiFetch(path, opts = {}) {
   return res.json();
 }
 
+function val(id) {
+  return document.getElementById(id)?.value.trim() ?? "";
+}
+
 async function prefill() {
   const userData = await apiFetch("/api/user");
   if (!userData.success) {
@@ -25,12 +29,9 @@ async function prefill() {
   }
   const user = userData.user;
 
+  document.getElementById("firstName").value = user.firstname || "";
+  document.getElementById("lastName").value = user.lastname || "";
   document.getElementById("email").value = user.email || "";
-
-  if (user.firstname || user.lastname) {
-    document.getElementById("nameStudent").value =
-      [user.firstname, user.lastname].filter(Boolean).join(" ");
-  }
   if (Array.isArray(user.socials) && user.socials.length) {
     document.getElementById("linkedinURL").value = user.socials[0];
   }
@@ -39,28 +40,26 @@ async function prefill() {
   if (!projData.success) return;
 
   const myProject = projData.projects.find(
-    (p) =>
-      Array.isArray(p.members) &&
-      p.members.some((m) => m.id === user.id)
+    (p) => Array.isArray(p.members) && p.members.some((m) => m.id === user.id)
   );
-
   if (!myProject) return;
 
   document.getElementById("nameProject").value = myProject.name || "";
   document.getElementById("description").value = myProject.description || "";
 
-  const courseSelect = document.querySelector(".courseSelect");
-  if (courseSelect && myProject.course) {
-    const opt = [...courseSelect.options].find((o) => o.value === myProject.course);
-    if (opt) courseSelect.value = myProject.course;
+  if (myProject.course) {
+    const courseEl = document.getElementById("course");
+    const opt = [...courseEl.options].find((o) => o.value === myProject.course);
+    if (opt) courseEl.value = myProject.course;
   }
 
-  const otherMembers = myProject.members.filter((m) => m.id !== user.id);
-  if (otherMembers.length) {
-    const m2 = otherMembers[0];
+  const others = myProject.members.filter((m) => m.id !== user.id);
+  if (others.length) {
+    const m2 = others[0];
     document.getElementById("extraPersonToggle").checked = true;
-    document.getElementById("secondnamestudent").value =
-      [m2.firstname, m2.lastname].filter(Boolean).join(" ");
+    syncSecondRequired();
+    document.getElementById("2ndStudentFirstName").value = m2.firstname || "";
+    document.getElementById("2ndStudentLastName").value = m2.lastname || "";
     document.getElementById("secondemail").value = m2.email || "";
     if (Array.isArray(m2.socials) && m2.socials.length) {
       document.getElementById("secondlinkedinurl").value = m2.socials[0];
@@ -69,7 +68,7 @@ async function prefill() {
 }
 
 const extraToggle = document.getElementById("extraPersonToggle");
-const secondInputs = ["secondnamestudent", "secondemail", "secondlinkedinurl"];
+const secondInputs = ["2ndStudentFirstName", "2ndStudentLastName", "secondemail", "secondlinkedinurl"];
 
 function syncSecondRequired() {
   const open = extraToggle.checked;
@@ -87,32 +86,24 @@ const form = document.querySelector(".form-3de");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const selects = document.querySelectorAll(".courseSelect");
-  const course = selects[0]?.value;
+  let currentUserId = null;
+  try {
+    currentUserId = JSON.parse(atob(token.split(".")[1])).id;
+  } catch { }
 
   const payload = {
-    name: document.getElementById("nameProject").value.trim(),
-    description: document.getElementById("description").value.trim(),
-    course,
-    memberIds: [],
+    name: val("nameProject"),
+    description: val("description"),
+    course: val("course"),
+    memberIds: currentUserId ? [currentUserId] : [],
     mediaIds: [],
   };
 
-  let currentUserId = null;
-  try {
-    const p = JSON.parse(atob(token.split(".")[1]));
-    currentUserId = p.id;
-  } catch { }
-
-  if (currentUserId) payload.memberIds.push(currentUserId);
-
-  const extraOpen = extraToggle.checked;
-  const secondEmail = document.getElementById("secondemail").value.trim();
-  if (extraOpen && secondEmail) {
+  if (extraToggle.checked && val("secondemail")) {
     try {
       const allProj = await apiFetch("/project/");
       const allMembers = (allProj.projects || []).flatMap((p) => p.members || []);
-      const match = allMembers.find((m) => m.email === secondEmail);
+      const match = allMembers.find((m) => m.email === val("secondemail"));
       if (match) payload.memberIds.push(match.id);
     } catch { }
   }
@@ -122,25 +113,15 @@ form.addEventListener("submit", async (e) => {
   submitBtn.textContent = "Bezig...";
 
   try {
+
     const existingData = await apiFetch("/project/");
     const existing = (existingData.projects || []).find(
-      (p) =>
-        Array.isArray(p.members) &&
-        p.members.some((m) => m.id === currentUserId)
+      (p) => Array.isArray(p.members) && p.members.some((m) => m.id === currentUserId)
     );
 
-    let result;
-    if (existing) {
-      result = await apiFetch(`/project/${existing.id}`, {
-        method: "PUT",
-        body: JSON.stringify(payload),
-      });
-    } else {
-      result = await apiFetch("/project/", {
-        method: "POST",
-        body: JSON.stringify(payload),
-      });
-    }
+    const result = existing
+      ? await apiFetch(`/project/${existing.id}`, { method: "PUT", body: JSON.stringify(payload) })
+      : await apiFetch("/project/", { method: "POST", body: JSON.stringify(payload) });
 
     if (result.success) {
       submitBtn.textContent = "✓ Opgeslagen";

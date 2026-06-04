@@ -1,7 +1,8 @@
-form {
+.form {
 	display: flex;
 	flex-direction: column;
 	margin-top: var(--margin-between);
+	gap: 10px;
 	max-width: 600px;
 	margin-inline: auto;
 
@@ -25,6 +26,11 @@ form {
 		option {
 			color: black;
 		}
+	}
+
+	button {
+		width: fit-content;
+		padding: 5px 10px;
 	}
 
 	textarea {
@@ -52,7 +58,6 @@ form {
 	button {
 		background-color: var(--hl-primary);
 		font-size: 15pt;
-		padding: 5px;
 		box-shadow: 5px 5px 0 1px black;
 		margin-left: var(--margin-small);
 	}
@@ -61,10 +66,6 @@ form {
 		transform: translateY(3px);
 		box-shadow: 2px 2px 0 1px black;
 	}
-}
-
-input::placeholder {
-	color: var(--txt-shift-secondary);
 }
 
 @media screen and (min-width: 1024px) {
@@ -82,4 +83,8 @@ input::placeholder {
 .extraButton {
 	margin-top: var(--margin-section);
 	text-align: center;
+}
+
+*::placeholder {
+	opacity: 0.7;
 }

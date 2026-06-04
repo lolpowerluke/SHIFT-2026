@@ -1,43 +1,69 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./index.css";
-import Footer from "../../components/Footer.jsx";
-import { Link } from "react-router";
+
+const API_BASE = "https://api.shiftfestival.be";
 
 export default function Login() {
+	const navigate = useNavigate();
+	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
+
+	async function handleSubmit(e) {
+		e.preventDefault();
+		setError("");
+		setLoading(true);
+
+		const email = e.target.email.value.trim();
+		const password = e.target.password.value;
+
+		try {
+			const res = await fetch(`${API_BASE}/auth/login`, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ email, password }),
+			});
+			const data = await res.json();
+
+			if (!data.success) {
+				setError(data.message || "Login mislukt");
+				return;
+			}
+
+			localStorage.setItem("token", data.token);
+			navigate(-1);
+		} catch {
+			setError("Netwerk fout, probeer opnieuw");
+		} finally {
+			setLoading(false);
+		}
+	}
+
 	return (
 		<>
 			<div className="wrap">
 				<div className="section">
-					<h1>Project formulier</h1>
-					<h3>
-						Vul het korte formulier in om je project op de Shift festival
-						website te plaatsen.
-					</h3>
-					<form className="form-3de" action="#">
-						<div className="emailDiv">
-							<input
-								type="email"
-								name="email"
-								id="email"
-								placeholder="E-mail..."
-								autocomplete="email"
-								required
-							/>
-						</div>
-						<div className="textWrap">
-							<input
-								type="password"
-								name="password"
-								id="password"
-								placeholder="Password..."
-								required
-							/>
-						</div>
-						<div className="submitDiv">
-							<button className="submit" type="submit">
-								Login
-							</button>
-						</div>
+					<h1>Login</h1>
+					<form className="form" onSubmit={handleSubmit}>
+						<input
+							type="email"
+							name="email"
+							id="email"
+							placeholder="E-mail..."
+							autoComplete="email"
+							required
+						/>
+						<input
+							type="password"
+							name="password"
+							id="password"
+							placeholder="Password..."
+							required
+						/>
+						{error && <p className="error">{error}</p>}
+						<button className="submit" type="submit" disabled={loading}>
+							{loading ? "Bezig..." : "Login"}
+						</button>
 					</form>
 				</div>
 			</div>

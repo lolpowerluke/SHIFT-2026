@@ -14,7 +14,7 @@ body {
 	position: relative;
 	display: inline-block;
 
-	& > img:first-child {
+	&>img:first-child {
 		position: absolute;
 		height: 35px;
 		transform: none;
@@ -51,11 +51,11 @@ body {
 		font-weight: bold;
 	}
 
-	& > div:first-child {
+	&>div:first-child {
 		font-size: 1.5rem;
 	}
 
-	& > div:last-child {
+	&>div:last-child {
 		font-size: 3rem;
 	}
 }
@@ -78,10 +78,12 @@ body {
 }
 
 @keyframes MoveUpDown {
+
 	0%,
 	100% {
 		transform: scale(1, -1) translateY(5px);
 	}
+
 	50% {
 		transform: scale(1, -1) translateY(-5px);
 	}
@@ -120,7 +122,7 @@ p#warningTxt {
 	.logoWrap {
 		align-self: flex-start;
 
-		& > img:first-child {
+		&>img:first-child {
 			height: 60px;
 			left: 30px;
 		}
