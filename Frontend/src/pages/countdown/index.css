@@ -165,4 +165,17 @@ p#warningTxt {
 		height: 60px;
 		left: 30px;
 	}
+
+	.copy-text {
+		display: flex;
+		justify-content: space-between;
+
+		.shiftCopy {
+			max-width: 45%;
+			margin-bottom: 0px;
+		}
+		.mctCopy {
+			max-width: 45%;
+		}
+	}
 }
