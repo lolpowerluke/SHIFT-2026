@@ -190,9 +190,13 @@ p#warningTxt {
         }
     }
 
-    .timerDiv .cd{
+    .timerDiv .cd, .timerDiv .cta{
         text-align: left;
         justify-self: left;
+    }
+
+    .timerDiv .cta{
+        margin-top: -1rem;
     }
 
     .copy-text {

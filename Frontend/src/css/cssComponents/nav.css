@@ -28,7 +28,7 @@
 .line {
   width: 2rem;
   height: 5px;
-  background-color: var(--bg-shift-secondary);
+  background-color: var(--txt-shift-secondary);
   transition: all 0.2s ease;
   border-radius: 0.2rem;
 }

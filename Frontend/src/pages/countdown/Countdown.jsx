@@ -48,52 +48,52 @@ export default function Countdown() {
                 </div>
             </div>
             <div className="wrap topSpacer flexSpaceBetween">
-                <div className="section">
-                    <div className="timerDiv xlarge">
-                        {timeLeft ? (<>
-                                <div className="cd darkText">
-                                    <span>We tellen af!</span>
+                <div className="timerDiv xlarge">
+                    {timeLeft ? (<>
+                            <div className="cd darkText">
+                                <span>We tellen af!</span>
+                            </div>
+                            <div id="timer">
+                                <div className="timerBox">
+                                    <span>{timeLeft.days}</span>
+                                    <span>Dagen</span>
                                 </div>
-                                <div id="timer">
-                                    <div className="timerBox">
-                                        <span>{timeLeft.days}</span>
-                                        <span>Dagen</span>
-                                    </div>
-                                    <div className="timerBox">
-                                        <span>{timeLeft.hours}</span>
-                                        <span>Uren</span>
-                                    </div>
-                                    <div className="timerBox">
-                                        <span>{timeLeft.minutes}</span>
-                                        <span>Minuten</span>
-                                    </div>
-                                    <div className="timerBox">
+                                <div className="timerBox">
+                                    <span>{timeLeft.hours}</span>
+                                    <span>Uren</span>
+                                </div>
+                                <div className="timerBox">
+                                    <span>{timeLeft.minutes}</span>
+                                    <span>Minuten</span>
+                                </div>
+                                <div className="timerBox">
 									<span>
 										<span className={blinkingS === "seconds" ? "hidden" : ""}>
 											{timeLeft.seconds}
 										</span>
 									</span>
-                                        <span>Seconden</span>
-                                    </div>
+                                    <span>Seconden</span>
                                 </div>
-                            </>
-                        ) : (
-                            "LIVE NOW!"
-                        )}
-                        {/*TODO: J past aan tot hier*/}
-                        <br/>
+                            </div>
+                            <br/>
+                            <div className="cta">
+                                <a
+                                    href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+                                    className="linkBtn"
+                                    target="_blank">
+                                    Schrijf je nu gratis in!
+                                </a>
+                            </div>
+                        </>
+                    ) : (
+                        "LIVE NOW!"
+                    )}
+                    {/*TODO: J past aan tot hier*/}
+                    <div className="section">
                         <div className="main">
                             <p>VRIJDAG 19 JUNI</p>
                             <p>17:00 - 21:30</p>
                         </div>
-                        <br/>
-                        <a
-                            href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-                            className="btn"
-                            target="_blank"
-                        >
-                            Schrijf je gratis in!
-                        </a>
                     </div>
                 </div>
                 <div className="copy-text section darkText" id="copy-text">
