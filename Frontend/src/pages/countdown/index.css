@@ -18,17 +18,12 @@ body {
     font-size: 24px;
 }
 
-.logoWrap {
-    position: relative;
-    display: inline-block;
-
-    & > img:first-child {
-        position: absolute;
-        height: 35px;
-        transform: none;
-        left: 20px;
-        top: 5px;
-    }
+.heroLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
 }
 
 #heroLogo {
@@ -81,6 +76,8 @@ body {
 
 .heroWrapper {
     transform: rotate(-14deg);
+    margin-left: 2.5rem;
+    margin-top: -.2rem;
 }
 
 .topSpacer {
@@ -170,28 +167,6 @@ p#warningTxt {
 }
 
 @media (min-width: 1024px) {
-    .heroLayout {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .logoWrap {
-        align-self: flex-start;
-
-        & > img:first-child {
-            height: 60px;
-            left: 30px;
-        }
-    }
-
-    & > img:first-child {
-        height: 60px;
-        left: 30px;
-    }
-
     .copy-text {
         display: flex;
         justify-content: space-between;
