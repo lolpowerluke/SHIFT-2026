@@ -1,4 +1,5 @@
 import db from "../config/db.js";
+import { uploadFile } from "../utils/cloudinary.js";
 
 const PROJECT_QUERY = `
       SELECT
@@ -10,8 +11,15 @@ const PROJECT_QUERY = `
           SELECT JSON_ARRAYAGG(JSON_OBJECT('id', i.id, 'url', i.url))
           FROM (SELECT DISTINCT img.id, img.url FROM media img
                 JOIN media_project ip2 ON ip2.media = img.id
-                WHERE ip2.project = p.id) i
+                WHERE ip2.project = p.id AND ip2.type = 'image') i
         ) AS media,
+        (
+          SELECT JSON_OBJECT('id', mg.id, 'url', mg.url)
+          FROM media mg
+          JOIN media_project mp3 ON mp3.media = mg.id
+          WHERE mp3.project = p.id AND mp3.type = 'magazine'
+          LIMIT 1
+        ) AS magazine,
         (
           SELECT JSON_ARRAYAGG(JSON_OBJECT(
             'id', u2.id,
@@ -42,17 +50,10 @@ const getAllProjects = async (req, res) => {
     const [result] = await db.query(
       PROJECT_QUERY + ` GROUP BY p.id, p.name, p.description, p.course;`,
     );
-    res.status(200).json({
-      success: true,
-      projects: result,
-    });
+    res.status(200).json({ success: true, projects: result });
   } catch (error) {
     console.error(" error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Failed to get projects",
-      error: error.message,
-    });
+    res.status(500).json({ success: false, message: "Failed to get projects", error: error.message });
   }
 };
 
@@ -61,40 +62,23 @@ const getProject = async (req, res) => {
     const { id } = req.params;
     const [result] = await db.query(PROJECT_QUERY + ` WHERE p.id = ?;`, [id]);
     if (result.length === 0) {
-      return res.status(404).json({
-        success: false,
-        message: `Project with ID ${id} doesnt exist`,
-      });
+      return res.status(404).json({ success: false, message: `Project with ID ${id} doesnt exist` });
     }
-    res.status(200).json({
-      success: true,
-      project: result[0],
-    });
+    res.status(200).json({ success: true, project: result[0] });
   } catch (error) {
     console.error(" error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Failed to get project info",
-      error: error.message,
-    });
+    res.status(500).json({ success: false, message: "Failed to get project info", error: error.message });
   }
 };
 
 const createProject = async (req, res) => {
   try {
-    const {
-      name,
-      description,
-      course,
-      memberIds = [],
-      mediaIds = [],
-    } = req.body;
+    const { name, description, course, memberIds = [] } = req.body;
+    const files = req.files?.files ?? [];
+    const [magazineFile] = req.files?.magazine ?? [];
 
     if (!name || !description || !course || memberIds.length === 0) {
-      return res.status(412).json({
-        success: false,
-        message: "Body incomplete",
-      });
+      return res.status(412).json({ success: false, message: "Body incomplete" });
     }
 
     const [{ insertId }] = await db.query(
@@ -104,43 +88,43 @@ const createProject = async (req, res) => {
 
     if (memberIds.length) {
       const memberRows = memberIds.map((uid) => [uid, insertId]);
-      await db.query("INSERT INTO project_user (user, project) VALUES ?", [
-        memberRows,
-      ]);
+      await db.query("INSERT INTO project_user (user, project) VALUES ?", [memberRows]);
     }
 
-    if (mediaIds.length) {
-      const mediaRows = mediaIds.map((iid) => [insertId, iid]);
-      await db.query("INSERT INTO media_project (project, media) VALUES ?", [
-        mediaRows,
-      ]);
+    if (files.length) {
+      const uploads = await Promise.all(files.map((f) => uploadFile(f.buffer)));
+      const mediaInserts = await Promise.all(
+        uploads.map(({ url }) =>
+          db.query("INSERT INTO media (url) VALUES (?)", [url]).then(([r]) => r.insertId)
+        )
+      );
+      const mediaRows = mediaInserts.map((mid) => [insertId, mid, 'image']);
+      await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [mediaRows]);
     }
 
-    res.status(201).json({
-      success: true,
-      projectId: insertId,
-    });
+    if (magazineFile) {
+      const { url } = await uploadFile(magazineFile.buffer, { resource_type: "raw" });
+      const [[{ insertId: mediaId }]] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
+      await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [insertId, mediaId]);
+    }
+
+    res.status(201).json({ success: true, projectId: insertId });
   } catch (error) {
     console.error(" error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Failed to create project",
-      error: error.message,
-    });
+    res.status(500).json({ success: false, message: "Failed to create project", error: error.message });
   }
 };
 
 const updateProject = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, description, course, memberIds, mediaIds } = req.body;
+    const { name, description, course, memberIds } = req.body;
+    const files = req.files?.files ?? [];
+    const [magazineFile] = req.files?.magazine ?? [];
 
     const [existing] = await db.query("SELECT id FROM projects WHERE id = ?", [id]);
     if (!existing.length) {
-      return res.status(404).json({
-        success: false,
-        message: `Project ${id} doesn't exist`,
-      });
+      return res.status(404).json({ success: false, message: `Project ${id} doesn't exist` });
     }
 
     const [membership] = await db.query(
@@ -158,10 +142,7 @@ const updateProject = async (req, res) => {
     if (course) { fields.push("course = ?"); values.push(course); }
 
     if (fields.length) {
-      await db.query(`UPDATE projects SET ${fields.join(", ")} WHERE id = ?`, [
-        ...values,
-        id,
-      ]);
+      await db.query(`UPDATE projects SET ${fields.join(", ")} WHERE id = ?`, [...values, id]);
     }
 
     if (memberIds) {
@@ -172,22 +153,39 @@ const updateProject = async (req, res) => {
       }
     }
 
-    if (mediaIds) {
-      await db.query("DELETE FROM media_project WHERE project = ?", [id]);
-      if (mediaIds.length) {
-        const rows = mediaIds.map((iid) => [id, iid]);
-        await db.query("INSERT INTO media_project (project, media) VALUES ?", [rows]);
-      }
+    if (files.length) {
+      await db.query(
+        `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'image')`,
+        [id]
+      );
+      await db.query("DELETE FROM media_project WHERE project = ? AND type = 'image'", [id]);
+
+      const uploads = await Promise.all(files.map((f) => uploadFile(f.buffer)));
+      const mediaInserts = await Promise.all(
+        uploads.map(({ url }) =>
+          db.query("INSERT INTO media (url) VALUES (?)", [url]).then(([r]) => r.insertId)
+        )
+      );
+      const mediaRows = mediaInserts.map((mid) => [id, mid, 'image']);
+      await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [mediaRows]);
+    }
+
+    if (magazineFile) {
+      await db.query(
+        `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'magazine')`,
+        [id]
+      );
+      await db.query("DELETE FROM media_project WHERE project = ? AND type = 'magazine'", [id]);
+
+      const { url } = await uploadFile(magazineFile.buffer, { resource_type: "raw" });
+      const [[{ insertId: mediaId }]] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
+      await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [id, mediaId]);
     }
 
     res.status(200).json({ success: true, message: "Project updated" });
   } catch (error) {
     console.error(" error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Failed to update project",
-      error: error.message,
-    });
+    res.status(500).json({ success: false, message: "Failed to update project", error: error.message });
   }
 };
 
@@ -209,9 +207,7 @@ const deleteProject = async (req, res) => {
     }
 
     await db.query(
-      `DELETE FROM media WHERE id IN (
-        SELECT media FROM media_project WHERE project = ?
-      )`,
+      `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ?)`,
       [id],
     );
 
@@ -220,18 +216,8 @@ const deleteProject = async (req, res) => {
     res.status(200).json({ success: true, message: "Project deleted" });
   } catch (error) {
     console.error(" error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Failed to delete project",
-      error: error.message,
-    });
+    res.status(500).json({ success: false, message: "Failed to delete project", error: error.message });
   }
 };
 
-export {
-  getAllProjects,
-  getProject,
-  createProject,
-  updateProject,
-  deleteProject,
-};
+export { getAllProjects, getProject, createProject, updateProject, deleteProject };

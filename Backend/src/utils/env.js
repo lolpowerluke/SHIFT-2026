@@ -31,6 +31,11 @@ const env = {
   jwt: {
     secret: requireEnv("JWT_SECRET"),
     expiresIn: requireEnv("JWT_EXPIRES_IN")
+  },
+  cloudinary: {
+    name: requireEnv("CLOUDINARY_CLOUD_NAME"),
+    key: requireEnv("CLOUDINARY_API_KEY"),
+    secret: requireEnv("CLOUDINARY_API_SECRET"),
   }
 };
 

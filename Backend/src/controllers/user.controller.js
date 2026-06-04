@@ -1,4 +1,5 @@
 import db from "../config/db.js";
+import { uploadFile } from "../utils/cloudinary.js";
 
 const getUser = async (req, res) => {
   try {
@@ -50,7 +51,8 @@ const updateUser = async (req, res) => {
       return res.status(403).json({ success: false, message: "Only 3rdyear students can edit their profile" });
     }
 
-    const { firstname, lastname, mediaIds, socials } = req.body;
+    const { firstname, lastname, socials } = req.body;
+    const imageFile = req.file ?? null;
 
     const fields = [];
     const values = [];
@@ -61,12 +63,17 @@ const updateUser = async (req, res) => {
       await db.query(`UPDATE users SET ${fields.join(", ")} WHERE id = ?`, [...values, userId]);
     }
 
-    if (mediaIds !== undefined) {
+    if (imageFile) {
+      // Replace existing image
+      await db.query(
+        `DELETE FROM media WHERE id IN (SELECT media FROM media_user WHERE user = ?)`,
+        [userId]
+      );
       await db.query("DELETE FROM media_user WHERE user = ?", [userId]);
-      if (Array.isArray(mediaIds) && mediaIds.length) {
-        const rows = mediaIds.map((mid) => [userId, mid]);
-        await db.query("INSERT INTO media_user (user, media) VALUES ?", [rows]);
-      }
+
+      const { url } = await uploadFile(imageFile.buffer);
+      const [{ insertId }] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
+      await db.query("INSERT INTO media_user (user, media) VALUES (?, ?)", [userId, insertId]);
     }
 
     if (socials !== undefined) {
