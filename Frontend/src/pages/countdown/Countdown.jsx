@@ -81,6 +81,7 @@ export default function Countdown() {
 							<p>VRIJDAG 19 JUNI</p>
 							<p>17:00 - 21:30</p>
 						</div>
+						{/*TODO: J past aan tot hier*/}
 						<br />
 						<a
 							href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
