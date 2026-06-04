@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
 import Routes from "../routes/constants/Routes.js";
+import SocialLinks from "./SocialLinks.jsx";
 
 export default function Footer() {
 	return (
@@ -20,39 +21,7 @@ export default function Footer() {
 						1070 Anderlecht
 					</p>
 				</div>
-				<div className="socialLinks">
-					<a href="https://www.instagram.com/multimedia.ehb/">
-						<img
-							src="/assets/logos/instagram_Glyph_White.svg"
-							height="35"
-							alt="Instagram Icon"
-						/>
-					</a>
-					<a href="https://www.tiktok.com/@multimedia.ehb">
-						<img
-							src="/assets/logos/tiktok_icon_white.svg"
-							height="40"
-							alt="TikTok Icon"
-						/>
-					</a>
-					<a href="https://www.erasmushogeschool.be/nl">
-						<img src="/assets/logos/ehb_geel.png" height="60" alt="EhB Logo" />
-					</a>
-					<a href="https://www.facebook.com/erasmushogeschool/?locale=nl_BE">
-						<img
-							src="/assets/logos/facebook_white.svg"
-							height="40"
-							alt="Facebook Icon"
-						/>
-					</a>
-					<a href="https://be.linkedin.com/school/erasmushogeschool-brussel/?trk=nav_type_overview">
-						<img
-							src="/assets/logos/linkedin_white.svg"
-							height="40"
-							alt="Linkedin Icon"
-						/>
-					</a>
-				</div>
+				<SocialLinks/>
 				<small className="footerCopyright">
 					2026 SHIFT — Erasmushogeschool Brussel. <br />
 					Alle rechten voorbehouden.

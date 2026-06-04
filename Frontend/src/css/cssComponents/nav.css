@@ -103,10 +103,7 @@
   }
 
   ul:has(+ #hamburgerNav) {
-    display: none;
-  }
-
-  ul:has(+ #hamburgerNav:checked) {
+    /*display: none;*/
     display: block;
     position: absolute;
     width: 100vw;
@@ -120,8 +117,14 @@
     padding: 0;
     align-content: center;
     max-width: unset;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
     .active {
       background-color: unset;
     }
+  }
+
+  ul:has(+ #hamburgerNav:checked) {
+    transform: translateY(0);
   }
 }
