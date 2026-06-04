@@ -9,6 +9,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: start;
+    height: 100px;
 
     a {
         width: fit-content;
