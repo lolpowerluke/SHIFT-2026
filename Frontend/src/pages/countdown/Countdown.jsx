@@ -17,7 +17,7 @@ export default function Countdown() {
         }
     }
 
-    const {timeLeft, blinkingS, blinkingM, blinkingH} = useCountdown()
+    const {timeLeft, blinkingS} = useCountdown()
 
     return (
         <>
