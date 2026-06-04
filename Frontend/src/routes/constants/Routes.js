@@ -5,5 +5,6 @@ const Routes = {
     privacyNL: "/privacy/nl",
     CountDown: "/countdown",
     Project: "/project",
+    Login: "/login",
 }
 export default Routes;

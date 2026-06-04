@@ -8,7 +8,7 @@ import Routes from "./routes/constants/Routes.js";
 import PrivacyRedirect from "./pages/privacy/PrivacyRedirect.jsx";
 import PrivacyEN from "./pages/privacy/pages/PrivacyEN.jsx";
 import PrivacyNL from "./pages/privacy/pages/PrivacyNL.jsx";
-import Project from "./pages/Login/Login.jsx";
+import Login from "./pages/Login/Login.jsx";
 
 // TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter([
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
 			{
 				element: <SearchLayout />,
 				children: [{ path: "/projects", element: "Projects" }],
-            },
+			},
 		],
 	},
 	{
