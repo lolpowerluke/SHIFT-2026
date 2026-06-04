@@ -14,11 +14,10 @@
 	--spacing-heroWrapper: var(--spacing-s);
 	--spacing-footer: var(--spacing-s);
 
-	--shift-logo-height: 21rem;
-	--shift-logo-height-mobile: 15rem;
+	--shift-logo-height: 15rem;
 
 	@media (min-width: 1024px) {
-		--shift-logo-height: 27rem;
+		--shift-logo-height: 33rem;
 	}
 }
 

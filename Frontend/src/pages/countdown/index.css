@@ -27,7 +27,7 @@ body {
 }
 
 #heroLogo {
-    height: var(--shift-logo-height-mobile);
+    height: var(--shift-logo-height);
     margin: -60px -20px -40px;
 }
 
@@ -167,6 +167,11 @@ p#warningTxt {
 }
 
 @media (min-width: 1024px) {
+    #heroLogo {
+        height: var(--shift-logo-height);
+        margin: -130px -30px -40px;
+    }
+
     .copy-text {
         display: flex;
         justify-content: space-between;
