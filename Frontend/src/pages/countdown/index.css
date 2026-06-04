@@ -55,7 +55,6 @@ body {
         font-size: 18px;
     }
 
-
     & > div:first-child {
         font-size: 1rem;
     }
@@ -168,8 +167,32 @@ p#warningTxt {
 
 @media (min-width: 1024px) {
     #heroLogo {
-        height: var(--shift-logo-height);
-        margin: -130px -30px -40px;
+        margin: -130px -30px -80px;
+    }
+
+    .rotatedText h1{
+            font-size: 44px;
+    }
+
+    .heroText{
+        margin-left: 1rem;
+        h1{
+            font-size: 28px;
+        }
+
+        & > div:first-child {
+            font-size: 2rem;
+        }
+
+        & > div:last-child {
+            margin-left: 4px;
+            font-size: 4rem;
+        }
+    }
+
+    .timerDiv .cd{
+        text-align: left;
+        justify-self: left;
     }
 
     .copy-text {

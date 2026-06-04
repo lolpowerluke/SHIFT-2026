@@ -97,10 +97,24 @@
       text-align: center;
     }}
 
-  .navSocials{
+  .navFooter{
     grid-row: 3/4;
     align-self: end;
     margin-bottom: 1rem;
+
+    p{
+      font-size: 16px;
+      text-transform: none;
+      text-align: center;
+      font-weight: bold;
+      width: 85%;
+      margin: 0 auto .5rem;
+
+      span{
+        color: var(--hl-primary);
+      }
+    }
+
     .socialLinks{
       margin: 0 auto;
       width: 85vw;
@@ -120,6 +134,7 @@
   background-size: 1500px;
   min-height: 100dvh;
   z-index: -1;
+  background-color: color-mix(black, transparent 75%);
 }
 
 ul:has(+ #hamburgerNav) {

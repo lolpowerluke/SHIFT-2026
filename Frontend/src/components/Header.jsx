@@ -40,7 +40,8 @@ export default function Header() {
                                 }
                             </ul>
                         </li>
-                        <li className="navSocials">
+                        <li className="navFooter">
+                            <p><span>SHIFT FESTIVAL</span> - het afstudeerevent van Multimedia & Creatieve Technologie studenten.</p>
                             <SocialLinks/>
                         </li>
                     </ul>
