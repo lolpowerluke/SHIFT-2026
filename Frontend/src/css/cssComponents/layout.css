@@ -58,7 +58,6 @@ footer {
 .wrap {
 	flex-direction: column;
 	max-width: 85vw;
-	min-height: 90dvh;
 	margin: auto;
 	text-align: center;
 }

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./index.css";
 
-const API_BASE = "https://api.shiftfestival.be";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export default function Login() {
 	const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function Login() {
 		const password = e.target.password.value;
 
 		try {
-			const res = await fetch(`${API_BASE}/auth/login`, {
+			const res = await fetch(`${BASE_URL}/auth/login`, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ email, password }),

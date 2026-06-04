@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.shiftfestival.be";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const token = localStorage.getItem("token");
 if (!token) {
@@ -81,9 +81,9 @@ function syncSecondRequired() {
 extraToggle.addEventListener("change", syncSecondRequired);
 syncSecondRequired();
 
-const form = document.querySelector(".form-3de");
+const submitBtn = document.querySelector(".form .submit");
 
-form.addEventListener("submit", async (e) => {
+submitBtn.addEventListener("click", async (e) => {
   e.preventDefault();
 
   let currentUserId = null;
@@ -108,7 +108,6 @@ form.addEventListener("submit", async (e) => {
     } catch { }
   }
 
-  const submitBtn = form.querySelector(".submit");
   submitBtn.disabled = true;
   submitBtn.textContent = "Bezig...";
 
