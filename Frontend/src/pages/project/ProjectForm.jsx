@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-function apiFetch(path, opts = {}) {
+async function apiFetch(path, opts = {}) {
 	const token = localStorage.getItem("token");
 	return fetch(`${BASE_URL}${path}`, {
 		...opts,
@@ -16,9 +17,10 @@ function apiFetch(path, opts = {}) {
 }
 
 export default function ProjectForm() {
+	const navigate = useNavigate();
 	const token = localStorage.getItem("token");
 	if (!token) {
-		window.location.href = "/login";
+		navigate("/login");
 		return null;
 	}
 
@@ -59,7 +61,7 @@ export default function ProjectForm() {
 	async function prefill() {
 		const userData = await apiFetch("/api/user");
 		if (!userData.success) {
-			window.location.href = "/login";
+			navigate("/login");
 			return;
 		}
 		const user = userData.user;
