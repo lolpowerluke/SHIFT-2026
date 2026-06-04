@@ -2,7 +2,7 @@
 	width: min-content;
 }
 
-.form-3de {
+.form {
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
@@ -39,10 +39,6 @@
 		flex-direction: row;
 		justify-content: space-between;
 	}
-}
-
-.subtext {
-	font-size: 14px;
 }
 
 /* Code used from [https://w3collective.com/preview-selected-img-file-input-js/]
@@ -88,7 +84,6 @@ Complete source in *README*
 
 	.line {
 		position: absolute;
-		background-color: black;
 		height: 4px;
 		width: 30px;
 	}
