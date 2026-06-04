@@ -1,7 +1,13 @@
 import React from "react";
-import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
+import "./index.css";
 
 export default function ProjectenPage() {
-	return <></>;
+	return (
+		<main className="projectenPage ctx">
+			<section className="projectenHero">
+				<h1>Projecten</h1>
+				<p>Ontdek de werken van onze studenten!</p>
+			</section>
+		</main>
+	);
 }

@@ -1,0 +1,17 @@
+.projectenPage {
+	padding: var(--spacing-s, 1rem) 0;
+}
+
+.projectenHero {
+	margin-bottom: 1.5rem;
+
+	h1 {
+		color: var(--hl-primary);
+		margin: 0 0 0.25rem;
+	}
+
+	p {
+		color: var(--txt-shift-primary);
+		margin: 0;
+	}
+}
