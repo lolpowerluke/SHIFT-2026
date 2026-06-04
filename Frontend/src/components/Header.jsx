@@ -25,13 +25,22 @@ export default function Header() {
                     />
                 </Link>
                 <div className="nav">
-                    <ul>
-                        {
-                            NavRoutes.map((link) => <NavLink key={link.route} to={link.route} onClick={closeMenu} className="navItem">
-                                <li>{link.label}</li>
-                            </NavLink>)
-                        }
-                        <li>
+                    <ul className="navList">
+                        <li className="navLogo">
+                            <img src="/assets/logos/shift_logo.svg" alt="Shift Logo" className="logo"/>
+                        </li>
+                        <li className="navLinks">
+                            <ul>
+                                {
+                                    NavRoutes.map((link) => (<li key={link.route}>
+                                        <NavLink to={link.route} onClick={closeMenu} className="navItem">
+                                            {link.label}
+                                        </NavLink>
+                                    </li>))
+                                }
+                            </ul>
+                        </li>
+                        <li className="navSocials">
                             <SocialLinks/>
                         </li>
                     </ul>

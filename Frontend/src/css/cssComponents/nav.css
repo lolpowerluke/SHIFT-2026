@@ -60,17 +60,39 @@
   margin: auto;
 }
 
-.nav ul {
+.navList {
   font-size: 32px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  min-height: 100dvh;
+  padding-bottom: 1rem;
 
   background-image: url(/assets/wallOverlayBlue.png);
   background-size: 4096px;
+
+  .navLinks {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .navLinks ul li{
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+
+  .navSocials{
+    .socialLinks{
+      margin: 0 auto;
+      width: 85vw;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
 }
 
-.nav ul::before {
+.navList::before {
   display: block;
   position: absolute;
   inset: 0;
@@ -102,7 +124,6 @@ ul:has(+ #hamburgerNav) {
 
 ul:has(+ #hamburgerNav) li {
   text-transform: uppercase;
-  text-align: center;
   width: 100%;
 }
 
