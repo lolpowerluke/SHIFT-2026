@@ -10,6 +10,7 @@ import PrivacyEN from "./pages/privacy/pages/PrivacyEN.jsx";
 import PrivacyNL from "./pages/privacy/pages/PrivacyNL.jsx";
 import Login from "./pages/login/Login.jsx";
 import ProjectForm from "./pages/project/ProjectForm.jsx";
+import ProjectenPage from "./projecten/ProjectenPage.jsx";
 
 // TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter([
