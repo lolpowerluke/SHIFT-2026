@@ -88,6 +88,7 @@ Complete source in *README*
 
 	.line {
 		position: absolute;
+		background-color: black;
 		height: 4px;
 		width: 30px;
 	}
