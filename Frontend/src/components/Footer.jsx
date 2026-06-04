@@ -1,60 +1,63 @@
-import React from 'react';
-import {Link} from "react-router";
+import React from "react";
+import { Link } from "react-router";
 import Routes from "../routes/constants/Routes.js";
 
-export default function Footer()
-{
-    return (
-        <footer>
-            <div className="ctx">
-                <small>
-                    Jouw data blijft van jou. Check het <Link to={Routes.Privacy}>Privacybeleid</Link>.
-                </small>
-            <hr/>
-            <div className="text-info">
-                <p>
-                    Erasmushogeschool Brussel <br/>
-                    Campus Kaai<br/>
-                    Nijverheidskaai 170 <br/>
-                    1070 Anderlecht
-                </p>
-            </div>
-            <div className="socialLinks">
-                <a href="https://www.instagram.com/erasmushogeschool/">
-                    <img
-                        src="/assets/logos/instagram_Glyph_White.svg"
-                        height="35"
-                        alt="Instagram Icon"
-                    />
-                </a>
-                <a href="https://www.tiktok.com/@erasmushogeschool">
-                    <img src="/assets/logos/tiktok_icon_white.svg" height="40" alt="TikTok Icon"/>
-                </a>
-                <a href="https://www.erasmushogeschool.be/nl">
-                    <img src="/assets/logos/ehb_wit.png" height="60" alt="EhB Logo"/>
-                </a>
-                <a href="https://www.facebook.com/erasmushogeschool/?locale=nl_BE">
-                    <img
-                        src="/assets/logos/facebook_white.svg"
-                        height="40"
-                        alt="Facebook Icon"
-                    />
-                </a>
-                <a
-                    href="https://be.linkedin.com/school/erasmushogeschool-brussel/?trk=nav_type_overview"
-                >
-                    <img
-                        src="/assets/logos/linkedin_white.svg"
-                        height="40"
-                        alt="Linkedin Icon"
-                    />
-                </a>
-            </div>
-            <small className="footerCopyright">
-                2026 SHIFT — Erasmushogeschool Brussel. <br/>
-                Alle rechten voorbehouden.
-            </small>
-            </div>
-        </footer>
-    )
+export default function Footer() {
+	return (
+		<footer>
+			<div className="ctx">
+				<small>
+					Jouw data blijft van jou. Check het{" "}
+					<Link to={Routes.Privacy}>Privacybeleid</Link>.
+				</small>
+				<hr />
+				<div className="text-info">
+					<p>
+						Erasmushogeschool Brussel <br />
+						Campus Kaai
+						<br />
+						Nijverheidskaai 170 <br />
+						1070 Anderlecht
+					</p>
+				</div>
+				<div className="socialLinks">
+					<a href="https://www.instagram.com/multimedia.ehb/">
+						<img
+							src="/assets/logos/instagram_Glyph_White.svg"
+							height="35"
+							alt="Instagram Icon"
+						/>
+					</a>
+					<a href="https://www.tiktok.com/@multimedia.ehb">
+						<img
+							src="/assets/logos/tiktok_icon_white.svg"
+							height="40"
+							alt="TikTok Icon"
+						/>
+					</a>
+					<a href="https://www.erasmushogeschool.be/nl">
+						<img src="/assets/logos/ehb_geel.png" height="60" alt="EhB Logo" />
+					</a>
+					<a href="https://www.facebook.com/erasmushogeschool/?locale=nl_BE">
+						<img
+							src="/assets/logos/facebook_white.svg"
+							height="40"
+							alt="Facebook Icon"
+						/>
+					</a>
+					<a href="https://be.linkedin.com/school/erasmushogeschool-brussel/?trk=nav_type_overview">
+						<img
+							src="/assets/logos/linkedin_white.svg"
+							height="40"
+							alt="Linkedin Icon"
+						/>
+					</a>
+				</div>
+				<small className="footerCopyright">
+					2026 SHIFT — Erasmushogeschool Brussel. <br />
+					Alle rechten voorbehouden.
+				</small>
+			</div>
+		</footer>
+	);
 }
