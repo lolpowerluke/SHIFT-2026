@@ -27,6 +27,7 @@ const router = createBrowserRouter(
                 },
                 { path: Routes.Root, element: <Countdown /> },
                 { path: Routes.Login, element: <Login /> },
+                { path: Routes.ProjectForm, element: <ProjectForm /> },
                 { path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
                 {
                     element: <SearchLayout />, //this will hold all search logic for the projects
