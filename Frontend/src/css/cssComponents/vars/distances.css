@@ -15,6 +15,7 @@
 	--spacing-footer: var(--spacing-s);
 
 	--shift-logo-height: 21rem;
+	--shift-logo-height-mobile: 15rem;
 
 	@media (min-width: 1024px) {
 		--shift-logo-height: 27rem;
