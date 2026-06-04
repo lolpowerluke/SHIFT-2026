@@ -12,6 +12,7 @@
 
   /* highlight colours */
   --hl-primary: #fbb042;
+  --hl-secondary: var(--bg-shift-secondary);
 
   /* border colours */
   --border-primary: black;
