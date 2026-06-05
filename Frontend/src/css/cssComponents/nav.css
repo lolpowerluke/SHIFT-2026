@@ -113,7 +113,6 @@ body:has(#hamburgerNav:checked){
     p{
       text-align: center;
       font-size: .9rem;
-      width: 85dvw;
       margin: 0 auto 1rem;
       span{
         font-size: inherit;
@@ -127,6 +126,7 @@ body:has(#hamburgerNav:checked){
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      align-items: end;
     }
   }
 }
@@ -181,13 +181,12 @@ ul:has(+ #hamburgerNav:checked) {
 @media screen and (min-width: 1024px){
   .navList {
     .navFooter{
-
       display: flex;
       flex-direction: row;
       max-width: 85vw;
-      margin: 0 auto;
+      margin: 0 auto 1rem;
       *{
-        max-width: 30vw;
+        max-width: 35vw;
         justify-content: space-between;
       }
       p{
@@ -197,6 +196,7 @@ ul:has(+ #hamburgerNav:checked) {
       }
       .socialLinks{
         margin-right: 0;
+        max-width: 33dvw;
       }
     }
   }
