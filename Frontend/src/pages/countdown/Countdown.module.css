@@ -33,7 +33,7 @@
     & * {
         margin: 0;
         padding: 0;
-        color: var(--txt-hero);
+        color: var(--txt-special);
     }
 }
 
@@ -370,7 +370,7 @@
                 margin-left: -6px;
 
                 .timerBox {
-                    color: var(--txt-hero);
+                    color: var(--txt-special);
                 }
             }
 

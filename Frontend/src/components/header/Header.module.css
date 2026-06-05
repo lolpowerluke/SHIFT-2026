@@ -72,6 +72,7 @@ header {
 .navItem {
     background-color: unset;
     text-decoration: none;
+    color: var(--txt-shift-primary);
 }
 
 .navItem.active {
@@ -82,15 +83,16 @@ header {
     display: none;
 }
 
-body:has(#hamburgerNav:checked){
+body:has(#hamburgerNav:checked) {
     overflow: hidden;
-    .headerLogo.hide{
+
+    .headerLogo.hide {
         animation: bounce-in .3s ease-in-out forwards;
     }
 }
 
 /* lines */
-.flexCtx{
+.flexCtx {
     display: flex;
     flex-direction: column;
     align-items: end;
@@ -147,13 +149,27 @@ body:has(#hamburgerNav:checked){
     background-color: var(--bg-shift-primary);
     background-size: 105vh;
 
-    .navLogo{
+    .orientationSwap {
+        list-style: none;
+        li{
+            a:hover {
+                color: var(--txt-special);
+            }
+        }
+    }
+
+    ul {
+        padding-left: 0;
+    }
+
+    .navLogo {
         grid-row: 1/2;
         display: flex;
-        margin-top: 120px;
-        img{
+        margin-top: 110px;
+
+        img {
             margin: 0 auto;
-            height: 30vh;
+            height: var(--shift-logo-height);
             width: auto;
         }
     }
@@ -170,28 +186,31 @@ body:has(#hamburgerNav:checked){
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+
         li {
             list-style: none;
             text-align: center;
-        }}
+        }
+    }
 
-    .navFooter{
+    .navFooter {
         grid-row: 3/4;
         align-self: end;
         width: 85vw;
         margin: 0 auto 1rem;
 
-        p{
+        p {
             text-align: center;
             font-size: .9rem;
             margin: 0 auto 1rem;
-            span{
+
+            span {
                 font-size: inherit;
                 color: var(--hl-primary);
             }
         }
 
-        .socialLinks{
+        .socialLinks {
             margin: 0 auto;
             width: 85vw;
             display: flex;
@@ -249,23 +268,39 @@ ul:has(+ #hamburgerNav:checked) {
     transform: translateY(0);
 }
 
-@media screen and (min-width: 1024px){
+@media screen and (min-width: 1024px) {
     .navList {
-        .navFooter{
+        .orientationSwap {
+            display: flex;
+            flex-direction: row;
+
+            li {
+                font-size: 60px;
+
+                img {
+                    max-width: 40vw;
+                }
+            }
+        }
+
+        .navFooter {
             display: flex;
             flex-direction: row;
             max-width: 85vw;
             margin: 0 auto 1rem;
-            *{
+
+            * {
                 max-width: 35vw;
                 justify-content: space-between;
             }
-            p{
+
+            p {
                 margin-left: 0;
                 text-align: left;
                 font-size: 18px;
             }
-            .socialLinks{
+
+            .socialLinks {
                 margin-right: 0;
                 max-width: 33dvw;
             }
