@@ -15,6 +15,14 @@ export default function Countdown() {
 		{ id: 3, title: "Project Gamma" },
 	];
 
+	const handleOpenMaps = () => {
+		window.open(
+			"https://maps.app.goo.gl/rZ8pQ7jYJph3tR3L9",
+			"_blank",
+			"noopener,noreferrer",
+		);
+	};
+
 	return (
 		<>
 			<div className="heroContent">
@@ -29,7 +37,6 @@ export default function Countdown() {
 					/>
 				</video>
 			</div>
-    const {timeLeft, blinkingS} = useCountdown()
 
 			<div className="landingWrap">
 				<div>
@@ -110,6 +117,7 @@ export default function Countdown() {
 					)}
 				</div>
 			</div>
+
 			<div className="wrap topSpacer">
 				<div className="section">
 					<div className="sectionFlexer">
@@ -161,6 +169,7 @@ export default function Countdown() {
 						</div>
 					</div>
 				</div>
+
 				<div className="section">
 					<h2>WAAR EN WANNEER?</h2>
 					<div className="shiftTime">
@@ -174,19 +183,23 @@ export default function Countdown() {
 					</div>
 					<div className="shiftLocation">
 						<div className="iconMap">
-							<img src="/assets/icons/LocationBlue.svg" />
+							<img src="/assets/icons/LocationBlue.svg" alt="Locatie" />
 						</div>
 						<div>
 							<h3>ERASMUS HOGESCHOOL CAMPUS KAAI</h3>
-							<button className="btnMaps">Open in maps</button>
+							<button className="btnMaps" onClick={handleOpenMaps}>
+								Open in maps
+							</button>
 						</div>
 					</div>
+
 					<hr className="sectionDivider" />
+
 					<h2>VOOR WIE?</h2>
 					<div className="audienceContainer">
 						<div className="audienceCard">
 							<div className="iconHeadphones">
-								<img src="/assets/icons/koptelefoon.svg" />
+								<img src="/assets/icons/koptelefoon.svg" alt="Studenten" />
 							</div>
 							<h3>STUDENTEN</h3>
 							<p>Toon je werk. Deel je ideeën. Maak impact.</p>
@@ -194,7 +207,7 @@ export default function Countdown() {
 
 						<div className="audienceCard">
 							<div className="iconPaper">
-								<img src="/assets/icons/paper.svg" />
+								<img src="/assets/icons/paper.svg" alt="Bedrijven" />
 							</div>
 							<h3>Bedrijven</h3>
 							<p>Ontdek nieuwe talenten.</p>
@@ -202,7 +215,7 @@ export default function Countdown() {
 
 						<div className="audienceCard">
 							<div className="iconChatBubble">
-								<img src="/assets/icons/chat-bubble.svg" />
+								<img src="/assets/icons/chat-bubble.svg" alt="Bezoekers" />
 							</div>
 							<h3>BEZOEKERS</h3>
 							<p>Ontdek. Test. Laat je verrassen.</p>
@@ -210,7 +223,7 @@ export default function Countdown() {
 
 						<div className="audienceCard">
 							<div className="iconStar">
-								<img src="/assets/icons/star.svg" />
+								<img src="/assets/icons/star.svg" alt="Stemmen" />
 							</div>
 							<h3>STEMMEN</h3>
 							<p>Kies je favorieten. Bepaal de winnaars.</p>
