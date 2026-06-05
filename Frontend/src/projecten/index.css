@@ -68,6 +68,26 @@
 	box-shadow: none;
 }
 
+/* grid + counter (filter) text projects (～￣▽￣)～ */
+
+.projectenCount {
+	margin: 0 0 1rem;
+	font-weight: bold;
+}
+
+.projectenGrid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	padding-bottom: var(--spacing-s);
+}
+
+@media (max-width: 768px) {
+	.projectenGrid {
+		grid-template-columns: 1fr;
+	}
+}
+
 /* cards van project wow insane! !!! */
 
 .projectCard {
