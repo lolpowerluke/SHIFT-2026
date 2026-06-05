@@ -46,7 +46,7 @@ body::before {
 	inset: 0;
 	z-index: -2;
 	background-image: url(/assets/iconsOverlay.svg);
-	background-size: 1500px;
+	background-size: 2000px;
 	pointer-events: none;
 }
 
