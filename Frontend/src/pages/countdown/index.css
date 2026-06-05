@@ -390,7 +390,7 @@
             width: 100dvw;
         }
 
-        box-shadow: -1px 3px 10px 5px var(--bg-shift-secondary);
+        box-shadow: -1px 3px 10px 5px color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
     }
 
     #heroLogo {
