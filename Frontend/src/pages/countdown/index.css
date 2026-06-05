@@ -36,7 +36,7 @@
     & * {
         margin: 0;
         padding: 0;
-        color: var(--txt-shift-primary);
+        color: var(--txt-hero);
     }
 }
 
@@ -226,6 +226,7 @@
 
     .projectCTA {
         button {
+            color: var(--txt-shift-primary);
             background-color: var(--bg-shift-primary);
         }
     }
