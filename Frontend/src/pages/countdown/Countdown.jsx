@@ -29,6 +29,7 @@ export default function Countdown() {
 					/>
 				</video>
 			</div>
+    const {timeLeft, blinkingS} = useCountdown()
 
 			<div className="landingWrap">
 				<div>

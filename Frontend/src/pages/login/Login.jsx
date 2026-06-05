@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router";
 import { useState } from "react";
 import "./index.css";
 
@@ -6,8 +6,11 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 
 export default function Login() {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
+
+	const from = location.state?.from ?? "/";
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -31,7 +34,7 @@ export default function Login() {
 			}
 
 			localStorage.setItem("token", data.token);
-			navigate(-1);
+			navigate(from, { replace: true });
 		} catch {
 			setError("Netwerk fout, probeer opnieuw");
 		} finally {
@@ -45,21 +48,27 @@ export default function Login() {
 				<div className="section">
 					<h1>Login</h1>
 					<form className="form" onSubmit={handleSubmit}>
-						<input
-							type="email"
-							name="email"
-							id="email"
-							placeholder="E-mail..."
-							autoComplete="email"
-							required
-						/>
-						<input
-							type="password"
-							name="password"
-							id="password"
-							placeholder="Password..."
-							required
-						/>
+						<div>
+							<label htmlFor="email">Email</label>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								placeholder="E-mail..."
+								autoComplete="email"
+								required
+							/>
+						</div>
+						<div>
+							<label htmlFor="password">Wachtwoord</label>
+							<input
+								type="password"
+								name="password"
+								id="password"
+								placeholder="Password..."
+								required
+							/>
+						</div>
 						{error && <p className="error">{error}</p>}
 						<button className="submit" type="submit" disabled={loading}>
 							{loading ? "Bezig..." : "Login"}
