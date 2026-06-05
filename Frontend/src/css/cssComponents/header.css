@@ -22,6 +22,10 @@ header {
         animation: bounce-in .3s ease-in-out forwards;
     }
 
+
+}
+
+@media screen and (min-width: 1024px) {
     .headerLogo.hide {
         animation: bounce-out .3s ease-in-out forwards;
         opacity: 0;

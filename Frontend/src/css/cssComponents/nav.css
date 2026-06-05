@@ -13,6 +13,9 @@
 
 body:has(#hamburgerNav:checked){
   overflow: hidden;
+  .headerLogo.hide{
+    animation: bounce-in .3s ease-in-out forwards;
+  }
 }
 
 /* lines */
