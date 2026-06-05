@@ -4,6 +4,7 @@
 
 * {
 	font-family: "futura-pt", "Helvetica", "Arial", sans-serif;
+	font-weight: 500;
 }
 
 h1 {
@@ -15,13 +16,14 @@ h1 {
 h2 {
 	font-weight: bold;
 	font-size: 36px;
-	margin: 1rem 0px;
+	margin: 1rem 0;
 }
 
 h3 {
 	font-weight: bold;
 	font-size: 24px;
-	margin: 1rem 0px 0px;
+	margin: 1rem 0 0;
+	text-transform: uppercase;
 }
 
 h4 {
@@ -44,7 +46,7 @@ small {
 }
 
 a {
-	color: var(--bg-shift-secondary);
+	/*color: var(--bg-shift-secondary);*/
 	font-weight: bold;
 }
 
@@ -63,18 +65,18 @@ a {
 .darkText {
 	color: var(--txt-shift-secondary);
 	a {
-		color: var(--txt-shift-secondary);
+		/*color: var(--txt-shift-secondary);*/
 	}
 }
 
 @media (min-width: 1024px) {
 	small {
-		font-size: 14px;
+		font-size: 18px;
 	}
 
 	label,
 	span,
-	p {
-		font-size: 18px;
+	p, li {
+		font-size: 24px;
 	}
 }

@@ -25,7 +25,20 @@ button:active {
     color: var(--txt-shift-secondary);
 }
 
+.btnMaps {
+    color: var(--txt-shift-primary);
+    background-color: var(--bg-shift-primary);
+    cursor: pointer;
+    margin-top: var(--margin-between);
+}
+
 .fitContent {
     width: fit-content;
     min-width: max-content;
+}
+
+@media screen and (min-width: 1024px) {
+    .btnMaps, .linkBtn, .btn, button{
+        font-size: 24px;
+    }
 }
