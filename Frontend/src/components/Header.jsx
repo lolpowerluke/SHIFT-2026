@@ -2,10 +2,13 @@ import {Link, NavLink} from "react-router";
 import { NavRoutes } from "../routes/NavRoutes.js"
 import SocialLinks from "./SocialLinks.jsx";
 import {useRef} from "react";
+import {useScrolled} from "../hooks/useScrolled.js";
+
 
 
 export default function Header() {
     const hamburgerRef = useRef();
+    const scrolled = useScrolled(80)
 
     const closeMenu = () => {
         if (hamburgerRef.current) {
@@ -21,7 +24,7 @@ export default function Header() {
                     <img
                         src="/favicon/shift_icon.svg"
                         alt="Shift Icon"
-                        className="headerLogo"
+                        className={`headerLogo ${!scrolled ? "hide" : ""}`}
                     />
                 </Link>
                 <div className="nav">

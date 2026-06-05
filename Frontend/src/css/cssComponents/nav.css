@@ -11,6 +11,10 @@
   display: none;
 }
 
+body:has(#hamburgerNav:checked){
+  overflow: hidden;
+}
+
 /* lines */
 .flexCtx{
   display: flex;
