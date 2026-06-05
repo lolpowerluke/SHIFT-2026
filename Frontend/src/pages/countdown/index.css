@@ -362,7 +362,7 @@
         flex-direction: row;
         height: auto;
         width: 92.5dvw;
-        aspect-ratio: 16/9;
+        aspect-ratio: 16/7;
         justify-content: space-between;
 
         .timerDiv {
@@ -389,7 +389,7 @@
         z-index: -1;
         height: auto;
         width: 100%;
-        aspect-ratio: 16/9;
+        aspect-ratio: 16/8;
         overflow: hidden;
 
         img {
