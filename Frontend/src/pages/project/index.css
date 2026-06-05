@@ -61,26 +61,6 @@ Complete source in *README*
 	display: block;
 }
 
-.extraPersonForm {
-	display: none;
-}
-
-#extraPersonToggle:checked~.extraPersonForm {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-#extraPersonToggle:checked+label {
-	.line:first-child {
-		transform: translateY(13px) rotate(-45deg);
-	}
-
-	.line:last-child {
-		transform: translateY(13px) rotate(45deg);
-	}
-}
-
 .addPerson {
 	height: 30px;
 	width: 30px;
@@ -92,12 +72,39 @@ Complete source in *README*
 		height: 4px;
 		width: 30px;
 	}
+}
 
-	.line:first-child {
-		transform: translateY(13px);
-	}
+.file-pill {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	background: var(--bg-shift-secondary);
+	border: 5px solid black;
+	border-radius: 10px;
+	padding: 0 0 0 10px;
 
-	.line:last-child {
-		transform: translateY(13px) rotate(90deg);
+	.file-pill__clear {
+		box-shadow: none;
+		border: unset;
+		border-radius: 5px;
+		padding: 5px 20px;
 	}
+}
+
+.preview-img {
+	width: 100%;
+	max-width: 250px;
+	object-fit: cover;
+	border-radius: 10px;
+	border: 5px solid black;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+.submit-success {
+	background: green;
+}
+
+.submit-error {
+	color: red;
 }

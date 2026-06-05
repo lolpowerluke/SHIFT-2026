@@ -9,7 +9,7 @@ footer {
 	}
 
 	hr {
-		color: var(--bg-shift-alt);
+		color: var(--txt-shift-primary);
 		margin-bottom: 15px;
 		width: 100%;
 	}
@@ -31,5 +31,9 @@ footer {
 
 	p {
 		margin-bottom: 15px;
+	}
+
+	* {
+		color: var(--txt-shift-primary);
 	}
 }
