@@ -99,7 +99,7 @@ export default function Countdown() {
                                 <div className={`${s.cta} section`}>
                                     <a
                                         href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-                                        className={s.linkBtn}
+                                        className={`${s.linkBtn} linkBtn`}
                                         target="_blank"
                                         rel="noreferrer"
                                     >
