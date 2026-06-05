@@ -1,8 +1,3 @@
-body {
-	background-repeat: repeat;
-	margin: 0;
-}
-
 .wrap {
 	display: flex;
 	flex-direction: column;
@@ -350,6 +345,12 @@ body {
 	}
 }
 
+.infoSection{
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 2rem;
+}
+
 @media (min-width: 1024px) {
 	.landingWrap {
 		display: flex;
@@ -459,6 +460,20 @@ body {
 		}
 		&:nth-child(even) {
 			transform: rotate(-5deg);
+		}
+	}
+
+	.infoSection{
+		flex-direction: row;
+		height: fit-content;
+		min-height: 10rem;
+		justify-content: space-around;
+		hr.sectionDivider{
+			height: 120px;
+			width: 1px;
+			border: none;
+			border-left: 3px solid var(--border-primary);
+			margin: 0;
 		}
 	}
 }
