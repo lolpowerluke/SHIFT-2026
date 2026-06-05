@@ -39,6 +39,11 @@ footer {
 	margin: var(--margin-section) 0;
 }
 
+.section2 {
+	margin: var(--margin-section) 0;
+	background-color: var(--bg-shift-secondary);
+}
+
 .wrap {
 	flex-direction: column;
 	max-width: 85vw;

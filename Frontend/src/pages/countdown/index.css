@@ -261,6 +261,105 @@ body {
 	}
 }
 
+.shiftTime,
+.shiftLocation {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 1.5rem;
+
+	h3 {
+		font-size: 20px;
+	}
+}
+
+.shiftTime {
+	text-align: center;
+}
+
+.shiftLocation {
+	text-align: left;
+}
+
+.btnMaps {
+	background-color: var(--bg-shift-primary);
+	cursor: pointer;
+	margin-top: var(--margin-between);
+}
+
+.iconCalendar,
+.iconMap {
+	width: 50px;
+	height: 50px;
+	background-size: contain;
+	background-position: center;
+}
+
+.sectionDivider {
+	border: none;
+	border-top: 5px solid #000;
+	margin: 3rem auto;
+	width: 100%;
+}
+
+.audienceContainer {
+	display: grid;
+	grid-template-columns: 1fr; /* Mobiel: alles onder elkaar */
+	gap: 1.5rem;
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.audienceCard {
+	background-color: #33cbd4; /* Basis blauw/cyaan uit Figma */
+	/* De iconische verticale strepen uit je ontwerp */
+	background-image: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0.07) 50%,
+		transparent 50%
+	);
+	background-size: 40px 100%;
+
+	border: 5px solid #000;
+	border-radius: 20px;
+	padding: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	box-shadow: 4px 4px 0 #000;
+
+	.iconHeadphones,
+	.iconBriefcase,
+	.iconChatBubble,
+	.iconStar {
+		width: 60px;
+		height: 60px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		margin-bottom: 0.5rem;
+	}
+
+	h3 {
+		font-size: 22px;
+		font-weight: 900;
+		text-transform: uppercase;
+		margin: 0 0 0.5rem 0;
+		color: #000;
+		letter-spacing: 1px;
+	}
+
+	p {
+		font-size: 14px;
+		font-weight: 600;
+		line-height: 1.4;
+		margin: 0;
+		color: #000;
+	}
+}
+
 @media (min-width: 1024px) {
 	.landingWrap {
 		display: flex;
@@ -326,23 +425,24 @@ body {
 		justify-self: left;
 	}
 
-	.wrap.topSpacer {
-		flex-direction: row !important;
+	.sectionFlexer {
+		display: flex;
 		justify-content: space-between;
-		align-items: center;
-		max-width: 1100px;
-		gap: 5rem;
+	}
+
+	.projectSide,
+	.shiftInfoSide {
+		width: 45%;
 	}
 
 	.projectCard {
-		width: 460px !important;
+		width: 460px;
 		max-width: 100%;
 		justify-self: flex-end;
 	}
 
 	.shiftInfoNoCard {
 		text-align: left;
-		flex: 1;
 
 		.infoTitle {
 			text-align: left;
@@ -350,7 +450,7 @@ body {
 		}
 
 		.infoList li {
-			font-size: 18px !important;
+			font-size: 18px;
 		}
 	}
 }

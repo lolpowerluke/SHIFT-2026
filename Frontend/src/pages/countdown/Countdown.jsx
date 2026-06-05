@@ -111,48 +111,102 @@ export default function Countdown() {
 			</div>
 			<div className="wrap topSpacer">
 				<div className="section">
-					<div className="projectCard">
-						<div className="carouselImage">
-							<div
-								className="carouselSlideAnimation"
-								style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-							>
-								{placeholders.map((project) => (
-									<div key={project.id} className="carouselSlide">
-										<div className="cardImagePlaceholder">
-											<span>Coming Soon</span>
-										</div>
+					<div className="sectionFlexer">
+						<div className="projectSide">
+							<div className="projectCard">
+								<div className="carouselImage">
+									<div
+										className="carouselSlideAnimation"
+										style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+									>
+										{placeholders.map((project) => (
+											<div key={project.id} className="carouselSlide">
+												<div className="cardImagePlaceholder">
+													<span>Coming Soon</span>
+												</div>
+											</div>
+										))}
 									</div>
-								))}
+								</div>
+								<div className="carouselDots">
+									{placeholders.map((_, index) => (
+										<button
+											key={index}
+											onClick={() => setCurrentIndex(index)}
+											className={`dot ${currentIndex === index ? "active" : ""}`}
+											aria-label={`Slide ${index + 1}`}
+										/>
+									))}
+								</div>
+								<h2>SEE. EXPERIENCE. MEET.</h2>
+								<div className="projectCTA">
+									<button>
+										<span>Coming Soon</span>
+									</button>
+								</div>
 							</div>
 						</div>
-						<div className="carouselDots">
-							{placeholders.map((_, index) => (
-								<button
-									key={index}
-									onClick={() => setCurrentIndex(index)}
-									className={`dot ${currentIndex === index ? "active" : ""}`}
-									aria-label={`Slide ${index + 1}`}
-								/>
-							))}
-						</div>
-						<h2>SEE. EXPERIENCE. MEET.</h2>
-						<div className="projectCTA">
-							<button>
-								<span>Coming Soon</span>
-							</button>
+						<div className="shiftInfoSide">
+							<div className="shiftInfoNoCard">
+								<h2 className="infoTitle">Wat beleef je op SHIFT?</h2>
+								<ul className="infoList">
+									<li>Speel innovatieve games</li>
+									<li>Test interactieve installaties en XR-ervaringen</li>
+									<li>Ontdek hoe studenten AI gebruiken</li>
+									<li>Ontmoet de makers achter de projecten</li>
+									<li>Stem op jouw favoriete project</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div className="shiftInfoNoCard">
-					<h2 className="infoTitle">Wat beleef je op SHIFT?</h2>
-					<ul className="infoList">
-						<li>Speel innovatieve games</li>
-						<li>Test interactieve installaties en XR-ervaringen</li>
-						<li>Ontdek hoe studenten AI gebruiken</li>
-						<li>Ontmoet de makers achter de projecten</li>
-						<li>Stem op jouw favoriete project</li>
-					</ul>
+				<div className="section">
+					<h2>WAAR EN WANNEER?</h2>
+					<div className="shiftTime">
+						<div className="iconCalendar">
+							<img src="/assets/icons/CalendarBlue.svg" alt="Kalender" />
+						</div>
+						<div>
+							<h3>VRIJDAG 19 JUNI</h3>
+							<p>17:00 - 21:30</p>
+						</div>
+					</div>
+					<div className="shiftLocation">
+						<div className="iconMap">
+							<img src="/assets/icons/LocationBlue.svg" />
+						</div>
+						<div>
+							<h3>ERASMUS HOGESCHOOL CAMPUS KAAI</h3>
+							<button className="btnMaps">Open in maps</button>
+						</div>
+					</div>
+					<hr className="sectionDivider" />
+					<h2>VOOR WIE?</h2>
+					<div className="audienceContainer">
+						<div className="audienceCard">
+							<div className="iconHeadphones"></div>
+							<h3>STUDENTEN</h3>
+							<p>Toon je werk. Deel je ideeën. Maak impact.</p>
+						</div>
+
+						<div className="audienceCard">
+							<div className="iconBriefcase"></div>
+							<h3>Bedrijven</h3>
+							<p>Ontdek nieuwe talenten.</p>
+						</div>
+
+						<div className="audienceCard">
+							<div className="iconChatBubble"></div>
+							<h3>BEZOEKERS</h3>
+							<p>Ontdek. Test. Laat je verrassen.</p>
+						</div>
+
+						<div className="audienceCard">
+							<div className="iconStar"></div>
+							<h3>STEMMEN</h3>
+							<p>Kies je favorieten. Bepaal de winnaars.</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>
