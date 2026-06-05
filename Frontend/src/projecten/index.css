@@ -88,4 +88,9 @@
 	.filterButtons .filterBtn:first-child {
 		grid-column: span 2;
 	}
+
+	h1,
+	h3 {
+		text-align: center;
+	}
 }
