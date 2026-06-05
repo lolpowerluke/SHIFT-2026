@@ -117,14 +117,14 @@ body:has(#hamburgerNav:checked){
     width: 60%;
 }
 
-#hamburgerNav+label {
+#hamburgerNav + label {
     cursor: pointer;
     position: relative;
     display: block;
     z-index: 2;
 }
 
-#hamburgerNav:checked+label>.flexCtx>.l1 {
+#hamburgerNav:checked + label > .flexCtx > .l1 {
     transform: translate(0, .85rem) rotate(45deg);
     margin: auto;
 }
@@ -201,7 +201,6 @@ body:has(#hamburgerNav:checked){
         p {
             text-align: center;
             font-size: .9rem;
-            width: 85dvw;
             margin: 0 auto 1rem;
 
             span {
@@ -216,6 +215,7 @@ body:has(#hamburgerNav:checked){
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            align-items: end;
         }
     }
 }
