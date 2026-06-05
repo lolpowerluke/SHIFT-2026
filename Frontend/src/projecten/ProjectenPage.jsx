@@ -6,7 +6,10 @@ const MOCK_PROJECT = {
 	title: "The Dark After The Light",
 	category: "XR & 3D",
 	image: "/assets/imageCard.png",
-	students: [{ name: "Hamza El Aisati", avatar: "/assets/pictureForCard.jpg" }],
+	students: [
+		{ name: "Hamza El Aisati", avatar: "/assets/pictureForCard.jpg" },
+		{ name: "Nolan Lamarque", avatar: "/assets/pictureForCard2.jpg" },
+	],
 };
 
 const CATEGORIES = [
