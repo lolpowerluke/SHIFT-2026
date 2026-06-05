@@ -72,9 +72,9 @@ body:has(#hamburgerNav:checked){
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   min-height: 100dvh;
-
-  background-image: url(/assets/wallOverlayBlue.png);
-  background-size: 4096px;
+  background-image: url(/assets/wallTextureWeb2.png);
+  background-color: var(--bg-shift-primary);
+  background-size: 105vh;
 
   .navLogo{
     grid-row: 1/2;
@@ -125,7 +125,7 @@ body:has(#hamburgerNav:checked){
   inset: 0;
   content: "";
   background-image: url(/assets/iconsOverlay.svg);
-  background-size: 1500px;
+  background-size: 5000px;
   min-height: 100dvh;
   z-index: -1;
   background-color: color-mix(black, transparent 75%);
@@ -138,7 +138,6 @@ ul:has(+ #hamburgerNav) {
   height: 100vh;
   left: 0;
   top: 0;
-  background-color: var(--bg-shift-alt);
   margin: 0;
   z-index: 1;
   overflow: hidden;
