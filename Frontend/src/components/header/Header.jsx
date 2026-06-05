@@ -36,7 +36,11 @@ export default function Header() {
                             <ul>
                                 {
                                     NavRoutes.map((link) => (<li key={link.route}>
-                                        <NavLink to={link.route} onClick={closeMenu} className={s.navItem}>
+                                        <NavLink
+                                            to={link.route}
+                                            onClick={closeMenu}
+                                            className={({ isActive }) => `${s.navItem} ${isActive ? s.active : ''}`}
+                                        >
                                             {link.label}
                                         </NavLink>
                                     </li>))
