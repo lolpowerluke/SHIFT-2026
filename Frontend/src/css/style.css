@@ -33,8 +33,9 @@ html::before {
 	position: fixed;
 	inset: 0;
 	z-index: -2;
-	background-image: url(/assets/wallOverlayBlue.png);
-	background-size: 4096px;
+	background-image: url(/assets/wallTextureWeb.png);
+	background-size: 2048px;
+	background-color: var(--bg-shift-primary);
 }
 
 body::before {
@@ -43,7 +44,7 @@ body::before {
 	inset: 0;
 	z-index: -2;
 	background-image: url(/assets/iconsOverlay.svg);
-	background-size: 2000px;
+	background-size: 5000px;
 	pointer-events: none;
 }
 
