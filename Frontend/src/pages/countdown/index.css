@@ -371,6 +371,9 @@
 
             #timer {
                 margin-left: -6px;
+                .timerBox{
+                    color: var(--txt-hero);
+                }
             }
 
             .cta {
