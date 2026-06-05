@@ -184,25 +184,33 @@ export default function Countdown() {
 					<h2>VOOR WIE?</h2>
 					<div className="audienceContainer">
 						<div className="audienceCard">
-							<div className="iconHeadphones"></div>
+							<div className="iconHeadphones">
+								<img src="/assets/icons/koptelefoon.svg" />
+							</div>
 							<h3>STUDENTEN</h3>
 							<p>Toon je werk. Deel je ideeën. Maak impact.</p>
 						</div>
 
 						<div className="audienceCard">
-							<div className="iconBriefcase"></div>
+							<div className="iconPaper">
+								<img src="/assets/icons/paper.svg" />
+							</div>
 							<h3>Bedrijven</h3>
 							<p>Ontdek nieuwe talenten.</p>
 						</div>
 
 						<div className="audienceCard">
-							<div className="iconChatBubble"></div>
+							<div className="iconChatBubble">
+								<img src="/assets/icons/chat-bubble.svg" />
+							</div>
 							<h3>BEZOEKERS</h3>
 							<p>Ontdek. Test. Laat je verrassen.</p>
 						</div>
 
 						<div className="audienceCard">
-							<div className="iconStar"></div>
+							<div className="iconStar">
+								<img src="/assets/icons/star.svg" />
+							</div>
 							<h3>STEMMEN</h3>
 							<p>Kies je favorieten. Bepaal de winnaars.</p>
 						</div>
