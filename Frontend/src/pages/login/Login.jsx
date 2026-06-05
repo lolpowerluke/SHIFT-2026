@@ -6,11 +6,8 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 
 export default function Login() {
 	const navigate = useNavigate();
-	const location = useLocation();
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
-
-	const from = location.state?.from ?? "/";
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -34,7 +31,7 @@ export default function Login() {
 			}
 
 			localStorage.setItem("token", data.token);
-			navigate(from, { replace: true });
+			navigate("/project-form", { replace: true });
 		} catch {
 			setError("Netwerk fout, probeer opnieuw");
 		} finally {
