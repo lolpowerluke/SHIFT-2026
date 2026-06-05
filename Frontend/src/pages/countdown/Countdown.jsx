@@ -172,7 +172,7 @@ export default function Countdown() {
                     </div>
                 </div>
             </div>
-            <div className={s.altBg}>
+            <div className="altBg">
                 <div className={`section wrap ${s.wrap}`}>
                     <h2>WAAR EN WANNEER?</h2>
                     <div className={s.infoSection}>

@@ -33,6 +33,10 @@ footer {
 		margin-bottom: 15px;
 	}
 
+	.divider {
+		border: 1px solid black;
+	}
+
 	* {
 		color: var(--txt-shift-primary);
 	}

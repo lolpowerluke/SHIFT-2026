@@ -11,7 +11,7 @@ export default function Footer() {
 					Jouw data blijft van jou. Check het{" "}
 					<Link to={Routes.Privacy}>Privacybeleid</Link>.
 				</small>
-				<hr />
+				<hr className={s.divider} />
 				<div className={s.text_info}>
 					<p>
 						Erasmushogeschool Brussel <br />
