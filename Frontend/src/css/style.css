@@ -31,17 +31,23 @@ body {
 	touch-action: pan-y;
 }
 
-html {
+html::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -2;
 	background-image: url(/assets/wallOverlayBlue.png);
 	background-size: 4096px;
-	scroll-behavior: smooth;
 }
 
-body {
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -2;
 	background-image: url(/assets/iconsOverlay.svg);
 	background-size: 1500px;
-	min-height: 100dvh;
-	color: var(--txt-shift-primary);
+	pointer-events: none;
 }
 
 #root{

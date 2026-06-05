@@ -19,5 +19,51 @@ header {
         position: relative;
         z-index: 3;
         height: 100%;
+        animation: bounce-in .3s ease-in-out forwards;
+    }
+
+
+}
+
+@media screen and (min-width: 1024px) {
+    .headerLogo.hide {
+        animation: bounce-out .3s ease-in-out forwards;
+        opacity: 0;
+    }
+}
+
+@keyframes bounce-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.9);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(20px) scale(1);
+    }
+    85% {
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes bounce-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    15% {
+        transform: translateY(-10px);
+    }
+    30% {
+        opacity: 1;
+        transform: translateY(20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(0.9);
     }
 }

@@ -11,6 +11,13 @@
   display: none;
 }
 
+body:has(#hamburgerNav:checked){
+  overflow: hidden;
+  .headerLogo.hide{
+    animation: bounce-in .3s ease-in-out forwards;
+  }
+}
+
 /* lines */
 .flexCtx{
   display: flex;
@@ -28,7 +35,7 @@
 .line {
   width: 2rem;
   height: 5px;
-  background-color: var(--bg-shift-secondary);
+  background-color: var(--txt-shift-secondary);
   transition: all 0.2s ease;
   border-radius: 0.2rem;
 }
@@ -120,6 +127,7 @@
   background-size: 1500px;
   min-height: 100dvh;
   z-index: -1;
+  background-color: color-mix(black, transparent 75%);
 }
 
 ul:has(+ #hamburgerNav) {

@@ -80,3 +80,34 @@
 
 - [remove `/pages/` from links and paths in build while keeping the file structure automation](https://claude.ai/share/44dab821-2592-4ca3-8bc7-5f12b0bfd702)
     - used in vite.config.js removePageSegment()
+
+## Deployment
+
+### Frontend
+
+The frontend is built with Vite.
+
+```bash
+cd Frontend
+npm install
+npm run build
+```
+The output is in the `Frontend/dist` directory.
+
+### Backend
+
+The backend is a Node.js application.
+
+#### Native
+```bash
+cd Backend
+pnpm install
+pnpm start
+```
+A `.env` file is required.
+
+#### Docker
+```bash
+cd Backend
+docker-compose up --build -d
+```
