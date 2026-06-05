@@ -61,6 +61,7 @@
 
 .filterBtn.active {
 	background-color: var(--bg-shift-secondary);
+	box-shadow: none;
 }
 
 @media (max-width: 768px) {
