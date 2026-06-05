@@ -51,7 +51,7 @@ export default function Header() {
                     {/* Code based on JoachimGautama's web2-course-project-front-end-JoachimGautama */}
                     <input type="checkbox" id={s.hamburgerNav} ref={hamburgerRef} />
                     <label htmlFor={s.hamburgerNav}>
-                        <div className="flexCtx btn">
+                        <div className={`${s.flexCtx} btn`}>
                             <div className={`${s.l1} ${s.line}`}></div>
                             <div className={`${s.l2} ${s.line}`}></div>
                             <div className={`${s.l3} ${s.line}`}></div>
