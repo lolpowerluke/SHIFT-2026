@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 import "../../css/style.css";
 import { useCountdown } from "../../js/countdown.js";
@@ -6,18 +6,14 @@ import { useCountdown } from "../../js/countdown.js";
 export default function Countdown() {
 	const pageURL = "shiftfestival.be";
 
-	function handleSTDClick() {
-		const isApple = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent);
-		if (isApple) {
-			window.location.href = `webcal://${pageURL}/shiftCalendar.ics`;
-		} else {
-			const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=SHIFT+-+Save+the+Date&dates=20260619T150000Z/20260619T190000Z&details=Our+third+year+students+are+showing+off+their+final+projects!&location=Nijverheidskaai+170,+1070+Anderlecht`;
-
-			window.open(gcalUrl, "_blank");
-		}
-	}
-
 	const { timeLeft, blinkingS } = useCountdown();
+
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const placeholders = [
+		{ id: 1, title: "Project Alpha" },
+		{ id: 2, title: "Project Beta" },
+		{ id: 3, title: "Project Gamma" },
+	];
 
 	return (
 		<>
@@ -33,6 +29,7 @@ export default function Countdown() {
 					/>
 				</video>
 			</div>
+
 			<div className="landingWrap">
 				<div>
 					<div className="heroLayout">
@@ -41,6 +38,7 @@ export default function Countdown() {
 								src="../../assets/logos/shift_logo.svg"
 								id="heroLogo"
 								fetchPriority="high"
+								alt="SHIFT Logo"
 							/>
 						</div>
 						<div>
@@ -62,6 +60,7 @@ export default function Countdown() {
 						</div>
 					</div>
 				</div>
+
 				<div className="timerDiv xlarge">
 					{timeLeft ? (
 						<>
@@ -99,6 +98,7 @@ export default function Countdown() {
 									href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
 									className="linkBtn"
 									target="_blank"
+									rel="noreferrer"
 								>
 									Schrijf je nu gratis in!
 								</a>
@@ -109,8 +109,52 @@ export default function Countdown() {
 					)}
 				</div>
 			</div>
-			{/*TODO: J past aan tot hier*/}
-			<div className="wrap topSpacer flexSpaceBetween"></div>
+			<div className="wrap topSpacer">
+				<div className="section">
+					<div className="projectCard">
+						<div className="carouselImage">
+							<div
+								className="carouselSlideAnimation"
+								style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+							>
+								{placeholders.map((project) => (
+									<div key={project.id} className="carouselSlide">
+										<div className="cardImagePlaceholder">
+											<span>Coming Soon</span>
+										</div>
+									</div>
+								))}
+							</div>
+						</div>
+						<div className="carouselDots">
+							{placeholders.map((_, index) => (
+								<button
+									key={index}
+									onClick={() => setCurrentIndex(index)}
+									className={`dot ${currentIndex === index ? "active" : ""}`}
+									aria-label={`Slide ${index + 1}`}
+								/>
+							))}
+						</div>
+						<h2>SEE. EXPERIENCE. MEET.</h2>
+						<div className="projectCTA">
+							<button>
+								<span>Coming Soon</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="shiftInfoNoCard">
+					<h2 className="infoTitle">Wat beleef je op SHIFT?</h2>
+					<ul className="infoList">
+						<li>Speel innovatieve games</li>
+						<li>Test interactieve installaties en XR-ervaringen</li>
+						<li>Ontdek hoe studenten AI gebruiken</li>
+						<li>Ontmoet de makers achter de projecten</li>
+						<li>Stem op jouw favoriete project</li>
+					</ul>
+				</div>
+			</div>
 		</>
 	);
 }

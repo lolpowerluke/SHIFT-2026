@@ -1,6 +1,7 @@
 /* Everything layout goes here. margins, display grid/flex ideally too. Use your brain. */
 
-html, body {
+html,
+body {
 	margin: 0;
 }
 
@@ -32,18 +33,6 @@ footer {
 .flexSpaceBetween {
 	display: flex;
 	justify-content: space-between;
-}
-
-.cardDiv {
-	h2 {
-		margin-top: 0;
-	}
-
-	background-color: var(--bg-shift-alt);
-	border: 5px solid black;
-	padding: 10px;
-	border-radius: 10px;
-	box-shadow: 5px 5px 0 1px var(--shadow-primary);
 }
 
 .section {
