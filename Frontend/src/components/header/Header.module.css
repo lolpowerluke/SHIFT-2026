@@ -72,6 +72,7 @@ header {
 .navItem {
     background-color: unset;
     text-decoration: none;
+    color: var(--txt-shift-primary);
 }
 
 .navItem.active {
@@ -82,16 +83,15 @@ header {
     display: none;
 }
 
-body:has(#hamburgerNav:checked) {
+body:has(#hamburgerNav:checked){
     overflow: hidden;
-
-    .headerLogo.hide {
+    .headerLogo.hide{
         animation: bounce-in .3s ease-in-out forwards;
     }
 }
 
 /* lines */
-.flexCtx {
+.flexCtx{
     display: flex;
     flex-direction: column;
     align-items: end;
@@ -129,12 +129,12 @@ body:has(#hamburgerNav:checked) {
     margin: auto;
 }
 
-#hamburgerNav:checked+label>.flexCtx>.l2 {
+#hamburgerNav:checked + label > .flexCtx > .l2 {
     opacity: 0;
     transform: rotate(45deg);
 }
 
-#hamburgerNav:checked+label>.flexCtx>.l3 {
+#hamburgerNav:checked + label > .flexCtx > .l3 {
     transform: translate(0, -.75rem) rotate(-45deg);
     margin: auto;
 }
@@ -148,14 +148,27 @@ body:has(#hamburgerNav:checked) {
     background-color: var(--bg-shift-primary);
     background-size: 105vh;
 
+    .orientationSwap {
+        list-style: none;
+        li{
+            a:hover {
+                color: var(--txt-special);
+            }
+        }
+    }
+
+    ul {
+        padding-left: 0;
+    }
+
     .navLogo {
         grid-row: 1/2;
         display: flex;
-        margin-top: 120px;
+        margin-top: 110px;
 
         img {
             margin: 0 auto;
-            height: 30vh;
+            height: var(--shift-logo-height);
             width: auto;
         }
     }
@@ -256,15 +269,27 @@ ul:has(+ #hamburgerNav:checked) {
 
 @media screen and (min-width: 1024px) {
     .navList {
-        .navFooter {
+        .orientationSwap {
+            display: flex;
+            flex-direction: row;
 
+            li {
+                font-size: 60px;
+
+                img {
+                    max-width: 40vw;
+                }
+            }
+        }
+
+        .navFooter {
             display: flex;
             flex-direction: row;
             max-width: 85vw;
-            margin: 0 auto;
+            margin: 0 auto 1rem;
 
             * {
-                max-width: 30vw;
+                max-width: 35vw;
                 justify-content: space-between;
             }
 
@@ -276,6 +301,7 @@ ul:has(+ #hamburgerNav:checked) {
 
             .socialLinks {
                 margin-right: 0;
+                max-width: 33dvw;
             }
         }
     }
