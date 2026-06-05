@@ -181,6 +181,7 @@ ul:has(+ #hamburgerNav:checked) {
 @media screen and (min-width: 1024px){
   .navList {
     .navFooter{
+
       display: flex;
       flex-direction: row;
       max-width: 85vw;
