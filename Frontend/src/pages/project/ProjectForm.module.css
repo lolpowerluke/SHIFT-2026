@@ -1,3 +1,5 @@
+@import url("../../css/cssComponents/form.css");
+
 .removeFile {
 	width: min-content;
 }
@@ -74,7 +76,7 @@ Complete source in *README*
 	}
 }
 
-.file-pill {
+.file {
 	display: flex;
 	align-items: center;
 	gap: 6px;
@@ -83,7 +85,7 @@ Complete source in *README*
 	border-radius: 10px;
 	padding: 0 0 0 10px;
 
-	.file-pill__clear {
+	.clear {
 		box-shadow: none;
 		border: unset;
 		border-radius: 5px;

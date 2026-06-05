@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
-import "./index.css";
+import s from "./ProjectForm.module.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -29,9 +29,9 @@ function isValidURL(str) {
 /** Filename pill with ×-button */
 function FilePill({ name, onClear }) {
 	return (
-		<span className="file-pill">
+		<span className={s.file}>
 			{name}
-			<button type="button" onClick={onClear} className="file-pill__clear" aria-label="Verwijder">×</button>
+			<button type="button" onClick={onClear} className={s.clear} aria-label="Verwijder">×</button>
 		</span>
 	);
 }
@@ -85,7 +85,7 @@ export default function ProjectForm() {
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 		if (!token) {
-			navigate("/login", { state: { from: location.pathname }, replace: true });
+			// navigate("/login", { state: { from: location.pathname }, replace: true });
 			return;
 		}
 		prefill(token);
@@ -94,7 +94,7 @@ export default function ProjectForm() {
 	async function prefill(token) {
 		const userData = await apiFetch("/api/user");
 		if (!userData.success) {
-			navigate("/login", { state: { from: location.pathname }, replace: true });
+			// navigate("/login", { state: { from: location.pathname }, replace: true });
 			return;
 		}
 		const user = userData.user;
@@ -324,9 +324,9 @@ export default function ProjectForm() {
 					Vul het korte formulier in om je project op de Shift festival website
 					te plaatsen.
 				</h3>
-				<form className="form" onSubmit={handleSubmit}>
+				<form className={s.form} onSubmit={handleSubmit}>
 					{/* Project info */}
-					<div className="part">
+					<div className={s.part}>
 						<h3>Project info</h3>
 						<div>
 							<label htmlFor="nameProject">Project title *</label>
@@ -343,7 +343,7 @@ export default function ProjectForm() {
 						<div>
 							<label htmlFor="description">Description *</label>
 							<textarea
-								className="projectInfo"
+								className={s.projectInfo}
 								id="description"
 								name="description"
 								maxLength={1250}
@@ -360,7 +360,7 @@ export default function ProjectForm() {
 								required
 								id="course"
 								name="course"
-								className="courseSelect"
+								className={s.courseSelect}
 								value={course}
 								onChange={(e) => setCourse(e.target.value)}
 							>
@@ -379,7 +379,7 @@ export default function ProjectForm() {
 								required
 								id="promoter"
 								name="promoter"
-								className="courseSelect"
+								className={s.courseSelect}
 								value={promoter}
 								onChange={(e) => setPromoter(e.target.value)}
 							>
@@ -409,7 +409,7 @@ export default function ProjectForm() {
 					</div>
 
 					{/* Personal info */}
-					<div className="part">
+					<div className={s.part}>
 						<h3>Personal info</h3>
 						<div>
 							<label htmlFor="firstName">Voornaam *</label>
@@ -461,7 +461,7 @@ export default function ProjectForm() {
 								}}
 							/>
 							{urlErrors.linkedinURL && (
-								<p className="error">{urlErrors.linkedinURL}</p>
+								<p className={s.error}>{urlErrors.linkedinURL}</p>
 							)}
 						</div>
 						<div>
@@ -475,7 +475,7 @@ export default function ProjectForm() {
 									<img
 										src={URL.createObjectURL(selfieFile)}
 										alt={selfieFile.name}
-										className="preview-img"
+										className={s.preview - img}
 									/>
 								</>
 							) : selfieExistingPicture ? (
@@ -487,7 +487,7 @@ export default function ProjectForm() {
 									<img
 										src={selfieExistingPicture.url}
 										alt={selfieExistingPicture.name}
-										className="preview-img"
+										className={s.preview - img}
 									/>
 								</>
 							) : (
@@ -499,23 +499,23 @@ export default function ProjectForm() {
 									onChange={(e) => setSelfieFile(e.target.files[0] ?? null)}
 								/>
 							)}
-							<label className="subtext">
+							<label className={s.subtext}>
 								Gelieve in een 1:1 aspect ratio in te dienen
 							</label>
 						</div>
 					</div>
 
 					{/* Extra person */}
-					<div className="part">
+					<div className={s.part}>
 						<label
 							htmlFor="extraPersonToggle"
 							style={{ cursor: "pointer" }}
 							onClick={() => setShowExtra((v) => !v)}
 						>
 							<h3>Extra persoon toevoegen</h3>
-							<span className="addPerson">
+							<span className={s.addPerson}>
 								<div
-									className="line"
+									className={s.line}
 									style={{
 										transform: showExtra
 											? "translateY(13px) rotate(-45deg)"
@@ -524,7 +524,7 @@ export default function ProjectForm() {
 									}}
 								/>
 								<div
-									className="line"
+									className={s.line}
 									style={{
 										transform: showExtra
 											? "translateY(13px) rotate(45deg)"
@@ -536,7 +536,7 @@ export default function ProjectForm() {
 						</label>
 						{showExtra && (
 							<div
-								className="extraPersonForm"
+								className={s.extraPersonForm}
 								style={{ display: "flex", flexDirection: "column", gap: 10 }}
 							>
 								<div>
@@ -590,7 +590,7 @@ export default function ProjectForm() {
 										}}
 									/>
 									{urlErrors.p2LinkedIn && (
-										<p className="error">{urlErrors.p2LinkedIn}</p>
+										<p className={s.error}>{urlErrors.p2LinkedIn}</p>
 									)}
 								</div>
 								<div>
@@ -604,7 +604,7 @@ export default function ProjectForm() {
 											<img
 												src={URL.createObjectURL(p2SelfieFile)}
 												alt={p2SelfieFile.name}
-												className="preview-img"
+												className={s.preview - img}
 											/>
 										</>
 									) : p2ExistingPicture ? (
@@ -616,7 +616,7 @@ export default function ProjectForm() {
 											<img
 												src={p2ExistingPicture.url}
 												alt={p2ExistingPicture.name}
-												className="preview-img"
+												className={s.preview - img}
 											/>
 										</>
 									) : (
@@ -630,7 +630,7 @@ export default function ProjectForm() {
 											}
 										/>
 									)}
-									<label className="subtext">
+									<label className={s.subtext}>
 										Gelieve in een 1:1 aspect ratio in te dienen
 									</label>
 								</div>
@@ -639,7 +639,7 @@ export default function ProjectForm() {
 					</div>
 
 					{/* Project media */}
-					<div className="part">
+					<div className={s.part}>
 						<h3>Project media</h3>
 
 						{/* Images */}
@@ -658,7 +658,7 @@ export default function ProjectForm() {
 											key={key}
 											src={url}
 											alt={name}
-											className="preview-img"
+											className={s.preview - img}
 										/>
 									))}
 								</>
@@ -672,7 +672,7 @@ export default function ProjectForm() {
 									onChange={handleProjectFilesChange}
 								/>
 							)}
-							<label className="subtext">
+							<label className={s.subtext}>
 								Gelieve in een 16:9 aspect ratio in te dienen
 							</label>
 						</div>
@@ -695,7 +695,7 @@ export default function ProjectForm() {
 								}}
 							/>
 							{urlErrors.videoURL && (
-								<p className="error">{urlErrors.videoURL}</p>
+								<p className={s.error}>{urlErrors.videoURL}</p>
 							)}
 						</div>
 
@@ -727,7 +727,7 @@ export default function ProjectForm() {
 									: "Submit"}
 						</button>
 						{submitState === "error" && (
-							<p className="submit-error">Fout: {submitError}</p>
+							<p className={s.submit - error}>Fout: {submitError}</p>
 						)}
 					</div>
 				</form>
