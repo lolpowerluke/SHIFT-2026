@@ -1,4 +1,3 @@
-import React from "react";
 import { createBrowserRouter } from "react-router";
 import PageLayout from "./layouts/PageLayout.jsx";
 import BareLayout from "./layouts/BareLayout.jsx";
@@ -28,7 +27,6 @@ const router = createBrowserRouter(
                 { path: Routes.Root, element: <Countdown /> },
                 { path: Routes.Login, element: <Login /> },
                 { path: Routes.ProjectForm, element: <ProjectForm /> },
-                { path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
                 {
                     element: <SearchLayout />, //this will hold all search logic for the projects
                     children: [

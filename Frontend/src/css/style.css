@@ -1,5 +1,3 @@
-@import url(./cssComponents/header.css);
-@import url(./cssComponents/footer.css);
 /* files for variables */
 @import url(./cssComponents/vars/colours.css);
 @import url(./cssComponents/vars/distances.css);
@@ -11,8 +9,6 @@
 @import url(./cssComponents/buttons.css);
 /* throbber css */
 @import url(./cssComponents/throbber.css);
-/* form css */
-@import url(./cssComponents/form.css);
 
 /* This file is for the main styles like using colours, adding stuff that doesn't belong to the other files */
 
@@ -21,29 +17,47 @@
 	height: 0;
 }
 
-.fullPage {
-	width: 100vw;
-	min-height: 100dvh;
-}
+
 
 html,
 body {
 	touch-action: pan-y;
 }
 
-html {
-	background-image: url(/assets/wallOverlayBlue.png);
-	background-size: 4096px;
-	scroll-behavior: smooth;
+html::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -2;
+	background-image: url(/assets/wallTextureWeb2.png);
+	background-size: 105vh;
+	background-color: var(--bg-shift-primary);
 }
 
-body {
+body::before {
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: -2;
 	background-image: url(/assets/iconsOverlay.svg);
-	background-size: 1500px;
-	min-height: 100dvh;
-	color: var(--txt-shift-primary);
+	background-size: 5000px;
+	pointer-events: none;
 }
 
-#root{
+.altBg {
+	position: relative;
+	padding-bottom: 2rem;
+	z-index: 0;
+}
+
+.altBg::before {
+	content: '';
+	position: absolute;
+	background-color: var(--bg-shift-secondary);
+	inset: 0;
+	z-index: -3;
+}
+
+#root {
 	overflow-x: clip;
 }
