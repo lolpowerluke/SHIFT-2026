@@ -12,29 +12,31 @@ export default function ProjectCard({ project }) {
 	const categoryIcon = CATEGORY_ICONS[category];
 
 	return (
-		<div className="projectCard">
-			<h3 className="cardTitle">{title}</h3>
-			<div className="cardCategory">
-				{categoryIcon && <img src={categoryIcon} alt="" aria-hidden="true" />}
-				<span>{category}</span>
-			</div>
-			<div className="cardImageWrapper">
-				<img src={image} alt={title} className="cardImage" />
-				<div className="cardAvatars">
+		<div className="projectCardBorder">
+			<div className="projectCard">
+				<h3 className="cardTitle">{title}</h3>
+				<div className="cardCategory">
+					{categoryIcon && <img src={categoryIcon} alt="" aria-hidden="true" />}
+					<span>{category}</span>
+				</div>
+				<div className="cardImageWrapper">
+					<img src={image} alt={title} className="cardImage" />
+					<div className="cardAvatars">
+						{students.map((student) => (
+							<img
+								key={student.name}
+								src={student.avatar}
+								alt={student.name}
+								className="avatar"
+							/>
+						))}
+					</div>
+				</div>
+				<div className="cardStudents">
 					{students.map((student) => (
-						<img
-							key={student.name}
-							src={student.avatar}
-							alt={student.name}
-							className="avatar"
-						/>
+						<p key={student.name}>{student.name}</p>
 					))}
 				</div>
-			</div>
-			<div className="cardStudents">
-				{students.map((student) => (
-					<p key={student.name}>{student.name}</p>
-				))}
 			</div>
 		</div>
 	);
