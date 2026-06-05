@@ -16,8 +16,11 @@ export default function ProjectenPage() {
 	return (
 		<main className="ctx">
 			<section className="projectenHero">
-				<h1>Projecten</h1>
-				<h3>Ontdek de werken van onze studenten!</h3>
+				<h1>EindProjecten</h1>
+				<h3>
+					Ontdek de werken van onze derde jaars Multimedia & Creatieve
+					technologie!
+				</h3>
 			</section>
 
 			<div className="filterBar">
