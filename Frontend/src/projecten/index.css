@@ -2,8 +2,7 @@
 	margin-bottom: 1.5rem;
 
 	h1,
-	p {
-		color: var(--txt-shift-primary);
+	h3 {
 		margin: 0 0 0.25rem;
 	}
 }
@@ -82,12 +81,6 @@
 	padding-bottom: var(--spacing-s);
 }
 
-@media (max-width: 768px) {
-	.projectenGrid {
-		grid-template-columns: 1fr;
-	}
-}
-
 /* cards van project wow insane! !!! */
 
 .projectCard {
@@ -158,6 +151,10 @@
 
 .cardStudents {
 	margin-top: 48px;
+	min-height: 48px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 
 	p {
 		margin: 0;
@@ -190,5 +187,9 @@
 	h1,
 	h3 {
 		text-align: center;
+	}
+
+	.projectenGrid {
+		grid-template-columns: 1fr;
 	}
 }
