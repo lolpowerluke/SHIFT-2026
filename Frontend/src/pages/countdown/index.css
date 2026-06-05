@@ -448,4 +448,21 @@ body {
 			font-size: 18px;
 		}
 	}
+	.audienceContainer {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2rem;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.audienceCard {
+		&:nth-child(odd) {
+			transform: rotate(5deg);
+		}
+		&:nth-child(even) {
+			transform: rotate(-5deg);
+		}
+	}
 }
