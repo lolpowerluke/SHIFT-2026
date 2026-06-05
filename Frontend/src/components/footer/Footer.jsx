@@ -1,7 +1,7 @@
-import React from "react";
 import { Link } from "react-router";
-import Routes from "../routes/constants/Routes.js";
-import SocialLinks from "./SocialLinks.jsx";
+import Routes from "../../routes/constants/Routes.js";
+import SocialLinks from "../socialLinks/SocialLinks.jsx";
+import s from "./Footer.module.css";
 
 export default function Footer() {
 	return (
@@ -12,7 +12,7 @@ export default function Footer() {
 					<Link to={Routes.Privacy}>Privacybeleid</Link>.
 				</small>
 				<hr />
-				<div className="text-info">
+				<div className={s.text_info}>
 					<p>
 						Erasmushogeschool Brussel <br />
 						Campus Kaai
@@ -21,8 +21,8 @@ export default function Footer() {
 						1070 Anderlecht
 					</p>
 				</div>
-				<SocialLinks/>
-				<small className="footerCopyright">
+				<SocialLinks className={s.socialLinks} />
+				<small className={s.footerCopyright}>
 					2026 SHIFT — Erasmushogeschool Brussel. <br />
 					Alle rechten voorbehouden.
 				</small>

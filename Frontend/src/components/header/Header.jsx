@@ -1,9 +1,9 @@
-import {Link, NavLink} from "react-router";
-import { NavRoutes } from "../routes/NavRoutes.js"
-import SocialLinks from "./SocialLinks.jsx";
-import {useRef} from "react";
-import {useScrolled} from "../hooks/useScrolled.js";
-
+import { Link, NavLink } from "react-router";
+import { NavRoutes } from "../../routes/NavRoutes.js"
+import SocialLinks from "../socialLinks/SocialLinks.jsx";
+import { useRef } from "react";
+import { useScrolled } from "../../hooks/useScrolled.js";
+import s from "./Header.module.css";
 
 
 export default function Header() {
@@ -24,42 +24,41 @@ export default function Header() {
                     <img
                         src="/favicon/shift_icon.svg"
                         alt="Shift Icon"
-                        className={`headerLogo ${!scrolled ? "hide" : ""}`}
+                        className={`${s.headerLogo} ${!scrolled ? s.hide : ""}`}
                     />
                 </Link>
-                <div className="nav">
-                    <ul className="navList">
-                        <li className="navLogo">
-                            <img src="/assets/logos/shift_logo.svg" alt="Shift Logo" className="logo"/>
+                <div className={s.nav}>
+                    <ul className={s.navList}>
+                        <li className={s.navLogo}>
+                            <img src="/assets/logos/shift_logo.svg" alt="Shift Logo" className={s.logo} />
                         </li>
-                        <li className="navLinks">
+                        <li className={s.navLinks}>
                             <ul>
                                 {
                                     NavRoutes.map((link) => (<li key={link.route}>
-                                        <NavLink to={link.route} onClick={closeMenu} className="navItem">
+                                        <NavLink to={link.route} onClick={closeMenu} className={s.navItem}>
                                             {link.label}
                                         </NavLink>
                                     </li>))
                                 }
                             </ul>
                         </li>
-                        <li className="navFooter">
+                        <li className={s.navFooter}>
                             <p><span>SHIFT FESTIVAL</span> - het afstudeerevent van Multimedia & Creatieve Technologie studenten.</p>
-                            <SocialLinks/>
+                            <SocialLinks className={s.socialLinks} />
                         </li>
                     </ul>
                     {/* Code based on JoachimGautama's web2-course-project-front-end-JoachimGautama */}
-                    <input type="checkbox" id="hamburgerNav" ref={hamburgerRef}/>
-                    <label htmlFor="hamburgerNav">
+                    <input type="checkbox" id={s.hamburgerNav} ref={hamburgerRef} />
+                    <label htmlFor={s.hamburgerNav}>
                         <div className="flexCtx btn">
-                            <div className="l1 line"></div>
-                            <div className="l2 line"></div>
-                            <div className="l3 line"></div>
+                            <div className={`${s.l1} ${s.line}`}></div>
+                            <div className={`${s.l2} ${s.line}`}></div>
+                            <div className={`${s.l3} ${s.line}`}></div>
                         </div>
                     </label>
                 </div>
             </div>
         </header>
-
     )
 }
