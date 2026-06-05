@@ -36,7 +36,7 @@
     & * {
         margin: 0;
         padding: 0;
-        color: var(--txt-shift-primary);
+        color: var(--txt-hero);
     }
 }
 
@@ -226,6 +226,7 @@
 
     .projectCTA {
         button {
+            color: var(--txt-shift-primary);
             background-color: var(--bg-shift-primary);
         }
     }
@@ -359,8 +360,9 @@
     .landingWrap {
         display: flex;
         flex-direction: row;
-        height: 80vh;
+        height: auto;
         width: 92.5dvw;
+        aspect-ratio: 16/9;
         justify-content: space-between;
 
         .timerDiv {
@@ -369,6 +371,9 @@
 
             #timer {
                 margin-left: -6px;
+                .timerBox{
+                    color: var(--txt-hero);
+                }
             }
 
             .cta {
@@ -382,15 +387,19 @@
         position: absolute;
         top: 0;
         z-index: -1;
-        height: 95dvh;
+        height: auto;
         width: 100%;
+        aspect-ratio: 16/9;
         overflow: hidden;
 
         img {
-            width: 100dvw;
+            width: 100%;
+        }
+        video{
+            width: 100%;
         }
 
-        box-shadow: -1px 3px 10px 5px var(--bg-shift-secondary);
+        box-shadow: -1px 3px 10px 5px color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
     }
 
     #heroLogo {

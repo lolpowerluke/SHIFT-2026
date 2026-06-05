@@ -109,6 +109,18 @@ body:has(#hamburgerNav:checked){
     align-self: end;
     width: 85vw;
     margin: 0 auto 1rem;
+
+    p{
+      text-align: center;
+      font-size: .9rem;
+      width: 85dvw;
+      margin: 0 auto 1rem;
+      span{
+        font-size: inherit;
+        color: var(--hl-primary);
+      }
+    }
+
     .socialLinks{
       margin: 0 auto;
       width: 85vw;
@@ -169,6 +181,7 @@ ul:has(+ #hamburgerNav:checked) {
 @media screen and (min-width: 1024px){
   .navList {
     .navFooter{
+
       display: flex;
       flex-direction: row;
       max-width: 85vw;
@@ -177,9 +190,13 @@ ul:has(+ #hamburgerNav:checked) {
         max-width: 30vw;
         justify-content: space-between;
       }
-      .navFooter{
-        margin: 0;
-        justify-content: flex-end;
+      p{
+        margin-left: 0;
+        text-align: left;
+        font-size: 18px;
+      }
+      .socialLinks{
+        margin-right: 0;
       }
     }
   }

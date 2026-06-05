@@ -26,6 +26,7 @@ button:active {
 }
 
 .btnMaps {
+    color: var(--txt-shift-primary);
     background-color: var(--bg-shift-primary);
     cursor: pointer;
     margin-top: var(--margin-between);

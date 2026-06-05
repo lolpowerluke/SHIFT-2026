@@ -46,7 +46,7 @@ small {
 }
 
 a {
-	color: var(--bg-shift-secondary);
+	/*color: var(--bg-shift-secondary);*/
 	font-weight: bold;
 }
 
@@ -65,7 +65,7 @@ a {
 .darkText {
 	color: var(--txt-shift-secondary);
 	a {
-		color: var(--txt-shift-secondary);
+		/*color: var(--txt-shift-secondary);*/
 	}
 }
 
