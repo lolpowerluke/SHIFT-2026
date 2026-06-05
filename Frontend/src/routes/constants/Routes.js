@@ -7,6 +7,6 @@ const Routes = {
 	Project: "/project",
 	Login: "/login",
 	ProjectForm: "/project-form",
-	ProjectenPage: "/projectenpagina",
+	ProjectenPage: "/projecten",
 };
 export default Routes;
