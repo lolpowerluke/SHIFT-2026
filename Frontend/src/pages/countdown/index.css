@@ -1,479 +1,489 @@
 .wrap {
-	display: flex;
-	flex-direction: column;
-	max-width: 85vw;
-	margin: 2rem auto;
-	text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 85vw;
+    margin: 2rem auto;
+    text-align: center;
 }
 
 .heroContent {
-	display: none;
+    display: none;
 }
 
 .heroLayout {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
 }
 
 #heroLogo {
-	height: var(--shift-logo-height);
-	margin: -80px -20px -30px;
+    height: var(--shift-logo-height);
+    margin: -80px -20px -30px;
 }
 
 .rotatedText {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 
-	h1 {
-		font-size: 32px;
-	}
+    h1 {
+        font-size: 32px;
+    }
 
-	& * {
-		margin: 0;
-		padding: 0;
-		color: var(--txt-shift-primary);
-	}
+    & * {
+        margin: 0;
+        padding: 0;
+        color: var(--txt-shift-primary);
+    }
 }
 
 .heroText {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-	h1 {
-		font-size: 18px;
-	}
+    h1 {
+        font-size: 18px;
+    }
 
-	& > div:first-child {
-		font-size: 1rem;
-	}
+    & > div:first-child {
+        font-size: 1rem;
+    }
 
-	& > div:last-child {
-		margin-left: 4px;
-		font-size: 2rem;
-	}
+    & > div:last-child {
+        margin-left: 4px;
+        font-size: 2rem;
+    }
 
-	.courseHeroText {
-		width: fit-content;
-	}
+    .courseHeroText {
+        width: fit-content;
+    }
 
-	div {
-		font-weight: bold;
-	}
+    div {
+        font-weight: bold;
+    }
 }
 
 .heroWrapper {
-	transform: rotate(-14deg);
-	margin-left: 2.5rem;
-	margin-top: -0.2rem;
+    transform: rotate(-14deg);
+    margin-left: 2.5rem;
+    margin-top: -0.2rem;
 }
 
 .topSpacer {
-	padding-top: var(--spacing-top);
+    padding-top: var(--spacing-top);
 }
 
 .timerDiv {
-	width: fit-content;
-	margin: 60px auto 0;
-	font-weight: 800 !important;
-	.cd {
-		background-color: var(--bg-shift-alt);
-		width: fit-content;
-		padding: 5px 15px;
-		margin-bottom: 8px;
-		border-radius: 6px;
-		border: 3px solid black;
-		text-align: right;
-		justify-self: right;
-		text-transform: uppercase;
-		span {
-			font-weight: 600;
-		}
-	}
+    width: fit-content;
+    margin: 60px auto 0;
+    font-weight: 800 !important;
 
-	#timer {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
+    .cd {
+        background-color: var(--bg-shift-alt);
+        width: fit-content;
+        padding: 5px 15px;
+        margin-bottom: 8px;
+        border-radius: 6px;
+        border: 3px solid black;
+        text-align: right;
+        justify-self: right;
+        text-transform: uppercase;
 
-		.timerBox {
-			display: flex;
-			flex-direction: column;
-			color: var(--txt-shift-primary);
+        span {
+            font-weight: 600;
+        }
+    }
 
-			& > :first-child {
-				padding: 0.5rem;
-				border-radius: 0.5rem;
-				margin: 0 0.5rem;
-				width: 2.1rem;
-				aspect-ratio: 1/1;
-				background-color: var(--bg-shift-secondary);
-				box-shadow: 5px 5px 0 1px var(--shadow-primary);
-				border: 5px solid var(--border-primary);
-				font-size: 24px;
-				text-align: center;
-				font-weight: bold;
-				span {
-					font-weight: bold;
-					font-size: 24px;
-				}
-			}
+    #timer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
 
-			& > :last-child {
-				font-size: small;
-				text-align: center;
-				margin-top: 0.3rem;
-			}
-		}
-	}
+        .timerBox {
+            display: flex;
+            flex-direction: column;
+            color: var(--txt-shift-primary);
+
+            & > :first-child {
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                margin: 0 0.5rem;
+                width: 2.1rem;
+                aspect-ratio: 1/1;
+                background-color: var(--bg-shift-secondary);
+                box-shadow: 5px 5px 0 1px var(--shadow-primary);
+                border: 5px solid var(--border-primary);
+                font-size: 24px;
+                text-align: center;
+                font-weight: bold;
+
+                span {
+                    font-weight: bold;
+                    font-size: 24px;
+                }
+            }
+
+            & > :last-child {
+                font-size: small;
+                text-align: center;
+                margin-top: 0.3rem;
+            }
+        }
+    }
 }
 
 .linkBtn {
-	display: flex;
-	justify-self: center;
-	width: fit-content;
-	outline: none;
-	-webkit-tap-highlight-color: transparent;
+    display: flex;
+    justify-self: center;
+    width: fit-content;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .projectCard {
-	background-color: var(--bg-shift-secondary);
-	border: 5px solid var(--border-primary);
-	width: 80%;
-	border-radius: 0.5rem;
-	padding: 1.25rem;
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-self: center;
-	transform: rotate(5deg);
+    background-color: var(--bg-shift-secondary);
+    border: 5px solid var(--border-primary);
+    width: 80%;
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    transform: rotate(5deg);
 
-	h2 {
-		font-size: 26px;
-	}
+    h2 {
+        font-size: 26px;
+    }
 
-	.carouselImage {
-		width: 100%;
-		border-radius: 1.5rem;
-		border: 5px solid var(--border-primary);
-		overflow: hidden;
-		aspect-ratio: 16 / 9;
-	}
+    .carouselImage {
+        width: 100%;
+        border-radius: 1.5rem;
+        border: 5px solid var(--border-primary);
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+    }
 
-	.carouselSlideAnimation {
-		display: flex;
-		transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-		width: 100%;
-		height: 100%;
-	}
+    .carouselSlideAnimation {
+        display: flex;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        width: 100%;
+        height: 100%;
+    }
 
-	.carouselSlide {
-		min-width: 100%;
-		height: 100%;
-		flex-shrink: 0;
-		box-sizing: border-box;
-	}
+    .carouselSlide {
+        min-width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+        box-sizing: border-box;
+    }
 
-	.cardImagePlaceholder {
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--bg-shift-alt);
-	}
+    .cardImagePlaceholder {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--bg-shift-alt);
+    }
 
-	.carouselDots {
-		display: flex;
-		justify-content: center;
-		gap: 10px;
-		margin-top: 0.5rem;
+    .carouselDots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 0.5rem;
 
-		button {
-			box-shadow: none;
-			border: 1px solid;
-		}
+        button {
+            box-shadow: none;
+            border: 1px solid;
+        }
 
-		.dot {
-			width: 18px;
-			height: 18px;
-			background-color: var(--bg-shift-primary);
-			cursor: pointer;
-			padding: 0;
-			position: relative;
-			transition: transform 0.1s ease;
+        .dot {
+            width: 18px;
+            height: 18px;
+            background-color: var(--bg-shift-primary);
+            cursor: pointer;
+            padding: 0;
+            position: relative;
+            transition: transform 0.1s ease;
 
-			&::after {
-				content: "";
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-			}
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
 
-			&:active {
-				transform: translate(2px, 2px);
-			}
-		}
-	}
+            &:active {
+                transform: translate(2px, 2px);
+            }
+        }
+    }
 
-	.projectCTA {
-		button {
-			background-color: var(--bg-shift-primary);
-		}
-	}
+    .projectCTA {
+        button {
+            background-color: var(--bg-shift-primary);
+        }
+    }
 }
 
 .shiftInfoNoCard {
-	text-align: left;
+    text-align: left;
 
-	.infoTitle {
-		color: var(--txt-shift-primary);
-		text-align: center;
-	}
+    .infoTitle {
+        color: var(--txt-shift-primary);
+        text-align: center;
+    }
 
-	.infoList {
-		list-style: none;
-		padding: 0;
-		margin: 0;
+    .infoList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
 
-		li {
-			font-size: 18px;
-			position: relative;
-			color: var(--txt-shift-primary);
-			margin-bottom: 1.2rem;
-			padding-left: 1.5rem;
+        li {
+            font-size: 18px;
+            position: relative;
+            color: var(--txt-shift-primary);
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
 
-			&::before {
-				content: "•";
-				position: absolute;
-				left: 0;
-			}
-		}
-	}
+            &::before {
+                content: "•";
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
 }
 
 .shiftTime,
 .shiftLocation {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	gap: 1.5rem;
-	width: 100%;
-	max-width: 320px;
-	margin-left: auto;
-	margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
 
-	h3 {
-		font-size: 20px;
-	}
+    h3 {
+        font-size: 20px;
+    }
 
-	> div:last-child {
-		flex-grow: 1;
-	}
+    > div:last-child {
+        flex-grow: 1;
+    }
 }
 
 .shiftTime {
-	div:last-child {
-		text-align: center;
-		padding-right: 74px;
-	}
+    div:last-child {
+        text-align: center;
+        padding-right: 74px;
+    }
 }
 
 .shiftLocation {
-	text-align: left;
+    text-align: left;
 }
 
 .iconCalendar,
 .iconMap {
-	width: 50px;
-	height: 50px;
-	flex-shrink: 0;
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: contain;
-	}
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 }
 
 .sectionDivider {
-	border: none;
-	border-top: 3px solid var(--border-primary);
-	margin: 3rem auto;
-	width: 100%;
+    border: none;
+    border-top: 3px solid var(--border-primary);
+    margin: 3rem auto;
+    width: 100%;
 }
 
 .audienceContainer {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 1.5rem;
-	width: 100%;
-	max-width: 400px;
-	margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .audienceCard {
-	background-color: var(--bg-shift-primary);
-	border: 5px solid var(--border-primary);
-	border-radius: 1.5rem;
-	padding: var(--margin-small);
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
+    background-color: var(--bg-shift-primary);
+    border: 5px solid var(--border-primary);
+    border-radius: 1.5rem;
+    padding: var(--margin-small);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 
-	.iconHeadphones,
-	.iconPaper,
-	.iconChatBubble,
-	.iconStar {
-		width: 60px;
-		height: 60px;
-		background-position: center;
-		margin-bottom: 0.5rem;
-		flex-shrink: 0;
+    .iconHeadphones,
+    .iconPaper,
+    .iconChatBubble,
+    .iconStar {
+        width: 60px;
+        height: 60px;
+        background-position: center;
+        margin-bottom: 0.5rem;
+        flex-shrink: 0;
 
-		img {
-			width: 100%;
-			height: 100%;
-			object-fit: contain;
-			display: block;
-		}
-	}
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+    }
 }
 
-.infoSection{
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 2rem;
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
 }
 
 @media (min-width: 1024px) {
-	.landingWrap {
-		display: flex;
-		flex-direction: row;
-		height: 80vh;
-		width: 92.5dvw;
-		justify-content: space-between;
+    .landingWrap {
+        display: flex;
+        flex-direction: row;
+        height: 80vh;
+        width: 92.5dvw;
+        justify-content: space-between;
 
-		.timerDiv {
-			align-self: flex-end;
-			margin: 0 0 6rem 0;
+        .timerDiv {
+            align-self: flex-end;
+            margin: 0 0 6rem 0;
 
-			#timer {
-				margin-left: -6px;
-			}
-			.cta {
-				margin-left: 10px;
-			}
-		}
-	}
+            #timer {
+                margin-left: -6px;
+            }
 
-	.heroContent {
-		display: block;
-		position: absolute;
-		top: 0;
-		z-index: -1;
-		height: 95dvh;
-		width: 100%;
-		overflow: hidden;
-		img {
-			width: 100dvw;
-		}
-		box-shadow: -1px 3px 10px 5px var(--bg-shift-secondary);
-	}
+            .cta {
+                margin-left: 10px;
+            }
+        }
+    }
 
-	#heroLogo {
-		margin: -160px -30px -80px;
-	}
+    .heroContent {
+        display: block;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+        height: 95dvh;
+        width: 100%;
+        overflow: hidden;
 
-	.rotatedText h1 {
-		font-size: 44px;
-	}
+        img {
+            width: 100dvw;
+        }
 
-	.heroText {
-		margin-left: 1rem;
+        box-shadow: -1px 3px 10px 5px var(--bg-shift-secondary);
+    }
 
-		h1 {
-			font-size: 28px;
-		}
+    #heroLogo {
+        margin: -160px -30px -80px;
+    }
 
-		& > div:first-child {
-			font-size: 2rem;
-		}
+    .rotatedText h1 {
+        font-size: 44px;
+    }
 
-		& > div:last-child {
-			margin-left: 4px;
-			font-size: 4rem;
-		}
-	}
+    .heroText {
+        margin-left: 1rem;
 
-	.timerDiv .cd,
-	.timerDiv .cta {
-		text-align: left;
-		justify-self: left;
-	}
+        h1 {
+            font-size: 28px;
+        }
 
-	.sectionFlexer {
-		display: flex;
-		justify-content: space-between;
-	}
+        & > div:first-child {
+            font-size: 2rem;
+        }
 
-	.projectSide,
-	.shiftInfoSide {
-		width: 45%;
-	}
+        & > div:last-child {
+            margin-left: 4px;
+            font-size: 4rem;
+        }
+    }
 
-	.projectCard {
-		width: 460px;
-		max-width: 100%;
-		justify-self: flex-end;
-	}
+    .timerDiv .cd,
+    .timerDiv .cta {
+        text-align: left;
+        justify-self: left;
+    }
 
-	.shiftInfoNoCard {
-		text-align: left;
+    .sectionFlexer {
+        display: flex;
+        justify-content: space-between;
+    }
 
-		.infoTitle {
-			text-align: left;
-			font-size: 44px;
-		}
+    .projectSide,
+    .shiftInfoSide {
+        width: 45%;
+    }
 
-		.infoList li {
-			font-size: 24px;
-		}
-	}
-	.audienceContainer {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: 2rem;
-		width: 100%;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
+    .projectCard {
+        width: 460px;
+        max-width: 100%;
+        justify-self: flex-end;
+    }
 
-	.audienceCard {
-		&:nth-child(odd) {
-			transform: rotate(5deg);
-		}
-		&:nth-child(even) {
-			transform: rotate(-5deg);
-		}
-	}
+    .shiftInfoNoCard {
+        text-align: left;
 
-	.infoSection{
-		flex-direction: row;
-		height: fit-content;
-		min-height: 10rem;
-		justify-content: space-around;
-		hr.sectionDivider{
-			height: 120px;
-			width: 1px;
-			border: none;
-			border-left: 3px solid var(--border-primary);
-			margin: 0;
-		}
-	}
+        .infoTitle {
+            text-align: left;
+            font-size: 44px;
+        }
+
+        .infoList li {
+            font-size: 24px;
+        }
+    }
+
+    .audienceContainer {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .audienceCard {
+        &:nth-child(odd) {
+            transform: rotate(5deg);
+        }
+
+        &:nth-child(even) {
+            transform: rotate(-5deg);
+        }
+    }
+
+    .infoSection {
+        flex-direction: row;
+        height: fit-content;
+        min-height: 10rem;
+        justify-content: space-around;
+
+        hr.sectionDivider {
+            align-self: stretch;
+            width: 1px;
+            border: none;
+            border-left: 3px solid var(--border-primary);
+            margin: 0;
+        }
+    }
 }

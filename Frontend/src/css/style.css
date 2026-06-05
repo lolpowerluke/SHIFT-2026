@@ -21,10 +21,7 @@
 	height: 0;
 }
 
-.fullPage {
-	width: 100vw;
-	min-height: 100dvh;
-}
+
 
 html,
 body {
@@ -50,11 +47,21 @@ body::before {
 	pointer-events: none;
 }
 
+.altBg{
+	position: relative;
+	padding-bottom: 2rem;
+	z-index: 0;
+}
+
+.altBg::before{
+	content: '';
+	position: absolute;
+	background-color:var(--bg-shift-secondary);
+	inset: 0;
+	z-index: -3;
+}
+
 #root{
 	overflow-x: clip;
 }
 
-.altBg{
-	background-color:var(--bg-shift-secondary);
-	padding-bottom: 2rem;
-}
