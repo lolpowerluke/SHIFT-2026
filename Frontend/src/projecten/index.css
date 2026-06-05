@@ -93,12 +93,16 @@
 	flex-direction: column;
 	gap: 6px;
 	color: var(--txt-shift-secondary);
+	flex: 1;
 }
 
 .projectCardBorder {
 	box-shadow: 1.5px 1.5px 0 6px var(--bg-shift-secondary);
 	border-radius: 12px;
+	display: flex;
 }
+
+
 
 .cardTitle {
 	line-height: 24px;
