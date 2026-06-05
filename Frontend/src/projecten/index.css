@@ -1,17 +1,86 @@
-.projectenPage {
-	padding: var(--spacing-s, 1rem) 0;
-}
-
 .projectenHero {
 	margin-bottom: 1.5rem;
 
-	h1 {
-		color: var(--hl-primary);
-		margin: 0 0 0.25rem;
-	}
-
+	h1,
 	p {
 		color: var(--txt-shift-primary);
-		margin: 0;
+		margin: 0 0 0.25rem;
+	}
+}
+
+.filterBar {
+	background-color: var(--bg-shift-alt);
+	border: 5px solid var(--border-primary);
+	border-radius: 12px;
+	box-shadow: 5px 5px 0 1px var(--shadow-primary);
+	padding: 1rem;
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.searchWrapper {
+	display: flex;
+	background-color: var(--bg-shift-secondary);
+	border: 5px solid var(--border-primary);
+	border-radius: 12px;
+	overflow: hidden;
+	flex: 1;
+	min-width: 180px;
+}
+
+.searchIconBox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--bg-shift-alt);
+	border-right: 5px solid var(--border-primary);
+	padding: 0.5rem 0.75rem;
+}
+
+.searchIconBox img {
+	width: 20px;
+	height: 20px;
+}
+
+.searchWrapper input {
+	border: none;
+	background: transparent;
+	font-size: 16px;
+	font-family: inherit;
+	outline: none;
+	width: 100%;
+	padding: 0.5rem 0.75rem;
+}
+
+.filterButtons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.filterBtn.active {
+	background-color: var(--bg-shift-secondary);
+}
+
+@media (max-width: 768px) {
+	.filterBar {
+		flex-direction: column;
+	}
+
+	.searchWrapper {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.filterButtons {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.5rem;
+	}
+
+	.filterButtons .filterBtn:first-child {
+		grid-column: span 2;
 	}
 }
