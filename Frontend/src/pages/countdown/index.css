@@ -196,6 +196,7 @@ p#warningTxt {
         top: 0;
         z-index: -1;
         height: 95dvh;
+        width: 100%;
         overflow: hidden;
         img {
             width: 100dvw;
