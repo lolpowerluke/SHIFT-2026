@@ -12,14 +12,14 @@
   --txt-hero: #fbf8cd;
 
   /* highlight colours */
-  --hl-primary: #fbb042;
+  --hl-primary: var(--bg-shift-alt);
   --hl-secondary: var(--bg-shift-secondary);
 
   /* border colours */
   --border-primary: black;
 
   /* shadow colours */
-  --shadow-primary: black;
+  --shadow-primary: var(--border-primary);
 
   /* Buttons */
   --btn-primary-bg: var(--bg-shift-alt);
