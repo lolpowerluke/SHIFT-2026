@@ -4,6 +4,7 @@
 
 * {
 	font-family: "futura-pt", "Helvetica", "Arial", sans-serif;
+	font-weight: 500;
 }
 
 h1 {
@@ -15,13 +16,14 @@ h1 {
 h2 {
 	font-weight: bold;
 	font-size: 36px;
-	margin: 1rem 0px;
+	margin: 1rem 0;
 }
 
 h3 {
 	font-weight: bold;
 	font-size: 24px;
-	margin: 1rem 0px 0px;
+	margin: 1rem 0 0;
+	text-transform: uppercase;
 }
 
 h4 {
@@ -69,12 +71,12 @@ a {
 
 @media (min-width: 1024px) {
 	small {
-		font-size: 14px;
+		font-size: 18px;
 	}
 
 	label,
 	span,
-	p {
-		font-size: 18px;
+	p, li {
+		font-size: 24px;
 	}
 }

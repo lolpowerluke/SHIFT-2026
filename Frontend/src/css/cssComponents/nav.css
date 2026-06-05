@@ -178,6 +178,10 @@ ul:has(+ #hamburgerNav:checked) {
         max-width: 30vw;
         justify-content: space-between;
       }
+      .navFooter{
+        margin: 0;
+        justify-content: flex-end;
+      }
     }
   }
 }

@@ -25,6 +25,12 @@ button:active {
     color: var(--txt-shift-secondary);
 }
 
+.btnMaps {
+    background-color: var(--bg-shift-primary);
+    cursor: pointer;
+    margin-top: var(--margin-between);
+}
+
 .fitContent {
     width: fit-content;
     min-width: max-content;

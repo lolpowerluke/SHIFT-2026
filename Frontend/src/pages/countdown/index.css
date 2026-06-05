@@ -7,8 +7,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	max-width: 85vw;
-	min-height: 90dvh;
-	margin: auto;
+	margin: 2rem auto;
 	text-align: center;
 }
 
@@ -85,7 +84,7 @@ body {
 .timerDiv {
 	width: fit-content;
 	margin: 60px auto 0;
-
+	font-weight: 800 !important;
 	.cd {
 		background-color: var(--bg-shift-alt);
 		width: fit-content;
@@ -95,8 +94,10 @@ body {
 		border: 3px solid black;
 		text-align: right;
 		justify-self: right;
-		font-weight: bold;
 		text-transform: uppercase;
+		span {
+			font-weight: 600;
+		}
 	}
 
 	#timer {
@@ -120,14 +121,14 @@ body {
 				border: 5px solid var(--border-primary);
 				font-size: 24px;
 				text-align: center;
-				vertical-align: center;
+				font-weight: bold;
 				span {
+					font-weight: bold;
 					font-size: 24px;
 				}
 			}
 
 			& > :last-child {
-				margin-top: 1rem;
 				font-size: small;
 				text-align: center;
 				margin-top: 0.3rem;
@@ -292,12 +293,6 @@ body {
 	text-align: left;
 }
 
-.btnMaps {
-	background-color: var(--bg-shift-primary);
-	cursor: pointer;
-	margin-top: var(--margin-between);
-}
-
 .iconCalendar,
 .iconMap {
 	width: 50px;
@@ -312,7 +307,7 @@ body {
 
 .sectionDivider {
 	border: none;
-	border-top: 5px solid var(--border-primary);
+	border-top: 3px solid var(--border-primary);
 	margin: 3rem auto;
 	width: 100%;
 }
@@ -387,6 +382,7 @@ body {
 		img {
 			width: 100dvw;
 		}
+		box-shadow: -1px 3px 10px 5px var(--bg-shift-secondary);
 	}
 
 	#heroLogo {
@@ -445,7 +441,7 @@ body {
 		}
 
 		.infoList li {
-			font-size: 18px;
+			font-size: 24px;
 		}
 	}
 	.audienceContainer {
