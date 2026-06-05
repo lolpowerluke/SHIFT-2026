@@ -125,6 +125,8 @@ body {
                 box-shadow: 5px 5px 0 1px var(--shadow-primary);
                 border: 5px solid var(--border-primary);
                 font-size: 24px;
+                text-align: center;
+                vertical-align: center;
                 span{
                     font-size: 24px;
                 }
@@ -186,7 +188,15 @@ p#warningTxt {
         justify-content: space-between;
         .timerDiv{
             align-self: flex-end;
-            margin: 0 0 2rem 0;
+            /*scale: 1.5;*/
+            margin: 0 0 6rem 0;
+
+            #timer{
+                margin-left: -6px;
+            }
+            .cta{
+                margin-left: 10px;
+            }
         }
     }
 
