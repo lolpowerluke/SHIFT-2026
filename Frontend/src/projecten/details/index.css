@@ -1,0 +1,53 @@
+body {
+    background-color: var(--bg-shift-secondary);
+    outline: 6px solid var(--bg-shift-primary);
+     outline-offset: -6px;
+     color: var(--border-primary);
+     
+}
+
+.backButton {
+
+    button {
+    display: flex;
+    max-width: 40%;
+
+    }
+
+    img {
+        margin-right: 15px;
+    }
+}
+
+.titleText {
+    display: flex;
+    flex-direction: column;
+    gap: -4px
+    ;
+    
+    h1 {
+        margin: 0;
+        margin-top: 25px;
+    }
+    
+
+    div {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        img {
+        width: 40px;
+        
+        }
+    }
+}
+
+.imgDiv {
+    img {
+        width: 100%;
+        outline: 6px solid var(--bg-shift-primary);
+
+    }
+}
