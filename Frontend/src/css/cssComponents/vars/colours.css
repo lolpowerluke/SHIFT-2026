@@ -1,27 +1,27 @@
 /* use recognisable names. Start with the main purpose of the var (like bg = background or hl = highlight) followed by a descriptor (primary for default colour, secondary for its alternative or descriptive of when it should be used */
 :root {
-  /* background colours */
-  --bg-shift-primary: #55c6d2;
-  --bg-shift-secondary: #fbf8cd;
-  --bg-shift-alt: #fbb042;
+	/* background colours */
+	--bg-shift-primary: #55c6d2;
+	--bg-shift-secondary: #fbf8cd;
+	--bg-shift-alt: #fbb042;
 
-  /* text colours */
-  --txt-shift-primary: #fbf8cd;
-  --txt-shift-secondary: black;
-  --txt-warning: darkred;
+	/* text colours */
+	--txt-shift-primary: #fbf8cd;
+	--txt-shift-secondary: black;
+	--txt-warning: darkred;
 
-  /* highlight colours */
-  --hl-primary: #fbb042;
+	/* highlight colours */
+	--hl-primary: #fbb042;
 
-  /* border colours */
-  --border-primary: black;
+	/* border colours */
+	--border-primary: black;
 
-  /* shadow colours */
-  --shadow-primary: black;
+	/* shadow colours */
+	--shadow-primary: black;
 
-  /* Buttons */
-  --btn-primary-bg: var(--bg-shift-alt);
-  --btn-disabled-bg: color-mix(in srgb, var(--btn-primary-bg) 60%, black);
+	/* Buttons */
+	--btn-primary-bg: var(--bg-shift-alt);
+	--btn-disabled-bg: color-mix(in srgb, var(--btn-primary-bg) 60%, black);
 }
 
 /* 

@@ -68,6 +68,92 @@
 	box-shadow: none;
 }
 
+/* cards van project wow insane! !!! */
+
+.projectCard {
+	background-color: var(--bg-shift-secondary);
+	border: 4px solid var(--border-primary);
+	border-radius: 10px;
+	box-shadow: 3px 3px 0px var(--shadow-primary);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	color: var(--txt-shift-secondary);
+}
+
+.cardTitle {
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 24px;
+	margin: 0;
+}
+
+.cardCategory {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding-left: 24px;
+	gap: 8px;
+
+	img {
+		position: absolute;
+		left: 0;
+		width: 21px;
+		height: 20px;
+	}
+
+	span {
+		font-size: 18px;
+		font-weight: 450;
+	}
+}
+
+.cardImageWrapper {
+	position: relative;
+}
+
+.cardImage {
+	width: 100%;
+	aspect-ratio: 392 / 229;
+	object-fit: cover;
+	border: 3px solid var(--border-primary);
+	border-radius: 5px;
+	display: block;
+}
+
+.cardAvatars {
+	position: absolute;
+	bottom: -31px;
+	right: 10px;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.avatar {
+	width: 62px;
+	height: 62px;
+	border-radius: 50%;
+	border: 3px solid var(--txt-shift-primary);
+	object-fit: cover;
+	margin-left: -16px;
+}
+
+.avatar:last-child {
+	margin-left: 0;
+}
+
+.cardStudents {
+	margin-top: 51px;
+
+	p {
+		margin: 0;
+		font-size: 18px;
+		font-weight: 450;
+		line-height: 24px;
+	}
+}
+
 @media (max-width: 768px) {
 	.filterBar {
 		flex-direction: column;

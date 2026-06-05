@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import "./index.css";
+import ProjectCard from "./ProjectCard.jsx";
+
+const MOCK_PROJECT = {
+	title: "The Dark After The Light",
+	category: "XR & 3D",
+	image: "/assets/imageCard.png",
+	students: [{ name: "Hamza El Aisati", avatar: "/assets/pictureForCard.jpg" }],
+};
 
 const CATEGORIES = [
 	"Alle Projecten",
@@ -47,6 +55,8 @@ export default function ProjectenPage() {
 					))}
 				</div>
 			</div>
+
+			<ProjectCard project={MOCK_PROJECT} />
 		</main>
 	);
 }
