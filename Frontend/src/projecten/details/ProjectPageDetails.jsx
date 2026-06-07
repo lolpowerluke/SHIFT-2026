@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "./index.css";
 
-export default function ProjectPageDetails() {
+export default function ProjectPageDetails() {	
+  	useEffect(() => {
+    document.body.classList.add("index");
+    return () => document.body.classList.remove("index");
+  }, []);
 
     
 	return (
@@ -36,6 +41,52 @@ export default function ProjectPageDetails() {
 					</p>
 					<p><b>Promoter</b></p>
 					<p className="promoterName">Kobe Vermeire</p>
+				</div>
+				<div className="studentCardDiv">
+					<div className="studentCards">
+						<div className="picture">
+							<img src="/assets/pictureForCard2.jpg" alt="picture for card" />
+						</div>
+						<div className="studentInfo">
+							<div className="studentName">
+								<p><b>Hamza El Aisati</b></p>
+								<p>Multimedia & Creatieve Technologie</p>
+							</div>
+							<div className="studentContact">
+								<a href="student mail">
+									<img src="/assets/mail_Icon.svg" alt="Email Icon" />
+								</a>
+								<a href="student LinkedIn URL">
+									<img src="/assets/linkedIn_Icon.svg" alt="LinkedIn Icon" />
+								</a>
+								<div className="magButton">
+									<button><img src="/assets/download_icon.svg" alt="download arrow Icon" />Mijn magazine (PDF)</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className="studentCards">
+						<div className="picture">
+							<img src="/assets/pictureForCard2.jpg" alt="picture for card" />
+						</div>
+						<div className="studentInfo">
+							<div className="studentName">
+								<p><b>Hamza El Aisati</b></p>
+								<p>Multimedia & Creatieve Technologie</p>
+							</div>
+							<div className="studentContact">
+								<a href="student mail">
+									<img src="/assets/mail_Icon.svg" alt="Email Icon" />
+								</a>
+								<a href="student LinkedIn URL">
+									<img src="/assets/linkedIn_Icon.svg" alt="LinkedIn Icon" />
+								</a>
+								<div className="magButton">
+									<button><img src="/assets/download_icon.svg" alt="download arrow Icon" />Mijn magazine (PDF)</button>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>

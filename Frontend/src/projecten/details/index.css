@@ -1,10 +1,12 @@
-body {
+body.index {
     background-color: var(--bg-shift-secondary);
     outline: 6px solid var(--bg-shift-primary);
      outline-offset: -6px;
-     color: var(--border-primary);
+     color: var(--txt-shift-secondary);
      
 }
+
+
 
 .backButton {
 
@@ -49,5 +51,58 @@ body {
         width: 100%;
         outline: 6px solid var(--bg-shift-primary);
 
+    }
+}
+
+.studentCardDiv {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.studentCards {
+    background-color: var(--bg-shift-primary);
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 15px;
+    min-width: 45%;
+    display: flex;
+}
+
+.picture {
+    margin-right: 20px;
+
+    img {
+	width: 128px;
+	height: 128px;
+	border-radius: 50%;
+	border: 4px solid var(--txt-shift-primary);
+	object-fit: cover;
+    }
+}
+
+.studentInfo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.studentContact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.magButton {
+
+    button {
+    display: flex;
+
+    }
+
+    img {
+        margin-right: 15px;
+        width: 25px;
     }
 }
