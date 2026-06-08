@@ -251,7 +251,6 @@ export default function Countdown() {
                 </div>
                 <img src="/assets/opleidingPlaceholder.jpg" alt="Multimedia & Creatieve Technologie" />
             </div>
-            {/* TODO: Fill in links and change color for them */}
         </>
     );
 }

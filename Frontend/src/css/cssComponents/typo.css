@@ -46,7 +46,7 @@ small {
 }
 
 a {
-	/*color: var(--bg-shift-secondary);*/
+	color: var(--txt-shift-primary);
 	font-weight: bold;
 }
 
