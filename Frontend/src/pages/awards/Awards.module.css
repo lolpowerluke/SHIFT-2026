@@ -58,9 +58,25 @@
     padding-top: 3rem;
     padding-bottom: 3rem
 }
-.awardsContainer {
+.infoTitle {
     display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.awardsContainer {
+    width: 20rem;
+    height: 12rem;
+    background-color: var(--bg-shift-alt);
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: left;
     margin-top: 3rem;
+    padding: 15px;
+    border-radius: 10px;
+    border: 4px solid var(--border-primary);
+    box-shadow: 4px 4px 0 var(--shadow-primary);
+}
+.awardsContainer h4 {
+    margin-top: 0
 }

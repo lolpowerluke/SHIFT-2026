@@ -56,8 +56,8 @@ export default function Awards() {
                     <h2>WELKE AWARDS ZIJN ER?</h2>
                     <div className={s.awardsContainer}>
                         <div className={s.infoTitle}>
+                            <img src="/assets/icons/StarBlue.svg" alt="star" className={s.starImg} />
                             <div>
-                                <img src="/assets/icons/StarBlue.svg" alt="star" className={s.starImg} />
                                 <h3>IMPACTPRIJS</h3>
                                 <h4>GROOTSTE IMPACT</h4>                       
                             </div>
