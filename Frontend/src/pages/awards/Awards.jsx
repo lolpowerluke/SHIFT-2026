@@ -54,46 +54,49 @@ export default function Awards() {
             <div className={s.bodyContainer}>
                 <div className={s.aboutAwardsContainer}>
                     <h2>WELKE AWARDS ZIJN ER?</h2>
-                    <div className={s.awardsContainer}>
-                        <div className={s.infoTitle}>
-                            <img src="/assets/icons/StarBlue.svg" alt="star" className={s.starImg} />
-                            <div>
-                                <h3>IMPACTPRIJS</h3>
-                                <h4>GROOTSTE IMPACT</h4>                       
+                    <div className={s.awardsContent}>
+                        <div className={s.awardsContainer}>
+                            <div className={s.infoTitle}>
+                                <img src="/assets/icons/StarBlue.svg" alt="star" className={s.starImg} />
+                                <div>
+                                    <h3>IMPACTPRIJS</h3>
+                                    <h4>GROOTSTE IMPACT</h4>                       
+                                </div>
                             </div>
+                            <p>Deze gaat naar het project dat de grootste maatschappelijke impact maakt en het meest potentieel heeft om echte veranderingen te maken in de wereld.</p>
                         </div>
-                        <p>Deze gaat naar het project dat de grootste maatschappelijke impact maakt en het meest potentieel heeft om echte veranderingen te maken in de wereld.</p>
-                    </div>
-                    <div className={s.awardsContainer}>
-                        <div className={s.infoTitle}>
-                            <img src="/assets/icons/ControllerBlue.svg" alt="controller" className={s.controllerImg} />
-                            <div>
-                                <h3>INNOVATIEPRIJS</h3>
-                                <h4>MEEST VERNIEUWEND</h4>
+                        <div className={s.awardsContainer}>
+                            <div className={s.infoTitle}>
+                                <img src="/assets/icons/ControllerBlue.svg" alt="controller" className={s.controllerImg} />
+                                <div>
+                                    <h3>INNOVATIEPRIJS</h3>
+                                    <h4>MEEST VERNIEUWEND</h4>
+                                </div>
                             </div>
+                            <p>De innovatieprijs bekroont het meest vernieuwende technische project. Een project dat niet alleen creatief is, maar ook technisch uitdagend. </p>
                         </div>
-                        <p>De innovatieprijs bekroont het meest vernieuwende technische project. Een project dat niet alleen creatief is, maar ook technisch uitdagend. </p>
-                    </div>
-                    <div className={s.awardsContainer}>
-                        <div className={s.infoTitle}>
-                            <img src="/assets/icons/ThumbsupBlue.svg" alt="thumbs up" className={s.thumbsUpImg} />
-                            <div>
-                                <h3>JURYPRIJS</h3>
-                                <h4>EXPERT KEUZE</h4>
+                        <div className={s.awardsContainer}>
+                            <div className={s.infoTitle}>
+                                <img src="/assets/icons/ThumbsupBlue.svg" alt="thumbs up" className={s.thumbsUpImg} />
+                                <div>
+                                    <h3>JURYPRIJS</h3>
+                                    <h4>EXPERT KEUZE</h4>
+                                </div>
                             </div>
+                            <p>De juryprijs wordt uitgereikt door onze eigen docenten met hun jaren ervaring en kennis.</p>
                         </div>
-                        <p>De juryprijs wordt uitgereikt door onze eigen docenten met hun jaren ervaring en kennis.</p>
-                    </div>
-                    <div className={s.awardsContainer}>
-                        <div className={s.infoTitle}>
-                            <img src="/assets/icons/SmileyBlue.svg" alt="smiley" className={s.smileyImg} />
-                            <div>
-                                <h3>PUBLIEKPRIJS</h3>
-                                <h4>JIJ BESLIST</h4>
+                        <div className={s.awardsContainer}>
+                            <div className={s.infoTitle}>
+                                <img src="/assets/icons/SmileyBlue.svg" alt="smiley" className={s.smileyImg} />
+                                <div>
+                                    <h3>PUBLIEKPRIJS</h3>
+                                    <h4>JIJ BESLIST</h4>
+                                </div>
                             </div>
+                            <p>De publieksprijs word bepaald door de stemmen van jullie en het publiek. Jullie krijgen allemaal de kans om te stemmen op jullie favoriete projecten.</p>
                         </div>
-                        <p>De publieksprijs word bepaald door de stemmen van jullie en het publiek. Jullie krijgen allemaal de kans om te stemmen op jullie favoriete projecten.</p>
                     </div>
+
                 </div>
             </div>
         </>

@@ -56,7 +56,7 @@
     align-items: center;
     text-align: center;
     padding-top: 3rem;
-    padding-bottom: 3rem
+    padding-bottom: 3rem;
 }
 .infoTitle {
     display: flex;
@@ -82,4 +82,10 @@
 }
 .awardsContainer p {
     margin-top: 0
+}
+.awardsContent {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
 }
