@@ -28,7 +28,7 @@ export default function Header() {
                         className={`${s.headerLogo} ${!scrolled ? s.hide : ""}`}
                     />
                 </Link>
-                <div className={`${s.nav} ${navLength <= 1 ? "hideThisSht" : "nope"}`}>
+                <div className={`${s.nav} ${navLength <= 1 ? "hideThisSht" : "n"}`}>
                     <ul className={s.navList}>
                         <ul className={s.orientationSwap}>
                             <li className={s.navLogo}>
