@@ -1,3 +1,9 @@
+@import url("../../css/cssComponents/form.css");
+
+.section {
+	margin: 0;
+}
+
 .removeFile {
 	width: min-content;
 }
@@ -10,21 +16,21 @@
 	.emailDiv {
 		display: flex;
 		justify-content: center;
-		font-size: 15pt;
+		font-size: 16px;
 	}
 
 	textarea {
 		display: flex;
 		justify-content: center;
-		font-size: 15pt;
+		font-size: 16px;
 	}
 }
 
 .part {
-	padding: 10px;
+	padding: 20px;
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 20px;
 	background-color: var(--bg-shift-secondary);
 	border: 5px solid black;
 	border-radius: 10px;
@@ -39,6 +45,10 @@
 		flex-direction: row;
 		justify-content: space-between;
 	}
+
+	small {
+		margin: 0;
+	}
 }
 
 .subtext {
@@ -49,36 +59,16 @@
 Complete source in *README*
 */
 
-#img-preview {
+#previewImg {
 	display: none;
 	border: 10px double var(--bg-shift-alt);
 	margin: 30px;
 }
 
-#img-preview img {
+#previewImg img {
 	width: 100%;
 	height: auto;
 	display: block;
-}
-
-.extraPersonForm {
-	display: none;
-}
-
-#extraPersonToggle:checked~.extraPersonForm {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-}
-
-#extraPersonToggle:checked+label {
-	.line:first-child {
-		transform: translateY(13px) rotate(-45deg);
-	}
-
-	.line:last-child {
-		transform: translateY(13px) rotate(45deg);
-	}
 }
 
 .addPerson {
@@ -92,12 +82,39 @@ Complete source in *README*
 		height: 4px;
 		width: 30px;
 	}
+}
 
-	.line:first-child {
-		transform: translateY(13px);
-	}
+.file {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	background: var(--bg-shift-secondary);
+	border: 5px solid black;
+	border-radius: 10px;
+	padding: 0 0 0 10px;
 
-	.line:last-child {
-		transform: translateY(13px) rotate(90deg);
+	.clear {
+		box-shadow: none;
+		border: unset;
+		border-radius: 5px;
+		padding: 5px 20px;
 	}
+}
+
+.previewImg {
+	width: 100%;
+	max-width: 250px;
+	object-fit: cover;
+	border-radius: 10px;
+	border: 5px solid black;
+	box-sizing: border-box;
+	margin-top: 10px;
+}
+
+.submitSuccess {
+	background: green;
+}
+
+.submitError {
+	color: red;
 }

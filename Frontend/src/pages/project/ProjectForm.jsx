@@ -1,29 +1,116 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "./index.css";
+import { useNavigate } from "react-router";
+import { useState, useEffect, useRef } from "react";
+import s from "./ProjectForm.module.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
+const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB limit
+const MAX_PDF_SIZE = 10 * 1024 * 1024; // 10MB limit
 
 async function apiFetch(path, opts = {}) {
 	const token = localStorage.getItem("token");
+	const isFormData = opts.body instanceof FormData;
 	return fetch(`${BASE_URL}${path}`, {
 		...opts,
 		headers: {
-			"Content-Type": "application/json",
+			...(!isFormData ? { "Content-Type": "application/json" } : {}),
 			Authorization: `Bearer ${token}`,
 			...(opts.headers || {}),
 		},
 	}).then((r) => r.json());
 }
 
-export default function ProjectForm() {
-	const navigate = useNavigate();
-	const token = localStorage.getItem("token");
-	if (!token) {
-		navigate("/login");
-		return null;
+function isValidURL(str) {
+	try {
+		new URL(str);
+		return true;
+	} catch {
+		return false;
+	}
+}
+
+/** Filename pill with ×-button */
+function FilePill({ name, onClear }) {
+	return (
+		<span className={s.file}>
+			{name}
+			<button
+				type="button"
+				onClick={onClear}
+				className={s.clear}
+				aria-label="Verwijder"
+			>
+				×
+			</button>
+		</span>
+	);
+}
+
+function isWebp(file) {
+	if (!file) return false;
+	return file.type === "image/webp";
+}
+
+// validate single image file rules
+function validateImageFile(file) {
+	if (!file) return "Missing image";
+
+	if (file.size > MAX_IMAGE_SIZE) {
+		return "Afbeelding mag max 1MB zijn";
 	}
 
+	if (!isWebp(file)) {
+		return "Alle afbeeldingen moeten .webp zijn";
+	}
+
+	return null;
+}
+
+// validate project image ratio (16:9)
+function validateProjectImageRatio(file) {
+	return new Promise((resolve, reject) => {
+		if (!file) return reject("Project image ontbreekt");
+
+		const img = new Image();
+		const objectUrl = URL.createObjectURL(file);
+		img.src = objectUrl;
+
+		img.onload = () => {
+			URL.revokeObjectURL(objectUrl);
+			const ratio = img.width / img.height;
+			const expected = 16 / 9;
+
+			const diff = Math.abs(ratio - expected);
+
+			if (diff > 0.01) {
+				reject("Project image moet 16:9 (1920x1080) zijn");
+			} else {
+				resolve(true);
+			}
+		};
+
+		img.onerror = () => {
+			URL.revokeObjectURL(objectUrl);
+			reject("Invalid image file");
+		};
+	});
+}
+
+// validate PDF
+function validatePDF(file) {
+	if (!file) return "PDF ontbreekt";
+
+	if (file.size > MAX_PDF_SIZE) {
+		return "PDF mag max 10MB zijn";
+	}
+
+	if (file.type !== "application/pdf") {
+		return "Alleen PDF bestanden toegestaan";
+	}
+
+	return null;
+}
+
+export default function ProjectForm() {
 	// Project info
 	const [nameProject, setNameProject] = useState("");
 	const [description, setDescription] = useState("");
@@ -36,6 +123,7 @@ export default function ProjectForm() {
 	const [email, setEmail] = useState("");
 	const [linkedinURL, setLinkedinURL] = useState("");
 	const [selfieFile, setSelfieFile] = useState(null);
+	const [selfieExistingPicture, setSelfieExistingPicture] = useState(null); // {url, name} | null
 
 	// Extra person
 	const [showExtra, setShowExtra] = useState(false);
@@ -44,24 +132,53 @@ export default function ProjectForm() {
 	const [p2Email, setP2Email] = useState("");
 	const [p2LinkedIn, setP2LinkedIn] = useState("");
 	const [p2SelfieFile, setP2SelfieFile] = useState(null);
+	const [p2ExistingPicture, setP2ExistingPicture] = useState(null); // {url, name} | null
 
-	// Project media
-	const [projectFile, setProjectFile] = useState(null);
+	// Project media — new files
+	const [projectFiles, setProjectFiles] = useState([]); // File[]
 	const [videoURL, setVideoURL] = useState("");
-	const [magazineFile, setMagazineFile] = useState(null);
+	const [magazineFile, setMagazineFile] = useState(null); // File
+
+	// Restored media from server
+	const [existingImages, setExistingImages] = useState([]); // [{id, url}]
+	const [existingMagazine, setExistingMagazine] = useState(null); // {id, url} | null
+	const [existingVideo, setExistingVideo] = useState("");
+
+	// Cleared flags (send empty string to backend to delete)
+	const [imagesCleared, setImagesCleared] = useState(false);
+	const [magazineCleared, setMagazineCleared] = useState(false);
 
 	// Submit state
 	const [submitState, setSubmitState] = useState("idle");
 	const [submitError, setSubmitError] = useState("");
+	const [urlErrors, setUrlErrors] = useState({});
+
+	let navigate = useNavigate();
+
+	// FIX: track object URLs to prevent memory leaks
+	const previewURLsRef = useRef([]);
 
 	useEffect(() => {
-		prefill();
+		const token = localStorage.getItem("token");
+		if (!token) {
+			navigate("/login", { state: { from: location.pathname }, replace: true });
+			return;
+		}
+		prefill(token);
 	}, []);
 
-	async function prefill() {
+	useEffect(() => {
+		// revoke previous object URLs before creating new ones
+		return () => {
+			previewURLsRef.current.forEach((url) => URL.revokeObjectURL(url));
+			previewURLsRef.current = [];
+		};
+	}, [projectFiles]);
+
+	async function prefill(token) {
 		const userData = await apiFetch("/api/user");
 		if (!userData.success) {
-			navigate("/login");
+			navigate("/login", { state: { from: location.pathname }, replace: true });
 			return;
 		}
 		const user = userData.user;
@@ -72,21 +189,48 @@ export default function ProjectForm() {
 		if (Array.isArray(user.socials) && user.socials.length) {
 			setLinkedinURL(user.socials[0]);
 		}
+		if (user.picture) {
+			setSelfieExistingPicture({
+				url: user.picture,
+				name: user.picture.split("/").pop(),
+			});
+		}
 
 		const projData = await apiFetch("/project/");
 		if (!projData.success) return;
 
+		let currentUserId = null;
+		try {
+			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
+		} catch {}
+
+		const activeId = currentUserId ?? user.id;
+
 		const myProject = projData.projects.find(
 			(p) =>
-				Array.isArray(p.members) && p.members.some((m) => m.id === user.id)
+				Array.isArray(p.members) && p.members.some((m) => m.id === activeId),
 		);
 		if (!myProject) return;
+		console.log(myProject);
 
 		setNameProject(myProject.name || "");
 		setDescription(myProject.description || "");
 		if (myProject.course) setCourse(myProject.course);
+		if (myProject.promoter) setPromoter(myProject.promoter);
 
-		const others = myProject.members.filter((m) => m.id !== user.id);
+		// Restore media
+		if (Array.isArray(myProject.media) && myProject.media.length) {
+			setExistingImages(myProject.media);
+		}
+		if (myProject.magazine?.url) {
+			setExistingMagazine(myProject.magazine);
+		}
+		if (myProject.video?.url) {
+			setExistingVideo(myProject.video.url);
+			setVideoURL(myProject.video.url);
+		}
+
+		const others = myProject.members.filter((m) => m.id !== activeId);
 		if (others.length) {
 			const m2 = others[0];
 			setShowExtra(true);
@@ -96,36 +240,152 @@ export default function ProjectForm() {
 			if (Array.isArray(m2.socials) && m2.socials.length) {
 				setP2LinkedIn(m2.socials[0]);
 			}
+			if (m2.picture) {
+				setP2ExistingPicture({
+					url: m2.picture,
+					name: m2.picture.split("/").pop(),
+				});
+			}
 		}
+	}
+
+	function validateURLFields() {
+		const errors = {};
+		if (videoURL && !isValidURL(videoURL)) errors.videoURL = "Geen geldige URL";
+		if (linkedinURL && !isValidURL(linkedinURL))
+			errors.linkedinURL = "Geen geldige URL";
+		if (p2LinkedIn && !isValidURL(p2LinkedIn))
+			errors.p2LinkedIn = "Geen geldige URL";
+		return errors;
 	}
 
 	async function handleSubmit(e) {
 		e.preventDefault();
-		setSubmitState("loading");
 		setSubmitError("");
 
+		const errors = validateURLFields();
+		if (Object.keys(errors).length) {
+			setUrlErrors(errors);
+			return;
+		}
+		setUrlErrors({});
+		setSubmitState("loading");
+
+		try {
+			const projectImage = projectFiles?.[0];
+
+			// only require new image when no existing images are present
+			if (!projectImage && !existingImages.length) {
+				setSubmitError("Project image ontbreekt");
+				setSubmitState("error");
+				return;
+			}
+
+			// only validate ratio when a new file is provided
+			if (projectImage) {
+				await validateProjectImageRatio(projectImage);
+
+				// validate all images
+				for (const file of projectFiles) {
+					const err = validateImageFile(file);
+					if (err) {
+						setSubmitError(err);
+						setSubmitState("error");
+						return;
+					}
+				}
+			}
+
+			// validate magazine PDF
+			if (magazineFile) {
+				const pdfError = validatePDF(magazineFile);
+				if (pdfError) {
+					setSubmitError(pdfError);
+					setSubmitState("error");
+					return;
+				}
+			}
+		} catch (err) {
+			setSubmitError(
+				typeof err === "string" ? err : err?.message || "Validatie fout",
+			);
+			setSubmitState("error");
+			return;
+		}
+
+		const token = localStorage.getItem("token");
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch { }
+		} catch {}
 
-		const payload = {
-			name: nameProject.trim(),
-			description: description.trim(),
-			course: course.trim(),
-			memberIds: currentUserId ? [currentUserId] : [],
-			mediaIds: [],
-		};
+		// 1. Update current user
+		try {
+			const userFormData = new FormData();
+			if (firstName) userFormData.append("firstname", firstName.trim());
+			if (lastName) userFormData.append("lastname", lastName.trim());
+			if (linkedinURL) userFormData.append("socials", linkedinURL.trim());
+			if (selfieFile) userFormData.append("image", selfieFile);
 
-		if (showExtra && p2Email.trim()) {
+			await apiFetch("/api/user", { method: "PUT", body: userFormData });
+		} catch (err) {
+			console.error("User update failed:", err);
+		}
+
+		// 2. Find p2 by email
+		const memberIds = currentUserId ? [currentUserId] : [];
+		let p2UserId = null;
+		if (p2Email.trim()) {
 			try {
-				const allProj = await apiFetch("/project/");
-				const allMembers = (allProj.projects || []).flatMap(
-					(p) => p.members || []
+				const result = await apiFetch(
+					`/api/user?email=${encodeURIComponent(p2Email.trim())}`,
 				);
-				const match = allMembers.find((m) => m.email === p2Email.trim());
-				if (match) payload.memberIds.push(match.id);
-			} catch { }
+				if (result.success) {
+					p2UserId = result.user.id;
+					memberIds.push(result.user.id);
+				}
+			} catch {}
+		}
+
+		// 2b. Update p2
+		if (p2UserId) {
+			try {
+				const p2FormData = new FormData();
+				if (p2FirstName) p2FormData.append("firstname", p2FirstName.trim());
+				if (p2LastName) p2FormData.append("lastname", p2LastName.trim());
+				if (p2LinkedIn) p2FormData.append("socials", p2LinkedIn.trim());
+				if (p2SelfieFile) p2FormData.append("image", p2SelfieFile);
+
+				await apiFetch(`/api/user?id=${p2UserId}`, {
+					method: "PUT",
+					body: p2FormData,
+				});
+			} catch (err) {
+				console.error("P2 user update failed:", err);
+			}
+		}
+
+		// 3. Build project form
+		const cleanForm = new FormData();
+		cleanForm.append("name", nameProject.trim());
+		cleanForm.append("description", description.trim());
+		cleanForm.append("course", course.trim());
+		cleanForm.append("promoter", promoter.trim());
+		cleanForm.append("videoURL", videoURL.trim());
+		cleanForm.append("memberIds", JSON.stringify(memberIds));
+
+		// Images: new files take priority; otherwise signal clear or keep
+		if (projectFiles.length) {
+			projectFiles.forEach((f) => cleanForm.append("files", f));
+		} else if (imagesCleared) {
+			cleanForm.append("imageURL", ""); // explicit delete
+		}
+
+		// Magazine: new file takes priority; otherwise signal clear or keep
+		if (magazineFile) {
+			cleanForm.append("magazine", magazineFile);
+		} else if (magazineCleared) {
+			cleanForm.append("magazineURL", ""); // explicit delete
 		}
 
 		try {
@@ -133,18 +393,15 @@ export default function ProjectForm() {
 			const existing = (existingData.projects || []).find(
 				(p) =>
 					Array.isArray(p.members) &&
-					p.members.some((m) => m.id === currentUserId)
+					p.members.some((m) => m.id === currentUserId),
 			);
 
 			const result = existing
 				? await apiFetch(`/project/${existing.id}`, {
-					method: "PUT",
-					body: JSON.stringify(payload),
-				})
-				: await apiFetch("/project/", {
-					method: "POST",
-					body: JSON.stringify(payload),
-				});
+						method: "PUT",
+						body: cleanForm,
+					})
+				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
 				setSubmitState("success");
@@ -158,20 +415,62 @@ export default function ProjectForm() {
 		}
 	}
 
+	// ── helpers ──────────────────────────────────────────────────────────────
+
+	function handleProjectFilesChange(e) {
+		const files = Array.from(e.target.files);
+		setProjectFiles(files);
+		setImagesCleared(false);
+	}
+
+	function clearImages() {
+		setProjectFiles([]);
+		setExistingImages([]);
+		setImagesCleared(true);
+	}
+
+	function handleMagazineChange(e) {
+		setMagazineFile(e.target.files[0] ?? null);
+		setMagazineCleared(false);
+	}
+
+	function clearMagazine() {
+		setMagazineFile(null);
+		setExistingMagazine(null);
+		setMagazineCleared(true);
+	}
+
+	// FIX: create object URLs once, track them for cleanup
+	const imagePreviewURLs = projectFiles.length
+		? projectFiles.map((f) => {
+				const url = URL.createObjectURL(f);
+				previewURLsRef.current.push(url);
+				return { key: f.name, url, name: f.name };
+			})
+		: existingImages.map((img) => ({
+				key: img.id,
+				url: img.url,
+				name: img.url.split("/").pop(),
+			}));
+
+	// Displayed magazine label
+	const magazineLabel = magazineFile
+		? magazineFile.name
+		: existingMagazine
+			? existingMagazine.url.split("/").pop()
+			: null;
+
 	return (
 		<div className="wrap">
 			<div className="section">
 				<h1>Project formulier</h1>
-				<h3>
-					Vul het korte formulier in om je project op de Shift festival website
-					te plaatsen.
-				</h3>
-				<form className="form" onSubmit={handleSubmit}>
+				<h3>Vul je project aan.</h3>
+				<form className={s.form} onSubmit={handleSubmit}>
 					{/* Project info */}
-					<div className="part">
+					<div className={s.part}>
 						<h3>Project info</h3>
 						<div>
-							<label htmlFor="nameProject">Project title</label>
+							<label htmlFor="nameProject">Project title *</label>
 							<input
 								type="text"
 								id="nameProject"
@@ -183,9 +482,9 @@ export default function ProjectForm() {
 							/>
 						</div>
 						<div>
-							<label htmlFor="description">Description</label>
+							<label htmlFor="description">Descriptie *</label>
 							<textarea
-								className="projectInfo"
+								className={s.projectInfo}
 								id="description"
 								name="description"
 								maxLength={1250}
@@ -197,17 +496,17 @@ export default function ProjectForm() {
 							/>
 						</div>
 						<div>
-							<span>Specialisatie</span>
+							<span>Specialisatie *</span>
 							<select
 								required
 								id="course"
 								name="course"
-								className="courseSelect"
+								className={s.courseSelect}
 								value={course}
 								onChange={(e) => setCourse(e.target.value)}
 							>
 								<option disabled value="">
-									Specialisatie
+									Specialisatie...
 								</option>
 								<option value="XR & 3D">XR & 3D</option>
 								<option value="Experience Design">Experience Design</option>
@@ -216,24 +515,26 @@ export default function ProjectForm() {
 							</select>
 						</div>
 						<div>
-							<span>Promoter</span>
+							<span>Promoter *</span>
 							<select
 								required
 								id="promoter"
 								name="promoter"
-								className="courseSelect"
+								className={s.courseSelect}
 								value={promoter}
 								onChange={(e) => setPromoter(e.target.value)}
 							>
 								<option disabled value="">
-									Promoter
+									Promoter...
 								</option>
 								{[
 									"Dennis Baptist",
 									"Maaike Beuten",
 									"Joni De Borger",
 									"Peter Dickx",
+									"Jan Everaert",
 									"Bert Heyman",
+									"Jan Snoekx",
 									"Stefan Tilburgs",
 									"Els Vande Kerckhove",
 									"An Vanlierde",
@@ -249,28 +550,30 @@ export default function ProjectForm() {
 					</div>
 
 					{/* Personal info */}
-					<div className="part">
-						<h3>Personal info</h3>
+					<div className={s.part}>
+						<h3>Persoonlijke info</h3>
 						<div>
-							<label htmlFor="firstName">Voornaam</label>
+							<label htmlFor="firstName">Voornaam *</label>
 							<input
 								type="text"
 								id="firstName"
 								name="firstName"
-								placeholder="John"
+								placeholder="Voornaam..."
 								value={firstName}
 								onChange={(e) => setFirstName(e.target.value)}
+								required
 							/>
 						</div>
 						<div>
-							<label htmlFor="lastName">Achternaam</label>
+							<label htmlFor="lastName">Achternaam *</label>
 							<input
 								type="text"
 								id="lastName"
 								name="lastName"
-								placeholder="Johnson"
+								placeholder="Achternaam..."
 								value={lastName}
 								onChange={(e) => setLastName(e.target.value)}
+								required
 							/>
 						</div>
 						<div>
@@ -279,7 +582,7 @@ export default function ProjectForm() {
 								type="text"
 								id="email"
 								name="email"
-								placeholder="john.johnson@mail.be"
+								placeholder="Email..."
 								disabled
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
@@ -291,38 +594,69 @@ export default function ProjectForm() {
 								type="text"
 								id="linkedinURL"
 								name="linkedinURL"
-								required
-								placeholder="https://www.linkedin.com/in/john-johnson/"
+								placeholder="LinkedIn URL..."
 								value={linkedinURL}
-								onChange={(e) => setLinkedinURL(e.target.value)}
+								onChange={(e) => {
+									setLinkedinURL(e.target.value);
+									setUrlErrors((prev) => ({ ...prev, linkedinURL: null }));
+								}}
 							/>
+							{urlErrors.linkedinURL && (
+								<p className={s.error}>{urlErrors.linkedinURL}</p>
+							)}
 						</div>
 						<div>
 							<label htmlFor="choose-selfieFile">Portretfoto</label>
-							<input
-								type="file"
-								accept="image/*"
-								id="choose-selfieFile"
-								name="choose-selfieFile"
-								onChange={(e) => setSelfieFile(e.target.files[0] ?? null)}
-							/>
-							<label className="subtext">
+							{selfieFile ? (
+								<>
+									<FilePill
+										name={selfieFile.name}
+										onClear={() => setSelfieFile(null)}
+									/>
+									<img
+										src={URL.createObjectURL(selfieFile)}
+										alt={selfieFile.name}
+										className={s.previewImg}
+									/>
+								</>
+							) : selfieExistingPicture ? (
+								<>
+									<FilePill
+										name={selfieExistingPicture.name}
+										onClear={() => setSelfieExistingPicture(null)}
+									/>
+									<img
+										src={selfieExistingPicture.url}
+										alt={selfieExistingPicture.name}
+										className={s.previewImg}
+									/>
+								</>
+							) : (
+								<input
+									type="file"
+									accept="image/*"
+									id="choose-selfieFile"
+									name="choose-selfieFile"
+									onChange={(e) => setSelfieFile(e.target.files[0] ?? null)}
+								/>
+							)}
+							<label className={s.subtext}>
 								Gelieve in een 1:1 aspect ratio in te dienen
 							</label>
 						</div>
 					</div>
 
 					{/* Extra person */}
-					<div className="part">
+					<div className={s.part}>
 						<label
 							htmlFor="extraPersonToggle"
 							style={{ cursor: "pointer" }}
 							onClick={() => setShowExtra((v) => !v)}
 						>
 							<h3>Extra persoon toevoegen</h3>
-							<span className="addPerson">
+							<span className={s.addPerson}>
 								<div
-									className="line"
+									className={s.line}
 									style={{
 										transform: showExtra
 											? "translateY(13px) rotate(-45deg)"
@@ -331,7 +665,7 @@ export default function ProjectForm() {
 									}}
 								/>
 								<div
-									className="line"
+									className={s.line}
 									style={{
 										transform: showExtra
 											? "translateY(13px) rotate(45deg)"
@@ -343,7 +677,7 @@ export default function ProjectForm() {
 						</label>
 						{showExtra && (
 							<div
-								className="extraPersonForm"
+								className={s.extraPersonForm}
 								style={{ display: "flex", flexDirection: "column", gap: 10 }}
 							>
 								<div>
@@ -352,7 +686,7 @@ export default function ProjectForm() {
 										type="text"
 										id="2ndStudentFirstName"
 										name="2ndStudentFirstName"
-										placeholder="Sarah"
+										placeholder="Voornaam..."
 										required={showExtra}
 										value={p2FirstName}
 										onChange={(e) => setP2FirstName(e.target.value)}
@@ -364,7 +698,7 @@ export default function ProjectForm() {
 										type="text"
 										id="2ndStudentLastName"
 										name="2ndStudentLastName"
-										placeholder="Sarahdaughter"
+										placeholder="Achternaam..."
 										required={showExtra}
 										value={p2LastName}
 										onChange={(e) => setP2LastName(e.target.value)}
@@ -376,7 +710,7 @@ export default function ProjectForm() {
 										type="email"
 										id="secondemail"
 										name="secondemail"
-										placeholder="sarah.sarahdaughter@mail.be"
+										placeholder="Email..."
 										autoComplete="email"
 										required={showExtra}
 										value={p2Email}
@@ -389,24 +723,55 @@ export default function ProjectForm() {
 										type="text"
 										id="secondlinkedinurl"
 										name="secondlinkedinurl"
-										placeholder="https://www.linkedin.com/in/sarah-sarahdaughter/"
-										required={showExtra}
+										placeholder="LinkedIn URL..."
 										value={p2LinkedIn}
-										onChange={(e) => setP2LinkedIn(e.target.value)}
+										onChange={(e) => {
+											setP2LinkedIn(e.target.value);
+											setUrlErrors((prev) => ({ ...prev, p2LinkedIn: null }));
+										}}
 									/>
+									{urlErrors.p2LinkedIn && (
+										<p className={s.error}>{urlErrors.p2LinkedIn}</p>
+									)}
 								</div>
 								<div>
 									<label htmlFor="choose-secondselfiefile">Portretfoto</label>
-									<input
-										type="file"
-										accept="image/*"
-										id="choose-secondselfiefile"
-										name="choose-secondselfiefile"
-										onChange={(e) =>
-											setP2SelfieFile(e.target.files[0] ?? null)
-										}
-									/>
-									<label className="subtext">
+									{p2SelfieFile ? (
+										<>
+											<FilePill
+												name={p2SelfieFile.name}
+												onClear={() => setP2SelfieFile(null)}
+											/>
+											<img
+												src={URL.createObjectURL(p2SelfieFile)}
+												alt={p2SelfieFile.name}
+												className={s.previewImg}
+											/>
+										</>
+									) : p2ExistingPicture ? (
+										<>
+											<FilePill
+												name={p2ExistingPicture.name}
+												onClear={() => setP2ExistingPicture(null)}
+											/>
+											<img
+												src={p2ExistingPicture.url}
+												alt={p2ExistingPicture.name}
+												className={s.previewImg}
+											/>
+										</>
+									) : (
+										<input
+											type="file"
+											accept="image/*"
+											id="choose-secondselfiefile"
+											name="choose-secondselfiefile"
+											onChange={(e) =>
+												setP2SelfieFile(e.target.files[0] ?? null)
+											}
+										/>
+									)}
+									<label className={s.subtext}>
 										Gelieve in een 1:1 aspect ratio in te dienen
 									</label>
 								</div>
@@ -415,53 +780,89 @@ export default function ProjectForm() {
 					</div>
 
 					{/* Project media */}
-					<div className="part">
+					<div className={s.part}>
 						<h3>Project media</h3>
+
+						{/* Images */}
 						<div>
 							<label htmlFor="choose-projectFile">Projectbeeld</label>
-							<input
-								type="file"
-								accept="image/*"
-								id="choose-projectFile"
-								name="choose-projectFile"
-								onChange={(e) => setProjectFile(e.target.files[0] ?? null)}
-							/>
-							<label className="subtext">
+							{imagePreviewURLs.length > 0 ? (
+								<>
+									<FilePill
+										name={
+											projectFiles.length
+												? `${projectFiles.length} bestand(en)`
+												: imagePreviewURLs[0].name
+										}
+										onClear={clearImages}
+									/>
+									{imagePreviewURLs.map(({ key, url, name }) => (
+										<img
+											key={key}
+											src={url}
+											alt={name}
+											className={s.previewImg}
+										/>
+									))}
+								</>
+							) : (
+								<input
+									type="file"
+									accept="image/*"
+									multiple
+									id="choose-projectFile"
+									name="choose-projectFile"
+									onChange={handleProjectFilesChange}
+								/>
+							)}
+							<label className={s.subtext}>
 								Gelieve in een 16:9 aspect ratio in te dienen
 							</label>
 						</div>
+
+						{/* Video URL */}
 						<div>
-							<label htmlFor="videoURL">
-								Plaats je video op YouTube en plaats de link hier onder (niet
-								privé)
-							</label>
+							<label htmlFor="videoURL">Showreal</label>
+							<small>
+								Plaats je showreal op Youtube (unlisted) en laat hier de link
+								achter.
+							</small>
 							<input
 								type="text"
 								id="videoURL"
 								name="videoURL"
-								required
 								placeholder="YouTube link van je project footage..."
 								value={videoURL}
-								onChange={(e) => setVideoURL(e.target.value)}
+								onChange={(e) => {
+									setVideoURL(e.target.value);
+									setUrlErrors((prev) => ({ ...prev, videoURL: null }));
+								}}
 							/>
+							{urlErrors.videoURL && (
+								<p className={s.error}>{urlErrors.videoURL}</p>
+							)}
 						</div>
+
+						{/* Magazine */}
 						<div>
 							<label htmlFor="choose-magazineFile">Magazine (pdf)</label>
-							<input
-								type="file"
-								accept=".pdf"
-								id="choose-magazineFile"
-								name="choose-magazineFile"
-								onChange={(e) => setMagazineFile(e.target.files[0] ?? null)}
-							/>
+							{magazineLabel ? (
+								<FilePill name={magazineLabel} onClear={clearMagazine} />
+							) : (
+								<input
+									type="file"
+									accept=".pdf"
+									id="choose-magazineFile"
+									name="choose-magazineFile"
+									onChange={handleMagazineChange}
+								/>
+							)}
 						</div>
+
 						<button
-							className="submit"
+							className={`submit ${submitState === "success" ? s.submitSuccess : ""}`}
 							type="submit"
 							disabled={submitState === "loading" || submitState === "success"}
-							style={
-								submitState === "success" ? { background: "green" } : undefined
-							}
 						>
 							{submitState === "loading"
 								? "Bezig..."
@@ -470,7 +871,7 @@ export default function ProjectForm() {
 									: "Submit"}
 						</button>
 						{submitState === "error" && (
-							<p style={{ color: "red" }}>Fout: {submitError}</p>
+							<p className={s.submitError}>Fout: {submitError}</p>
 						)}
 					</div>
 				</form>

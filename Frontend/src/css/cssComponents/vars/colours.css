@@ -5,19 +5,21 @@
 	--bg-shift-secondary: #fbf8cd;
 	--bg-shift-alt: #fbb042;
 
-	/* text colours */
-	--txt-shift-primary: #fbf8cd;
-	--txt-shift-secondary: black;
-	--txt-warning: darkred;
+  /* text colours */
+  --txt-shift-primary: black;
+  --txt-shift-secondary: black;
+  --txt-warning: darkred;
+  --txt-special: #fbf8cd;
 
-	/* highlight colours */
-	--hl-primary: #fbb042;
+  /* highlight colours */
+  --hl-primary: var(--bg-shift-alt);
+  --hl-secondary: var(--bg-shift-secondary);
 
 	/* border colours */
 	--border-primary: black;
 
-	/* shadow colours */
-	--shadow-primary: black;
+  /* shadow colours */
+  --shadow-primary: var(--border-primary);
 
 	/* Buttons */
 	--btn-primary-bg: var(--bg-shift-alt);

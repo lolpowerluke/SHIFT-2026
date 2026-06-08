@@ -14,7 +14,7 @@
 		border: 5px solid black;
 		border-radius: 10px;
 		color: var(--txt-shift-secondary);
-		font-size: 14px;
+		font-size: 16px;
 		padding: 10px;
 		text-decoration: none;
 		transition:
@@ -67,18 +67,6 @@
 		box-shadow: 2px 2px 0 1px black;
 	}
 }
-
-@media screen and (min-width: 1024px) {
-	form {
-		.emailWrap {
-			width: 50%;
-			display: flex;
-			justify-content: space-between;
-			margin: 0 auto;
-		}
-	}
-}
-
 
 .extraButton {
 	margin-top: var(--margin-section);
