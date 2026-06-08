@@ -1,15 +1,12 @@
-body.index {
+body::before.index {
     background-color: var(--bg-shift-secondary);
     outline: 6px solid var(--bg-shift-primary);
-     outline-offset: -6px;
-     color: var(--txt-shift-secondary);
      
 }
 
 
 
 .backButton {
-
     button {
     display: flex;
     max-width: 40%;

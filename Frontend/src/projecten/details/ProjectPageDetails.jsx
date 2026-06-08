@@ -34,10 +34,10 @@ export default function ProjectPageDetails() {
 			.finally(() => setLoading(false));
 	}, [id]);
 
-	useEffect(() => {
-    document.body.classList.add("index");
-    return () => document.body.classList.remove("index");
-	}, []);
+useEffect(() => {
+    document.documentElement.classList.add("alt-bg");
+    return () => document.documentElement.classList.remove("alt-bg");
+}, []);
 
 	if (loading) return <p className="ctx">Laden...</p>;
 	if (error) return <p className="ctx">Fout: {error}</p>;

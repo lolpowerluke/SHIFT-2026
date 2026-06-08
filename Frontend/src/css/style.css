@@ -36,6 +36,10 @@ html::before {
 	background-color: var(--bg-shift-primary);
 }
 
+html.alt-bg::before {
+	background-color: var(--bg-shift-secondary);
+}
+
 body::before {
 	content: '';
 	position: fixed;
