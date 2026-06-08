@@ -180,10 +180,10 @@ export default function ProjectForm() {
 		if (Array.isArray(user.socials) && user.socials.length) {
 			setLinkedinURL(user.socials[0]);
 		}
-		if (user.picture) {
+		if (user.images.length !== 0) {
 			setSelfieExistingPicture({
-				url: user.picture,
-				name: user.picture.path.split("/").pop(),
+				url: `https://res.cloudinary.com/${user.images[0].cloud_name}/image/upload/${user.images[0].path}`,
+				name: user.images[0].path.split("/").pop(),
 			});
 		}
 
@@ -202,7 +202,6 @@ export default function ProjectForm() {
 				Array.isArray(p.members) && p.members.some((m) => m.id === activeId),
 		);
 		if (!myProject) return;
-		console.log(myProject);
 
 		setNameProject(myProject.name || "");
 		setDescription(myProject.description || "");
@@ -213,8 +212,8 @@ export default function ProjectForm() {
 		if (Array.isArray(myProject.media) && myProject.media.length) {
 			setExistingImages(myProject.media);
 		}
-		if (myProject.magazine?.url) {
-			setExistingMagazine(myProject.magazine);
+		if (myProject.magazine) {
+			setExistingMagazine(`https://res.cloudinary.com/${myProject.magazine.cloud_name}/image/upload/${myProject.magazine.path}`);
 		}
 		if (myProject.video?.url) {
 			setExistingVideo(myProject.video.url);
@@ -233,8 +232,8 @@ export default function ProjectForm() {
 			}
 			if (m2.picture) {
 				setP2ExistingPicture({
-					url: m2.picture,
-					name: m2.picture.split("/").pop(),
+					url: `https://res.cloudinary.com/${m2.picture.cloud_name}/image/upload/${m2.picture.path}`,
+					name: m2.picture.path.split("/").pop(),
 				});
 			}
 		}
@@ -448,7 +447,7 @@ export default function ProjectForm() {
 	const magazineLabel = magazineFile
 		? magazineFile.name
 		: existingMagazine
-			? existingMagazine.url.split("/").pop()
+			? existingMagazine.split("/").pop()
 			: null;
 
 	return (
