@@ -13,7 +13,7 @@ export default function ProjectCard({ project }) {
 	const categoryIcon = CATEGORY_ICONS[category];
 
 	return (
-		<Link to={`/projecten/${project.id}`} className="projectCardBorder">
+		<Link to={`/projecten/details?id=${project.id}`} className="projectCardBorder">
 			<div className="projectCard">
 				<h3 className="cardTitle">{title}</h3>
 				<div className="cardCategory">

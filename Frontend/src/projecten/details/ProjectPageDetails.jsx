@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useSearchParams, useNavigate } from "react-router";
 import "./index.css";
 
 const CATEGORY_ICONS = {
@@ -16,7 +16,8 @@ function getYoutubeEmbedUrl(url) {
 }
 
 export default function ProjectPageDetails() {
-	const { id } = useParams();
+	const [searchParams] = useSearchParams();
+	const id = searchParams.get("id");
 	const navigate = useNavigate();
 	const [project, setProject] = useState(null);
 	const [loading, setLoading] = useState(true);
