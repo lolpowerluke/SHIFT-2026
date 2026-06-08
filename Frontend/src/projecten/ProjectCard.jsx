@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
@@ -12,7 +13,7 @@ export default function ProjectCard({ project }) {
 	const categoryIcon = CATEGORY_ICONS[category];
 
 	return (
-		<div className="projectCardBorder">
+		<Link to={`/projecten/${project.id}`} className="projectCardBorder">
 			<div className="projectCard">
 				<h3 className="cardTitle">{title}</h3>
 				<div className="cardCategory">
@@ -38,6 +39,6 @@ export default function ProjectCard({ project }) {
 					))}
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 }

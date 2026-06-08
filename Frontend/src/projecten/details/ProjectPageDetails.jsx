@@ -1,104 +1,156 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
 import "./index.css";
 
-export default function ProjectPageDetails() {	
-  	useEffect(() => {
-    document.body.classList.add("index");
-    return () => document.body.classList.remove("index");
-  }, []);
+const CATEGORY_ICONS = {
+	"Digital Design": "/assets/OrangeDesign.svg",
+	"Experience Design": "/assets/OrangeExperience.svg",
+	"XR & 3D": "/assets/Orange3D.svg",
+	"Web & Mobile": "/assets/OrangeCoding.svg",
+};
 
-    
+function getYoutubeEmbedUrl(url) {
+	if (!url) return null;
+	const match = url.match(/[?&]v=([^&]+)/);
+	return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+}
+
+export default function ProjectPageDetails() {
+	const { id } = useParams();
+	const navigate = useNavigate();
+	const [project, setProject] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+
+	useEffect(() => {
+		fetch(`${import.meta.env.VITE_API_URL}/project/${id}`)
+			.then((res) => {
+				if (!res.ok) throw new Error(`HTTP ${res.status}`);
+				return res.json();
+			})
+			.then((data) => setProject(data.project))
+			.catch((err) => setError(err.message))
+			.finally(() => setLoading(false));
+	}, [id]);
+
+	if (loading) return <p className="ctx">Laden...</p>;
+	if (error) return <p className="ctx">Fout: {error}</p>;
+	if (!project) return null;
+
+	const embedUrl = getYoutubeEmbedUrl(project.video?.url);
+	const categoryIcon = CATEGORY_ICONS[project.course];
+
 	return (
-		<>
-			<div className="ctx">
-				<div className="titleDiv">
-					<div className="backButton">
-						<button><img src="/assets/arrow_back.svg" alt="Back arrow Icon" />Back</button>
-					</div>
-					<div className="titleText">
-						<h1>After Dark</h1>
-						<div className="titleNames">
-							<div className="name">
-								<p>Hamza El Aisati & Hamza El Aisati</p>
-							</div>
-							<div className="subject">
-								<img src="/assets/OrangeDesign.svg" alt="Digital Design Icon" />
-								<p><b>Digital Design</b></p>
-							</div>
-						</div>
-					</div>
+		<div className="ctx">
+			<div className="titleDiv">
+				<div className="backButton">
+					<button onClick={() => navigate(-1)}>
+						<img src="/assets/arrow_back.svg" alt="Back arrow Icon" />
+						Back
+					</button>
 				</div>
-				<div className="imgDiv">
-					<img src="/assets/imageCard.png" alt="project image" />
-				</div>
-				<div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-						Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-						Curabitur pretium tincidunt lacus. Nulla gravida orci a odio, et tempus feugiat. Nullam varius turpis non risus commodo, vitae convallis nunc dapibus. Proin at massa vel velit posuere feugiat eget id justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
-						Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui.
-					</p>
-					<p><b>Promoter</b></p>
-					<p className="promoterName">Kobe Vermeire</p>
-				</div>
-				<div className="studentCardDiv">
-					<div className="studentCards">
-						<div className="picture">
-							<img src="/assets/pictureForCard2.jpg" alt="picture for card" />
+				<div className="titleText">
+					<h1>{project.name}</h1>
+					<div className="titleNames">
+						<div className="name">
+							<p>
+								{(project.members ?? [])
+									.map((m) => `${m.firstname} ${m.lastname}`)
+									.join(" & ")}
+							</p>
 						</div>
-						<div className="studentInfo">
-							<div className="studentName">
-								<p><b>Hamza El Aisati</b></p>
-								<p>Multimedia & Creatieve Technologie</p>
-							</div>
-							<div className="studentContact">
-								<div className="icons">
-								<a href="student mail">
-									<img src="/assets/mail_Icon.svg" alt="Email Icon" />
-								</a>
-								<a href="student LinkedIn URL">
-									<img src="/assets/linkedIn_Icon.svg" alt="LinkedIn Icon" />
-								</a>
-								</div>
-								<div className="magButton">
-									<button><img src="/assets/download_icon.svg" alt="download arrow Icon" />Mijn magazine (PDF)</button>
-								</div>
-							</div>
+						<div className="subject">
+							{categoryIcon && <img src={categoryIcon} alt={project.course} />}
+							<p>
+								<b>{project.course}</b>
+							</p>
 						</div>
-					</div>
-					<div className="studentCards">
-						<div className="picture">
-							<img src="/assets/pictureForCard2.jpg" alt="picture for card" />
-						</div>
-						<div className="studentInfo">
-							<div className="studentName">
-								<p><b>Hamza El Aisati</b></p>
-								<p>Multimedia & Creatieve Technologie</p>
-							</div>
-							<div className="studentContact">
-								<div className="icons">
-								<a href="student mail">
-									<img src="/assets/mail_Icon.svg" alt="Email Icon" />
-								</a>
-								<a href="student LinkedIn URL">
-									<img src="/assets/linkedIn_Icon.svg" alt="LinkedIn Icon" />
-								</a>
-								</div>
-								<div className="magButton">
-									<button><img src="/assets/download_icon.svg" alt="download arrow Icon" />Mijn magazine (PDF)</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div>
-					<h1>Project video</h1>
-					<div className="videoHolder">
-					<iframe className="videoPlayer" width="703" src="https://www.youtube.com/embed/suQst6cwW4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
 				</div>
 			</div>
-		</>
+
+			<div className="imgDiv">
+				<img
+					src={project.media?.[0]?.url ?? "/assets/imageCard.png"}
+					alt={project.name}
+				/>
+			</div>
+
+			<div>
+				<p>{project.description}</p>
+				<p>
+					<b>Promoter</b>
+				</p>
+				<p className="promoterName">{project.promoter}</p>
+			</div>
+
+			<div className="studentCardDiv">
+				{(project.members ?? []).map((m) => (
+					<div className="studentCards" key={m.id}>
+						<div className="picture">
+							<img
+								src={m.picture ?? "/assets/pictureForCard.jpg"}
+								alt={`${m.firstname} ${m.lastname}`}
+							/>
+						</div>
+						<div className="studentInfo">
+							<div className="studentName">
+								<p>
+									<b>
+										{m.firstname} {m.lastname}
+									</b>
+								</p>
+								<p>Multimedia & Creatieve Technologie</p>
+							</div>
+							<div className="studentContact">
+								<div className="icons">
+									<a href={`mailto:${m.email}`}>
+										<img src="/assets/mail_Icon.svg" alt="Email Icon" />
+									</a>
+									{m.socials?.[0] && (
+										<a href={m.socials[0]} target="_blank" rel="noreferrer">
+											<img
+												src="/assets/linkedIn_Icon.svg"
+												alt="LinkedIn Icon"
+											/>
+										</a>
+									)}
+								</div>
+								{project.magazine?.url && (
+									<div className="magButton">
+										<a
+											href={project.magazine.url}
+											target="_blank"
+											rel="noreferrer"
+										>
+											<button>
+												<img src="/assets/download_icon.svg" alt="download" />
+												Mijn magazine (PDF)
+											</button>
+										</a>
+									</div>
+								)}
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+
+			{embedUrl && (
+				<div>
+					<h1>Project video</h1>
+					<div className="videoHolder">
+						<iframe
+							className="videoPlayer"
+							src={embedUrl}
+							title="YouTube video player"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							referrerPolicy="strict-origin-when-cross-origin"
+							allowFullScreen
+						/>
+					</div>
+				</div>
+			)}
+		</div>
 	);
 }
