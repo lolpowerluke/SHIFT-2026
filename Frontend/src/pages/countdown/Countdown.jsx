@@ -1,120 +1,257 @@
-import React from "react";
-import "./index.css";
-import "../../css/style.css"
-import {useCountdown} from "../../js/countdown.js";
+import { useState } from "react";
+import s from "./Countdown.module.css";
+import "../../css/style.css";
+import { useCountdown } from "../../js/countdown.js";
 
 export default function Countdown() {
-    const pageURL = "shiftfestival.be";
+    const { timeLeft, blinkingS } = useCountdown();
 
-    function handleSTDClick() {
-        const isApple = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent);
-        if (isApple) {
-            window.location.href = `webcal://${pageURL}/shiftCalendar.ics`;
-        } else {
-            const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=SHIFT+-+Save+the+Date&dates=20260619T150000Z/20260619T190000Z&details=Our+third+year+students+are+showing+off+their+final+projects!&location=Nijverheidskaai+170,+1070+Anderlecht`;
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const placeholders = [
+        { id: 1, title: "Project Alpha" },
+        { id: 2, title: "Project Beta" },
+        { id: 3, title: "Project Gamma" },
+    ];
 
-            window.open(gcalUrl, "_blank");
-        }
-    }
-
-    const {timeLeft, blinkingS} = useCountdown()
+    const handleOpenMaps = () => {
+        window.open(
+            "https://maps.app.goo.gl/rZ8pQ7jYJph3tR3L9",
+            "_blank",
+            "noopener,noreferrer",
+        );
+    };
 
     return (
         <>
-            <div className="wrap topSpacer flexSpaceBetween">
-                <div className="heroLayout">
-                    <div>
-                        <img
-                            src="../../assets/logos/shift_logo.svg"
-                            id="heroLogo"
-                            fetchPriority="high"
-                        />
-                    </div>
-                    <div>
-                        <div className="heroWrapper">
-                            <div className="rotatedText">
-                                <h1>Eindprojecten</h1>
-                                <div className="heroText">
-                                    <div className="courseHeroText">
-                                        <h1>
-                                            OPLEIDING MULTIMEDIA<br/>
-                                            CREATIEVE TECHNOLOGIE
-                                        </h1>
+            <div className={s.heroContent}>
+                <video autoPlay muted loop playsInline>
+                    <source
+                        src="/assets/heroContent/videohero_test.webm"
+                        type="video/webm"
+                    />
+                    <img
+                        src="/assets/heroContent/heroImg.jpg"
+                        alt="EhB SHIFT festival hero image"
+                    />
+                </video>
+            </div>
+
+            <div className={s.landingWrap}>
+                <div>
+                    <div className={s.heroLayout}>
+                        <div>
+                            <img
+                                src="../../assets/logos/shift_logo.svg"
+                                id={s.heroLogo}
+                                fetchPriority="high"
+                                alt="SHIFT Logo"
+                            />
+                        </div>
+                        <div>
+                            <div className={s.heroWrapper}>
+                                <div className={s.rotatedText}>
+                                    <h1>Eindprojecten</h1>
+                                    <div className={s.heroText}>
+                                        <div className={s.courseHeroText}>
+                                            <h1>
+                                                OPLEIDING MULTIMEDIA
+                                                <br />
+                                                CREATIEVE TECHNOLOGIE
+                                            </h1>
+                                        </div>
+                                        <div>&</div>
                                     </div>
-                                    <div>&</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="section">
-                    <div className="timerDiv xlarge">
-                        {timeLeft ? <div id="timer">
-                            <div className="timerBox">
-                                <span>{timeLeft.days}</span>
-                                <span>Dagen</span>
-                            </div>
-                            <div className="timerBox">
-                            <span>{timeLeft.hours}</span>
-                                <span>Uren</span>
-                            </div>
-                            <div className="timerBox">
-                            <span>
-                                {timeLeft.minutes}
-                            </span>
-                                <span>Minuten</span>
-                            </div>
-                            <div className="timerBox">
-                            <span>
-                                <span className={blinkingS === "seconds" ? "hidden" : ""}>{timeLeft.seconds}</span>
-                            </span>
-                                <span>Seconden</span>
-                            </div>
-                        </div> : "LIVE NOW!"}
-                        <br/>
-                        <div className="main">
-                            <p>VRIJDAG 19 JUNI</p>
-                            <p>17:00 - 21:30</p>
-                        </div>
-                        <br/>
-                        <a href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" className="linkBtn" target="_blank">Schrijf je gratis in!</a>
-                    </div>
-                </div>
-                <div className="copy-text section darkText" id="copy-text">
-                    <div className="shiftCopy cardDiv">
-                        <h2>SHIFT Festival 2026</h2>
-                        <p>
-                            SHIFT FESTIVAL is een jaarlijks evenement georganiseerd door <a href="https://www.erasmushogeschool.be/nl">Erasmushogeschool Brussel</a> en de opleiding <a href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie">Multimedia & Creatieve Technologie</a>.
-                        </p>
-                        <br/>
-                        <p>
-                            Kom de indrukwekkende eindprojecten van de derdejaars bewonderen en
-                            breng je stem uit op je favoriete projecten, zodat ze tijdens de
-                            awardshow een prijs kunnen winnen.
-                        </p>
-                    </div>
-                    <div className="mctCopy cardDiv">
-                        <h2>Wat is MCT?</h2>
-                        <p>
-                            <a href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie">Multimedia & creatieve technologie</a> is een professionele bacheloropleiding aan de Erasmushogeschool
-                            Brussel.<br/><br/>Deze opleiding combineert creativiteit met techniek,
-                            gericht op het ontwikkelen van digitale ervaringen, interactieve
-                            toepassingen, webtechnologieën en creatieve IT-oplossingen.
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <p className="xlarge bold">
-                            Wil je er zeker bij zijn?<br/>Plaats het nu al in je agenda!
-                        </p>
-                    </div>
-                    <br/>
-                    <a className="linkBtn" id="std" onClick={handleSTDClick} title="Add this event to your calendar">
-                        Save the date!
-                    </a>
+
+                <div className={`${s.timerDiv} xlarge`}>
+                    {
+                        timeLeft ? (
+                            <>
+                                <div className={s.cd}>
+                                    <span>We tellen af!</span>
+                                </div>
+                                <div id={s.timer}>
+                                    <div className={s.timerBox}>
+                                        <span className="darkText">{timeLeft.days}</span>
+                                        <span>Dagen</span>
+                                    </div>
+                                    <div className={s.timerBox}>
+                                        <span className="darkText">{timeLeft.hours}</span>
+                                        <span>Uren</span>
+                                    </div>
+                                    <div className={s.timerBox}>
+                                        <span className="darkText">{timeLeft.minutes}</span>
+                                        <span>Minuten</span>
+                                    </div>
+                                    <div className={s.timerBox}>
+                                        <span>
+                                            <span className={blinkingS === s.seconds ? s.hidden : "darkText"}>
+                                                {timeLeft.seconds}
+                                            </span>
+                                        </span>
+                                        <span>Seconden</span>
+                                    </div>
+                                </div>
+                                <div className={`${s.cta} section`}>
+                                    <a
+                                        href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+                                        className={`${s.linkBtn} linkBtn`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Schrijf je nu gratis in!
+                                    </a>
+                                </div>
+                            </>
+                        ) : (
+                            "LIVE NOW!"
+                        )
+                    }
                 </div>
             </div>
+
+            <div className={`${s.wrap} wrap ${s.topSpacer} ${s.previewSection}`}>
+                <div className={s.section}>
+                    <div className={s.sectionFlexer}>
+                        <div className={s.projectSide}>
+                            <div className={s.projectCard}>
+                                <div className={s.carouselImage}>
+                                    <div
+                                        className={s.carouselSlideAnimation}
+                                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                                    >
+                                        {
+                                            placeholders.map((project) => (
+                                                <div key={project.id} className={s.carouselSlide}>
+                                                    <div className={
+                                                        s.cardImagePlaceholder}>
+                                                        <span>Coming Soon</span>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                                <div className={s.carouselDots}>
+                                    {
+                                        placeholders.map((_, index) => (
+                                            <button
+                                                key={index}
+                                                onClick={() => setCurrentIndex(index)}
+                                                className={`dot ${currentIndex === index ? "active" : ""}`}
+                                                aria-label={`Slide ${index + 1}`}
+                                            />
+                                        ))
+                                    }
+                                </div>
+                                <h2>SEE. EXPERIENCE. MEET.</h2>
+                                <div className={s.projectCTA}>
+                                    <button>
+                                        <span>Coming Soon</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={s.shiftInfoSide}>
+                            <div className={
+                                s.shiftInfoNoCard}>
+                                <h2 className={s.infoTitle}>Wat beleef je op SHIFT?</h2>
+                                <ul className={s.infoList}>
+                                    <li>Speel innovatieve games</li>
+                                    <li>Test interactieve installaties en XR-ervaringen</li>
+                                    <li>Ontdek hoe studenten AI gebruiken</li>
+                                    <li>Ontmoet de makers achter de projecten</li>
+                                    <li>Stem op jouw favoriete project</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="altBg">
+                <div className={`section wrap ${s.wrap}`}>
+                    <h2>WAAR EN WANNEER?</h2>
+                    <div className={s.infoSection}>
+                        <div>
+                            <div className={s.shiftTime}>
+                                <div className={
+                                    s.iconCalendar}>
+                                    <img src="/assets/icons/CalendarBlue.svg" alt="Kalender" />
+                                </div>
+                                <div>
+                                    <h3>VRIJDAG 19 JUNI</h3>
+                                    <p>17:00 - 21:30</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr className={s.sectionDivider} />
+                        <div>
+                            <div className={s.shiftLocation}>
+                                <div className={
+                                    s.iconMap}>
+                                    <img src="/assets/icons/LocationBlue.svg" alt="Locatie" />
+                                </div>
+                                <div>
+                                    <h3>ERASMUS HOGESCHOOL CAMPUS KAAI</h3>
+                                    <button className={s.btnMaps} onClick={handleOpenMaps}>
+                                        Open in maps
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>VOOR WIE?</h2>
+                    <div className={s.audienceContainer}>
+                        <div className={
+                            s.audienceCard}>
+                            <div className={s.iconHeadphones}>
+                                <img src="/assets/icons/koptelefoon.svg" alt="Studenten" />
+                            </div>
+                            <h3>STUDENTEN</h3>
+                            <p>Toon je werk aan honderden bezoekers en professionals.</p>
+                        </div>
+
+                        <div className={s.audienceCard}>
+                            <div className={
+                                s.iconPaper}>
+                                <img src="/assets/icons/paper.svg" alt="Bedrijven" />
+                            </div>
+                            <h3>Bedrijven</h3>
+                            <p>Ontdek jong digitaal talent voor stages en jobs.</p>
+                        </div>
+
+                        <div className={s.audienceCard}>
+                            <div className={
+                                s.iconChatBubble}>
+                                <img src="/assets/icons/chat-bubble.svg" alt="Bezoekers" />
+                            </div>
+                            <h3>tech-lovers</h3>
+                            <p>Ontdek. Test. Laat je verrassen.</p>
+                        </div>
+
+                        <div className={s.audienceCard}>
+                            <div className={
+                                s.iconStar}>
+                                <img src="/assets/icons/star.svg" alt="Stemmen" />
+                            </div>
+                            <h3>bezoekers</h3>
+                            <p>Stem mee en bepaal de publiekswinnaar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={s.infoMultimediaCard}>
+                <div className={s.textContainer}>
+                    <h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
+                    <p><a href="https://www.erasmushogeschool.be/opleidingen/multimedia-en-creatieve-technologie">Multimedia & Creatieve Technologie</a> is een Bacheloropleiding op <a href="https://www.erasmushogeschool.be/">Erasmus Hogeschool Brussel.</a> <br></br><br></br> Hier komen design en technologie samen om digitale ervaringen te bouwen.</p>
+                </div>
+                <img src="/assets/opleidingPlaceholder.jpg" alt="Multimedia & Creatieve Technologie" />
+            </div>
+            {/* TODO: Fill in links and change color for them */}
         </>
-    )
+    );
 }
