@@ -26,7 +26,8 @@ await db.query(`
 await db.query(`
   CREATE TABLE IF NOT EXISTS media (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    url VARCHAR(255) NOT NULL
+    cloud_name VARCHAR(255) NOT NULL,
+    path VARCHAR(255) NOT NULL
   )
 `)
 
@@ -45,7 +46,6 @@ await db.query(`
       REFERENCES media(id)
       ON DELETE CASCADE
       ON UPDATE CASCADE
-
   )
 `)
 

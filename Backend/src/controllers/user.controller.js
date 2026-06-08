@@ -28,7 +28,7 @@ const getUser = async (req, res) => {
       `SELECT
         u.id, u.firstname, u.lastname, u.email, u.role,
         (
-          SELECT JSON_ARRAYAGG(JSON_OBJECT('id', m.id, 'url', m.url))
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('id', m.id, 'cloud_name', m.cloud_name, 'path', m.path))
           FROM media m
           JOIN media_user mu ON mu.media = m.id
           WHERE mu.user = u.id
@@ -88,8 +88,8 @@ const updateUser = async (req, res) => {
       );
       await db.query("DELETE FROM media_user WHERE user = ?", [userId]);
 
-      const { url } = await uploadFile(imageFile.buffer);
-      const [{ insertId }] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
+      const { cloudName, path } = await uploadFile(imageFile.buffer);
+      const [{ insertId }] = await db.query("INSERT INTO media (cloud_name, path) VALUES (?, ?)", [cloudName, path]);
       await db.query("INSERT INTO media_user (user, media) VALUES (?, ?)", [userId, insertId]);
     }
 

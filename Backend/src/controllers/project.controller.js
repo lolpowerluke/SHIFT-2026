@@ -1,6 +1,46 @@
 import db from "../config/db.js";
 import { uploadFile } from "../utils/cloudinary.js";
 
+const IMAGE_SIZE_LIMIT = 2 * 1024 * 1024;    // 2MB
+const MAGAZINE_SIZE_LIMIT = 10 * 1024 * 1024; // 10MB
+
+function validateFileSizes(files = [], magazineFile = null) {
+  for (const f of files) {
+    if (f.size > IMAGE_SIZE_LIMIT) {
+      return `Image "${f.originalname}" exceeds the 2MB limit (${(f.size / 1024 / 1024).toFixed(2)}MB)`;
+    }
+  }
+  if (magazineFile && magazineFile.size > MAGAZINE_SIZE_LIMIT) {
+    return `Magazine "${magazineFile.originalname}" exceeds the 10MB limit (${(magazineFile.size / 1024 / 1024).toFixed(2)}MB)`;
+  }
+  return null;
+}
+
+async function safeUploadImages(files) {
+  const results = await Promise.allSettled(files.map((f) => uploadFile(f.buffer)));
+  const uploaded = [];
+  const warnings = [];
+  results.forEach((r, i) => {
+    if (r.status === "fulfilled") {
+      uploaded.push(r.value);
+    } else {
+      console.error("Cloudinary image upload failed:", r.reason);
+      warnings.push(`Image "${files[i].originalname}" failed to upload: ${r.reason?.message ?? "unknown error"}`);
+    }
+  });
+  return { uploaded, warnings };
+}
+
+async function safeUploadMagazine(magazineFile) {
+  try {
+    const result = await uploadFile(magazineFile.buffer, { resource_type: "raw" });
+    return { ...result, warning: null };
+  } catch (err) {
+    console.error("Cloudinary magazine upload failed:", err);
+    return { cloudName: null, path: null, warning: `Magazine "${magazineFile.originalname}" failed to upload: ${err?.message ?? "unknown error"}` };
+  }
+}
+
 const PROJECT_QUERY = `
       SELECT
         p.id,
@@ -9,20 +49,20 @@ const PROJECT_QUERY = `
         p.course,
         p.promoter,
         (
-          SELECT JSON_ARRAYAGG(JSON_OBJECT('id', i.id, 'url', i.url))
-          FROM (SELECT DISTINCT img.id, img.url FROM media img
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('id', i.id, 'cloud_name', i.cloud_name, 'path', i.path))
+          FROM (SELECT DISTINCT img.id, img.cloud_name, img.path FROM media img
                 JOIN media_project ip2 ON ip2.media = img.id
                 WHERE ip2.project = p.id AND ip2.type = 'image') i
         ) AS media,
         (
-          SELECT JSON_OBJECT('id', mg.id, 'url', mg.url)
+          SELECT JSON_OBJECT('id', mg.id, 'cloud_name', mg.cloud_name, 'path', mg.path)
           FROM media mg
           JOIN media_project mp3 ON mp3.media = mg.id
           WHERE mp3.project = p.id AND mp3.type = 'magazine'
           LIMIT 1
         ) AS magazine,
         (
-          SELECT JSON_OBJECT('id', mv.id, 'url', mv.url)
+          SELECT JSON_OBJECT('id', mv.id, 'cloud_name', mv.cloud_name, 'path', mv.path)
           FROM media mv
           JOIN media_project mp4 ON mp4.media = mv.id
           WHERE mp4.project = p.id AND mp4.type = 'video'
@@ -41,7 +81,7 @@ const PROJECT_QUERY = `
           FROM (
             SELECT DISTINCT
               u3.id, u3.firstname, u3.lastname, u3.email, u3.role,
-              (SELECT img2.url FROM media img2
+              (SELECT JSON_OBJECT('cloud_name', img2.cloud_name, 'path', img2.path) FROM media img2
                JOIN media_user iu ON iu.media = img2.id
                WHERE iu.user = u3.id LIMIT 1) AS picture,
               (SELECT JSON_ARRAYAGG(s.social) FROM socials s
@@ -100,6 +140,13 @@ const createProject = async (req, res) => {
       return res.status(412).json({ success: false, message: "Body incomplete" });
     }
 
+    const sizeError = validateFileSizes(files, magazineFile);
+    if (sizeError) {
+      return res.status(413).json({ success: false, message: sizeError });
+    }
+
+    const warnings = [];
+
     const [{ insertId }] = await db.query(
       "INSERT INTO projects (name, description, course, promoter) VALUES (?, ?, ?, ?)",
       [name, description, course, promoter],
@@ -111,28 +158,40 @@ const createProject = async (req, res) => {
     }
 
     if (files.length) {
-      const uploads = await Promise.all(files.map((f) => uploadFile(f.buffer)));
-      const mediaInserts = await Promise.all(
-        uploads.map(({ url }) =>
-          db.query("INSERT INTO media (url) VALUES (?)", [url]).then(([r]) => r.insertId)
-        )
-      );
-      const mediaRows = mediaInserts.map((mid) => [insertId, mid, 'image']);
-      await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [mediaRows]);
+      const { uploaded, warnings: imgWarnings } = await safeUploadImages(files);
+      warnings.push(...imgWarnings);
+      if (uploaded.length) {
+        const mediaInserts = await Promise.all(
+          uploaded.map(({ cloudName, path }) =>
+            db.query("INSERT INTO media (cloud_name, path) VALUES (?, ?)", [cloudName, path]).then(([r]) => r.insertId)
+          )
+        );
+        const mediaRows = mediaInserts.map((mid) => [insertId, mid, 'image']);
+        await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [mediaRows]);
+      }
     }
 
     if (magazineFile) {
-      const { url } = await uploadFile(magazineFile.buffer, { resource_type: "raw" });
-      const [{ insertId: mediaId }] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
-      await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [insertId, mediaId]);
+      const { cloudName, path, warning } = await safeUploadMagazine(magazineFile);
+      if (warning) {
+        warnings.push(warning);
+      } else {
+        const [{ insertId: mediaId }] = await db.query("INSERT INTO media (cloud_name, path) VALUES (?, ?)", [cloudName, path]);
+        await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [insertId, mediaId]);
+      }
     }
 
     if (videoURL) {
-      const [r] = await db.query("INSERT INTO media (url) VALUES (?)", [videoURL]);
+      // Videos are external URLs (e.g. YouTube/Vimeo) — store with empty cloud_name
+      const [r] = await db.query("INSERT INTO media (cloud_name, path) VALUES ('', ?)", [videoURL]);
       await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [[[insertId, r.insertId, 'video']]]);
     }
 
-    res.status(201).json({ success: true, projectId: insertId });
+    res.status(201).json({
+      success: true,
+      projectId: insertId,
+      ...(warnings.length && { warnings }),
+    });
   } catch (error) {
     console.error(" error:", error);
     res.status(500).json({ success: false, message: "Failed to create project", error: error.message });
@@ -172,6 +231,13 @@ const updateProject = async (req, res) => {
       return res.status(403).json({ success: false, message: "Not a project owner" });
     }
 
+    const sizeError = validateFileSizes(files, magazineFile);
+    if (sizeError) {
+      return res.status(413).json({ success: false, message: sizeError });
+    }
+
+    const warnings = [];
+
     const fields = [];
     const values = [];
     if (name) { fields.push("name = ?"); values.push(name); }
@@ -191,7 +257,6 @@ const updateProject = async (req, res) => {
       }
     }
 
-    // Video: accept URL directly
     if (videoURL !== undefined) {
       await db.query(
         `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'video')`,
@@ -200,7 +265,7 @@ const updateProject = async (req, res) => {
       await db.query("DELETE FROM media_project WHERE project = ? AND type = 'video'", [id]);
 
       if (videoURL) {
-        const [r] = await db.query("INSERT INTO media (url) VALUES (?)", [videoURL]);
+        const [r] = await db.query("INSERT INTO media (cloud_name, path) VALUES ('', ?)", [videoURL]);
         await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [[[id, r.insertId, 'video']]]);
       }
     }
@@ -212,14 +277,17 @@ const updateProject = async (req, res) => {
       );
       await db.query("DELETE FROM media_project WHERE project = ? AND type = 'image'", [id]);
 
-      const uploads = await Promise.all(files.map((f) => uploadFile(f.buffer)));
-      const mediaInserts = await Promise.all(
-        uploads.map(({ url }) =>
-          db.query("INSERT INTO media (url) VALUES (?)", [url]).then(([r]) => r.insertId)
-        )
-      );
-      const mediaRows = mediaInserts.map((mid) => [id, mid, 'image']);
-      await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [mediaRows]);
+      const { uploaded, warnings: imgWarnings } = await safeUploadImages(files);
+      warnings.push(...imgWarnings);
+      if (uploaded.length) {
+        const mediaInserts = await Promise.all(
+          uploaded.map(({ cloudName, path }) =>
+            db.query("INSERT INTO media (cloud_name, path) VALUES (?, ?)", [cloudName, path]).then(([r]) => r.insertId)
+          )
+        );
+        const mediaRows = mediaInserts.map((mid) => [id, mid, 'image']);
+        await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [mediaRows]);
+      }
     } else if (imageURL === "") {
       await db.query(
         `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'image')`,
@@ -233,7 +301,8 @@ const updateProject = async (req, res) => {
       );
       await db.query("DELETE FROM media_project WHERE project = ? AND type = 'image'", [id]);
 
-      const [r] = await db.query("INSERT INTO media (url) VALUES (?)", [imageURL]);
+      // imageURL is a full external URL — store with empty cloud_name
+      const [r] = await db.query("INSERT INTO media (cloud_name, path) VALUES ('', ?)", [imageURL]);
       await db.query("INSERT INTO media_project (project, media, type) VALUES ?", [[[id, r.insertId, 'image']]]);
     }
 
@@ -244,9 +313,13 @@ const updateProject = async (req, res) => {
       );
       await db.query("DELETE FROM media_project WHERE project = ? AND type = 'magazine'", [id]);
 
-      const { url } = await uploadFile(magazineFile.buffer, { resource_type: "raw" });
-      const [{ insertId: mediaId }] = await db.query("INSERT INTO media (url) VALUES (?)", [url]);
-      await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [id, mediaId]);
+      const { cloudName, path, warning } = await safeUploadMagazine(magazineFile);
+      if (warning) {
+        warnings.push(warning);
+      } else {
+        const [{ insertId: mediaId }] = await db.query("INSERT INTO media (cloud_name, path) VALUES (?, ?)", [cloudName, path]);
+        await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [id, mediaId]);
+      }
     } else if (magazineURL === "") {
       await db.query(
         `DELETE FROM media WHERE id IN (SELECT media FROM media_project WHERE project = ? AND type = 'magazine')`,
@@ -260,11 +333,15 @@ const updateProject = async (req, res) => {
       );
       await db.query("DELETE FROM media_project WHERE project = ? AND type = 'magazine'", [id]);
 
-      const [r] = await db.query("INSERT INTO media (url) VALUES (?)", [magazineURL]);
+      const [r] = await db.query("INSERT INTO media (cloud_name, path) VALUES ('', ?)", [magazineURL]);
       await db.query("INSERT INTO media_project (project, media, type) VALUES (?, ?, 'magazine')", [id, r.insertId]);
     }
 
-    res.status(200).json({ success: true, message: "Project updated" });
+    res.status(200).json({
+      success: true,
+      message: "Project updated",
+      ...(warnings.length && { warnings }),
+    });
   } catch (error) {
     console.error(" error:", error);
     res.status(500).json({ success: false, message: "Failed to update project", error: error.message });
