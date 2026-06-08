@@ -1,14 +1,13 @@
-import React from "react";
-import {Outlet} from "react-router"
-import Header from "../components/Header.jsx";
-import Footer from "../components/Footer.jsx";
+import { Outlet } from "react-router"
+import Header from "../components/header/Header.jsx";
+import Footer from "../components/footer/Footer.jsx";
 
 export default function PageLayout() {
     return (
         <>
-            <Header/>
-            <Outlet/>
-            <Footer/>
+            <Header />
+            <Outlet />
+            <Footer />
         </>
     )
 }

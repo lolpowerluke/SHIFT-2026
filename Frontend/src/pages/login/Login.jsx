@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
-import "./index.css";
+import s from "./Login.module.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -44,7 +44,7 @@ export default function Login() {
 			<div className="wrap">
 				<div className="section">
 					<h1>Login</h1>
-					<form className="form" onSubmit={handleSubmit}>
+					<form className={s.form} onSubmit={handleSubmit}>
 						<div>
 							<label htmlFor="email">Email</label>
 							<input
@@ -66,8 +66,8 @@ export default function Login() {
 								required
 							/>
 						</div>
-						{error && <p className="error">{error}</p>}
-						<button className="submit" type="submit" disabled={loading}>
+						{error && <p className={s.error}>{error}</p>}
+						<button className={s.submit} type="submit" disabled={loading}>
 							{loading ? "Bezig..." : "Login"}
 						</button>
 					</form>
