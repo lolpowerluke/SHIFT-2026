@@ -1,0 +1,15 @@
+.heroContent {
+    display: flex;
+    flex-direction: column;
+}
+.awardsImg {
+    display: flex;
+    width: 50%;
+    height:auto;
+}
+.heroData {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
