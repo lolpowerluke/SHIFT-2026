@@ -83,15 +83,16 @@ header {
     display: none;
 }
 
-body:has(#hamburgerNav:checked){
+body:has(#hamburgerNav:checked) {
     overflow: hidden;
-    .headerLogo.hide{
+
+    .headerLogo.hide {
         animation: bounce-in .3s ease-in-out forwards;
     }
 }
 
 /* lines */
-.flexCtx{
+.flexCtx {
     display: flex;
     flex-direction: column;
     align-items: end;
@@ -117,24 +118,24 @@ body:has(#hamburgerNav:checked){
     width: 60%;
 }
 
-#hamburgerNav + label {
+#hamburgerNav+label {
     cursor: pointer;
     position: relative;
     display: block;
     z-index: 2;
 }
 
-#hamburgerNav:checked + label > .flexCtx > .l1 {
+#hamburgerNav:checked+label>.flexCtx>.l1 {
     transform: translate(0, .85rem) rotate(45deg);
     margin: auto;
 }
 
-#hamburgerNav:checked + label > .flexCtx > .l2 {
+#hamburgerNav:checked+label>.flexCtx>.l2 {
     opacity: 0;
     transform: rotate(45deg);
 }
 
-#hamburgerNav:checked + label > .flexCtx > .l3 {
+#hamburgerNav:checked+label>.flexCtx>.l3 {
     transform: translate(0, -.75rem) rotate(-45deg);
     margin: auto;
 }
@@ -146,11 +147,12 @@ body:has(#hamburgerNav:checked){
     min-height: 100dvh;
     background-image: url(/assets/wallTextureWeb2.png);
     background-color: var(--bg-shift-primary);
-    background-size: 105vh;
+    background-size: cover;
 
     .orientationSwap {
         list-style: none;
-        li{
+
+        li {
             a:hover {
                 color: var(--txt-special);
             }
@@ -226,7 +228,7 @@ body:has(#hamburgerNav:checked){
     inset: 0;
     content: "";
     background-image: url(/assets/iconsOverlay.svg);
-    background-size: 5000px;
+    background-size: 9000px;
     min-height: 100dvh;
     z-index: -1;
     background-color: color-mix(black, transparent 75%);

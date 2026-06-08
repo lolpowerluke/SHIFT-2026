@@ -30,7 +30,7 @@ html::before {
 	inset: 0;
 	z-index: -2;
 	background-image: url(/assets/wallTextureWeb2.png);
-	background-size: 105vh;
+	background-size: cover;
 	background-color: var(--bg-shift-primary);
 }
 
@@ -40,7 +40,7 @@ body::before {
 	inset: 0;
 	z-index: -2;
 	background-image: url(/assets/iconsOverlay.svg);
-	background-size: 5000px;
+	background-size: 9000px;
 	pointer-events: none;
 }
 
@@ -48,14 +48,7 @@ body::before {
 	position: relative;
 	padding-bottom: 2rem;
 	z-index: 0;
-}
-
-.altBg::before {
-	content: '';
-	position: absolute;
 	background-color: var(--bg-shift-secondary);
-	inset: 0;
-	z-index: -3;
 }
 
 #root {
