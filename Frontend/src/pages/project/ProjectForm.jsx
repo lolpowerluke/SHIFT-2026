@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router";
 import s from "./ProjectForm.module.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
@@ -37,9 +36,6 @@ function FilePill({ name, onClear }) {
 }
 
 export default function ProjectForm() {
-	const navigate = useNavigate();
-	const location = useLocation();
-
 	// Project info
 	const [nameProject, setNameProject] = useState("");
 	const [description, setDescription] = useState("");
@@ -118,7 +114,7 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch {}
+		} catch { }
 
 		const activeId = currentUserId ?? user.id;
 
@@ -191,7 +187,7 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch {}
+		} catch { }
 
 		// 1. Update current user
 		try {
@@ -218,7 +214,7 @@ export default function ProjectForm() {
 					p2UserId = result.user.id;
 					memberIds.push(result.user.id);
 				}
-			} catch {}
+			} catch { }
 		}
 
 		// 2b. Update p2
@@ -272,9 +268,9 @@ export default function ProjectForm() {
 
 			const result = existing
 				? await apiFetch(`/project/${existing.id}`, {
-						method: "PUT",
-						body: cleanForm,
-					})
+					method: "PUT",
+					body: cleanForm,
+				})
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
@@ -317,15 +313,15 @@ export default function ProjectForm() {
 	// Displayed image list: new local files (object URLs) or existing URLs
 	const imagePreviewURLs = projectFiles.length
 		? projectFiles.map((f) => ({
-				key: f.name,
-				url: URL.createObjectURL(f),
-				name: f.name,
-			}))
+			key: f.name,
+			url: URL.createObjectURL(f),
+			name: f.name,
+		}))
 		: existingImages.map((img) => ({
-				key: img.id,
-				url: img.url,
-				name: img.url.split("/").pop(),
-			}));
+			key: img.id,
+			url: img.url,
+			name: img.url.split("/").pop(),
+		}));
 
 	// Displayed magazine label
 	const magazineLabel = magazineFile
@@ -339,7 +335,7 @@ export default function ProjectForm() {
 			<div className="section">
 				<h1>Project formulier</h1>
 				<h3>Vul je project aan.</h3>
-				<form className="form" onSubmit={handleSubmit}>
+				<form className={s.form} onSubmit={handleSubmit}>
 					{/* Project info */}
 					<div className={s.part}>
 						<h3>Project info</h3>

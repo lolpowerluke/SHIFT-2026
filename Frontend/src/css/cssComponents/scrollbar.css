@@ -1,8 +1,3 @@
-html,
-body {
-  /* scrollbar-color: var(--bg-shift-alt) var(--bg-shift-primary); */
-}
-
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -22,7 +17,7 @@ body {
 ::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-track {
   background-clip: padding-box;
-  border: 2px solid transparent;
+  border: 2px solid var(--bg-shift-primary);
   border-radius: var(--border-radius-m);
   visibility: visible;
 }
