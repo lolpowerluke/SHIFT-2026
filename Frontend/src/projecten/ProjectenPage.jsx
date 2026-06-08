@@ -71,10 +71,12 @@ export default function ProjectenPage() {
 
 	const filteredProjects = MOCK_PROJECTS.filter((project) => {
 		const query = searchQuery.toLowerCase();
-		return (
+		const matchesSearch =
 			project.title.toLowerCase().includes(query) ||
-			project.students.some((s) => s.name.toLowerCase().includes(query))
-		);
+			project.students.some((s) => s.name.toLowerCase().includes(query));
+
+		const matchesCategory = project.category === activeCategory;
+		return matchesSearch && matchesCategory;
 	});
 
 	return (
