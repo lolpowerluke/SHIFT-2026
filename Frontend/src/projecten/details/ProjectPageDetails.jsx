@@ -19,10 +19,10 @@ export default function ProjectPageDetails() {
 					<div className="titleText">
 						<h1>After Dark</h1>
 						<div className="titleNames">
-							<div>
-								<p>Hamza El Aisati</p>
+							<div className="name">
+								<p>Hamza El Aisati & Hamza El Aisati</p>
 							</div>
-							<div>
+							<div className="subject">
 								<img src="/assets/OrangeDesign.svg" alt="Digital Design Icon" />
 								<p><b>Digital Design</b></p>
 							</div>
@@ -53,12 +53,14 @@ export default function ProjectPageDetails() {
 								<p>Multimedia & Creatieve Technologie</p>
 							</div>
 							<div className="studentContact">
+								<div className="icons">
 								<a href="student mail">
 									<img src="/assets/mail_Icon.svg" alt="Email Icon" />
 								</a>
 								<a href="student LinkedIn URL">
 									<img src="/assets/linkedIn_Icon.svg" alt="LinkedIn Icon" />
 								</a>
+								</div>
 								<div className="magButton">
 									<button><img src="/assets/download_icon.svg" alt="download arrow Icon" />Mijn magazine (PDF)</button>
 								</div>
@@ -75,12 +77,14 @@ export default function ProjectPageDetails() {
 								<p>Multimedia & Creatieve Technologie</p>
 							</div>
 							<div className="studentContact">
+								<div className="icons">
 								<a href="student mail">
 									<img src="/assets/mail_Icon.svg" alt="Email Icon" />
 								</a>
 								<a href="student LinkedIn URL">
 									<img src="/assets/linkedIn_Icon.svg" alt="LinkedIn Icon" />
 								</a>
+								</div>
 								<div className="magButton">
 									<button><img src="/assets/download_icon.svg" alt="download arrow Icon" />Mijn magazine (PDF)</button>
 								</div>
@@ -89,9 +93,9 @@ export default function ProjectPageDetails() {
 					</div>
 				</div>
 				<div>
-					<h3>Project video</h3>
+					<h1>Project video</h1>
 					<div className="videoHolder">
-					<iframe className="videoPlayer" width="703" src="[LINK STUDENT VIDEO]" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<iframe className="videoPlayer" width="703" src="https://www.youtube.com/embed/suQst6cwW4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
 				</div>
 			</div>
