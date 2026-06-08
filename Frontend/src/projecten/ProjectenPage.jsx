@@ -75,7 +75,9 @@ export default function ProjectenPage() {
 			project.title.toLowerCase().includes(query) ||
 			project.students.some((s) => s.name.toLowerCase().includes(query));
 
-		const matchesCategory = project.category === activeCategory;
+		const matchesCategory =
+			activeCategory === "Alle Projecten" ||
+			project.category === activeCategory;
 		return matchesSearch && matchesCategory;
 	});
 
