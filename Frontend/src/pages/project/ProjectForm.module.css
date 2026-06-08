@@ -59,13 +59,13 @@
 Complete source in *README*
 */
 
-#img-preview {
+#previewImg {
 	display: none;
 	border: 10px double var(--bg-shift-alt);
 	margin: 30px;
 }
 
-#img-preview img {
+#previewImg img {
 	width: 100%;
 	height: auto;
 	display: block;
@@ -101,7 +101,7 @@ Complete source in *README*
 	}
 }
 
-.preview-img {
+.previewImg {
 	width: 100%;
 	max-width: 250px;
 	object-fit: cover;
@@ -111,10 +111,10 @@ Complete source in *README*
 	margin-top: 10px;
 }
 
-.submit-success {
+.submitSuccess {
 	background: green;
 }
 
-.submit-error {
+.submitError {
 	color: red;
 }
