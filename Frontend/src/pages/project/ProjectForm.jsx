@@ -45,21 +45,12 @@ function FilePill({ name, onClear }) {
 	);
 }
 
-function isWebp(file) {
-	if (!file) return false;
-	return file.type === "image/webp";
-}
-
 // validate single image file rules
 function validateImageFile(file) {
 	if (!file) return "Missing image";
 
 	if (file.size > MAX_IMAGE_SIZE) {
 		return "Afbeelding mag max 1MB zijn";
-	}
-
-	if (!isWebp(file)) {
-		return "Alle afbeeldingen moeten .webp zijn";
 	}
 
 	return null;
@@ -155,7 +146,7 @@ export default function ProjectForm() {
 
 	let navigate = useNavigate();
 
-	// FIX: track object URLs to prevent memory leaks
+	// track object URLs to prevent memory leaks
 	const previewURLsRef = useRef([]);
 
 	useEffect(() => {
@@ -785,7 +776,7 @@ export default function ProjectForm() {
 
 						{/* Images */}
 						<div>
-							<label htmlFor="choose-projectFile">Projectbeeld</label>
+							<label htmlFor="choose-projectFile">Projectbeeld *</label>
 							{imagePreviewURLs.length > 0 ? (
 								<>
 									<FilePill
