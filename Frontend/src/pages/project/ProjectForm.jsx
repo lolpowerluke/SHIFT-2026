@@ -45,21 +45,12 @@ function FilePill({ name, onClear }) {
 	);
 }
 
-function isWebp(file) {
-	if (!file) return false;
-	return file.type === "image/webp";
-}
-
 // validate single image file rules
 function validateImageFile(file) {
 	if (!file) return "Missing image";
 
 	if (file.size > MAX_IMAGE_SIZE) {
 		return "Afbeelding mag max 1MB zijn";
-	}
-
-	if (!isWebp(file)) {
-		return "Alle afbeeldingen moeten .webp zijn";
 	}
 
 	return null;
@@ -155,7 +146,7 @@ export default function ProjectForm() {
 
 	let navigate = useNavigate();
 
-	// FIX: track object URLs to prevent memory leaks
+	// track object URLs to prevent memory leaks
 	const previewURLsRef = useRef([]);
 
 	useEffect(() => {
@@ -192,7 +183,7 @@ export default function ProjectForm() {
 		if (user.picture) {
 			setSelfieExistingPicture({
 				url: user.picture,
-				name: user.picture.split("/").pop(),
+				name: user.picture.path.split("/").pop(),
 			});
 		}
 
@@ -202,7 +193,7 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch {}
+		} catch { }
 
 		const activeId = currentUserId ?? user.id;
 
@@ -317,7 +308,7 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch {}
+		} catch { }
 
 		// 1. Update current user
 		try {
@@ -344,7 +335,7 @@ export default function ProjectForm() {
 					p2UserId = result.user.id;
 					memberIds.push(result.user.id);
 				}
-			} catch {}
+			} catch { }
 		}
 
 		// 2b. Update p2
@@ -398,9 +389,9 @@ export default function ProjectForm() {
 
 			const result = existing
 				? await apiFetch(`/project/${existing.id}`, {
-						method: "PUT",
-						body: cleanForm,
-					})
+					method: "PUT",
+					body: cleanForm,
+				})
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
@@ -443,15 +434,15 @@ export default function ProjectForm() {
 	// FIX: create object URLs once, track them for cleanup
 	const imagePreviewURLs = projectFiles.length
 		? projectFiles.map((f) => {
-				const url = URL.createObjectURL(f);
-				previewURLsRef.current.push(url);
-				return { key: f.name, url, name: f.name };
-			})
+			const url = URL.createObjectURL(f);
+			previewURLsRef.current.push(url);
+			return { key: f.name, url, name: f.name };
+		})
 		: existingImages.map((img) => ({
-				key: img.id,
-				url: img.url,
-				name: img.url.split("/").pop(),
-			}));
+			key: img.id,
+			url: `https://res.cloudinary.com/${img.cloud_name}/image/upload/${img.path}`,
+			name: img.path.split("/").pop(),
+		}));
 
 	// Displayed magazine label
 	const magazineLabel = magazineFile
@@ -785,7 +776,7 @@ export default function ProjectForm() {
 
 						{/* Images */}
 						<div>
-							<label htmlFor="choose-projectFile">Projectbeeld</label>
+							<label htmlFor="choose-projectFile">Projectbeeld *</label>
 							{imagePreviewURLs.length > 0 ? (
 								<>
 									<FilePill
