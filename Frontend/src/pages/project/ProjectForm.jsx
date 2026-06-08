@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+import { useState, useEffect, useRef } from "react";
 import s from "./ProjectForm.module.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
+const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB limit
+const MAX_PDF_SIZE = 10 * 1024 * 1024; // 10MB limit
 
 async function apiFetch(path, opts = {}) {
 	const token = localStorage.getItem("token");
@@ -30,9 +33,81 @@ function FilePill({ name, onClear }) {
 	return (
 		<span className={s.file}>
 			{name}
-			<button type="button" onClick={onClear} className={s.clear} aria-label="Verwijder">×</button>
+			<button
+				type="button"
+				onClick={onClear}
+				className={s.clear}
+				aria-label="Verwijder"
+			>
+				×
+			</button>
 		</span>
 	);
+}
+
+function isWebp(file) {
+	if (!file) return false;
+	return file.type === "image/webp";
+}
+
+// validate single image file rules
+function validateImageFile(file) {
+	if (!file) return "Missing image";
+
+	if (file.size > MAX_IMAGE_SIZE) {
+		return "Afbeelding mag max 1MB zijn";
+	}
+
+	if (!isWebp(file)) {
+		return "Alle afbeeldingen moeten .webp zijn";
+	}
+
+	return null;
+}
+
+// validate project image ratio (16:9)
+function validateProjectImageRatio(file) {
+	return new Promise((resolve, reject) => {
+		if (!file) return reject("Project image ontbreekt");
+
+		const img = new Image();
+		const objectUrl = URL.createObjectURL(file);
+		img.src = objectUrl;
+
+		img.onload = () => {
+			URL.revokeObjectURL(objectUrl);
+			const ratio = img.width / img.height;
+			const expected = 16 / 9;
+
+			const diff = Math.abs(ratio - expected);
+
+			if (diff > 0.01) {
+				reject("Project image moet 16:9 (1920x1080) zijn");
+			} else {
+				resolve(true);
+			}
+		};
+
+		img.onerror = () => {
+			URL.revokeObjectURL(objectUrl);
+			reject("Invalid image file");
+		};
+	});
+}
+
+// validate PDF
+function validatePDF(file) {
+	if (!file) return "PDF ontbreekt";
+
+	if (file.size > MAX_PDF_SIZE) {
+		return "PDF mag max 10MB zijn";
+	}
+
+	if (file.type !== "application/pdf") {
+		return "Alleen PDF bestanden toegestaan";
+	}
+
+	return null;
 }
 
 export default function ProjectForm() {
@@ -78,19 +153,32 @@ export default function ProjectForm() {
 	const [submitError, setSubmitError] = useState("");
 	const [urlErrors, setUrlErrors] = useState({});
 
+	let navigate = useNavigate();
+
+	// FIX: track object URLs to prevent memory leaks
+	const previewURLsRef = useRef([]);
+
 	useEffect(() => {
 		const token = localStorage.getItem("token");
 		if (!token) {
-			// navigate("/login", { state: { from: location.pathname }, replace: true });
+			navigate("/login", { state: { from: location.pathname }, replace: true });
 			return;
 		}
 		prefill(token);
 	}, []);
 
+	useEffect(() => {
+		// revoke previous object URLs before creating new ones
+		return () => {
+			previewURLsRef.current.forEach((url) => URL.revokeObjectURL(url));
+			previewURLsRef.current = [];
+		};
+	}, [projectFiles]);
+
 	async function prefill(token) {
 		const userData = await apiFetch("/api/user");
 		if (!userData.success) {
-			// navigate("/login", { state: { from: location.pathname }, replace: true });
+			navigate("/login", { state: { from: location.pathname }, replace: true });
 			return;
 		}
 		const user = userData.user;
@@ -114,7 +202,7 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch { }
+		} catch {}
 
 		const activeId = currentUserId ?? user.id;
 
@@ -183,11 +271,53 @@ export default function ProjectForm() {
 		setUrlErrors({});
 		setSubmitState("loading");
 
+		try {
+			const projectImage = projectFiles?.[0];
+
+			// only require new image when no existing images are present
+			if (!projectImage && !existingImages.length) {
+				setSubmitError("Project image ontbreekt");
+				setSubmitState("error");
+				return;
+			}
+
+			// only validate ratio when a new file is provided
+			if (projectImage) {
+				await validateProjectImageRatio(projectImage);
+
+				// validate all images
+				for (const file of projectFiles) {
+					const err = validateImageFile(file);
+					if (err) {
+						setSubmitError(err);
+						setSubmitState("error");
+						return;
+					}
+				}
+			}
+
+			// validate magazine PDF
+			if (magazineFile) {
+				const pdfError = validatePDF(magazineFile);
+				if (pdfError) {
+					setSubmitError(pdfError);
+					setSubmitState("error");
+					return;
+				}
+			}
+		} catch (err) {
+			setSubmitError(
+				typeof err === "string" ? err : err?.message || "Validatie fout",
+			);
+			setSubmitState("error");
+			return;
+		}
+
 		const token = localStorage.getItem("token");
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch { }
+		} catch {}
 
 		// 1. Update current user
 		try {
@@ -214,7 +344,7 @@ export default function ProjectForm() {
 					p2UserId = result.user.id;
 					memberIds.push(result.user.id);
 				}
-			} catch { }
+			} catch {}
 		}
 
 		// 2b. Update p2
@@ -268,9 +398,9 @@ export default function ProjectForm() {
 
 			const result = existing
 				? await apiFetch(`/project/${existing.id}`, {
-					method: "PUT",
-					body: cleanForm,
-				})
+						method: "PUT",
+						body: cleanForm,
+					})
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
@@ -310,18 +440,18 @@ export default function ProjectForm() {
 		setMagazineCleared(true);
 	}
 
-	// Displayed image list: new local files (object URLs) or existing URLs
+	// FIX: create object URLs once, track them for cleanup
 	const imagePreviewURLs = projectFiles.length
-		? projectFiles.map((f) => ({
-			key: f.name,
-			url: URL.createObjectURL(f),
-			name: f.name,
-		}))
+		? projectFiles.map((f) => {
+				const url = URL.createObjectURL(f);
+				previewURLsRef.current.push(url);
+				return { key: f.name, url, name: f.name };
+			})
 		: existingImages.map((img) => ({
-			key: img.id,
-			url: img.url,
-			name: img.url.split("/").pop(),
-		}));
+				key: img.id,
+				url: img.url,
+				name: img.url.split("/").pop(),
+			}));
 
 	// Displayed magazine label
 	const magazineLabel = magazineFile
@@ -486,7 +616,7 @@ export default function ProjectForm() {
 									<img
 										src={URL.createObjectURL(selfieFile)}
 										alt={selfieFile.name}
-										className={s.preview - img}
+										className={s.previewImg}
 									/>
 								</>
 							) : selfieExistingPicture ? (
@@ -498,7 +628,7 @@ export default function ProjectForm() {
 									<img
 										src={selfieExistingPicture.url}
 										alt={selfieExistingPicture.name}
-										className={s.preview - img}
+										className={s.previewImg}
 									/>
 								</>
 							) : (
@@ -615,7 +745,7 @@ export default function ProjectForm() {
 											<img
 												src={URL.createObjectURL(p2SelfieFile)}
 												alt={p2SelfieFile.name}
-												className={s.preview - img}
+												className={s.previewImg}
 											/>
 										</>
 									) : p2ExistingPicture ? (
@@ -627,7 +757,7 @@ export default function ProjectForm() {
 											<img
 												src={p2ExistingPicture.url}
 												alt={p2ExistingPicture.name}
-												className={s.preview - img}
+												className={s.previewImg}
 											/>
 										</>
 									) : (
@@ -671,7 +801,7 @@ export default function ProjectForm() {
 											key={key}
 											src={url}
 											alt={name}
-											className={s.preview - img}
+											className={s.previewImg}
 										/>
 									))}
 								</>
@@ -730,7 +860,7 @@ export default function ProjectForm() {
 						</div>
 
 						<button
-							className={`submit${submitState === "success" ? " submit-success" : ""}`}
+							className={`submit ${submitState === "success" ? s.submitSuccess : ""}`}
 							type="submit"
 							disabled={submitState === "loading" || submitState === "success"}
 						>
@@ -741,7 +871,7 @@ export default function ProjectForm() {
 									: "Submit"}
 						</button>
 						{submitState === "error" && (
-							<p className={s.submit - error}>Fout: {submitError}</p>
+							<p className={s.submitError}>Fout: {submitError}</p>
 						)}
 					</div>
 				</form>
