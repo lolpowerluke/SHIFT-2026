@@ -495,3 +495,26 @@
         }
     }
 }
+
+.infoMultimediaCard {
+    background-color: var(--bg-shift-alt);
+    border: 5px solid var(--border-primary);
+    border-radius: 1.5rem;
+    max-width: 85vw;
+    justify-self: center;
+    margin-top: 5rem;
+}
+
+.infoMultimediaCard img {
+    width: 40%;
+    margin-left: 5rem;
+    border: 3px solid var(--bg-shift-secondary);
+    border-radius: 0.5rem;
+}
+
+.multimediaCardContent {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+
+}
