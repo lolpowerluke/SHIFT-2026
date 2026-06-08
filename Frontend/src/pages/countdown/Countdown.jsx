@@ -114,7 +114,7 @@ export default function Countdown() {
                 </div>
             </div>
 
-            <div className={`${s.wrap} wrap ${s.topSpacer}`}>
+            <div className={`${s.wrap} wrap ${s.topSpacer} ${s.previewSection}`}>
                 <div className={s.section}>
                     <div className={s.sectionFlexer}>
                         <div className={s.projectSide}>
