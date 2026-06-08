@@ -12,6 +12,7 @@ const CATEGORY_ICONS = {
 function getYoutubeEmbedUrl(url) {
 	if (!url) return null;
 	const match = url.match(/[?&]v=([^&]+)/);
+
 	return match ? `https://www.youtube.com/embed/${match[1]}` : null;
 }
 
@@ -43,7 +44,7 @@ export default function ProjectPageDetails() {
 	if (error) return <p className="ctx">Fout: {error}</p>;
 	if (!project) return null;
 
-	const embedUrl = getYoutubeEmbedUrl(project.video?.url);
+	const embedUrl = getYoutubeEmbedUrl(project.video?.path);
 	const categoryIcon = CATEGORY_ICONS[project.course];
 
 	return (
