@@ -25,7 +25,6 @@ const router = createBrowserRouter(
                     ]
                 },
                 { path: Routes.Root, element: <Countdown /> },
-                { path: Routes.Login, element: <Login /> },
                 { path: Routes.ProjectForm, element: <ProjectForm /> },
                 {
                     element: <SearchLayout />, //this will hold all search logic for the projects
@@ -35,8 +34,10 @@ const router = createBrowserRouter(
                 },
             ]
         },
-        {
-            element: <BareLayout />, children: [] //just in case, this has no header
+        {   // no header or footer
+            element: <BareLayout />, children: [
+                { path: Routes.Login, element: <Login /> },
+            ]
         }
     ]
 )
