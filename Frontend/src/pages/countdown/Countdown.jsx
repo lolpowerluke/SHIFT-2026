@@ -245,14 +245,12 @@ export default function Countdown() {
                 </div>
             </div>
             <div className={s.infoMultimediaCard}>
-                <div className={s.multimediaCardContent}>
-                    <div className={s.textContainer}>
-                        <h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
-                        <p><a href="https://www.erasmushogeschool.be/opleidingen/multimedia-en-creatieve-technologie">Multimedia & Creatieve Technologie</a> is een Bacheloropleiding op <a href="https://www.erasmushogeschool.be/">Erasmus Hogeschool Brussel.</a> <br></br><br></br> Hier komen design en technologie samen om digitale ervaringen te bouwen.</p>
-                    </div>
-                    <img src="/assets/opleidingPlaceholder.jpg" alt="Multimedia & Creatieve Technologie" />
+                <div className={s.textContainer}>
+                    <h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
+                    <p><a href="https://www.erasmushogeschool.be/opleidingen/multimedia-en-creatieve-technologie">Multimedia & Creatieve Technologie</a> is een Bacheloropleiding op <a href="https://www.erasmushogeschool.be/">Erasmus Hogeschool Brussel.</a> <br></br><br></br> Hier komen design en technologie samen om digitale ervaringen te bouwen.</p>
                 </div>
-            </div >
+                <img src="/assets/opleidingPlaceholder.jpg" alt="Multimedia & Creatieve Technologie" />
+            </div>
             {/* TODO: Fill in links and change color for them */}
         </>
     );

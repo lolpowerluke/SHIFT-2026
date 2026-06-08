@@ -441,7 +441,7 @@
         margin-bottom: var(--spacing-m);
     }
 
-    .previewSection{
+    .previewSection {
         padding: calc(3 * var(--spacing-top)) 0 var(--spacing-top);
     }
 
@@ -503,30 +503,36 @@
         }
     }
 }
-@media only screen and (min-width: 1280px){
+
+@media only screen and (min-width: 1280px) {
     .rotatedText h1 {
         margin-top: 0;
     }
 }
+
 .infoMultimediaCard {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 5rem;
+    padding: 3rem;
     background-color: var(--bg-shift-alt);
     border: 5px solid var(--border-primary);
     border-radius: 1.5rem;
     max-width: 85vw;
     justify-self: center;
     margin-top: 5rem;
+    overflow: hidden;
 }
 
 .infoMultimediaCard img {
-    width: 40%;
-    margin-left: 5rem;
+    width: 100%;
     border: 3px solid var(--bg-shift-secondary);
     border-radius: 0.5rem;
 }
 
-.multimediaCardContent {
-    display: flex;
-    justify-content: space-between;
-    padding: 3rem;
-
+@media (max-width: 1500px) {
+    .infoMultimediaCard {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 }

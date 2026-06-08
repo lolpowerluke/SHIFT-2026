@@ -65,7 +65,7 @@ a {
 .darkText {
 	color: var(--txt-shift-secondary);
 	a {
-		/*color: var(--txt-shift-secondary);*/
+		color: var(--txt-shift-secondary);
 	}
 }
 
