@@ -63,8 +63,3 @@ body::before {
 #root {
 	overflow-x: clip;
 }
-
-.hideThisSht{
-	pointer-events: none;
-	display: none;
-}
