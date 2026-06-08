@@ -1,61 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import ProjectCard from "./ProjectCard.jsx";
-
-const MOCK_PROJECTS = [
-	{
-		id: 1,
-		title: "The Dark After The Light",
-		category: "XR & 3D",
-		image: "/assets/imageCard.png",
-		students: [
-			{ name: "Hamza El Aisati", avatar: "/assets/pictureForCard.jpg" },
-		],
-	},
-	{
-		id: 2,
-		title: "The Light After The Dark",
-		category: "Digital Design",
-		image: "/assets/imageCard.png",
-		students: [
-			{ name: "Hamza El Aisati", avatar: "/assets/pictureForCard.jpg" },
-			{ name: "Nolan Lamarque", avatar: "/assets/pictureForCard.jpg" },
-		],
-	},
-	{
-		id: 3,
-		title: "The PNG After The JPG",
-		category: "Web & Mobile",
-		image: "/assets/imageCard.png",
-		students: [
-			{ name: "Hamza² Lamrabet", avatar: "/assets/pictureForCard.jpg" },
-		],
-	},
-	{
-		id: 4,
-		title: "Kitchen Sink Experience",
-		category: "XR & 3D",
-		image: "/assets/imageCard.png",
-		students: [
-			{ name: "SpongeBob SquarePants", avatar: "/assets/pictureForCard.jpg" },
-			{ name: "Ahmed Benali", avatar: "/assets/pictureForCard.jpg" },
-		],
-	},
-	{
-		id: 5,
-		title: "Le Football il a changé",
-		category: "Experience Design",
-		image: "/assets/imageCard.png",
-		students: [{ name: "Kylian Mbappe", avatar: "/assets/pictureForCard.jpg" }],
-	},
-	{
-		id: 6,
-		title: "Design IV van Grow II naar Shift",
-		category: "Digital Design",
-		image: "/assets/imageCard.png",
-		students: [{ name: "Kobe Vermeire", avatar: "/assets/pictureForCard.jpg" }],
-	},
-];
 
 const CATEGORIES = [
 	"Alle Projecten",
@@ -65,11 +10,38 @@ const CATEGORIES = [
 	"Web & Mobile",
 ];
 
+function mapProject(p) {
+	return {
+		id: p.id,
+		title: p.name,
+		category: p.course,
+		image: p.media?.[0]?.url ?? "/assets/imageCard.png",
+		students: (p.members ?? []).map((m) => ({
+			name: `${m.firstname} ${m.lastname}`,
+			avatar: m.picture ?? "/assets/pictureForCard.jpg",
+		})),
+	};
+}
+
 export default function ProjectenPage() {
+	const [projects, setProjects] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const [activeCategory, setActiveCategory] = useState("Alle Projecten");
 	const [searchQuery, setSearchQuery] = useState("");
 
-	const filteredProjects = MOCK_PROJECTS.filter((project) => {
+	useEffect(() => {
+		fetch(`${import.meta.env.VITE_API_URL}/project`)
+			.then((res) => {
+				if (!res.ok) throw new Error(`HTTP ${res.status}`);
+				return res.json();
+			})
+			.then((data) => setProjects(data.projects.map(mapProject)))
+			.catch((err) => setError(err.message))
+			.finally(() => setLoading(false));
+	}, []);
+
+	const filteredProjects = projects.filter((project) => {
 		const query = searchQuery.toLowerCase();
 		const matchesSearch =
 			project.title.toLowerCase().includes(query) ||
@@ -80,6 +52,9 @@ export default function ProjectenPage() {
 			project.category === activeCategory;
 		return matchesSearch && matchesCategory;
 	});
+
+	if (loading) return <p className="ctx">Laden...</p>;
+	if (error) return <p className="ctx">Fout: {error}</p>;
 
 	return (
 		<main className="ctx">
