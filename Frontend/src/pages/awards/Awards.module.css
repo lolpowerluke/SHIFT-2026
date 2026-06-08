@@ -1,11 +1,18 @@
+.bodyContainer {
+    max-width: 85vw;
+    margin: 0 auto;
+}
 .heroContent {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .awardsImg {
     display: flex;
     width: 50%;
     height:auto;
+    transform: rotate(-10deg);
 }
 .heroData {
     display: flex;
