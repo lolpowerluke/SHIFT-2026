@@ -9,6 +9,8 @@
 @import url(./cssComponents/buttons.css);
 /* throbber css */
 @import url(./cssComponents/throbber.css);
+/* Scrollbar */
+@import url(./cssComponents/scrollbar.css);
 
 /* This file is for the main styles like using colours, adding stuff that doesn't belong to the other files */
 
@@ -48,7 +50,14 @@ body::before {
 	position: relative;
 	padding-bottom: 2rem;
 	z-index: 0;
+}
+
+.altBg::before {
+	content: '';
+	position: absolute;
 	background-color: var(--bg-shift-secondary);
+	inset: 0;
+	z-index: -3;
 }
 
 #root {
