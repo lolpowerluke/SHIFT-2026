@@ -89,14 +89,14 @@ export default function ProjectForm() {
 	const [submitError, setSubmitError] = useState("");
 	const [urlErrors, setUrlErrors] = useState({});
 
-	// useEffect(() => {
-	// 	const token = localStorage.getItem("token");
-	// 	if (!token) {
-	// 		navigate("/login", { state: { from: location.pathname }, replace: true });
-	// 		return;
-	// 	}
-	// 	prefill(token);
-	// }, []);
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		if (!token) {
+			navigate("/login", { state: { from: location.pathname }, replace: true });
+			return;
+		}
+		prefill(token);
+	}, []);
 
 	async function prefill(token) {
 		const userData = await apiFetch("/api/user");
@@ -345,10 +345,7 @@ export default function ProjectForm() {
 		<div className="wrap">
 			<div className="section">
 				<h1>Project formulier</h1>
-				<h3>
-					Vul het korte formulier in om je project op de Shift festival website
-					te plaatsen.
-				</h3>
+				<h3>Vul je project aan.</h3>
 				<form className="form" onSubmit={handleSubmit}>
 					{/* Project info */}
 					<div className="part">
@@ -706,10 +703,11 @@ export default function ProjectForm() {
 
 						{/* Video URL */}
 						<div>
-							<label htmlFor="videoURL">
-								Plaats je video op YouTube en plaats de link hier onder (niet
-								privé)
-							</label>
+							<label htmlFor="videoURL">Showreal</label>
+							<small>
+								Plaats je showreal op Youtube (unlisted) en laat hier de link
+								achter.
+							</small>
 							<input
 								type="text"
 								id="videoURL"
