@@ -366,7 +366,7 @@ export default function ProjectForm() {
 							/>
 						</div>
 						<div>
-							<label htmlFor="description">Description *</label>
+							<label htmlFor="description">Descriptie *</label>
 							<textarea
 								className="projectInfo"
 								id="description"
@@ -435,7 +435,7 @@ export default function ProjectForm() {
 
 					{/* Personal info */}
 					<div className="part">
-						<h3>Personal info</h3>
+						<h3>Persoonlijke info</h3>
 						<div>
 							<label htmlFor="firstName">Voornaam *</label>
 							<input
