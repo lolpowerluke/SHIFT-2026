@@ -17,11 +17,21 @@ export default function Awards() {
                         <p>Bekijk de verschillende projecten </p>
                     </div>
                     <div className={s.heroData}>
-                        <h3>??+ <br></br> PROJECTEN</h3>
-                        <h3>19 <br></br> JUNI 2026</h3>
-                        <h3>4 <br></br> AWARDS</h3>
+                        <div>
+                            <h3>??+</h3>
+                            <h4>PROJECTEN</h4>
+                        </div>
+                        <div>
+                            <h3>19</h3>
+                            <h4>JUNI 2026</h4>
+                        </div>
+                        <div>
+                            <h3>4</h3>
+                            <h4>AWARDS</h4>
+                        </div>
                     </div>
                 </div>
+            </div>
                 <div className={s.votingContainer}>
                     <img src="/assets/icons/VoteOrange.svg" alt="voting" className={s.votingBoxImg} />
                     <h2>HOE EN WANNEER KUNNEN JULLIE STEMMEN?</h2>
@@ -38,13 +48,13 @@ export default function Awards() {
                     </div>
                     <div className={s.infoContainer}>
                         <img src="/assets/icons/StarBlue.svg" alt="star" className={s.starImg} />
-                        <h3>DE AWARDSHOW ZAL PLAATSNEMEN OP CAMPUS KAAI, EHB.</h3>
+                        <h4>DE AWARDSHOW ZAL PLAATSNEMEN OP CAMPUS KAAI, EHB.</h4>
                     </div>
                 </div>
+            <div className={s.bodyContainer}>
                 <div className={s.aboutAwardsContainer}>
                     <h2>WELKE AWARDS ZIJN ER?</h2>
                     <div className={s.awardsContainer}>
-
                         <img src="/assets/icons/StarBlue.svg" alt="star" className={s.starImg} />
                         <div className={s.infoTitle}>
                             <h3>IMPACTPRIJS</h3>
