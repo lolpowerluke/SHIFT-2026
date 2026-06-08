@@ -69,6 +69,14 @@ export default function ProjectenPage() {
 	const [activeCategory, setActiveCategory] = useState("Alle Projecten");
 	const [searchQuery, setSearchQuery] = useState("");
 
+	const filteredProjects = MOCK_PROJECTS.filter((project) => {
+		const query = searchQuery.toLowerCase();
+		return (
+			project.title.toLowerCase().includes(query) ||
+			project.students.some((s) => s.name.toLowerCase().includes(query))
+		);
+	});
+
 	return (
 		<main className="ctx">
 			<section className="projectenHero">
@@ -105,11 +113,11 @@ export default function ProjectenPage() {
 			</div>
 
 			<p className="projectenCount">
-				{activeCategory} ({MOCK_PROJECTS.length} Projecten)
+				{activeCategory} ({filteredProjects.length} Projecten)
 			</p>
 
 			<div className="projectenGrid">
-				{MOCK_PROJECTS.map((project) => (
+				{filteredProjects.map((project) => (
 					<ProjectCard key={project.id} project={project} />
 				))}
 			</div>
