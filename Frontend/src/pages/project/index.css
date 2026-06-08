@@ -1,3 +1,7 @@
+.section {
+	margin: 0;
+}
+
 .removeFile {
 	width: min-content;
 }
