@@ -64,7 +64,7 @@ export default function ProjectForm() {
 	const [p2ExistingPicture, setP2ExistingPicture] = useState(null); // {url, name} | null
 
 	// Project media — new files
-	const [projectFiles, setProjectFiles] = useState([]);   // File[]
+	const [projectFiles, setProjectFiles] = useState([]); // File[]
 	const [videoURL, setVideoURL] = useState("");
 	const [magazineFile, setMagazineFile] = useState(null); // File
 
@@ -118,17 +118,16 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch { }
+		} catch {}
 
 		const activeId = currentUserId ?? user.id;
 
 		const myProject = projData.projects.find(
 			(p) =>
-				Array.isArray(p.members) &&
-				p.members.some((m) => m.id === activeId)
+				Array.isArray(p.members) && p.members.some((m) => m.id === activeId),
 		);
 		if (!myProject) return;
-		console.log(myProject)
+		console.log(myProject);
 
 		setNameProject(myProject.name || "");
 		setDescription(myProject.description || "");
@@ -169,8 +168,10 @@ export default function ProjectForm() {
 	function validateURLFields() {
 		const errors = {};
 		if (videoURL && !isValidURL(videoURL)) errors.videoURL = "Geen geldige URL";
-		if (linkedinURL && !isValidURL(linkedinURL)) errors.linkedinURL = "Geen geldige URL";
-		if (p2LinkedIn && !isValidURL(p2LinkedIn)) errors.p2LinkedIn = "Geen geldige URL";
+		if (linkedinURL && !isValidURL(linkedinURL))
+			errors.linkedinURL = "Geen geldige URL";
+		if (p2LinkedIn && !isValidURL(p2LinkedIn))
+			errors.p2LinkedIn = "Geen geldige URL";
 		return errors;
 	}
 
@@ -190,7 +191,7 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch { }
+		} catch {}
 
 		// 1. Update current user
 		try {
@@ -210,12 +211,14 @@ export default function ProjectForm() {
 		let p2UserId = null;
 		if (p2Email.trim()) {
 			try {
-				const result = await apiFetch(`/api/user?email=${encodeURIComponent(p2Email.trim())}`);
+				const result = await apiFetch(
+					`/api/user?email=${encodeURIComponent(p2Email.trim())}`,
+				);
 				if (result.success) {
 					p2UserId = result.user.id;
 					memberIds.push(result.user.id);
 				}
-			} catch { }
+			} catch {}
 		}
 
 		// 2b. Update p2
@@ -227,7 +230,10 @@ export default function ProjectForm() {
 				if (p2LinkedIn) p2FormData.append("socials", p2LinkedIn.trim());
 				if (p2SelfieFile) p2FormData.append("image", p2SelfieFile);
 
-				await apiFetch(`/api/user?id=${p2UserId}`, { method: "PUT", body: p2FormData });
+				await apiFetch(`/api/user?id=${p2UserId}`, {
+					method: "PUT",
+					body: p2FormData,
+				});
 			} catch (err) {
 				console.error("P2 user update failed:", err);
 			}
@@ -260,11 +266,15 @@ export default function ProjectForm() {
 			const existingData = await apiFetch("/project/");
 			const existing = (existingData.projects || []).find(
 				(p) =>
-					Array.isArray(p.members) && p.members.some((m) => m.id === currentUserId)
+					Array.isArray(p.members) &&
+					p.members.some((m) => m.id === currentUserId),
 			);
 
 			const result = existing
-				? await apiFetch(`/project/${existing.id}`, { method: "PUT", body: cleanForm })
+				? await apiFetch(`/project/${existing.id}`, {
+						method: "PUT",
+						body: cleanForm,
+					})
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
@@ -306,8 +316,16 @@ export default function ProjectForm() {
 
 	// Displayed image list: new local files (object URLs) or existing URLs
 	const imagePreviewURLs = projectFiles.length
-		? projectFiles.map((f) => ({ key: f.name, url: URL.createObjectURL(f), name: f.name }))
-		: existingImages.map((img) => ({ key: img.id, url: img.url, name: img.url.split("/").pop() }));
+		? projectFiles.map((f) => ({
+				key: f.name,
+				url: URL.createObjectURL(f),
+				name: f.name,
+			}))
+		: existingImages.map((img) => ({
+				key: img.id,
+				url: img.url,
+				name: img.url.split("/").pop(),
+			}));
 
 	// Displayed magazine label
 	const magazineLabel = magazineFile
@@ -320,11 +338,8 @@ export default function ProjectForm() {
 		<div className="wrap">
 			<div className="section">
 				<h1>Project formulier</h1>
-				<h3>
-					Vul het korte formulier in om je project op de Shift festival website
-					te plaatsen.
-				</h3>
-				<form className={s.form} onSubmit={handleSubmit}>
+				<h3>Vul je project aan.</h3>
+				<form className="form" onSubmit={handleSubmit}>
 					{/* Project info */}
 					<div className={s.part}>
 						<h3>Project info</h3>
@@ -341,7 +356,7 @@ export default function ProjectForm() {
 							/>
 						</div>
 						<div>
-							<label htmlFor="description">Description *</label>
+							<label htmlFor="description">Descriptie *</label>
 							<textarea
 								className={s.projectInfo}
 								id="description"
@@ -398,7 +413,7 @@ export default function ProjectForm() {
 									"Els Vande Kerckhove",
 									"An Vanlierde",
 									"Kobe Vermeire",
-									"Ben Verschooris"
+									"Ben Verschooris",
 								].map((name) => (
 									<option key={name} value={name}>
 										{name}
@@ -410,7 +425,7 @@ export default function ProjectForm() {
 
 					{/* Personal info */}
 					<div className={s.part}>
-						<h3>Personal info</h3>
+						<h3>Persoonlijke info</h3>
 						<div>
 							<label htmlFor="firstName">Voornaam *</label>
 							<input
@@ -648,9 +663,11 @@ export default function ProjectForm() {
 							{imagePreviewURLs.length > 0 ? (
 								<>
 									<FilePill
-										name={projectFiles.length
-											? `${projectFiles.length} bestand(en)`
-											: imagePreviewURLs[0].name}
+										name={
+											projectFiles.length
+												? `${projectFiles.length} bestand(en)`
+												: imagePreviewURLs[0].name
+										}
 										onClear={clearImages}
 									/>
 									{imagePreviewURLs.map(({ key, url, name }) => (
@@ -679,10 +696,11 @@ export default function ProjectForm() {
 
 						{/* Video URL */}
 						<div>
-							<label htmlFor="videoURL">
-								Plaats je video op YouTube en plaats de link hier onder (niet
-								privé)
-							</label>
+							<label htmlFor="videoURL">Showreal</label>
+							<small>
+								Plaats je showreal op Youtube (unlisted) en laat hier de link
+								achter.
+							</small>
 							<input
 								type="text"
 								id="videoURL"
