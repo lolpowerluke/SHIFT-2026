@@ -1,11 +1,27 @@
 import { v2 as cloudinary } from "cloudinary";
 import env from "./env.js";
 
-cloudinary.config({
-  cloud_name: env.cloudinary.name,
-  api_key: env.cloudinary.key,
-  api_secret: env.cloudinary.secret,
+// One configured cloudinary instance per account
+const instances = env.cloudinary.map((account) => {
+  const instance = cloudinary.clone ? cloudinary.clone() : Object.create(cloudinary);
+  instance.config({
+    cloud_name: account.name,
+    api_key: account.key,
+    api_secret: account.secret,
+  });
+  return instance;
 });
+
+let rrIndex = 0;
+
+/**
+ * Returns the next cloudinary instance via round-robin.
+ */
+function getInstance() {
+  const instance = instances[rrIndex % instances.length];
+  rrIndex = (rrIndex + 1) % instances.length;
+  return instance;
+}
 
 /**
  * Upload a file buffer to Cloudinary.
@@ -14,8 +30,9 @@ cloudinary.config({
  * @returns {Promise<{ url: string, publicId: string }>}
  */
 export const uploadFile = (buffer, options = {}) => {
+  const instance = getInstance();
   return new Promise((resolve, reject) => {
-    const stream = cloudinary.uploader.upload_stream(
+    const stream = instance.uploader.upload_stream(
       { resource_type: "auto", ...options },
       (error, result) => {
         if (error) return reject(error);
@@ -28,8 +45,14 @@ export const uploadFile = (buffer, options = {}) => {
 
 /**
  * Delete a file from Cloudinary by public ID.
+ * Tries all accounts — the file exists on exactly one of them.
  * @param {string} publicId
  */
-export const deleteFile = (publicId) => {
-  return cloudinary.uploader.destroy(publicId);
+export const deleteFile = async (publicId) => {
+  const results = await Promise.allSettled(
+    instances.map((instance) => instance.uploader.destroy(publicId))
+  );
+  // Return the first successful result, or the last result if all fail
+  const ok = results.find((r) => r.status === "fulfilled" && r.value?.result === "ok");
+  return ok ? ok.value : results.at(-1).value ?? results.at(-1).reason;
 };
