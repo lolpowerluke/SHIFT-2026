@@ -359,12 +359,14 @@
         flex-direction: row;
         height: auto;
         width: 92.5dvw;
-        aspect-ratio: 16/7;
+        aspect-ratio: 16/8;
         justify-content: space-between;
+        margin-top: -148px;
+        margin-bottom: 4rem;
 
         .timerDiv {
             align-self: flex-end;
-            margin: 0 0 6rem 0;
+            margin: 0;
 
             #timer {
                 margin-left: -6px;
@@ -402,10 +404,11 @@
     }
 
     #heroLogo {
-        margin: -160px -30px -80px;
+        margin: -30px -30px -80px;
     }
 
     .rotatedText h1 {
+        margin-top: .5rem;
         font-size: 44px;
     }
 
@@ -435,6 +438,11 @@
     .sectionFlexer {
         display: flex;
         justify-content: space-between;
+        margin-bottom: var(--spacing-m);
+    }
+
+    .previewSection{
+        padding: calc(3 * var(--spacing-top)) 0 var(--spacing-top);
     }
 
     .projectSide,
@@ -495,7 +503,11 @@
         }
     }
 }
-
+@media only screen and (min-width: 1280px){
+    .rotatedText h1 {
+        margin-top: 0;
+    }
+}
 .infoMultimediaCard {
     background-color: var(--bg-shift-alt);
     border: 5px solid var(--border-primary);

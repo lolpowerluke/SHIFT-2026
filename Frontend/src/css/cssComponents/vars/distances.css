@@ -16,9 +16,14 @@
 
     --shift-logo-height: 15rem;
 
-    @media (min-width: 1024px) {
+    @media only screen and (min-width: 1024px) {
+        --shift-logo-height: 29rem;
+    }
+
+    @media only screen and (min-width: 1280px){
         --shift-logo-height: 35rem;
     }
+
 }
 
 /* 
