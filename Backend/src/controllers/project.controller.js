@@ -223,12 +223,14 @@ const updateProject = async (req, res) => {
       return res.status(404).json({ success: false, message: `Project ${id} doesn't exist` });
     }
 
-    const [membership] = await db.query(
-      "SELECT id FROM project_user WHERE project = ? AND user = ?",
-      [id, userId]
-    );
-    if (!membership.length) {
-      return res.status(403).json({ success: false, message: "Not a project owner" });
+    if (userRole !== "admin") {
+      const [membership] = await db.query(
+        "SELECT id FROM project_user WHERE project = ? AND user = ?",
+        [id, userId]
+      );
+      if (!membership.length) {
+        return res.status(403).json({ success: false, message: "Not a project owner" });
+      }
     }
 
     const sizeError = validateFileSizes(files, magazineFile);
@@ -372,7 +374,7 @@ const deleteProject = async (req, res) => {
       "SELECT id FROM project_user WHERE project = ? AND user = ?",
       [id, req.user.id]
     );
-    if (!membership.length) {
+    if (!membership.length && userRole !== "admin") {
       return res.status(403).json({ success: false, message: "Not a project owner" });
     }
 
