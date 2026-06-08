@@ -7,10 +7,6 @@ export default function Footer() {
 	return (
 		<footer>
 			<div className={`ctx ${s.ctx}`}>
-				<small>
-					Jouw data blijft van jou. Check het{" "}
-					<Link to={Routes.Privacy}>Privacybeleid</Link>.
-				</small>
 				<hr className={s.divider} />
 				<div className={s.text_info}>
 					<p>
@@ -22,6 +18,10 @@ export default function Footer() {
 					</p>
 				</div>
 				<SocialLinks className={s.socialLinks} />
+				<small>
+					Jouw data blijft van jou. Check het{" "}
+					<Link to={Routes.Privacy}>Privacybeleid</Link>.
+				</small>
 				<small className="footerCopyright">
 					2026 SHIFT — Erasmushogeschool Brussel. <br />
 					Alle rechten voorbehouden.
