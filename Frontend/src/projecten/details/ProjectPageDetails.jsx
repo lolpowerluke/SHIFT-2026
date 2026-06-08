@@ -88,6 +88,12 @@ export default function ProjectPageDetails() {
 						</div>
 					</div>
 				</div>
+				<div>
+					<h3>Project video</h3>
+					<div className="videoHolder">
+					<iframe className="videoPlayer" width="703" src="[LINK STUDENT VIDEO]" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					</div>
+				</div>
 			</div>
 		</>
 	);

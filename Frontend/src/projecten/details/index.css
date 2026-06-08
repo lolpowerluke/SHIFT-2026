@@ -58,6 +58,7 @@ body.index {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: 16px;
 }
 
 .studentCards {
@@ -65,8 +66,9 @@ body.index {
     border: 5px solid black;
     border-radius: 10px;
     padding: 15px;
-    min-width: 45%;
+    flex: 1 1 300px;
     display: flex;
+    box-sizing: border-box;
 }
 
 .picture {
@@ -89,8 +91,11 @@ body.index {
 
 .studentContact {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
     align-items: center;
+    width: 100%;
+    margin-top: auto;
 }
 
 
@@ -105,4 +110,47 @@ body.index {
         margin-right: 15px;
         width: 25px;
     }
+}
+
+
+.videoHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    iframe {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (max-width: 640px) {
+    .picture  {
+        align-content: center;
+        
+        img {
+        width: 80px;
+        height: 80px;
+        }
+    }
+    
+    .magButton button {
+        font-size: 10pt;
+
+        img {
+            width: 20px;
+        }
+    }
+
+    .studentContact  {
+        justify-content: center;
+    }
+
+    .videoHolder {
+
+        iframe {
+            width: auto;
+        }
+    }
+    
 }
