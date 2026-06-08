@@ -37,7 +37,7 @@ export default function ProjectPageDetails() {
 	useEffect(() => {
     document.body.classList.add("index");
     return () => document.body.classList.remove("index");
-}, []);
+	}, []);
 
 	if (loading) return <p className="ctx">Laden...</p>;
 	if (error) return <p className="ctx">Fout: {error}</p>;
