@@ -112,6 +112,9 @@ export default function Countdown() {
                         )
                     }
                 </div>
+                <a href="#" id={s.scrollPointer}>
+                    <img src="/assets/icons/pointer2.svg" alt="scroll!"/>
+                </a>
             </div>
 
             <div className={`${s.wrap} wrap ${s.topSpacer} ${s.previewSection}`}>
