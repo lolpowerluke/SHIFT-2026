@@ -15,7 +15,9 @@ header {
     .headerLogo {
         position: relative;
         z-index: 3;
+        min-height: 58px;
         height: 100%;
+        width: auto;
         animation: bounce-in .3s ease-in-out forwards;
     }
 }

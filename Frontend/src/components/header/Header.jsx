@@ -9,6 +9,7 @@ import s from "./Header.module.css";
 export default function Header() {
     const hamburgerRef = useRef();
     const scrolled = useScrolled(80)
+    const navLength = NavRoutes.length
 
     const closeMenu = () => {
         if (hamburgerRef.current) {
@@ -27,7 +28,7 @@ export default function Header() {
                         className={`${s.headerLogo} ${!scrolled ? s.hide : ""}`}
                     />
                 </Link>
-                <div className={s.nav}>
+                <div className={`${s.nav} ${navLength <= 1 ? "hideThisSht" : ""}`}>
                     <ul className={s.navList}>
                         <ul className={s.orientationSwap}>
                             <li className={s.navLogo}>
