@@ -1,23 +1,23 @@
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-corner,
 ::-webkit-scrollbar-track {
-  background-color: var(--bg-shift-primary);
+  background-color: var(--bg-shift-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--bg-shift-alt);
   min-height: 40px;
   cursor: ns-resize;
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-track {
   background-clip: padding-box;
-  border: 2px solid var(--bg-shift-primary);
-  border-radius: var(--border-radius-m);
   visibility: visible;
+  border: 2px solid var(--bg-shift-secondary);
 }
