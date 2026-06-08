@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import ProjectCard from "./ProjectCard.jsx";
+import { getCloudinaryUrl } from "../utils/cloudinary.js";
 
 const CATEGORIES = [
 	"Alle Projecten",
@@ -15,10 +16,16 @@ function mapProject(p) {
 		id: p.id,
 		title: p.name,
 		category: p.course,
-		image: p.media?.[0]?.url ?? "/assets/imageCard.png",
+		image:
+			getCloudinaryUrl(p.media?.[0]) ??
+			getCloudinaryUrl(p.images?.[0]) ??
+			"/assets/imageCard.png",
 		students: (p.members ?? []).map((m) => ({
-			name: `${m.firstname} ${m.lastname}`,
-			avatar: m.picture ?? "/assets/pictureForCard.jpg",
+			name:
+				[m.firstname, m.lastname].filter(Boolean).join(" ") ||
+				m.email ||
+				"Onbekend",
+			avatar: getCloudinaryUrl(m.picture) ?? "/assets/pictureForCard.jpg",
 		})),
 	};
 }

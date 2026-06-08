@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import "./index.css";
+import { getCloudinaryUrl } from "../../utils/cloudinary.js";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
@@ -11,9 +12,11 @@ const CATEGORY_ICONS = {
 
 function getYoutubeEmbedUrl(url) {
 	if (!url) return null;
-	const match = url.match(/[?&]v=([^&]+)/);
-
-	return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+	const shortMatch = url.match(/youtu\.be\/([^?]+)/);
+	if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+	const longMatch = url.match(/[?&]v=([^&]+)/);
+	if (longMatch) return `https://www.youtube.com/embed/${longMatch[1]}`;
+	return null;
 }
 
 export default function ProjectPageDetails() {
@@ -78,7 +81,7 @@ export default function ProjectPageDetails() {
 
 			<div className="imgDiv">
 				<img
-					src={project.media?.[0]?.url ?? "/assets/imageCard.png"}
+					src={getCloudinaryUrl(project.media?.[0]) ?? getCloudinaryUrl(project.images?.[0]) ?? "/assets/imageCard.png"}
 					alt={project.name}
 				/>
 			</div>
@@ -96,15 +99,15 @@ export default function ProjectPageDetails() {
 					<div className="studentCards" key={m.id}>
 						<div className="picture">
 							<img
-								src={m.picture ?? "/assets/pictureForCard.jpg"}
-								alt={`${m.firstname} ${m.lastname}`}
+								src={getCloudinaryUrl(m.picture) ?? "/assets/pictureForCard.jpg"}
+								alt={`${m.firstname ?? ""} ${m.lastname ?? ""}`.trim()}
 							/>
 						</div>
 						<div className="studentInfo">
 							<div className="studentName">
 								<p>
 									<b>
-										{m.firstname} {m.lastname}
+										{[m.firstname, m.lastname].filter(Boolean).join(" ") || m.email || "Onbekend"}
 									</b>
 								</p>
 								<p>Multimedia & Creatieve Technologie</p>
