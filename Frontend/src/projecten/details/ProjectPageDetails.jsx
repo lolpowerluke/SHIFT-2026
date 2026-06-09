@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import "./index.css";
-import { getCloudinaryUrl } from "../../utils/cloudinary.js";
+import { getCloudinaryUrl, getYoutubeEmbedUrl } from "../../utils/cloudinary.js";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
@@ -9,15 +9,6 @@ const CATEGORY_ICONS = {
 	"XR & 3D": "/assets/Orange3D.svg",
 	"Web & Mobile": "/assets/OrangeCoding.svg",
 };
-
-function getYoutubeEmbedUrl(url) {
-	if (!url) return null;
-	const shortMatch = url.match(/youtu\.be\/([^?]+)/);
-	if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
-	const longMatch = url.match(/[?&]v=([^&]+)/);
-	if (longMatch) return `https://www.youtube.com/embed/${longMatch[1]}`;
-	return null;
-}
 
 export default function ProjectPageDetails() {
 	const [searchParams] = useSearchParams();
