@@ -118,3 +118,34 @@ Complete source in *README*
 .submitError {
 	color: red;
 }
+
+.projectList {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 20px;
+	background: var(--bg-shift-secondary);
+	padding: 20px;
+	border: 5px solid black;
+	border-radius: 10px;
+}
+
+.project {
+	cursor: pointer;
+	background: var(--bg-shift-alt);
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.adminProjectItem {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 5px;
+}
+
+.adminProjectName {}
+
+.adminProjectMembers {}
+
+.adminProjectItemActive {}

@@ -30,6 +30,17 @@ export default function Login() {
 				return;
 			}
 
+			// Check role from JWT payload
+			let role = null;
+			try {
+				role = JSON.parse(atob(data.token.split(".")[1])).role;
+			} catch { }
+
+			if (role !== "3rdyear" && role !== "admin") {
+				setError("Alleen 3de jaar studenten en admins kunnen inloggen");
+				return;
+			}
+
 			localStorage.setItem("token", data.token);
 			navigate("/project-form", { replace: true });
 		} catch {
