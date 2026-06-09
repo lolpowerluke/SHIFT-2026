@@ -18,7 +18,6 @@
 
 #heroLogo {
     height: var(--shift-logo-height);
-    margin: -80px -20px -30px;
 }
 
 .rotatedText {
@@ -46,11 +45,11 @@
         font-size: 18px;
     }
 
-    & > div:first-child {
+    &>div:first-child {
         font-size: 1rem;
     }
 
-    & > div:last-child {
+    &>div:last-child {
         margin-left: 4px;
         font-size: 2rem;
     }
@@ -109,7 +108,7 @@
             flex-direction: column;
             color: var(--txt-shift-primary);
 
-            & > :first-child {
+            &> :first-child {
                 padding: 0.5rem;
                 border-radius: 0.5rem;
                 margin: 0 0.5rem;
@@ -128,7 +127,7 @@
                 }
             }
 
-            & > :last-child {
+            &> :last-child {
                 font-size: small;
                 text-align: center;
                 margin-top: 0.3rem;
@@ -283,7 +282,7 @@
         font-size: 20px;
     }
 
-    > div:last-child {
+    &>div:last-child {
         flex-grow: 1;
     }
 }
@@ -362,15 +361,48 @@
     margin-bottom: 2rem;
 }
 
-#scrollPointer {
-    display: none;
+.landingWrap {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    justify-content: center;
+    height: 100vh;
+    margin-top: -116px;
+    gap: 50px;
+
+    .timerDiv {
+        display: grid;
+        align-self: center;
+        margin: 0 auto;
+
+        #timer {
+            .timerBox {
+                color: var(--txt-special);
+            }
+        }
+
+        .cta {
+            margin-left: 10px;
+        }
+    }
 }
 
-.landingWrap {
+#scrollPointer {
     position: relative;
     display: flex;
     flex-direction: column;
     margin-left: -100px;
+    height: 50px;
+    width: fit-content;
+    align-self: self-end;
+    margin: 0 auto;
+    bottom: 20px;
+    animation: upDown 1.4s ease-in-out infinite;
+
+    img {
+        height: 100%;
+        transform: rotate(180deg);
+    }
 }
 
 @media (min-width: 1024px) {
@@ -424,6 +456,7 @@
         height: 100vh;
         width: 100%;
         overflow: hidden;
+        box-shadow: -1px 3px 10px 5px color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
 
         img {
             width: 100%;
@@ -435,7 +468,6 @@
             object-fit: cover;
         }
 
-        box-shadow: -1px 3px 10px 5px color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
     }
 
     #heroLogo {
@@ -454,11 +486,11 @@
             font-size: 28px;
         }
 
-        & > div:first-child {
+        &>div:first-child {
             font-size: 2rem;
         }
 
-        & > div:last-child {
+        &>div:last-child {
             margin-left: 4px;
             font-size: 4rem;
         }
@@ -575,6 +607,7 @@
 }
 
 @keyframes upDown {
+
     0%,
     100% {
         transform: translateY(0);
