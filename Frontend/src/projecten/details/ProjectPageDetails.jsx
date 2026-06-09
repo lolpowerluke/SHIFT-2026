@@ -13,14 +13,6 @@ const CATEGORY_ICONS = {
 	"Web & Mobile": "/assets/OrangeCoding.svg",
 };
 
-const handleMagazineOpen = async () => {
-    const url = `https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`;
-    const res = await fetch(url);
-    const blob = await res.blob();
-    const blobUrl = URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
-    window.open(blobUrl, "_blank");
-};
-
 export default function ProjectPageDetails() {
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get("id");
@@ -65,6 +57,15 @@ export default function ProjectPageDetails() {
 
 	const embedUrl = getYoutubeEmbedUrl(project.video?.path);
 	const categoryIcon = CATEGORY_ICONS[project.course];
+
+	const handleMagazineOpen = async () => {
+    const url = `https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`;
+    const res = await fetch(url);
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
+    window.open(blobUrl, "_blank");
+};
+
 
 	return (
 		<div className="ctx">
