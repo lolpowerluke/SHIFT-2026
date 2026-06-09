@@ -6,6 +6,9 @@ export default function Awards() {
 
     return (
         <>
+        <div className={s.heroContainer}>
+            <img src="/assets/heroContent/ComingSoonAward.png" alt="comingSoon" className={s.comingSoonImg} />
+        </div>
             <div className={s.bodyContainer}>
                 <div className={s.heroContent}>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="awards" className={s.awardsImg} />
@@ -34,21 +37,23 @@ export default function Awards() {
             </div>
                 <div className={s.votingContainer}>
                     <img src="/assets/icons/VoteOrange.svg" alt="voting" className={s.votingBoxImg} />
-                    <h2>HOE EN WANNEER KUNNEN JULLIE STEMMEN?</h2>
-                    <p>Jullie kunnen op 19 juni, tijdens de festival voor jullie favoriete projecten stemmen.</p>
-                    <div className={s.infoContainer}>
-                        <img src="/assets/icons/PeaceBlue.svg" alt="peace" className={s.peaceSignImg} />
-                        <h3>WAAR?</h3>
-                        <h4>AGORA, CAMPUS KAAI</h4>
-                    </div>
-                    <div className={s.infoContainer}>
-                        <img src="/assets/icons/MailBlue.svg" alt="mail" className={s.mailImg} />
-                        <h3>WANNEER?</h3>
-                        <h4>19 JUNI 2026</h4>
-                    </div>
-                    <div className={s.infoContainer}>
-                        <img src="/assets/icons/StarBlue.svg" alt="star" className={s.starImg} />
-                        <h4>DE AWARDSHOW ZAL PLAATSNEMEN OP CAMPUS KAAI, EHB.</h4>
+                    <h2>HOE EN WANNEER <br></br> KUNNEN JULLIE STEMMEN?</h2>
+                    <p>Jullie kunnen op 19 juni, tijdens de festival <br></br> voor jullie favoriete projecten stemmen.</p>
+                    <div className={s.allInfoContainer}>
+                        <div className={s.infoContainer}>
+                            <img src="/assets/icons/PeaceBlue.svg" alt="peace" className={s.peaceSignImg} />
+                            <h3>WAAR?</h3>
+                            <h4>AGORA, CAMPUS KAAI</h4>
+                        </div>
+                        <div className={s.infoContainer}>
+                            <img src="/assets/icons/MailBlue.svg" alt="mail" className={s.mailImg} />
+                            <h3>WANNEER?</h3>
+                            <h4>19 JUNI 2026</h4>
+                        </div>
+                        <div className={s.infoContainer}>
+                            <img src="/assets/icons/StarBlue.svg" alt="star" className={s.starImg} />
+                            <h4>DE AWARDSHOW ZAL PLAATSNEMEN OP CAMPUS KAAI, EHB.</h4>
+                        </div>
                     </div>
                 </div>
             <div className={s.bodyContainer}>
