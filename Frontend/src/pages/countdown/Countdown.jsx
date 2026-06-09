@@ -158,14 +158,22 @@ export default function Countdown() {
 						</div>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>
-								<h2 className={s.infoTitle}>Wat beleef je op SHIFT?</h2>
-								<ul className={s.infoList}>
-									<li>Speel innovatieve games</li>
-									<li>Test interactieve installaties en XR-ervaringen</li>
-									<li>Ontdek hoe studenten AI gebruiken</li>
-									<li>Ontmoet de makers achter de projecten</li>
-									<li>Stem op jouw favoriete project</li>
-								</ul>
+								<h2 className={s.infoTitle}>SHIFT festival</h2>
+								<p>
+									SHIFT Festival is het afstudeerevenement van de opleiding
+									Multimedia & Creative Technology aan Erasmus University
+									College Brussels. Ontdek er de eindprojecten van studenten,
+									waarin technologie, creativiteit en innovatie samenkomen.
+									Bezoekers krijgen een unieke blik op het werk van de nieuwe
+									generatie digitale makers.
+                                    <br />
+                                    <br />
+									Tijdens het festival kunnen projecten niet alleen bekeken,
+									maar ook getest en beleefd worden via demo’s, presentaties en
+									gesprekken met de makers. Daarnaast is er ruimte om te
+									netwerken en worden de meest opvallende projecten in de kijker
+									gezet.
+								</p>
 							</div>
 						</div>
 					</div>
