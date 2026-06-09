@@ -120,4 +120,11 @@
         width: 100%;
         height: auto;
     }
+    .buttonsContainer {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .buttonsContainer p {
+        max-width: 300px;
+    }
 }

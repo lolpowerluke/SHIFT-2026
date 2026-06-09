@@ -14,10 +14,14 @@ export default function Awards() {
                     <img src="/assets/icons/OrangeTrophy.svg" alt="awards" className={s.awardsImg} />
                     <h1 className={s.heroTitle}>SHIFT AWARDS</h1>
                     <div className={s.buttonsContainer}>
-                        <button className={s.discoverBtn}>Bezoek het evenement</button>
-                        <p>Vier categorieën die excellentie erkennen in innovatie, impact en creativiteit.</p>
-                        <button className={s.projectsBtn}>Ontdek alle projecten</button>
-                        <p>Bekijk de verschillende projecten </p>
+                        <div>
+                            <button className={s.discoverBtn}>Bezoek het evenement</button>
+                            <p>Vier categorieën die excellentie erkennen in innovatie, impact en creativiteit.</p>
+                        </div>
+                        <div>
+                            <button className={s.projectsBtn}>Ontdek alle projecten</button>
+                            <p>Bekijk de verschillende projecten </p>
+                        </div>
                     </div>
                     <div className={s.heroData}>
                         <div>
