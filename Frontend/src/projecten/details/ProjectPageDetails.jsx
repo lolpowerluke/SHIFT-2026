@@ -156,7 +156,7 @@ export default function ProjectPageDetails() {
 											onClick={handleMagazineOpen}
 										>
 											<img src="/assets/download_icon.svg" alt="download" />
-											Mijn magazine (PDF){magazineSize ? ` • ${magazineSize}` : ""}
+											Mijn magazine (PDF {magazineSize ? `${magazineSize}` : ""})
 										</button>
 									</div>
 								)}
