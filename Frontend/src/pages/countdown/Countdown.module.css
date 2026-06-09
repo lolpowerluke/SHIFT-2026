@@ -442,11 +442,11 @@
 	justify-self: center;
 	overflow: hidden;
 	box-sizing: border-box;
-}
 
-.infoMultimediaCard img {
-	border: 3px solid var(--bg-shift-secondary);
-	border-radius: 0.5rem;
+	img {
+		border: 3px solid var(--bg-shift-secondary);
+		border-radius: 0.5rem;
+	}
 }
 
 @media (min-width: 1024px) {
