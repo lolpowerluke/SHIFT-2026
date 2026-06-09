@@ -29,6 +29,7 @@ export default function ProjectPageDetails() {
 	const id = searchParams.get("id");
 	const navigate = useNavigate();
 	const [project, setProject] = useState(null);
+	const [playing, setPlaying] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
@@ -163,14 +164,29 @@ export default function ProjectPageDetails() {
 				<div>
 					<h1>Project video</h1>
 					<div className="videoHolder">
-						<iframe
-							className="videoPlayer"
-							src={embedUrl}
-							title="YouTube video player"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							referrerPolicy="strict-origin-when-cross-origin"
-							allowFullScreen
-						/>
+						{!playing ? (
+							<div className="videoThumb" onClick={() => setPlaying(true)}>
+								<img
+									src={`https://img.youtube.com/vi/${embedUrl.split("/embed/")[1]}/maxresdefault.jpg`}
+									alt="Video thumbnail"
+									className="videoPlayer"
+								/>
+								<img
+									src="/assets/play-button.png"
+									alt="Play"
+									className="playBtn"
+								/>
+							</div>
+						) : (
+							<iframe
+								className="videoPlayer"
+								src={`${embedUrl}?autoplay=1`}
+								title="YouTube video player"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								referrerPolicy="strict-origin-when-cross-origin"
+								allowFullScreen
+							/>
+						)}
 					</div>
 				</div>
 			)}
