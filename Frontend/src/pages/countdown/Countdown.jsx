@@ -1,17 +1,10 @@
-import { useState } from "react";
 import s from "./Countdown.module.css";
 import "../../css/style.css";
 import { useCountdown } from "../../js/countdown.js";
+import Carousel from "../../components/Carousel.jsx";
 
 export default function Countdown() {
 	const { timeLeft, blinkingS } = useCountdown();
-
-	const [currentIndex, setCurrentIndex] = useState(0);
-	const placeholders = [
-		{ id: 1, title: "Project Alpha" },
-		{ id: 2, title: "Project Beta" },
-		{ id: 3, title: "Project Gamma" },
-	];
 
 	const handleOpenMaps = () => {
 		window.open(
@@ -127,38 +120,7 @@ export default function Countdown() {
 					<div className={s.sectionFlexer}>
 						<div className={s.projectSide}>
 							<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld" img />
-							{/* <div className={s.projectCard}>
-								<div className={s.carouselImage}>
-									<div
-										className={s.carouselSlideAnimation}
-										style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-									>
-										{placeholders.map((project) => (
-											<div key={project.id} className={s.carouselSlide}>
-												<div className={s.cardImagePlaceholder}>
-													<span>Coming Soon</span>
-												</div>
-											</div>
-										))}
-									</div>
-								</div>
-								<div className={s.carouselDots}>
-									{placeholders.map((_, index) => (
-										<button
-											key={index}
-											onClick={() => setCurrentIndex(index)}
-											className={`dot ${currentIndex === index ? "active" : ""}`}
-											aria-label={`Slide ${index + 1}`}
-										/>
-									))}
-								</div>
-								<h2>SEE. EXPERIENCE. MEET.</h2>
-								<div className={s.projectCTA}>
-									<button>
-										<span>Coming Soon</span>
-									</button>
-								</div>
-							</div>*/}
+							{/*<Carousel />*/}
 						</div>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>
