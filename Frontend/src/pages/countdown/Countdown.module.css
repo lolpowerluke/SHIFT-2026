@@ -95,8 +95,8 @@
 		}
 	}
 
-	div.smallerCd span {
-		font-size: 16px;
+	.smallerCd span {
+		font-size: 18px;
 	}
 
 	#timer {
@@ -143,6 +143,11 @@
 	width: fit-content;
 	outline: none;
 	-webkit-tap-highlight-color: transparent;
+}
+
+.projectSide img {
+	width: 100%;
+	height: auto;
 }
 
 .projectCard {
@@ -286,7 +291,6 @@
 .shiftTime {
 	div:last-child {
 		text-align: center;
-		padding-right: 74px;
 	}
 }
 
@@ -474,6 +478,7 @@
 	.projectSide,
 	.shiftInfoSide {
 		width: 45%;
+        align-self: center;
 	}
 
 	.projectCard {

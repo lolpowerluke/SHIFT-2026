@@ -69,10 +69,10 @@ export default function Countdown() {
 						<>
 							<div className={s.cd}>
 								<span>We tellen af!</span>
-                            </div>
-                            <div className={`${s.cd} ${s.smallerCd}`}>
-                                <span>Vrijdag 17 juni om 17:00</span>
-                            </div>
+							</div>
+							<div className={`${s.cd} ${s.smallerCd}`}>
+								<span>Vrijdag 17 juni om 17:00</span>
+							</div>
 							<div id={s.timer}>
 								<div className={s.timerBox}>
 									<span className="darkText">{timeLeft.days}</span>
@@ -126,7 +126,8 @@ export default function Countdown() {
 				<div className={s.section}>
 					<div className={s.sectionFlexer}>
 						<div className={s.projectSide}>
-							<div className={s.projectCard}>
+							<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld" img />
+							{/* <div className={s.projectCard}>
 								<div className={s.carouselImage}>
 									<div
 										className={s.carouselSlideAnimation}
@@ -157,25 +158,25 @@ export default function Countdown() {
 										<span>Coming Soon</span>
 									</button>
 								</div>
-							</div>
+							</div>*/}
 						</div>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>
 								<h2 className={s.infoTitle}>SHIFT festival</h2>
 								<p>
-									SHIFT Festival is het afstudeerevenement van de opleiding
-									Multimedia & Creative Technology aan Erasmus University
-									College Brussels. Ontdek er de eindprojecten van studenten,
+									SHIFT festival is het afstudeer-evenement van de opleiding
+									Multimedia & Creative Technoloiey aan Erasmus Hogeschool
+									Brussel. Ontdek er de eindprojecten van studenten,
 									waarin technologie, creativiteit en innovatie samenkomen.
-									Bezoekers krijgen een unieke blik op het werk van de nieuwe
-									generatie digitale makers.
-                                    <br />
-                                    <br />
+									Een unieke blik op het werk van de nieuwe
+									generatie digitale makers!
+									<br />
+									<br />
 									Tijdens het festival kunnen projecten niet alleen bekeken,
 									maar ook getest en beleefd worden via demo’s, presentaties en
 									gesprekken met de makers. Daarnaast is er ruimte om te
 									netwerken en worden de meest opvallende projecten in de kijker
-									gezet.
+									gezet. Met live awardshow!
 								</p>
 							</div>
 						</div>
@@ -198,7 +199,7 @@ export default function Countdown() {
 							</div>
 						</div>
 						<hr className={s.sectionDivider} />
-						<div>
+						<div className={s.leftSideInfo}>
 							<div className={s.shiftLocation}>
 								<div className={s.iconMap}>
 									<img src="/assets/icons/LocationBlue.svg" alt="Locatie" />
