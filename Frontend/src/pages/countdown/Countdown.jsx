@@ -18,11 +18,14 @@ export default function Countdown() {
         <>
             <div className={s.heroContent}>
                 <video autoPlay muted loop playsInline>
-                    <source src="/assets/heroContent/videoheroMobile.webm" media="(max-width: 1024px)" type="video/webm"/>
-                    <source media="(min-width: 1023px)" src="/assets/heroContent/videohero.webm" type="video/webm"/>
+                    <source src="/assets/heroContent/videoheroMobile.webm" media="(max-width: 1024px)"
+                            type="video/webm"/>
+                    <source media="(min-width: 1023px)" src="/assets/heroContent/videohero.webm"
+                            type="video/webm"/>
                     <img
                         src="/assets/heroContent/heroImg.jpg"
                         alt="EhB SHIFT festival hero image"
+                        media="(min-width: 1023px)"
                     />
                 </video>
             </div>
@@ -120,7 +123,7 @@ export default function Countdown() {
                 <div className={s.section}>
                     <div className={s.sectionFlexer}>
                         <div className={s.projectSide}>
-                            <img src="/assets/sfeerbeeld.png" alt="sfeerbeeld" />
+                            <img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>
                             {/*<Carousel />*/}
                         </div>
                         <div className={s.shiftInfoSide}>
