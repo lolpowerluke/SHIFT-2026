@@ -1,46 +1,25 @@
-import {Link} from "react-router";
+import { Link } from "react-router";
 import Routes from "../../../routes/constants/Routes.js"
 
 // TODO: remove part about removing data
 
-export default function PrivacyEN(){
+export default function PrivacyEN() {
     return (
         <>
             <div className="ctx">
                 <h1>Privacy Policy</h1>
                 <Link to={Routes.privacyNL}>Ook beschikbaar in het Nederlands.</Link>
                 <h2>1. Introduction</h2>
-                <p>
-                    This website is created for <b>Shift</b>, organized by students of
-                    <b>Erasmushogeschool Brussel</b>.<br/>
-
-                    We respect your privacy and are committed to protecting your personal
-                    data. This Privacy Policy explains how we collect, use, and store
-                    information when you register for the event through this website.
-                </p>
+                <p>This website is created for <b>Shift</b>, organized by students of <b>Erasmushogeschool Brussel</b>.<br /> We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and store information when you register for the event through this website.</p>
 
                 <h2>2. Information We Collect</h2>
-                <p>
-                    When you register for the event, we may collect the following
-                    information:
-                </p>
+                <p>When you register for the event, we may collect the following information:</p>
                 <ul>
                     <li>Full name</li>
                     <li>Email address</li>
                     <li>Ticket or attendance information</li>
-                    <li>
-                        Any additional information you voluntarily provide in the registration
-                        form
-                    </li>
+                    <li>Any additional information you voluntarily provide in the registration form</li>
                 </ul>
-                <p>
-                    We only collect information that is necessary to organize and manage the
-                    event.
-                    <br/>
-                    If you no longer wish to receive emails from us, unsubscribing can be
-                    done
-                    <a href="/unsubscribe/" className="languageLink">here</a>.
-                </p>
 
                 <h2>3. Purpose of Data Collection</h2>
                 <p>Your data is collected for the following purposes:</p>
@@ -49,33 +28,14 @@ export default function PrivacyEN(){
                     <li>Managing tickets or guest lists</li>
                     <li>Communicating important information about the event</li>
                 </ul>
-                <p>
-                    Your data will <b>not be used for marketing purposes</b> and
-                    <b>will not be sold or shared with third parties</b>.
-                </p>
+                <p>Your data will <b>not be used for marketing purposes</b> and <b>will not be sold or shared with third parties</b>.</p>
                 <h2>4. Data Storage</h2>
-                <p>
-                    Your information will be stored securely and only accessible to the
-                    event organizers. Personal data collected through the registration form
-                    will be kept
-                    <b>only for as long as necessary to organize the event</b> and will be
-                    deleted after the event has concluded, unless legally required
-                    otherwise.
-                </p>
+                <p>Your information will be stored securely and only accessible to the event organizers. Personal data collected through the registration form will be kept <b>only for as long as necessary to organize the event</b> and will be deleted after the event has concluded, unless legally required otherwise.</p>
 
                 <h2>5. Data Sharing</h2>
-                <p>
-                    Your data will
-                    <b>not be shared with or sold to external organizations</b>
-                    unless required to operate the event (for example, ticket management or
-                    hosting services). Any third-party service used will comply with
-                    applicable data protection regulations.
-                </p>
+                <p>Your data will <b>not be shared with or sold to external organizations</b> unless required to operate the event (for example, ticket management or hosting services). Any third-party service used will comply with applicable data protection regulations.</p>
                 <h2>6. Your Rights</h2>
-                <p>
-                    Under the <b>General Data Protection Regulation (GDPR)</b>, you have the
-                    right to:
-                </p>
+                <p>Under the <b>General Data Protection Regulation (GDPR)</b>, you have the right to:</p>
                 <ul>
                     <li>Request access to your personal data</li>
                     <li>Request correction of inaccurate data</li>
@@ -85,24 +45,11 @@ export default function PrivacyEN(){
                 <p>To exercise these rights, you can contact the event organizers.</p>
 
                 <h2>7. Data Security</h2>
-                <p>
-                    We take reasonable technical and organizational measures to protect your
-                    personal information from unauthorized access, loss, or misuse.
-                </p>
+                <p>We take reasonable technical and organizational measures to protect your personal information from unauthorized access, loss, or misuse.</p>
                 <h2>8. Changes to This Privacy Policy</h2>
-                <p>
-                    This policy may be updated if necessary. All updates will be published
-                    on this page.
-                </p>
+                <p>This policy may be updated if necessary. All updates will be published on this page.</p>
                 <h2>9. Contact</h2>
-                <p>
-                    If you have questions about this Privacy Policy or your personal data,
-                    please contact:
-                    <br/>
-                    <b>Email:</b> yarno.vandenplas@student.ehb.be<br/>
-                    <b>Organization:</b> Erasmushogeschool Brussel: MCT2, Full Projects 4
-                    (Web team)
-                </p>
+                <p>If you have questions about this Privacy Policy or your personal data, please contact:<br /><b>Email:</b> yarno.vandenplas@student.ehb.be<br /> <b>Organization:</b> Erasmushogeschool Brussel: MCT2, Full Projects 4 (Web team)</p>
             </div>
         </>
     )
