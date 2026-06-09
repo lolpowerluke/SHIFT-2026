@@ -19,7 +19,7 @@ export default function Countdown() {
             <div className={s.heroContent}>
                 <video autoPlay muted loop playsInline>
                     <source src="/assets/heroContent/videoheroMobile.webm" media="(max-width: 1024px)" type="video/webm"/>
-                    <source src="/assets/heroContent/videohero.webm" type="video/webm"/>
+                    <source media="(min-width: 1023px)" src="/assets/heroContent/videohero.webm" type="video/webm"/>
                     <img
                         src="/assets/heroContent/heroImg.jpg"
                         alt="EhB SHIFT festival hero image"
