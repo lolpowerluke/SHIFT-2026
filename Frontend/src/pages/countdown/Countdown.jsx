@@ -150,7 +150,6 @@ export default function Countdown() {
                     <div>
                         <h2>WAAR EN WANNEER?</h2>
                         <div className={s.infoPart}>
-                            {/* div classname word niet gevonden in pagina */}
                             <div className={s.rightSideInfo}>
                                 <div className={s.shiftTime}>
                                     <div className={s.iconCalendar}>
@@ -163,7 +162,6 @@ export default function Countdown() {
                                 </div>
                             </div>
                             <hr className={s.sectionDivider}/>
-                            {/* div classname word niet gevonden in pagina */}
                             <div className={s.leftSideInfo}>
                                 <div className={s.shiftLocation}>
                                     <div className={s.iconMap}>

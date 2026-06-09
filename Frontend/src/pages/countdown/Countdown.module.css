@@ -560,8 +560,8 @@
 		}
 	}
 
-	.leftInfoSide,
-	.rightInfoSide {
+	.leftSideInfo,
+	.rightSideInfo {
 		width: 40%;
 	}
 
