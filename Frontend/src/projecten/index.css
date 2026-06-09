@@ -188,6 +188,7 @@
 
 	.searchWrapper {
 		width: 100%;
+		min-width: 200px;
 		box-sizing: border-box;
 	}
 
