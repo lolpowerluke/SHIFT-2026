@@ -15,7 +15,8 @@ const CATEGORY_ICONS = {
 
 export default function ProjectPageDetails() {
 	const [searchParams] = useSearchParams();
-	const id = searchParams.get("id");
+	const slug = searchParams.get("project") ?? searchParams.get("id");
+	const id = slug?.split("-").pop();
 	const navigate = useNavigate();
 	const [project, setProject] = useState(null);
 	const [playing, setPlaying] = useState(false);

@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router";
 
+function toSlug(title, id) {
+	return `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}-${id}`;
+}
+
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
 	"Experience Design": "/assets/OrangeExperience.svg",
@@ -13,7 +17,7 @@ export default function ProjectCard({ project }) {
 	const categoryIcon = CATEGORY_ICONS[category];
 
 	return (
-		<Link to={`/projecten/details?id=${project.id}`} className="projectCardBorder">
+		<Link to={`/projecten/details?project=${toSlug(title, project.id)}`} className="projectCardBorder">
 			<div className="projectCard">
 				<h3 className="cardTitle">{title}</h3>
 				<div className="cardCategory">
