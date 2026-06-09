@@ -174,11 +174,11 @@ export default function Countdown() {
 										<img src="/assets/icons/LocationBlue.svg" alt="Locatie" />
 									</div>
 									<div>
-										<h3>ERASMUS HOGESCHOOL, CAMPUS KAAI</h3>
-										<button className={s.btnMaps} onClick={handleOpenMaps}>
-											Open in maps
-										</button>
+										<h3>ERASMUS HOGESCHOOL CAMPUS KAAI</h3>
 									</div>
+									<button className={s.btnMaps} onClick={handleOpenMaps}>
+										Open in maps
+									</button>
 								</div>
 							</div>
 						</div>
