@@ -11,16 +11,6 @@
     display: none;
 }
 
-.heroLayout {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    position: absolute;
-    left: 0;
-}
-
 #heroLogo {
     height: var(--shift-logo-height);
     margin: -80px -20px -30px;
@@ -377,6 +367,7 @@
     grid-template-rows: repeat(3, 1fr);
     justify-content: center;
     height: calc(100dvh - 116px);
+    gap: 50px;
 
     .heroLayout {
         display: flex;
@@ -384,15 +375,14 @@
         align-items: center;
         justify-content: center;
         width: fit-content;
-        position: relative;
+        position: absolute;
         left: 0;
     }
 
     .timerDiv {
-        flex-grow: 1;
         display: grid;
         align-self: center;
-        margin: 0 auto;
+        margin: 50px auto 0;
 
         #timer {
             .timerBox {
@@ -416,7 +406,6 @@
     margin: 0 auto;
     bottom: 20px;
     animation: upDown 1.4s ease-in-out infinite;
-
     img {
         height: 100%;
         transform: rotate(180deg);
@@ -426,15 +415,20 @@
 @media (min-width: 1024px) {
     .landingWrap {
         grid-template-columns: repeat(2, 1fr);
-        height: 100vh;
+        height: 90dvh;
         width: 92.5dvw;
         justify-content: space-between;
-        margin-top: -148px;
+        margin-top: -56px;
         margin-bottom: 4rem;
         margin-left: 0;
 
-
-
+        .heroLayout {
+            position: relative;
+            max-height: 40dvh;
+            #heroLogo{
+                max-height: 100%;
+            }
+        }
 
         .timerDiv {
             align-self: end;
