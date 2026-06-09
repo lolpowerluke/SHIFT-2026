@@ -6,6 +6,7 @@ const Routes = {
     CountDown: "/countdown",
     Project: "/project",
     Login: "/login",
-    ProjectForm: "/project-form"
+    ProjectForm: "/project-form",
+    Info: "/info"
 }
 export default Routes;

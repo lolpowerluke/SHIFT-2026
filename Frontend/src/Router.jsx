@@ -9,6 +9,7 @@ import PrivacyEN from "./pages/privacy/pages/PrivacyEN.jsx";
 import PrivacyNL from "./pages/privacy/pages/PrivacyNL.jsx";
 import Login from "./pages/login/Login.jsx";
 import ProjectForm from "./pages/project/ProjectForm.jsx";
+import Info from "./pages/info/Info.jsx";
 
 // TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter(
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
                     ]
                 },
                 { path: Routes.Root, element: <Countdown /> },
+                { path: Routes.Info, element: <Info /> },
                 { path: Routes.ProjectForm, element: <ProjectForm /> },
                 {
                     element: <SearchLayout />, //this will hold all search logic for the projects
