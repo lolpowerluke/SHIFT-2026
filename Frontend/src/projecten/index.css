@@ -62,6 +62,12 @@
 	gap: 0.5rem;
 }
 
+.filterButtons button,
+.filterButtons .btn,
+.filterButtons .linkBtn {
+    box-shadow: 5px 5px 0 1px var(--shadow-primary);
+}
+
 .filterBtn.active {
 	background-color: var(--bg-shift-secondary);
 	box-shadow: none;
