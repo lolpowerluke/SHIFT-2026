@@ -13,6 +13,17 @@ const CATEGORY_ICONS = {
 	"Web & Mobile": "/assets/OrangeCoding.svg",
 };
 
+async function downloadPdf(url, filename) {
+	const res = await fetch(url);
+	const blob = await res.blob();
+	const blobUrl = URL.createObjectURL(blob);
+	const a = document.createElement("a");
+	a.href = blobUrl;
+	a.download = `${filename}-Magazine.pdf`;
+	a.click();
+	URL.revokeObjectURL(blobUrl);
+}
+
 export default function ProjectPageDetails() {
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get("id");
@@ -127,18 +138,15 @@ export default function ProjectPageDetails() {
 										</a>
 									)}
 								</div>
-								{project.magazine?.url && (
+								{project.magazine && (
 									<div className="magButton">
-										<a
-											href={project.magazine.url}
-											target="_blank"
-											rel="noreferrer"
-										>
-											<button>
-												<img src="/assets/download_icon.svg" alt="download" />
-												Mijn magazine (PDF)
-											</button>
-										</a>
+										<button onClick={() => downloadPdf(
+											project.magazine?.url ?? `https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`,
+											project.name
+										)}>
+											<img src="/assets/download_icon.svg" alt="download" />
+											Mijn magazine (PDF)
+										</button>
 									</div>
 								)}
 							</div>
