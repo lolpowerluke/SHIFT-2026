@@ -65,7 +65,7 @@
 .filterButtons button,
 .filterButtons .btn,
 .filterButtons .linkBtn {
-    box-shadow: 5px 5px 0 1px var(--shadow-primary);
+	box-shadow: 5px 5px 0 1px var(--shadow-primary);
 }
 
 .filterBtn.active {
@@ -158,7 +158,8 @@
 	width: 62px;
 	height: 62px;
 	border-radius: 50%;
-	border: 4px solid var(--txt-shift-primary);
+	border: 4px solid var(--bg-shift-secondary);
+	background-color: var(--bg-shift-secondary);
 	object-fit: cover;
 }
 
