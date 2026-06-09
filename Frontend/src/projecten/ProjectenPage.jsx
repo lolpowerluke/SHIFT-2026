@@ -25,7 +25,7 @@ function mapProject(p) {
 				[m.firstname, m.lastname].filter(Boolean).join(" ") ||
 				m.email ||
 				"Onbekend",
-			avatar: getCloudinaryUrl(m.picture) ?? "/assets/pictureForCard.jpg",
+			avatar: getCloudinaryUrl(m.picture) ?? "/assets/user.png",
 		})),
 	};
 }

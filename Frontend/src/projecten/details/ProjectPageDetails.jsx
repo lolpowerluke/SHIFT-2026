@@ -90,7 +90,7 @@ export default function ProjectPageDetails() {
 					<div className="studentCards" key={m.id}>
 						<div className="picture">
 							<img
-								src={getCloudinaryUrl(m.picture) ?? "/assets/pictureForCard.jpg"}
+								src={getCloudinaryUrl(m.picture) ?? "/assets/user.png"}
 								alt={`${m.firstname ?? ""} ${m.lastname ?? ""}`.trim()}
 							/>
 						</div>
