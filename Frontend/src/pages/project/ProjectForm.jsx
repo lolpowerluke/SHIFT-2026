@@ -50,7 +50,7 @@ function validateImageFile(file) {
 	if (!file) return "Missing image";
 
 	if (file.size > MAX_IMAGE_SIZE) {
-		return "Afbeelding mag max 1MB zijn";
+		return "Afbeelding mag max 2MB zijn";
 	}
 
 	return null;
@@ -474,7 +474,7 @@ export default function ProjectForm() {
 							/>
 						</div>
 						<div>
-							<label htmlFor="description">Descriptie *</label>
+							<label htmlFor="description">Omschrijving *</label>
 							<textarea
 								className={s.projectInfo}
 								id="description"
@@ -599,6 +599,7 @@ export default function ProjectForm() {
 						</div>
 						<div>
 							<label htmlFor="choose-selfieFile">Portretfoto</label>
+							<small>Max 2MB</small>
 							{selfieFile ? (
 								<>
 									<FilePill
@@ -728,6 +729,7 @@ export default function ProjectForm() {
 								</div>
 								<div>
 									<label htmlFor="choose-secondselfiefile">Portretfoto</label>
+									<small>Max 2MB</small>
 									{p2SelfieFile ? (
 										<>
 											<FilePill
@@ -778,6 +780,7 @@ export default function ProjectForm() {
 						{/* Images */}
 						<div>
 							<label htmlFor="choose-projectFile">Projectbeeld *</label>
+							<small>Max 2MB</small>
 							{imagePreviewURLs.length > 0 ? (
 								<>
 									<FilePill
