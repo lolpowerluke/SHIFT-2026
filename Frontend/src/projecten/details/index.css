@@ -17,11 +17,7 @@
 	h1 {
 		margin: 0;
 		margin-top: 32px;
-		margin-bottom: -12px;
-	}
-
-	p {
-		margin-bottom: 12px;
+		margin-bottom: -24px;
 	}
 
 	.name {
@@ -45,13 +41,18 @@
 
 		img {
 			width: 40px;
-			margin-bottom: -12px;
 		}
 	}
 }
 
 .promoterTitle {
 	font-style: bold;
+	margin-bottom: -24px;
+}
+
+.description {
+	margin: 0;
+	margin-top: 16px;
 }
 
 .imgDiv {

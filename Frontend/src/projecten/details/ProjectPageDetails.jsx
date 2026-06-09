@@ -48,7 +48,6 @@ export default function ProjectPageDetails() {
 		return () => document.documentElement.classList.remove("alt-bg");
 	}, []);
 
-
 	if (loading) return <p className="ctx">Laden...</p>;
 	if (error) return <p className="ctx">Fout: {error}</p>;
 	if (!project) return null;
@@ -97,7 +96,7 @@ export default function ProjectPageDetails() {
 			</div>
 
 			<div>
-				<p>{project.description}</p>
+				<p className="description">{project.description}</p>
 				<p className="promoterTitle">
 					<b>Promoter</b>
 				</p>
@@ -140,10 +139,15 @@ export default function ProjectPageDetails() {
 								</div>
 								{project.magazine && (
 									<div className="magButton">
-										<button onClick={() => downloadPdf(
-											project.magazine?.url ?? `https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`,
-											project.name
-										)}>
+										<button
+											onClick={() =>
+												downloadPdf(
+													project.magazine?.url ??
+														`https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`,
+													project.name,
+												)
+											}
+										>
 											<img src="/assets/download_icon.svg" alt="download" />
 											Mijn magazine (PDF)
 										</button>
