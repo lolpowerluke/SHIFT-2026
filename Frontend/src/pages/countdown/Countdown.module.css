@@ -8,7 +8,25 @@
 }
 
 .heroContent {
-    display: none;
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: -1px 3px 10px 5px color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
+
+    img {
+        width: 100%;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
 }
 
 #heroLogo {
@@ -460,27 +478,27 @@
         animation: upDown 1.4s ease-in-out infinite;
     }
 
-    .heroContent {
-        display: block;
-        position: absolute;
-        top: 0;
-        z-index: -1;
-        height: 100vh;
-        width: 100%;
-        overflow: hidden;
-        box-shadow: -1px 3px 10px 5px color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
+    /*.heroContent {*/
+    /*    display: block;*/
+    /*    position: absolute;*/
+    /*    top: 0;*/
+    /*    z-index: -1;*/
+    /*    height: 100vh;*/
+    /*    width: 100%;*/
+    /*    overflow: hidden;*/
+    /*    box-shadow: -1px 3px 10px 5px color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);*/
 
-        img {
-            width: 100%;
-        }
+    /*    img {*/
+    /*        width: 100%;*/
+    /*    }*/
 
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    /*    video {*/
+    /*        width: 100%;*/
+    /*        height: 100%;*/
+    /*        object-fit: cover;*/
+    /*    }*/
 
-    }
+    /*}*/
 
     #heroLogo {
         margin: 0 -30px -80px;
