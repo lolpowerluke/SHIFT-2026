@@ -104,7 +104,7 @@ const mailCancel = async (req, res) => {
     const [result] = await db.query("SELECT id FROM users WHERE email = ?", [
       email,
     ]);
-    if (result.length > 0) {
+    if (result.length === 0) {
       return res.status(400).json({
         success: false,
         message: "Email doesn't exist in database",
