@@ -115,7 +115,7 @@ export default function Countdown() {
 
             <div
                 id="experience"
-                className={`${s.wrap} wrap ${s.topSpacer} ${s.previewSection}`}
+                className={`${s.wrap} wrap ${s.previewSection}`}
             >
                 <div className={s.section}>
                     <div className={s.sectionFlexer}>
