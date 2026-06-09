@@ -38,11 +38,11 @@ html::before {
 }
 
 html.alt-bg::before {
-    background-color: var(--bg-shift-secondary);
+	background-color: var(--bg-shift-secondary);
 }
 
 html.alt-bg body::before {
-    opacity: 0.6;
+	opacity: 0.6;
 }
 
 body::before {
@@ -56,12 +56,12 @@ body::before {
 }
 
 html.alt-bg::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    box-shadow: inset 0 0 0 6px var(--bg-shift-primary);
-    pointer-events: none;
+	content: '';
+	position: fixed;
+	inset: 0;
+	z-index: 10;
+	box-shadow: inset 0 0 0 6px var(--bg-shift-primary);
+	pointer-events: none;
 }
 
 .altBg {
@@ -80,9 +80,12 @@ html.alt-bg::after {
 
 #root {
 	overflow-x: clip;
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
 }
 
-.hideThisSht{
+.hideThisSht {
 	pointer-events: none;
 	display: none;
 }
