@@ -83,6 +83,9 @@
 
 - [Profile Icon for default image](https://www.flaticon.com/free-icon/user_149071?related_id=149071&origin=search)
     - Used in [ProjectPageDetails.jsx](Frontend/src/projecten/details/ProjectPageDetails.jsx) & [ProjectCard.jsx](Frontend/src/projecten/ProjectCard.jsx)
+ 
+- [Claude conversation for linking & showing PDF button](https://claude.ai/share/d6f34345-02dc-420b-8cce-af09fd83e019)
+    - Used i  [ProjectenPage.jsx](Frontend/src/projecten/details/ProjectenPage.jsx)
 
 ## Deployment
 
