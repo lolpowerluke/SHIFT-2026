@@ -32,6 +32,7 @@ export default function ProjectPageDetails() {
 	const [playing, setPlaying] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [magazineSize, setMagazineSize] = useState(null);
 
 	useEffect(() => {
 		fetch(`${import.meta.env.VITE_API_URL}/project/${id}`)
@@ -39,7 +40,19 @@ export default function ProjectPageDetails() {
 				if (!res.ok) throw new Error(`HTTP ${res.status}`);
 				return res.json();
 			})
-			.then((data) => setProject(data.project))
+			.then((data) => {
+				const p = data.project;
+				setProject(p);
+				if (p?.magazine) {
+					const url = p.magazine.url ?? `https://res.cloudinary.com/${p.magazine.cloud_name}/raw/upload/${p.magazine.path}`;
+					fetch(url, { method: "HEAD" })
+						.then((r) => {
+							const bytes = parseInt(r.headers.get("content-length"));
+							if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
+						})
+						.catch(() => {});
+				}
+			})
 			.catch((err) => setError(err.message))
 			.finally(() => setLoading(false));
 	}, [id]);
@@ -151,7 +164,7 @@ export default function ProjectPageDetails() {
 											}
 										>
 											<img src="/assets/download_icon.svg" alt="download" />
-											Mijn magazine (PDF)
+											Mijn magazine (PDF){magazineSize ? ` • ${magazineSize}` : ""}
 										</button>
 									</div>
 								)}
