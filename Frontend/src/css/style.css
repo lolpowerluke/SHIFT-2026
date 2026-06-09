@@ -37,6 +37,14 @@ html::before {
 	background-color: var(--bg-shift-primary);
 }
 
+html.alt-bg::before {
+    background-color: var(--bg-shift-secondary);
+}
+
+html.alt-bg body::before {
+    opacity: 0.6;
+}
+
 body::before {
 	content: '';
 	position: fixed;
@@ -45,6 +53,15 @@ body::before {
 	background-image: url(/assets/iconsOverlay.svg);
 	background-size: 9000px;
 	pointer-events: none;
+}
+
+html.alt-bg::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    box-shadow: inset 0 0 0 6px var(--bg-shift-primary);
+    pointer-events: none;
 }
 
 .altBg {

@@ -1,0 +1,210 @@
+.projectenHero {
+	margin-bottom: 1.5rem;
+
+	h1,
+	h3 {
+		margin: 0 0 0.25rem;
+	}
+}
+
+.filterBar {
+	background-color: var(--bg-shift-alt);
+	border: 6px solid var(--txt-shift-primary);
+	border-radius: 12px;
+	padding: 1rem;
+	display: flex;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.searchWrapper {
+	display: flex;
+	background-color: var(--bg-shift-secondary);
+	border: 3px solid var(--border-primary);
+	border-radius: 12px;
+	overflow: hidden;
+	flex: 1;
+	min-width: 180px;
+}
+
+.searchIconBox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--bg-shift-alt);
+	border-right: 3px solid var(--border-primary);
+	padding: 0.5rem 0.75rem;
+}
+
+.searchIconBox img {
+	width: 20px;
+	height: 20px;
+}
+
+.searchWrapper input {
+	border: none;
+	background: transparent;
+	font-size: 16px;
+	font-family: inherit;
+	outline: none;
+	width: 100%;
+	padding: 0.5rem 0.75rem;
+}
+
+.searchWrapper input::placeholder {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.filterButtons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.filterButtons button,
+.filterButtons .btn,
+.filterButtons .linkBtn {
+	box-shadow: 5px 5px 0 1px var(--shadow-primary);
+}
+
+.filterBtn.active {
+	background-color: var(--bg-shift-secondary);
+	box-shadow: none;
+}
+
+/* grid + counter (filter) text projects (～￣▽￣)～ */
+
+.projectenCount {
+	margin: 0 0 1rem;
+	font-weight: bold;
+}
+
+.projectenGrid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+	padding-bottom: var(--spacing-s);
+}
+
+/* cards van project wow insane! !!! */
+
+.projectCard {
+	background-color: var(--bg-shift-secondary);
+	border: 4px solid var(--border-primary);
+	border-radius: 10px;
+	box-shadow: 3px 3px 0px var(--shadow-primary);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	color: var(--txt-shift-secondary);
+	flex: 1;
+}
+
+.projectCardBorder {
+	box-shadow: 1.5px 1.5px 0 6px var(--bg-shift-secondary);
+	border-radius: 12px;
+	display: flex;
+	text-decoration: none;
+}
+
+.cardTitle {
+	line-height: 24px;
+	margin: 0;
+}
+
+.cardCategory {
+	position: relative;
+	left: -7px;
+	display: flex;
+	align-items: center;
+	padding-left: 35px;
+
+	img {
+		position: absolute;
+		left: 0;
+		width: 35px;
+		height: 35px;
+	}
+
+	span {
+		font-size: 18px;
+		font-weight: 450;
+	}
+}
+
+.cardImageWrapper {
+	position: relative;
+}
+
+.cardImage {
+	width: 100%;
+	aspect-ratio: 392 / 229;
+	object-fit: cover;
+	border: 3px solid var(--border-primary);
+	border-radius: 5px;
+	display: block;
+}
+
+.cardAvatars {
+	position: absolute;
+	bottom: -31px;
+	right: 10px;
+	gap: 16px;
+	display: flex;
+}
+
+.avatar {
+	width: 62px;
+	height: 62px;
+	border-radius: 50%;
+	border: 4px solid var(--bg-shift-secondary);
+	background-color: var(--bg-shift-secondary);
+	object-fit: cover;
+}
+
+.cardStudents {
+	margin-top: 48px;
+	min-height: 48px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	p {
+		margin: 0;
+		font-size: 20px;
+		font-weight: 450;
+	}
+}
+
+@media (max-width: 768px) {
+	.filterBar {
+		flex-direction: column;
+	}
+
+	.searchWrapper {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.filterButtons {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.5rem;
+	}
+
+	.filterButtons .filterBtn:first-child {
+		grid-column: span 2;
+	}
+
+	h1,
+	h3 {
+		text-align: center;
+	}
+
+	.projectenGrid {
+		grid-template-columns: 1fr;
+	}
+}
