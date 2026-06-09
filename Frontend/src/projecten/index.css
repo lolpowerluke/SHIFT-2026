@@ -152,15 +152,15 @@
 
 .cardAvatars {
 	position: absolute;
-	bottom: -31px;
+	bottom: -36px;
 	right: 10px;
-	gap: 16px;
+	gap: 13px;
 	display: flex;
 }
 
 .avatar {
-	width: 62px;
-	height: 62px;
+	width: 70px;
+	height: 70px;
 	border-radius: 50%;
 	border: 4px solid var(--bg-shift-secondary);
 	background-color: var(--bg-shift-secondary);
