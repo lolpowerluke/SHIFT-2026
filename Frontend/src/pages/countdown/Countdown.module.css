@@ -353,6 +353,10 @@
     margin-bottom: 2rem;
 }
 
+.landingWrap {
+  margin-top: 148px;
+}
+
 @media (min-width: 1024px) {
     .landingWrap {
         display: flex;
