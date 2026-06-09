@@ -112,12 +112,12 @@ export default function Countdown() {
                         )
                     }
                 </div>
-                <a href="#" id={s.scrollPointer}>
+                <a href="#experience" id={s.scrollPointer}>
                     <img src="/assets/icons/pointer2.svg" alt="scroll!"/>
                 </a>
             </div>
 
-            <div className={`${s.wrap} wrap ${s.topSpacer} ${s.previewSection}`}>
+            <div className={`${s.wrap} wrap ${s.topSpacer} ${s.previewSection}`} id="experience">
                 <div className={s.section}>
                     <div className={s.sectionFlexer}>
                         <div className={s.projectSide}>
