@@ -2,12 +2,13 @@ import express from "express";
 import cors from "cors";
 import env from "./utils/env.js";
 import db from "./config/db.js";
+import { keepAlive } from "./utils/keepAlive.js";
 
 import "./config/db.js";
 
 import apiRoutes from "./routes/api.routes.js"
 import authRoutes from "./routes/auth.routes.js";
-import mailRoutes from "./routes/mail.routes.js";
+// import mailRoutes from "./routes/mail.routes.js";
 import projectRoutes from "./routes/project.routes.js";
 
 const app = express();
@@ -21,7 +22,7 @@ app.use(express.json());
 
 app.use("/api", apiRoutes);
 app.use("/auth", authRoutes);
-app.use("/mail", mailRoutes);
+// app.use("/mail", mailRoutes);
 app.use("/project", projectRoutes);
 
 app.get('/health', async (req, res) => {
@@ -41,5 +42,7 @@ app.use((err, req, res, next) => {
     error: env.server.environment === 'development' ? err.message : undefined
   });
 });
+
+setInterval(keepAlive, 60000);
 
 export default app;

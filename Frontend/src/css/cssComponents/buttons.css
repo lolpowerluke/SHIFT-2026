@@ -1,44 +1,51 @@
 /* general button styling */
 
-.linkBtn, .btn,
+.linkBtn,
+.btn,
 button {
-    background-color: var(--bg-shift-alt);
-    border: 5px solid var(--border-primary);
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    color: var(--txt-shift-secondary);
-    padding: 10px;
-    box-shadow: 5px 5px 0 1px var(--shadow-primary),
-    3px 3px 0 7px var(--hl-secondary);
-    text-decoration: none;
-    transition: transform 0.1s,
-    box-shadow 0.1s;
-    align-self: center;
-    cursor: pointer;
+	background-color: var(--bg-shift-alt);
+	border: 5px solid var(--border-primary);
+	border-radius: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	color: var(--txt-shift-secondary);
+	padding: 10px;
+	box-shadow:
+		5px 5px 0 1px var(--shadow-primary),
+		3px 3px 0 7px var(--hl-secondary);
+	text-decoration: none;
+	transition:
+		transform 0.1s,
+		box-shadow 0.1s;
+	align-self: center;
+	cursor: pointer;
 }
 
-.linkBtn:active, .btn:active,
+.linkBtn:active,
+.btn:active,
 button:active {
-    transform: translateY(3px);
-    box-shadow: 2px 2px 0 1px var(--shadow-primary);
-    color: var(--txt-shift-secondary);
+	transform: translateY(3px);
+	box-shadow: 2px 2px 0 1px var(--shadow-primary);
+	color: var(--txt-shift-secondary);
 }
 
 .btnMaps {
-    color: var(--txt-shift-primary);
-    background-color: var(--bg-shift-primary);
-    cursor: pointer;
-    margin-top: var(--margin-between);
+	color: var(--txt-shift-primary);
+	background-color: var(--bg-shift-primary);
+	cursor: pointer;
+	margin-top: var(--margin-between);
 }
 
 .fitContent {
-    width: fit-content;
-    min-width: max-content;
+	width: fit-content;
+	min-width: max-content;
 }
 
 @media screen and (min-width: 1024px) {
-    .btnMaps, .linkBtn, .btn, button{
-        font-size: 24px;
-    }
+	.btnMaps,
+	.linkBtn,
+	.btn,
+	button {
+		font-size: 24px;
+	}
 }
