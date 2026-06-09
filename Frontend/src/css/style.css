@@ -38,6 +38,8 @@ html::before {
 
 html.alt-bg::before {
 	background-color: var(--bg-shift-secondary);
+	outline: var(--bg-shift-primary)solid 6px;
+	outline-offset: -6px;
 }
 
 body::before {
