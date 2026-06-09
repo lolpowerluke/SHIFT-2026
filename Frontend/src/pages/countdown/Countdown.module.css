@@ -1,19 +1,32 @@
 .wrap {
 	display: flex;
 	margin: 2rem auto;
+
+	h2 {
+		margin-bottom: 2rem;
+	}
 }
 
 .heroContent {
-	display: none;
-}
+	display: block;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	height: 100vh;
+	width: 100%;
+	overflow: hidden;
+	box-shadow: -1px 3px 10px 5px
+		color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
 
-.heroLayout {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: fit-content;
-	margin: 0 auto;
+	img {
+		width: 100%;
+	}
+
+	video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 }
 
 #heroLogo {
@@ -95,8 +108,8 @@
 		}
 	}
 
-	div.smallerCd span {
-		font-size: 16px;
+	.smallerCd span {
+		font-size: 18px;
 	}
 
 	#timer {
@@ -143,6 +156,11 @@
 	width: fit-content;
 	outline: none;
 	-webkit-tap-highlight-color: transparent;
+}
+
+.projectSide img {
+	width: 100%;
+	height: auto;
 }
 
 .projectCard {
@@ -246,52 +264,24 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
-
-		li {
-			font-size: 18px;
-			position: relative;
-			color: var(--txt-shift-primary);
-			margin-bottom: 1.2rem;
-			padding-left: 1.5rem;
-
-			&::before {
-				content: "•";
-				position: absolute;
-				left: 0;
-			}
-		}
 	}
 }
 
 .shiftTime,
 .shiftLocation {
 	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	gap: 1.5rem;
-	width: 100%;
-	max-width: 320px;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	max-width: 400px;
 	margin-left: auto;
 	margin-right: auto;
 
 	h3 {
 		font-size: 20px;
-	}
-
-	> div:last-child {
-		flex-grow: 1;
-	}
-}
-
-.shiftTime {
-	div:last-child {
 		text-align: center;
-		padding-right: 74px;
+		margin-bottom: 1rem;
 	}
-}
-
-.shiftLocation {
-	text-align: left;
 }
 
 .iconCalendar,
@@ -304,6 +294,17 @@
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
+	}
+}
+
+.shiftTimeDate,
+.shiftLocationCampus {
+	h3 {
+		margin-top: 0;
+	}
+
+	p {
+		margin: 0;
 	}
 }
 
@@ -352,30 +353,115 @@
 	}
 }
 
-.infoSection {
+.infoPart {
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 2rem;
 }
 
+.landingWrap {
+	position: relative;
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
+	height: calc(100dvh - 116px);
+	gap: 50px;
+
+	.heroLayout {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+		position: absolute;
+	}
+
+	.timerDiv {
+		display: grid;
+		align-self: end;
+		justify-self: end;
+		margin: 50px 12.5dvw 0;
+		grid-row: 2/3;
+
+		#timer {
+			.timerBox {
+				color: var(--txt-special);
+			}
+		}
+
+		.cta {
+			margin-left: 10px;
+		}
+	}
+}
+
 #scrollPointer {
-	display: none;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 50px;
+	width: fit-content;
+	align-self: self-end;
+	margin: 0 auto;
+	bottom: 20px;
+	animation: upDown 1.4s ease-in-out infinite;
+
+	img {
+		height: 100%;
+		transform: rotate(180deg);
+	}
+}
+
+.infoMultimediaCard {
+	display: flex;
+	flex-direction: column;
+	gap: var(--margin-between);
+	padding: var(--margin-between);
+	background-color: var(--bg-shift-alt);
+	border: 5px solid var(--border-primary);
+	border-radius: 1.5rem;
+	max-width: 80vw;
+	justify-self: center;
+	overflow: hidden;
+	box-sizing: border-box;
+	margin-top: var(--spacing-s);
+
+	img {
+		border: 3px solid var(--bg-shift-secondary);
+		border-radius: 0.5rem;
+	}
+}
+
+.infoSection {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
 }
 
 @media (min-width: 1024px) {
 	.landingWrap {
-		position: relative;
-		display: flex;
-		flex-direction: row;
-		height: 100vh;
+		grid-template-columns: repeat(2, 1fr);
+		height: 90dvh;
 		width: 92.5dvw;
 		justify-content: space-between;
-		margin-top: -148px;
+		margin-top: -56px;
 		margin-bottom: 4rem;
+		margin-left: 0;
+
+		.heroLayout {
+			position: relative;
+			max-height: 40dvh;
+
+			#heroLogo {
+				max-height: 100%;
+			}
+		}
 
 		.timerDiv {
-			align-self: flex-end;
-			margin: 0;
+			align-self: end;
+			margin-right: 0;
+			grid-row: 2/3;
+			grid-column: 2/3;
+			margin-top: unset;
 
 			#timer {
 				margin-left: -6px;
@@ -399,34 +485,6 @@
 		left: 50%;
 		bottom: 0;
 		animation: upDown 1.4s ease-in-out infinite;
-
-		img {
-			height: 100%;
-			transform: translate(-50%, -50%) rotate(180deg);
-		}
-	}
-
-	.heroContent {
-		display: block;
-		position: absolute;
-		top: 0;
-		z-index: -1;
-		height: 100vh;
-		width: 100%;
-		overflow: hidden;
-
-		img {
-			width: 100%;
-		}
-
-		video {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-
-		box-shadow: -1px 3px 10px 5px
-			color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
 	}
 
 	#heroLogo {
@@ -436,6 +494,12 @@
 	.rotatedText h1 {
 		margin-top: 0.5rem;
 		font-size: 44px;
+	}
+
+	@media only screen and (max-width: 1280px) {
+		.rotatedText {
+			margin-top: 0.4rem;
+		}
 	}
 
 	.heroText {
@@ -474,6 +538,7 @@
 	.projectSide,
 	.shiftInfoSide {
 		width: 45%;
+		align-self: center;
 	}
 
 	.projectCard {
@@ -489,10 +554,11 @@
 			text-align: left;
 			font-size: 44px;
 		}
+	}
 
-		.infoList li {
-			font-size: 24px;
-		}
+	.leftSideInfo,
+	.rightSideInfo {
+		width: 40%;
 	}
 
 	.audienceContainer {
@@ -515,10 +581,15 @@
 	}
 
 	.infoSection {
+		gap: 70px;
+	}
+
+	.infoPart {
 		flex-direction: row;
 		height: fit-content;
 		min-height: 10rem;
-		justify-content: space-around;
+		justify-content: center;
+		margin: var(--spacing-s) 0;
 
 		hr.sectionDivider {
 			align-self: stretch;
@@ -528,38 +599,20 @@
 			margin: 0;
 		}
 	}
-}
 
-@media only screen and (min-width: 1280px) {
-	.rotatedText h1 {
-		margin-top: 0;
+	.infoMultimediaCard {
+		max-width: 50vw;
 	}
 }
 
-.infoMultimediaCard {
-	display: grid;
-	grid-template-columns: 1fr auto;
-	gap: 5rem;
-	padding: 3rem;
-	background-color: var(--bg-shift-alt);
-	border: 5px solid var(--border-primary);
-	border-radius: 1.5rem;
-	max-width: 85vw;
-	justify-self: center;
-	overflow: hidden;
-	box-sizing: border-box;
-	margin: 5rem auto 0 auto;
-}
+/*@media only screen and (min-width: 1280px) {*/
+/*    .rotatedText h1 {*/
+/*        margin-top: 0;*/
+/*    }*/
+/*}*/
 
-.infoMultimediaCard img {
-	width: 100%;
-	border: 3px solid var(--bg-shift-secondary);
-	border-radius: 0.5rem;
-}
-
-@media (max-width: 1500px) {
+@media (min-width: 1500px) {
 	.infoMultimediaCard {
-		grid-template-columns: 1fr;
 		gap: 2rem;
 	}
 }
