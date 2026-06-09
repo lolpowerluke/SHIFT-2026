@@ -139,6 +139,11 @@ export default function ProjectForm() {
 	const [imagesCleared, setImagesCleared] = useState(false);
 	const [magazineCleared, setMagazineCleared] = useState(false);
 
+	// Admin
+	const [isAdmin, setIsAdmin] = useState(false);
+	const [allProjects, setAllProjects] = useState([]);
+	const [selectedProjectId, setSelectedProjectId] = useState(null);
+
 	// Submit state
 	const [submitState, setSubmitState] = useState("idle");
 	const [submitError, setSubmitError] = useState("");
@@ -155,7 +160,21 @@ export default function ProjectForm() {
 			navigate("/login", { state: { from: location.pathname }, replace: true });
 			return;
 		}
-		prefill(token);
+
+		let role = null;
+		let tokenUserId = null;
+		try {
+			const payload = JSON.parse(atob(token.split(".")[1]));
+			role = payload.role;
+			tokenUserId = payload.id;
+		} catch { }
+
+		if (role === "admin") {
+			setIsAdmin(true);
+			loadAllProjects();
+		} else {
+			prefill(tokenUserId);
+		}
 	}, []);
 
 	useEffect(() => {
@@ -166,7 +185,104 @@ export default function ProjectForm() {
 		};
 	}, [projectFiles]);
 
-	async function prefill(token) {
+	async function loadAllProjects() {
+		const projData = await apiFetch("/project/");
+		if (!projData.success) return;
+		setAllProjects(projData.projects || []);
+	}
+
+	async function loadProjectForAdmin(project) {
+		setSelectedProjectId(project.id);
+
+		// Reset form state
+		setNameProject(project.name || "");
+		setDescription(project.description || "");
+		if (project.course) setCourse(project.course);
+		if (project.promoter) setPromoter(project.promoter);
+		setExistingImages(Array.isArray(project.media) && project.media.length ? project.media : []);
+		setProjectFiles([]);
+		setImagesCleared(false);
+		setMagazineFile(null);
+		setMagazineCleared(false);
+
+		if (project.magazine) {
+			setExistingMagazine(
+				`https://res.cloudinary.com/${project.magazine.cloud_name}/image/upload/${project.magazine.path}`,
+			);
+		} else {
+			setExistingMagazine(null);
+		}
+		if (project.video?.url) {
+			setExistingVideo(project.video.url);
+			setVideoURL(project.video.url);
+		} else {
+			setExistingVideo("");
+			setVideoURL("");
+		}
+
+		const members = Array.isArray(project.members) ? project.members : [];
+		const p1 = members[0] || null;
+		const p2 = members[1] || null;
+
+		if (p1) {
+			// Fetch full p1 user data
+			const p1Data = await apiFetch(`/api/user?id=${p1.id}`);
+			const u = p1Data.success ? p1Data.user : p1;
+			setFirstName(u.firstname || "");
+			setLastName(u.lastname || "");
+			setEmail(u.email || "");
+			if (Array.isArray(u.socials) && u.socials.length) {
+				setLinkedinURL(u.socials[0]);
+			} else {
+				setLinkedinURL("");
+			}
+			if (u.images?.length) {
+				setSelfieExistingPicture({
+					url: `https://res.cloudinary.com/${u.images[0].cloud_name}/image/upload/${u.images[0].path}`,
+					name: u.images[0].path.split("/").pop(),
+				});
+			} else if (p1.picture) {
+				setSelfieExistingPicture({
+					url: `https://res.cloudinary.com/${p1.picture.cloud_name}/image/upload/${p1.picture.path}`,
+					name: p1.picture.path.split("/").pop(),
+				});
+			} else {
+				setSelfieExistingPicture(null);
+			}
+			setSelfieFile(null);
+		}
+
+		if (p2) {
+			setShowExtra(true);
+			setP2FirstName(p2.firstname || "");
+			setP2LastName(p2.lastname || "");
+			setP2Email(p2.email || "");
+			if (Array.isArray(p2.socials) && p2.socials.length) {
+				setP2LinkedIn(p2.socials[0]);
+			} else {
+				setP2LinkedIn("");
+			}
+			if (p2.picture) {
+				setP2ExistingPicture({
+					url: `https://res.cloudinary.com/${p2.picture.cloud_name}/image/upload/${p2.picture.path}`,
+					name: p2.picture.path.split("/").pop(),
+				});
+			} else {
+				setP2ExistingPicture(null);
+			}
+			setP2SelfieFile(null);
+		} else {
+			setShowExtra(false);
+			setP2FirstName(""); setP2LastName(""); setP2Email("");
+			setP2LinkedIn(""); setP2SelfieFile(null); setP2ExistingPicture(null);
+		}
+
+		setSubmitState("idle");
+		setSubmitError("");
+		setUrlErrors({});
+	}
+
+	async function prefill(activeId) {
 		const userData = await apiFetch("/api/user");
 		if (!userData.success) {
 			navigate("/login", { state: { from: location.pathname }, replace: true });
@@ -189,13 +305,6 @@ export default function ProjectForm() {
 
 		const projData = await apiFetch("/project/");
 		if (!projData.success) return;
-
-		let currentUserId = null;
-		try {
-			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch {}
-
-		const activeId = currentUserId ?? user.id;
 
 		const myProject = projData.projects.find(
 			(p) =>
@@ -309,7 +418,7 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch {}
+		} catch { }
 
 		// Update current user
 		try {
@@ -336,7 +445,7 @@ export default function ProjectForm() {
 					p2UserId = result.user.id;
 					memberIds.push(result.user.id);
 				}
-			} catch {}
+			} catch { }
 		}
 
 		// Update p2
@@ -390,9 +499,9 @@ export default function ProjectForm() {
 
 			const result = existing
 				? await apiFetch(`/project/${existing.id}`, {
-						method: "PUT",
-						body: cleanForm,
-					})
+					method: "PUT",
+					body: cleanForm,
+				})
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
@@ -435,322 +544,220 @@ export default function ProjectForm() {
 	// create object URLs once, track them for cleanup
 	const imagePreviewURLs = projectFiles.length
 		? projectFiles.map((f) => {
-				const url = URL.createObjectURL(f);
-				previewURLsRef.current.push(url);
-				return { key: f.name, url, name: f.name };
-			})
+			const url = URL.createObjectURL(f);
+			previewURLsRef.current.push(url);
+			return { key: f.name, url, name: f.name };
+		})
 		: existingImages.map((img) => ({
-				key: img.id,
-				url: `https://res.cloudinary.com/${img.cloud_name}/image/upload/${img.path}`,
-				name: img.path.split("/").pop(),
-			}));
+			key: img.id,
+			url: `https://res.cloudinary.com/${img.cloud_name}/image/upload/${img.path}`,
+			name: img.path.split("/").pop(),
+		}));
 
 	// Displayed magazine label
 	const magazineLabel = magazineFile
 		? magazineFile.name
 		: existingMagazine
-			? existingMagazine.split("/").pop()
+			? (() => {
+				const name = existingMagazine.split("/").pop();
+				return name.endsWith(".pdf") ? name : `${name}.pdf`;
+			})()
 			: null;
 
 	return (
 		<div className="wrap">
 			<div className="section">
 				<h1>Project formulier</h1>
-				<h3>Vul je project aan.</h3>
-				<form className={s.form} onSubmit={handleSubmit}>
-					{/* Project info */}
-					<div className={s.part}>
-						<h3>Project info</h3>
-						<div>
-							<label htmlFor="nameProject">Project titel *</label>
-							<input
-								type="text"
-								id="nameProject"
-								name="nameProject"
-								required
-								placeholder="Titel van het project..."
-								value={nameProject}
-								onChange={(e) => setNameProject(e.target.value)}
-							/>
-						</div>
-						<div>
-							<label htmlFor="description">Omschrijving *</label>
-							<textarea
-								className={s.projectInfo}
-								id="description"
-								name="description"
-								maxLength={1250}
-								rows={5}
-								placeholder="Projectbeschrijving..."
-								required
-								value={description}
-								onChange={(e) => setDescription(e.target.value)}
-							/>
-						</div>
-						<div>
-							<span>Specialisatie *</span>
-							<select
-								required
-								id="course"
-								name="course"
-								className={s.courseSelect}
-								value={course}
-								onChange={(e) => setCourse(e.target.value)}
-							>
-								<option disabled value="">
-									Specialisatie...
-								</option>
-								<option value="XR & 3D">XR & 3D</option>
-								<option value="Experience Design">Experience Design</option>
-								<option value="Web & Mobile">Web & Mobile</option>
-								<option value="Digital Deisgn">Digital Deisgn</option>
-							</select>
-						</div>
-						<div>
-							<span>Promoter *</span>
-							<select
-								required
-								id="promoter"
-								name="promoter"
-								className={s.courseSelect}
-								value={promoter}
-								onChange={(e) => setPromoter(e.target.value)}
-							>
-								<option disabled value="">
-									Promoter...
-								</option>
-								{[
-									"Dennis Baptist",
-									"Maaike Beuten",
-									"Joni De Borger",
-									"Peter Dickx",
-									"Jan Everaert",
-									"Bert Heyman",
-									"Jan Snoekx",
-									"Stefan Tilburgs",
-									"Els Vande Kerckhove",
-									"An Vanlierde",
-									"Kobe Vermeire",
-									"Ben Verschooris",
-								].map((name) => (
-									<option key={name} value={name}>
-										{name}
-									</option>
-								))}
-							</select>
+				{isAdmin && (
+					<div className={s.adminProjectList}>
+						<h3>Alle projecten</h3>
+						<div className={s.projectList}>
+							{allProjects.map((proj) => (
+								<div className={s.project} key={proj.id}>
+									<span
+										type="button"
+										className={`${s.adminProjectItem} ${selectedProjectId === proj.id ? s.adminProjectItemActive : ""}`}
+										onClick={() => loadProjectForAdmin(proj)}
+									>
+										<span className={s.adminProjectName}>{proj.name || "(geen naam)"}</span>
+										<span className={s.adminProjectMembers}>
+											{Array.isArray(proj.members) && proj.members.length
+												? proj.members.map((m) => `${m.firstname || ""} ${m.lastname || ""}`.trim() || m.email).join(", ")
+												: "—"}
+										</span>
+									</span>
+								</div>
+							))}
 						</div>
 					</div>
-
-					{/* Personal info */}
-					<div className={s.part}>
-						<h3>Persoonlijke info</h3>
-						<div>
-							<label htmlFor="firstName">Voornaam *</label>
-							<input
-								type="text"
-								id="firstName"
-								name="firstName"
-								placeholder="Voornaam..."
-								value={firstName}
-								onChange={(e) => setFirstName(e.target.value)}
-								required
-							/>
-						</div>
-						<div>
-							<label htmlFor="lastName">Achternaam *</label>
-							<input
-								type="text"
-								id="lastName"
-								name="lastName"
-								placeholder="Achternaam..."
-								value={lastName}
-								onChange={(e) => setLastName(e.target.value)}
-								required
-							/>
-						</div>
-						<div>
-							<label htmlFor="email">Email</label>
-							<input
-								type="text"
-								id="email"
-								name="email"
-								placeholder="Email..."
-								disabled
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
-							/>
-						</div>
-						<div>
-							<label htmlFor="linkedinURL">LinkedIn</label>
-							<input
-								type="text"
-								id="linkedinURL"
-								name="linkedinURL"
-								placeholder="LinkedIn URL..."
-								value={linkedinURL}
-								onChange={(e) => {
-									setLinkedinURL(e.target.value);
-									setUrlErrors((prev) => ({ ...prev, linkedinURL: null }));
-								}}
-							/>
-							{urlErrors.linkedinURL && (
-								<p className={s.error}>{urlErrors.linkedinURL}</p>
-							)}
-						</div>
-						<div>
-							<label htmlFor="choose-selfieFile">Portretfoto</label>
-							<small>Max 2MB</small>
-							{selfieFile ? (
-								<>
-									<FilePill
-										name={selfieFile.name}
-										onClear={() => setSelfieFile(null)}
-									/>
-									<img
-										src={URL.createObjectURL(selfieFile)}
-										alt={selfieFile.name}
-										className={s.previewImg}
-									/>
-								</>
-							) : selfieExistingPicture ? (
-								<>
-									<FilePill
-										name={selfieExistingPicture.name}
-										onClear={() => setSelfieExistingPicture(null)}
-									/>
-									<img
-										src={selfieExistingPicture.url}
-										alt={selfieExistingPicture.name}
-										className={s.previewImg}
-									/>
-								</>
-							) : (
-								<input
-									type="file"
-									accept="image/*"
-									id="choose-selfieFile"
-									name="choose-selfieFile"
-									onChange={(e) => setSelfieFile(e.target.files[0] ?? null)}
-								/>
-							)}
-							<label className={s.subtext}>
-								Gelieve in een 1:1 aspect ratio in te dienen
-							</label>
-						</div>
-					</div>
-
-					{/* Extra person */}
-					<div className={s.part}>
-						<label
-							htmlFor="extraPersonToggle"
-							style={{ cursor: "pointer" }}
-							onClick={() => setShowExtra((v) => !v)}
-						>
-							<h3>Extra persoon toevoegen</h3>
-							<span className={s.addPerson}>
-								<div
-									className={s.line}
-									style={{
-										transform: showExtra
-											? "translateY(13px) rotate(-45deg)"
-											: "translateY(13px)",
-										transition: "transform 0.2s",
-									}}
-								/>
-								<div
-									className={s.line}
-									style={{
-										transform: showExtra
-											? "translateY(13px) rotate(45deg)"
-											: "translateY(13px) rotate(90deg)",
-										transition: "transform 0.2s",
-									}}
-								/>
-							</span>
-						</label>
-						{showExtra && (
-							<div
-								className={s.extraPersonForm}
-								style={{ display: "flex", flexDirection: "column", gap: 10 }}
-							>
+				)}
+				{(!isAdmin || selectedProjectId) && (
+					<>
+						<h3>Vul je project aan.</h3>
+						<form className={s.form} onSubmit={handleSubmit}>
+							{/* Project info */}
+							<div className={s.part}>
+								<h3>Project info</h3>
 								<div>
-									<label htmlFor="2ndStudentFirstName">Voornaam</label>
+									<label htmlFor="nameProject">Project titel *</label>
 									<input
 										type="text"
-										id="2ndStudentFirstName"
-										name="2ndStudentFirstName"
+										id="nameProject"
+										name="nameProject"
+										required
+										placeholder="Titel van het project..."
+										value={nameProject}
+										onChange={(e) => setNameProject(e.target.value)}
+									/>
+								</div>
+								<div>
+									<label htmlFor="description">Omschrijving *</label>
+									<textarea
+										className={s.projectInfo}
+										id="description"
+										name="description"
+										maxLength={1250}
+										rows={5}
+										placeholder="Projectbeschrijving..."
+										required
+										value={description}
+										onChange={(e) => setDescription(e.target.value)}
+									/>
+								</div>
+								<div>
+									<span>Specialisatie *</span>
+									<select
+										required
+										id="course"
+										name="course"
+										className={s.courseSelect}
+										value={course}
+										onChange={(e) => setCourse(e.target.value)}
+									>
+										<option disabled value="">
+											Specialisatie...
+										</option>
+										<option value="XR & 3D">XR & 3D</option>
+										<option value="Experience Design">Experience Design</option>
+										<option value="Web & Mobile">Web & Mobile</option>
+										<option value="Digital Deisgn">Digital Deisgn</option>
+									</select>
+								</div>
+								<div>
+									<span>Promoter *</span>
+									<select
+										required
+										id="promoter"
+										name="promoter"
+										className={s.courseSelect}
+										value={promoter}
+										onChange={(e) => setPromoter(e.target.value)}
+									>
+										<option disabled value="">
+											Promoter...
+										</option>
+										{[
+											"Dennis Baptist",
+											"Maaike Beuten",
+											"Joni De Borger",
+											"Peter Dickx",
+											"Jan Everaert",
+											"Bert Heyman",
+											"Jan Snoekx",
+											"Stefan Tilburgs",
+											"Els Vande Kerckhove",
+											"An Vanlierde",
+											"Kobe Vermeire",
+											"Ben Verschooris",
+										].map((name) => (
+											<option key={name} value={name}>
+												{name}
+											</option>
+										))}
+									</select>
+								</div>
+							</div>
+
+							{/* Personal info */}
+							<div className={s.part}>
+								<h3>Persoonlijke info</h3>
+								<div>
+									<label htmlFor="firstName">Voornaam *</label>
+									<input
+										type="text"
+										id="firstName"
+										name="firstName"
 										placeholder="Voornaam..."
-										required={showExtra}
-										value={p2FirstName}
-										onChange={(e) => setP2FirstName(e.target.value)}
+										value={firstName}
+										onChange={(e) => setFirstName(e.target.value)}
+										required
 									/>
 								</div>
 								<div>
-									<label htmlFor="2ndStudentLastName">Achternaam</label>
+									<label htmlFor="lastName">Achternaam *</label>
 									<input
 										type="text"
-										id="2ndStudentLastName"
-										name="2ndStudentLastName"
+										id="lastName"
+										name="lastName"
 										placeholder="Achternaam..."
-										required={showExtra}
-										value={p2LastName}
-										onChange={(e) => setP2LastName(e.target.value)}
+										value={lastName}
+										onChange={(e) => setLastName(e.target.value)}
+										required
 									/>
 								</div>
 								<div>
-									<label htmlFor="secondemail">Email</label>
-									<input
-										type="email"
-										id="secondemail"
-										name="secondemail"
-										placeholder="Email..."
-										autoComplete="email"
-										required={showExtra}
-										value={p2Email}
-										onChange={(e) => setP2Email(e.target.value)}
-									/>
-								</div>
-								<div>
-									<label htmlFor="secondlinkedinurl">LinkedIn</label>
+									<label htmlFor="email">Email</label>
 									<input
 										type="text"
-										id="secondlinkedinurl"
-										name="secondlinkedinurl"
+										id="email"
+										name="email"
+										placeholder="Email..."
+										disabled
+										value={email}
+										onChange={(e) => setEmail(e.target.value)}
+									/>
+								</div>
+								<div>
+									<label htmlFor="linkedinURL">LinkedIn</label>
+									<input
+										type="text"
+										id="linkedinURL"
+										name="linkedinURL"
 										placeholder="LinkedIn URL..."
-										value={p2LinkedIn}
+										value={linkedinURL}
 										onChange={(e) => {
-											setP2LinkedIn(e.target.value);
-											setUrlErrors((prev) => ({ ...prev, p2LinkedIn: null }));
+											setLinkedinURL(e.target.value);
+											setUrlErrors((prev) => ({ ...prev, linkedinURL: null }));
 										}}
 									/>
-									{urlErrors.p2LinkedIn && (
-										<p className={s.error}>{urlErrors.p2LinkedIn}</p>
+									{urlErrors.linkedinURL && (
+										<p className={s.error}>{urlErrors.linkedinURL}</p>
 									)}
 								</div>
 								<div>
-									<label htmlFor="choose-secondselfiefile">Portretfoto</label>
+									<label htmlFor="choose-selfieFile">Portretfoto</label>
 									<small>Max 2MB</small>
-									{p2SelfieFile ? (
+									{selfieFile ? (
 										<>
 											<FilePill
-												name={p2SelfieFile.name}
-												onClear={() => setP2SelfieFile(null)}
+												name={selfieFile.name}
+												onClear={() => setSelfieFile(null)}
 											/>
 											<img
-												src={URL.createObjectURL(p2SelfieFile)}
-												alt={p2SelfieFile.name}
+												src={URL.createObjectURL(selfieFile)}
+												alt={selfieFile.name}
 												className={s.previewImg}
 											/>
 										</>
-									) : p2ExistingPicture ? (
+									) : selfieExistingPicture ? (
 										<>
 											<FilePill
-												name={p2ExistingPicture.name}
-												onClear={() => setP2ExistingPicture(null)}
+												name={selfieExistingPicture.name}
+												onClear={() => setSelfieExistingPicture(null)}
 											/>
 											<img
-												src={p2ExistingPicture.url}
-												alt={p2ExistingPicture.name}
+												src={selfieExistingPicture.url}
+												alt={selfieExistingPicture.name}
 												className={s.previewImg}
 											/>
 										</>
@@ -758,11 +765,9 @@ export default function ProjectForm() {
 										<input
 											type="file"
 											accept="image/*"
-											id="choose-secondselfiefile"
-											name="choose-secondselfiefile"
-											onChange={(e) =>
-												setP2SelfieFile(e.target.files[0] ?? null)
-											}
+											id="choose-selfieFile"
+											name="choose-selfieFile"
+											onChange={(e) => setSelfieFile(e.target.files[0] ?? null)}
 										/>
 									)}
 									<label className={s.subtext}>
@@ -770,106 +775,240 @@ export default function ProjectForm() {
 									</label>
 								</div>
 							</div>
-						)}
-					</div>
 
-					{/* Project media */}
-					<div className={s.part}>
-						<h3>Project media</h3>
-
-						{/* Images */}
-						<div>
-							<label htmlFor="choose-projectFile">Projectbeeld *</label>
-							<small>Max 2MB</small>
-							{imagePreviewURLs.length > 0 ? (
-								<>
-									<FilePill
-										name={
-											projectFiles.length
-												? `${projectFiles.length} bestand(en)`
-												: imagePreviewURLs[0].name
-										}
-										onClear={clearImages}
-									/>
-									{imagePreviewURLs.map(({ key, url, name }) => (
-										<img
-											key={key}
-											src={url}
-											alt={name}
-											className={s.previewImg}
+							{/* Extra person */}
+							<div className={s.part}>
+								<label
+									htmlFor="extraPersonToggle"
+									style={{ cursor: "pointer" }}
+									onClick={() => setShowExtra((v) => !v)}
+								>
+									<h3>Extra persoon toevoegen</h3>
+									<span className={s.addPerson}>
+										<div
+											className={s.line}
+											style={{
+												transform: showExtra
+													? "translateY(13px) rotate(-45deg)"
+													: "translateY(13px)",
+												transition: "transform 0.2s",
+											}}
 										/>
-									))}
-								</>
-							) : (
-								<input
-									type="file"
-									accept="image/*"
-									multiple
-									id="choose-projectFile"
-									name="choose-projectFile"
-									onChange={handleProjectFilesChange}
-								/>
-							)}
-							<label className={s.subtext}>
-								Gelieve in een 16:9 aspect ratio in te dienen
-							</label>
-						</div>
+										<div
+											className={s.line}
+											style={{
+												transform: showExtra
+													? "translateY(13px) rotate(45deg)"
+													: "translateY(13px) rotate(90deg)",
+												transition: "transform 0.2s",
+											}}
+										/>
+									</span>
+								</label>
+								{showExtra && (
+									<div
+										className={s.extraPersonForm}
+										style={{ display: "flex", flexDirection: "column", gap: 10 }}
+									>
+										<div>
+											<label htmlFor="2ndStudentFirstName">Voornaam</label>
+											<input
+												type="text"
+												id="2ndStudentFirstName"
+												name="2ndStudentFirstName"
+												placeholder="Voornaam..."
+												required={showExtra}
+												value={p2FirstName}
+												onChange={(e) => setP2FirstName(e.target.value)}
+											/>
+										</div>
+										<div>
+											<label htmlFor="2ndStudentLastName">Achternaam</label>
+											<input
+												type="text"
+												id="2ndStudentLastName"
+												name="2ndStudentLastName"
+												placeholder="Achternaam..."
+												required={showExtra}
+												value={p2LastName}
+												onChange={(e) => setP2LastName(e.target.value)}
+											/>
+										</div>
+										<div>
+											<label htmlFor="secondemail">Email</label>
+											<input
+												type="email"
+												id="secondemail"
+												name="secondemail"
+												placeholder="Email..."
+												autoComplete="email"
+												required={showExtra}
+												value={p2Email}
+												onChange={(e) => setP2Email(e.target.value)}
+											/>
+										</div>
+										<div>
+											<label htmlFor="secondlinkedinurl">LinkedIn</label>
+											<input
+												type="text"
+												id="secondlinkedinurl"
+												name="secondlinkedinurl"
+												placeholder="LinkedIn URL..."
+												value={p2LinkedIn}
+												onChange={(e) => {
+													setP2LinkedIn(e.target.value);
+													setUrlErrors((prev) => ({ ...prev, p2LinkedIn: null }));
+												}}
+											/>
+											{urlErrors.p2LinkedIn && (
+												<p className={s.error}>{urlErrors.p2LinkedIn}</p>
+											)}
+										</div>
+										<div>
+											<label htmlFor="choose-secondselfiefile">Portretfoto</label>
+											<small>Max 2MB</small>
+											{p2SelfieFile ? (
+												<>
+													<FilePill
+														name={p2SelfieFile.name}
+														onClear={() => setP2SelfieFile(null)}
+													/>
+													<img
+														src={URL.createObjectURL(p2SelfieFile)}
+														alt={p2SelfieFile.name}
+														className={s.previewImg}
+													/>
+												</>
+											) : p2ExistingPicture ? (
+												<>
+													<FilePill
+														name={p2ExistingPicture.name}
+														onClear={() => setP2ExistingPicture(null)}
+													/>
+													<img
+														src={p2ExistingPicture.url}
+														alt={p2ExistingPicture.name}
+														className={s.previewImg}
+													/>
+												</>
+											) : (
+												<input
+													type="file"
+													accept="image/*"
+													id="choose-secondselfiefile"
+													name="choose-secondselfiefile"
+													onChange={(e) =>
+														setP2SelfieFile(e.target.files[0] ?? null)
+													}
+												/>
+											)}
+											<label className={s.subtext}>
+												Gelieve in een 1:1 aspect ratio in te dienen
+											</label>
+										</div>
+									</div>
+								)}
+							</div>
 
-						{/* Video URL */}
-						<div>
-							<label htmlFor="videoURL">Showreel</label>
-							<small>
-								Plaats je showreel op Youtube (unlisted) en laat hier de link
-								achter.
-							</small>
-							<input
-								type="text"
-								id="videoURL"
-								name="videoURL"
-								placeholder="YouTube link van je project footage..."
-								value={videoURL}
-								onChange={(e) => {
-									setVideoURL(e.target.value);
-									setUrlErrors((prev) => ({ ...prev, videoURL: null }));
-								}}
-							/>
-							{urlErrors.videoURL && (
-								<p className={s.error}>{urlErrors.videoURL}</p>
-							)}
-						</div>
+							{/* Project media */}
+							<div className={s.part}>
+								<h3>Project media</h3>
 
-						{/* Magazine */}
-						<div>
-							<label htmlFor="choose-magazineFile">Magazine (pdf)</label>
-							{magazineLabel ? (
-								<FilePill name={magazineLabel} onClear={clearMagazine} />
-							) : (
-								<input
-									type="file"
-									accept=".pdf"
-									id="choose-magazineFile"
-									name="choose-magazineFile"
-									onChange={handleMagazineChange}
-								/>
-							)}
-						</div>
+								{/* Images */}
+								<div>
+									<label htmlFor="choose-projectFile">Projectbeeld *</label>
+									<small>Max 2MB</small>
+									{imagePreviewURLs.length > 0 ? (
+										<>
+											<FilePill
+												name={
+													projectFiles.length
+														? `${projectFiles.length} bestand(en)`
+														: imagePreviewURLs[0].name
+												}
+												onClear={clearImages}
+											/>
+											{imagePreviewURLs.map(({ key, url, name }) => (
+												<img
+													key={key}
+													src={url}
+													alt={name}
+													className={s.previewImg}
+												/>
+											))}
+										</>
+									) : (
+										<input
+											type="file"
+											accept="image/*"
+											multiple
+											id="choose-projectFile"
+											name="choose-projectFile"
+											onChange={handleProjectFilesChange}
+										/>
+									)}
+									<label className={s.subtext}>
+										Gelieve in een 16:9 aspect ratio in te dienen
+									</label>
+								</div>
 
-						<button
-							className={`submit ${submitState === "success" ? s.submitSuccess : ""}`}
-							type="submit"
-							disabled={submitState === "loading" || submitState === "success"}
-						>
-							{submitState === "loading"
-								? "Bezig..."
-								: submitState === "success"
-									? "✓ Opgeslagen"
-									: "Submit"}
-						</button>
-						{submitState === "error" && (
-							<p className={s.submitError}>Fout: {submitError}</p>
-						)}
-					</div>
-				</form>
+								{/* Video URL */}
+								<div>
+									<label htmlFor="videoURL">Showreel</label>
+									<small>
+										Plaats je showreel op Youtube (unlisted) en laat hier de link
+										achter.
+									</small>
+									<input
+										type="text"
+										id="videoURL"
+										name="videoURL"
+										placeholder="YouTube link van je project footage..."
+										value={videoURL}
+										onChange={(e) => {
+											setVideoURL(e.target.value);
+											setUrlErrors((prev) => ({ ...prev, videoURL: null }));
+										}}
+									/>
+									{urlErrors.videoURL && (
+										<p className={s.error}>{urlErrors.videoURL}</p>
+									)}
+								</div>
+
+								{/* Magazine */}
+								<div>
+									<label htmlFor="choose-magazineFile">Magazine (pdf)</label>
+									{magazineLabel ? (
+										<FilePill name={magazineLabel} onClear={clearMagazine} />
+									) : (
+										<input
+											type="file"
+											accept=".pdf"
+											id="choose-magazineFile"
+											name="choose-magazineFile"
+											onChange={handleMagazineChange}
+										/>
+									)}
+								</div>
+
+								<button
+									className={`submit ${submitState === "success" ? s.submitSuccess : ""}`}
+									type="submit"
+									disabled={submitState === "loading" || submitState === "success"}
+								>
+									{submitState === "loading"
+										? "Bezig..."
+										: submitState === "success"
+											? "✓ Opgeslagen"
+											: "Submit"}
+								</button>
+								{submitState === "error" && (
+									<p className={s.submitError}>Fout: {submitError}</p>
+								)}
+							</div>
+						</form>
+					</>
+				)}
 			</div>
 		</div>
 	);

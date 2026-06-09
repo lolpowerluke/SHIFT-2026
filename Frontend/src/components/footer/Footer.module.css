@@ -14,8 +14,21 @@ footer {
 		width: 100%;
 	}
 
-	.text-info {
+	.textInfo {
 		text-align: left;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		* {
+			max-width: 45%;
+		}
+		ul{
+			list-style: none;
+			li a{
+				text-transform: uppercase;
+				text-decoration: none;
+			}
+		}
 	}
 
 	.socialLinks {
