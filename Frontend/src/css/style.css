@@ -15,59 +15,67 @@
 /* This file is for the main styles like using colours, adding stuff that doesn't belong to the other files */
 
 .hidden {
-	visibility: hidden;
-	height: 0;
+    visibility: hidden;
+    height: 0;
 }
 
 html,
 body {
-	touch-action: pan-y;
-	scroll-behavior: smooth;
+    touch-action: pan-y;
+    scroll-behavior: smooth;
 }
 
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 html::before {
-	content: "";
-	position: fixed;
-	inset: 0;
-	z-index: -2;
-	background-image: url(/assets/wallTextureWeb2.png);
-	background-size: cover;
-	background-color: var(--bg-shift-primary);
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    background-color: var(--bg-shift-primary);
+}
+
+html::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    background-image: url(/assets/wallTextureWeb2.png);
+    background-size: cover;
+    pointer-events: none;
 }
 
 body::before {
-	content: "";
-	position: fixed;
-	inset: 0;
-	z-index: -2;
-	background-image: url(/assets/iconsOverlay.svg);
-	background-size: 9000px;
-	pointer-events: none;
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: url(/assets/iconsOverlay.svg);
+    background-size: 9000px;
+    pointer-events: none;
 }
 
 .altBg {
-	position: relative;
-	padding-bottom: 2rem;
-	z-index: 0;
+    position: relative;
+    padding-bottom: 2rem;
+    /*z-index: 0;*/
 }
 
 .altBg::before {
-	content: "";
-	position: absolute;
-	background-color: var(--bg-shift-secondary);
-	inset: 0;
-	z-index: -3;
+    content: "";
+    position: absolute;
+    background-color: var(--bg-shift-secondary);
+    inset: 0;
+    z-index: -3;
 }
 
 #root {
-	overflow-x: clip;
+    overflow-x: clip;
 }
 
 .hideThisSht {
-	pointer-events: none;
-	display: none;
+    pointer-events: none;
+    display: none;
 }
