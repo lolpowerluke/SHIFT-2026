@@ -95,6 +95,10 @@
 		}
 	}
 
+	.smallerCd {
+		font-size: 16px;
+	}
+
 	#timer {
 		display: flex;
 		flex-direction: row;
@@ -363,7 +367,7 @@
 		position: relative;
 		display: flex;
 		flex-direction: row;
-        height: 100vh;
+		height: 100vh;
 		width: 92.5dvw;
 		justify-content: space-between;
 		margin-top: -148px;
@@ -407,7 +411,7 @@
 		position: absolute;
 		top: 0;
 		z-index: -1;
-        height: 100vh;
+		height: 100vh;
 		width: 100%;
 		overflow: hidden;
 

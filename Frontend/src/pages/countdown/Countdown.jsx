@@ -69,7 +69,10 @@ export default function Countdown() {
 						<>
 							<div className={s.cd}>
 								<span>We tellen af!</span>
-							</div>
+                            </div>
+                            <div className={`${s.cd} ${s.smallerCd}`}>
+                                <span>Vrijdag 17 juni om 17:00</span>
+                            </div>
 							<div id={s.timer}>
 								<div className={s.timerBox}>
 									<span className="darkText">{timeLeft.days}</span>
