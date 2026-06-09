@@ -106,6 +106,7 @@
 	box-shadow: 1.5px 1.5px 0 6px var(--bg-shift-secondary);
 	border-radius: 12px;
 	display: flex;
+	text-decoration: none;
 }
 
 .cardTitle {
