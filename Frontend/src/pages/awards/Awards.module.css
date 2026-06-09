@@ -23,6 +23,7 @@
     width: 50%;
     height:auto;
     transform: rotate(10deg);
+    margin-top: 100px;
 }
 .votingContainer {
     background-color: var(--bg-shift-secondary);
