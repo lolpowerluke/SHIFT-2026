@@ -162,7 +162,7 @@ export default function ProjectPageDetails() {
 
 			{embedUrl && (
 				<div>
-					<h1>Project video</h1>
+					<h1 className="videoTitle">Project video</h1>
 					<div className="videoHolder">
 						{!playing ? (
 							<div className="videoThumb" onClick={() => setPlaying(true)}>

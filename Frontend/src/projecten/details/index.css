@@ -47,7 +47,7 @@
 
 .promoterTitle {
 	font-style: bold;
-	margin-bottom: -24px;
+	margin-bottom: -20px;
 }
 
 .description {
@@ -167,6 +167,10 @@
 	}
 }
 
+.videoTitle {
+	margin: 32px 0 16px 0;
+}
+
 @media (max-width: 640px) {
 	.picture {
 		align-content: center;
@@ -191,7 +195,6 @@
 	}
 
 	.studentContact {
-		justify-content: center;
 		gap: 8px;
 
 		.icons {
