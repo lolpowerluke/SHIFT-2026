@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import s from "./ProjectForm.module.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
-const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB limit
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB limit
 const MAX_PDF_SIZE = 10 * 1024 * 1024; // 10MB limit
 
 async function apiFetch(path, opts = {}) {
@@ -50,7 +50,7 @@ function validateImageFile(file) {
 	if (!file) return "Missing image";
 
 	if (file.size > MAX_IMAGE_SIZE) {
-		return "Afbeelding mag max 1MB zijn";
+		return "Afbeelding mag max 2MB zijn";
 	}
 
 	return null;
@@ -114,7 +114,7 @@ export default function ProjectForm() {
 	const [email, setEmail] = useState("");
 	const [linkedinURL, setLinkedinURL] = useState("");
 	const [selfieFile, setSelfieFile] = useState(null);
-	const [selfieExistingPicture, setSelfieExistingPicture] = useState(null); // {url, name} | null
+	const [selfieExistingPicture, setSelfieExistingPicture] = useState(null);
 
 	// Extra person
 	const [showExtra, setShowExtra] = useState(false);
@@ -123,16 +123,16 @@ export default function ProjectForm() {
 	const [p2Email, setP2Email] = useState("");
 	const [p2LinkedIn, setP2LinkedIn] = useState("");
 	const [p2SelfieFile, setP2SelfieFile] = useState(null);
-	const [p2ExistingPicture, setP2ExistingPicture] = useState(null); // {url, name} | null
+	const [p2ExistingPicture, setP2ExistingPicture] = useState(null);
 
 	// Project media — new files
-	const [projectFiles, setProjectFiles] = useState([]); // File[]
+	const [projectFiles, setProjectFiles] = useState([]);
 	const [videoURL, setVideoURL] = useState("");
-	const [magazineFile, setMagazineFile] = useState(null); // File
+	const [magazineFile, setMagazineFile] = useState(null);
 
 	// Restored media from server
-	const [existingImages, setExistingImages] = useState([]); // [{id, url}]
-	const [existingMagazine, setExistingMagazine] = useState(null); // {id, url} | null
+	const [existingImages, setExistingImages] = useState([]);
+	const [existingMagazine, setExistingMagazine] = useState(null);
 	const [existingVideo, setExistingVideo] = useState("");
 
 	// Cleared flags (send empty string to backend to delete)
@@ -193,7 +193,7 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch { }
+		} catch {}
 
 		const activeId = currentUserId ?? user.id;
 
@@ -213,7 +213,9 @@ export default function ProjectForm() {
 			setExistingImages(myProject.media);
 		}
 		if (myProject.magazine) {
-			setExistingMagazine(`https://res.cloudinary.com/${myProject.magazine.cloud_name}/image/upload/${myProject.magazine.path}`);
+			setExistingMagazine(
+				`https://res.cloudinary.com/${myProject.magazine.cloud_name}/image/upload/${myProject.magazine.path}`,
+			);
 		}
 		if (myProject.video?.url) {
 			setExistingVideo(myProject.video.url);
@@ -307,9 +309,9 @@ export default function ProjectForm() {
 		let currentUserId = null;
 		try {
 			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch { }
+		} catch {}
 
-		// 1. Update current user
+		// Update current user
 		try {
 			const userFormData = new FormData();
 			if (firstName) userFormData.append("firstname", firstName.trim());
@@ -322,7 +324,7 @@ export default function ProjectForm() {
 			console.error("User update failed:", err);
 		}
 
-		// 2. Find p2 by email
+		// Find p2 by email
 		const memberIds = currentUserId ? [currentUserId] : [];
 		let p2UserId = null;
 		if (p2Email.trim()) {
@@ -334,10 +336,10 @@ export default function ProjectForm() {
 					p2UserId = result.user.id;
 					memberIds.push(result.user.id);
 				}
-			} catch { }
+			} catch {}
 		}
 
-		// 2b. Update p2
+		// Update p2
 		if (p2UserId) {
 			try {
 				const p2FormData = new FormData();
@@ -388,9 +390,9 @@ export default function ProjectForm() {
 
 			const result = existing
 				? await apiFetch(`/project/${existing.id}`, {
-					method: "PUT",
-					body: cleanForm,
-				})
+						method: "PUT",
+						body: cleanForm,
+					})
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
@@ -430,18 +432,18 @@ export default function ProjectForm() {
 		setMagazineCleared(true);
 	}
 
-	// FIX: create object URLs once, track them for cleanup
+	// create object URLs once, track them for cleanup
 	const imagePreviewURLs = projectFiles.length
 		? projectFiles.map((f) => {
-			const url = URL.createObjectURL(f);
-			previewURLsRef.current.push(url);
-			return { key: f.name, url, name: f.name };
-		})
+				const url = URL.createObjectURL(f);
+				previewURLsRef.current.push(url);
+				return { key: f.name, url, name: f.name };
+			})
 		: existingImages.map((img) => ({
-			key: img.id,
-			url: `https://res.cloudinary.com/${img.cloud_name}/image/upload/${img.path}`,
-			name: img.path.split("/").pop(),
-		}));
+				key: img.id,
+				url: `https://res.cloudinary.com/${img.cloud_name}/image/upload/${img.path}`,
+				name: img.path.split("/").pop(),
+			}));
 
 	// Displayed magazine label
 	const magazineLabel = magazineFile
@@ -460,7 +462,7 @@ export default function ProjectForm() {
 					<div className={s.part}>
 						<h3>Project info</h3>
 						<div>
-							<label htmlFor="nameProject">Project title *</label>
+							<label htmlFor="nameProject">Project titel *</label>
 							<input
 								type="text"
 								id="nameProject"
@@ -472,7 +474,7 @@ export default function ProjectForm() {
 							/>
 						</div>
 						<div>
-							<label htmlFor="description">Descriptie *</label>
+							<label htmlFor="description">Omschrijving *</label>
 							<textarea
 								className={s.projectInfo}
 								id="description"
@@ -597,6 +599,7 @@ export default function ProjectForm() {
 						</div>
 						<div>
 							<label htmlFor="choose-selfieFile">Portretfoto</label>
+							<small>Max 2MB</small>
 							{selfieFile ? (
 								<>
 									<FilePill
@@ -726,6 +729,7 @@ export default function ProjectForm() {
 								</div>
 								<div>
 									<label htmlFor="choose-secondselfiefile">Portretfoto</label>
+									<small>Max 2MB</small>
 									{p2SelfieFile ? (
 										<>
 											<FilePill
@@ -776,6 +780,7 @@ export default function ProjectForm() {
 						{/* Images */}
 						<div>
 							<label htmlFor="choose-projectFile">Projectbeeld *</label>
+							<small>Max 2MB</small>
 							{imagePreviewURLs.length > 0 ? (
 								<>
 									<FilePill
@@ -812,9 +817,9 @@ export default function ProjectForm() {
 
 						{/* Video URL */}
 						<div>
-							<label htmlFor="videoURL">Showreal</label>
+							<label htmlFor="videoURL">Showreel</label>
 							<small>
-								Plaats je showreal op Youtube (unlisted) en laat hier de link
+								Plaats je showreel op Youtube (unlisted) en laat hier de link
 								achter.
 							</small>
 							<input
