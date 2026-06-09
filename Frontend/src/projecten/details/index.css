@@ -104,7 +104,7 @@
 .studentContact {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: start;
+	justify-content: space-between;
 	gap: 8px;
 	align-items: center;
 	width: 100%;
