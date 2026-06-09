@@ -13,17 +13,6 @@ const CATEGORY_ICONS = {
 	"Web & Mobile": "/assets/OrangeCoding.svg",
 };
 
-async function downloadPdf(url, filename) {
-	const res = await fetch(url);
-	const blob = await res.blob();
-	const blobUrl = URL.createObjectURL(blob);
-	const a = document.createElement("a");
-	a.href = blobUrl;
-	a.download = `${filename}-Magazine.pdf`;
-	a.click();
-	URL.revokeObjectURL(blobUrl);
-}
-
 export default function ProjectPageDetails() {
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get("id");
@@ -32,6 +21,7 @@ export default function ProjectPageDetails() {
 	const [playing, setPlaying] = useState(false);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [magazineSize, setMagazineSize] = useState(null);
 
 	useEffect(() => {
 		fetch(`${import.meta.env.VITE_API_URL}/project/${id}`)
@@ -39,7 +29,19 @@ export default function ProjectPageDetails() {
 				if (!res.ok) throw new Error(`HTTP ${res.status}`);
 				return res.json();
 			})
-			.then((data) => setProject(data.project))
+			.then((data) => {
+				const p = data.project;
+				setProject(p);
+				if (p?.magazine) {
+					const url = p.magazine.url ?? `https://res.cloudinary.com/${p.magazine.cloud_name}/raw/upload/${p.magazine.path}`;
+					fetch(url, { method: "HEAD" })
+						.then((r) => {
+							const bytes = parseInt(r.headers.get("content-length"));
+							if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
+						})
+						.catch(() => {});
+				}
+			})
 			.catch((err) => setError(err.message))
 			.finally(() => setLoading(false));
 	}, [id]);
@@ -55,6 +57,15 @@ export default function ProjectPageDetails() {
 
 	const embedUrl = getYoutubeEmbedUrl(project.video?.path);
 	const categoryIcon = CATEGORY_ICONS[project.course];
+
+	const handleMagazineOpen = async () => {
+    const url = `https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`;
+    const res = await fetch(url);
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
+    window.open(blobUrl, "_blank");
+};
+
 
 	return (
 		<div className="ctx">
@@ -141,16 +152,10 @@ export default function ProjectPageDetails() {
 								{project.magazine && (
 									<div className="magButton">
 										<button
-											onClick={() =>
-												downloadPdf(
-													project.magazine?.url ??
-														`https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`,
-													project.name,
-												)
-											}
+											onClick={handleMagazineOpen}
 										>
 											<img src="/assets/download_icon.svg" alt="download" />
-											Mijn magazine (PDF)
+											Mijn magazine (PDF){magazineSize ? ` • ${magazineSize}` : ""}
 										</button>
 									</div>
 								)}

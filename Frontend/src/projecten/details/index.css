@@ -113,7 +113,7 @@
 	.icons {
 		display: flex;
 		gap: 16px;
-		min-width: 40%;
+		min-width: 30%;
 		align-items: center;
 	}
 }
@@ -127,6 +127,13 @@
 		margin-right: 15px;
 		width: 25px;
 	}
+}
+
+.studentTop {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
 }
 
 .videoHolder {
@@ -171,9 +178,22 @@
 	margin: 32px 0 16px 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1680px) {
+	.studentCards {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+	}
+
+	.studentTop,
+	.studentInfo {
+		display: contents;
+	}
+
 	.picture {
-		align-content: center;
+		flex: 0 0 auto;
+		margin-right: 15px;
+		align-self: center;
 
 		img {
 			width: 80px;
@@ -181,25 +201,35 @@
 		}
 	}
 
+	.studentName {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.studentContact {
+		flex: 0 0 100%;
+		margin-top: 12px;
+		padding-left: 5px;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+
+		.icons {
+			min-width: unset;
+			margin-right: 0;
+		}
+	}
+
 	.magButton button {
 		font-size: 10pt;
 
 		img {
-			width: 20px;
+			display: none;
 		}
 	}
 
 	.titleNames {
 		flex-direction: column;
 		justify-content: center;
-	}
-
-	.studentContact {
-		gap: 8px;
-
-		.icons {
-			min-width: 60%;
-		}
 	}
 
 	.videoHolder {
