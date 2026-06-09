@@ -34,6 +34,11 @@ export default function ProjectPageDetails() {
 		return () => document.documentElement.classList.remove("alt-bg");
 	}, []);
 
+	useEffect(() => {
+		document.documentElement.classList.add("alt-icons");
+		return () => document.documentElement.classList.remove("alt-icons");
+	}, []);
+
 	if (loading) return <p className="ctx">Laden...</p>;
 	if (error) return <p className="ctx">Fout: {error}</p>;
 	if (!project) return null;

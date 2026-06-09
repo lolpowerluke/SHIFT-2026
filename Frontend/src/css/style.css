@@ -42,6 +42,10 @@ html.alt-bg::before {
 	outline-offset: -6px;
 }
 
+html.alt-bg body::before {
+    opacity: 0.6;
+}
+
 body::before {
 	content: '';
 	position: fixed;
