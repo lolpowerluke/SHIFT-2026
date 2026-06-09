@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import s from "./ProjectForm.module.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
-const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB limit
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB limit
 const MAX_PDF_SIZE = 10 * 1024 * 1024; // 10MB limit
 
 async function apiFetch(path, opts = {}) {
@@ -50,7 +50,7 @@ function validateImageFile(file) {
 	if (!file) return "Missing image";
 
 	if (file.size > MAX_IMAGE_SIZE) {
-		return "Afbeelding mag max 1MB zijn";
+		return "Afbeelding mag max 2MB zijn";
 	}
 
 	return null;
@@ -462,7 +462,7 @@ export default function ProjectForm() {
 					<div className={s.part}>
 						<h3>Project info</h3>
 						<div>
-							<label htmlFor="nameProject">Project title *</label>
+							<label htmlFor="nameProject">Project titel *</label>
 							<input
 								type="text"
 								id="nameProject"
@@ -474,7 +474,7 @@ export default function ProjectForm() {
 							/>
 						</div>
 						<div>
-							<label htmlFor="description">Descriptie *</label>
+							<label htmlFor="description">Omschrijving *</label>
 							<textarea
 								className={s.projectInfo}
 								id="description"
@@ -599,6 +599,7 @@ export default function ProjectForm() {
 						</div>
 						<div>
 							<label htmlFor="choose-selfieFile">Portretfoto</label>
+							<small>Max 2MB</small>
 							{selfieFile ? (
 								<>
 									<FilePill
@@ -728,6 +729,7 @@ export default function ProjectForm() {
 								</div>
 								<div>
 									<label htmlFor="choose-secondselfiefile">Portretfoto</label>
+									<small>Max 2MB</small>
 									{p2SelfieFile ? (
 										<>
 											<FilePill
@@ -778,6 +780,7 @@ export default function ProjectForm() {
 						{/* Images */}
 						<div>
 							<label htmlFor="choose-projectFile">Projectbeeld *</label>
+							<small>Max 2MB</small>
 							{imagePreviewURLs.length > 0 ? (
 								<>
 									<FilePill
@@ -814,9 +817,9 @@ export default function ProjectForm() {
 
 						{/* Video URL */}
 						<div>
-							<label htmlFor="videoURL">Showreal</label>
+							<label htmlFor="videoURL">Showreel</label>
 							<small>
-								Plaats je showreal op Youtube (unlisted) en laat hier de link
+								Plaats je showreel op Youtube (unlisted) en laat hier de link
 								achter.
 							</small>
 							<input
