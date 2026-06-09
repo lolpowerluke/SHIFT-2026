@@ -142,7 +142,7 @@
 }
 
 .cardImage {
-	width: 100%;
+	width: 99%;
 	aspect-ratio: 392 / 229;
 	object-fit: cover;
 	border: 3px solid var(--border-primary);
@@ -154,7 +154,7 @@
 	position: absolute;
 	bottom: -36px;
 	right: 10px;
-	gap: 13px;
+	gap: 10px;
 	display: flex;
 }
 
