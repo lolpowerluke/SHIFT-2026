@@ -297,6 +297,17 @@
 	}
 }
 
+.shiftTimeDate,
+.shiftLocationCampus {
+	h3 {
+		margin-top: 0;
+	}
+
+	p {
+		margin: 0;
+	}
+}
+
 .sectionDivider {
 	border: none;
 	border-top: 3px solid var(--border-primary);
@@ -418,6 +429,12 @@
 		border: 3px solid var(--bg-shift-secondary);
 		border-radius: 0.5rem;
 	}
+}
+
+.infoSection {
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
 }
 
 @media (min-width: 1024px) {
@@ -564,8 +581,6 @@
 	}
 
 	.infoSection {
-		display: flex;
-		flex-direction: column;
 		gap: 70px;
 	}
 

@@ -161,7 +161,7 @@ export default function Countdown() {
 									<div className={s.iconCalendar}>
 										<img src="/assets/icons/CalendarBlue.svg" alt="Kalender" />
 									</div>
-									<div>
+                                    <div className={s.shiftTimeDate}>
 										<h3>VRIJDAG 19 JUNI</h3>
 										<p>17:00 - 21:30</p>
 									</div>
@@ -173,7 +173,7 @@ export default function Countdown() {
 									<div className={s.iconMap}>
 										<img src="/assets/icons/LocationBlue.svg" alt="Locatie" />
 									</div>
-									<div>
+									<div className={s.shiftLocationCampus}>
 										<h3>ERASMUS HOGESCHOOL CAMPUS KAAI</h3>
 									</div>
 									<button className={s.btnMaps} onClick={handleOpenMaps}>
