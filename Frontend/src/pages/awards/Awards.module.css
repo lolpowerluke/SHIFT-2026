@@ -1,6 +1,9 @@
 .bodyContainer {
+    display: flex;
+    flex-direction: column;
     max-width: 85vw;
     margin: 0 auto;
+    text-align: center;
 }
 .heroContent {
     display: flex;
@@ -24,6 +27,7 @@
     height:auto;
     transform: rotate(10deg);
     margin-top: 100px;
+    justify-self: center;
 }
 .votingContainer {
     background-color: var(--bg-shift-secondary);
@@ -111,6 +115,20 @@
         width: 25rem;
         height: 15rem;
     }
+    .heroContent {
+        background-color: var(--bg-shift-alt);
+        border-radius: 10px;
+        border: 4px solid var(--border-primary);
+        box-shadow: 4px 4px 0 var(--shadow-primary);
+        max-width: fit-content;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+    }
+    .heroContent button {
+        background-color: var(--btn-secondary-bg);
+    }
     .comingSoonImg {
         display: block;
         position: relative;
@@ -123,8 +141,18 @@
     .buttonsContainer {
         flex-direction: row;
         align-items: flex-start;
+        gap: 3rem;
+        margin-top: 3rem;
     }
     .buttonsContainer p {
         max-width: 300px;
+    }
+    .divider {
+        height: 240px;
+        width: 1px;
+        border-left: 3px solid var(--shadow-primary);
+    }
+    .heroData div {
+        width: 100px;
     }
 }

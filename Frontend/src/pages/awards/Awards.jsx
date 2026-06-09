@@ -10,13 +10,17 @@ export default function Awards() {
             <img src="/assets/heroContent/ComingSoonAward.png" alt="comingSoon" className={s.comingSoonImg} />
         </div>
             <div className={s.bodyContainer}>
-                <div className={s.heroContent}>
+                <div className={s.heroContainer}>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="awards" className={s.awardsImg} />
                     <h1 className={s.heroTitle}>SHIFT AWARDS</h1>
+                </div>
+                <div className={s.heroContent}>
                     <div className={s.buttonsContainer}>
                         <div>
                             <button className={s.discoverBtn}>Bezoek het evenement</button>
                             <p>Vier categorieën die excellentie erkennen in innovatie, impact en creativiteit.</p>
+                        </div>
+                        <div className={s.divider}>
                         </div>
                         <div>
                             <button className={s.projectsBtn}>Ontdek alle projecten</button>
