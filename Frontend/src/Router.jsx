@@ -22,7 +22,6 @@ const router = createBrowserRouter([
                 path: Routes.Privacy,
                 element: <PrivacyRedirect />,
                 children: [
-                    { index: true, element: <PrivacyRedirect /> },
                     { path: Routes.privacyEN, element: <PrivacyEN /> },
                     { path: Routes.privacyNL, element: <PrivacyNL /> },
                 ],
@@ -33,7 +32,7 @@ const router = createBrowserRouter([
             { path: Routes.ProjectForm, element: <ProjectForm /> },
             { path: Routes.ProjectenPage, element: <ProjectenPage /> },
             { path: Routes.ProjectenPageDetails, element: <ProjectPageDetails /> },
-            { path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
+            // { path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
             {
                 element: <SearchLayout />, //this will hold all search logic for the projects
                 children: [{ path: "/projects", element: "Projects" }],
@@ -42,7 +41,7 @@ const router = createBrowserRouter([
     },
     {
         element: <BareLayout />,
-        children: [{ path: Routes.Root, element: <Countdown /> }],
+        children: [],
     },
 ]);
 export default router;
