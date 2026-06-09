@@ -20,9 +20,9 @@
         --shift-logo-height: 29rem;
     }
 
-    @media only screen and (min-width: 1280px){
-        --shift-logo-height: 35rem;
-    }
+    /*@media only screen and (min-width: 1280px){*/
+    /*    --shift-logo-height: 35rem;*/
+    /*}*/
 
 }
 
