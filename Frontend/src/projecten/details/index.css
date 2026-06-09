@@ -221,7 +221,7 @@
 	}
 
 	.magButton button {
-		font-size: 10pt;
+		font-size: 16pt;
 
 		img {
 			display: none;
@@ -236,6 +236,15 @@
 	.videoHolder {
 		iframe {
 			width: auto;
+		}
+	}
+}
+
+@media (max-width: 350px) {
+	.magButton {
+
+		button {
+			font-size: 10pt;
 		}
 	}
 }
