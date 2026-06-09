@@ -1,9 +1,10 @@
 .wrap {
-	display: flex;
-	margin: 2rem auto;
-	h2 {
-		margin-bottom: 2rem;
-	}
+    display: flex;
+    margin: 2rem auto;
+
+    h2 {
+        margin-bottom: 2rem;
+    }
 }
 
 .heroContent {
@@ -11,6 +12,13 @@
 }
 
 .heroLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+    margin-left: 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -373,13 +381,47 @@
 }
 
 .landingWrap {
-	position: relative;
-	display: flex;
-	flex-direction: column;
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    justify-content: center;
+    height: 100vh;
+    margin-top: -116px;
+    gap: 50px;
 
-	.heroLayout {
-		margin-left: 0;
-	}
+    .timerDiv {
+        display: grid;
+        align-self: center;
+        margin: 0 auto;
+
+        #timer {
+            .timerBox {
+                color: var(--txt-special);
+            }
+        }
+
+        .cta {
+            margin-left: 10px;
+        }
+    }
+}
+
+#scrollPointer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: -100px;
+    height: 50px;
+    width: fit-content;
+    align-self: self-end;
+    margin: 0 auto;
+    bottom: 20px;
+    animation: upDown 1.4s ease-in-out infinite;
+
+    img {
+        height: 100%;
+        transform: rotate(180deg);
+    }
 }
 
 @media (min-width: 1024px) {
@@ -425,14 +467,15 @@
 		}
 	}
 
-	.heroContent {
-		display: block;
-		position: absolute;
-		top: 0;
-		z-index: -1;
-		height: 100vh;
-		width: 100%;
-		overflow: hidden;
+    .heroContent {
+        display: block;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        box-shadow: -1px 3px 10px 5px color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
 
 		img {
 			width: 100%;
@@ -444,9 +487,7 @@
 			object-fit: cover;
 		}
 
-		box-shadow: -1px 3px 10px 5px
-			color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
-	}
+    }
 
 	#heroLogo {
 		margin: 0 -30px -80px;
