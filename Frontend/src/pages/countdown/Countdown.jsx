@@ -4,22 +4,22 @@ import "../../css/style.css";
 import { useCountdown } from "../../js/countdown.js";
 
 export default function Countdown() {
-	const { timeLeft, blinkingS } = useCountdown();
+    const { timeLeft, blinkingS } = useCountdown();
 
-	const [currentIndex, setCurrentIndex] = useState(0);
-	const placeholders = [
-		{ id: 1, title: "Project Alpha" },
-		{ id: 2, title: "Project Beta" },
-		{ id: 3, title: "Project Gamma" },
-	];
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const placeholders = [
+        { id: 1, title: "Project Alpha" },
+        { id: 2, title: "Project Beta" },
+        { id: 3, title: "Project Gamma" },
+    ];
 
-	const handleOpenMaps = () => {
-		window.open(
-			"https://maps.app.goo.gl/rZ8pQ7jYJph3tR3L9",
-			"_blank",
-			"noopener,noreferrer",
-		);
-	};
+    const handleOpenMaps = () => {
+        window.open(
+            "https://maps.app.goo.gl/rZ8pQ7jYJph3tR3L9",
+            "_blank",
+            "noopener,noreferrer",
+        );
+    };
 
 	return (
 		<>
@@ -33,88 +33,86 @@ export default function Countdown() {
 				</video>
 			</div>
 
-			<div className={s.landingWrap}>
-				<div>
-					<div className={s.heroLayout}>
-						<div>
-							<img
-								src="../../assets/logos/shift_logo.svg"
-								id={s.heroLogo}
-								fetchPriority="high"
-								alt="SHIFT Logo"
-							/>
-						</div>
-						<div>
-							<div className={s.heroWrapper}>
-								<div className={s.rotatedText}>
-									<h1>Eindprojecten</h1>
-									<div className={s.heroText}>
-										<div className={s.courseHeroText}>
-											<h1>
-												OPLEIDING MULTIMEDIA
-												<br />
-												CREATIEVE TECHNOLOGIE
-											</h1>
-										</div>
-										<div>&</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+            <div className={s.landingWrap}>
+                <div>
+                    <div className={s.heroLayout}>
+                        <div>
+                            <img
+                                src="../../assets/logos/shift_logo.svg"
+                                id={s.heroLogo}
+                                fetchPriority="high"
+                                alt="SHIFT Logo"
+                            />
+                        </div>
+                        <div>
+                            <div className={s.heroWrapper}>
+                                <div className={s.rotatedText}>
+                                    <h1>Eindprojecten</h1>
+                                    <div className={s.heroText}>
+                                        <div className={s.courseHeroText}>
+                                            <h1>
+                                                OPLEIDING MULTIMEDIA
+                                                <br />
+                                                CREATIEVE TECHNOLOGIE
+                                            </h1>
+                                        </div>
+                                        <div>&</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-				<div className={`${s.timerDiv} xlarge`}>
-					{timeLeft ? (
-						<>
-							<div className={s.cd}>
-								<span>We tellen af!</span>
-							</div>
-							<div id={s.timer}>
-								<div className={s.timerBox}>
-									<span className="darkText">{timeLeft.days}</span>
-									<span>Dagen</span>
-								</div>
-								<div className={s.timerBox}>
-									<span className="darkText">{timeLeft.hours}</span>
-									<span>Uren</span>
-								</div>
-								<div className={s.timerBox}>
-									<span className="darkText">{timeLeft.minutes}</span>
-									<span>Minuten</span>
-								</div>
-								<div className={s.timerBox}>
-									<span>
-										<span
-											className={
-												blinkingS === s.seconds ? s.hidden : "darkText"
-											}
-										>
-											{timeLeft.seconds}
-										</span>
-									</span>
-									<span>Seconden</span>
-								</div>
-							</div>
-							<div className={`${s.cta} section`}>
-								<a
-									href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-									className={`${s.linkBtn} linkBtn`}
-									target="_blank"
-									rel="noreferrer"
-								>
-									Schrijf je nu gratis in!
-								</a>
-							</div>
-						</>
-					) : (
-						"LIVE NOW!"
-					)}
-				</div>
-				<a href="#about" id={s.scrollPointer}>
-					<img src="/assets/icons/pointer2.svg" alt="scroll!" />
-				</a>
-			</div>
+                <div className={`${s.timerDiv} xlarge`}>
+                    {
+                        timeLeft ? (
+                            <>
+                                <div className={s.cd}>
+                                    <span>We tellen af!</span>
+                                </div>
+                                <div id={s.timer}>
+                                    <div className={s.timerBox}>
+                                        <span className="darkText">{timeLeft.days}</span>
+                                        <span>Dagen</span>
+                                    </div>
+                                    <div className={s.timerBox}>
+                                        <span className="darkText">{timeLeft.hours}</span>
+                                        <span>Uren</span>
+                                    </div>
+                                    <div className={s.timerBox}>
+                                        <span className="darkText">{timeLeft.minutes}</span>
+                                        <span>Minuten</span>
+                                    </div>
+                                    <div className={s.timerBox}>
+                                        <span>
+                                            <span className={blinkingS === s.seconds ? s.hidden : "darkText"}>
+                                                {timeLeft.seconds}
+                                            </span>
+                                        </span>
+                                        <span>Seconden</span>
+                                    </div>
+                                </div>
+                                <div className={`${s.cta} section`}>
+                                    <a
+                                        href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+                                        className={`${s.linkBtn} linkBtn`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Schrijf je nu gratis in!
+                                    </a>
+                                </div>
+                            </>
+                        ) : (
+                            "LIVE NOW!"
+                        )
+                    }
+                </div>
+                <a href="#experience" id={s.scrollPointer}>
+                    <img src="/assets/icons/pointer2.svg" alt="scroll!"/>
+                </a>
+            </div>
 
 			<div
 				id="about"
@@ -211,53 +209,42 @@ export default function Countdown() {
 							<p>Toon je werk aan honderden bezoekers en professionals.</p>
 						</div>
 
-						<div className={s.audienceCard}>
-							<div className={s.iconPaper}>
-								<img src="/assets/icons/paper.svg" alt="Bedrijven" />
-							</div>
-							<h3>Bedrijven</h3>
-							<p>Ontdek jong digitaal talent voor stages en jobs.</p>
-						</div>
+                        <div className={s.audienceCard}>
+                            <div className={
+                                s.iconPaper}>
+                                <img src="/assets/icons/paper.svg" alt="Bedrijven" />
+                            </div>
+                            <h3>Bedrijven</h3>
+                            <p>Ontdek jong digitaal talent voor stages en jobs.</p>
+                        </div>
 
-						<div className={s.audienceCard}>
-							<div className={s.iconChatBubble}>
-								<img src="/assets/icons/chat-bubble.svg" alt="Bezoekers" />
-							</div>
-							<h3>tech-lovers</h3>
-							<p>Ontdek. Test. Laat je verrassen.</p>
-						</div>
+                        <div className={s.audienceCard}>
+                            <div className={
+                                s.iconChatBubble}>
+                                <img src="/assets/icons/chat-bubble.svg" alt="Bezoekers" />
+                            </div>
+                            <h3>tech-lovers</h3>
+                            <p>Ontdek. Test. Laat je verrassen.</p>
+                        </div>
 
-						<div className={s.audienceCard}>
-							<div className={s.iconStar}>
-								<img src="/assets/icons/star.svg" alt="Stemmen" />
-							</div>
-							<h3>bezoekers</h3>
-							<p>Stem mee en bepaal de publiekswinnaar.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div className={s.infoMultimediaCard}>
-				<div className={s.textContainer}>
-					<h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
-					<p>
-						<a href="https://www.erasmushogeschool.be/opleidingen/multimedia-en-creatieve-technologie">
-							Multimedia & Creatieve Technologie
-						</a>{" "}
-						is een Bacheloropleiding op{" "}
-						<a href="https://www.erasmushogeschool.be/">
-							Erasmus Hogeschool Brussel.
-						</a>{" "}
-						<br></br>
-						<br></br> Hier komen design en technologie samen om digitale
-						ervaringen te bouwen.
-					</p>
-				</div>
-				<img
-					src="/assets/opleidingPlaceholder.jpg"
-					alt="Multimedia & Creatieve Technologie"
-				/>
-			</div>
-		</>
-	);
+                        <div className={s.audienceCard}>
+                            <div className={
+                                s.iconStar}>
+                                <img src="/assets/icons/star.svg" alt="Stemmen" />
+                            </div>
+                            <h3>bezoekers</h3>
+                            <p>Stem mee en bepaal de publiekswinnaar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={s.infoMultimediaCard}>
+                <div className={s.textContainer}>
+                    <h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
+                    <p><a href="https://www.erasmushogeschool.be/opleidingen/multimedia-en-creatieve-technologie">Multimedia & Creatieve Technologie</a> is een Bacheloropleiding op <a href="https://www.erasmushogeschool.be/">Erasmus Hogeschool Brussel.</a> <br></br><br></br> Hier komen design en technologie samen om digitale ervaringen te bouwen.</p>
+                </div>
+                <img src="/assets/opleidingPlaceholder.jpg" alt="Multimedia & Creatieve Technologie" />
+            </div>
+        </>
+    );
 }
