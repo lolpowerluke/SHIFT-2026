@@ -218,7 +218,7 @@ export default function Countdown() {
                     </div>
                 </div>
             </div>
-            <br/>            <br/>
+            <br/>
             <div className={`${s.infoMultimediaCard} section`}>
                 <div className={s.textContainer}>
                     <div>

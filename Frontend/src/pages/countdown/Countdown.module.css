@@ -442,6 +442,7 @@
     justify-self: center;
     overflow: hidden;
     box-sizing: border-box;
+    margin-top: var(--spacing-s);
 
     img {
         border: 3px solid var(--bg-shift-secondary);
