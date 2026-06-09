@@ -178,46 +178,44 @@
 	margin: 32px 0 16px 0;
 }
 
-@media (max-width: 640px) {
-	.studentTop {
+@media (max-width: 1680px) {
+	.studentCards {
 		display: flex;
-		flex-direction: row;
-		align-items: center;
-		width: 100%;
-	}
-
-	.studentInfo {
-		flex-direction: row;
 		flex-wrap: wrap;
-		width: 100%;
+		align-items: flex-start;
 	}
 
-	.studentName {
-		flex: 1;
-		width: 100%;
-	}
-
-	.studentContact {
-		width: 100%;
-		margin-top: 8px;
-		gap: 8px;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		justify-content: space-between;
-
-		.icons {
-			margin-right: 15px;
-		}
+	.studentTop,
+	.studentInfo {
+		display: contents;
 	}
 
 	.picture {
-		margin-top: 10px;
-		height: min-content;
-		flex-shrink: 0;
+		flex: 0 0 auto;
+		margin-right: 15px;
+		align-self: center;
 
 		img {
 			width: 80px;
 			height: 80px;
+		}
+	}
+
+	.studentName {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.studentContact {
+		flex: 0 0 100%;
+		margin-top: 12px;
+		padding-left: 5px;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+
+		.icons {
+			min-width: unset;
+			margin-right: 0;
 		}
 	}
 
