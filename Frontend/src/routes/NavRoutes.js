@@ -1,6 +1,6 @@
 import Routes from "./constants/Routes";
 
 export const NavRoutes = [
-	{ route: Routes.Root, label: "Home" },
-	{ route: Routes.Info, label: "Locatie" },
+	{ route: Routes.Root, label: "Start" },
+	{ route: Routes.Info, label: "Praktisch" },
 ];
