@@ -13,16 +13,13 @@ const CATEGORY_ICONS = {
 	"Web & Mobile": "/assets/OrangeCoding.svg",
 };
 
-async function downloadPdf(url, filename) {
-	const res = await fetch(url);
-	const blob = await res.blob();
-	const blobUrl = URL.createObjectURL(blob);
-	const a = document.createElement("a");
-	a.href = blobUrl;
-	a.download = `${filename}-Magazine.pdf`;
-	a.click();
-	URL.revokeObjectURL(blobUrl);
-}
+const handleMagazineOpen = async () => {
+    const url = `https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`;
+    const res = await fetch(url);
+    const blob = await res.blob();
+    const blobUrl = URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
+    window.open(blobUrl, "_blank");
+};
 
 export default function ProjectPageDetails() {
 	const [searchParams] = useSearchParams();
@@ -107,7 +104,6 @@ export default function ProjectPageDetails() {
 			<div className="studentCardDiv">
 				{(project.members ?? []).map((m) => (
 					<div className="studentCards" key={m.id}>
-						<div className="studentTop">
 						<div className="picture">
 							<img
 								src={getCloudinaryUrl(m.picture) ?? "/assets/user.png"}
@@ -142,13 +138,7 @@ export default function ProjectPageDetails() {
 								{project.magazine && (
 									<div className="magButton">
 										<button
-											onClick={() =>
-												downloadPdf(
-													project.magazine?.url ??
-														`https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`,
-													project.name,
-												)
-											}
+											onClick={handleMagazineOpen}
 										>
 											<img src="/assets/download_icon.svg" alt="download" />
 											Mijn magazine (PDF)
@@ -157,7 +147,6 @@ export default function ProjectPageDetails() {
 								)}
 							</div>
 						</div>
-					   </div>
 					</div>
 				))}
 			</div>
