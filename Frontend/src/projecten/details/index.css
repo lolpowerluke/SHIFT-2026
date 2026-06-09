@@ -85,6 +85,7 @@ body::before.index {
 
 .picture {
     margin-right: 20px;
+    align-content: center;
 
     img {
 	width: 128px;
