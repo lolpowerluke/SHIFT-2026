@@ -107,6 +107,7 @@ export default function ProjectPageDetails() {
 			<div className="studentCardDiv">
 				{(project.members ?? []).map((m) => (
 					<div className="studentCards" key={m.id}>
+						<div className="studentTop">
 						<div className="picture">
 							<img
 								src={getCloudinaryUrl(m.picture) ?? "/assets/user.png"}
@@ -156,6 +157,7 @@ export default function ProjectPageDetails() {
 								)}
 							</div>
 						</div>
+					   </div>
 					</div>
 				))}
 			</div>
