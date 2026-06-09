@@ -1,187 +1,175 @@
 body::before.index {
-    background-color: var(--bg-shift-secondary);
-    outline: 6px solid var(--bg-shift-primary);
-     
+	background-color: var(--bg-shift-secondary);
+	outline: 6px solid var(--bg-shift-primary);
 }
 
-
-
 .backButton {
-    button {
-    display: flex;
-    max-width: 40%;
+	button {
+		display: flex;
+		max-width: 40%;
+	}
 
-    }
-
-    img {
-        margin-right: 15px;
-    }
+	img {
+		margin-right: 15px;
+	}
 }
 
 .titleText {
-    display: flex;
-    flex-direction: column;
-    gap: -4px
-    ;
-    
-    h1 {
-        margin: 0;
-        margin-top: 25px;
-    }
+	display: flex;
+	flex-direction: column;
+	gap: -4px;
 
-    .name {
-        flex-wrap: wrap;
-        max-width: 50%;
-    }
+	h1 {
+		margin: 0;
+		margin-top: 25px;
+	}
 
-    .subject {
-        max-width: 50%;
-        align-items: center;
+	.name {
+		flex-wrap: wrap;
+		max-width: 50%;
+	}
 
-        img {
-            width: 30px;
-        }
-    }
-    
+	.subject {
+		max-width: 50%;
+		align-items: center;
 
-    div {
+		img {
+			width: 30px;
+		}
+	}
 
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+	div {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 
-        img {
-        width: 40px;
-        
-        }
-    }
+		img {
+			width: 40px;
+		}
+	}
+}
+
+.promoterTitle {
+	font-style: bold;
 }
 
 .imgDiv {
-    img {
-        width: 100%;
-        outline: 6px solid var(--bg-shift-primary);
-
-    }
+	img {
+		width: 100%;
+		outline: 6px solid var(--bg-shift-primary);
+	}
 }
 
-
 .studentCardDiv {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 16px;
 }
 
 .studentCards {
-    background-color: var(--bg-shift-primary);
-    border: 5px solid black;
-    border-radius: 10px;
-    padding: 15px;
-    flex: 1 1 300px;
-    display: flex;
-    box-sizing: border-box;
+	background-color: var(--bg-shift-primary);
+	border: 5px solid black;
+	border-radius: 10px;
+	padding: 15px;
+	flex: 1 1 300px;
+	display: flex;
+	box-sizing: border-box;
 }
 
 .picture {
-    margin-right: 20px;
-    align-content: center;
+	margin-right: 20px;
+	align-content: center;
 
-    img {
-	width: 128px;
-	height: 128px;
-	border-radius: 50%;
-	border: 4px solid var(--txt-shift-primary);
-	object-fit: cover;
-    }
+	img {
+		width: 128px;
+		height: 128px;
+		border-radius: 50%;
+		border: 4px solid var(--txt-shift-primary);
+		object-fit: cover;
+	}
 }
 
 .studentInfo {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 .studentContact {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 8px;
-    align-items: center;
-    width: 100%;
-    margin-top: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 8px;
+	align-items: center;
+	width: 100%;
+	margin-top: auto;
 
-    .icons {
-        display: flex;
-        gap: 16px;
-        min-width: 40%;
-        align-items: center;
-    }
+	.icons {
+		display: flex;
+		gap: 16px;
+		min-width: 40%;
+		align-items: center;
+	}
 }
-
 
 .magButton {
+	button {
+		display: flex;
+	}
 
-    button {
-    display: flex;
-
-    }
-
-    img {
-        margin-right: 15px;
-        width: 25px;
-    }
+	img {
+		margin-right: 15px;
+		width: 25px;
+	}
 }
 
-
 .videoHolder {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-    iframe {
-        aspect-ratio: 16 / 9;
-    }
+	iframe {
+		aspect-ratio: 16 / 9;
+	}
 }
 
 @media (max-width: 640px) {
-    .picture  {
-        align-content: center;
-        
-        img {
-        width: 80px;
-        height: 80px;
-        }
-    }
-    
-    .magButton button {
-        font-size: 10pt;
+	.picture {
+		align-content: center;
 
-        img {
-            width: 20px;
-        }
-    }
+		img {
+			width: 80px;
+			height: 80px;
+		}
+	}
 
-    .titleNames {
-        flex-direction: column;
-        justify-content: center;
-    }
+	.magButton button {
+		font-size: 10pt;
 
-    .studentContact  {
-        justify-content: center;
-        gap: 8px;
+		img {
+			width: 20px;
+		}
+	}
 
-        .icons {
-            min-width: 60%;
-    }
-    }
+	.titleNames {
+		flex-direction: column;
+		justify-content: center;
+	}
 
-    .videoHolder {
+	.studentContact {
+		justify-content: center;
+		gap: 8px;
 
-        iframe {
-            width: auto;
-        }
-    }
-    
+		.icons {
+			min-width: 60%;
+		}
+	}
+
+	.videoHolder {
+		iframe {
+			width: auto;
+		}
+	}
 }

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams, useNavigate } from "react-router";
 import "./index.css";
-import { getCloudinaryUrl, getYoutubeEmbedUrl } from "../../utils/cloudinary.js";
+import {
+	getCloudinaryUrl,
+	getYoutubeEmbedUrl,
+} from "../../utils/cloudinary.js";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
@@ -55,9 +58,9 @@ export default function ProjectPageDetails() {
 					<div className="titleNames">
 						<div className="name">
 							<p>
-							{(project.members ?? [])
-								.map((m) => `${m.firstname} ${m.lastname}`)
-								.join(" & ")}
+								{(project.members ?? [])
+									.map((m) => `${m.firstname} ${m.lastname}`)
+									.join(" & ")}
 							</p>
 						</div>
 						<div className="subject">
@@ -72,14 +75,18 @@ export default function ProjectPageDetails() {
 
 			<div className="imgDiv">
 				<img
-					src={getCloudinaryUrl(project.media?.[0]) ?? getCloudinaryUrl(project.images?.[0]) ?? "/assets/imageCard.png"}
+					src={
+						getCloudinaryUrl(project.media?.[0]) ??
+						getCloudinaryUrl(project.images?.[0]) ??
+						"/assets/imageCard.png"
+					}
 					alt={project.name}
 				/>
 			</div>
 
 			<div>
 				<p>{project.description}</p>
-				<p>
+				<p className="promoterTitle">
 					<b>Promoter</b>
 				</p>
 				<p className="promoterName">{project.promoter}</p>
@@ -98,7 +105,9 @@ export default function ProjectPageDetails() {
 							<div className="studentName">
 								<p>
 									<b>
-										{[m.firstname, m.lastname].filter(Boolean).join(" ") || m.email || "Onbekend"}
+										{[m.firstname, m.lastname].filter(Boolean).join(" ") ||
+											m.email ||
+											"Onbekend"}
 									</b>
 								</p>
 								<p>Multimedia & Creatieve Technologie</p>
