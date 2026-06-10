@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useSearchParams, useNavigate } from "react-router";
-import "./index.css";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
+import s from "./Detail.module.css";
 import {
 	getCloudinaryUrl,
 	getYoutubeEmbedUrl,
-} from "../../utils/cloudinary.js";
+} from "../../../utils/cloudinary.js";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
@@ -13,10 +13,9 @@ const CATEGORY_ICONS = {
 	"Web & Mobile": "/assets/OrangeCoding.svg",
 };
 
-export default function ProjectPageDetails() {
-	const [searchParams] = useSearchParams();
-	const slug = searchParams.get("project") ?? searchParams.get("id");
-	const id = slug?.split("-").pop();
+export default function Detail() {
+	const { id: slug } = useParams();
+	const id = slug.split("-").at(-1);
 	const navigate = useNavigate();
 	const [project, setProject] = useState(null);
 	const [playing, setPlaying] = useState(false);
@@ -40,7 +39,7 @@ export default function ProjectPageDetails() {
 							const bytes = parseInt(r.headers.get("content-length"));
 							if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
 						})
-						.catch(() => {});
+						.catch(() => { });
 				}
 			})
 			.catch((err) => setError(err.message))
@@ -60,34 +59,34 @@ export default function ProjectPageDetails() {
 	const categoryIcon = CATEGORY_ICONS[project.course];
 
 	const handleMagazineOpen = async () => {
-    const url = `https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`;
-    const res = await fetch(url);
-    const blob = await res.blob();
-    const blobUrl = URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
-    window.open(blobUrl, "_blank");
-};
+		const url = `https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`;
+		const res = await fetch(url);
+		const blob = await res.blob();
+		const blobUrl = URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
+		window.open(blobUrl, "_blank");
+	};
 
 
 	return (
 		<div className="ctx">
 			<div className="titleDiv">
-				<div className="backButton">
+				<div className={s.backButton}>
 					<button onClick={() => navigate(-1)}>
 						<img src="/assets/arrow_back.svg" alt="Back arrow Icon" />
 						Back
 					</button>
 				</div>
-				<div className="titleText">
+				<div className={s.titleText}>
 					<h1>{project.name}</h1>
 					<div className="titleNames">
-						<div className="name">
+						<div className={s.name}>
 							<p>
 								{(project.members ?? [])
 									.map((m) => `${m.firstname} ${m.lastname}`)
 									.join(" & ")}
 							</p>
 						</div>
-						<div className="subject">
+						<div className={s.subject}>
 							{categoryIcon && <img src={categoryIcon} alt={project.course} />}
 							<p>
 								<b>{project.course}</b>
@@ -97,7 +96,7 @@ export default function ProjectPageDetails() {
 				</div>
 			</div>
 
-			<div className="imgDiv">
+			<div className={s.imgDiv}>
 				<img
 					src={
 						getCloudinaryUrl(project.media?.[0]) ??
@@ -109,57 +108,57 @@ export default function ProjectPageDetails() {
 			</div>
 
 			<div>
-				<p className="description">{project.description}</p>
-				<p className="promoterTitle">
+				<p className={s.description}>{project.description}</p>
+				<p className={s.promoterTitle}>
 					<b>Promoter</b>
 				</p>
 				<p className="promoterName">{project.promoter}</p>
 			</div>
 
-			<div className="studentCardDiv">
+			<div className={s.studentCardDiv}>
 				{(project.members ?? []).map((m) => (
-					<div className="studentCards" key={m.id}>
-						<div className="picture">
-							<img
-								src={getCloudinaryUrl(m.picture) ?? "/assets/user.png"}
-								alt={`${m.firstname ?? ""} ${m.lastname ?? ""}`.trim()}
-							/>
-						</div>
-						<div className="studentInfo">
-							<div className="studentName">
-								<p>
-									<b>
-										{[m.firstname, m.lastname].filter(Boolean).join(" ") ||
-											m.email ||
-											"Onbekend"}
-									</b>
-								</p>
-								<p>Multimedia & Creatieve Technologie</p>
+					<div className={s.studentCards} key={m.id}>
+						<div className={s.studentTop}>
+							<div className={s.picture}>
+								<img
+									src={getCloudinaryUrl(m.picture) ?? "/assets/user.png"}
+									alt={`${m.firstname ?? ""} ${m.lastname ?? ""}`.trim()}
+								/>
 							</div>
-							<div className="studentContact">
-								<div className="icons">
-									<a href={`mailto:${m.email}`}>
-										<img src="/assets/mail_Icon.svg" alt="Email Icon" />
-									</a>
-									{m.socials?.[0] && (
-										<a href={m.socials[0]} target="_blank" rel="noreferrer">
-											<img
-												src="/assets/linkedIn_Icon.svg"
-												alt="LinkedIn Icon"
-											/>
+							<div className={s.studentInfo}>
+								<div className={s.studentName}>
+									<p>
+										<b>
+											{[m.firstname, m.lastname].filter(Boolean).join(" ") ||
+												m.email ||
+												"Onbekend"}
+										</b>
+									</p>
+									<p>Multimedia & Creatieve Technologie</p>
+								</div>
+								<div className={s.studentContact}>
+									<div className={s.icons}>
+										<a href={`mailto:${m.email}`}>
+											<img src="/assets/mail_Icon.svg" alt="Email Icon" />
 										</a>
+										{m.socials?.[0] && (
+											<a href={m.socials[0]} target="_blank" rel="noreferrer">
+												<img
+													src="/assets/linkedIn_Icon.svg"
+													alt="LinkedIn Icon"
+												/>
+											</a>
+										)}
+									</div>
+									{project.magazine && (
+										<div className={s.magButton}>
+											<button onClick={handleMagazineOpen}>
+												<img src="/assets/download_icon.svg" alt="download" />
+												Mijn magazine (PDF {magazineSize ? `${magazineSize}` : ""})
+											</button>
+										</div>
 									)}
 								</div>
-								{project.magazine && (
-									<div className="magButton">
-										<button
-											onClick={handleMagazineOpen}
-										>
-											<img src="/assets/download_icon.svg" alt="download" />
-											Mijn magazine (PDF {magazineSize ? `${magazineSize}` : ""})
-										</button>
-									</div>
-								)}
 							</div>
 						</div>
 					</div>
@@ -168,34 +167,36 @@ export default function ProjectPageDetails() {
 
 			{embedUrl && (
 				<div>
-					<h1 className="videoTitle">Project video</h1>
-					<div className="videoHolder">
+					<h1 className={s.videoTitle}>Project video</h1>
+					<div className={s.videoHolder}>
 						{!playing ? (
-							<div className="videoThumb" onClick={() => setPlaying(true)}>
+							<div className={s.videoThumb} onClick={() => setPlaying(true)}>
 								<img
 									src={`https://img.youtube.com/vi/${embedUrl.split("/embed/")[1]}/maxresdefault.jpg`}
 									alt="Video thumbnail"
-									className="videoPlayer"
+									className={s.videoPlayer}
 								/>
 								<img
 									src="/assets/play-button.png"
 									alt="Play"
-									className="playBtn"
+									className={s.playBtn}
 								/>
 							</div>
 						) : (
-							<iframe
-								className="videoPlayer"
-								src={`${embedUrl}?autoplay=1`}
-								title="YouTube video player"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								referrerPolicy="strict-origin-when-cross-origin"
-								allowFullScreen
-							/>
+							<div className={s.videoWrapper}>
+								<iframe
+									src={`${embedUrl}?autoplay=1`}
+									title="YouTube video player"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+									referrerPolicy="strict-origin-when-cross-origin"
+									allowFullScreen
+								/>
+							</div>
 						)}
 					</div>
 				</div>
-			)}
-		</div>
+			)
+			}
+		</div >
 	);
 }

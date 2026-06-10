@@ -8,40 +8,39 @@ import PrivacyRedirect from "./pages/privacy/PrivacyRedirect.jsx";
 import PrivacyEN from "./pages/privacy/pages/PrivacyEN.jsx";
 import PrivacyNL from "./pages/privacy/pages/PrivacyNL.jsx";
 import Login from "./pages/login/Login.jsx";
-import ProjectForm from "./pages/project/ProjectForm.jsx";
-import ProjectenPage from "./projecten/ProjectenPage.jsx";
-import ProjectPageDetails from "./projecten/details/ProjectPageDetails.jsx";
-import Info from "./pages/info/Info.jsx";
+import Form from "./pages/project/form/Form.jsx";
+import List from "./pages/project/list/List.jsx";
+import Detail from "./pages/project/detail/Detail.jsx";
 
 // TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter([
-    {
-        element: <PageLayout />,
-        children: [
-            {
-                path: Routes.Privacy,
-                element: <PrivacyRedirect />,
-                children: [
-                    { path: Routes.privacyEN, element: <PrivacyEN /> },
-                    { path: Routes.privacyNL, element: <PrivacyNL /> },
-                ],
-            },
-            { path: Routes.Root, element: <Countdown /> },
-            { path: Routes.Info, element: <Info /> },
-            { path: Routes.Login, element: <Login /> },
-            { path: Routes.ProjectForm, element: <ProjectForm /> },
-            { path: Routes.ProjectenPage, element: <ProjectenPage /> },
-            { path: Routes.ProjectenPageDetails, element: <ProjectPageDetails /> },
-            // { path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
-            {
-                element: <SearchLayout />, //this will hold all search logic for the projects
-                children: [{ path: "/projects", element: "Projects" }],
-            },
-        ],
-    },
-    {
-        element: <BareLayout />,
-        children: [],
-    },
+	{
+		element: <PageLayout />,
+		children: [
+			{
+				path: Routes.Privacy,
+				element: <PrivacyRedirect />,
+				children: [
+					{ index: true, element: <PrivacyRedirect /> },
+					{ path: Routes.privacyEN, element: <PrivacyEN /> },
+					{ path: Routes.privacyNL, element: <PrivacyNL /> },
+				],
+			},
+			{ path: Routes.Root, element: <Countdown /> },
+			{ path: Routes.Login, element: <Login /> },
+			{ path: Routes.ProjectForm, element: <Form /> },
+			{ path: Routes.ProjectenPage, element: <List /> },
+			{ path: Routes.ProjectenPageDetails, element: <Detail /> },
+			{ path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
+			{
+				element: <SearchLayout />, //this will hold all search logic for the projects
+				children: [{ path: "/projects", element: "Projects" }],
+			},
+		],
+	},
+	{
+		element: <BareLayout />,
+		children: [{ path: Routes.Root, element: <Countdown /> }],
+	},
 ]);
 export default router;
