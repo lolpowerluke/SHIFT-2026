@@ -144,7 +144,7 @@ export default function Detail() {
 									{project.magazine && (
 										<div className={s.magButton}>
 											<button onClick={handleMagazineOpen}>
-												<img src="/assets/download_icon.svg" alt="download" />
+												<img className="pdf-icon" src="/assets/BlueDownloadFolderPDF.svg" alt="download pdf icon" />
 												Mijn magazine (PDF{" "}
 												{magazineSize ? `${magazineSize}` : ""})
 											</button>

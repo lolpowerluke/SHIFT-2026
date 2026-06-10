@@ -127,6 +127,8 @@
 		display: flex;
 		align-items: center;
 		font-size: 15pt;
+
+
 	}
 
 	img {
@@ -198,10 +200,6 @@
 
 	.magButton button {
 		font-size: 12pt;
-
-		img {
-			display: none;
-		}
 	}
 
 	.studentContact {
@@ -222,4 +220,16 @@
 			justify-content: center;
 		}
 	}
+
+	.magButton button {
+        font-size: 0px;
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 40%;
+            display: block;
+			margin: 0;
+        }
+    }
 }
