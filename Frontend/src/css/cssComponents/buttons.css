@@ -36,9 +36,13 @@ button:active {
 	margin-top: var(--margin-between);
 }
 
-.fitContent {
+.throbberCtx {
 	width: fit-content;
 	min-width: max-content;
+}
+
+.blueBtn{
+	background-color: var(--bg-shift-primary);
 }
 
 @media screen and (min-width: 1024px) {
