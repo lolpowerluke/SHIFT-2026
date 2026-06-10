@@ -1,29 +1,34 @@
 /* use recognisable names. Start with the main purpose of the var (like bg = background or hl = highlight) followed by a descriptor (primary for default colour, secondary for its alternative or descriptive of when it should be used */
 :root {
-  /* background colours */
-  --bg-shift-primary: #55c6d2;
-  --bg-shift-secondary: #fbf8cd;
-  --bg-shift-alt: #fbb042;
+	/* base colours */
+	--shift-blue: #27becc;
+	--shift-cream: #fbf8cd;
+	--shift-orange: #fba927;
 
-  /* text colours */
-  --txt-shift-primary: black;
-  --txt-shift-secondary: black;
-  --txt-warning: darkred;
-  --txt-special: #fbf8cd;
+	/* background colours */
+	--bg-shift-primary: var(--shift-blue);
+	--bg-shift-secondary: var(--shift-cream);
+	--bg-shift-alt: var(--shift-orange);
 
-  /* highlight colours */
-  --hl-primary: var(--bg-shift-alt);
-  --hl-secondary: var(--bg-shift-secondary);
+	/* text colours */
+	--txt-shift-primary: black;
+	--txt-shift-secondary: black;
+	--txt-warning: darkred;
+	--txt-special: var(--shift-cream);
 
-  /* border colours */
-  --border-primary: black;
+	/* highlight colours */
+	--hl-primary: var(--bg-shift-alt);
+	--hl-secondary: var(--bg-shift-secondary);
 
-  /* shadow colours */
-  --shadow-primary: var(--border-primary);
+	/* border colours */
+	--border-primary: black;
 
-  /* Buttons */
-  --btn-primary-bg: var(--bg-shift-alt);
-  --btn-disabled-bg: color-mix(in srgb, var(--btn-primary-bg) 60%, black);
+	/* shadow colours */
+	--shadow-primary: var(--border-primary);
+
+	/* Buttons */
+	--btn-primary-bg: var(--bg-shift-alt);
+	--btn-disabled-bg: color-mix(in srgb, var(--btn-primary-bg) 60%, black);
 }
 
 /* 

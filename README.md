@@ -81,6 +81,12 @@
 - [remove `/pages/` from links and paths in build while keeping the file structure automation](https://claude.ai/share/44dab821-2592-4ca3-8bc7-5f12b0bfd702)
     - used in vite.config.js removePageSegment()
 
+- [Profile Icon for default image](https://www.flaticon.com/free-icon/user_149071?related_id=149071&origin=search)
+    - Used in [ProjectPageDetails.jsx](Frontend/src/projecten/details/ProjectPageDetails.jsx) & [ProjectCard.jsx](Frontend/src/projecten/ProjectCard.jsx)
+ 
+- [Claude conversation for linking & showing PDF button](https://claude.ai/share/d6f34345-02dc-420b-8cce-af09fd83e019)
+    - Used in  [ProjectenPage.jsx](Frontend/src/projecten/details/ProjectenPage.jsx)
+
 ## Deployment
 
 ### Frontend
