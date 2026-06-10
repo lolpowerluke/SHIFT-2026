@@ -5,129 +5,128 @@ import Carousel from "../../components/Carousel.jsx";
 import Throbber from "../../components/Throbber.jsx";
 
 export default function Countdown() {
-	const { timeLeft, blinkingS } = useCountdown();
+    const {timeLeft, blinkingS} = useCountdown();
 
-	const handleOpenMaps = () => {
-		window.open(
-			"https://maps.app.goo.gl/rZ8pQ7jYJph3tR3L9",
-			"_blank",
-			"noopener,noreferrer",
-		);
-	};
+    const handleOpenMaps = () => {
+        window.open(
+            "https://maps.app.goo.gl/rZ8pQ7jYJph3tR3L9",
+            "_blank",
+            "noopener,noreferrer",
+        );
+    };
 
-	return (
-		<>
-			<div className={s.heroContent}>
-				<video autoPlay muted loop playsInline>
-					<source
-						src="/assets/heroContent/videoheroMobile.webm"
-						media="(max-width: 1024px)"
-						type="video/webm"
-					/>
-					<source
-						media="(min-width: 1023px)"
-						src="/assets/heroContent/videohero.webm"
-						type="video/webm"
-					/>
-					<img
-						src="/assets/heroContent/heroImg.jpg"
-						alt="EhB SHIFT festival hero image"
-						media="(min-width: 1023px)"
-					/>
-				</video>
-			</div>
+    return (
+        <>
+            <div className={s.heroContent}>
+                <video autoPlay muted loop playsInline>
+                    <source
+                        src="/assets/heroContent/videoheroMobile.webm"
+                        media="(max-width: 1024px)"
+                        type="video/webm"
+                    />
+                    <source
+                        media="(min-width: 1023px)"
+                        src="/assets/heroContent/videohero.webm"
+                        type="video/webm"
+                    />
+                    <img
+                        srcSet="/assets/heroContent/heroImg.png"
+                        alt="EhB SHIFT festival hero image"
+                    />
+                </video>
+            </div>
 
-			<div className={s.landingWrap}>
-				<div>
-					<div className={s.heroLayout}>
-						<div>
-							<img
-								src="../../assets/logos/shift_logo.svg"
-								id={s.heroLogo}
-								fetchPriority="high"
-								alt="SHIFT Logo"
-							/>
-						</div>
-						<div>
-							<div className={s.heroWrapper}>
-								<div className={s.rotatedText}>
-									<h1>Eindprojecten</h1>
-									<div className={s.heroText}>
-										<div className={s.courseHeroText}>
-											<h1>
-												OPLEIDING MULTIMEDIA
-												<br />
-												CREATIEVE TECHNOLOGIE
-											</h1>
-										</div>
-										<div>&</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+            <div className={s.landingWrap}>
+                <div>
+                    <div className={s.heroLayout}>
+                        <div>
+                            <img
+                                src="../../assets/logos/shift_logo.svg"
+                                id={s.heroLogo}
+                                fetchPriority="high"
+                                alt="SHIFT Logo"
+                            />
+                        </div>
+                        <div>
+                            <div className={s.heroWrapper}>
+                                <div className={s.rotatedText}>
+                                    <h1>Eindprojecten</h1>
+                                    <div className={s.heroText}>
+                                        <div className={s.courseHeroText}>
+                                            <h1>
+                                                OPLEIDING MULTIMEDIA
+                                                <br/>
+                                                CREATIEVE TECHNOLOGIE
+                                            </h1>
+                                        </div>
+                                        <div>&</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-				<div className={`${s.timerDiv} xlarge`}>
-					{timeLeft ? (
-						<>
-							<div className={s.cd}>
-								<span>We tellen af!</span>
-							</div>
-							<div className={`${s.cd} ${s.smallerCd}`}>
-								<span>Vrijdag 19 juni om 17:00</span>
-							</div>
-							<div id={s.timer}>
-								<div className={s.timerBox}>
-									<span className="darkText">{timeLeft.days}</span>
-									<span>Dagen</span>
-								</div>
-								<div className={s.timerBox}>
-									<span className="darkText">{timeLeft.hours}</span>
-									<span>Uren</span>
-								</div>
-								<div className={s.timerBox}>
-									<span className="darkText">{timeLeft.minutes}</span>
-									<span>Minuten</span>
-								</div>
-								<div className={s.timerBox}>
+                <div className={`${s.timerDiv} xlarge`}>
+                    {timeLeft ? (
+                        <>
+                            <div className={s.cd}>
+                                <span>We tellen af!</span>
+                            </div>
+                            <div className={`${s.cd} ${s.smallerCd}`}>
+                                <span>Vrijdag 19 juni om 17:00</span>
+                            </div>
+                            <div id={s.timer}>
+                                <div className={s.timerBox}>
+                                    <span className="darkText">{timeLeft.days}</span>
+                                    <span>Dagen</span>
+                                </div>
+                                <div className={s.timerBox}>
+                                    <span className="darkText">{timeLeft.hours}</span>
+                                    <span>Uren</span>
+                                </div>
+                                <div className={s.timerBox}>
+                                    <span className="darkText">{timeLeft.minutes}</span>
+                                    <span>Minuten</span>
+                                </div>
+                                <div className={s.timerBox}>
 									<span>
 										<span
-											className={
-												blinkingS === s.seconds ? s.hidden : "darkText"
-											}
-										>
+                                            className={
+                                                blinkingS === s.seconds ? s.hidden : "darkText"
+                                            }
+                                        >
 											{timeLeft.seconds}
 										</span>
 									</span>
-									<span>Seconden</span>
-								</div>
-							</div>
-							<div className={`${s.cta} section`}>
-								<a
-									href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-									className={`${s.linkBtn} linkBtn`}
-									target="_blank"
-									rel="noreferrer"
-								>
-									Schrijf je nu gratis in
-								</a>
-							</div>
-						</>
-					) : (
-						"LIVE NOW!"
-					)}
-				</div>
-				<a href="#experience" id={s.scrollPointer}>
-					<img src="/assets/icons/pointer2.svg" alt="scroll!" />
-				</a>
-			</div>
+                                    <span>Seconden</span>
+                                </div>
+                            </div>
+                            <div className={`${s.cta} section`}>
+                                <a
+                                    href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+                                    className={`${s.linkBtn} linkBtn`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Schrijf je nu gratis in!
+                                </a>
+                            </div>
+                        </>
+                    ) : (
+                        "LIVE NOW!"
+                    )}
+                </div>
+                <a href="#experience" id={s.scrollPointer}>
+                    <img src="/assets/icons/pointer2.svg" alt="scroll!"/>
+                </a>
+            </div>
 
-			<div id="experience" className={`${s.wrap} wrap ${s.previewSection}`}>
-				<div className={s.section}>
-					<div className={s.sectionFlexer}>
-						<div className={s.projectSide}>
-							<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld" />
+            <div id="experience" className={`${s.wrap} wrap ${s.previewSection}`}>
+                <div className={s.section}>
+                    <div className={s.sectionFlexer}>
+                        <div className={s.projectSide}>
+                            <img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>
                             {/*<div className={`${s.section} ${s.carousel}`}>*/}
                             {/*    <Carousel />*/}
                             {/*</div>*/}
@@ -200,13 +199,13 @@ export default function Countdown() {
 								<p>Leer de opleiding kennen adhv concrete realisaties.</p>
 							</div>
 
-							<div className={s.audienceCard}>
-								<div className={s.iconPaper}>
-									<img src="/assets/icons/paper.svg" alt="Bedrijven" />
-								</div>
-								<h3>Bedrijven</h3>
-								<p>Ontdek jong digitaal talent voor stages en jobs.</p>
-							</div>
+                            <div className={s.audienceCard}>
+                                <div className={s.iconPaper}>
+                                    <img src="/assets/icons/paper.svg" alt="Bedrijven"/>
+                                </div>
+                                <h3>Bedrijven</h3>
+                                <p>Ontdek jong digitaal talent voor stages en jobs.</p>
+                            </div>
 
 							<div className={s.audienceCard}>
 								<div className={s.iconChatBubble}>
@@ -236,27 +235,27 @@ export default function Countdown() {
 							Erasmushogeschool Brussel.
 						</p>
 
-						<p>
-							In deze opleiding komen design en technologie samen om digitale
-							ervaringen te creëren.
-						</p>
-					</div>
-				</div>
-				<img
-					src="/assets/opleidingPlaceholder.jpg"
-					alt="Multimedia & Creatieve Technologie"
-				/>
-				<div className={`${s.cta}`}>
-					<a
-						href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"
-						className={`${s.linkBtn} linkBtn`}
-						target="_blank"
-						rel="noreferrer"
-					>
-						Ontdek de richting!
-					</a>
-				</div>
-			</div>
-		</>
-	);
+                        <p>
+                            In deze opleiding komen design en technologie samen om digitale
+                            ervaringen te creëren.
+                        </p>
+                    </div>
+                </div>
+                <img
+                    src="/assets/opleidingPlaceholder.jpg"
+                    alt="Multimedia & Creatieve Technologie"
+                />
+                <div className={`${s.cta}`}>
+                    <a
+                        href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"
+                        className={`${s.linkBtn} linkBtn`}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        Ontdek de richting!
+                    </a>
+                </div>
+            </div>
+        </>
+    );
 }
