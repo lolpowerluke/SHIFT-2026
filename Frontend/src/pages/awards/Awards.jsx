@@ -51,6 +51,8 @@ export default function Awards() {
                 <span className={s.title}>BRENG JE STEM UIT</span>
                 <span className={s.subTitle}>Jij bepaalt wie de publiekprijs verdient.</span>
                 <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
+                <span className={s.time}>UITREIKING OM 20:00 TIJDENS DE AWARD SHOW</span>
+                <button>Praktische info <img src="" alt="arrow up right" /></button>
             </div>
         </>
     );
