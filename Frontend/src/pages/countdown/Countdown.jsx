@@ -74,7 +74,7 @@ export default function Countdown() {
 								<span>We tellen af!</span>
 							</div>
 							<div className={`${s.cd} ${s.smallerCd}`}>
-								<span>Vrijdag 17 juni om 17:00</span>
+								<span>Vrijdag 19 juni om 17:00</span>
 							</div>
 							<div id={s.timer}>
 								<div className={s.timerBox}>
@@ -131,20 +131,20 @@ export default function Countdown() {
 						</div>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>
-								<h2 className={s.infoTitle}>SHIFT festival</h2>
+								<h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
 								<p>
-									SHIFT festival is het afstudeer-evenement van de opleiding
-									Multimedia & Creative Technoloiey aan Erasmus Hogeschool
+									SHIFT FESTIVAL is het afstudeerevenement van de opleiding
+									Multimedia & Creatieve Technologie aan de Erasmushogeschool
 									Brussel. Ontdek er de eindprojecten van studenten, waarin
 									technologie, creativiteit en innovatie samenkomen. Een unieke
 									blik op het werk van de nieuwe generatie digitale makers!
 									<br />
 									<br />
-									Tijdens het festival kunnen projecten niet alleen bekeken,
-									maar ook getest en beleefd worden via demo’s, presentaties en
-									gesprekken met de makers. Daarnaast is er ruimte om te
-									netwerken en worden de meest opvallende projecten in de kijker
-									gezet. Met live awardshow!
+									Tijdens het festival kunnen projecten niet alleen worden
+									bekeken, maar ook worden getest en beleefd via demo’s,
+									presentaties en gesprekken met de makers. Daarnaast is er
+									ruimte om te netwerken en worden de meest opvallende projecten
+									in de kijker gezet. Met een live awardshow!
 								</p>
 							</div>
 						</div>
@@ -161,7 +161,7 @@ export default function Countdown() {
 									<div className={s.iconCalendar}>
 										<img src="/assets/icons/CalendarBlue.svg" alt="Kalender" />
 									</div>
-                                    <div className={s.shiftTimeDate}>
+									<div className={s.shiftTimeDate}>
 										<h3>VRIJDAG 19 JUNI</h3>
 										<p>17:00 - 21:30</p>
 									</div>
@@ -174,7 +174,10 @@ export default function Countdown() {
 										<img src="/assets/icons/LocationBlue.svg" alt="Locatie" />
 									</div>
 									<div className={s.shiftLocationCampus}>
-										<h3>ERASMUS HOGESCHOOL CAMPUS KAAI</h3>
+										<h3>
+											ERASMUSHOGESCHOOL BRUSSEL <br />
+											CAMPUS KAAI
+										</h3>
 									</div>
 									<button className={s.btnMaps} onClick={handleOpenMaps}>
 										Open in maps
@@ -226,9 +229,13 @@ export default function Countdown() {
 					<div>
 						<h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
 						<p>
-							Multimedia & Creatieve Technologie is een Bacheloropleiding op{" "}
-							Erasmus Hogeschool Brussel. Hier komen design en technologie samen
-							om digitale ervaringen te bouwen.
+							Multimedia & Creatieve Technologie is een bacheloropleiding aan de
+							Erasmushogeschool Brussel.
+						</p>
+
+						<p>
+							In deze opleiding komen design en technologie samen om digitale
+							ervaringen te creëren.
 						</p>
 					</div>
 				</div>
