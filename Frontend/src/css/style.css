@@ -88,6 +88,6 @@ body::before {
 }
 
 .hideThisSht {
-    pointer-events: none;
-    display: none;
+	pointer-events: none;
+	display: none;
 }
