@@ -74,7 +74,7 @@ export default function Countdown() {
 								<span>We tellen af!</span>
 							</div>
 							<div className={`${s.cd} ${s.smallerCd}`}>
-								<span>Vrijdag 17 juni om 17:00</span>
+								<span>Vrijdag 19 juni om 17:00</span>
 							</div>
 							<div id={s.timer}>
 								<div className={s.timerBox}>
