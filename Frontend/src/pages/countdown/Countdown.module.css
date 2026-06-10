@@ -15,8 +15,8 @@
 	height: 100vh;
 	width: 100%;
 	overflow: hidden;
-	box-shadow: -1px 3px 10px 5px
-		color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
+	/*box-shadow: -1px 3px 10px 5px*/
+	/*	color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);*/
 
 	img {
 		width: 100%;
@@ -273,9 +273,8 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 0.5rem;
-	max-width: 400px;
-	margin-left: auto;
-	margin-right: auto;
+	max-width: 200px;
+	margin-left: 50px;
 
 	h3 {
 		font-size: 20px;
@@ -284,6 +283,9 @@
 	}
 }
 
+.shiftTime {
+	margin-left: 185px;
+}
 .iconCalendar,
 .iconMap {
 	width: 50px;
@@ -531,9 +533,11 @@
 		margin-bottom: var(--spacing-m);
 	}
 
+	/*
 	.previewSection {
-		padding: calc(3 * var(--spacing-top)) 0 var(--spacing-top);
+		/*padding: calc(3 * var(--spacing-top)) 0 var(--spacing-top);
 	}
+	*/
 
 	.projectSide,
 	.shiftInfoSide {

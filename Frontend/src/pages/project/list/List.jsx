@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import "./index.css";
-import ProjectCard from "./ProjectCard.jsx";
-import { getCloudinaryUrl } from "../utils/cloudinary.js";
+import { useState, useEffect } from "react";
+import s from "./List.module.css";
+import ProjectCard from "../../../components/projectCard/ProjectCard.jsx";
+import { getCloudinaryUrl } from "../../../utils/cloudinary.js";
 
 const CATEGORIES = [
 	"Alle Projecten",
@@ -30,7 +30,7 @@ function mapProject(p) {
 	};
 }
 
-export default function ProjectenPage() {
+export default function List() {
 	const [projects, setProjects] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -65,7 +65,7 @@ export default function ProjectenPage() {
 
 	return (
 		<main className="ctx">
-			<section className="projectenHero">
+			<section className={s.projectenHero}>
 				<h1>EindProjecten</h1>
 				<h3>
 					Ontdek de werken van onze derde jaars Multimedia & Creatieve
@@ -73,9 +73,9 @@ export default function ProjectenPage() {
 				</h3>
 			</section>
 
-			<div className="filterBar">
-				<div className="searchWrapper">
-					<div className="searchIconBox">
+			<div className={s.filterBar}>
+				<div className={s.searchWrapper}>
+					<div className={s.searchIconBox}>
 						<img src="/assets/icons/search.svg" alt="" aria-hidden="true" />
 					</div>
 					<input
@@ -85,11 +85,11 @@ export default function ProjectenPage() {
 						onChange={(e) => setSearchQuery(e.target.value)}
 					/>
 				</div>
-				<div className="filterButtons">
+				<div className={s.filterButtons}>
 					{CATEGORIES.map((cat) => (
 						<button
 							key={cat}
-							className={`filterBtn ${activeCategory === cat ? "active" : ""}`}
+							className={`${s.filterBtn} ${activeCategory === cat ? s.active : ""}`}
 							onClick={() => setActiveCategory(cat)}
 						>
 							{cat}
@@ -98,11 +98,11 @@ export default function ProjectenPage() {
 				</div>
 			</div>
 
-			<p className="projectenCount">
+			<p className={s.projectenCount}>
 				{activeCategory} ({filteredProjects.length} Projecten)
 			</p>
 
-			<div className="projectenGrid">
+			<div className={s.projectenGrid}>
 				{filteredProjects.map((project) => (
 					<ProjectCard key={project.id} project={project} />
 				))}
