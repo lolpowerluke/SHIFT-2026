@@ -274,17 +274,14 @@
 	align-items: center;
 	gap: 0.5rem;
 	max-width: 200px;
-	margin-left: 50px;
+	margin-left: auto;
+	margin-right: auto;
 
 	h3 {
 		font-size: 20px;
 		text-align: center;
 		margin-bottom: 1rem;
 	}
-}
-
-.shiftTime {
-	margin-left: 185px;
 }
 .iconCalendar,
 .iconMap {

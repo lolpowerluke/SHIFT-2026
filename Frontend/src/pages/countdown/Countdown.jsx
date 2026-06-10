@@ -174,6 +174,7 @@ export default function Countdown() {
 											ERASMUSHOGESCHOOL BRUSSEL <br />
 											CAMPUS KAAI
 										</h3>
+                                        <small>Nijverheidskaai 170<br/>1070 Anderlecht</small>
 									</div>
 									<button className={s.btnMaps} onClick={handleOpenMaps}>
 										Open in maps
@@ -242,7 +243,7 @@ export default function Countdown() {
                 <div className={`${s.cta}`}>
                     <a
                         href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"
-                        className={`${s.linkBtn} linkBtn`}
+                        className={`${s.linkBtn} linkBtn blueBtn`}
                         target="_blank"
                         rel="noreferrer"
                     >

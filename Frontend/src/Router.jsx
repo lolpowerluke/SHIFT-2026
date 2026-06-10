@@ -12,7 +12,6 @@ import Form from "./pages/project/form/Form.jsx";
 import List from "./pages/project/list/List.jsx";
 import Detail from "./pages/project/detail/Detail.jsx";
 
-// TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter([
 	{
 		element: <PageLayout />,
