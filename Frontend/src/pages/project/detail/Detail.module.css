@@ -183,14 +183,29 @@
 	margin: 32px 0 16px 0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
+	/* video */
 	.videoWrapper,
 	.videoThumb {
 		width: 100%;
 	}
 
+	/* student cards */
+	.picture img {
+		width: 80px;
+		height: 80px;
+	}
+
 	.magButton button {
-		font-size: 13pt;
+		font-size: 12pt;
+
+		img {
+			display: none;
+		}
+	}
+
+	.studentContact {
+		flex-wrap: wrap;
 	}
 }
 
@@ -201,41 +216,10 @@
 		> div {
 			flex-direction: column;
 			align-items: center;
-			gap: 0px;
-		}
-
-		p,
-		img {
-			margin: 0 0 16px 0;
 		}
 
 		.subject {
 			justify-content: center;
 		}
-	}
-}
-
-@media (max-width: 640px) {
-	.picture img {
-		width: 80px;
-		height: 80px;
-	}
-
-	.magButton button img {
-		display: none;
-	}
-
-	.magButton button {
-		font-size: 12pt;
-	}
-
-	.studentContact {
-		flex-wrap: wrap;
-	}
-}
-
-@media (max-width: 350px) {
-	.magButton button {
-		font-size: 10pt;
 	}
 }
