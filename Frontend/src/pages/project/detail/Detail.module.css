@@ -160,7 +160,7 @@
 .videoThumb {
 	position: relative;
 	cursor: pointer;
-	width: 80%;
+	width: 100%;
 
 	img.videoPlayer {
 		width: 100%;
@@ -245,11 +245,5 @@
 		button {
 			font-size: 10pt;
 		}
-	}
-}
-
-@media (max-width: 768px) {
-	.videoThumb {
-		width: 100%;
 	}
 }
