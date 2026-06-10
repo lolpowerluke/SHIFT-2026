@@ -17,7 +17,7 @@ export default function Countdown() {
 
     return (
         <>
-            <div className={s.heroContent}>
+            <div className={s.heroContent} id="home">
                 <video autoPlay muted loop playsInline>
                     <source
                         src="/assets/heroContent/videoheroMobile.webm"
