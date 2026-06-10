@@ -1,160 +1,37 @@
-.bodyContainer {
-    display: flex;
-    flex-direction: column;
-    max-width: 85vw;
+.heroContainer {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    max-width: 800px;
     margin: 0 auto;
-    text-align: center;
-}
-.heroContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.buttonsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 20px;
-}
-.buttonsContainer p {
-    margin-bottom: 3rem;
-}
-.awardsImg {
-    display: flex;
-    width: 50%;
-    height:auto;
-    transform: rotate(10deg);
-    margin-top: 100px;
-    justify-self: center;
-}
-.votingContainer {
-    background-color: var(--bg-shift-secondary);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 3rem;
-    padding-bottom: 3rem
-}
-.allInfoContainer {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-}
-.infoContainer {
-    width: 20rem;
-    height: 10rem;
-    background-color: var(--bg-shift-alt);
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 10px;
-    border: 4px solid var(--border-primary);
-    box-shadow: 4px 4px 0 var(--shadow-primary);
-}
-.heroData {
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    gap: 3rem;
-    margin-bottom: 3rem;
-}
-.aboutAwardsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-}
-.infoTitle {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-.awardsContainer {
-    width: 20rem;
-    height: 12rem;
-    background-color: var(--bg-shift-alt);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
-    margin-top: 3rem;
-    padding: 15px;
-    border-radius: 10px;
-    border: 4px solid var(--border-primary);
-    box-shadow: 4px 4px 0 var(--shadow-primary);
-}
-.awardsContainer h4 {
-    margin-top: 0
-}
-.awardsContainer p {
-    margin-top: 0
-}
-.awardsContent {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-}
 
-@media (max-width: 1023px) {
-    .comingSoonImg {
-        display: none;
+    .awardImg {
+        width: 300px;
     }
-}
 
-@media (min-width: 1024px) {
-    .awardsImg {
-        display: none;
+    .title {
+        font-size: 50px;
     }
-    .awardsContainer {
-        width: 25rem;
-        height: 15rem;
-    }
-    .heroContent {
-        background-color: var(--bg-shift-alt);
+
+    .landingInfo {
+        background: var(--bg-shift-alt);
+        border: 5px solid var(--border-primary);
+        box-shadow: 5px 5px 0 1px var(--shadow-primary);
         border-radius: 10px;
-        border: 4px solid var(--border-primary);
-        box-shadow: 4px 4px 0 var(--shadow-primary);
-        max-width: fit-content;
-        padding-left: 3rem;
-        padding-right: 3rem;
-        margin: 0 auto;
-        margin-bottom: 3rem;
-    }
-    .heroContent button {
-        background-color: var(--btn-secondary-bg);
-    }
-    .comingSoonImg {
-        display: block;
-        position: relative;
-        top: 0;
-        overflow: hidden;
-        aspect-ratio: 16/8;
-        width: 100%;
-        height: auto;
-        box-shadow: -1px 3px 10px 5px 
-        color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
-    }
-    .buttonsContainer {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 3rem;
-        margin-top: 3rem;
-    }
-    .buttonsContainer p {
-        max-width: 300px;
-    }
-    .divider {
-        height: 240px;
-        width: 1px;
-        border-left: 3px solid var(--shadow-primary);
-    }
-    .heroData div {
-        width: 100px;
+        padding: 50px;
+        grid-column: 1/3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+
+        div {
+            display: flex;
+            flex-direction: column;
+        }
     }
 }
