@@ -365,7 +365,7 @@
         width: 92.5dvw;
         aspect-ratio: 16/8;
         justify-content: space-between;
-        /*margin-top: -148px;*/
+        margin-top: 0px;
         margin-bottom: 4rem;
 
         .timerDiv {
