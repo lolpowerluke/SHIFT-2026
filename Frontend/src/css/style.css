@@ -24,6 +24,7 @@
 html,
 body {
 	touch-action: pan-y;
+	scroll-behavior: smooth;
 }
 
 html::before {
