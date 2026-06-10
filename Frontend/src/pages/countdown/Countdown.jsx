@@ -110,7 +110,7 @@ export default function Countdown() {
 									target="_blank"
 									rel="noreferrer"
 								>
-									Schrijf je nu gratis in!
+									Schrijf je nu gratis in
 								</a>
 							</div>
 						</>
@@ -197,7 +197,7 @@ export default function Countdown() {
 									<img src="/assets/icons/koptelefoon.svg" alt="Studenten" />
 								</div>
 								<h3>STUDENTEN</h3>
-								<p>Toon je werk aan honderden bezoekers en professionals.</p>
+								<p>Leer de opleiding kennen adhv concrete realisaties.</p>
 							</div>
 
 							<div className={s.audienceCard}>
@@ -212,8 +212,8 @@ export default function Countdown() {
 								<div className={s.iconChatBubble}>
 									<img src="/assets/icons/chat-bubble.svg" alt="Bezoekers" />
 								</div>
-								<h3>tech-lovers</h3>
-								<p>Ontdek. Test. Laat je verrassen.</p>
+								<h3>Tech-lovers</h3>
+								<p>Blijf op de hoogte van trends en innovaties.</p>
 							</div>
 							<div className={s.audienceCard}>
 								<div className={s.iconStar}>
@@ -232,7 +232,7 @@ export default function Countdown() {
 					<div>
 						<h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
 						<p>
-							Multimedia & Creatieve Technologie is een bacheloropleiding aan de
+							Multimedia & Creatieve Technologie is een bacheloropleiding aan
 							Erasmushogeschool Brussel.
 						</p>
 
