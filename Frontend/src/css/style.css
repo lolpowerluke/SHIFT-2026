@@ -41,32 +41,24 @@ html::after {
     background-image: url(/assets/wallTextureWeb2.png);
     background-size: cover;
     pointer-events: none;
-	opacity: 0.4;
-}
-
-html.alt-bg::before {
-    background-color: var(--bg-shift-secondary);
-}
-
-html.alt-bg body::before {
-    opacity: 0.6;
+    mix-blend-mode: multiply;
 }
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -2;
+    z-index: -4;
     background-image: url(/assets/iconsOverlay.svg);
     background-size: 9000px;
     pointer-events: none;
 }
 
-html.alt-bg::after {
-    content: "";
+.alt-bg::after {
+    content: '';
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: 1;
     box-shadow: inset 0 0 0 6px var(--bg-shift-primary);
     pointer-events: none;
 }
@@ -74,7 +66,6 @@ html.alt-bg::after {
 .altBg {
     position: relative;
     padding-bottom: 2rem;
-    /*z-index: 0;*/
 }
 
 .altBg::before {
