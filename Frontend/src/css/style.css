@@ -48,6 +48,14 @@ html.alt-bg::before {
     background-color: var(--bg-shift-secondary);
 }
 
+html.alt-bg body::before {
+    opacity: 0.6;
+}
+
+html.no-icons body::before {
+    display: none;
+}
+
 body::before {
     content: "";
     position: fixed;
