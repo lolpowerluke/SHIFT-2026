@@ -1,0 +1,16 @@
+.file {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-shift-secondary);
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 0 0 0 10px;
+
+  .clear {
+    box-shadow: none;
+    border: unset;
+    border-radius: 5px;
+    padding: 5px 20px;
+  }
+}

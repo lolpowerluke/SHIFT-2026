@@ -52,13 +52,13 @@ html.alt-bg body::before {
 }
 
 body::before {
-	content: "";
-	position: fixed;
-	inset: 0;
-	z-index: -2;
-	background-image: url(/assets/iconsOverlay.svg);
-	background-size: 9000px;
-	pointer-events: none;
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-image: url(/assets/iconsOverlay.svg);
+    background-size: 9000px;
+    pointer-events: none;
 }
 
 html.alt-bg::after {
@@ -92,6 +92,6 @@ html.alt-bg::after {
 }
 
 .hideThisSht {
-	pointer-events: none;
-	display: none;
+    pointer-events: none;
+    display: none;
 }
