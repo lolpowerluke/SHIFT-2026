@@ -41,8 +41,8 @@ export default function Detail() {
 	}, [project]);
 
 	useEffect(() => {
-		document.documentElement.classList.add("alt-bg");
-		return () => document.documentElement.classList.remove("alt-bg");
+		document.documentElement.classList.add("alt-bg", "no-icons");
+		return () => document.documentElement.classList.remove("alt-bg", "no-icons");
 	}, []);
 
 	const guard = StatusMessage({ loading, error });
@@ -144,7 +144,7 @@ export default function Detail() {
 									{project.magazine && (
 										<div className={s.magButton}>
 											<button onClick={handleMagazineOpen}>
-												<img src="/assets/download_icon.svg" alt="download" />
+												<img className="pdf-icon" src="/assets/BlueDownloadFolderPDF.svg" alt="download pdf icon" />
 												Mijn magazine (PDF{" "}
 												{magazineSize ? `${magazineSize}` : ""})
 											</button>

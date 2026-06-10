@@ -12,7 +12,7 @@ body {
 
 .ctx-detail {
 	margin: auto;
-	width: 50%;
+	width: 65%;
 }
 
 .xsMarginTop {
@@ -55,4 +55,16 @@ footer {
 	width: 100%;
 	margin: auto;
 	text-align: center;
+}
+
+@media (max-width: 1024px) {
+	.ctx-detail {
+		width: 85%;
+	}
+}
+
+@media (max-width: 768px) {
+	.ctx-detail {
+		width: 90%;
+	}
 }
