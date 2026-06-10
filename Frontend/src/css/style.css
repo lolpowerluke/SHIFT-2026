@@ -41,6 +41,7 @@ html::after {
     background-image: url(/assets/wallTextureWeb2.png);
     background-size: cover;
     pointer-events: none;
+	opacity: 0.4;
 }
 
 html.alt-bg::before {
