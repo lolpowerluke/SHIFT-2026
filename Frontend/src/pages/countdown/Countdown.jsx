@@ -134,7 +134,7 @@ export default function Countdown() {
 								<h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
 								<p>
 									SHIFT FESTIVAL is het afstudeerevenement van de opleiding
-									Multimedia & Creative Technologies aan de Erasmushogeschool
+									Multimedia & Creatieve Technologie aan de Erasmushogeschool
 									Brussel. Ontdek er de eindprojecten van studenten, waarin
 									technologie, creativiteit en innovatie samenkomen. Een unieke
 									blik op het werk van de nieuwe generatie digitale makers!
@@ -226,7 +226,7 @@ export default function Countdown() {
 					<div>
 						<h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
 						<p>
-							Multimedia & Creative Technologies is een bacheloropleiding aan de
+							Multimedia & Creatieve Technologie is een bacheloropleiding aan de
 							Erasmushogeschool Brussel.
 						</p>
 
