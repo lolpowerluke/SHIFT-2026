@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import s from "./Detail.module.css";
-import {
-	getCloudinaryUrl,
-	getYoutubeEmbedUrl,
-} from "../../../utils/cloudinary.js";
+import { getCloudinaryUrl, getYoutubeEmbedUrl } from "../../../utils/cloudinary.js";
+import { memberDisplayName, memberAvatar } from "../../../utils/member.js";
+import { useFetch } from "../../../hooks/useFetch.js";
+import { useAltBg } from "../../../hooks/useAltBg.js";
+import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
@@ -17,42 +18,32 @@ export default function Detail() {
 	const { id: slug } = useParams();
 	const id = slug.split("-").at(-1);
 	const navigate = useNavigate();
-	const [project, setProject] = useState(null);
 	const [playing, setPlaying] = useState(false);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
 	const [magazineSize, setMagazineSize] = useState(null);
 
-	useEffect(() => {
-		fetch(`${import.meta.env.VITE_API_URL}/project/${id}`)
-			.then((res) => {
-				if (!res.ok) throw new Error(`HTTP ${res.status}`);
-				return res.json();
-			})
-			.then((data) => {
-				const p = data.project;
-				setProject(p);
-				if (p?.magazine) {
-					const url = p.magazine.url ?? `https://res.cloudinary.com/${p.magazine.cloud_name}/raw/upload/${p.magazine.path}`;
-					fetch(url, { method: "HEAD" })
-						.then((r) => {
-							const bytes = parseInt(r.headers.get("content-length"));
-							if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
-						})
-						.catch(() => { });
-				}
-			})
-			.catch((err) => setError(err.message))
-			.finally(() => setLoading(false));
-	}, [id]);
+	useAltBg();
+
+	const { data, loading, error } = useFetch(
+		`${import.meta.env.VITE_API_URL}/project/${id}`,
+	);
+
+	const project = data?.project ?? null;
 
 	useEffect(() => {
-		document.documentElement.classList.add("alt-bg");
-		return () => document.documentElement.classList.remove("alt-bg");
-	}, []);
+		if (!project?.magazine) return;
+		const url =
+			project.magazine.url ??
+			`https://res.cloudinary.com/${project.magazine.cloud_name}/raw/upload/${project.magazine.path}`;
+		fetch(url, { method: "HEAD" })
+			.then((r) => {
+				const bytes = parseInt(r.headers.get("content-length"));
+				if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
+			})
+			.catch(() => { });
+	}, [project]);
 
-	if (loading) return <p className="ctx">Laden...</p>;
-	if (error) return <p className="ctx">Fout: {error}</p>;
+	const guard = StatusMessage({ loading, error });
+	if (guard) return guard;
 	if (!project) return null;
 
 	const embedUrl = getYoutubeEmbedUrl(project.video?.path);
@@ -65,7 +56,6 @@ export default function Detail() {
 		const blobUrl = URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
 		window.open(blobUrl, "_blank");
 	};
-
 
 	return (
 		<div className="ctx">
@@ -82,7 +72,7 @@ export default function Detail() {
 						<div className={s.name}>
 							<p>
 								{(project.members ?? [])
-									.map((m) => `${m.firstname} ${m.lastname}`)
+									.map((m) => memberDisplayName(m))
 									.join(" & ")}
 							</p>
 						</div>
@@ -121,18 +111,14 @@ export default function Detail() {
 						<div className={s.studentTop}>
 							<div className={s.picture}>
 								<img
-									src={getCloudinaryUrl(m.picture) ?? "/assets/user.png"}
-									alt={`${m.firstname ?? ""} ${m.lastname ?? ""}`.trim()}
+									src={memberAvatar(m)}
+									alt={memberDisplayName(m)}
 								/>
 							</div>
 							<div className={s.studentInfo}>
 								<div className={s.studentName}>
 									<p>
-										<b>
-											{[m.firstname, m.lastname].filter(Boolean).join(" ") ||
-												m.email ||
-												"Onbekend"}
-										</b>
+										<b>{memberDisplayName(m)}</b>
 									</p>
 									<p>Multimedia & Creatieve Technologie</p>
 								</div>
@@ -195,8 +181,7 @@ export default function Detail() {
 						)}
 					</div>
 				</div>
-			)
-			}
-		</div >
+			)}
+		</div>
 	);
 }
