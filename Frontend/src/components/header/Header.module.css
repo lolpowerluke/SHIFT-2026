@@ -22,12 +22,13 @@ header {
 	}
 }
 
-@media screen and (min-width: 1024px) {
 	.headerLogo.hide {
 		animation: bounce-out 0.3s ease-in-out forwards;
 		opacity: 0;
 	}
-}
+
+/*@media screen and (min-width: 1024px) {*/
+/*}*/
 
 @keyframes bounce-in {
 	0% {

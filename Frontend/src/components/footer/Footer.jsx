@@ -8,10 +8,9 @@ export default function Footer() {
     return (
         <footer>
             <div className={`ctx ${s.ctx}`}>
-                <hr className={s.divider}/><br/>
-                        <a href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" className="linkBtn">
-                            Schrijf je nu gratis in!
-                        </a>
+                <a href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" className="linkBtn">
+                    Schrijf je nu gratis in!
+                </a>
                 <br/>
                 <div className={s.textInfo}>
                     <p>

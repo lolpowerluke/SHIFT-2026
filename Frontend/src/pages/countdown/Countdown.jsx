@@ -1,7 +1,8 @@
 import s from "./Countdown.module.css";
 import "../../css/style.css";
-import { useCountdown } from "../../js/countdown.js";
+import {useCountdown} from "../../js/countdown.js";
 import Carousel from "../../components/Carousel.jsx";
+import Throbber from "../../components/Throbber.jsx";
 
 export default function Countdown() {
 	const { timeLeft, blinkingS } = useCountdown();
@@ -127,7 +128,9 @@ export default function Countdown() {
 					<div className={s.sectionFlexer}>
 						<div className={s.projectSide}>
 							<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld" />
-							{/*<Carousel />*/}
+                            {/*<div className={`${s.section} ${s.carousel}`}>*/}
+                            {/*    <Carousel />*/}
+                            {/*</div>*/}
 						</div>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>

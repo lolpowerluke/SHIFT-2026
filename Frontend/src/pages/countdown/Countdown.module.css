@@ -15,8 +15,8 @@
 	height: 100vh;
 	width: 100%;
 	overflow: hidden;
-	box-shadow: -1px 3px 10px 5px
-		color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);
+	/*box-shadow: -1px 3px 10px 5px*/
+	/*	color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);*/
 
 	img {
 		width: 100%;
@@ -532,7 +532,7 @@
 	}
 
 	.previewSection {
-		padding: calc(3 * var(--spacing-top)) 0 var(--spacing-top);
+		/*padding: calc(3 * var(--spacing-top)) 0 var(--spacing-top);*/
 	}
 
 	.projectSide,
