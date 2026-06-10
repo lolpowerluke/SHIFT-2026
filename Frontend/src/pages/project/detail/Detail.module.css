@@ -1,3 +1,8 @@
+body::before {
+	background-image: none;
+}
+
+
 .backButton {
 	button {
 		display: flex;
@@ -142,6 +147,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 33px;
 }
 
 .videoWrapper {
