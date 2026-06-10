@@ -145,6 +145,7 @@
 	iframe {
 		aspect-ratio: 16 / 9;
 		max-width: 80%;
+		width: 100vw;
 		border: 3px solid var(--bg-shift-primary);
 		border-radius: 6px;
 	}

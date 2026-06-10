@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useState, useEffect, useRef } from "react";
-import s from "./ProjectForm.module.css";
+import s from "./Form.module.css";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 const MAX_IMAGE_SIZE = 1 * 1024 * 1024; // 1MB limit

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
+import s from "./index.module.css";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
@@ -13,27 +14,27 @@ export default function ProjectCard({ project }) {
 	const categoryIcon = CATEGORY_ICONS[category];
 
 	return (
-		<Link to={`/projecten/details?id=${project.id}`} className="projectCardBorder">
-			<div className="projectCard">
-				<h3 className="cardTitle">{title}</h3>
-				<div className="cardCategory">
+		<Link to={`/project/${project.id}`} className={s.projectCardBorder}>
+			<div className={s.projectCard}>
+				<h3 className={s.cardTitle}>{title}</h3>
+				<div className={s.cardCategory}>
 					{categoryIcon && <img src={categoryIcon} alt="" aria-hidden="true" />}
 					<span>{category}</span>
 				</div>
-				<div className="cardImageWrapper">
-					<img src={image} alt={title} className="cardImage" />
-					<div className="cardAvatars">
+				<div className={s.cardImageWrapper}>
+					<img src={image} alt={title} className={s.cardImage} />
+					<div className={s.cardAvatars}>
 						{students.map((student) => (
 							<img
 								key={student.name}
 								src={student.avatar}
 								alt={student.name}
-								className="avatar"
+								className={s.avatar}
 							/>
 						))}
 					</div>
 				</div>
-				<div className="cardStudents">
+				<div className={s.cardStudents}>
 					{students.map((student) => (
 						<p key={student.name}>{student.name}</p>
 					))}
