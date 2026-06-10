@@ -41,8 +41,8 @@ export default function Detail() {
 	}, [project]);
 
 	useEffect(() => {
-		document.documentElement.classList.add("alt-bg");
-		return () => document.documentElement.classList.remove("alt-bg");
+		document.documentElement.classList.add("alt-bg", "no-icons");
+		return () => document.documentElement.classList.remove("alt-bg", "no-icons");
 	}, []);
 
 	const guard = StatusMessage({ loading, error });
