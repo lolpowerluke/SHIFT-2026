@@ -1,7 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import PageLayout from "./layouts/PageLayout.jsx";
 import BareLayout from "./layouts/BareLayout.jsx";
-import SearchLayout from "./layouts/SearchLayout.jsx";
 import Countdown from "./pages/countdown/Countdown.jsx";
 import Routes from "./routes/constants/Routes.js";
 import PrivacyRedirect from "./pages/privacy/PrivacyRedirect.jsx";
@@ -30,12 +29,9 @@ const router = createBrowserRouter([
 			{ path: Routes.ProjectForm, element: <Form /> },
 			{ path: Routes.ProjectenPage, element: <List /> },
 			{ path: Routes.ProjectenPageDetails, element: <Detail /> },
+			{ path: Routes.uMoeder, element: "is dik" }, //same as {path: "/uMoeder", element: "isDik"
 			{ path: Routes.ProjectFormOld, element: <Navigate to={Routes.ProjectForm} replace /> },
 			{ path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
-			{
-				element: <SearchLayout />, //this will hold all search logic for the projects
-				children: [{ path: "/projects", element: "Projects" }],
-			},
 		],
 	},
 	{

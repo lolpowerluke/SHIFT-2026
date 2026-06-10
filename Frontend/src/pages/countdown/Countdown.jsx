@@ -247,7 +247,7 @@ export default function Countdown() {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        Ontdek de richting!
+                        Ontdek de richting
                     </a>
                 </div>
             </div>

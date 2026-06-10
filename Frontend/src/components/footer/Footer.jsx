@@ -9,7 +9,7 @@ export default function Footer() {
         <footer>
             <div className={`ctx ${s.ctx}`}>
                 <a href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" className="linkBtn">
-                    Schrijf je nu gratis in!
+                    Schrijf je nu gratis in
                 </a>
                 <br/>
                 <div className={s.textInfo}>
