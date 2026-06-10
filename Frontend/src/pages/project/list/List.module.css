@@ -65,9 +65,7 @@
 	gap: 0.5rem;
 }
 
-.filterButtons button,
-.filterButtons .btn,
-.filterButtons .linkBtn {
+:where(.filterButtons) button {
 	box-shadow: 5px 5px 0 1px var(--shadow-primary);
 }
 
