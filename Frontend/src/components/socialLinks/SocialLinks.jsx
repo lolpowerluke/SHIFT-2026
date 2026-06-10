@@ -16,7 +16,7 @@ export default function SocialLinks({ className = "" }) {
                 />
             </a>
             <a href="https://www.erasmushogeschool.be/nl" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/logos/ehb_geel.png" height="60" alt="EhB Logo" />
+                <img src="/assets/logos/EhbLogoColor.svg" height="60" alt="EhB Logo" />
             </a>
             <a href="https://www.facebook.com/erasmushogeschool/?locale=nl_BE" target="_blank" rel="noopener noreferrer">
                 <img
