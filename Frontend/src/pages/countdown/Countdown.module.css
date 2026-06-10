@@ -363,6 +363,7 @@
 	display: grid;
 	grid-template-rows: repeat(2, 1fr);
 	height: calc(100dvh - 116px);
+	top: 0;
 	gap: 50px;
 
 	.heroLayout {
@@ -436,9 +437,9 @@
 	gap: 40px;
 }
 
-.landingWrap {
-  margin-top: 148px;
-}
+/*.landingWrap {*/
+/*  margin-top: 148px;*/
+/*}*/
 
 @media (min-width: 1024px) {
 	.landingWrap {
@@ -446,7 +447,7 @@
 		height: 90dvh;
 		width: 92.5dvw;
 		justify-content: space-between;
-		margin-top: -56px;
+		/*margin-top: -56px;*/
 		margin-bottom: 4rem;
 		margin-left: 0;
 
