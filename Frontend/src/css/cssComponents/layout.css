@@ -10,6 +10,11 @@ body {
 	width: 85%;
 }
 
+.ctx-detail {
+	margin: auto;
+	width: 50%;
+}
+
 .xsMarginTop {
 	margin-top: var(--spacing-xs);
 }
