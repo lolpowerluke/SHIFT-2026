@@ -226,9 +226,13 @@ export default function Countdown() {
 					<div>
 						<h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
 						<p>
-							Multimedia & Creatieve Technologie is een Bacheloropleiding op{" "}
-							Erasmus Hogeschool Brussel. Hier komen design en technologie samen
-							om digitale ervaringen te bouwen.
+							Multimedia & Creative Technologies is een bacheloropleiding aan de
+							Erasmushogeschool Brussel.
+						</p>
+
+						<p>
+							In deze opleiding komen design en technologie samen om digitale
+							ervaringen te creëren.
 						</p>
 					</div>
 				</div>
