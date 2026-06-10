@@ -23,14 +23,16 @@ export default function List() {
 	const [activeCategory, setActiveCategory] = useState("Alle Projecten");
 	const [searchQuery, setSearchQuery] = useState("");
 
-	const { data, loading, error } = useFetch(
-		`${import.meta.env.VITE_API_URL}/project`,
-	);
-
-	const guard = StatusMessage({ loading, error });
-	if (guard) return guard;
-
-	const projects = (data?.projects ?? []).map(mapProject);
+	useEffect(() => {
+		fetch(`${import.meta.env.VITE_API_URL}/project`)
+			.then((res) => {
+				if (!res.ok) throw new Error(`HTTP ${res.status}`);
+				return res.json();
+			})
+			.then((data) => setProjects(data.projects.map(mapProject)))
+			.catch((err) => setError(err))
+			.finally(() => setLoading(false));
+	}, []);
 
 	const filteredProjects = projects.filter((project) => {
 		const query = searchQuery.toLowerCase();
@@ -43,8 +45,8 @@ export default function List() {
 			project.category === activeCategory;
 		return matchesSearch && matchesCategory;
 	});
-
-	if (loading) return <Throbber/>;
+	// TODO: add loading element
+	if (loading) return <p className="ctx">Laden...</p>;
 	if (error) return <ErrorComponent error={error}/>;
 
 	return (
