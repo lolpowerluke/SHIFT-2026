@@ -12,14 +12,14 @@ header {
 		width: fit-content;
 	}
 
-    .headerLogo {
-        position: relative;
-        z-index: 3;
-        min-height: 60px;
-        height: 100%;
-        width: auto;
-        animation: bounce-in .3s ease-in-out forwards;
-    }
+	.headerLogo {
+		position: relative;
+		z-index: 3;
+		min-height: 60px;
+		height: 100%;
+		width: auto;
+		animation: bounce-in 0.3s ease-in-out forwards;
+	}
 }
 
 @media screen and (min-width: 1024px) {
@@ -201,6 +201,11 @@ body:has(#hamburgerNav:checked) {
 		align-self: end;
 		width: 85vw;
 		margin: 0 auto 1rem;
+		font-weight: 500;
+
+		span {
+			font-weight: bold;
+		}
 
 		p {
 			text-align: center;
