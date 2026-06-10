@@ -8,6 +8,7 @@ const Routes = {
 	Login: "/login",
 	ProjectenPage: "/project",
 	ProjectForm: "/project/form",
+	ProjectFormOld: "/project-form",
 	ProjectenPageDetails: "/project/:id",
 };
 export default Routes;
