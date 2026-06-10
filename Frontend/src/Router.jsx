@@ -31,10 +31,6 @@ const router = createBrowserRouter([
 			{ path: Routes.ProjectenPage, element: <List /> },
 			{ path: Routes.ProjectenPageDetails, element: <Detail /> },
 			{ path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
-			{
-				element: <SearchLayout />, //this will hold all search logic for the projects
-				children: [{ path: "/projects", element: "Projects" }],
-			},
 		],
 	},
 	{
