@@ -41,6 +41,10 @@ button:active {
 	min-width: max-content;
 }
 
+.blueBtn{
+	background-color: var(--bg-shift-primary);
+}
+
 @media screen and (min-width: 1024px) {
 	.btnMaps,
 	.linkBtn,
