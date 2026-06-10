@@ -1,37 +1,126 @@
 .heroContainer {
     height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 2fr;
-    justify-content: center;
-    align-items: center;
     width: 100vw;
-    max-width: 800px;
     margin: 0 auto;
+    background-image: url("/assets/heroContent/ComingSoonAwardBgImage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5vh;
 
-    .awardImg {
-        width: 300px;
+    &>* {
+        margin: 0 auto;
+        width: 100%;
+
     }
 
-    .title {
-        font-size: 50px;
+    .landingTop {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10vw;
+        max-width: 1000px;
+
+        .awardImg {
+            width: 350px;
+            transform: rotate(-15deg);
+        }
+
+        .title {
+            font-size: 6rem;
+            font-weight: 800;
+        }
     }
 
-    .landingInfo {
+    .landingBottom {
         background: var(--bg-shift-alt);
         border: 5px solid var(--border-primary);
         box-shadow: 5px 5px 0 1px var(--shadow-primary);
         border-radius: 10px;
         padding: 50px;
-        grid-column: 1/3;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 50px;
+        box-sizing: border-box;
+        max-width: 600px;
 
         div {
             display: flex;
             flex-direction: column;
         }
     }
+}
+
+.awardContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px 0 100px 0;
+
+    .awardTop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .awardImg {
+            width: 150px;
+        }
+
+        span {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+    }
+
+    .awardBottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 100vw;
+        max-width: 1600px;
+        margin: 0 auto;
+        gap: 50px;
+        padding: 0 50px;
+        box-sizing: border-box;
+
+        .awardCard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: var(--bg-shift-alt);
+            border: 5px solid var(--border-primary);
+            box-shadow: 5px 5px 0 1px var(--shadow-primary);
+            border-radius: 10px;
+            padding: 20px;
+
+            .cardImg {
+                height: 100px;
+            }
+
+            .cardTitle {
+                font-size: 2rem;
+                font-weight: 700;
+            }
+
+            .cardSubTitle {
+                font-size: 0.75rem;
+            }
+
+            .cardDesc {
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+
+.publicPrize {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
