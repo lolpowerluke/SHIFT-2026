@@ -131,20 +131,20 @@ export default function Countdown() {
 						</div>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>
-								<h2 className={s.infoTitle}>SHIFT festival</h2>
+								<h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
 								<p>
-									SHIFT festival is het afstudeer-evenement van de opleiding
-									Multimedia & Creative Technoloiey aan Erasmus Hogeschool
+									SHIFT FESTIVAL is het afstudeerevenement van de opleiding
+									Multimedia & Creative Technologies aan de Erasmushogeschool
 									Brussel. Ontdek er de eindprojecten van studenten, waarin
 									technologie, creativiteit en innovatie samenkomen. Een unieke
 									blik op het werk van de nieuwe generatie digitale makers!
 									<br />
 									<br />
-									Tijdens het festival kunnen projecten niet alleen bekeken,
-									maar ook getest en beleefd worden via demo’s, presentaties en
-									gesprekken met de makers. Daarnaast is er ruimte om te
-									netwerken en worden de meest opvallende projecten in de kijker
-									gezet. Met live awardshow!
+									Tijdens het festival kunnen projecten niet alleen worden
+									bekeken, maar ook worden getest en beleefd via demo’s,
+									presentaties en gesprekken met de makers. Daarnaast is er
+									ruimte om te netwerken en worden de meest opvallende projecten
+									in de kijker gezet. Met een live awardshow!
 								</p>
 							</div>
 						</div>
@@ -161,7 +161,7 @@ export default function Countdown() {
 									<div className={s.iconCalendar}>
 										<img src="/assets/icons/CalendarBlue.svg" alt="Kalender" />
 									</div>
-                                    <div className={s.shiftTimeDate}>
+									<div className={s.shiftTimeDate}>
 										<h3>VRIJDAG 19 JUNI</h3>
 										<p>17:00 - 21:30</p>
 									</div>
