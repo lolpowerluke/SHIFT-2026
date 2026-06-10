@@ -2,7 +2,6 @@ body::before {
 	background-image: none;
 }
 
-
 .backButton {
 	button {
 		display: flex;
@@ -71,7 +70,6 @@ body::before {
 .studentCardDiv {
 	display: flex;
 	justify-content: space-between;
-	flex-wrap: wrap;
 	gap: 16px;
 }
 
@@ -79,16 +77,24 @@ body::before {
 	background-color: var(--bg-shift-primary);
 	border: 5px solid black;
 	border-radius: 10px;
-	padding: 15px;
+	padding: 25px;
 	flex: 1 1 300px;
 	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
 	box-sizing: border-box;
 	max-width: 810px;
 }
 
+.studentTop,
+.studentInfo {
+	display: contents;
+}
+
 .picture {
+	flex: 0 0 auto;
 	margin-right: 20px;
-	align-content: center;
+	align-self: center;
 
 	img {
 		width: 128px;
@@ -100,25 +106,24 @@ body::before {
 	}
 }
 
-.studentInfo {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
+.studentName {
+	flex: 1;
+	min-width: 0;
 }
 
 .studentContact {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	justify-content: space-between;
-	gap: 8px;
+	gap: 16px;
 	align-items: center;
-	width: 100%;
-	margin-top: auto;
+	flex: 0 0 100%;
+	margin-top: 12px;
 
 	.icons {
 		display: flex;
 		gap: 16px;
-		min-width: 30%;
+		min-width: unset;
 		align-items: center;
 	}
 }
@@ -133,13 +138,6 @@ body::before {
 		margin-right: 15px;
 		width: 25px;
 	}
-}
-
-.studentTop {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	width: 100%;
 }
 
 .videoHolder {
@@ -191,65 +189,25 @@ body::before {
 	margin: 32px 0 16px 0;
 }
 
-@media (max-width: 1680px) {
-	.studentCards {
-		display: flex;
+@media (max-width: 1280px) {
+	.magButton button img {
+		display: none;
+	}
+
+	.studentCardDiv {
 		flex-wrap: wrap;
-		align-items: flex-start;
-	}
-
-	.studentTop,
-	.studentInfo {
-		display: contents;
-	}
-
-	.picture {
-		flex: 0 0 auto;
-		margin-right: 15px;
-		align-self: center;
-
-		img {
-			width: 80px;
-			height: 80px;
-		}
-	}
-
-	.studentName {
-		flex: 1;
-		min-width: 0;
-	}
-
-	.studentContact {
-		flex: 0 0 100%;
-		margin-top: 12px;
-		gap: 16px;
-		flex-wrap: nowrap;
-		justify-content: start;
-
-		.icons {
-			min-width: unset;
-			margin-right: 0;
-		}
-	}
-
-	.magButton button {
-		font-size: 16pt;
-
-		img {
-			display: none;
-		}
-	}
-
-	.titleNames {
-		flex-direction: column;
-		justify-content: center;
 	}
 }
 
-@media (max-width: 350px) {
-	.magButton {
-		button {
-			font-size: 10pt;
-		}
+@media (max-width: 1024px) {
+	.magButton button {
+		font-size: 10pt;
+	}
+}
+
+@media (max-width: 640px) {
+	.picture img {
+		width: 80px;
+		height: 80px;
 	}
 }
