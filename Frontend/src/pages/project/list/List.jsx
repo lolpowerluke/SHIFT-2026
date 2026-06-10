@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import s from "./List.module.css";
 import ProjectCard from "../../../components/projectCard/ProjectCard.jsx";
-import { getCloudinaryUrl } from "../../../utils/cloudinary.js";
+import { useFetch } from "../../../hooks/useFetch.js";
+import { mapProject } from "../../../utils/member.js";
+import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
 
 const CATEGORIES = [
 	"Alle Projecten",
@@ -11,57 +13,29 @@ const CATEGORIES = [
 	"Web & Mobile",
 ];
 
-function mapProject(p) {
-	return {
-		id: p.id,
-		title: p.name,
-		category: p.course,
-		image:
-			getCloudinaryUrl(p.media?.[0]) ??
-			getCloudinaryUrl(p.images?.[0]) ??
-			"/assets/imageCard.png",
-		students: (p.members ?? []).map((m) => ({
-			name:
-				[m.firstname, m.lastname].filter(Boolean).join(" ") ||
-				m.email ||
-				"Onbekend",
-			avatar: getCloudinaryUrl(m.picture) ?? "/assets/user.png",
-		})),
-	};
-}
-
 export default function List() {
-	const [projects, setProjects] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
 	const [activeCategory, setActiveCategory] = useState("Alle Projecten");
 	const [searchQuery, setSearchQuery] = useState("");
 
-	useEffect(() => {
-		fetch(`${import.meta.env.VITE_API_URL}/project`)
-			.then((res) => {
-				if (!res.ok) throw new Error(`HTTP ${res.status}`);
-				return res.json();
-			})
-			.then((data) => setProjects(data.projects.map(mapProject)))
-			.catch((err) => setError(err.message))
-			.finally(() => setLoading(false));
-	}, []);
+	const { data, loading, error } = useFetch(
+		`${import.meta.env.VITE_API_URL}/project`,
+	);
+
+	const guard = StatusMessage({ loading, error });
+	if (guard) return guard;
+
+	const projects = (data?.projects ?? []).map(mapProject);
 
 	const filteredProjects = projects.filter((project) => {
 		const query = searchQuery.toLowerCase();
 		const matchesSearch =
 			project.title.toLowerCase().includes(query) ||
 			project.students.some((s) => s.name.toLowerCase().includes(query));
-
 		const matchesCategory =
 			activeCategory === "Alle Projecten" ||
 			project.category === activeCategory;
 		return matchesSearch && matchesCategory;
 	});
-
-	if (loading) return <p className="ctx">Laden...</p>;
-	if (error) return <p className="ctx">Fout: {error}</p>;
 
 	return (
 		<main className="ctx">
