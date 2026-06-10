@@ -4,6 +4,7 @@ import SocialLinks from "../socialLinks/SocialLinks.jsx";
 import { useRef } from "react";
 import { useScrolled } from "../../hooks/useScrolled.js";
 import s from "./Header.module.css";
+import Routes from "../../routes/constants/Routes.js";
 
 export default function Header() {
 	const hamburgerRef = useRef();
@@ -13,6 +14,7 @@ export default function Header() {
 	const closeMenu = () => {
 		if (hamburgerRef.current) {
 			hamburgerRef.current.checked = false;
+			scrollTo(top)
 		}
 	};
 
@@ -20,7 +22,7 @@ export default function Header() {
 		<header>
 			<script type="module" src="/src/js/language.js"></script>
 			<div className="ctx flexSpaceBetween">
-				<Link to="/" onClick={closeMenu}>
+				<Link to={`${Routes.Root}`} onClick={closeMenu}>
 					<img
 						src="/favicon/shift_icon.svg"
 						alt="Shift Icon"
