@@ -109,7 +109,7 @@ export default function Countdown() {
                                     target="_blank"
                                     rel="noreferrer"
                                 >
-                                    Schrijf je nu gratis in!
+                                    Schrijf je nu gratis in
                                 </a>
                             </div>
                         </>
@@ -135,18 +135,12 @@ export default function Countdown() {
 							<div className={s.shiftInfoNoCard}>
 								<h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
 								<p>
-									SHIFT FESTIVAL is het afstudeerevenement van de opleiding
-									Multimedia & Creatieve Technologie aan de Erasmushogeschool
-									Brussel. Ontdek er de eindprojecten van studenten, waarin
-									technologie, creativiteit en innovatie samenkomen. Een unieke
-									blik op het werk van de nieuwe generatie digitale makers!
-									<br />
-									<br />
-									Tijdens het festival kunnen projecten niet alleen worden
-									bekeken, maar ook worden getest en beleefd via demo’s,
-									presentaties en gesprekken met de makers. Daarnaast is er
-									ruimte om te netwerken en worden de meest opvallende projecten
-									in de kijker gezet. Met een live awardshow!
+                                    SHIFT festival is de eindejaarsexpo van Multimedia & Creatieve
+                                     Technologie aan Erasmushogeschool Brussel. Onze laatstejaars-<br />studenten 
+                                     tonen het beste van zichzelf met hun eindwerken van  XR/3D‑ervaringen 
+                                     tot interactieve installaties.  Ze duiken ook in thema’s die ertoe doen, 
+                                     zoals verbinding, mantelzorg, de strijd tegen phishing en vrouwengeweld. 
+                                     Daarnaast mag je de liveshow en awards zeker niet missen!
 								</p>
 							</div>
 						</div>
