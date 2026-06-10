@@ -2,7 +2,6 @@ body::before {
 	background-image: none;
 }
 
-
 .backButton {
 	button {
 		display: flex;
@@ -194,15 +193,15 @@ body::before {
 	.magButton button img {
 		display: none;
 	}
+
+	.studentCardDiv {
+		flex-wrap: wrap;
+	}
 }
 
 @media (max-width: 1024px) {
 	.magButton button {
 		font-size: 10pt;
-	}
-
-	.studentCardDiv {
-		flex-wrap: wrap;
 	}
 }
 
