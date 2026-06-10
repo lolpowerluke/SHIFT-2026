@@ -1,46 +1,45 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import PageLayout from "./layouts/PageLayout.jsx";
 import BareLayout from "./layouts/BareLayout.jsx";
-import SearchLayout from "./layouts/SearchLayout.jsx";
 import Countdown from "./pages/countdown/Countdown.jsx";
 import Routes from "./routes/constants/Routes.js";
 import PrivacyRedirect from "./pages/privacy/PrivacyRedirect.jsx";
 import PrivacyEN from "./pages/privacy/pages/PrivacyEN.jsx";
 import PrivacyNL from "./pages/privacy/pages/PrivacyNL.jsx";
 import Login from "./pages/login/Login.jsx";
-import ProjectForm from "./pages/project/ProjectForm.jsx";
+import Form from "./pages/project/form/Form.jsx";
+import List from "./pages/project/list/List.jsx";
+import Detail from "./pages/project/detail/Detail.jsx";
 import Awards from "./pages/awards/Awards.jsx";
 
 // TODO: add actual page elements instead of placeholder strings
-const router = createBrowserRouter(
-    [
-        {
-            element: <PageLayout />,
-            children: [
-                {
-                    path: Routes.Privacy, element: <PrivacyRedirect />,
-                    children: [
-                        { index: true, element: <PrivacyRedirect /> },
-                        { path: Routes.privacyEN, element: <PrivacyEN /> },
-                        { path: Routes.privacyNL, element: <PrivacyNL /> },
-                    ]
-                },
-                { path: Routes.Root, element: <Countdown /> },
-                { path: Routes.ProjectForm, element: <ProjectForm /> },
-                { path: Routes.Awards, element: <Awards /> },
-                {
-                    element: <SearchLayout />, //this will hold all search logic for the projects
-                    children: [
-                        { path: "/projects", element: "Projects" },
-                    ]
-                },
-            ]
-        },
-        {   // no header or footer
-            element: <BareLayout />, children: [
-                { path: Routes.Login, element: <Login /> },
-            ]
-        }
-    ]
-)
+const router = createBrowserRouter([
+	{
+		element: <PageLayout />,
+		children: [
+			{
+				path: Routes.Privacy,
+				element: <PrivacyRedirect />,
+				children: [
+					{ index: true, element: <PrivacyRedirect /> },
+					{ path: Routes.privacyEN, element: <PrivacyEN /> },
+					{ path: Routes.privacyNL, element: <PrivacyNL /> },
+				],
+			},
+			{ path: Routes.Root, element: <Countdown /> },
+			{ path: Routes.Login, element: <Login /> },
+			{ path: Routes.ProjectForm, element: <Form /> },
+            { path: Routes.Awards, element: <Awards /> },
+            { path: Routes.ProjectenPage, element: <List /> },
+			{ path: Routes.ProjectenPageDetails, element: <Detail /> },
+			{ path: Routes.uMoeder, element: "is dik" }, //same as {path: "/uMoeder", element: "isDik"
+			{ path: Routes.ProjectFormOld, element: <Navigate to={Routes.ProjectForm} replace /> },
+			{ path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
+		],
+	},
+	{
+		element: <BareLayout />,
+		children: [{ path: Routes.Root, element: <Countdown /> }],
+	},
+]);
 export default router;
