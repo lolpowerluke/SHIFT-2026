@@ -11,6 +11,7 @@ import Login from "./pages/login/Login.jsx";
 import Form from "./pages/project/form/Form.jsx";
 import List from "./pages/project/list/List.jsx";
 import Detail from "./pages/project/detail/Detail.jsx";
+import Info from "./pages/info/Info.jsx";
 
 // TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter([
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
 			{ path: Routes.ProjectForm, element: <Form /> },
 			{ path: Routes.ProjectenPage, element: <List /> },
 			{ path: Routes.ProjectenPageDetails, element: <Detail /> },
-			{ path: Routes.ProjectFormOld, element: <Navigate to={Routes.ProjectForm} replace /> },
+			{ path: Routes.Info, element: <Info /> },
+			{
+				path: Routes.ProjectFormOld,
+				element: <Navigate to={Routes.ProjectForm} replace />,
+			},
 			{ path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
 			{
 				element: <SearchLayout />, //this will hold all search logic for the projects

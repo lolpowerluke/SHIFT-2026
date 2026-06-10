@@ -1,9 +1,5 @@
-import s from "./info.module.css"
+import s from "./info.module.css";
 
-export default function Info(){
-    return(
-        <>
-            Info
-        </>
-    )
+export default function Info() {
+	return <>Info</>;
 }

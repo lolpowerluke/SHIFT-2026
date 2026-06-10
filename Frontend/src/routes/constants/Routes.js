@@ -10,5 +10,6 @@ const Routes = {
 	ProjectForm: "/project/form",
 	ProjectFormOld: "/project-form",
 	ProjectenPageDetails: "/project/:id",
+	Info: "/info",
 };
 export default Routes;
