@@ -1,11 +1,7 @@
-body::before {
-	background-image: none;
-}
-
 .backButton {
 	button {
 		display: flex;
-		max-width: 40%;
+		align-items: center;
 	}
 
 	img {
@@ -16,41 +12,40 @@ body::before {
 .titleText {
 	display: flex;
 	flex-direction: column;
-	gap: -4px;
 
 	h1 {
 		margin: 0;
 		margin-top: 32px;
-		margin-bottom: -24px;
+		margin-bottom: 8px;
+	}
+
+	> div {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px;
 	}
 
 	.name {
+		display: flex;
 		flex-wrap: wrap;
-		max-width: 50%;
 	}
 
 	.subject {
-		max-width: 50%;
+		display: flex;
 		align-items: center;
+		gap: 8px;
 
 		img {
 			width: 30px;
 		}
 	}
-
-	div {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-
-		img {
-			width: 40px;
-		}
-	}
 }
 
 .promoterTitle {
-	font-style: bold;
+	font-weight: bold;
 	margin-bottom: -20px;
 }
 
@@ -69,6 +64,7 @@ body::before {
 
 .studentCardDiv {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	gap: 16px;
 }
@@ -115,15 +111,14 @@ body::before {
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: space-between;
-	gap: 16px;
 	align-items: center;
+	gap: 16px;
 	flex: 0 0 100%;
 	margin-top: 12px;
 
 	.icons {
 		display: flex;
 		gap: 16px;
-		min-width: unset;
 		align-items: center;
 	}
 }
@@ -131,6 +126,7 @@ body::before {
 .magButton {
 	button {
 		display: flex;
+		align-items: center;
 		font-size: 15pt;
 	}
 
@@ -143,7 +139,6 @@ body::before {
 .videoHolder {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	margin-bottom: 33px;
 }
@@ -189,19 +184,35 @@ body::before {
 	margin: 32px 0 16px 0;
 }
 
-@media (max-width: 1280px) {
-	.magButton button img {
-		display: none;
+@media (max-width: 1024px) {
+	.videoWrapper,
+	.videoThumb {
+		width: 100%;
 	}
 
-	.studentCardDiv {
-		flex-wrap: wrap;
+	.magButton button {
+		font-size: 13pt;
 	}
 }
 
-@media (max-width: 1024px) {
-	.magButton button {
-		font-size: 10pt;
+@media (max-width: 768px) {
+	.titleText {
+		text-align: center;
+
+		> div {
+			flex-direction: column;
+			align-items: center;
+			gap: 0px;
+		}
+
+		p,
+		img {
+			margin: 0 0 16px 0;
+		}
+
+		.subject {
+			justify-content: center;
+		}
 	}
 }
 
@@ -209,5 +220,23 @@ body::before {
 	.picture img {
 		width: 80px;
 		height: 80px;
+	}
+
+	.magButton button img {
+		display: none;
+	}
+
+	.magButton button {
+		font-size: 12pt;
+	}
+
+	.studentContact {
+		flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 350px) {
+	.magButton button {
+		font-size: 10pt;
 	}
 }
