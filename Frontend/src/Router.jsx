@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import PageLayout from "./layouts/PageLayout.jsx";
 import BareLayout from "./layouts/BareLayout.jsx";
-import SearchLayout from "./layouts/SearchLayout.jsx";
 import Countdown from "./pages/countdown/Countdown.jsx";
 import Routes from "./routes/constants/Routes.js";
 import PrivacyRedirect from "./pages/privacy/PrivacyRedirect.jsx";
