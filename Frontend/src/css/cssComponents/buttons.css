@@ -36,7 +36,7 @@ button:active {
 	margin-top: var(--margin-between);
 }
 
-.fitContent {
+.throbberCtx {
 	width: fit-content;
 	min-width: max-content;
 }

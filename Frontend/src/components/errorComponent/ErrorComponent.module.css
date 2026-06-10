@@ -1,0 +1,10 @@
+.ctx{
+    margin: auto;
+    width: 85vw;
+}
+
+.throbberCtx{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

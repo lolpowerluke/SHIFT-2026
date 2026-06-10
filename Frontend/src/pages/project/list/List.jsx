@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import s from "./List.module.css";
 import ProjectCard from "../../../components/projectCard/ProjectCard.jsx";
 import { getCloudinaryUrl } from "../../../utils/cloudinary.js";
+import Throbber from "../../../components/Throbber.jsx";
+import ErrorComponent from "../../../components/errorComponent/ErrorComponent.jsx";
 
 const CATEGORIES = [
 	"Alle Projecten",
@@ -44,7 +46,7 @@ export default function List() {
 				return res.json();
 			})
 			.then((data) => setProjects(data.projects.map(mapProject)))
-			.catch((err) => setError(err.message))
+			.catch((err) => setError(err))
 			.finally(() => setLoading(false));
 	}, []);
 
@@ -60,8 +62,8 @@ export default function List() {
 		return matchesSearch && matchesCategory;
 	});
 
-	if (loading) return <p className="ctx">Laden...</p>;
-	if (error) return <p className="ctx">Fout: {error}</p>;
+	if (loading) return <Throbber/>;
+	if (error) return <ErrorComponent error={error}/>;
 
 	return (
 		<main className="ctx">
