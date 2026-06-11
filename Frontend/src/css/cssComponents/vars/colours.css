@@ -26,9 +26,10 @@
 	/* shadow colours */
 	--shadow-primary: var(--border-primary);
 
-	/* Buttons */
-	--btn-primary-bg: var(--bg-shift-alt);
-	--btn-disabled-bg: color-mix(in srgb, var(--btn-primary-bg) 60%, black);
+  /* Buttons */
+  --btn-primary-bg: var(--bg-shift-alt);
+  --btn-secondary-bg: var(--bg-shift-primary);
+  --btn-disabled-bg: color-mix(in srgb, var(--btn-primary-bg) 60%, black);
 }
 
 /* 
