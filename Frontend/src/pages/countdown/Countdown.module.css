@@ -160,6 +160,7 @@
 	width: fit-content;
 	outline: none;
 	-webkit-tap-highlight-color: transparent;
+	background-color: var(--shift-orange);
 }
 
 .projectSide {
