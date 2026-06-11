@@ -40,6 +40,11 @@ export default function Detail() {
             });
     }, [project]);
 
+    useEffect(() => {
+		document.documentElement.classList.add("altBg", "no-icons");
+		return () => document.documentElement.classList.remove("altBg", "no-icons");
+	}, []);
+
     const guard = StatusMessage({loading, error});
     if (guard) return guard;
     if (!project) return null;
@@ -61,7 +66,7 @@ export default function Detail() {
 
     return (<>
             <div className="headerSpacer"></div>
-            <div className={`${s.paperBg} altBg`}>
+            <div className={`${s.paperBg}`}>
                 <div className={`${s.ctxDetail}`}>
                     <div className={s.backButton}>
                         <button onClick={() => navigate(-1)}>
