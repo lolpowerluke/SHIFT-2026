@@ -31,7 +31,6 @@
 
 #heroLogo {
 	height: var(--shift-logo-height);
-	margin: -80px -20px -30px;
 }
 
 .rotatedText {
@@ -39,6 +38,7 @@
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
+	margin: -40px 0 0 0;
 
 	h1 {
 		font-size: 32px;
@@ -106,6 +106,10 @@
 		span {
 			font-weight: 600;
 		}
+	}
+
+	.cd:not(.smallerCd) {
+		display: none;
 	}
 
 	.smallerCd span {
@@ -199,8 +203,8 @@
 		min-width: 80%;
 		border-radius: 1.5rem;
 		box-shadow:
-		5px 5px 0 1px var(--shadow-primary),
-		3px 3px 0 7px var(--hl-secondary);
+			5px 5px 0 1px var(--shadow-primary),
+			3px 3px 0 7px var(--hl-secondary);
 		border: 5px solid var(--border-primary);
 		overflow: hidden;
 		aspect-ratio: 16 / 9;
@@ -208,7 +212,7 @@
 		h3 {
 			text-align: left;
 		}
-		
+
 	}
 
 	.carouselSlideAnimation {
@@ -228,7 +232,8 @@
 			z-index: 1;
 		}
 
-		h3, p {
+		h3,
+		p {
 			z-index: 2;
 		}
 	}
@@ -412,7 +417,7 @@
 	position: relative;
 	display: grid;
 	grid-template-rows: repeat(2, 1fr);
-	height: calc(100dvh - 116px);
+	height: 100dvh;
 	top: 0;
 	gap: 50px;
 
@@ -423,6 +428,7 @@
 		justify-content: center;
 		width: fit-content;
 		position: absolute;
+		margin: 60px 0 0 -25px;
 	}
 
 	.timerDiv {
@@ -433,6 +439,8 @@
 		grid-row: 2/3;
 
 		#timer {
+			display: none;
+
 			.timerBox {
 				color: var(--txt-special);
 			}
@@ -498,7 +506,7 @@
 @media (min-width: 1024px) {
 	.landingWrap {
 		grid-template-columns: repeat(2, 1fr);
-		height: 90dvh;
+		height: 97.5lvh;
 		width: 92.5dvw;
 		justify-content: space-between;
 		/*margin-top: -56px;*/
@@ -512,6 +520,10 @@
 			#heroLogo {
 				max-height: 100%;
 			}
+
+			.rotatedText {
+				margin: -60px 0 0 0;
+			}
 		}
 
 		.timerDiv {
@@ -522,11 +534,15 @@
 			margin-top: unset;
 
 			#timer {
-				margin-left: -6px;
+				display: flex;
 
 				.timerBox {
 					color: var(--txt-special);
 				}
+			}
+
+			.cd {
+				display: block;
 			}
 
 			.cta {
@@ -543,10 +559,6 @@
 		left: 50%;
 		bottom: 0;
 		animation: upDown 1.4s ease-in-out infinite;
-	}
-
-	#heroLogo {
-		margin: 0 -30px -80px;
 	}
 
 	.rotatedText h1 {
@@ -714,7 +726,5 @@
 }
 
 @media (max-width: 554px) {
-	.heroGradient {
-		visibility: hidden
-	}
+	.heroGradient {}
 }
