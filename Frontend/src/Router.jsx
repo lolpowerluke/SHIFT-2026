@@ -34,6 +34,7 @@ const router = createBrowserRouter([
             { path: Routes.ProjectFormOld, element: <Navigate to={Routes.ProjectForm} replace /> },
             { path: Routes.Awards, element: <Awards /> },
             { path: Routes.ProjectenPage, element: <List /> },
+            { path: Routes.ProjectenPageOld, element: <Navigate to={Routes.ProjectenPage} replace /> },
             { path: Routes.ProjectenPageDetails, element: <Detail /> },
             { path: Routes.uMoeder, element: "is dik" }, //same as {path: "/uMoeder", element: "isDik"
             { path: Routes.NotFound, element: <NotFound /> },
