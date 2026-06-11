@@ -1,15 +1,17 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import { NavRoutes } from "../../routes/NavRoutes.js";
 import SocialLinks from "../socialLinks/SocialLinks.jsx";
-import { useRef } from "react";
+import {useEffect, useRef, useState} from "react";
 import { useScrolled } from "../../hooks/useScrolled.js";
 import s from "./Header.module.css";
 import Routes from "../../routes/constants/Routes.js";
 
 export default function Header() {
+	const [pageShort, setPageShort] = useState(false)
 	const hamburgerRef = useRef();
 	const scrolled = useScrolled(80);
 	const navLength = NavRoutes.length;
+	const pathname = useLocation();
 
 	const closeMenu = () => {
 		if (hamburgerRef.current) {
@@ -18,18 +20,28 @@ export default function Header() {
 		}
 	};
 
+	useEffect(() => {
+		function check() {
+			setPageShort(document.body.scrollHeight <= window.innerHeight * 1.01);
+		}
+
+		setTimeout(check, 10);
+		window.addEventListener('resize', check);
+
+		return () => window.removeEventListener('resize', check);
+	}, [pathname]);
+
 	return (
 		<header>
-			<script type="module" src="/src/js/language.js"></script>
 			<div className="ctx flexSpaceBetween">
-				<Link to={`${Routes.Root}`} onClick={closeMenu}>
+				<Link to={`${Routes.Root}`} onClick={closeMenu} className={s.clickable}>
 					<img
 						src="/favicon/shift_icon.svg"
 						alt="Shift Icon"
-						className={`${s.headerLogo} ${!scrolled ? s.hide : ""}`}
+						className={`${s.headerLogo} ${!scrolled && !pageShort ? s.hide : ""}`}
 					/>
 				</Link>
-				<div className={`${s.nav} ${navLength <= 1 ? "hideThisSht" : ""}`}>
+				<div className={`${s.nav} ${s.clickable} ${navLength <= 1 ? "hideThisSht" : ""}`}>
 					<ul className={s.navList}>
 						<ul className={s.orientationSwap}>
 							<li className={s.navLogo}>
