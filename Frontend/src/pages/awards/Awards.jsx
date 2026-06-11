@@ -1,29 +1,55 @@
+import { useEffect, useState } from "react";
 import s from "./Awards.module.css";
 import { useNavigate } from "react-router";
+import { apiFetch } from "../../utils/apiFetch";
 
 export default function Awards() {
     const navigate = useNavigate();
+
+    const [projectAmount, setProjectAmount] = useState(0);
+
+    useEffect(() => {
+        loadProjectCount();
+    })
+
+    async function loadProjectCount() {
+        const projData = await apiFetch("/project/");
+        if (!projData.success) return;
+        setProjectAmount(projData.projects.length);
+    }
 
     return (
         <>
             <div className={s.heroContainer}>
                 <div className={s.landingTop}>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
-                    <span className={s.title}>AWARD<br />SHOW</span>
+                    <span className={`${s.title} ${s.desktop}`}>AWARD<br />SHOW</span>
+                    <span className={`${s.title} ${s.mobile}`}>SHIFT AWARDS</span>
                 </div>
-                <div className={s.landingBottom}>
+                <div className={`${s.landingBottom} ${s.desktop}`}>
                     <img src="/assets/icons/BlueVote.svg" alt="Blue Vote" className={s.voteImg} />
                     <div>
-                        <span>... projecten worden getoond.</span>
+                        <span>{projectAmount} projecten worden getoond.</span>
                         <span>4 awards worden uitgereikt.</span>
                     </div>
                     <button onClick={() => navigate('/project')} className="blueBtn">Ontdek alle projecten</button>
+                </div>
+                <div className={`${s.landingBottom} ${s.mobile}`}>
+                    <div>
+                        <button>Bezoek het evenement</button>
+                        <span>Vier categorieën die excellentie erkennen in innovatie, impact en creativiteit.</span>
+                    </div>
+                    <div>
+                        <button>Ontdek alle projecten</button>
+                        <span>Bekijk de verschillende projecten</span>
+                    </div>
                 </div>
             </div>
             <div className={s.awardContainer}>
                 <div className={s.awardTop}>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
-                    <span>4 AWARDS</span>
+                    <span className={s.desktop}>4 AWARDS</span>
+                    <span className={s.mobile}>WELKE AWARDS ZIJN ER</span>
                 </div>
                 <div className={s.awardBottom}>
                     <div className={s.awardCard}>
@@ -48,11 +74,13 @@ export default function Awards() {
             </div>
             <div className={`${s.publicPrize} altBg`}>
                 <img src="/assets/icons/VoteOrange.svg" alt="Orange Vote" className={s.voteImg} />
-                <span className={s.title}>BRENG JE STEM UIT</span>
-                <span className={s.subTitle}>Jij bepaalt wie de publiekprijs verdient.</span>
+                <span className={`${s.title} ${s.desktop}`}>BRENG JE STEM UIT</span>
+                <span className={`${s.title} ${s.mobile}`}>KOM MEE STEMMEN</span>
+                <span className={`${s.subTitle} ${s.desktop}`}>Jij bepaalt wie de publiekprijs verdient.</span>
+                <span className={`${s.subTitle} ${s.mobile}`}>Jij mag mee bepalen wie de publiekprijs verdient.</span>
                 <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
                 <span className={s.time}>UITREIKING OM 20:00 TIJDENS DE AWARD SHOW</span>
-                <button>Praktische info <img src="" alt="arrow up right" /></button>
+                <button>Praktische info<span className={s.mobile}>, klik hier</span> <img src="/assets/icons/arrowLink.svg" alt="arrow up right" className={s.arrowUp} /></button>
             </div>
         </>
     );

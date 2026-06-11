@@ -1,3 +1,15 @@
+@media (min-width: 769px) {
+    .mobile {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop {
+        display: none !important;
+    }
+}
+
 .heroContainer {
     height: 100vh;
     width: 100vw;
@@ -37,11 +49,6 @@
     }
 
     .landingBottom {
-        background: var(--bg-shift-alt);
-        border: 5px solid var(--border-primary);
-        box-shadow: 5px 5px 0 1px var(--shadow-primary);
-        border-radius: 10px;
-        padding: 50px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -52,6 +59,59 @@
         div {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+}
+
+:where(.landingBottom) button {
+    box-shadow: 5px 5px 0 1px var(--shadow-primary);
+}
+
+@media (min-width: 769px) {
+    .heroContainer {
+        .landingBottom {
+            background: var(--bg-shift-alt);
+            border: 5px solid var(--border-primary);
+            box-shadow: 5px 5px 0 1px var(--shadow-primary);
+            border-radius: 10px;
+            padding: 50px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .heroContainer {
+        height: fit-content;
+        background: unset;
+        padding-top: 116px;
+
+        .landingTop {
+            flex-direction: column;
+            gap: 20px;
+
+            .awardImg {
+                width: 150px;
+                transform: rotate(10deg);
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+        }
+
+        .landingBottom {
+            &>div {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 0 30px;
+
+                span {
+                    font-weight: 500;
+                }
+            }
         }
     }
 }
@@ -63,13 +123,15 @@
     padding: 50px 0 100px 0;
     position: relative;
 
-    &::before {
-        content: "";
-        height: 25px;
-        width: 100vw;
-        position: absolute;
-        top: 0;
-        background-image: linear-gradient(to bottom, color-mix(in oklab, var(--bg-shift-secondary) 70%, transparent), transparent);
+    @media (min-width: 769px) {
+        &::before {
+            content: "";
+            height: 25px;
+            width: 100vw;
+            position: absolute;
+            top: 0;
+            background-image: linear-gradient(to bottom, color-mix(in oklab, var(--bg-shift-secondary) 70%, transparent), transparent);
+        }
     }
 
     .awardTop {
@@ -88,10 +150,11 @@
     }
 
     .awardBottom {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
         width: 100vw;
-        max-width: 1600px;
         margin: 0 auto;
         gap: 50px;
         padding: 0 50px;
@@ -107,6 +170,10 @@
             box-shadow: 5px 5px 0 1px var(--shadow-primary);
             border-radius: 10px;
             padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            flex: 1 0 auto;
+            max-width: 500px;
 
             .cardImg {
                 height: 100px;
@@ -126,6 +193,24 @@
             }
         }
     }
+
+    @media (max-width: 768px) {
+        .awardTop {
+            padding: 0 30px;
+            text-align: center;
+
+            .awardImg {
+                width: 100px;
+            }
+        }
+
+        .awardBottom {
+            grid-template-columns: 1fr;
+            padding: 0;
+            width: calc(100vw - 40px);
+        }
+    }
+
 }
 
 .publicPrize {
@@ -157,5 +242,32 @@
 
     button {
         margin-top: 2rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .arrowUp {
+            height: 30px;
+            margin-left: 10px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .publicPrize {
+        &>span {
+            padding: 0 30px;
+            text-align: center;
+        }
+
+        .subTitle {
+            padding: 0 50px;
+        }
+
+        .awardImg {
+            width: 200px;
+        }
+
+        button {}
     }
 }
