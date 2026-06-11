@@ -45,7 +45,7 @@ html::after {
     background-image: url(/assets/wallTextureWeb2.png);
     background-size: cover;
     pointer-events: none;
-    mix-blend-mode: multiply;
+    opacity: 0.4;
 }
 
 body::before {
@@ -56,7 +56,6 @@ body::before {
     background-image: url(/assets/iconsOverlay.svg);
     background-size: 9000px;
     pointer-events: none;
-    opacity: .6;
 }
 
 .alt-bg::after {

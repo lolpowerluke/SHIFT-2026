@@ -35,7 +35,7 @@ export default function Countdown() {
                     />
                 </video>
             </div>
-
+            <div className={s.heroGradient} />
             <div className={s.landingWrap}>
                 <div>
                     <div className={s.heroLayout}>
