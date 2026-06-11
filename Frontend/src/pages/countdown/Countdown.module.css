@@ -312,25 +312,28 @@
 .shiftTime,
 .shiftLocation {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	gap: 0.5rem;
 	max-width: 350px;
+	margin: 0 auto;
 
 	h3 {
 		font-size: 20px;
 		text-align: center;
 		margin-bottom: 1rem;
-		text-align: left;
 	}
 
 	p {
-		text-align: left;
+		text-align: center;
 	}
 }
 
 .btnMapDiv {
 	margin-top: 15px;
+	display: flex;
+	justify-content: center;
 
 	.btnMaps {
 		background-color: var(--bg-shift-primary);
@@ -349,6 +352,10 @@
 		height: 100%;
 		object-fit: contain;
 	}
+}
+
+h2 {
+	text-align: center;
 }
 
 .iconMap {
@@ -621,7 +628,7 @@
 
 	.wrap,
 	.infoSection {
-		text-align: left;
+		text-align: center;
 	}
 
 	.timerDiv .cd,
@@ -646,6 +653,24 @@
 	.shiftInfoSide {
 		width: 45%;
 		align-self: center;
+	}
+
+	.shiftTime,
+	.shiftLocation {
+		flex-direction: row;
+		margin: unset;
+
+		h3 {
+			text-align: left;
+		}
+
+		p {
+			text-align: left;
+		}
+	}
+
+	.btnMapDiv {
+		justify-content: flex-start;
 	}
 
 	.projectSide {
@@ -697,6 +722,10 @@
 
 	.infoMultimediaCard {
 		max-width: 50vw;
+	}
+
+	.infoMultimediaCard p {
+		text-align: left;
 	}
 
 	.audienceCard {
