@@ -35,7 +35,7 @@ export default function Countdown() {
                     />
                 </video>
             </div>
-
+            <div className={s.heroGradient} />
             <div className={s.landingWrap}>
                 <div>
                     <div className={s.heroLayout}>
@@ -171,14 +171,16 @@ export default function Countdown() {
 									</div>
 									<div className={s.shiftLocationCampus}>
 										<h3>
-											ERASMUSHOGESCHOOL BRUSSEL <br />
+											ERASMUSHOGESCHOOL BRUSSEL
 											CAMPUS KAAI
 										</h3>
                                         <small>Nijverheidskaai 170<br/>1070 Anderlecht</small>
+                                        <div className={s.btnMapDiv}>
+									        <button className={s.btnMaps} onClick={handleOpenMaps}>
+										        Open in maps
+									        </button>
+                                        </div>
 									</div>
-									<button className={s.btnMaps} onClick={handleOpenMaps}>
-										Open in maps
-									</button>
 								</div>
 							</div>
 						</div>

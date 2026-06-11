@@ -158,9 +158,27 @@
 	-webkit-tap-highlight-color: transparent;
 }
 
-.projectSide img {
+.projectSide {
 	width: 100%;
-	height: auto;
+
+	img {
+	width: 50%;
+	}
+}
+
+.heroGradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient( to right, var(--shadow-primary) 0%, var(--shadow-primary) 30%, transparent 100%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.heroLayout {
+    z-index: 1;
 }
 
 .projectCard {
@@ -270,23 +288,32 @@
 .shiftTime,
 .shiftLocation {
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
-	max-width: 200px;
-	margin-left: auto;
-	margin-right: auto;
+	max-width: 350px;
 
 	h3 {
 		font-size: 20px;
 		text-align: center;
 		margin-bottom: 1rem;
 	}
+	
 }
+
+.btnMapDiv {
+	margin-top: 15px;
+	
+	.btnMaps {
+		background-color: var(--bg-shift-primary);
+	}
+}
+
+
 .iconCalendar,
 .iconMap {
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
 	flex-shrink: 0;
 
 	img {
@@ -298,6 +325,9 @@
 
 .shiftTimeDate,
 .shiftLocationCampus {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 	h3 {
 		margin-top: 0;
 	}
@@ -436,6 +466,10 @@
 	gap: 40px;
 }
 
+.infoPart {
+	align-items: center;
+}
+
 @media (min-width: 1024px) {
 	.landingWrap {
 		grid-template-columns: repeat(2, 1fr);
@@ -535,11 +569,14 @@
 		/*padding: calc(3 * var(--spacing-top)) 0 var(--spacing-top);
 	}
 	*/
-
-	.projectSide,
+	
 	.shiftInfoSide {
 		width: 45%;
 		align-self: center;
+	}
+
+	.projectSide {
+		width: 50%;
 	}
 
 	.projectCard {
@@ -559,7 +596,10 @@
 
 	.leftSideInfo,
 	.rightSideInfo {
-		width: 40%;
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		margin: 0;
 	}
 
 	.audienceContainer {
@@ -586,20 +626,24 @@
 	}
 
 	.infoPart {
-		flex-direction: row;
-		height: fit-content;
-		min-height: 10rem;
-		justify-content: center;
-		margin: var(--spacing-s) 0;
+        flex-direction: row; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 10rem;
+        margin: var(--spacing-s) 0;
 
-		hr.sectionDivider {
-			align-self: stretch;
-			width: 1px;
-			border: none;
-			border-left: 3px solid var(--border-primary);
-			margin: 0;
-		}
-	}
+        hr.sectionDivider {
+            align-self: stretch;
+            width: 3px;
+            border: none;
+            border-top: none;
+            border-left: 3px solid var(--border-primary);
+            margin: 0;
+            flex-shrink: 0;
+            height: unset;
+        }
+    }
 
 	.infoMultimediaCard {
 		max-width: 50vw;
@@ -626,5 +670,11 @@
 
 	50% {
 		transform: translateY(10px);
+	}
+}
+
+@media (max-width: 554px) {
+	.heroGradient {
+		visibility:hidden
 	}
 }
