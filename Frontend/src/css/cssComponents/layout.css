@@ -14,10 +14,6 @@ body {
 	margin-top: var(--spacing-xs);
 }
 
-footer {
-	padding: var(--spacing-footer) 0;
-}
-
 .centered {
 	display: flex;
 	flex-direction: column;

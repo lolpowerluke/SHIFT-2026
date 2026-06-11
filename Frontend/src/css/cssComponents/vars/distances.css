@@ -1,29 +1,28 @@
 /* use recognisable names. Start with the main purpose of the var (spacing/gap for example) followed by a descriptor (relative size of the distance like s/m/l for example) */
 :root {
-    --spacing-xs: 0.5rem;
-    --spacing-s: 2rem;
-    --spacing-m: 3rem;
+	--spacing-xs: 0.5rem;
+	--spacing-s: 2rem;
+	--spacing-m: 3rem;
 
-    --spacing-top: var(--spacing-m);
+	--spacing-top: var(--spacing-m);
 
-    --margin-section: 35px;
-    --margin-between: 25px;
-    --margin-small: 5px;
+	--margin-section: 35px;
+	--margin-between: 25px;
+	--margin-small: 5px;
 
-    /* specifics */
-    --spacing-heroWrapper: var(--spacing-s);
-    --spacing-footer: var(--spacing-s);
+	/* specifics */
+	--spacing-heroWrapper: var(--spacing-s);
+	--spacing-footer: var(--spacing-m);
 
-    --shift-logo-height: 15rem;
+	--shift-logo-height: 15rem;
 
-    @media only screen and (min-width: 1024px) {
-        --shift-logo-height: 25rem;
-    }
+	@media only screen and (min-width: 1024px) {
+		--shift-logo-height: 25rem;
+	}
 
-    @media only screen and (min-width: 1280px){
-        --shift-logo-height: 29rem;
-    }
-
+	@media only screen and (min-width: 1280px) {
+		--shift-logo-height: 29rem;
+	}
 }
 
 /* 

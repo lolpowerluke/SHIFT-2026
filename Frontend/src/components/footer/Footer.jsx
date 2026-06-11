@@ -7,15 +7,15 @@ import { FooterRoutes } from "../../routes/FooterRoutes.js";
 export default function Footer() {
 	return (
 		<footer>
-			<div className={s.footerLogo}>
-				<img
-					src="../../assets/logos/shift_logo.svg"
-					id={s.heroLogo}
-					fetchPriority="high"
-					alt="SHIFT Logo"
-				/>
-			</div>
-			<div className={`ctx ${s.ctx}`}>
+			<div className={`${s.ctx}`}>
+				<div className={s.footerLogo}>
+					<img
+						src="../../assets/logos/shift_logo.svg"
+						id={s.heroLogo}
+						fetchPriority="high"
+						alt="SHIFT Logo"
+					/>
+				</div>
 				<div className={s.textInfo}>
 					<div>
 						<ul>
