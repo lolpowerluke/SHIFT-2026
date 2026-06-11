@@ -196,7 +196,7 @@
 	}
 
 	.carouselImage {
-		width: 80%;
+		min-width: 80%;
 		border-radius: 1.5rem;
 		box-shadow:
 		5px 5px 0 1px var(--shadow-primary),
@@ -581,6 +581,7 @@
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: var(--spacing-m);
+		align-items: center;
 	}
 
 	/*
@@ -601,8 +602,14 @@
 	.projectCard {
 		width: 460px;
 		max-width: 100%;
-		justify-self: flex-end;
+		justify-self: center;
 
+	}
+
+	.carouselImage {
+		img {
+			width: 100%;
+		}
 	}
 
 	.wrap {

@@ -78,7 +78,7 @@ export default function Carousel() {
                                 color: "white",
                                 textAlign: "left",
                             }}>
-                                <h3 style={{ margin: 0 }}>{project.title}</h3>
+                                <h3 style={{ margin: 0 , fontSize: "1.5rem"}}>{project.title}</h3>
                                 <p style={{ margin: 0, fontSize: "0.85rem" }}>{project.students.join(", ")}</p>
                             </div>
                         </div>
