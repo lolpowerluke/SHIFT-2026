@@ -3,7 +3,7 @@
 	margin: 2rem auto;
 
 	h2 {
-		margin-bottom: 2rem;
+		margin-bottom: 10px;
 	}
 }
 
@@ -172,7 +172,7 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-    background: linear-gradient( to right, var(--shadow-primary) 0%, var(--shadow-primary) 30%, transparent 100%);
+    background: linear-gradient( to bottom right, var(--shadow-primary) 0%, var(--shadow-primary) 30%, transparent 100%);
     z-index: 0;
     pointer-events: none;
 }
@@ -583,6 +583,13 @@
 		width: 460px;
 		max-width: 100%;
 		justify-self: flex-end;
+
+	}
+
+	.wrap {
+		h2 {
+			margin-bottom: 2rem;
+		}
 	}
 
 	.shiftInfoNoCard {
