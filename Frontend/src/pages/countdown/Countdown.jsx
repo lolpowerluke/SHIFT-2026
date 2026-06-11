@@ -126,10 +126,10 @@ export default function Countdown() {
                 <div className={s.section}>
                     <div className={s.sectionFlexer}>
                         <div className={s.projectSide}>
-                            <img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>
-                            {/*<div className={`${s.section} ${s.carousel}`}>*/}
-                            {/*    <Carousel />*/}
-                            {/*</div>*/}
+                            {/*<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>*/}
+                            <div className={`${s.section} ${s.carousel}`}>
+                                <Carousel />
+                            </div>
 						</div>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>
@@ -231,10 +231,8 @@ export default function Countdown() {
 							Multimedia & Creatieve Technologie is een bacheloropleiding aan
 							Erasmushogeschool Brussel.
 						</p>
-
                         <p>
-                            In deze opleiding komen design en technologie samen om digitale
-                            ervaringen te creëren.
+                            In deze opleiding worden innovatieve digitale ervaringen gecreëerd.
                         </p>
                     </div>
                 </div>
