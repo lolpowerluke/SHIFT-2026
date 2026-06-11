@@ -102,11 +102,14 @@
 		text-align: right;
 		justify-self: right;
 		text-transform: uppercase;
-		display: none;
 
 		span {
 			font-weight: 600;
 		}
+	}
+
+	.cd:not(.smallerCd) {
+		display: none;
 	}
 
 	.smallerCd span {
