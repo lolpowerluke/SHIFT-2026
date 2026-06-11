@@ -34,8 +34,8 @@ export default function Countdown() {
                         alt="EhB SHIFT festival hero image"
                     />
                 </video>
+                <div className={s.heroGradient}/>
             </div>
-            <div className={s.heroGradient} />
             <div className={s.landingWrap}>
                 <div>
                     <div className={s.heroLayout}>
@@ -128,73 +128,73 @@ export default function Countdown() {
                         <div className={s.projectSide}>
                             {/*<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>*/}
                             <div className={`${s.section} ${s.carousel}`}>
-                                <Carousel />
+                                <Carousel/>
                             </div>
-						</div>
-						<div className={s.shiftInfoSide}>
-							<div className={s.shiftInfoNoCard}>
-								<h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
-								<p>
+                        </div>
+                        <div className={s.shiftInfoSide}>
+                            <div className={s.shiftInfoNoCard}>
+                                <h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
+                                <p>
                                     SHIFT festival is de eindejaarsexpo van Multimedia & Creatieve
-                                     Technologie aan Erasmushogeschool Brussel. Onze laatstejaars-<br />studenten 
-                                     tonen het beste van zichzelf met hun eindwerken van  XR/3D‑ervaringen 
-                                     tot interactieve installaties.  Ze duiken ook in thema’s die ertoe doen, 
-                                     zoals verbinding, mantelzorg, de strijd tegen phishing en vrouwengeweld. 
-                                     Daarnaast mag je de liveshow en awards zeker niet missen!
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div className="altBg">
-				<div className={`section wrap ${s.wrap} ${s.infoSection}`}>
-					<div>
-						<h2>WAAR EN WANNEER?</h2>
-						<div className={s.infoPart}>
-							<div className={s.rightSideInfo}>
-								<div className={s.shiftTime}>
-									<div className={s.iconCalendar}>
-										<img src="/assets/icons/CalendarBlue.svg" alt="Kalender" />
-									</div>
-									<div className={s.shiftTimeDate}>
-										<h3>VRIJDAG 19 JUNI</h3>
-										<p>17:00 - 21:30</p>
-									</div>
-								</div>
-							</div>
-							<hr className={s.sectionDivider} />
-							<div className={s.leftSideInfo}>
-								<div className={s.shiftLocation}>
-									<div className={s.iconMap}>
-										<img src="/assets/icons/LocationBlue.svg" alt="Locatie" />
-									</div>
-									<div className={s.shiftLocationCampus}>
-										<h3>
-											ERASMUSHOGESCHOOL BRUSSEL
-											CAMPUS KAAI
-										</h3>
+                                    Technologie aan Erasmushogeschool Brussel. Onze laatstejaars-<br/>studenten
+                                    tonen het beste van zichzelf met hun eindwerken van XR/3D‑ervaringen
+                                    tot interactieve installaties. Ze duiken ook in thema’s die ertoe doen,
+                                    zoals verbinding, mantelzorg, de strijd tegen phishing en vrouwengeweld.
+                                    Daarnaast mag je de liveshow en awards zeker niet missen!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="altBg">
+                <div className={`section wrap ${s.wrap} ${s.infoSection}`}>
+                    <div>
+                        <h2>WAAR EN WANNEER?</h2>
+                        <div className={s.infoPart}>
+                            <div className={s.rightSideInfo}>
+                                <div className={s.shiftTime}>
+                                    <div className={s.iconCalendar}>
+                                        <img src="/assets/icons/CalendarBlue.svg" alt="Kalender"/>
+                                    </div>
+                                    <div className={s.shiftTimeDate}>
+                                        <h3>VRIJDAG 19 JUNI</h3>
+                                        <p>17:00 - 21:30</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr className={s.sectionDivider}/>
+                            <div className={s.leftSideInfo}>
+                                <div className={s.shiftLocation}>
+                                    <div className={s.iconMap}>
+                                        <img src="/assets/icons/LocationBlue.svg" alt="Locatie"/>
+                                    </div>
+                                    <div className={s.shiftLocationCampus}>
+                                        <h3>
+                                            ERASMUSHOGESCHOOL BRUSSEL
+                                            CAMPUS KAAI
+                                        </h3>
                                         <small>Nijverheidskaai 170<br/>1070 Anderlecht</small>
                                         <div className={s.btnMapDiv}>
-									        <button className={s.btnMaps} onClick={handleOpenMaps}>
-										        Open in maps
-									        </button>
+                                            <button className={s.btnMaps} onClick={handleOpenMaps}>
+                                                Open in maps
+                                            </button>
                                         </div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<h2>VOOR WIE?</h2>
-						<div className={s.audienceContainer}>
-							<div className={s.audienceCard}>
-								<div className={s.iconHeadphones}>
-									<img src="/assets/icons/koptelefoon.svg" alt="Studenten" />
-								</div>
-								<h3>STUDENTEN</h3>
-								<p>Leer de opleiding kennen adhv concrete realisaties.</p>
-							</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>VOOR WIE?</h2>
+                        <div className={s.audienceContainer}>
+                            <div className={s.audienceCard}>
+                                <div className={s.iconHeadphones}>
+                                    <img src="/assets/icons/koptelefoon.svg" alt="Studenten"/>
+                                </div>
+                                <h3>STUDENTEN</h3>
+                                <p>Leer de opleiding kennen adhv concrete realisaties.</p>
+                            </div>
 
                             <div className={s.audienceCard}>
                                 <div className={s.iconPaper}>
@@ -204,33 +204,33 @@ export default function Countdown() {
                                 <p>Ontdek jong digitaal talent voor stages en jobs.</p>
                             </div>
 
-							<div className={s.audienceCard}>
-								<div className={s.iconChatBubble}>
-									<img src="/assets/icons/chat-bubble.svg" alt="Bezoekers" />
-								</div>
-								<h3>Tech-lovers</h3>
-								<p>Blijf op de hoogte van trends en innovaties.</p>
-							</div>
-							<div className={s.audienceCard}>
-								<div className={s.iconStar}>
-									<img src="/assets/icons/star.svg" alt="Stemmen" />
-								</div>
-								<h3>bezoekers</h3>
-								<p>Stem mee en bepaal de publiekswinnaar.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<br />
-			<div className={`${s.infoMultimediaCard} section`}>
-				<div className={s.textContainer}>
-					<div>
-						<h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
-						<p>
-							Multimedia & Creatieve Technologie is een bacheloropleiding aan
-							Erasmushogeschool Brussel.
-						</p>
+                            <div className={s.audienceCard}>
+                                <div className={s.iconChatBubble}>
+                                    <img src="/assets/icons/chat-bubble.svg" alt="Bezoekers"/>
+                                </div>
+                                <h3>Tech-lovers</h3>
+                                <p>Blijf op de hoogte van trends en innovaties.</p>
+                            </div>
+                            <div className={s.audienceCard}>
+                                <div className={s.iconStar}>
+                                    <img src="/assets/icons/star.svg" alt="Stemmen"/>
+                                </div>
+                                <h3>bezoekers</h3>
+                                <p>Stem mee en bepaal de publiekswinnaar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div className={`${s.infoMultimediaCard} section`}>
+                <div className={s.textContainer}>
+                    <div>
+                        <h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
+                        <p>
+                            Multimedia & Creatieve Technologie is een bacheloropleiding aan
+                            Erasmushogeschool Brussel.
+                        </p>
                         <p>
                             In deze opleiding worden innovatieve digitale ervaringen gecreëerd.
                         </p>
