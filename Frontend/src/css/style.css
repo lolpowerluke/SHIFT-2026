@@ -71,7 +71,7 @@ body::before {
     padding-bottom: 2rem;
 }
 
-.alt-bg::before {
+.altBg::before {
     content: "";
     position: absolute;
     background-color: var(--bg-shift-secondary);

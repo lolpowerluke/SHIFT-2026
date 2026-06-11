@@ -47,8 +47,8 @@ export default function Detail() {
 	}, [id]);
 
 	useEffect(() => {
-		document.documentElement.classList.add("alt-bg");
-		return () => document.documentElement.classList.remove("alt-bg");
+		document.documentElement.classList.add("altBg");
+		return () => document.documentElement.classList.remove("altBg");
 	}, []);
 
 	if (loading) return <p className="ctx">Laden...</p>;
