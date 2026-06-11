@@ -233,8 +233,7 @@ export default function Countdown() {
 						</p>
 
                         <p>
-                            In deze opleiding komen design en technologie samen om digitale
-                            ervaringen te creëren.
+                            In deze opleiding worden innovatieve digitale ervaringen gecreëerd.
                         </p>
                     </div>
                 </div>
