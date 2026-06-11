@@ -58,15 +58,6 @@ body::before {
     pointer-events: none;
 }
 
-.alt-bg::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    box-shadow: inset 0 0 0 6px var(--bg-shift-primary);
-    pointer-events: none;
-}
-
 .altBg {
     position: relative;
     padding-bottom: 2rem;
@@ -84,7 +75,7 @@ body::before {
     overflow-x: clip;
     min-height: 100dvh;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 1fr auto;
     padding-bottom: env(safe-area-inset-bottom);
 }
 

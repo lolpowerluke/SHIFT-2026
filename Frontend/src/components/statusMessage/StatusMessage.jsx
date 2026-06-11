@@ -1,3 +1,6 @@
+import ErrorComponent from "../errorComponent/ErrorComponent.jsx";
+import Loading from "../loadingComponent/Loading.jsx";
+
 /**
  * Renders loading / error / null guards inline.
  * Returns null when there's nothing to show (data is ready).
@@ -9,7 +12,7 @@
  *   if (guard) return guard;
  */
 export default function StatusMessage({ loading, error, className = "ctx" }) {
-  if (loading) return <p className={className}>Laden...</p>;
-  if (error) return <p className={className}>Fout: {error}</p>;
+  if (loading) return <Loading/>;
+  if (error) return <ErrorComponent error={error}/>;
   return null;
 }
