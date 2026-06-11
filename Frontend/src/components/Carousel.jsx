@@ -18,6 +18,14 @@ export default function Carousel() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const handleButton = () => {
+        window.open(
+            "/project/",
+            "_blank",
+            "noopener,noreferrer",
+        );
+    };
+
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/project`)
             .then((res) => {
@@ -62,8 +70,8 @@ export default function Carousel() {
                 </div>
                 <h2>SEE. EXPERIENCE. MEET.</h2>
                 <div className={s.projectCTA}>
-                    <button>
-                        <span>Coming Soon</span>
+                    <button onClick={handleButton}>
+                        <span>Bekijk alle projecten</span>
                     </button>
                 </div>
             </div>
