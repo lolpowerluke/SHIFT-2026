@@ -24,7 +24,8 @@ export default function Awards() {
             <div className={`${s.heroContainer} headerSpacer`}>
                 <div className={s.landingTop}>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
-                    <span className={`${s.title}`}>LIVESHOW</span>
+                    <span className={`${s.title}`}>LIVESHOW &<br />
+                    AWARDS</span>
                 </div>
                 <div className={`${s.landingBottom} ${s.desktop}`}>
                     <img src="/assets/icons/BlueVote.svg" alt="Blue Vote" className={s.voteImg} />
