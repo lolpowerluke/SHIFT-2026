@@ -50,7 +50,7 @@ export default function List() {
 	if (error) return <ErrorComponent error={error}/>;
 
 	return (
-		<main className="ctx">
+		<main className="ctx headerSpacer">
 			<section className={s.projectenHero}>
 				<h1>EindProjecten</h1>
 				<h3>
