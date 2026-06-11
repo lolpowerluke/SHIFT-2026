@@ -40,11 +40,6 @@ export default function Detail() {
             });
     }, [project]);
 
-    // useEffect(() => {
-    //     document.documentElement.classList.add("alt-bg", "no-icons");
-    //     return () => document.documentElement.classList.remove("alt-bg", "no-icons");
-    // }, []);
-
     const guard = StatusMessage({loading, error});
     if (guard) return guard;
     if (!project) return null;
