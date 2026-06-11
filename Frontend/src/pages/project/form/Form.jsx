@@ -1,23 +1,12 @@
 import { useNavigate } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import s from "./Form.module.css";
+import { apiFetch, getTokenPayload } from "../../../utils/apiFetch.js";
+import FilePill from "../../../components/filePill/FilePill.jsx";
+import ImagePreviewField from "../../../components/imagePreviewField/ImagePreviewField.jsx";
 
-const BASE_URL = import.meta.env.VITE_API_URL;
-const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB limit
-const MAX_PDF_SIZE = 10 * 1024 * 1024; // 10MB limit
-
-async function apiFetch(path, opts = {}) {
-	const token = localStorage.getItem("token");
-	const isFormData = opts.body instanceof FormData;
-	return fetch(`${BASE_URL}${path}`, {
-		...opts,
-		headers: {
-			...(!isFormData ? { "Content-Type": "application/json" } : {}),
-			Authorization: `Bearer ${token}`,
-			...(opts.headers || {}),
-		},
-	}).then((r) => r.json());
-}
+const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
+const MAX_PDF_SIZE = 10 * 1024 * 1024;
 
 function isValidURL(str) {
 	try {
@@ -28,35 +17,12 @@ function isValidURL(str) {
 	}
 }
 
-/** Filename pill with ×-button */
-function FilePill({ name, onClear }) {
-	return (
-		<span className={s.file}>
-			{name}
-			<button
-				type="button"
-				onClick={onClear}
-				className={s.clear}
-				aria-label="Verwijder"
-			>
-				×
-			</button>
-		</span>
-	);
-}
-
-// validate single image file rules
 function validateImageFile(file) {
 	if (!file) return "Missing image";
-
-	if (file.size > MAX_IMAGE_SIZE) {
-		return "Afbeelding mag max 2MB zijn";
-	}
-
+	if (file.size > MAX_IMAGE_SIZE) return "Afbeelding mag max 2MB zijn";
 	return null;
 }
 
-// validate project image ratio (16:9)
 function validateProjectImageRatio(file) {
 	return new Promise((resolve, reject) => {
 		if (!file) return reject("Project image ontbreekt");
@@ -67,11 +33,7 @@ function validateProjectImageRatio(file) {
 
 		img.onload = () => {
 			URL.revokeObjectURL(objectUrl);
-			const ratio = img.width / img.height;
-			const expected = 16 / 9;
-
-			const diff = Math.abs(ratio - expected);
-
+			const diff = Math.abs(img.width / img.height - 16 / 9);
 			if (diff > 0.01) {
 				reject("Project image moet 16:9 (1920x1080) zijn");
 			} else {
@@ -86,18 +48,10 @@ function validateProjectImageRatio(file) {
 	});
 }
 
-// validate PDF
 function validatePDF(file) {
 	if (!file) return "PDF ontbreekt";
-
-	if (file.size > MAX_PDF_SIZE) {
-		return "PDF mag max 10MB zijn";
-	}
-
-	if (file.type !== "application/pdf") {
-		return "Alleen PDF bestanden toegestaan";
-	}
-
+	if (file.size > MAX_PDF_SIZE) return "PDF mag max 10MB zijn";
+	if (file.type !== "application/pdf") return "Alleen PDF bestanden toegestaan";
 	return null;
 }
 
@@ -108,7 +62,7 @@ export default function ProjectForm() {
 	const [course, setCourse] = useState("");
 	const [promoter, setPromoter] = useState("");
 
-	// Personal info
+	// Person 1
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [email, setEmail] = useState("");
@@ -116,7 +70,7 @@ export default function ProjectForm() {
 	const [selfieFile, setSelfieFile] = useState(null);
 	const [selfieExistingPicture, setSelfieExistingPicture] = useState(null);
 
-	// Extra person
+	// Person 2
 	const [showExtra, setShowExtra] = useState(false);
 	const [p2FirstName, setP2FirstName] = useState("");
 	const [p2LastName, setP2LastName] = useState("");
@@ -135,7 +89,7 @@ export default function ProjectForm() {
 	const [existingMagazine, setExistingMagazine] = useState(null);
 	const [existingVideo, setExistingVideo] = useState("");
 
-	// Cleared flags (send empty string to backend to delete)
+	// Cleared flags
 	const [imagesCleared, setImagesCleared] = useState(false);
 	const [magazineCleared, setMagazineCleared] = useState(false);
 
@@ -149,36 +103,25 @@ export default function ProjectForm() {
 	const [submitError, setSubmitError] = useState("");
 	const [urlErrors, setUrlErrors] = useState({});
 
-	let navigate = useNavigate();
-
-	// track object URLs to prevent memory leaks
+	const navigate = useNavigate();
 	const previewURLsRef = useRef([]);
 
 	useEffect(() => {
-		const token = localStorage.getItem("token");
-		if (!token) {
+		const payload = getTokenPayload();
+		if (!payload) {
 			navigate("/login", { state: { from: location.pathname }, replace: true });
 			return;
 		}
 
-		let role = null;
-		let tokenUserId = null;
-		try {
-			const payload = JSON.parse(atob(token.split(".")[1]));
-			role = payload.role;
-			tokenUserId = payload.id;
-		} catch { }
-
-		if (role === "admin") {
+		if (payload.role === "admin") {
 			setIsAdmin(true);
 			loadAllProjects();
 		} else {
-			prefill(tokenUserId);
+			prefill(payload.id);
 		}
 	}, []);
 
 	useEffect(() => {
-		// revoke previous object URLs before creating new ones
 		return () => {
 			previewURLsRef.current.forEach((url) => URL.revokeObjectURL(url));
 			previewURLsRef.current = [];
@@ -194,7 +137,6 @@ export default function ProjectForm() {
 	async function loadProjectForAdmin(project) {
 		setSelectedProjectId(project.id);
 
-		// Reset form state
 		setNameProject(project.name || "");
 		setDescription(project.description || "");
 		if (project.course) setCourse(project.course);
@@ -205,13 +147,12 @@ export default function ProjectForm() {
 		setMagazineFile(null);
 		setMagazineCleared(false);
 
-		if (project.magazine) {
-			setExistingMagazine(
-				`https://res.cloudinary.com/${project.magazine.cloud_name}/image/upload/${project.magazine.path}`,
-			);
-		} else {
-			setExistingMagazine(null);
-		}
+		setExistingMagazine(
+			project.magazine
+				? `https://res.cloudinary.com/${project.magazine.cloud_name}/image/upload/${project.magazine.path}`
+				: null,
+		);
+
 		if (project.video?.url) {
 			setExistingVideo(project.video.url);
 			setVideoURL(project.video.url);
@@ -221,34 +162,26 @@ export default function ProjectForm() {
 		}
 
 		const members = Array.isArray(project.members) ? project.members : [];
-		const p1 = members[0] || null;
-		const p2 = members[1] || null;
+		const p1 = members[0] ?? null;
+		const p2 = members[1] ?? null;
 
 		if (p1) {
-			// Fetch full p1 user data
 			const p1Data = await apiFetch(`/api/user?id=${p1.id}`);
 			const u = p1Data.success ? p1Data.user : p1;
 			setFirstName(u.firstname || "");
 			setLastName(u.lastname || "");
 			setEmail(u.email || "");
-			if (Array.isArray(u.socials) && u.socials.length) {
-				setLinkedinURL(u.socials[0]);
-			} else {
-				setLinkedinURL("");
-			}
-			if (u.images?.length) {
-				setSelfieExistingPicture({
-					url: `https://res.cloudinary.com/${u.images[0].cloud_name}/image/upload/${u.images[0].path}`,
-					name: u.images[0].path.split("/").pop(),
-				});
-			} else if (p1.picture) {
-				setSelfieExistingPicture({
-					url: `https://res.cloudinary.com/${p1.picture.cloud_name}/image/upload/${p1.picture.path}`,
-					name: p1.picture.path.split("/").pop(),
-				});
-			} else {
-				setSelfieExistingPicture(null);
-			}
+			setLinkedinURL(Array.isArray(u.socials) && u.socials.length ? u.socials[0] : "");
+
+			const pic = u.images?.length ? u.images[0] : p1.picture ?? null;
+			setSelfieExistingPicture(
+				pic
+					? {
+						url: `https://res.cloudinary.com/${pic.cloud_name}/image/upload/${pic.path}`,
+						name: pic.path.split("/").pop(),
+					}
+					: null,
+			);
 			setSelfieFile(null);
 		}
 
@@ -257,19 +190,15 @@ export default function ProjectForm() {
 			setP2FirstName(p2.firstname || "");
 			setP2LastName(p2.lastname || "");
 			setP2Email(p2.email || "");
-			if (Array.isArray(p2.socials) && p2.socials.length) {
-				setP2LinkedIn(p2.socials[0]);
-			} else {
-				setP2LinkedIn("");
-			}
-			if (p2.picture) {
-				setP2ExistingPicture({
-					url: `https://res.cloudinary.com/${p2.picture.cloud_name}/image/upload/${p2.picture.path}`,
-					name: p2.picture.path.split("/").pop(),
-				});
-			} else {
-				setP2ExistingPicture(null);
-			}
+			setP2LinkedIn(Array.isArray(p2.socials) && p2.socials.length ? p2.socials[0] : "");
+			setP2ExistingPicture(
+				p2.picture
+					? {
+						url: `https://res.cloudinary.com/${p2.picture.cloud_name}/image/upload/${p2.picture.path}`,
+						name: p2.picture.path.split("/").pop(),
+					}
+					: null,
+			);
 			setP2SelfieFile(null);
 		} else {
 			setShowExtra(false);
@@ -296,7 +225,7 @@ export default function ProjectForm() {
 		if (Array.isArray(user.socials) && user.socials.length) {
 			setLinkedinURL(user.socials[0]);
 		}
-		if (user.images.length !== 0) {
+		if (user.images?.length) {
 			setSelfieExistingPicture({
 				url: `https://res.cloudinary.com/${user.images[0].cloud_name}/image/upload/${user.images[0].path}`,
 				name: user.images[0].path.split("/").pop(),
@@ -307,8 +236,7 @@ export default function ProjectForm() {
 		if (!projData.success) return;
 
 		const myProject = projData.projects.find(
-			(p) =>
-				Array.isArray(p.members) && p.members.some((m) => m.id === activeId),
+			(p) => Array.isArray(p.members) && p.members.some((m) => m.id === activeId),
 		);
 		if (!myProject) return;
 
@@ -317,7 +245,6 @@ export default function ProjectForm() {
 		if (myProject.course) setCourse(myProject.course);
 		if (myProject.promoter) setPromoter(myProject.promoter);
 
-		// Restore media
 		if (Array.isArray(myProject.media) && myProject.media.length) {
 			setExistingImages(myProject.media);
 		}
@@ -353,10 +280,8 @@ export default function ProjectForm() {
 	function validateURLFields() {
 		const errors = {};
 		if (videoURL && !isValidURL(videoURL)) errors.videoURL = "Geen geldige URL";
-		if (linkedinURL && !isValidURL(linkedinURL))
-			errors.linkedinURL = "Geen geldige URL";
-		if (p2LinkedIn && !isValidURL(p2LinkedIn))
-			errors.p2LinkedIn = "Geen geldige URL";
+		if (linkedinURL && !isValidURL(linkedinURL)) errors.linkedinURL = "Geen geldige URL";
+		if (p2LinkedIn && !isValidURL(p2LinkedIn)) errors.p2LinkedIn = "Geen geldige URL";
 		return errors;
 	}
 
@@ -375,18 +300,14 @@ export default function ProjectForm() {
 		try {
 			const projectImage = projectFiles?.[0];
 
-			// only require new image when no existing images are present
 			if (!projectImage && !existingImages.length) {
 				setSubmitError("Project image ontbreekt");
 				setSubmitState("error");
 				return;
 			}
 
-			// only validate ratio when a new file is provided
 			if (projectImage) {
 				await validateProjectImageRatio(projectImage);
-
-				// validate all images
 				for (const file of projectFiles) {
 					const err = validateImageFile(file);
 					if (err) {
@@ -397,7 +318,6 @@ export default function ProjectForm() {
 				}
 			}
 
-			// validate magazine PDF
 			if (magazineFile) {
 				const pdfError = validatePDF(magazineFile);
 				if (pdfError) {
@@ -407,40 +327,30 @@ export default function ProjectForm() {
 				}
 			}
 		} catch (err) {
-			setSubmitError(
-				typeof err === "string" ? err : err?.message || "Validatie fout",
-			);
+			setSubmitError(typeof err === "string" ? err : err?.message || "Validatie fout");
 			setSubmitState("error");
 			return;
 		}
 
-		const token = localStorage.getItem("token");
-		let currentUserId = null;
-		try {
-			currentUserId = JSON.parse(atob(token.split(".")[1])).id;
-		} catch { }
+		const payload = getTokenPayload();
+		const currentUserId = payload?.id ?? null;
 
-		// Update current user
 		try {
 			const userFormData = new FormData();
 			if (firstName) userFormData.append("firstname", firstName.trim());
 			if (lastName) userFormData.append("lastname", lastName.trim());
 			if (linkedinURL) userFormData.append("socials", linkedinURL.trim());
 			if (selfieFile) userFormData.append("image", selfieFile);
-
 			await apiFetch("/api/user", { method: "PUT", body: userFormData });
 		} catch (err) {
 			console.error("User update failed:", err);
 		}
 
-		// Find p2 by email
 		const memberIds = currentUserId ? [currentUserId] : [];
 		let p2UserId = null;
 		if (p2Email.trim()) {
 			try {
-				const result = await apiFetch(
-					`/api/user?email=${encodeURIComponent(p2Email.trim())}`,
-				);
+				const result = await apiFetch(`/api/user?email=${encodeURIComponent(p2Email.trim())}`);
 				if (result.success) {
 					p2UserId = result.user.id;
 					memberIds.push(result.user.id);
@@ -448,7 +358,6 @@ export default function ProjectForm() {
 			} catch { }
 		}
 
-		// Update p2
 		if (p2UserId) {
 			try {
 				const p2FormData = new FormData();
@@ -456,17 +365,12 @@ export default function ProjectForm() {
 				if (p2LastName) p2FormData.append("lastname", p2LastName.trim());
 				if (p2LinkedIn) p2FormData.append("socials", p2LinkedIn.trim());
 				if (p2SelfieFile) p2FormData.append("image", p2SelfieFile);
-
-				await apiFetch(`/api/user?id=${p2UserId}`, {
-					method: "PUT",
-					body: p2FormData,
-				});
+				await apiFetch(`/api/user?id=${p2UserId}`, { method: "PUT", body: p2FormData });
 			} catch (err) {
 				console.error("P2 user update failed:", err);
 			}
 		}
 
-		// 3. Build project form
 		const cleanForm = new FormData();
 		cleanForm.append("name", nameProject.trim());
 		cleanForm.append("description", description.trim());
@@ -475,33 +379,26 @@ export default function ProjectForm() {
 		cleanForm.append("videoURL", videoURL.trim());
 		cleanForm.append("memberIds", JSON.stringify(memberIds));
 
-		// Images: new files take priority; otherwise signal clear or keep
 		if (projectFiles.length) {
 			projectFiles.forEach((f) => cleanForm.append("files", f));
 		} else if (imagesCleared) {
-			cleanForm.append("imageURL", ""); // explicit delete
+			cleanForm.append("imageURL", "");
 		}
 
-		// Magazine: new file takes priority; otherwise signal clear or keep
 		if (magazineFile) {
 			cleanForm.append("magazine", magazineFile);
 		} else if (magazineCleared) {
-			cleanForm.append("magazineURL", ""); // explicit delete
+			cleanForm.append("magazineURL", "");
 		}
 
 		try {
 			const existingData = await apiFetch("/project/");
 			const existing = (existingData.projects || []).find(
-				(p) =>
-					Array.isArray(p.members) &&
-					p.members.some((m) => m.id === currentUserId),
+				(p) => Array.isArray(p.members) && p.members.some((m) => m.id === currentUserId),
 			);
 
 			const result = existing
-				? await apiFetch(`/project/${existing.id}`, {
-					method: "PUT",
-					body: cleanForm,
-				})
+				? await apiFetch(`/project/${existing.id}`, { method: "PUT", body: cleanForm })
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
@@ -516,11 +413,8 @@ export default function ProjectForm() {
 		}
 	}
 
-	// ── helpers ──────────────────────────────────────────────────────────────
-
 	function handleProjectFilesChange(e) {
-		const files = Array.from(e.target.files);
-		setProjectFiles(files);
+		setProjectFiles(Array.from(e.target.files));
 		setImagesCleared(false);
 	}
 
@@ -541,7 +435,6 @@ export default function ProjectForm() {
 		setMagazineCleared(true);
 	}
 
-	// create object URLs once, track them for cleanup
 	const imagePreviewURLs = projectFiles.length
 		? projectFiles.map((f) => {
 			const url = URL.createObjectURL(f);
@@ -554,7 +447,6 @@ export default function ProjectForm() {
 			name: img.path.split("/").pop(),
 		}));
 
-	// Displayed magazine label
 	const magazineLabel = magazineFile
 		? magazineFile.name
 		: existingMagazine
@@ -595,6 +487,7 @@ export default function ProjectForm() {
 					<>
 						<h3>Vul je project aan.</h3>
 						<form className={s.form} onSubmit={handleSubmit}>
+
 							{/* Project info */}
 							<div className={s.part}>
 								<h3>Project info</h3>
@@ -634,9 +527,7 @@ export default function ProjectForm() {
 										value={course}
 										onChange={(e) => setCourse(e.target.value)}
 									>
-										<option disabled value="">
-											Specialisatie...
-										</option>
+										<option disabled value="">Specialisatie...</option>
 										<option value="XR & 3D">XR & 3D</option>
 										<option value="Experience Design">Experience Design</option>
 										<option value="Web & Mobile">Web & Mobile</option>
@@ -653,26 +544,14 @@ export default function ProjectForm() {
 										value={promoter}
 										onChange={(e) => setPromoter(e.target.value)}
 									>
-										<option disabled value="">
-											Promoter...
-										</option>
+										<option disabled value="">Promoter...</option>
 										{[
-											"Dennis Baptist",
-											"Maaike Beuten",
-											"Joni De Borger",
-											"Peter Dickx",
-											"Jan Everaert",
-											"Bert Heyman",
-											"Jan Snoekx",
-											"Stefan Tilburgs",
-											"Els Vande Kerckhove",
-											"An Vanlierde",
-											"Kobe Vermeire",
-											"Ben Verschooris",
+											"Dennis Baptist", "Maaike Beuten", "Joni De Borger",
+											"Peter Dickx", "Jan Everaert", "Bert Heyman",
+											"Jan Snoekx", "Stefan Tilburgs", "Els Vande Kerckhove",
+											"An Vanlierde", "Kobe Vermeire", "Ben Verschooris",
 										].map((name) => (
-											<option key={name} value={name}>
-												{name}
-											</option>
+											<option key={name} value={name}>{name}</option>
 										))}
 									</select>
 								</div>
@@ -734,46 +613,17 @@ export default function ProjectForm() {
 										<p className={s.error}>{urlErrors.linkedinURL}</p>
 									)}
 								</div>
-								<div>
-									<label htmlFor="choose-selfieFile">Portretfoto</label>
-									<small>Max 2MB</small>
-									{selfieFile ? (
-										<>
-											<FilePill
-												name={selfieFile.name}
-												onClear={() => setSelfieFile(null)}
-											/>
-											<img
-												src={URL.createObjectURL(selfieFile)}
-												alt={selfieFile.name}
-												className={s.previewImg}
-											/>
-										</>
-									) : selfieExistingPicture ? (
-										<>
-											<FilePill
-												name={selfieExistingPicture.name}
-												onClear={() => setSelfieExistingPicture(null)}
-											/>
-											<img
-												src={selfieExistingPicture.url}
-												alt={selfieExistingPicture.name}
-												className={s.previewImg}
-											/>
-										</>
-									) : (
-										<input
-											type="file"
-											accept="image/*"
-											id="choose-selfieFile"
-											name="choose-selfieFile"
-											onChange={(e) => setSelfieFile(e.target.files[0] ?? null)}
-										/>
-									)}
-									<label className={s.subtext}>
-										Gelieve in een 1:1 aspect ratio in te dienen
-									</label>
-								</div>
+								<ImagePreviewField
+									id="choose-selfieFile"
+									label="Portretfoto"
+									hint="Max 2MB"
+									file={selfieFile}
+									existingPicture={selfieExistingPicture}
+									onFileChange={setSelfieFile}
+									onClearFile={() => setSelfieFile(null)}
+									onClearExisting={() => setSelfieExistingPicture(null)}
+									subtext="Gelieve in een 1:1 aspect ratio in te dienen"
+								/>
 							</div>
 
 							{/* Extra person */}
@@ -864,48 +714,17 @@ export default function ProjectForm() {
 												<p className={s.error}>{urlErrors.p2LinkedIn}</p>
 											)}
 										</div>
-										<div>
-											<label htmlFor="choose-secondselfiefile">Portretfoto</label>
-											<small>Max 2MB</small>
-											{p2SelfieFile ? (
-												<>
-													<FilePill
-														name={p2SelfieFile.name}
-														onClear={() => setP2SelfieFile(null)}
-													/>
-													<img
-														src={URL.createObjectURL(p2SelfieFile)}
-														alt={p2SelfieFile.name}
-														className={s.previewImg}
-													/>
-												</>
-											) : p2ExistingPicture ? (
-												<>
-													<FilePill
-														name={p2ExistingPicture.name}
-														onClear={() => setP2ExistingPicture(null)}
-													/>
-													<img
-														src={p2ExistingPicture.url}
-														alt={p2ExistingPicture.name}
-														className={s.previewImg}
-													/>
-												</>
-											) : (
-												<input
-													type="file"
-													accept="image/*"
-													id="choose-secondselfiefile"
-													name="choose-secondselfiefile"
-													onChange={(e) =>
-														setP2SelfieFile(e.target.files[0] ?? null)
-													}
-												/>
-											)}
-											<label className={s.subtext}>
-												Gelieve in een 1:1 aspect ratio in te dienen
-											</label>
-										</div>
+										<ImagePreviewField
+											id="choose-secondselfiefile"
+											label="Portretfoto"
+											hint="Max 2MB"
+											file={p2SelfieFile}
+											existingPicture={p2ExistingPicture}
+											onFileChange={setP2SelfieFile}
+											onClearFile={() => setP2SelfieFile(null)}
+											onClearExisting={() => setP2ExistingPicture(null)}
+											subtext="Gelieve in een 1:1 aspect ratio in te dienen"
+										/>
 									</div>
 								)}
 							</div>
@@ -914,7 +733,6 @@ export default function ProjectForm() {
 							<div className={s.part}>
 								<h3>Project media</h3>
 
-								{/* Images */}
 								<div>
 									<label htmlFor="choose-projectFile">Projectbeeld *</label>
 									<small>Max 2MB</small>
@@ -952,7 +770,6 @@ export default function ProjectForm() {
 									</label>
 								</div>
 
-								{/* Video URL */}
 								<div>
 									<label htmlFor="videoURL">Showreel</label>
 									<small>
@@ -975,7 +792,6 @@ export default function ProjectForm() {
 									)}
 								</div>
 
-								{/* Magazine */}
 								<div>
 									<label htmlFor="choose-magazineFile">Magazine (pdf)</label>
 									{magazineLabel ? (

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import s from "./List.module.css";
 import ProjectCard from "../../../components/projectCard/ProjectCard.jsx";
+import { useFetch } from "../../../hooks/useFetch.js";
+import { mapProject } from "../../../utils/member.js";
+import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
 import { getCloudinaryUrl } from "../../../utils/cloudinary.js";
 import Throbber from "../../../components/Throbber.jsx";
 import ErrorComponent from "../../../components/errorComponent/ErrorComponent.jsx";
@@ -12,25 +15,6 @@ const CATEGORIES = [
 	"XR & 3D",
 	"Web & Mobile",
 ];
-
-function mapProject(p) {
-	return {
-		id: p.id,
-		title: p.name,
-		category: p.course,
-		image:
-			getCloudinaryUrl(p.media?.[0]) ??
-			getCloudinaryUrl(p.images?.[0]) ??
-			"/assets/imageCard.png",
-		students: (p.members ?? []).map((m) => ({
-			name:
-				[m.firstname, m.lastname].filter(Boolean).join(" ") ||
-				m.email ||
-				"Onbekend",
-			avatar: getCloudinaryUrl(m.picture) ?? "/assets/user.png",
-		})),
-	};
-}
 
 export default function List() {
 	const [projects, setProjects] = useState([]);
@@ -61,8 +45,8 @@ export default function List() {
 			project.category === activeCategory;
 		return matchesSearch && matchesCategory;
 	});
-
-	if (loading) return <Throbber/>;
+	// TODO: add loading element
+	if (loading) return <p className="ctx">Laden...</p>;
 	if (error) return <ErrorComponent error={error}/>;
 
 	return (

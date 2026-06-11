@@ -1,7 +1,7 @@
 .backButton {
 	button {
 		display: flex;
-		max-width: 40%;
+		align-items: center;
 	}
 
 	img {
@@ -12,39 +12,39 @@
 .titleText {
 	display: flex;
 	flex-direction: column;
-	gap: -4px;
 
 	h1 {
-		margin: 32px 0 -24px;
+		margin: 0;
+		margin-top: 32px;
+		margin-bottom: 8px;
+	}
+
+	> div {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px;
 	}
 
 	.name {
+		display: flex;
 		flex-wrap: wrap;
-		max-width: 50%;
 	}
 
 	.subject {
-		max-width: 50%;
+		display: flex;
 		align-items: center;
+		gap: 8px;
 
 		img {
 			width: 30px;
 		}
 	}
-
-	div {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-
-		img {
-			width: 40px;
-		}
-	}
 }
 
 .promoterTitle {
-	font-style: bold;
 	margin-bottom: -20px;
 }
 
@@ -63,8 +63,8 @@
 
 .studentCardDiv {
 	display: flex;
-	justify-content: space-between;
 	flex-wrap: wrap;
+	justify-content: space-between;
 	gap: 16px;
 }
 
@@ -72,16 +72,24 @@
 	background-color: var(--bg-shift-primary);
 	border: 5px solid black;
 	border-radius: 10px;
-	padding: 15px;
+	padding: 25px;
 	flex: 1 1 300px;
 	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
 	box-sizing: border-box;
 	max-width: 810px;
 }
 
+.studentTop,
+.studentInfo {
+	display: contents;
+}
+
 .picture {
+	flex: 0 0 auto;
 	margin-right: 20px;
-	align-content: center;
+	align-self: center;
 
 	img {
 		width: 128px;
@@ -93,25 +101,23 @@
 	}
 }
 
-.studentInfo {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
+.studentName {
+	flex: 1;
+	min-width: 0;
 }
 
 .studentContact {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	justify-content: space-between;
-	gap: 8px;
 	align-items: center;
-	width: 100%;
-	margin-top: auto;
+	gap: 16px;
+	flex: 0 0 100%;
+	margin-top: 12px;
 
 	.icons {
 		display: flex;
 		gap: 16px;
-		min-width: 30%;
 		align-items: center;
 	}
 }
@@ -119,7 +125,10 @@
 .magButton {
 	button {
 		display: flex;
+		align-items: center;
 		font-size: 15pt;
+
+
 	}
 
 	img {
@@ -128,22 +137,15 @@
 	}
 }
 
-.studentTop {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	width: 100%;
-}
-
 .videoHolder {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	margin-bottom: 33px;
 }
 
 .videoWrapper {
-	width: 80%;
+	width: 100%;
 	aspect-ratio: 16 / 9;
 
 	iframe {
@@ -158,7 +160,7 @@
 .videoThumb {
 	position: relative;
 	cursor: pointer;
-	width: 80%;
+	width: 100%;
 
 	img.videoPlayer {
 		width: 100%;
@@ -183,71 +185,58 @@
 	margin: 32px 0 16px 0;
 }
 
-@media (max-width: 1680px) {
-	.studentCards {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: flex-start;
+@media (max-width: 1440px) {
+	/* video */
+	.videoWrapper,
+	.videoThumb {
+		width: 100%;
 	}
 
-	.studentTop,
-	.studentInfo {
-		display: contents;
-	}
+	
 
-	.picture {
-		flex: 0 0 auto;
-		margin-right: 15px;
-		align-self: center;
-
-		img {
-			width: 80px;
-			height: 80px;
-		}
-	}
-
-	.studentName {
-		flex: 1;
-		min-width: 0;
-	}
-
-	.studentContact {
-		flex: 0 0 100%;
-		margin-top: 12px;
-		gap: 16px;
-		flex-wrap: nowrap;
-		justify-content: start;
-
-		.icons {
-			min-width: unset;
-			margin-right: 0;
-		}
+	/* student cards */
+	.picture img {
+		width: 80px;
+		height: 80px;
 	}
 
 	.magButton button {
-		font-size: 16pt;
-
-		img {
-			display: none;
-		}
+		font-size: 12pt;
 	}
 
-	.titleNames {
-		flex-direction: column;
-		justify-content: center;
-	}
-}
-
-@media (max-width: 350px) {
-	.magButton {
-		button {
-			font-size: 10pt;
-		}
+	.studentContact {
+		flex-wrap: wrap;
 	}
 }
 
 @media (max-width: 768px) {
-	.videoThumb {
-		width: 100%;
+	.titleText {
+		text-align: center;
+
+		> div {
+			flex-direction: column;
+			align-items: center;
+			gap: 0px;
+		}
+
+		p, img {
+			margin: 0 0 16px 0;
+		}
+
+		.subject {
+			justify-content: center;
+		}
 	}
+
+	.magButton button {
+        font-size: 0px;
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 40%;
+            display: block;
+			margin: 0;
+        }
+    }
 }
