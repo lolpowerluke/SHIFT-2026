@@ -99,7 +99,7 @@
 		margin-bottom: 8px;
 		border-radius: 6px;
 		border: 3px solid black;
-		text-align: right;
+		text-align: center;
 		justify-self: right;
 		text-transform: uppercase;
 
@@ -213,10 +213,6 @@
 		border: 5px solid var(--border-primary);
 		overflow: hidden;
 		aspect-ratio: 16 / 9;
-
-		h3 {
-			text-align: left;
-		}
 	}
 
 	.carouselSlideAnimation {
@@ -529,6 +525,14 @@
 /*}*/
 
 @media (min-width: 1024px) {
+	.shiftInfoSide p {
+		text-align: left;
+	}
+
+	.carouselImage {
+		width: 120%;
+	}
+
 	.landingWrap {
 		grid-template-columns: repeat(2, 1fr);
 		height: 97.5lvh;
@@ -568,6 +572,7 @@
 
 			.cd {
 				display: block;
+				text-align: left;
 			}
 
 			.cta {
@@ -612,6 +617,11 @@
 			margin-left: 4px;
 			font-size: 4rem;
 		}
+	}
+
+	.wrap,
+	.infoSection {
+		text-align: left;
 	}
 
 	.timerDiv .cd,
