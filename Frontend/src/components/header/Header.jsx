@@ -25,7 +25,7 @@ export default function Header() {
 			setPageShort(document.body.scrollHeight <= window.innerHeight * 1.01);
 		}
 
-		setTimeout(check, 0);
+		setTimeout(check, 10);
 		window.addEventListener('resize', check);
 
 		return () => window.removeEventListener('resize', check);
