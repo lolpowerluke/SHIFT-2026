@@ -84,7 +84,7 @@ body::before {
     overflow-x: clip;
     min-height: 100dvh;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 1fr auto;
     padding-bottom: env(safe-area-inset-bottom);
 }
 

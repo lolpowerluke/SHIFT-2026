@@ -97,6 +97,7 @@ export default function ProjectForm() {
 	const [isAdmin, setIsAdmin] = useState(false);
 	const [allProjects, setAllProjects] = useState([]);
 	const [selectedProjectId, setSelectedProjectId] = useState(null);
+	const [projectMemberIds, setProjectMemberIds] = useState([]);
 
 	// Submit state
 	const [submitState, setSubmitState] = useState("idle");
@@ -153,15 +154,16 @@ export default function ProjectForm() {
 				: null,
 		);
 
-		if (project.video?.url) {
-			setExistingVideo(project.video.url);
-			setVideoURL(project.video.url);
+		if (project.video?.path) {
+			setExistingVideo(project.video.path);
+			setVideoURL(project.video.path);
 		} else {
 			setExistingVideo("");
 			setVideoURL("");
 		}
 
 		const members = Array.isArray(project.members) ? project.members : [];
+		setProjectMemberIds(members.map(m => m.id));
 		const p1 = members[0] ?? null;
 		const p2 = members[1] ?? null;
 
@@ -253,9 +255,9 @@ export default function ProjectForm() {
 				`https://res.cloudinary.com/${myProject.magazine.cloud_name}/image/upload/${myProject.magazine.path}`,
 			);
 		}
-		if (myProject.video?.url) {
-			setExistingVideo(myProject.video.url);
-			setVideoURL(myProject.video.url);
+		if (myProject.video?.path) {
+			setExistingVideo(myProject.video.path);
+			setVideoURL(myProject.video.path);
 		}
 
 		const others = myProject.members.filter((m) => m.id !== activeId);
@@ -335,27 +337,47 @@ export default function ProjectForm() {
 		const payload = getTokenPayload();
 		const currentUserId = payload?.id ?? null;
 
-		try {
-			const userFormData = new FormData();
-			if (firstName) userFormData.append("firstname", firstName.trim());
-			if (lastName) userFormData.append("lastname", lastName.trim());
-			if (linkedinURL) userFormData.append("socials", linkedinURL.trim());
-			if (selfieFile) userFormData.append("image", selfieFile);
-			await apiFetch("/api/user", { method: "PUT", body: userFormData });
-		} catch (err) {
-			console.error("User update failed:", err);
+		if (isAdmin && !selectedProjectId) {
+			setSubmitState("error");
+			setSubmitError("Geen project geselecteerd");
+			return;
 		}
 
-		const memberIds = currentUserId ? [currentUserId] : [];
-		let p2UserId = null;
-		if (p2Email.trim()) {
+		if (!isAdmin) {
 			try {
-				const result = await apiFetch(`/api/user?email=${encodeURIComponent(p2Email.trim())}`);
-				if (result.success) {
-					p2UserId = result.user.id;
-					memberIds.push(result.user.id);
-				}
-			} catch { }
+				const userFormData = new FormData();
+				if (firstName) userFormData.append("firstname", firstName.trim());
+				if (lastName) userFormData.append("lastname", lastName.trim());
+				if (linkedinURL) userFormData.append("socials", linkedinURL.trim());
+				if (selfieFile) userFormData.append("image", selfieFile);
+				await apiFetch("/api/user", { method: "PUT", body: userFormData });
+			} catch (err) {
+				console.error("User update failed:", err);
+			}
+		}
+
+		let memberIds;
+		let p2UserId = null;
+
+		if (isAdmin) {
+			memberIds = [...projectMemberIds];
+			if (p2Email.trim()) {
+				try {
+					const result = await apiFetch(`/api/user?email=${encodeURIComponent(p2Email.trim())}`);
+					if (result.success) p2UserId = result.user.id;
+				} catch { }
+			}
+		} else {
+			memberIds = currentUserId ? [currentUserId] : [];
+			if (p2Email.trim()) {
+				try {
+					const result = await apiFetch(`/api/user?email=${encodeURIComponent(p2Email.trim())}`);
+					if (result.success) {
+						p2UserId = result.user.id;
+						memberIds.push(result.user.id);
+					}
+				} catch { }
+			}
 		}
 
 		if (p2UserId) {
@@ -392,13 +414,8 @@ export default function ProjectForm() {
 		}
 
 		try {
-			const existingData = await apiFetch("/project/");
-			const existing = (existingData.projects || []).find(
-				(p) => Array.isArray(p.members) && p.members.some((m) => m.id === currentUserId),
-			);
-
-			const result = existing
-				? await apiFetch(`/project/${existing.id}`, { method: "PUT", body: cleanForm })
+			const result = selectedProjectId
+				? await apiFetch(`/project/${selectedProjectId}`, { method: "PUT", body: cleanForm })
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
