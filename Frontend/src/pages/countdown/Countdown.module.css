@@ -235,6 +235,7 @@
 		h3,
 		p {
 			z-index: 2;
+			text-align: left;
 		}
 	}
 
@@ -290,6 +291,7 @@
 			color: var(--txt-shift-primary);
 			background-color: var(--shift-orange);
 			margin-top: 1.5rem;
+			font-weight: bold;
 		}
 	}
 }
@@ -722,10 +724,6 @@ h2 {
 
 	.infoMultimediaCard {
 		max-width: 50vw;
-	}
-
-	.infoMultimediaCard p {
-		text-align: left;
 	}
 
 	.audienceCard {

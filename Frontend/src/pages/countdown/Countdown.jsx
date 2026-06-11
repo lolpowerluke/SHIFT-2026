@@ -129,7 +129,7 @@ export default function Countdown() {
 							<div className={s.shiftInfoNoCard}>
 								<h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
 								<p>
-									SHIFT festival is de eindejaarsexpo van Multimedia & Creatieve
+									SHIFT FESTIVAL is de eindejaarsexpo van Multimedia & Creatieve
 									Technologie aan Erasmushogeschool Brussel. <br />
 									Onze laatstejaars-studenten tonen het beste van zichzelf met
 									hun eindwerken van XR/3D‑ervaringen tot interactieve
