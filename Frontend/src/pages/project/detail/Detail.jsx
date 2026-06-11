@@ -40,10 +40,10 @@ export default function Detail() {
             });
     }, [project]);
 
-    useEffect(() => {
-        document.documentElement.classList.add("alt-bg", "no-icons");
-        return () => document.documentElement.classList.remove("alt-bg", "no-icons");
-    }, []);
+    // useEffect(() => {
+    //     document.documentElement.classList.add("alt-bg", "no-icons");
+    //     return () => document.documentElement.classList.remove("alt-bg", "no-icons");
+    // }, []);
 
     const guard = StatusMessage({loading, error});
     if (guard) return guard;
@@ -66,132 +66,135 @@ export default function Detail() {
 
     return (<>
             <div className="headerSpacer"></div>
-            <div className="ctx-detail">
-                <div className="titleDiv">
+            <div className={`${s.paperBg} altBg`}>
+                <div className={`${s.ctxDetail}`}>
                     <div className={s.backButton}>
                         <button onClick={() => navigate(-1)}>
                             <img src="/assets/arrow_back.svg" alt="Back arrow Icon"/>
                             Back
                         </button>
-                    </div>
-                    <div className={s.titleText}>
-                        <h1>{project.name}</h1>
-                        <div className="titleNames">
-                            <div className={s.name}>
-                                <p>
-                                    {(project.members ?? [])
-                                        .map((m) => memberDisplayName(m))
-                                        .join(" & ")}
-                                </p>
-                            </div>
-                            <div className={s.subject}>
-                                {categoryIcon && <img src={categoryIcon} alt={project.course}/>}
-                                <p>
-                                    <b>{project.course}</b>
-                                </p>
+                        <div className="titleDiv">
+                        </div>
+                        <div className={s.titleText}>
+                            <h1>{project.name}</h1>
+                            <div className="titleNames">
+                                <div className={s.name}>
+                                    <p>
+                                        {(project.members ?? [])
+                                            .map((m) => memberDisplayName(m))
+                                            .join(" & ")}
+                                    </p>
+                                </div>
+                                <div className={s.subject}>
+                                    {categoryIcon && <img src={categoryIcon} alt={project.course}/>}
+                                    <p>
+                                        <b>{project.course}</b>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div className={s.imgDiv}>
-                    <img
-                        src={
-                            getCloudinaryUrl(project.media?.[0]) ??
-                            getCloudinaryUrl(project.images?.[0]) ??
-                            "/assets/imageCard.png"
-                        }
-                        alt={project.name}
-                    />
-                </div>
+                    <div className={s.imgDiv}>
+                        <img
+                            src={
+                                getCloudinaryUrl(project.media?.[0]) ??
+                                getCloudinaryUrl(project.images?.[0]) ??
+                                "/assets/imageCard.png"
+                            }
+                            alt={project.name}
+                        />
+                    </div>
 
-                <div>
-                    <p className={s.description}>{project.description}</p>
-                    <p className={s.promoterTitle}>
-                        <b>Promoter</b>
-                    </p>
-                    <p className="promoterName">{project.promoter}</p>
-                </div>
+                    <div>
+                        <p className={s.description}>{project.description}</p>
+                        <p className={s.promoterTitle}>
+                            <b>Promoter</b>
+                        </p>
+                        <p className="promoterName">{project.promoter}</p>
+                    </div>
 
-                <div className={s.studentCardDiv}>
-                    {(project.members ?? []).map((m) => (
-                        <div className={s.studentCards} key={m.id}>
-                            <div className={s.studentTop}>
-                                <div className={s.picture}>
-                                    <img
-                                        src={memberAvatar(m)}
-                                        alt={memberDisplayName(m)}
-                                    />
-                                </div>
-                                <div className={s.studentInfo}>
-                                    <div className={s.studentName}>
-                                        <p>
-                                            <b>{memberDisplayName(m)}</b>
-                                        </p>
-                                        <p>Multimedia & Creatieve Technologie</p>
+                    <div className={s.studentCardDiv}>
+                        {(project.members ?? []).map((m) => (
+                            <div className={s.studentCards} key={m.id}>
+                                <div className={s.studentTop}>
+                                    <div className={s.picture}>
+                                        <img
+                                            src={memberAvatar(m)}
+                                            alt={memberDisplayName(m)}
+                                        />
                                     </div>
-                                    <div className={s.studentContact}>
-                                        <div className={s.icons}>
-                                            <a href={`mailto:${m.email}`}>
-                                                <img src="/assets/mail_Icon.svg" alt="Email Icon"/>
-                                            </a>
-                                            {m.socials?.[0] && (
-                                                <a href={m.socials[0]} target="_blank" rel="noreferrer">
-                                                    <img
-                                                        src="/assets/linkedIn_Icon.svg"
-                                                        alt="LinkedIn Icon"
-                                                    />
+                                    <div className={s.studentInfo}>
+                                        <div className={s.studentName}>
+                                            <p>
+                                                <b>{memberDisplayName(m)}</b>
+                                            </p>
+                                            <p>Multimedia & Creatieve Technologie</p>
+                                        </div>
+                                        <div className={s.studentContact}>
+                                            <div className={s.icons}>
+                                                <a href={`mailto:${m.email}`}>
+                                                    <img src="/assets/mail_Icon.svg" alt="Email Icon"/>
                                                 </a>
+                                                {m.socials?.[0] && (
+                                                    <a href={m.socials[0]} target="_blank" rel="noreferrer">
+                                                        <img
+                                                            src="/assets/linkedIn_Icon.svg"
+                                                            alt="LinkedIn Icon"
+                                                        />
+                                                    </a>
+                                                )}
+                                            </div>
+                                            {project.magazine && (
+                                                <div className={s.magButton}>
+                                                    <button onClick={handleMagazineOpen}>
+                                                        <img className="pdf-icon"
+                                                             src="/assets/BlueDownloadFolderPDF.svg"
+                                                             alt="download pdf icon"/>
+                                                        Mijn magazine (PDF{" "}
+                                                        {magazineSize ? `${magazineSize}` : ""})
+                                                    </button>
+                                                </div>
                                             )}
                                         </div>
-                                        {project.magazine && (
-                                            <div className={s.magButton}>
-                                                <button onClick={handleMagazineOpen}>
-                                                    <img className="pdf-icon" src="/assets/BlueDownloadFolderPDF.svg"
-                                                         alt="download pdf icon"/>
-                                                    Mijn magazine (PDF{" "}
-                                                    {magazineSize ? `${magazineSize}` : ""})
-                                                </button>
-                                            </div>
-                                        )}
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-
-                {embedUrl && (
-                    <div>
-                        <h1 className={s.videoTitle}>Project video</h1>
-                        <div className={s.videoHolder}>
-                            {!playing ? (
-                                <div className={s.videoThumb} onClick={() => setPlaying(true)}>
-                                    <img
-                                        src={`https://img.youtube.com/vi/${embedUrl.split("/embed/")[1]}/maxresdefault.jpg`}
-                                        alt="Video thumbnail"
-                                        className={s.videoPlayer}
-                                    />
-                                    <img
-                                        src="/assets/play-button.png"
-                                        alt="Play"
-                                        className={s.playBtn}
-                                    />
-                                </div>
-                            ) : (
-                                <div className={s.videoWrapper}>
-                                    <iframe
-                                        src={`${embedUrl}?autoplay=1`}
-                                        title="YouTube video player"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerPolicy="strict-origin-when-cross-origin"
-                                        allowFullScreen
-                                    />
-                                </div>
-                            )}
-                        </div>
+                        ))}
                     </div>
-                )}
+
+                    {embedUrl && (
+                        <div>
+                            <h1 className={s.videoTitle}>Project video</h1>
+                            <div className={s.videoHolder}>
+                                {!playing ? (
+                                    <div className={s.videoThumb} onClick={() => setPlaying(true)}>
+                                        <img
+                                            src={`https://img.youtube.com/vi/${embedUrl.split("/embed/")[1]}/maxresdefault.jpg`}
+                                            alt="Video thumbnail"
+                                            className={s.videoPlayer}
+                                        />
+                                        <img
+                                            src="/assets/play-button.png"
+                                            alt="Play"
+                                            className={s.playBtn}
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className={s.videoWrapper}>
+                                        <iframe
+                                            src={`${embedUrl}?autoplay=1`}
+                                            title="YouTube video player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerPolicy="strict-origin-when-cross-origin"
+                                            allowFullScreen
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
         </>
     );
