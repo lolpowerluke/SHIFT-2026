@@ -94,6 +94,8 @@ A `.env` file is required.
 
 The output is in the `Frontend/dist` directory.
 
+Deployment of the frontend branches in this repo is automated by the Github workflows in `/.github/workflows`. The frontend gets redeployed to the dev site when pushing to FRONT-test and the live website gets redeployed on a push to main with changes in `/Frontend/`.
+
 ### Backend
 
 The backend is a Node.js application.
