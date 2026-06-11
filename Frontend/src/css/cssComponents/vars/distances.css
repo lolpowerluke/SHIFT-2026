@@ -12,12 +12,13 @@
 
 	/* specifics */
 	--spacing-heroWrapper: var(--spacing-s);
-	--spacing-footer: var(--spacing-m);
+	--spacing-footer: 1.2rem;
 
 	--shift-logo-height: 15rem;
 
 	@media only screen and (min-width: 1024px) {
 		--shift-logo-height: 25rem;
+		--spacing-footer: var(--spacing-m);
 	}
 
 	@media only screen and (min-width: 1280px) {
