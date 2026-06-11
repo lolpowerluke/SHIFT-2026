@@ -43,8 +43,9 @@
         }
 
         .title {
-            font-size: 6rem;
+            font-size: 5rem;
             font-weight: 800;
+            text-shadow:0 0 4px var(--txt-special);
         }
     }
 
@@ -120,7 +121,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 50px 0 100px 0;
+    padding: 50px 0;
     position: relative;
 
     @media (min-width: 769px) {
@@ -217,7 +218,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 0 80px 0;
+    text-align: center;
+    background-color: var(--bg-shift-secondary);
+    border: 5px solid var(--border-primary);
+    box-shadow: 5px 5px 0 1px var(--shadow-primary);
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 85vw;
+    box-sizing: border-box;
+    margin: 0 auto 5rem;
 
     .voteImg {
         width: 100px;
