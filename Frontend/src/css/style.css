@@ -58,8 +58,10 @@ body::before {
     pointer-events: none;
 }
 
-.alt-bg::after {
-    content: '';
+
+
+html.alt-bg::after {
+    content: "";
     position: fixed;
     inset: 0;
     z-index: 0;

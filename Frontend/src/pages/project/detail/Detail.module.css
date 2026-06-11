@@ -192,6 +192,8 @@
 		width: 100%;
 	}
 
+	
+
 	/* student cards */
 	.picture img {
 		width: 80px;
@@ -214,6 +216,11 @@
 		> div {
 			flex-direction: column;
 			align-items: center;
+			gap: 0px;
+		}
+
+		p, img {
+			margin: 0 0 16px 0;
 		}
 
 		.subject {
