@@ -1,0 +1,61 @@
+.heroContent {
+	display: block;
+	position: absolute;
+	top: -20%;
+	z-index: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top;
+	}
+}
+
+.heroLayout {
+	height: calc(50vh - 100px);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 1.5rem 7.5%;
+	z-index: 1;
+}
+
+.heroTitle {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: clamp(52px, 7vw, 96px);
+	line-height: 1.05;
+}
+
+.infoLine {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.locationIcon {
+	width: clamp(60px, 7.5vw, 110px);
+	height: auto;
+	flex-shrink: 0;
+}
+
+.heroBtn {
+	align-self: flex-end;
+}
+
+@media (max-width: 768px) {
+	.heroContent {
+		height: 55vh;
+	}
+
+	.heroLayout {
+		height: calc(55vh - 100px);
+		padding: 1.5rem 5%;
+	}
+}
