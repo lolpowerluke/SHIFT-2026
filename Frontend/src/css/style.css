@@ -63,7 +63,6 @@ body::before {
     position: fixed;
     inset: 0;
     z-index: 1;
-    box-shadow: inset 0 0 0 6px var(--bg-shift-primary);
     pointer-events: none;
 }
 
@@ -72,7 +71,7 @@ body::before {
     padding-bottom: 2rem;
 }
 
-.altBg::before {
+.alt-bg::before {
     content: "";
     position: absolute;
     background-color: var(--bg-shift-secondary);
