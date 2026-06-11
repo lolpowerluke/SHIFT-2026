@@ -126,10 +126,10 @@ export default function Countdown() {
                 <div className={s.section}>
                     <div className={s.sectionFlexer}>
                         <div className={s.projectSide}>
-                            <img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>
-                            {/*<div className={`${s.section} ${s.carousel}`}>*/}
-                            {/*    <Carousel />*/}
-                            {/*</div>*/}
+                            {/*<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>*/}
+                            <div className={`${s.section} ${s.carousel}`}>
+                                <Carousel />
+                            </div>
 						</div>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>
