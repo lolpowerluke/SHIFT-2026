@@ -1,15 +1,15 @@
 import s from "../pages/countdown/Countdown.module.css";
 import { useState, useEffect } from "react";
-import { getCloudinaryUrl } from "../../src/utils/cloudinary";
+import { getCloudinaryUrl } from "../../src/utils/cloudinary.js";
 
 function mapProject(p) {
     return {
         id: p.id,
         title: p.name,
-        image:
-            getCloudinaryUrl(p.media?.[0]) ??
-            getCloudinaryUrl(p.images?.[0]) ??
-            "/assets/imageCard.png",
+        image: getCloudinaryUrl(p.media?.[0]) ?? "/assets/imageCard.png",
+        students: (p.members ?? []).map((m) =>
+            [m.firstname, m.lastname].filter(Boolean).join(" ") || m.email || "Onbekend"
+        ),
     };
 }
 
@@ -17,6 +17,21 @@ export default function Carousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const [touchStart, setTouchStart] = useState(null);
+
+    function handleTouchStart(e) {
+        setTouchStart(e.touches[0].clientX);
+    }
+
+    function handleTouchEnd(e) {
+        if (touchStart === null) return;
+        const diff = touchStart - e.changedTouches[0].clientX;
+        if (diff > 50) setCurrentIndex((prev) => Math.min(prev + 1, projects.length - 1));
+        if (diff < -50) setCurrentIndex((prev) => Math.max(prev - 1, 0));
+        setTouchStart(null);
+    }
+
 
     const handleButton = () => {
         window.open(
@@ -42,19 +57,31 @@ export default function Carousel() {
     return (
         <>
             <div className={s.projectCard}>
-                <div className={s.carouselImage}>
+                <div className={s.carouselImage} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} style={{ overflow: "hidden", position: "relative"}}>
                     <div
                         className={s.carouselSlideAnimation}
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                    >
+                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                         {projects.map((project) => (
-                            <div key={project.id} className={s.carouselSlide}>
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                                />
+                            <div key={project.id} className={s.carouselSlide} style={{ position: "relative", overflow: "hidden" }}>
+                            <img
+                                src={project.image}
+                                alt={project.title}
+                                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                            />
+                            <div style={{
+                                position: "absolute",
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                padding: "1rem",
+                                background: "linear-gradient(transparent, rgba(0,0,0,0.7))",
+                                color: "white",
+                                textAlign: "left",
+                            }}>
+                                <h3 style={{ margin: 0 }}>{project.title}</h3>
+                                <p style={{ margin: 0, fontSize: "0.85rem" }}>{project.students.join(", ")}</p>
                             </div>
+                        </div>
                         ))}
                     </div>
                 </div>
@@ -63,12 +90,11 @@ export default function Carousel() {
                         <button
                             key={index}
                             onClick={() => setCurrentIndex(index)}
-                            className={`dot ${currentIndex === index ? "active" : ""}`}
+                            className={`${s.dot} ${currentIndex === index ? s.active : ""}`}
                             aria-label={`Slide ${index + 1}`}
                         />
                     ))}
                 </div>
-                <h2>SEE. EXPERIENCE. MEET.</h2>
                 <div className={s.projectCTA}>
                     <button onClick={handleButton}>
                         <span>Bekijk alle projecten</span>

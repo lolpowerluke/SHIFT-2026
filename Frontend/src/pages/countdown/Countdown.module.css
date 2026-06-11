@@ -182,8 +182,6 @@
 }
 
 .projectCard {
-	background-color: var(--bg-shift-secondary);
-	border: 5px solid var(--border-primary);
 	width: 80%;
 	border-radius: 0.5rem;
 	padding: 1.25rem;
@@ -192,18 +190,25 @@
 	flex-direction: column;
 	align-items: center;
 	justify-self: center;
-	transform: rotate(5deg);
 
 	h2 {
 		font-size: 26px;
 	}
 
 	.carouselImage {
-		width: 100%;
+		width: 80%;
 		border-radius: 1.5rem;
+		box-shadow:
+		5px 5px 0 1px var(--shadow-primary),
+		3px 3px 0 7px var(--hl-secondary);
 		border: 5px solid var(--border-primary);
 		overflow: hidden;
 		aspect-ratio: 16 / 9;
+
+		h3 {
+			text-align: left;
+		}
+		
 	}
 
 	.carouselSlideAnimation {
@@ -218,6 +223,14 @@
 		height: 100%;
 		flex-shrink: 0;
 		box-sizing: border-box;
+
+		img {
+			z-index: 1;
+		}
+
+		h3, p {
+			z-index: 2;
+		}
 	}
 
 	.cardImagePlaceholder {
@@ -232,7 +245,7 @@
 		display: flex;
 		justify-content: center;
 		gap: 10px;
-		margin-top: 0.5rem;
+		margin-top: 1.5rem;
 
 		button {
 			box-shadow: none;
@@ -242,7 +255,7 @@
 		.dot {
 			width: 18px;
 			height: 18px;
-			background-color: var(--bg-shift-primary);
+			background-color: var(--bg-shift-secondary);
 			cursor: pointer;
 			padding: 0;
 			position: relative;
@@ -258,7 +271,12 @@
 
 			&:active {
 				transform: translate(2px, 2px);
+				background-color: var(--bg-shift-primary);
 			}
+		}
+
+		.active {
+			background-color: var(--shift-orange);
 		}
 	}
 
@@ -266,6 +284,7 @@
 		button {
 			color: var(--txt-shift-primary);
 			background-color: var(--bg-shift-primary);
+			margin-top: 1.5rem;
 		}
 	}
 }
