@@ -37,19 +37,11 @@ html::before {
     background-color: var(--bg-shift-primary);
 }
 
-html.alt-bg::before {
-    background-color: var(--bg-shift-secondary);
-}
-
-html.no-icons body::before {
-    display: none;
-}
-
-body::after {
+html::after {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: -3;
     background-image: url(/assets/wallTextureWeb2.png);
     background-size: cover;
     pointer-events: none;
@@ -60,19 +52,17 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: -4;
     background-image: url(/assets/iconsOverlay.svg);
     background-size: 9000px;
     pointer-events: none;
 }
 
-
-
-html.alt-bg::after {
-    content: "";
+.alt-bg::after {
+    content: '';
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: 1;
     box-shadow: inset 0 0 0 6px var(--bg-shift-primary);
     pointer-events: none;
 }
@@ -92,13 +82,13 @@ html.alt-bg::after {
 
 #root {
     overflow-x: clip;
-    min-height: 100lvh;
+    min-height: 100dvh;
     display: grid;
     grid-template-rows: auto 1fr auto;
     padding-bottom: env(safe-area-inset-bottom);
 }
 
 .hideThisSht {
-	pointer-events: none;
-	display: none;
+    pointer-events: none;
+    display: none;
 }

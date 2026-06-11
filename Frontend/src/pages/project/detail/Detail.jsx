@@ -4,7 +4,6 @@ import s from "./Detail.module.css";
 import { getCloudinaryUrl, getYoutubeEmbedUrl } from "../../../utils/cloudinary.js";
 import { memberDisplayName, memberAvatar } from "../../../utils/member.js";
 import { useFetch } from "../../../hooks/useFetch.js";
-import { useAltBg } from "../../../hooks/useAltBg.js";
 import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
 
 const CATEGORY_ICONS = {
