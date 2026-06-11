@@ -129,10 +129,10 @@ export default function Countdown() {
 							<div className={s.shiftInfoNoCard}>
 								<h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
 								<p>
-									SHIFT festival is de eindejaarsexpo van Multimedia & Creatieve
-									Technologie aan Erasmushogeschool Brussel. <br />
-									Onze laatstejaars-studenten tonen het beste van zichzelf met
-									hun eindwerken van XR/3D‑ervaringen tot interactieve
+									SHIFT FESTIVAL is de eindejaarsexpo van Multimedia & Creatieve
+									Technologie aan Erasmushogeschool Brussel.
+									<br /> Onze laatstejaarsstudenten tonen het beste van zichzelf
+									met hun eindwerken van XR/3D‑ervaringen tot interactieve
 									installaties. Ze duiken ook in thema’s die ertoe doen, zoals
 									verbinding, mantelzorg, de strijd tegen phishing en
 									vrouwengeweld. Daarnaast mag je de liveshow en awards zeker
@@ -193,7 +193,7 @@ export default function Countdown() {
 						<div className={s.audienceContainer}>
 							<div className={s.orangeAudienceCard}>
 								<div className={s.iconHeadphones}>
-									<img src="/assets/icons/koptelefoon.svg" alt="Studenten" />
+									<img src="/assets/icons/headsetBlue.svg" alt="Studenten" />
 								</div>
 								<h3>STUDENTEN</h3>
 								<p>Leer de opleiding kennen adhv concrete realisaties.</p>
@@ -209,7 +209,7 @@ export default function Countdown() {
 
 							<div className={s.orangeAudienceCard}>
 								<div className={s.iconChatBubble}>
-									<img src="/assets/icons/chat-bubble.svg" alt="Bezoekers" />
+									<img src="/assets/icons/chatBubbleBLue.svg" alt="Bezoekers" />
 								</div>
 								<h3>Tech-lovers</h3>
 								<p>Blijf op de hoogte van trends en innovaties.</p>
@@ -228,8 +228,10 @@ export default function Countdown() {
 			<br />
 			<div className={`${s.infoMultimediaCard} section`}>
 				<div className={s.textContainer}>
-					<div>
+					<div className={s.orange}>
 						<h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
+					</div>
+					<div className={s.beige}>
 						<p>
 							Multimedia & Creatieve Technologie is een bacheloropleiding aan
 							Erasmushogeschool Brussel.
@@ -238,12 +240,12 @@ export default function Countdown() {
 							In deze opleiding worden innovatieve digitale ervaringen
 							gecreëerd.
 						</p>
+						<img
+							src="/assets/opleidingPlaceholder.jpg"
+							alt="Multimedia & Creatieve Technologie"
+						/>
 					</div>
 				</div>
-				<img
-					src="/assets/opleidingPlaceholder.jpg"
-					alt="Multimedia & Creatieve Technologie"
-				/>
 				<div className={`${s.cta}`}>
 					<a
 						href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"

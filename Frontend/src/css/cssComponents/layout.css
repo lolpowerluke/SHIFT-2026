@@ -27,10 +27,6 @@ body {
 	margin-top: var(--spacing-xs);
 }
 
-footer {
-	padding: var(--spacing-footer) 0;
-}
-
 .gutter-s {
 	gap: var(--spacing-s);
 }
