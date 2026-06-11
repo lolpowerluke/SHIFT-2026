@@ -1,5 +1,5 @@
 const Routes = {
-	Root: "",
+	Root: "/",
 	Privacy: "/privacy",
 	privacyEN: "/privacy/en",
 	privacyNL: "/privacy/nl",
@@ -10,6 +10,8 @@ const Routes = {
 	ProjectForm: "/project/form",
 	ProjectFormOld: "/project-form",
 	ProjectenPageDetails: "/project/:id",
+	Awards: "/awards",
 	uMoeder: "/u/Moeder",
+    NotFound: "/404",
 };
 export default Routes;
