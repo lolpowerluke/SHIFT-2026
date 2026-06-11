@@ -225,8 +225,10 @@ export default function Countdown() {
             <br/>
             <div className={`${s.infoMultimediaCard} section`}>
                 <div className={s.textContainer}>
-                    <div>
+                    <div className={s.orange}>
                         <h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
+                    </div>
+                    <div className={s.beige}>
                         <p>
                             Multimedia & Creatieve Technologie is een bacheloropleiding aan
                             Erasmushogeschool Brussel.
@@ -234,12 +236,12 @@ export default function Countdown() {
                         <p>
                             In deze opleiding worden innovatieve digitale ervaringen gecreëerd.
                         </p>
+                    <img
+                        src="/assets/opleidingPlaceholder.jpg"
+                        alt="Multimedia & Creatieve Technologie"
+                    />
                     </div>
                 </div>
-                <img
-                    src="/assets/opleidingPlaceholder.jpg"
-                    alt="Multimedia & Creatieve Technologie"
-                />
                 <div className={`${s.cta}`}>
                     <a
                         href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"

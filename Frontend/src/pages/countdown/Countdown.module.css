@@ -490,19 +490,47 @@
 	flex-direction: column;
 	gap: var(--margin-between);
 	padding: var(--margin-between);
-	background-color: var(--bg-shift-alt);
-	border: 5px solid var(--border-primary);
-	border-radius: 1.5rem;
-	max-width: 80vw;
+	max-width: 90vw;
 	justify-self: center;
 	overflow: hidden;
 	box-sizing: border-box;
 	margin-top: var(--spacing-s);
+	align-items: center;
 
 	img {
+		display: block;
+		margin: 0 auto;
 		border: 3px solid var(--bg-shift-secondary);
 		border-radius: 0.5rem;
+		width: 95%;
+		margin-bottom: 15px;
+	
 	}
+}
+
+.textContainer {
+	div {
+	border: 5px solid var(--border-primary);
+	border-radius: 1.5rem;
+	margin-top: 15px;
+	}
+
+	h2, p {
+		padding-left: 15px;
+	}
+
+	h2 {
+		font-size: 17pt;
+	}
+}
+
+.beige {
+	background-color: var(--bg-shift-secondary);
+	padding: 0;
+}
+
+.orange {
+	background-color: var(--shift-orange);
 }
 
 .infoSection {
