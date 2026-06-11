@@ -1,7 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import PageLayout from "./layouts/PageLayout.jsx";
 import BareLayout from "./layouts/BareLayout.jsx";
-import SearchLayout from "./layouts/SearchLayout.jsx";
 import Countdown from "./pages/countdown/Countdown.jsx";
 import Routes from "./routes/constants/Routes.js";
 import PrivacyRedirect from "./pages/privacy/PrivacyRedirect.jsx";
@@ -13,7 +12,6 @@ import List from "./pages/project/list/List.jsx";
 import Detail from "./pages/project/detail/Detail.jsx";
 import Info from "./pages/info/Info.jsx";
 
-// TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter([
 	{
 		element: <PageLayout />,
@@ -38,10 +36,6 @@ const router = createBrowserRouter([
 				element: <Navigate to={Routes.ProjectForm} replace />,
 			},
 			{ path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
-			{
-				element: <SearchLayout />, //this will hold all search logic for the projects
-				children: [{ path: "/projects", element: "Projects" }],
-			},
 		],
 	},
 	{

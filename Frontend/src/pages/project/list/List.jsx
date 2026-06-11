@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import s from "./List.module.css";
 import ProjectCard from "../../../components/projectCard/ProjectCard.jsx";
 import { useFetch } from "../../../hooks/useFetch.js";
 import { mapProject } from "../../../utils/member.js";
 import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
+import { getCloudinaryUrl } from "../../../utils/cloudinary.js";
+import Throbber from "../../../components/Throbber.jsx";
+import ErrorComponent from "../../../components/errorComponent/ErrorComponent.jsx";
 
 const CATEGORIES = [
 	"Alle Projecten",
@@ -14,28 +17,37 @@ const CATEGORIES = [
 ];
 
 export default function List() {
+	const [projects, setProjects] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
 	const [activeCategory, setActiveCategory] = useState("Alle Projecten");
 	const [searchQuery, setSearchQuery] = useState("");
 
-	const { data, loading, error } = useFetch(
-		`${import.meta.env.VITE_API_URL}/project`,
-	);
-
-	const guard = StatusMessage({ loading, error });
-	if (guard) return guard;
-
-	const projects = (data?.projects ?? []).map(mapProject);
+	useEffect(() => {
+		fetch(`${import.meta.env.VITE_API_URL}/project`)
+			.then((res) => {
+				if (!res.ok) throw new Error(`HTTP ${res.status}`);
+				return res.json();
+			})
+			.then((data) => setProjects(data.projects.map(mapProject)))
+			.catch((err) => setError(err))
+			.finally(() => setLoading(false));
+	}, []);
 
 	const filteredProjects = projects.filter((project) => {
 		const query = searchQuery.toLowerCase();
 		const matchesSearch =
 			project.title.toLowerCase().includes(query) ||
 			project.students.some((s) => s.name.toLowerCase().includes(query));
+
 		const matchesCategory =
 			activeCategory === "Alle Projecten" ||
 			project.category === activeCategory;
 		return matchesSearch && matchesCategory;
 	});
+	// TODO: add loading element
+	if (loading) return <p className="ctx">Laden...</p>;
+	if (error) return <ErrorComponent error={error}/>;
 
 	return (
 		<main className="ctx">

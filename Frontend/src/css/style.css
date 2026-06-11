@@ -25,6 +25,10 @@ body {
     scroll-behavior: smooth;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 html::before {
     content: "";
     position: fixed;
@@ -44,18 +48,6 @@ body::after {
     opacity: 0.4;
 }
 
-html.alt-bg::before {
-    background-color: var(--bg-shift-secondary);
-}
-
-html.alt-bg body::before {
-    opacity: 0.6;
-}
-
-html.no-icons body::before {
-    display: none;
-}
-
 body::before {
     content: "";
     position: fixed;
@@ -66,8 +58,8 @@ body::before {
     pointer-events: none;
 }
 
-html.alt-bg::after {
-    content: "";
+.alt-bg::after {
+    content: '';
     position: fixed;
     inset: 0;
     z-index: 0;
@@ -78,7 +70,6 @@ html.alt-bg::after {
 .altBg {
     position: relative;
     padding-bottom: 2rem;
-    /*z-index: 0;*/
 }
 
 .altBg::before {
@@ -91,12 +82,13 @@ html.alt-bg::after {
 
 #root {
     overflow-x: clip;
-    min-height: 100dvh;
+    min-height: 100lvh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .hideThisSht {
-    pointer-events: none;
-    display: none;
+	pointer-events: none;
+	display: none;
 }

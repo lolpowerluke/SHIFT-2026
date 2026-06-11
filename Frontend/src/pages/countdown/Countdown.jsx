@@ -17,7 +17,7 @@ export default function Countdown() {
 
     return (
         <>
-            <div className={s.heroContent}>
+            <div className={s.heroContent} id="home">
                 <video autoPlay muted loop playsInline>
                     <source
                         src="/assets/heroContent/videoheroMobile.webm"
@@ -35,7 +35,7 @@ export default function Countdown() {
                     />
                 </video>
             </div>
-
+            <div className={s.heroGradient} />
             <div className={s.landingWrap}>
                 <div>
                     <div className={s.heroLayout}>
@@ -171,13 +171,16 @@ export default function Countdown() {
 									</div>
 									<div className={s.shiftLocationCampus}>
 										<h3>
-											ERASMUSHOGESCHOOL BRUSSEL <br />
+											ERASMUSHOGESCHOOL BRUSSEL
 											CAMPUS KAAI
 										</h3>
+                                        <small>Nijverheidskaai 170<br/>1070 Anderlecht</small>
+                                        <div className={s.btnMapDiv}>
+									        <button className={s.btnMaps} onClick={handleOpenMaps}>
+										        Open in maps
+									        </button>
+                                        </div>
 									</div>
-									<button className={s.btnMaps} onClick={handleOpenMaps}>
-										Open in maps
-									</button>
 								</div>
 							</div>
 						</div>
@@ -242,11 +245,11 @@ export default function Countdown() {
                 <div className={`${s.cta}`}>
                     <a
                         href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"
-                        className={`${s.linkBtn} linkBtn`}
+                        className={`${s.linkBtn} linkBtn blueBtn`}
                         target="_blank"
                         rel="noreferrer"
                     >
-                        Ontdek de richting!
+                        Ontdek de richting
                     </a>
                 </div>
             </div>

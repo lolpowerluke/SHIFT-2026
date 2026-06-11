@@ -52,6 +52,8 @@ export default function Detail() {
 	const embedUrl = getYoutubeEmbedUrl(project.video?.path);
 	const categoryIcon = CATEGORY_ICONS[project.course];
 
+	/* PDF button opening in new page [https://claude.ai/share/d6f34345-02dc-420b-8cce-af09fd83e019]*/
+
 	const handleMagazineOpen = async () => {
 		const url = `https://res.cloudinary.com/${project.magazine?.cloud_name}/raw/upload/${project.magazine?.path}`;
 		const res = await fetch(url);
@@ -144,7 +146,7 @@ export default function Detail() {
 									{project.magazine && (
 										<div className={s.magButton}>
 											<button onClick={handleMagazineOpen}>
-												<img src="/assets/download_icon.svg" alt="download" />
+												<img className="pdf-icon" src="/assets/BlueDownloadFolderPDF.svg" alt="download pdf icon" />
 												Mijn magazine (PDF{" "}
 												{magazineSize ? `${magazineSize}` : ""})
 											</button>
