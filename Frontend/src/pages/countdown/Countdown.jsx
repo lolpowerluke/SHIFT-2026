@@ -35,7 +35,7 @@ export default function Countdown() {
                     />
                 </video>
             </div>
-
+            <div className={s.heroGradient} />
             <div className={s.landingWrap}>
                 <div>
                     <div className={s.heroLayout}>
@@ -126,10 +126,10 @@ export default function Countdown() {
                 <div className={s.section}>
                     <div className={s.sectionFlexer}>
                         <div className={s.projectSide}>
-                            <img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>
-                            {/*<div className={`${s.section} ${s.carousel}`}>*/}
-                            {/*    <Carousel />*/}
-                            {/*</div>*/}
+                            {/*<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>*/}
+                            <div className={`${s.section} ${s.carousel}`}>
+                                <Carousel />
+                            </div>
 						</div>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>
@@ -171,14 +171,16 @@ export default function Countdown() {
 									</div>
 									<div className={s.shiftLocationCampus}>
 										<h3>
-											ERASMUSHOGESCHOOL BRUSSEL <br />
+											ERASMUSHOGESCHOOL BRUSSEL
 											CAMPUS KAAI
 										</h3>
                                         <small>Nijverheidskaai 170<br/>1070 Anderlecht</small>
+                                        <div className={s.btnMapDiv}>
+									        <button className={s.btnMaps} onClick={handleOpenMaps}>
+										        Open in maps
+									        </button>
+                                        </div>
 									</div>
-									<button className={s.btnMaps} onClick={handleOpenMaps}>
-										Open in maps
-									</button>
 								</div>
 							</div>
 						</div>
@@ -229,10 +231,8 @@ export default function Countdown() {
 							Multimedia & Creatieve Technologie is een bacheloropleiding aan
 							Erasmushogeschool Brussel.
 						</p>
-
                         <p>
-                            In deze opleiding komen design en technologie samen om digitale
-                            ervaringen te creëren.
+                            In deze opleiding worden innovatieve digitale ervaringen gecreëerd.
                         </p>
                     </div>
                 </div>

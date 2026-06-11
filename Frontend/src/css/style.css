@@ -37,6 +37,14 @@ html::before {
     background-color: var(--bg-shift-primary);
 }
 
+html.alt-bg::before {
+    background-color: var(--bg-shift-secondary);
+}
+
+html.no-icons body::before {
+    display: none;
+}
+
 body::after {
     content: "";
     position: fixed;
@@ -45,20 +53,7 @@ body::after {
     background-image: url(/assets/wallTextureWeb2.png);
     background-size: cover;
     pointer-events: none;
-    mix-blend-mode: multiply;
     opacity: 0.4;
-}
-
-html.alt-bg::before {
-    background-color: var(--bg-shift-secondary);
-}
-
-html.alt-bg body::before {
-    opacity: 0.6;
-}
-
-html.no-icons body::before {
-    display: none;
 }
 
 body::before {
@@ -69,11 +64,12 @@ body::before {
     background-image: url(/assets/iconsOverlay.svg);
     background-size: 9000px;
     pointer-events: none;
-    opacity: .6;
 }
 
-.alt-bg::after {
-    content: '';
+
+
+html.alt-bg::after {
+    content: "";
     position: fixed;
     inset: 0;
     z-index: 0;
