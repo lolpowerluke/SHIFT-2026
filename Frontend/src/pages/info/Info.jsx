@@ -8,15 +8,18 @@ export default function Info() {
 			</div>
 
 			<div className={s.heroLayout}>
-				<h1 className={s.heroTitle}>
-					Praktische <br /> Info
-					<img
-						src="/assets/icons/LocationOrange.svg"
-						alt=""
-						aria-hidden="true"
-						className={s.locationIcon}
-					/>
-				</h1>
+				<div className={s.heroTitle}>
+					<div>Praktische</div>
+					<div className={s.infoLine}>
+						Info
+						<img
+							src="/assets/icons/LocationOrange.svg"
+							alt=""
+							aria-hidden="true"
+							className={s.locationIcon}
+						/>
+					</div>
+				</div>
 				<a href="#programma" className={`linkBtn ${s.heroBtn}`}>
 					Bekijk het programma
 				</a>
