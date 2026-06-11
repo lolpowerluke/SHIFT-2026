@@ -23,7 +23,8 @@ export default function ErrorComponent({error}) {
     }
 
 
-    return (<>
+    return (
+        <>
         <div className={`ctx ${s.ctx}`}>
             <p>{fault}: {msg}</p>
             <div className={s.throbberCtx}>
