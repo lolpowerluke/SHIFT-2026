@@ -66,6 +66,8 @@ body::before {
     pointer-events: none;
 }
 
+
+
 html.alt-bg::after {
     content: "";
     position: fixed;
