@@ -190,7 +190,7 @@ export default function Countdown() {
                         <div className={s.audienceContainer}>
                             <div className={s.orangeAudienceCard}>
                                 <div className={s.iconHeadphones}>
-                                    <img src="/assets/icons/koptelefoon.svg" alt="Studenten"/>
+                                    <img src="/assets/icons/headsetBlue.svg" alt="Studenten"/>
                                 </div>
                                 <h3>STUDENTEN</h3>
                                 <p>Leer de opleiding kennen adhv concrete realisaties.</p>
@@ -206,7 +206,7 @@ export default function Countdown() {
 
                             <div className={s.orangeAudienceCard}>
                                 <div className={s.iconChatBubble}>
-                                    <img src="/assets/icons/chat-bubble.svg" alt="Bezoekers"/>
+                                    <img src="/assets/icons/chatBubbleBLue.svg" alt="Bezoekers"/>
                                 </div>
                                 <h3>Tech-lovers</h3>
                                 <p>Blijf op de hoogte van trends en innovaties.</p>
