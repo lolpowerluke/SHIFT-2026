@@ -51,5 +51,5 @@
 
 .heroBtn {
 	align-self: flex-end;
-	margin-top: 350px;
+	margin-top: calc(65vh - 350px);
 }
