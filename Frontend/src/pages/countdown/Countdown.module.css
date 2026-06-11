@@ -271,7 +271,7 @@
 
 			&:active {
 				transform: translate(2px, 2px);
-				background-color: var(--bg-shift-primary);
+				background-color: var(--shift-orange);
 			}
 		}
 
@@ -283,7 +283,7 @@
 	.projectCTA {
 		button {
 			color: var(--txt-shift-primary);
-			background-color: var(--bg-shift-primary);
+			background-color: var(--shift-orange);
 			margin-top: 1.5rem;
 		}
 	}
@@ -316,6 +316,11 @@
 		font-size: 20px;
 		text-align: center;
 		margin-bottom: 1rem;
+		text-align: left;
+	}
+
+	p {
+		text-align: left;
 	}
 	
 }
@@ -325,6 +330,7 @@
 	
 	.btnMaps {
 		background-color: var(--bg-shift-primary);
+		width: 100%;
 	}
 }
 
@@ -340,6 +346,14 @@
 		height: 100%;
 		object-fit: contain;
 	}
+}
+
+.iconMap {
+	transform: rotate(8deg);
+}
+
+.iconCalendar {
+	transform: rotate(-15deg);
 }
 
 .shiftTimeDate,
@@ -372,8 +386,7 @@
 	margin: 0 auto;
 }
 
-.audienceCard {
-	background-color: var(--bg-shift-primary);
+.audienceCard, .orangeAudienceCard {
 	border: 5px solid var(--border-primary);
 	border-radius: 1.5rem;
 	padding: var(--margin-small);
@@ -399,6 +412,14 @@
 			display: block;
 		}
 	}
+}
+
+.audienceCard {
+	background-color: var(--bg-shift-primary);
+}
+
+.orangeAudienceCard {
+	background-color: var(--shift-orange);
 }
 
 .infoPart {
@@ -645,6 +666,7 @@
 	}
 
 	.audienceCard {
+		z-index: 2;
 		&:nth-child(odd) {
 			transform: rotate(5deg);
 		}
@@ -653,6 +675,12 @@
 			transform: rotate(-5deg);
 		}
 	}
+
+	.orangeAudienceCard {
+		z-index: 1;
+		transform: rotate(5deg);
+	}
+
 
 	.infoSection {
 		gap: 70px;
