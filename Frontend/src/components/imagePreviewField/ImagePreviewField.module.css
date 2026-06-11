@@ -1,0 +1,13 @@
+.previewImg {
+  width: 100%;
+  max-width: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 5px solid black;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.subtext {
+  font-size: 14px;
+}

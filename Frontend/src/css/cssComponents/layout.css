@@ -10,6 +10,11 @@ body {
 	width: 85%;
 }
 
+.ctx-detail {
+	margin: auto;
+	width: 65%;
+}
+
 .xsMarginTop {
 	margin-top: var(--spacing-xs);
 }
@@ -46,4 +51,16 @@ body {
 	width: 100%;
 	margin: auto;
 	text-align: center;
+}
+
+@media (max-width: 1024px) {
+	.ctx-detail {
+		width: 85%;
+	}
+}
+
+@media (max-width: 768px) {
+	.ctx-detail {
+		width: 90%;
+	}
 }

@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import PageLayout from "./layouts/PageLayout.jsx";
 import BareLayout from "./layouts/BareLayout.jsx";
 import Countdown from "./pages/countdown/Countdown.jsx";
@@ -30,6 +30,8 @@ const router = createBrowserRouter([
 			{ path: Routes.ProjectenPage, element: <List /> },
 			{ path: Routes.ProjectenPageDetails, element: <Detail /> },
 			{ path: Routes.uMoeder, element: "is dik" }, //same as {path: "/uMoeder", element: "isDik"
+			{ path: Routes.ProjectFormOld, element: <Navigate to={Routes.ProjectForm} replace /> },
+			{ path: Routes.uMoeder, element: "isDik" }, //same as {path: "/uMoeder", element: "isDik"
 		],
 	},
 	{
