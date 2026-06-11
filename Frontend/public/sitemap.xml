@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- ROOT -->
+    <url>
+        <loc>https://shiftfestival.be/</loc>
+        <lastmod>2026-06-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- PROJECTS -->
+    <url>
+        <loc>https://shiftfestival.be/project</loc>
+        <lastmod>2026-06-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- AWARDS -->
+    <url>
+        <loc>https://shiftfestival.be/awards</loc>
+        <lastmod>2026-06-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- PRIVACY (canonical) -->
+    <url>
+        <loc>https://shiftfestival.be/privacy</loc>
+        <lastmod>2026-06-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <!-- PRIVACY EN -->
+    <url>
+        <loc>https://shiftfestival.be/privacy/en</loc>
+        <lastmod>2026-06-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <!-- PRIVACY NL -->
+    <url>
+        <loc>https://shiftfestival.be/privacy/nl</loc>
+        <lastmod>2026-06-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+</urlset>
