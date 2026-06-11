@@ -10,9 +10,11 @@ body {
 	width: 85%;
 }
 
-.ctx-detail {
-	margin: auto;
-	width: 65%;
+.flexCenter{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
 .xsMarginTop {
@@ -21,14 +23,6 @@ body {
 
 footer {
 	padding: var(--spacing-footer) 0;
-}
-
-.centered {
-	display: flex;
-	flex-direction: column;
-	margin: auto;
-	text-align: center;
-	margin-top: 45dvh;
 }
 
 .gutter-s {
@@ -49,22 +43,14 @@ footer {
 	background-color: var(--bg-shift-secondary);
 }
 
+.headerSpacer{
+	margin-top: 120px;
+}
+
 .wrap {
 	flex-direction: column;
 	max-width: 85vw;
 	width: 100%;
 	margin: auto;
 	text-align: center;
-}
-
-@media (max-width: 1024px) {
-	.ctx-detail {
-		width: 85%;
-	}
-}
-
-@media (max-width: 768px) {
-	.ctx-detail {
-		width: 90%;
-	}
 }
