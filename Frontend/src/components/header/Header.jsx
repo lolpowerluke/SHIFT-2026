@@ -1,15 +1,17 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import { NavRoutes } from "../../routes/NavRoutes.js";
 import SocialLinks from "../socialLinks/SocialLinks.jsx";
-import { useRef } from "react";
+import {useEffect, useRef, useState} from "react";
 import { useScrolled } from "../../hooks/useScrolled.js";
 import s from "./Header.module.css";
 import Routes from "../../routes/constants/Routes.js";
 
 export default function Header() {
+	const [pageShort, setPageShort] = useState(false)
 	const hamburgerRef = useRef();
 	const scrolled = useScrolled(80);
 	const navLength = NavRoutes.length;
+	const pathname = useLocation();
 
 	const closeMenu = () => {
 		if (hamburgerRef.current) {
@@ -17,6 +19,17 @@ export default function Header() {
 			scrollTo(top)
 		}
 	};
+
+	useEffect(() => {
+		function check() {
+			setPageShort(document.body.scrollHeight <= window.innerHeight * 1.01);
+		}
+
+		setTimeout(check, 0);
+		window.addEventListener('resize', check);
+
+		return () => window.removeEventListener('resize', check);
+	}, [pathname]);
 
 	return (
 		<header>
@@ -26,7 +39,7 @@ export default function Header() {
 					<img
 						src="/favicon/shift_icon.svg"
 						alt="Shift Icon"
-						className={`${s.headerLogo} ${!scrolled ? s.hide : ""}`}
+						className={`${s.headerLogo} ${!scrolled && !pageShort ? s.hide : ""}`}
 					/>
 				</Link>
 				<div className={`${s.nav} ${navLength <= 1 ? "hideThisSht" : ""}`}>
