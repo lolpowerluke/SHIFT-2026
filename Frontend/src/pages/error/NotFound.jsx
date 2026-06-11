@@ -8,6 +8,7 @@ const NotFound = () => {
                 <h1>404 - Not Found</h1>
                 <p>This is not the page you are looking for.</p>
                 <Link to={Routes.Root} className="linkBtn">Go to Homepage</Link>
+                <img src="/assets/404.webp" alt="404 img"/>
             </div>
         </>
     );
