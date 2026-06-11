@@ -22,10 +22,6 @@ footer {
 		gap: 1.5rem;
 	}
 
-	small {
-		text-align: center;
-	}
-
 	.textInfo {
 		text-align: left;
 		display: flex;
@@ -72,6 +68,10 @@ footer {
 			align-self: center;
 			justify-content: center;
 			gap: 1.5rem;
+		}
+
+		small {
+			text-align: center;
 		}
 	}
 

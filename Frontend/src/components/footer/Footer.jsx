@@ -46,7 +46,7 @@ export default function Footer() {
 				<div className={s.footerSection2}>
 					<a
 						href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-						className="linkBtn"
+						className="linkBtn blueBtn"
 					>
 						Schrijf je nu gratis in
 					</a>
