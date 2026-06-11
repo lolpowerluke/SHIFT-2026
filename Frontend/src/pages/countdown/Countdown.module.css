@@ -351,6 +351,10 @@
 	}
 }
 
+h2 {
+	text-align: center;
+}
+
 .iconMap {
 	transform: rotate(8deg);
 }
@@ -697,6 +701,10 @@
 
 	.infoMultimediaCard {
 		max-width: 50vw;
+	}
+
+	.infoMultimediaCard p {
+		text-align: left;
 	}
 
 	.audienceCard {
