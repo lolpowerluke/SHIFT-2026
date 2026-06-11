@@ -43,6 +43,7 @@
 	width: clamp(60px, 7.5vw, 110px);
 	height: auto;
 	flex-shrink: 0;
+	rotate: 20deg;
 }
 
 .heroBtn {
