@@ -231,7 +231,6 @@ export default function Countdown() {
 							Multimedia & Creatieve Technologie is een bacheloropleiding aan
 							Erasmushogeschool Brussel.
 						</p>
-
                         <p>
                             In deze opleiding worden innovatieve digitale ervaringen gecreëerd.
                         </p>

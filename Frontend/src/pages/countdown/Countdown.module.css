@@ -3,7 +3,7 @@
 	margin: 2rem auto;
 
 	h2 {
-		margin-bottom: 2rem;
+		margin-bottom: 10px;
 	}
 }
 
@@ -583,6 +583,13 @@
 		width: 460px;
 		max-width: 100%;
 		justify-self: flex-end;
+
+	}
+
+	.wrap {
+		h2 {
+			margin-bottom: 2rem;
+		}
 	}
 
 	.shiftInfoNoCard {
