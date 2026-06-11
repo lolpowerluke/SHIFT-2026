@@ -33,16 +33,15 @@ export default function Header() {
 
 	return (
 		<header>
-			<script type="module" src="/src/js/language.js"></script>
 			<div className="ctx flexSpaceBetween">
-				<Link to={`${Routes.Root}`} onClick={closeMenu}>
+				<Link to={`${Routes.Root}`} onClick={closeMenu} className={s.clickable}>
 					<img
 						src="/favicon/shift_icon.svg"
 						alt="Shift Icon"
 						className={`${s.headerLogo} ${!scrolled && !pageShort ? s.hide : ""}`}
 					/>
 				</Link>
-				<div className={`${s.nav} ${navLength <= 1 ? "hideThisSht" : ""}`}>
+				<div className={`${s.nav} ${s.clickable} ${navLength <= 1 ? "hideThisSht" : ""}`}>
 					<ul className={s.navList}>
 						<ul className={s.orientationSwap}>
 							<li className={s.navLogo}>

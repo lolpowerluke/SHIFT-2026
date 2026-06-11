@@ -49,6 +49,10 @@ footer {
 	background-color: var(--bg-shift-secondary);
 }
 
+.headerSpacer{
+	margin-top: 120px;
+}
+
 .wrap {
 	flex-direction: column;
 	max-width: 85vw;
