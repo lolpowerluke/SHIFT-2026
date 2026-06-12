@@ -18,6 +18,8 @@
 	/*box-shadow: -1px 3px 10px 5px*/
 	/*	color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);*/
 
+	border-bottom: 6px solid var(--shift-cream);
+
 	img {
 		width: 100%;
 	}
@@ -70,7 +72,7 @@
 		margin-left: 4px;
 		margin-bottom: 0;
 		font-size: 3rem;
-		line-height: .8;
+		line-height: 0.8;
 	}
 
 	.courseHeroText {
