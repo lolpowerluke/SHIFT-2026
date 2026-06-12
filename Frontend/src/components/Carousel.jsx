@@ -84,7 +84,6 @@ export default function Carousel() {
                     className={s.carouselImage}
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
-                    style={{ overflow: "hidden", position: "relative", touchAction: "pan-y" }}
                 >
                     <div
                         className={s.carouselSlideAnimation}
@@ -94,12 +93,10 @@ export default function Carousel() {
                             <div
                                 key={project.id}
                                 className={s.carouselSlide}
-                                style={{ position: "relative", overflow: "hidden" }}
                             >
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                                 />
                                 <div style={{
                                     position: "absolute",
