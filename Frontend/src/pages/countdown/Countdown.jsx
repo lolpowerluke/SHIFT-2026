@@ -125,12 +125,6 @@ export default function Countdown() {
             <div id="experience" className={`${s.wrap} wrap ${s.previewSection}`}>
                 <div className={s.section}>
                     <div className={s.sectionFlexer}>
-                        <div className={s.projectSide}>
-                            {/*<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>*/}
-                            <div className={`${s.section} ${s.carousel}`}>
-                                <Carousel/>
-                            </div>
-                        </div>
                         <div className={s.shiftInfoSide}>
                             <div className={s.shiftInfoNoCard}>
                                 <h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
@@ -142,6 +136,12 @@ export default function Countdown() {
                                     zoals verbinding, mantelzorg, de strijd tegen phishing en vrouwengeweld.
                                     Daarnaast mag je de liveshow en awards zeker niet missen!
                                 </p>
+                            </div>
+                        </div>
+                        <div className={s.projectSide}>
+                            {/*<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>*/}
+                            <div className={`${s.section} ${s.carousel}`}>
+                                <Carousel/>
                             </div>
                         </div>
                     </div>
@@ -174,7 +174,7 @@ export default function Countdown() {
                                             ERASMUSHOGESCHOOL BRUSSEL
                                             CAMPUS KAAI
                                         </h3>
-                                        <small>Nijverheidskaai 170<br/>1070 Anderlecht</small>
+                                        <p>Nijverheidskaai 170<br/>1070 Anderlecht</p>
                                         <div className={s.btnMapDiv}>
                                             <button className={s.btnMaps} onClick={handleOpenMaps}>
                                                 Open in maps
@@ -188,9 +188,9 @@ export default function Countdown() {
                     <div>
                         <h2>VOOR WIE?</h2>
                         <div className={s.audienceContainer}>
-                            <div className={s.audienceCard}>
+                            <div className={s.orangeAudienceCard}>
                                 <div className={s.iconHeadphones}>
-                                    <img src="/assets/icons/koptelefoon.svg" alt="Studenten"/>
+                                    <img src="/assets/icons/headsetBlue.svg" alt="Studenten"/>
                                 </div>
                                 <h3>STUDENTEN</h3>
                                 <p>Leer de opleiding kennen adhv concrete realisaties.</p>
@@ -204,9 +204,9 @@ export default function Countdown() {
                                 <p>Ontdek jong digitaal talent voor stages en jobs.</p>
                             </div>
 
-                            <div className={s.audienceCard}>
+                            <div className={s.orangeAudienceCard}>
                                 <div className={s.iconChatBubble}>
-                                    <img src="/assets/icons/chat-bubble.svg" alt="Bezoekers"/>
+                                    <img src="/assets/icons/chatBubbleBLue.svg" alt="Bezoekers"/>
                                 </div>
                                 <h3>Tech-lovers</h3>
                                 <p>Blijf op de hoogte van trends en innovaties.</p>
@@ -225,8 +225,10 @@ export default function Countdown() {
             <br/>
             <div className={`${s.infoMultimediaCard} section`}>
                 <div className={s.textContainer}>
-                    <div>
+                    <div className={s.orange}>
                         <h2>WAT IS MULTIMEDIA & CREATIEVE TECHNOLOGIE?</h2>
+                    </div>
+                    <div className={s.beige}>
                         <p>
                             Multimedia & Creatieve Technologie is een bacheloropleiding aan
                             Erasmushogeschool Brussel.
@@ -234,12 +236,12 @@ export default function Countdown() {
                         <p>
                             In deze opleiding worden innovatieve digitale ervaringen gecreëerd.
                         </p>
+                    <img
+                        src="/assets/opleidingPlaceholder.jpg"
+                        alt="Multimedia & Creatieve Technologie"
+                    />
                     </div>
                 </div>
-                <img
-                    src="/assets/opleidingPlaceholder.jpg"
-                    alt="Multimedia & Creatieve Technologie"
-                />
                 <div className={`${s.cta}`}>
                     <a
                         href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"
