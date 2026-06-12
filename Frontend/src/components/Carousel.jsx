@@ -1,5 +1,5 @@
 import s from "../pages/countdown/Countdown.module.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { getCloudinaryUrl } from "../../src/utils/cloudinary.js";
 
 function mapProject(p) {
@@ -18,27 +18,49 @@ export default function Carousel() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const [touchStart, setTouchStart] = useState(null);
+    const touchStartX = useRef(null);
+    const touchStartY = useRef(null);
+    const isDraggingHorizontal = useRef(false);
+    const carouselRef = useRef(null);
 
     function handleTouchStart(e) {
-        setTouchStart(e.touches[0].clientX);
+        touchStartX.current = e.touches[0].clientX;
+        touchStartY.current = e.touches[0].clientY;
+        isDraggingHorizontal.current = false;
     }
 
     function handleTouchEnd(e) {
-        if (touchStart === null) return;
-        const diff = touchStart - e.changedTouches[0].clientX;
+        if (touchStartX.current === null) return;
+        const diff = touchStartX.current - e.changedTouches[0].clientX;
         if (diff > 50) setCurrentIndex((prev) => Math.min(prev + 1, projects.length - 1));
         if (diff < -50) setCurrentIndex((prev) => Math.max(prev - 1, 0));
-        setTouchStart(null);
+        touchStartX.current = null;
+        touchStartY.current = null;
+        isDraggingHorizontal.current = false;
     }
 
+    const handleTouchMove = useCallback((e) => {
+        if (touchStartX.current === null) return;
+        const diffX = Math.abs(e.touches[0].clientX - touchStartX.current);
+        const diffY = Math.abs(e.touches[0].clientY - touchStartY.current);
+
+        if (!isDraggingHorizontal.current && (diffX > 5 || diffY > 5)) {
+            isDraggingHorizontal.current = diffX > diffY;
+        }
+        if (isDraggingHorizontal.current) {
+            e.preventDefault();
+        }
+    }, []);
+
+    useEffect(() => {
+        const el = carouselRef.current;
+        if (!el) return;
+        el.addEventListener("touchmove", handleTouchMove, { passive: false });
+        return () => el.removeEventListener("touchmove", handleTouchMove);
+    }, [handleTouchMove]);
 
     const handleButton = () => {
-        window.open(
-            "/project/",
-            "_blank",
-            "noopener,noreferrer",
-        );
+        window.open("/project/", "_blank", "noopener,noreferrer");
     };
 
     useEffect(() => {
@@ -57,31 +79,42 @@ export default function Carousel() {
     return (
         <>
             <div className={s.projectCard}>
-                <div className={s.carouselImage} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} style={{ overflow: "hidden", position: "relative"}}>
+                <div
+                    ref={carouselRef}
+                    className={s.carouselImage}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    style={{ overflow: "hidden", position: "relative", touchAction: "pan-y" }}
+                >
                     <div
                         className={s.carouselSlideAnimation}
-                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+                        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    >
                         {projects.map((project) => (
-                            <div key={project.id} className={s.carouselSlide} style={{ position: "relative", overflow: "hidden" }}>
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                            />
-                            <div style={{
-                                position: "absolute",
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                padding: "1rem",
-                                background: "linear-gradient(transparent, rgba(0,0,0,0.7))",
-                                color: "white",
-                                textAlign: "left",
-                            }}>
-                                <h3 style={{ margin: 0 , fontSize: "1.5rem"}}>{project.title}</h3>
-                                <p style={{ margin: 0, fontSize: "0.85rem" }}>{project.students.join(", ")}</p>
+                            <div
+                                key={project.id}
+                                className={s.carouselSlide}
+                                style={{ position: "relative", overflow: "hidden" }}
+                            >
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                                />
+                                <div style={{
+                                    position: "absolute",
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    padding: "1rem",
+                                    background: "linear-gradient(transparent, rgba(0,0,0,0.7))",
+                                    color: "white",
+                                    textAlign: "left",
+                                }}>
+                                    <h3 style={{ margin: 0, fontSize: "1.5rem" }}>{project.title}</h3>
+                                    <p style={{ margin: 0, fontSize: "0.85rem" }}>{project.students.join(", ")}</p>
+                                </div>
                             </div>
-                        </div>
                         ))}
                     </div>
                 </div>
