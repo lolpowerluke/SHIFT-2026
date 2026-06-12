@@ -54,9 +54,12 @@
 .heroText {
 	display: flex;
 	flex-direction: row;
+	align-items: flex-end;
+	line-height: 1;
 
 	h1 {
 		font-size: 18px;
+		margin: 0;
 	}
 
 	& > div:first-child {
@@ -65,7 +68,9 @@
 
 	& > div:last-child {
 		margin-left: 4px;
-		font-size: 2rem;
+		margin-bottom: 0;
+		font-size: 3rem;
+		line-height: .8;
 	}
 
 	.courseHeroText {
