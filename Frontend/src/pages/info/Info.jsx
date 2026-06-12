@@ -56,6 +56,16 @@ export default function Info() {
                     </div>
                     <div className={`${s.infoCard}`}>
                         <h3>Hoe</h3>
+                        <p>Campus Kaai is vlot bereikbaar met het openbaar vervoer, per fiets, en met de auto.</p>
+                        <div>
+                            <h4>OPENBAAR VERVOER</h4>
+                        </div>
+                        <div>
+                            <h4>MET DE FIETS</h4>
+                        </div>
+                        <div>
+                            <h4>MET DE AUTO</h4>
+                        </div>
                     </div>
                 </div>
             </div>
