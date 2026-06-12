@@ -447,6 +447,7 @@ h2 {
 	/*gap: 2rem;*/
 	height: 100vh;
 	overflow: hidden;
+	margin-bottom: 4svh;
 
 	.heroLayout {
 		display: flex;
@@ -557,10 +558,6 @@ h2 {
 	align-items: center;
 }
 
-.landingWrap {
-	margin-bottom: 4svh;
-}
-
 @media (min-width: 1024px) {
 	.shiftInfoSide p {
 		text-align: left;
@@ -589,7 +586,6 @@ h2 {
 			position: relative;
 			margin-top: -70px;
 			margin-left: -50px;
-			/*max-height: 0dvh;*/
 
 			#heroLogo {
 				height: var(--shift-logo-height);
@@ -602,12 +598,13 @@ h2 {
 
 		.timerDiv {
 			display: grid;
-			justify-self: end;
-			margin-right: 15vw;
+			margin-right: 7.5vw;
 			grid-row: 2/3;
 			grid-column: 2/3;
 			margin-top: unset;
 			text-align: unset;
+			align-self: center;
+			justify-self: end;
 
 			#timer {
 				display: flex;
