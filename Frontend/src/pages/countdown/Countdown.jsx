@@ -39,14 +39,12 @@ export default function Countdown() {
 			<div className={s.landingWrap}>
 				<div>
 					<div className={s.heroLayout}>
-						<div>
 							<img
 								src="../../assets/logos/shift_logo.svg"
 								id={s.heroLogo}
 								fetchPriority="high"
 								alt="SHIFT Logo"
 							/>
-						</div>
 						<div>
 							<div className={s.heroWrapper}>
 								<div className={s.rotatedText}>
