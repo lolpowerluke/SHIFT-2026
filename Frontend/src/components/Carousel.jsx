@@ -13,6 +13,8 @@ function mapProject(p) {
     };
 }
 
+/* Rework of carousel sytem for IOS devices (https://claude.ai/share/0f21fec9-8cdb-4047-b0b4-ecb2bdcc76cf) */
+
 export default function Carousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [projects, setProjects] = useState([]);
