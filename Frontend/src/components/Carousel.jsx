@@ -98,18 +98,9 @@ export default function Carousel() {
                                     src={project.image}
                                     alt={project.title}
                                 />
-                                <div style={{
-                                    position: "absolute",
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                    padding: "1rem",
-                                    background: "linear-gradient(transparent, rgba(0,0,0,0.7))",
-                                    color: "white",
-                                    textAlign: "left",
-                                }}>
-                                    <h3 style={{ margin: 0, fontSize: "1.5rem" }}>{project.title}</h3>
-                                    <p style={{ margin: 0, fontSize: "0.85rem" }}>{project.students.join(", ")}</p>
+                                <div className={s.slideOverlay}>
+                                    <h3>{project.title}</h3>
+                                    <p>{project.students.join(", ")}</p>
                                 </div>
                             </div>
                         ))}
