@@ -15,8 +15,6 @@
 	height: 100lvh;
 	width: 100%;
 	overflow: hidden;
-	/*box-shadow: -1px 3px 10px 5px*/
-	/*	color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);*/
 
 	img {
 		width: 100%;
@@ -81,10 +79,6 @@
 	transform: rotate(-14deg);
 	margin-left: 2.5rem;
 	margin-top: -7rem;
-}
-
-.topSpacer {
-	padding-top: var(--spacing-top);
 }
 
 .timerDiv {
@@ -239,14 +233,6 @@
 		}
 	}
 
-	.cardImagePlaceholder {
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--bg-shift-alt);
-	}
-
 	.carouselDots {
 		display: flex;
 		justify-content: center;
@@ -302,12 +288,6 @@
 	.infoTitle {
 		color: var(--txt-shift-primary);
 		text-align: center;
-	}
-
-	.infoList {
-		list-style: none;
-		padding: 0;
-		margin: 0;
 	}
 }
 
@@ -439,6 +419,7 @@ h2 {
 .infoPart {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	margin-bottom: 2rem;
 }
 
@@ -450,6 +431,7 @@ h2 {
 	justify-content: center;
 	gap: 2rem;
 	height: 100dvh;
+	margin-bottom: 4svh;
 	overflow: hidden;
 
 	.heroLayout {
@@ -553,14 +535,6 @@ h2 {
 	gap: 40px;
 }
 
-.infoPart {
-	align-items: center;
-}
-
-.landingWrap {
-	margin-bottom: 4svh;
-}
-
 @media (min-width: 1024px) {
 	.shiftInfoSide p {
 		text-align: left;
@@ -568,6 +542,10 @@ h2 {
 
 	.carouselImage {
 		width: 40vw !important;
+
+		img {
+			width: 100%;
+		}
 	}
 
 	.heroWrapper {
@@ -581,7 +559,6 @@ h2 {
 		height: 97.5lvh;
 		width: 92.5dvw;
 		justify-content: space-between;
-		/*margin-top: -56px;*/
 		margin-bottom: 4rem;
 		margin-left: 0;
 
@@ -672,6 +649,10 @@ h2 {
 		text-align: center;
 	}
 
+	.wrap h2 {
+		margin-bottom: 2rem;
+	}
+
 	.timerDiv .cd,
 	.timerDiv .cta {
 		text-align: left;
@@ -684,12 +665,6 @@ h2 {
 		margin-bottom: var(--spacing-m);
 		align-items: center;
 	}
-
-	/*
-	.previewSection {
-		/*padding: calc(3 * var(--spacing-top)) 0 var(--spacing-top);
-	}
-	*/
 
 	.shiftInfoSide {
 		width: 45%;
@@ -724,25 +699,9 @@ h2 {
 		justify-self: center;
 	}
 
-	.carouselImage {
-		img {
-			width: 100%;
-		}
-	}
-
-	.wrap {
-		h2 {
-			margin-bottom: 2rem;
-		}
-	}
-
-	.shiftInfoNoCard {
+	.shiftInfoNoCard .infoTitle {
 		text-align: left;
-
-		.infoTitle {
-			text-align: left;
-			font-size: 44px;
-		}
+		font-size: 44px;
 	}
 
 	.leftSideInfo,

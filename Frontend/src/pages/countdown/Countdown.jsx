@@ -1,5 +1,4 @@
 import s from "./Countdown.module.css";
-import "../../css/style.css";
 import { useCountdown } from "../../js/countdown.js";
 import Carousel from "../../components/Carousel.jsx";
 import Throbber from "../../components/Throbber.jsx";
@@ -93,7 +92,7 @@ export default function Countdown() {
 									<span>
 										<span
 											className={
-												blinkingS === s.seconds ? s.hidden : "darkText"
+												blinkingS === "seconds" ? "hidden" : "darkText"
 											}
 										>
 											{timeLeft.seconds}
@@ -122,7 +121,7 @@ export default function Countdown() {
                 </a>
             </div>
 
-			<div id="experience" className={`${s.wrap} wrap ${s.previewSection}`}>
+			<div id="experience" className={`${s.wrap} wrap`}>
 				<div className={s.section}>
 					<div className={s.sectionFlexer}>
 						<div className={s.shiftInfoSide}>
@@ -142,7 +141,7 @@ export default function Countdown() {
 						</div>
 						<div className={s.projectSide}>
 							{/*<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>*/}
-							<div className={`${s.section} ${s.carousel}`}>
+							<div className={s.section}>
 								<Carousel />
 							</div>
 						</div>

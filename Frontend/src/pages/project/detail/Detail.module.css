@@ -9,7 +9,6 @@
 	}
 }
 
-
 .paperBg{
 	width: 80dvw;
 	margin: 0 auto 5rem;
@@ -142,8 +141,6 @@
 		display: flex;
 		align-items: center;
 		font-size: 15pt;
-
-
 	}
 
 	img {
@@ -206,8 +203,6 @@
 	.videoThumb {
 		width: 100%;
 	}
-
-
 
 	/* student cards */
 	.picture img {

@@ -23,14 +23,6 @@ body {
 	}
 }
 
-.xsMarginTop {
-	margin-top: var(--spacing-xs);
-}
-
-.gutter-s {
-	gap: var(--spacing-s);
-}
-
 .flexSpaceBetween {
 	display: flex;
 	justify-content: space-between;
@@ -38,11 +30,6 @@ body {
 
 .section {
 	margin: var(--margin-section) 0;
-}
-
-.section2 {
-	margin: var(--margin-section) 0;
-	background-color: var(--bg-shift-secondary);
 }
 
 .headerSpacer{

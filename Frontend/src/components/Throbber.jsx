@@ -1,4 +1,3 @@
-import "../css/cssComponents/throbber.css"
 export default function Throbber(){
     return (
         <>

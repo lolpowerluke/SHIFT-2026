@@ -32,24 +32,11 @@ button:active {
 	color: var(--txt-shift-secondary);
 }
 
-.btnMaps {
-	color: var(--txt-shift-primary);
-	background-color: var(--bg-shift-primary);
-	cursor: pointer;
-	margin-top: var(--margin-between);
-}
-
-.throbberCtx {
-	width: fit-content;
-	min-width: max-content;
-}
-
 .blueBtn {
 	background-color: var(--bg-shift-primary);
 }
 
 @media screen and (min-width: 1024px) {
-	.btnMaps,
 	.linkBtn,
 	.btn,
 	button {
