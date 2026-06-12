@@ -492,7 +492,6 @@ h2 {
 	top: 50px;
 	bottom: 20px;
 	animation: upDown 1.4s ease-in-out infinite;
-	display: none;
 
 	img {
 		height: 100%;
