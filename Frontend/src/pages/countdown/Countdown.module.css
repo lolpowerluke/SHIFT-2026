@@ -703,7 +703,7 @@ h2 {
 	.sectionFlexer {
 		display: flex;
 		justify-content: space-between;
-		align-items: start;
+		align-items: center;
 		margin-bottom: var(--spacing-m);
 	}
 
