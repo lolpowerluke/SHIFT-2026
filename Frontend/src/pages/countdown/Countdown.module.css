@@ -191,7 +191,7 @@
 }
 
 .projectCard {
-	width: 80%;
+	width: 100%;
 	border-radius: 0.5rem;
 	padding: 1.25rem;
 	box-sizing: border-box;
@@ -748,8 +748,7 @@ h2 {
 	}
 
 	.projectCard {
-		width: 460px;
-		max-width: 100%;
+		width: 90%;
 	}
 
 	.carouselImage {
