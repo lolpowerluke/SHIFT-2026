@@ -198,8 +198,6 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* margin auto et non justify-self : justify-self hors grid
-	   n'est supporté que par Chrome (ignoré par Firefox/Safari) */
 	margin-inline: auto;
 
 	h2 {
@@ -220,9 +218,6 @@
 		aspect-ratio: 16 / 9;
 	}
 
-	/* Position absolue plutôt que height: 100% : Safari/iOS ne résout pas
-	   les hauteurs en % contre une hauteur dérivée d'aspect-ratio,
-	   ce qui faisait exploser le zoom des images sur iPhone/iPad */
 	.carouselSlideAnimation {
 		display: flex;
 		transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -230,8 +225,6 @@
 		inset: 0;
 	}
 
-	/* Pas de height: 100% ici : la hauteur vient du stretch flex
-	   (fiable sur Safari, contrairement aux hauteurs en %) */
 	.carouselSlide {
 		position: relative;
 		overflow: hidden;
@@ -249,17 +242,18 @@
 			display: block;
 		}
 
-		/* z-index: 2 obligatoire pour passer au-dessus de l'image (z-index: 1) */
 		.slideOverlay {
+			width: 100%;
 			position: absolute;
-			left: 0;
-			right: 0;
 			bottom: 0;
 			z-index: 2;
 			padding: 1rem;
-			background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+			background: linear-gradient(transparent, var(--shadow-primary));
 			color: white;
 			text-align: left;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
 
 			h3 {
 				margin: 0;
