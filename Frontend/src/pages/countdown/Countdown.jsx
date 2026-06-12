@@ -99,28 +99,28 @@ export default function Countdown() {
 											{timeLeft.seconds}
 										</span>
 									</span>
-									<span>Seconden</span>
-								</div>
-							</div>
-							<div className={`${s.cta} section`}>
-								<a
-									href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-									className={`${s.linkBtn} linkBtn`}
-									target="_blank"
-									rel="noreferrer"
-								>
-									Schrijf je nu gratis in
-								</a>
-							</div>
-						</>
-					) : (
-						"LIVE NOW!"
-					)}
-				</div>
-				<a href="#experience" id={s.scrollPointer}>
-					<img src="/assets/icons/pointer2.svg" alt="scroll!" />
-				</a>
-			</div>
+                                    <span>Seconden</span>
+                                </div>
+                            </div>
+                            <div className={`${s.cta}`}>
+                                <a
+                                    href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+                                    className={`${s.linkBtn} linkBtn`}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Schrijf je nu gratis in
+                                </a>
+                            </div>
+                        </>
+                    ) : (
+                        "LIVE NOW!"
+                    )}
+                </div>
+                <a href="#experience" id={s.scrollPointer}>
+                    <img src="/assets/icons/pointer2.svg" alt="scroll!"/>
+                </a>
+            </div>
 
 			<div id="experience" className={`${s.wrap} wrap ${s.previewSection}`}>
 				<div className={s.section}>
