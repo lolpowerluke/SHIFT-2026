@@ -205,6 +205,7 @@
 	}
 
 	.carouselImage {
+		position: relative;
 		width: 100%;
 		max-width: 100%;
 		touch-action: pan-y;
@@ -217,11 +218,14 @@
 		aspect-ratio: 16 / 9;
 	}
 
+	/* Position absolue plutôt que height: 100% : Safari/iOS ne résout pas
+	   les hauteurs en % contre une hauteur dérivée d'aspect-ratio,
+	   ce qui faisait exploser le zoom des images sur iPhone/iPad */
 	.carouselSlideAnimation {
 		display: flex;
 		transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-		width: 100%;
-		height: 100%;
+		position: absolute;
+		inset: 0;
 	}
 
 	.carouselSlide {
