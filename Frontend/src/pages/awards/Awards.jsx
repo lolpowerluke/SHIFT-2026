@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import s from "./Awards.module.css";
-import { useNavigate } from "react-router";
+import {Link, useNavigate} from "react-router";
 import { apiFetch } from "../../utils/apiFetch";
+import Routes from "../../routes/constants/Routes.js";
 
 export default function Awards() {
     const navigate = useNavigate();
@@ -20,11 +21,11 @@ export default function Awards() {
 
     return (
         <>
-            <div className={s.heroContainer}>
+            <div className={`${s.heroContainer} headerSpacer`}>
                 <div className={s.landingTop}>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
-                    <span className={`${s.title} ${s.desktop}`}>AWARD<br />SHOW</span>
-                    <span className={`${s.title} ${s.mobile}`}>SHIFT AWARDS</span>
+                    <span className={`${s.title}`}>LIVESHOW &<br />
+                    AWARDS</span>
                 </div>
                 <div className={`${s.landingBottom} ${s.desktop}`}>
                     <img src="/assets/icons/BlueVote.svg" alt="Blue Vote" className={s.voteImg} />
@@ -36,11 +37,11 @@ export default function Awards() {
                 </div>
                 <div className={`${s.landingBottom} ${s.mobile}`}>
                     <div>
-                        <button>Bezoek het evenement</button>
+                        <a className="linkBtn" href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" target="_blank">Bezoek het evenement</a>
                         <span>Vier categorieën die excellentie erkennen in innovatie, impact en creativiteit.</span>
                     </div>
                     <div>
-                        <button>Ontdek alle projecten</button>
+                        <Link className="linkBtn" to={Routes.Project}>Ontdek alle projecten</Link>
                         <span>Bekijk de verschillende projecten</span>
                     </div>
                 </div>
@@ -48,8 +49,7 @@ export default function Awards() {
             <div className={s.awardContainer}>
                 <div className={s.awardTop}>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
-                    <span className={s.desktop}>4 AWARDS</span>
-                    <span className={s.mobile}>WELKE AWARDS ZIJN ER</span>
+                    <span>PRIJZEN</span>
                 </div>
                 <div className={s.awardBottom}>
                     <div className={s.awardCard}>
@@ -71,8 +71,10 @@ export default function Awards() {
                         <span className={s.cardDesc}>De juryprijs wordt uitgereikt door onze eigen docenten met hun jaren ervaring en kennis.</span>
                     </div>
                 </div>
-            </div>
-            <div className={`${s.publicPrize} altBg`}>
+                <div className={s.awardTop}>
+                    <span>PUBLIEKSPRIJS</span>
+                </div>
+            <div className={`${s.publicPrize} ${s.awardCard}`}>
                 <img src="/assets/icons/VoteOrange.svg" alt="Orange Vote" className={s.voteImg} />
                 <span className={`${s.title} ${s.desktop}`}>BRENG JE STEM UIT</span>
                 <span className={`${s.title} ${s.mobile}`}>KOM MEE STEMMEN</span>
@@ -81,6 +83,7 @@ export default function Awards() {
                 <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
                 <span className={s.time}>UITREIKING OM 20:00 TIJDENS DE AWARD SHOW</span>
                 <button>Praktische info<span className={s.mobile}>, klik hier</span> <img src="/assets/icons/arrowLink.svg" alt="arrow up right" className={s.arrowUp} /></button>
+            </div>
             </div>
         </>
     );
