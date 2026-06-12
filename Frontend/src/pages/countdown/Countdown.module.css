@@ -179,7 +179,7 @@
 	background: linear-gradient(
 		to bottom right,
 		var(--shadow-primary) 0%,
-		var(--shadow-primary) 30%,
+		var(--shadow-primary) 3%,
 		transparent 100%
 	);
 	z-index: 0;
@@ -578,8 +578,8 @@ h2 {
 		display: grid;
 		grid-template-rows: repeat(2, 1fr);
 		grid-template-columns: repeat(2, 1fr);
-		height: 97.5lvh;
-		width: 92.5dvw;
+		height: 100vh;
+		width: 100vw;
 		justify-content: space-between;
 		/*margin-top: -56px;*/
 		margin-bottom: 4rem;
@@ -602,7 +602,7 @@ h2 {
 		.timerDiv {
 			display: grid;
 			justify-self: end;
-			margin-right: 0;
+			margin-right: 15vw;
 			grid-row: 2/3;
 			grid-column: 2/3;
 			margin-top: unset;
