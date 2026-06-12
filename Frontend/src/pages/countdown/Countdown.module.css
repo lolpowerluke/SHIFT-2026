@@ -15,8 +15,6 @@
 	height: 100lvh;
 	width: 100%;
 	overflow: hidden;
-	/*box-shadow: -1px 3px 10px 5px*/
-	/*	color-mix(in srgb, var(--bg-shift-secondary), transparent 20%);*/
 
 	img {
 		width: 100%;
@@ -29,8 +27,54 @@
 	}
 }
 
-#heroLogo {
-	height: var(--shift-logo-height);
+.landingWrap {
+	position: relative;
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
+	height: 100dvh;
+	top: 0;
+	gap: 50px;
+	overflow: hidden;
+}
+
+.heroLayout {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: fit-content;
+	position: absolute;
+	margin: -10px 0 0 -25px;
+	z-index: 1;
+
+	#heroLogo {
+		height: var(--shift-logo-height);
+	}
+
+	.heroWrapper {
+		transform: rotate(-14deg);
+		margin: -5px -50px 0 0;
+	}
+
+	.timerDiv {
+		display: grid;
+		align-self: end;
+		justify-self: end;
+		margin: 50px 12.5dvw 0;
+		grid-row: 2/3;
+
+		#timer {
+			display: none;
+
+			.timerBox {
+				color: var(--txt-special);
+			}
+		}
+
+		.cta {
+			margin-left: 10px;
+		}
+	}
 }
 
 .rotatedText {
@@ -59,11 +103,11 @@
 		font-size: 18px;
 	}
 
-	&>div:first-child {
+	& > div:first-child {
 		font-size: 1rem;
 	}
 
-	&>div:last-child {
+	& > div:last-child {
 		margin-left: 4px;
 		font-size: 2rem;
 	}
@@ -75,12 +119,6 @@
 	div {
 		font-weight: bold;
 	}
-}
-
-.heroWrapper {
-	transform: rotate(-14deg);
-	margin-left: 2.5rem;
-	margin-top: -0.2rem;
 }
 
 .topSpacer {
@@ -126,7 +164,7 @@
 			flex-direction: column;
 			color: var(--txt-shift-primary);
 
-			&> :first-child {
+			& > :first-child {
 				padding: 0.5rem;
 				border-radius: 0.5rem;
 				margin: 0 0.5rem;
@@ -145,7 +183,7 @@
 				}
 			}
 
-			&> :last-child {
+			& > :last-child {
 				font-size: small;
 				text-align: center;
 				margin-top: 0.3rem;
@@ -180,15 +218,11 @@
 	background: linear-gradient(
 		to bottom right,
 		var(--shadow-primary) 0%,
-		var(--shadow-primary) 30%,
+		var(--shadow-primary) 5%,
 		transparent 100%
 	);
 	z-index: 0;
 	pointer-events: none;
-}
-
-.heroLayout {
-	z-index: 1;
 }
 
 .projectCard {
@@ -328,7 +362,6 @@
 		margin-bottom: 1rem;
 		text-align: left;
 	}
-
 }
 
 .btnMapDiv {
@@ -435,46 +468,6 @@
 	margin-bottom: 2rem;
 }
 
-.landingWrap {
-	position: relative;
-	display: grid;
-	grid-template-rows: repeat(2, 1fr);
-	height: 100dvh;
-	top: 0;
-	gap: 50px;
-	overflow: hidden;
-
-	.heroLayout {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: fit-content;
-		position: absolute;
-		margin: 60px 0 0 -25px;
-	}
-
-	.timerDiv {
-		display: grid;
-		align-self: end;
-		justify-self: end;
-		margin: 50px 12.5dvw 0;
-		grid-row: 2/3;
-
-		#timer {
-			display: none;
-
-			.timerBox {
-				color: var(--txt-special);
-			}
-		}
-
-		.cta {
-			margin-left: 10px;
-		}
-	}
-}
-
 #scrollPointer {
 	position: relative;
 	display: flex;
@@ -485,6 +478,7 @@
 	margin: 0 auto;
 	bottom: 20px;
 	animation: upDown 1.4s ease-in-out infinite;
+	z-index: 50;
 
 	img {
 		height: 100%;
@@ -511,18 +505,18 @@
 		border-radius: 0.5rem;
 		width: 95%;
 		margin-bottom: 15px;
-	
 	}
 }
 
 .textContainer {
 	div {
-	border: 5px solid var(--border-primary);
-	border-radius: 1.5rem;
-	margin-top: 15px;
+		border: 5px solid var(--border-primary);
+		border-radius: 1.5rem;
+		margin-top: 15px;
 	}
 
-	h2, p {
+	h2,
+	p {
 		padding-left: 15px;
 	}
 
@@ -557,29 +551,24 @@
 @media (min-width: 1024px) {
 	.landingWrap {
 		grid-template-columns: repeat(2, 1fr);
-		height: 97.5lvh;
-		width: 92.5dvw;
 		justify-content: space-between;
 		/*margin-top: -56px;*/
-		margin-bottom: 4rem;
-		margin-left: 0;
 
 		.heroLayout {
-			position: relative;
-			max-height: 40dvh;
+			margin: -30px 0 0 -50px;
 
 			#heroLogo {
 				max-height: 100%;
 			}
+		}
 
-			.rotatedText {
-				margin: -60px 0 0 0;
-			}
+		.heroWrapper {
+			margin: -75px -50px 0 0;
 		}
 
 		.timerDiv {
 			align-self: end;
-			margin-right: 0;
+			margin-right: 30px;
 			grid-row: 2/3;
 			grid-column: 2/3;
 			margin-top: unset;
@@ -605,16 +594,14 @@
 	#scrollPointer {
 		display: block;
 		position: absolute;
-		height: 50px;
-		width: fit-content;
+		bottom: 12px;
 		left: 50%;
-		bottom: 0;
 		animation: upDown 1.4s ease-in-out infinite;
 	}
 
 	.rotatedText h1 {
-		margin-top: 0.5rem;
-		font-size: 44px;
+		margin: 10px 10px 0 0;
+		font-size: 48px;
 	}
 
 	@media only screen and (max-width: 1280px) {
@@ -624,18 +611,17 @@
 	}
 
 	.heroText {
-		margin-left: 1rem;
+		margin-top: -10px;
 
 		h1 {
 			font-size: 28px;
 		}
 
-		&>div:first-child {
+		& > div:first-child {
 			font-size: 2rem;
 		}
 
-		&>div:last-child {
-			margin-left: 4px;
+		& > div:last-child {
 			font-size: 4rem;
 		}
 	}
@@ -763,7 +749,6 @@
 }
 
 @keyframes upDown {
-
 	0%,
 	100% {
 		transform: translateY(0);

@@ -102,7 +102,7 @@ export default function Countdown() {
                                     <span>Seconden</span>
                                 </div>
                             </div>
-                            <div className={`${s.cta} section`}>
+                            <div className={`${s.cta}`}>
                                 <a
                                     href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
                                     className={`${s.linkBtn} linkBtn`}
