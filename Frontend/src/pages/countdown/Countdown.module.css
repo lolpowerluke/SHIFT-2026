@@ -681,8 +681,8 @@ h2 {
 	.sectionFlexer {
 		display: flex;
 		justify-content: space-between;
+		align-items: start;
 		margin-bottom: var(--spacing-m);
-		align-items: center;
 	}
 
 	/*
@@ -693,7 +693,6 @@ h2 {
 
 	.shiftInfoSide {
 		width: 45%;
-		align-self: center;
 	}
 
 	.shiftTime,
