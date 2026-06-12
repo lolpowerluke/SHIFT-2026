@@ -39,14 +39,12 @@ export default function Countdown() {
 			<div className={s.landingWrap}>
 				<div>
 					<div className={s.heroLayout}>
-						<div>
 							<img
 								src="../../assets/logos/shift_logo.svg"
 								id={s.heroLogo}
 								fetchPriority="high"
 								alt="SHIFT Logo"
 							/>
-						</div>
 						<div>
 							<div className={s.heroWrapper}>
 								<div className={s.rotatedText}>
@@ -99,28 +97,28 @@ export default function Countdown() {
 											{timeLeft.seconds}
 										</span>
 									</span>
-                                    <span>Seconden</span>
-                                </div>
-                            </div>
-                            <div className={`${s.cta}`}>
-                                <a
-                                    href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-                                    className={`${s.linkBtn} linkBtn`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    Schrijf je nu gratis in
-                                </a>
-                            </div>
-                        </>
-                    ) : (
-                        "LIVE NOW!"
-                    )}
-                </div>
-                <a href="#experience" id={s.scrollPointer}>
-                    <img src="/assets/icons/pointer2.svg" alt="scroll!"/>
-                </a>
-            </div>
+									<span>Seconden</span>
+								</div>
+							</div>
+							<div className={`${s.cta}`}>
+								<a
+									href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+									className={`${s.linkBtn} linkBtn`}
+									target="_blank"
+									rel="noreferrer"
+								>
+									Schrijf je nu gratis in
+								</a>
+							</div>
+						</>
+					) : (
+						"LIVE NOW!"
+					)}
+				</div>
+				<a href="#experience" id={s.scrollPointer}>
+					<img src="/assets/icons/pointer2.svg" alt="scroll!" />
+				</a>
+			</div>
 
 			<div id="experience" className={`${s.wrap} wrap ${s.previewSection}`}>
 				<div className={s.section}>
@@ -129,7 +127,7 @@ export default function Countdown() {
 							<div className={s.shiftInfoNoCard}>
 								<h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
 								<p>
-									SHIFT FESTIVAL is de eindejaarsexpo van Multimedia & Creatieve
+									SHIFT festival is de eindejaarsexpo van Multimedia & Creatieve
 									Technologie aan Erasmushogeschool Brussel.
 									<br /> Onze laatstejaarsstudenten tonen het beste van zichzelf
 									met hun eindwerken van XR/3D‑ervaringen tot interactieve
@@ -249,7 +247,7 @@ export default function Countdown() {
 				<div className={`${s.cta}`}>
 					<a
 						href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"
-						className={`${s.linkBtn} linkBtn blueBtn`}
+						className={`${s.linkBtn} linkBtn`}
 						target="_blank"
 						rel="noreferrer"
 					>
