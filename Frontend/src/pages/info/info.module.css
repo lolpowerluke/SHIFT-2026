@@ -1,55 +1,69 @@
-.heroContent {
-	display: block;
-	position: absolute;
-	top: -20%;
-	z-index: 0;
-	height: 100%;
-	width: 100%;
-	overflow: hidden;
-
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: top;
-	}
-}
-
 .heroLayout {
-	height: calc(50vh - 100px);
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	padding: 1.5rem 7.5%;
-	z-index: 1;
-	align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    align-items: center;
+    width: 85dvw;
+    margin: 80px auto 5rem;
 }
 
 .heroTitle {
-	margin: 0;
-	font-size: clamp(52px, 7vw, 96px);
-	line-height: 1.05;
-	font-weight: bold;
-	text-transform: uppercase;
-}
-
-.infoLine {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 1rem;
+    margin: 0 0 2rem;
+    text-align: center;
+    font-size: clamp(50px, 7vw, 96px);
+    line-height: 1.05;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .locationIcon {
-	width: clamp(60px, 7.5vw, 110px);
-	height: auto;
-	flex-shrink: 0;
-	rotate: 20deg;
-
-	padding-left: 35%;
+    width: clamp(60px, 7.5vw, 110px);
+    height: auto;
+    flex-shrink: 0;
+    rotate: 20deg;
 }
 
 .heroBtn {
-	align-self: flex-end;
-	margin-top: calc(65vh - 350px);
+    align-self: flex-end;
+}
+
+.mobile {
+    display: block;
+}
+
+.infoSection {
+    display: grid;
+    grid-auto-columns: 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+
+    .infoCard {
+        padding: 2rem 1rem;
+        background-color: var(--bg-shift-secondary);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        border: 4px solid var(--border-primary);
+        border-radius: 28px;
+        gap: .8rem;
+        h4 {
+            margin: 0;
+        }
+
+        iframe {
+            width: 600px;
+            height: 450px;
+            margin: 0 auto;
+            border: 4px solid var(--border-primary);
+            border-radius: 1rem;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .mobile {
+        display: none;
+    }
 }
