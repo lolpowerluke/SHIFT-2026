@@ -79,6 +79,7 @@
 .projectenCount {
 	margin: 0 0 1rem;
 	font-weight: bold;
+	text-align: left;
 }
 
 .projectenGrid {
