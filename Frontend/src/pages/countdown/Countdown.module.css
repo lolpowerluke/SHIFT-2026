@@ -54,12 +54,9 @@
 .heroText {
 	display: flex;
 	flex-direction: row;
-	align-items: flex-end;
-	line-height: 1;
 
 	h1 {
 		font-size: 18px;
-		margin: 0;
 	}
 
 	& > div:first-child {
@@ -68,9 +65,7 @@
 
 	& > div:last-child {
 		margin-left: 4px;
-		margin-bottom: 0;
-		font-size: 3rem;
-		line-height: .8;
+		font-size: 2rem;
 	}
 
 	.courseHeroText {
@@ -184,16 +179,19 @@
 	background: linear-gradient(
 		to bottom right,
 		var(--shadow-primary) 0%,
-		var(--shadow-primary) 3%,
+		var(--shadow-primary) 30%,
 		transparent 100%
 	);
 	z-index: 0;
 	pointer-events: none;
 }
 
+.heroLayout {
+	z-index: 1;
+}
+
 .projectCard {
 	width: 80%;
-	max-width: 100%;
 	border-radius: 0.5rem;
 	padding: 1.25rem;
 	box-sizing: border-box;
@@ -209,6 +207,7 @@
 	.carouselImage {
 		width: 100%;
 		max-width: 100%;
+		touch-action: pan-y;
 		border-radius: 1.5rem;
 		box-shadow:
 			5px 5px 0 1px var(--shadow-primary),
@@ -216,7 +215,6 @@
 		border: 5px solid var(--border-primary);
 		overflow: hidden;
 		aspect-ratio: 16 / 9;
-		touch-action: pan-y;
 	}
 
 	.carouselSlideAnimation {
@@ -227,18 +225,18 @@
 	}
 
 	.carouselSlide {
+		overflow: hidden;
 		min-width: 100%;
 		height: 100%;
 		flex-shrink: 0;
 		box-sizing: border-box;
-		overflow: hidden;
 
 		img {
+			z-index: 1;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
 			display: block;
-			z-index: 1;
 		}
 
 		h3,
@@ -455,12 +453,12 @@ h2 {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	justify-content: space-between;
-	/*gap: 2rem;*/
-	height: 100vh;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	height: 100dvh;
 	overflow: hidden;
-	margin-bottom: 4svh;
+	overflow-x: hidden;
 
 	.heroLayout {
 		display: flex;
@@ -468,10 +466,6 @@ h2 {
 		align-items: center;
 		justify-content: center;
 		width: fit-content;
-		pointer-events: none;
-		z-index: 1;
-		margin-left: -30px;
-		margin-top: -90px;
 	}
 
 	.timerDiv {
@@ -479,7 +473,6 @@ h2 {
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		align-self: center;
 		margin: 0;
 
 		#timer {
@@ -504,6 +497,7 @@ h2 {
 	width: fit-content;
 	align-self: self-end;
 	margin: 0 auto;
+	top: 50px;
 	bottom: 20px;
 	animation: upDown 1.4s ease-in-out infinite;
 
@@ -518,8 +512,7 @@ h2 {
 	flex-direction: column;
 	gap: var(--margin-between);
 	padding: var(--margin-between);
-	max-width: 100%;
-	width: 100%;
+	max-width: 90vw;
 	justify-self: center;
 	overflow: hidden;
 	box-sizing: border-box;
@@ -556,10 +549,6 @@ h2 {
 .beige {
 	background-color: var(--bg-shift-secondary);
 	padding: 0;
-
-	p {
-		text-align: left;
-	}
 }
 
 .orange {
@@ -576,14 +565,17 @@ h2 {
 	align-items: center;
 }
 
+.landingWrap {
+	margin-bottom: 4svh;
+}
+
 @media (min-width: 1024px) {
 	.shiftInfoSide p {
 		text-align: left;
 	}
 
 	.carouselImage {
-		width: 100% !important;
-		max-width: 100% !important;
+		width: 40vw;
 	}
 
 	.heroWrapper {
@@ -594,19 +586,19 @@ h2 {
 		display: grid;
 		grid-template-rows: repeat(2, 1fr);
 		grid-template-columns: repeat(2, 1fr);
-		height: 100vh;
-		width: 100vw;
+		height: 97.5lvh;
+		width: 92.5dvw;
 		justify-content: space-between;
-		margin-top: -56px;
+		/*margin-top: -56px;*/
 		margin-bottom: 4rem;
 		margin-left: 0;
 
 		.heroLayout {
 			position: relative;
-			margin-top: -70px;
-			margin-left: -50px;
+			max-height: 40dvh;
 
 			#heroLogo {
+				max-height: none;
 				height: var(--shift-logo-height);
 			}
 
@@ -617,13 +609,12 @@ h2 {
 
 		.timerDiv {
 			display: grid;
-			margin-right: 7.5vw;
+			justify-self: end;
+			margin-right: 0;
 			grid-row: 2/3;
 			grid-column: 2/3;
 			margin-top: unset;
 			text-align: unset;
-			align-self: center;
-			justify-self: end;
 
 			#timer {
 				display: flex;
@@ -698,8 +689,8 @@ h2 {
 	.sectionFlexer {
 		display: flex;
 		justify-content: space-between;
-		align-items: start;
 		margin-bottom: var(--spacing-m);
+		align-items: center;
 	}
 
 	/*
@@ -710,6 +701,7 @@ h2 {
 
 	.shiftInfoSide {
 		width: 45%;
+		align-self: center;
 	}
 
 	.shiftTime,
@@ -738,6 +730,12 @@ h2 {
 		width: 460px;
 		max-width: 100%;
 		justify-self: center;
+	}
+
+	.carouselImage {
+		img {
+			width: 100%;
+		}
 	}
 
 	.wrap {
@@ -772,7 +770,7 @@ h2 {
 	}
 
 	.infoMultimediaCard {
-		max-width: 100%;
+		max-width: 50vw;
 	}
 
 	.audienceCard {
