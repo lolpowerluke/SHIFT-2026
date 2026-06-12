@@ -262,4 +262,10 @@ p {
 			margin: 0;
 		}
 	}
+
+	.description,
+	.promoterTitle,
+	.promoterName {
+		text-align: center;
+	}
 }
