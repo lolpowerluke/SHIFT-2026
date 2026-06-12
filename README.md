@@ -87,6 +87,9 @@
 - [Claude conversation for linking & showing PDF button](https://claude.ai/share/d6f34345-02dc-420b-8cce-af09fd83e019)
     - Used in  [ProjectenPage.jsx](Frontend/src/projecten/details/ProjectenPage.jsx)
 
+- [Claude conversation for reworking carousel sysytem to work on IOS devices](https://claude.ai/share/0f21fec9-8cdb-4047-b0b4-ecb2bdcc76cf)
+    - Used in [Carousel.jsx](Frontend/src/components/Carousel.jsx)
+
 ## Deployment
 
 ### Frontend
