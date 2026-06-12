@@ -33,9 +33,6 @@ header {
     opacity: 0;
 }
 
-/*@media screen and (min-width: 1024px) {*/
-/*}*/
-
 @keyframes bounce-in {
     0% {
         opacity: 0;

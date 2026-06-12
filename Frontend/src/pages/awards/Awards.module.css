@@ -238,9 +238,6 @@
 		font-weight: 700;
 	}
 
-	.subTitle {
-	}
-
 	.time {
 		font-size: 2rem;
 		font-weight: 700;
@@ -277,9 +274,6 @@
 
 		.awardImg {
 			width: 200px;
-		}
-
-		button {
 		}
 	}
 }
