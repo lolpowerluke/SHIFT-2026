@@ -559,7 +559,7 @@ h2 {
 }
 
 .landingWrap {
-	margin-bottom: 48px;
+	margin-bottom: 0.5vh;
 }
 
 @media (min-width: 1024px) {
