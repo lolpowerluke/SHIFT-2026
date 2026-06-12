@@ -1,0 +1,20 @@
+# SHIFT Festival
+> De laatstejaarsexpo van Multimedia & Creatieve Technologie studenten.
+
+SHIFT Festival is the graduating student expo of the Multimedia & Creative Technology programme. On Friday 19 June 2026, students present digital innovations, creative concepts and final projects centred around societal themes. The event also features a live show and an awards ceremony.
+
+## Pages
+
+- https://shiftfestival.be/: Main event page — date, concept, general info
+- https://shiftfestival.be/project: Overview of all student projects
+- https://shiftfestival.be/awards: Explanation of the awards; winners published after the event
+
+## Excluded
+
+The following paths contain no useful public content for LLMs:
+
+- https://shiftfestival.be/login
+- https://shiftfestival.be/project/*
+- https://shiftfestival.be/privacy/*
+- https://shiftfestival.be/404
+- https://shiftfestival.be/u/*

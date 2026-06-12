@@ -12,7 +12,10 @@ button {
 	padding: 10px;
 	box-shadow:
 		5px 5px 0 1px var(--shadow-primary),
-		3px 3px 0 7px var(--hl-secondary);
+		7px 4px 0 4px var(--hl-secondary),
+		0 0 0 5px var(--hl-secondary),
+		4px 7px 0 4px var(--hl-secondary),
+		7px 7px 0 4px var(--hl-secondary);
 	text-decoration: none;
 	transition:
 		transform 0.1s,
@@ -41,7 +44,7 @@ button:active {
 	min-width: max-content;
 }
 
-.blueBtn{
+.blueBtn {
 	background-color: var(--bg-shift-primary);
 }
 
