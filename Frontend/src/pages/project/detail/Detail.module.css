@@ -9,17 +9,23 @@
 	}
 }
 
-.paperBg{
+.subject {
+	img {
+		margin-right: 0px;
+	}
+}
+
+.paperBg {
 	width: 80dvw;
 	margin: 0 auto 5rem;
 	padding: 5vw;
 }
 
-.paperBg::before{
+.paperBg::before {
 	border-radius: 8px;
 }
 
-.ctxDetail{
+.ctxDetail {
 	width: 90%;
 	margin: 0 auto;
 }
@@ -229,7 +235,8 @@
 			gap: 0px;
 		}
 
-		p, img {
+		p,
+		img {
 			margin: 0 0 16px 0;
 		}
 
@@ -239,14 +246,14 @@
 	}
 
 	.magButton button {
-        font-size: 0px;
-        display: flex;
-        justify-content: center;
+		font-size: 0px;
+		display: flex;
+		justify-content: center;
 
-        img {
-            width: 40%;
-            display: block;
+		img {
+			width: 40%;
+			display: block;
 			margin: 0;
-        }
-    }
+		}
+	}
 }
