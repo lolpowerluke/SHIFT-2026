@@ -6,7 +6,7 @@ export default function PrivacyRedirect() {
     const lang = navigator.language.startsWith("nl") ? "/nl" : "/en";
 
     useEffect(() => {
-        navigate(`privacy/${lang}`, {replace: true});
+        navigate(`/privacy/${lang}`, {replace: true});
     }, []);
 
     return <Outlet/>
