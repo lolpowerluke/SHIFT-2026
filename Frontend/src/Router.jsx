@@ -22,7 +22,6 @@ const router = createBrowserRouter([
                 path: Routes.Privacy,
                 element: <PrivacyRedirect />,
                 children: [
-                    { index: true, element: <PrivacyRedirect /> },
                     { path: Routes.privacyEN, element: <PrivacyEN /> },
                     { path: Routes.privacyNL, element: <PrivacyNL /> },
                 ],
