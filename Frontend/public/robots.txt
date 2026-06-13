@@ -1,0 +1,77 @@
+# SHIFT Festival - robots.txt
+# https://shiftfestival.be
+
+# -----------------------------------------------
+# Search crawlers — full access to public content
+# -----------------------------------------------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# -----------------------------------------------
+# All other crawlers — public content only
+# -----------------------------------------------
+User-agent: *
+Allow: /
+Allow: /project
+Allow: /awards
+
+Disallow: /login
+Disallow: /project/form
+Disallow: /project/
+Disallow: /privacy/
+Disallow: /u/
+Disallow: /404
+Disallow: /api/
+
+# -----------------------------------------------
+# AI training bots — blocked
+# -----------------------------------------------
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+# -----------------------------------------------
+# Sitemap
+# -----------------------------------------------
+Sitemap: https://shiftfestival.be/sitemap.xml

@@ -36,10 +36,6 @@ span {
 	font-size: 18px;
 }
 
-#timer {
-	font-weight: bold;
-}
-
 small {
 	font-size: 12px;
 	margin: var(--margin-small);
@@ -52,14 +48,6 @@ a {
 
 .xlarge {
 	font-size: 24px;
-}
-
-.bold {
-	font-weight: bold;
-}
-
-.footerCopyright {
-	text-align: center;
 }
 
 .darkText {

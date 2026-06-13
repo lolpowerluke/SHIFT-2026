@@ -11,18 +11,13 @@
 	--margin-small: 5px;
 
 	/* specifics */
-	--spacing-heroWrapper: var(--spacing-s);
 	--spacing-footer: 1rem;
 
-	--shift-logo-height: 15rem;
+	--shift-logo-height: 25rem;
 
 	@media only screen and (min-width: 1024px) {
-		--shift-logo-height: 25rem;
+		--shift-logo-height: 35rem;
 		--spacing-footer: var(--spacing-m);
-	}
-
-	@media only screen and (min-width: 1280px) {
-		--shift-logo-height: 29rem;
 	}
 }
 
