@@ -35,16 +35,6 @@ export default function Awards() {
                     </div>
                     <button onClick={() => navigate('/project')} className="blueBtn">Ontdek alle projecten</button>
                 </div>
-                <div className={`${s.landingBottom} ${s.mobile}`}>
-                    <div>
-                        <a className="linkBtn" href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" target="_blank">Bezoek het evenement</a>
-                        <span>Vier categorieën die excellentie erkennen in innovatie, impact en creativiteit.</span>
-                    </div>
-                    <div>
-                        <Link className="linkBtn" to={Routes.Project}>Ontdek alle projecten</Link>
-                        <span>Bekijk de verschillende projecten</span>
-                    </div>
-                </div>
             </div>
             <div className={s.awardContainer}>
                 <div className={s.awardTop}>
@@ -71,12 +61,9 @@ export default function Awards() {
                         <span className={s.cardDesc}>De juryprijs wordt uitgereikt door onze eigen docenten met hun jaren ervaring en kennis.</span>
                     </div>
                 </div>
-                <div className={s.awardTop}>
-                    <span>PUBLIEKSPRIJS</span>
-                </div>
                 <div className={`${s.publicPrize} ${s.awardCard}`}>
                     <img src="/assets/icons/VoteOrange.svg" alt="Orange Vote" className={s.voteImg} />
-                    <span className={`${s.title} ${s.desktop}`}>BRENG JE STEM UIT</span>
+                    <span className={`${s.title} ${s.desktop}`}>PUBLIEKSPRIJS</span>
                     <span className={`${s.title} ${s.mobile}`}>KOM MEE STEMMEN</span>
                     <span className={`${s.subTitle} ${s.desktop}`}>Jij bepaalt wie de publiekprijs verdient.</span>
                     <span className={`${s.subTitle} ${s.mobile}`}>Jij mag mee bepalen wie de publiekprijs verdient.</span>
