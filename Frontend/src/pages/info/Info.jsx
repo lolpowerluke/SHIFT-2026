@@ -97,7 +97,7 @@ export default function Info() {
             <h3>FAQ</h3>
             <div className={`${s.faq}`}>
                 {faq.map((q, index) => (
-                    <FAQItem key={index} title={q.title} answer={q.answer}/>
+                    <FAQItem key={index} title={q.title} answer={q.answer} s={s}/>
                 ))}
             </div>
         </div>
