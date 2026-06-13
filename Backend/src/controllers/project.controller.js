@@ -119,6 +119,37 @@ const getProject = async (req, res) => {
   }
 };
 
+const getProjectCount = async (req, res) => {
+  try {
+    const result = await db.query(`SELECT COUNT(*) as count FROM projects;`);
+    const count = result[0][0].count;
+    res.status(200).json({ success: true, count });
+  } catch (error) {
+    console.error(" error:", error);
+    res.status(500).json({ success: false, message: "Failed to get project count", error: error.message });
+  }
+};
+
+const getAllMediaByType = async (req, res) => {
+  try {
+    const { type } = req.params;
+    if (type !== 'image' && type !== 'video' && type !== 'magazine') {
+      return res.status(404).json({ success: false, message: `Type ${type} doesnt exist!` })
+    }
+    const [media] = await db.query(
+      `SELECT m.id, m.cloud_name, m.path, mp.type, mp.project
+       FROM media_project mp
+       JOIN media m ON m.id = mp.media
+       WHERE mp.type = ?`,
+      [type]
+    );
+    res.status(200).json({ success: true, media });
+  } catch (error) {
+    console.error("error:", error);
+    res.status(500).json({ success: false, message: "Failed to get media by type", error: error.message });
+  }
+}
+
 const createProject = async (req, res) => {
   try {
     const { name, description, course, promoter, memberIds = [], videoURL } = req.body;
@@ -392,4 +423,4 @@ const deleteProject = async (req, res) => {
   }
 };
 
-export { getAllProjects, getProject, createProject, updateProject, deleteProject };
+export { getAllProjects, getProject, getProjectCount, getAllMediaByType, createProject, updateProject, deleteProject };
