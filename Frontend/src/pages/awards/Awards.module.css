@@ -4,12 +4,6 @@
 	}
 }
 
-@media (max-width: 768px) {
-	.desktop {
-		display: none !important;
-	}
-}
-
 .heroContainer {
 	height: 100vh;
 	width: 100vw;
@@ -21,6 +15,7 @@
 	flex-direction: column;
 	justify-content: center;
 	gap: 5vh;
+	border-bottom: 5px solid var(--bg-shift-secondary);
 
 	& > * {
 		margin: 0 auto;
@@ -42,7 +37,6 @@
 		.title {
 			font-size: 5rem;
 			font-weight: 800;
-			text-shadow: 0 0 4px var(--txt-special);
 		}
 	}
 
@@ -53,6 +47,11 @@
 		gap: 50px;
 		box-sizing: border-box;
 		max-width: 600px;
+		background: var(--bg-shift-alt);
+		border: 5px solid var(--border-primary);
+		box-shadow: 5px 5px 0 1px var(--shadow-primary);
+		border-radius: 10px;
+		padding: 50px;
 
 		div {
 			display: flex;
@@ -67,22 +66,9 @@
 	box-shadow: 5px 5px 0 1px var(--shadow-primary);
 }
 
-@media (min-width: 769px) {
-	.heroContainer {
-		.landingBottom {
-			background: var(--bg-shift-alt);
-			border: 5px solid var(--border-primary);
-			box-shadow: 5px 5px 0 1px var(--shadow-primary);
-			border-radius: 10px;
-			padding: 50px;
-		}
-	}
-}
-
 @media (max-width: 768px) {
 	.heroContainer {
 		height: fit-content;
-		background: unset;
 		padding-top: 116px;
 
 		.landingTop {
@@ -96,10 +82,17 @@
 
 			.title {
 				font-size: 2rem;
+				text-align: center;
 			}
 		}
 
 		.landingBottom {
+			width: calc(100vw - 40px);
+			max-width: 100%;
+			margin-inline: auto;
+			padding: 30px 0;
+			margin-bottom: var(--margin-section);
+
 			& > div {
 				display: flex;
 				flex-direction: column;
@@ -118,7 +111,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	padding: 50px 0;
+	padding-top: 25px;
 	position: relative;
 
 	@media (min-width: 769px) {
@@ -128,11 +121,6 @@
 			width: 100vw;
 			position: absolute;
 			top: 0;
-			background-image: linear-gradient(
-				to bottom,
-				color-mix(in oklab, var(--bg-shift-secondary) 70%, transparent),
-				transparent
-			);
 		}
 	}
 
@@ -263,6 +251,9 @@
 
 @media (max-width: 768px) {
 	.publicPrize {
+		max-width: calc(100vw - 40px);
+		margin-bottom: var(--margin-section);
+
 		& > span {
 			padding: 0 30px;
 			text-align: center;
@@ -274,6 +265,19 @@
 
 		.awardImg {
 			width: 200px;
+		}
+	}
+}
+
+@media (min-width: 769px) and (max-width: 870px) {
+	.heroContainer {
+		& > * {
+			width: auto;
+		}
+
+		.landingTop {
+			flex-direction: row;
+			flex-wrap: nowrap;
 		}
 	}
 }
