@@ -110,12 +110,29 @@
     width: 100%;
     margin: 2rem 0;
 
-    .faqItem{
+    .faqItem {
         padding: 1rem 0;
         background-color: var(--bg-shift-alt);
         margin-bottom: 1rem;
         border-radius: 28px;
         border: 4px solid var(--border-primary);
+        cursor: pointer;
+
+        .faqTitle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faqAnswer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-in-out;
+        }
+
+        .faqAnswer.open {
+            grid-template-rows: 1fr;
+        }
 
         p {
             text-align: left;
@@ -123,6 +140,14 @@
         }
     }
 
+}
+
+.openBtn {
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+    aspect-ratio: 1/1;
+    padding: .5rem;
+    width: 3rem;
 }
 
 @media only screen and (min-width: 1024px) {

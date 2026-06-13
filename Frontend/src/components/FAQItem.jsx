@@ -1,24 +1,22 @@
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 export default function FAQItem({s, title, answer}) {
     const [isOpen, setIsOpen] = useState(false);
+    const contentRef = useRef(null);
 
     return (
-        <div className={s.faqItem}>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer'}}
-                 onClick={() => setIsOpen(!isOpen)}>
+        <div className={s.faqItem} onClick={() => setIsOpen(!isOpen)}>
+            <div className={s.faqTitle}>
                 <p><b>{title}</b></p>
-                <button style={{
-                    background: 'none',
-                    border: 'none',
-                    fontSize: '1.5rem',
-                    cursor: 'pointer',
-                    marginRight: '1rem'
-                }}>
-                    {isOpen ? '−' : '+'}
+                <button className={s.openBtn}>
+                    <span>{isOpen ? '−' : '+'}</span>
                 </button>
             </div>
-            {isOpen && <p className={s.faqAnswer}>{answer}</p>}
+            <div className={`${s.faqAnswer} ${isOpen ? s.open : ''}`}>
+                <div style={{overflow: 'hidden'}}>
+                    <p ref={contentRef}>{answer}</p>
+                </div>
+            </div>
         </div>
     );
 }
