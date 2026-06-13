@@ -9,6 +9,8 @@ footer {
 	box-shadow:
 		0 0 0 13px var(--hl-secondary);
 
+	margin-top: 3rem;
+
 	.footerLogo {
 		display: none;
 	}

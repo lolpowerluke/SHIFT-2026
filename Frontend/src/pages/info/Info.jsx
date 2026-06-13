@@ -8,6 +8,11 @@ const events = [
     {time: {hr: 20, min: 0}, event: "Liveshow & awards"},
     {time: {hr: 21, min: 30}, event: "Einde liveshow"},
 ]
+
+const faq = [
+    {title: "test", answer: "testAnswer"}
+]
+
 export default function Info() {
     return (<>
         <div className={`${s.heroLayout}`}>
@@ -57,23 +62,26 @@ export default function Info() {
                     <div className={`${s.infoCard}`}>
                         <h3>Hoe</h3>
                         <p>Campus Kaai is vlot bereikbaar met het openbaar vervoer, per fiets, en met de auto.</p>
-                        <div>
+                        <div className={`${s.flexRow}`}>
                             {/*TODO: add img*/}
+                            <img src="https://placehold.co/50" alt="public transport"/>
                             <div>
                                 <h4>OPENBAAR VERVOER</h4>
                                 <p>Metro 5 tot Aumale of tram 81 tot Conscience.<br/>Beide op 8 minuten wandelen.</p>
                             </div>
                         </div>
-                        <div>
+                        <div className={`${s.flexRow}`}>
                             {/*TODO: add img*/}
+                            <img src="https://placehold.co/50" alt="public transport"/>
                             <div>
                                 <h4>MET DE FIETS</h4>
                                 <p>Veilige fietsenstalling aanwezig aan de hoofdingang van Campus Kaai.</p>
                             </div>
 
                         </div>
-                        <div>
+                        <div className={`${s.flexRow} ${s.traffic}`}>
                             {/*TODO: add img*/}
+                            <img src="https://placehold.co/50" alt="public transport"/>
                             <div>
                                 <h4>MET DE AUTO</h4>
                                 <p>Beperkt parkeren op de campus. Gratis bezoekersparking in de buurt.</p>
@@ -81,6 +89,17 @@ export default function Info() {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div className="ctx">
+            <h3>FAQ</h3>
+            <div className={`${s.faq}`}>
+                {faq.map((q) => (
+                    <div className={s.faqItem}>
+                        <p><b>{q.title}</b></p>
+                        <p className={s.faqAnswer}>{q.answer}</p>
+                    </div>
+                ))}
             </div>
         </div>
     </>);
