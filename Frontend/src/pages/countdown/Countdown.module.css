@@ -173,15 +173,11 @@
 	background: linear-gradient(
 		to bottom right,
 		var(--shadow-primary) 0%,
-		var(--shadow-primary) 30%,
+		var(--shadow-primary) 3%,
 		transparent 100%
 	);
 	z-index: 0;
 	pointer-events: none;
-}
-
-.heroLayout {
-	z-index: 1;
 }
 
 .projectCard {
@@ -455,13 +451,12 @@ h2 {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 2rem;
-	height: 100dvh;
-	margin-bottom: 4svh;
+	align-items: flex-start;
+	justify-content: space-between;
+	/*gap: 2rem;*/
+	height: 100vh;
 	overflow: hidden;
-	overflow-x: hidden;
+	margin-bottom: 4svh;
 
 	.heroLayout {
 		display: flex;
@@ -469,6 +464,10 @@ h2 {
 		align-items: center;
 		justify-content: center;
 		width: fit-content;
+		pointer-events: none;
+		z-index: 1;
+		margin-left: -30px;
+		margin-top: -90px;
 	}
 
 	.timerDiv {
@@ -476,6 +475,7 @@ h2 {
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
+		align-self: center;
 		margin: 0;
 
 		#timer {
@@ -500,7 +500,6 @@ h2 {
 	width: fit-content;
 	align-self: self-end;
 	margin: 0 auto;
-	top: 50px;
 	bottom: 20px;
 	animation: upDown 1.4s ease-in-out infinite;
 
@@ -564,6 +563,10 @@ h2 {
 	gap: 40px;
 }
 
+.infoPart {
+	align-items: center;
+}
+
 @media (min-width: 1024px) {
 	.shiftInfoSide p {
 		text-align: left;
@@ -581,18 +584,19 @@ h2 {
 		display: grid;
 		grid-template-rows: repeat(2, 1fr);
 		grid-template-columns: repeat(2, 1fr);
-		height: 97.5lvh;
-		width: 92.5dvw;
+		height: 100vh;
+		width: 100vw;
 		justify-content: space-between;
+		margin-top: -56px;
 		margin-bottom: 4rem;
 		margin-left: 0;
 
 		.heroLayout {
 			position: relative;
-			max-height: 40dvh;
+			margin-top: -70px;
+			margin-left: -50px;
 
 			#heroLogo {
-				max-height: none;
 				height: var(--shift-logo-height);
 			}
 
@@ -603,12 +607,13 @@ h2 {
 
 		.timerDiv {
 			display: grid;
-			justify-self: end;
-			margin-right: 0;
+			margin-right: 7.5vw;
 			grid-row: 2/3;
 			grid-column: 2/3;
 			margin-top: unset;
 			text-align: unset;
+			align-self: center;
+			justify-self: end;
 
 			#timer {
 				display: flex;
@@ -687,13 +692,18 @@ h2 {
 	.sectionFlexer {
 		display: flex;
 		justify-content: space-between;
+		align-items: start;
 		margin-bottom: var(--spacing-m);
-		align-items: center;
 	}
+
+	/*
+	.previewSection {
+		/*padding: calc(3 * var(--spacing-top)) 0 var(--spacing-top);
+	}
+	*/
 
 	.shiftInfoSide {
 		width: 45%;
-		align-self: center;
 	}
 
 	.shiftTime,
