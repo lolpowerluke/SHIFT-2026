@@ -65,13 +65,22 @@ export default function Carousel() {
         window.open("/project/", "_blank", "noopener,noreferrer");
     };
 
+    const fetchRandomProjects = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled.slice(0, 5);
+    };
+
     useEffect(() => {
         fetch(`${import.meta.env.VITE_API_URL}/project`)
             .then((res) => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
             })
-            .then((data) => setProjects(data.projects.map(mapProject).slice(0, 5)))
+            .then((data) => setProjects(fetchRandomProjects(data.projects.map(mapProject))))
             .catch((err) => console.error(err))
             .finally(() => setLoading(false));
     }, []);
