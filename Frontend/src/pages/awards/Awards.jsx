@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import s from "./Awards.module.css";
-import {Link, useNavigate} from "react-router";
+import { Link, useNavigate } from "react-router";
 import { apiFetch } from "../../utils/apiFetch";
 import Routes from "../../routes/constants/Routes.js";
 
@@ -14,9 +14,9 @@ export default function Awards() {
     })
 
     async function loadProjectCount() {
-        const projData = await apiFetch("/project/");
+        const projData = await apiFetch("/project/count");
         if (!projData.success) return;
-        setProjectAmount(projData.projects.length);
+        setProjectAmount(projData.count);
     }
 
     return (
@@ -25,7 +25,7 @@ export default function Awards() {
                 <div className={s.landingTop}>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
                     <span className={`${s.title}`}>LIVESHOW &<br />
-                    AWARDS</span>
+                        AWARDS</span>
                 </div>
                 <div className={`${s.landingBottom} ${s.desktop}`}>
                     <img src="/assets/icons/BlueVote.svg" alt="Blue Vote" className={s.voteImg} />
@@ -74,16 +74,16 @@ export default function Awards() {
                 <div className={s.awardTop}>
                     <span>PUBLIEKSPRIJS</span>
                 </div>
-            <div className={`${s.publicPrize} ${s.awardCard}`}>
-                <img src="/assets/icons/VoteOrange.svg" alt="Orange Vote" className={s.voteImg} />
-                <span className={`${s.title} ${s.desktop}`}>BRENG JE STEM UIT</span>
-                <span className={`${s.title} ${s.mobile}`}>KOM MEE STEMMEN</span>
-                <span className={`${s.subTitle} ${s.desktop}`}>Jij bepaalt wie de publiekprijs verdient.</span>
-                <span className={`${s.subTitle} ${s.mobile}`}>Jij mag mee bepalen wie de publiekprijs verdient.</span>
-                <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
-                <span className={s.time}>UITREIKING OM 20:00 TIJDENS DE AWARD SHOW</span>
-                <button>Praktische info<span className={s.mobile}>, klik hier</span> <img src="/assets/icons/arrowLink.svg" alt="arrow up right" className={s.arrowUp} /></button>
-            </div>
+                <div className={`${s.publicPrize} ${s.awardCard}`}>
+                    <img src="/assets/icons/VoteOrange.svg" alt="Orange Vote" className={s.voteImg} />
+                    <span className={`${s.title} ${s.desktop}`}>BRENG JE STEM UIT</span>
+                    <span className={`${s.title} ${s.mobile}`}>KOM MEE STEMMEN</span>
+                    <span className={`${s.subTitle} ${s.desktop}`}>Jij bepaalt wie de publiekprijs verdient.</span>
+                    <span className={`${s.subTitle} ${s.mobile}`}>Jij mag mee bepalen wie de publiekprijs verdient.</span>
+                    <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
+                    <span className={s.time}>UITREIKING OM 20:00 TIJDENS DE AWARD SHOW</span>
+                    <button>Praktische info<span className={s.mobile}>, klik hier</span> <img src="/assets/icons/arrowLink.svg" alt="arrow up right" className={s.arrowUp} /></button>
+                </div>
             </div>
         </>
     );
