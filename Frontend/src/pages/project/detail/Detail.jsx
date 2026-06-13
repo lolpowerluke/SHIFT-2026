@@ -62,36 +62,38 @@ export default function Detail() {
 		window.open(blobUrl, "_blank");
 	};
 
-    return (<>
-            <div className="headerSpacer"></div>
-            <div className={`${s.paperBg} altBg`}>
-                <div className={`${s.ctxDetail}`}>
-                    <div className={s.backButton}>
-                        <button onClick={() => navigate(-1)}>
-                            <img src="/assets/arrow_back.svg" alt="Back arrow Icon"/>
-                            Back
-                        </button>
-                        <div className="titleDiv">
-                        </div>
-                        <div className={s.titleText}>
-                            <h1>{project.name}</h1>
-                            <div className="titleNames">
-                                <div className={s.name}>
-                                    <p>
-                                        {(project.members ?? [])
-                                            .map((m) => memberDisplayName(m))
-                                            .join(" & ")}
-                                    </p>
-                                </div>
-                                <div className={s.subject}>
-                                    {categoryIcon && <img src={categoryIcon} alt={project.course}/>}
-                                    <p>
-                                        <b>{project.course}</b>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+	return (
+		<>
+			<div className="headerSpacer"></div>
+			<div className={`${s.paperBg} altBg`}>
+				<div className={`${s.ctxDetail}`}>
+					<div className={s.backButton}>
+						<button onClick={() => navigate(-1)}>
+							<img src="/assets/arrow_back.svg" alt="Back arrow Icon" />
+							Back
+						</button>
+						<div className="titleDiv"></div>
+						<div className={s.titleText}>
+							<h1>{project.name}</h1>
+							<div className="titleNames">
+								<div className={s.name}>
+									<p>
+										{(project.members ?? [])
+											.map((m) => memberDisplayName(m))
+											.join(" & ")}
+									</p>
+								</div>
+								<div className={s.subject}>
+									{categoryIcon && (
+										<img src={categoryIcon} alt={project.course} />
+									)}
+									<p>
+										<b>{project.course}</b>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
 
 					<div className={s.imgDiv}>
 						<img
