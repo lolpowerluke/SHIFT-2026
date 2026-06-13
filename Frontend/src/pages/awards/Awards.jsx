@@ -64,7 +64,6 @@ export default function Awards() {
                 <div className={`${s.publicPrize} ${s.awardCard}`}>
                     <img src="/assets/icons/VoteOrange.svg" alt="Orange Vote" className={s.voteImg} />
                     <span className={`${s.title} ${s.desktop}`}>PUBLIEKSPRIJS</span>
-                    <span className={`${s.title} ${s.mobile}`}>KOM MEE STEMMEN</span>
                     <span className={`${s.subTitle} ${s.desktop}`}>Jij bepaalt wie de publiekprijs verdient.</span>
                     <span className={`${s.subTitle} ${s.mobile}`}>Jij mag mee bepalen wie de publiekprijs verdient.</span>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
