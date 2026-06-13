@@ -1,5 +1,6 @@
 import s from "./info.module.css";
 import ClockIcon from "../../components/clock/ClockIcon.jsx";
+import FAQItem from "../../components/FAQItem.jsx";
 
 const events = [
     {time: {hr: 17, min: 0}, event: "start"},
@@ -95,11 +96,8 @@ export default function Info() {
         <div className="ctx">
             <h3>FAQ</h3>
             <div className={`${s.faq}`}>
-                {faq.map((q) => (
-                    <div className={s.faqItem}>
-                        <p><b>{q.title}</b></p>
-                        <p className={s.faqAnswer}>{q.answer}</p>
-                    </div>
+                {faq.map((q, index) => (
+                    <FAQItem key={index} title={q.title} answer={q.answer}/>
                 ))}
             </div>
         </div>
