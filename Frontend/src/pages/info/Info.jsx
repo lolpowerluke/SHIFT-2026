@@ -10,6 +10,7 @@ const events = [
 ]
 
 const faq = [
+    {title: "test", answer: "testAnswer"},
     {title: "test", answer: "testAnswer"}
 ]
 
