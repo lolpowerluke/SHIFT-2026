@@ -58,13 +58,26 @@ export default function Info() {
                         <h3>Hoe</h3>
                         <p>Campus Kaai is vlot bereikbaar met het openbaar vervoer, per fiets, en met de auto.</p>
                         <div>
-                            <h4>OPENBAAR VERVOER</h4>
+                            {/*TODO: add img*/}
+                            <div>
+                                <h4>OPENBAAR VERVOER</h4>
+                                <p>Metro 5 tot Aumale of tram 81 tot Conscience.<br/>Beide op 8 minuten wandelen.</p>
+                            </div>
                         </div>
                         <div>
-                            <h4>MET DE FIETS</h4>
+                            {/*TODO: add img*/}
+                            <div>
+                                <h4>MET DE FIETS</h4>
+                                <p>Veilige fietsenstalling aanwezig aan de hoofdingang van Campus Kaai.</p>
+                            </div>
+
                         </div>
                         <div>
-                            <h4>MET DE AUTO</h4>
+                            {/*TODO: add img*/}
+                            <div>
+                                <h4>MET DE AUTO</h4>
+                                <p>Beperkt parkeren op de campus. Gratis bezoekersparking in de buurt.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
