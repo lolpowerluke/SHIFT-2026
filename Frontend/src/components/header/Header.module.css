@@ -149,7 +149,7 @@ body:has(#hamburgerNav:checked) {
 .navList {
 	font-size: 32px;
 	display: grid;
-	grid-template-rows: repeat(3, 1fr);
+	grid-template-rows: auto 1fr auto;
 	min-height: 100dvh;
 	background-image: url(/assets/wallTextureWeb2.png);
 	background-color: var(--bg-shift-primary);
