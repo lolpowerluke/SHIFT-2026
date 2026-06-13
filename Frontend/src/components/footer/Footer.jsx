@@ -47,6 +47,8 @@ export default function Footer() {
 					<a
 						href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
 						className="linkBtn blueBtn"
+						target="_blank"
+						rel="noreferrer"
 					>
 						Schrijf je nu gratis in
 					</a>
