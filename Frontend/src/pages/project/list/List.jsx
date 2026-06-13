@@ -14,6 +14,12 @@ const CATEGORIES = [
 	"Web & Mobile",
 ];
 
+const normalizeText = (text) =>
+	text
+		.toLowerCase()
+		.normalize("NFD")
+		.replace(/[\u0300-\u036f]/g, "");
+
 export default function List() {
 	const [projects, setProjects] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -33,14 +39,16 @@ export default function List() {
 	}, []);
 
 	const filteredProjects = projects.filter((project) => {
-		const query = searchQuery.toLowerCase();
+		const query = normalizeText(searchQuery);
+
 		const matchesSearch =
-			project.title.toLowerCase().includes(query) ||
-			project.students.some((s) => s.name.toLowerCase().includes(query));
+			normalizeText(project.title).includes(query) ||
+			project.students.some((s) => normalizeText(s.name).includes(query));
 
 		const matchesCategory =
 			activeCategory === "Alle Projecten" ||
 			project.category === activeCategory;
+
 		return matchesSearch && matchesCategory;
 	});
 	const guard = StatusMessage({ loading, error });
