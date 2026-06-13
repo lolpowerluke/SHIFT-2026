@@ -1,13 +1,13 @@
 import { Link, NavLink, useLocation } from "react-router";
 import { NavRoutes } from "../../routes/NavRoutes.js";
 import SocialLinks from "../socialLinks/SocialLinks.jsx";
-import {useEffect, useRef, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import { useScrolled } from "../../hooks/useScrolled.js";
 import s from "./Header.module.css";
 import Routes from "../../routes/constants/Routes.js";
 
 export default function Header() {
-	const [pageShort, setPageShort] = useState(false)
+	const [pageShort, setPageShort] = useState(false);
 	const hamburgerRef = useRef();
 	const scrolled = useScrolled(80);
 	const navLength = NavRoutes.length;
@@ -16,7 +16,7 @@ export default function Header() {
 	const closeMenu = () => {
 		if (hamburgerRef.current) {
 			hamburgerRef.current.checked = false;
-			scrollTo(top)
+			scrollTo(top);
 		}
 	};
 
@@ -26,9 +26,9 @@ export default function Header() {
 		}
 
 		setTimeout(check, 10);
-		window.addEventListener('resize', check);
+		window.addEventListener("resize", check);
 
-		return () => window.removeEventListener('resize', check);
+		return () => window.removeEventListener("resize", check);
 	}, [pathname]);
 
 	return (
@@ -41,7 +41,9 @@ export default function Header() {
 						className={`${s.headerLogo} ${!scrolled && !pageShort ? s.hide : ""}`}
 					/>
 				</Link>
-				<div className={`${s.nav} ${s.clickable} ${navLength <= 1 ? "hideThisSht" : ""}`}>
+				<div
+					className={`${s.nav} ${s.clickable} ${navLength <= 1 ? "hideThisSht" : ""}`}
+				>
 					<ul className={s.navList}>
 						<ul className={s.orientationSwap}>
 							<li className={s.navLogo}>
@@ -71,7 +73,7 @@ export default function Header() {
 						</ul>
 						<li className={s.navFooter}>
 							<p>
-								<span>SHIFT FESTIVAL</span> - het afstudeerevent van <br />
+								<span>SHIFT FESTIVAL</span> - De eindejaarsexpo van <br />
 								Multimedia & Creatieve Technologie studenten.
 							</p>
 							<SocialLinks className={s.socialLinks} />
