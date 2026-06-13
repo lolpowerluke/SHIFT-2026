@@ -36,7 +36,6 @@
 		.title {
 			font-size: 5rem;
 			font-weight: 800;
-			text-shadow: 0 0 4px var(--txt-special);
 		}
 	}
 
@@ -82,6 +81,7 @@
 
 			.title {
 				font-size: 2rem;
+				text-align: center;
 			}
 		}
 
