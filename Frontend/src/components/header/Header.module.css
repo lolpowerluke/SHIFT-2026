@@ -172,7 +172,7 @@ body:has(#hamburgerNav:checked) {
 	.navLogo {
 		grid-row: 1/2;
 		display: flex;
-		margin-top: 5vh;
+		margin-top: 5dvh;
 
 		img {
 			margin: 0 auto;
@@ -188,7 +188,7 @@ body:has(#hamburgerNav:checked) {
 	}
 
 	.navLinks ul {
-		height: 30vh;
+		height: 30dvh;
 		padding-left: 0;
 		display: flex;
 		flex-direction: column;
