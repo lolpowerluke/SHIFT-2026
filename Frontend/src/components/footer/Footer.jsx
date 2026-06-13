@@ -47,6 +47,8 @@ export default function Footer() {
 					<a
 						href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
 						className="linkBtn blueBtn"
+						target="_blank"
+						rel="noreferrer"
 					>
 						Schrijf je nu gratis in
 					</a>
@@ -54,7 +56,7 @@ export default function Footer() {
 				</div>
 				<small className={s.footerCopyright}>
 					Jouw data blijft van jou. Check het{" "}
-					<Link to={Routes.Privacy}>Privacybeleid</Link>. 2026 SHIFT —
+					<Link to={"https://www.erasmushogeschool.be/nl/privacyverklaring"}>Privacybeleid</Link>. 2026 SHIFT —
 					Erasmushogeschool Brussel. <br />
 					Alle rechten voorbehouden.
 				</small>

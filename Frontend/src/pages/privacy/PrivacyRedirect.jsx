@@ -7,7 +7,7 @@ export default function PrivacyRedirect() {
 
     useEffect(() => {
         navigate(`/privacy/${lang}`, {replace: true});
-    }, []);
+    }, [navigate]);
 
     return <Outlet/>
 }

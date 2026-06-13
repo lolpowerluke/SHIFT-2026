@@ -1,5 +1,4 @@
 import s from "./Countdown.module.css";
-import "../../css/style.css";
 import { useCountdown } from "../../js/countdown.js";
 import Carousel from "../../components/Carousel.jsx";
 import Throbber from "../../components/Throbber.jsx";
@@ -39,14 +38,12 @@ export default function Countdown() {
 			<div className={s.landingWrap}>
 				<div>
 					<div className={s.heroLayout}>
-						<div>
 							<img
 								src="../../assets/logos/shift_logo.svg"
 								id={s.heroLogo}
 								fetchPriority="high"
 								alt="SHIFT Logo"
 							/>
-						</div>
 						<div>
 							<div className={s.heroWrapper}>
 								<div className={s.rotatedText}>
@@ -93,7 +90,7 @@ export default function Countdown() {
 									<span>
 										<span
 											className={
-												blinkingS === s.seconds ? s.hidden : "darkText"
+												blinkingS === "seconds" ? "hidden" : "darkText"
 											}
 										>
 											{timeLeft.seconds}
@@ -102,7 +99,7 @@ export default function Countdown() {
 									<span>Seconden</span>
 								</div>
 							</div>
-							<div className={`${s.cta} section`}>
+							<div className={`${s.cta}`}>
 								<a
 									href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
 									className={`${s.linkBtn} linkBtn`}
@@ -122,14 +119,14 @@ export default function Countdown() {
 				</a>
 			</div>
 
-			<div id="experience" className={`${s.wrap} wrap ${s.previewSection}`}>
+			<div id="experience" className={`${s.wrap} wrap`}>
 				<div className={s.section}>
 					<div className={s.sectionFlexer}>
 						<div className={s.shiftInfoSide}>
 							<div className={s.shiftInfoNoCard}>
 								<h2 className={s.infoTitle}>SHIFT FESTIVAL</h2>
 								<p>
-									SHIFT FESTIVAL is de eindejaarsexpo van Multimedia & Creatieve
+									SHIFT festival is de eindejaarsexpo van Multimedia & Creatieve
 									Technologie aan Erasmushogeschool Brussel.
 									<br /> Onze laatstejaarsstudenten tonen het beste van zichzelf
 									met hun eindwerken van XR/3D‑ervaringen tot interactieve
@@ -142,7 +139,7 @@ export default function Countdown() {
 						</div>
 						<div className={s.projectSide}>
 							{/*<img src="/assets/sfeerbeeld.png" alt="sfeerbeeld"/>*/}
-							<div className={`${s.section} ${s.carousel}`}>
+							<div className={s.section}>
 								<Carousel />
 							</div>
 						</div>
@@ -248,7 +245,7 @@ export default function Countdown() {
 				</div>
 				<div className={`${s.cta}`}>
 					<a
-						href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"
+						href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
 						className={`${s.linkBtn} linkBtn blueBtn`}
 						target="_blank"
 						rel="noreferrer"

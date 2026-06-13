@@ -1,273 +1,283 @@
 @media (min-width: 769px) {
-    .mobile {
-        display: none !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .desktop {
-        display: none !important;
-    }
+	.mobile {
+		display: none !important;
+	}
 }
 
 .heroContainer {
-    height: 100vh;
-    width: 100vw;
-    margin: 0 auto;
-    background-image: url("/assets/heroContent/ComingSoonAwardBgImage.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5vh;
+	height: 100vh;
+	width: 100vw;
+	margin: 0 auto;
+	background-image: url("/assets/heroContent/ComingSoonAwardBgImage.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5vh;
+	border-bottom: 5px solid var(--bg-shift-secondary);
 
-    &>* {
-        margin: 0 auto;
-        width: 100%;
+	& > * {
+		margin: 0 auto;
+		width: 100%;
+	}
 
-    }
+	.landingTop {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
 
-    .landingTop {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10vw;
-        max-width: 1000px;
+		.awardImg {
+			width: 350px;
+			transform: rotate(-15deg);
+		}
 
-        .awardImg {
-            width: 350px;
-            transform: rotate(-15deg);
-        }
+		.title {
+			font-size: 5rem;
+			font-weight: 800;
+		}
+	}
 
-        .title {
-            font-size: 6rem;
-            font-weight: 800;
-        }
-    }
+	.landingBottom {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 50px;
+		box-sizing: border-box;
+		max-width: 600px;
+		background: var(--bg-shift-alt);
+		border: 5px solid var(--border-primary);
+		box-shadow: 5px 5px 0 1px var(--shadow-primary);
+		border-radius: 10px;
+		padding: 50px;
 
-    .landingBottom {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 50px;
-        box-sizing: border-box;
-        max-width: 600px;
-
-        div {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-        }
-    }
+		div {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
+		}
+	}
 }
 
 :where(.landingBottom) button {
-    box-shadow: 5px 5px 0 1px var(--shadow-primary);
-}
-
-@media (min-width: 769px) {
-    .heroContainer {
-        .landingBottom {
-            background: var(--bg-shift-alt);
-            border: 5px solid var(--border-primary);
-            box-shadow: 5px 5px 0 1px var(--shadow-primary);
-            border-radius: 10px;
-            padding: 50px;
-        }
-    }
+	box-shadow: 5px 5px 0 1px var(--shadow-primary);
 }
 
 @media (max-width: 768px) {
-    .heroContainer {
-        height: fit-content;
-        background: unset;
-        padding-top: 116px;
+	.heroContainer {
+		height: fit-content;
+		padding-top: 116px;
 
-        .landingTop {
-            flex-direction: column;
-            gap: 20px;
+		.landingTop {
+			flex-direction: column;
+			gap: 20px;
 
-            .awardImg {
-                width: 150px;
-                transform: rotate(10deg);
-            }
+			.awardImg {
+				width: 150px;
+				transform: rotate(10deg);
+			}
 
-            .title {
-                font-size: 2rem;
-            }
-        }
+			.title {
+				font-size: 2rem;
+				text-align: center;
+			}
+		}
 
-        .landingBottom {
-            &>div {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-                padding: 0 30px;
+		.landingBottom {
+			width: calc(100vw - 40px);
+			max-width: 100%;
+			margin-inline: auto;
+			padding: 30px 0;
+			margin-bottom: var(--margin-section);
 
-                span {
-                    font-weight: 500;
-                }
-            }
-        }
-    }
+			& > div {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				padding: 0 30px;
+
+				span {
+					font-weight: 500;
+				}
+			}
+		}
+	}
 }
 
 .awardContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 50px 0 100px 0;
-    position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding-top: 25px;
+	position: relative;
 
-    @media (min-width: 769px) {
-        &::before {
-            content: "";
-            height: 25px;
-            width: 100vw;
-            position: absolute;
-            top: 0;
-            background-image: linear-gradient(to bottom, color-mix(in oklab, var(--bg-shift-secondary) 70%, transparent), transparent);
-        }
-    }
+	@media (min-width: 769px) {
+		&::before {
+			content: "";
+			height: 25px;
+			width: 100vw;
+			position: absolute;
+			top: 0;
+		}
+	}
 
-    .awardTop {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+	.awardTop {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 
-        .awardImg {
-            width: 150px;
-        }
+		.awardImg {
+			width: 150px;
+		}
 
-        span {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-    }
+		span {
+			font-size: 2rem;
+			font-weight: 700;
+		}
+	}
 
-    .awardBottom {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-        width: 100vw;
-        margin: 0 auto;
-        gap: 50px;
-        padding: 0 50px;
-        box-sizing: border-box;
+	.awardBottom {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+		width: 100vw;
+		margin: 0 auto;
+		gap: 50px;
+		padding: 0 50px;
+		box-sizing: border-box;
 
-        .awardCard {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background: var(--bg-shift-alt);
-            border: 5px solid var(--border-primary);
-            box-shadow: 5px 5px 0 1px var(--shadow-primary);
-            border-radius: 10px;
-            padding: 20px;
-            width: 100%;
-            box-sizing: border-box;
-            flex: 1 0 auto;
-            max-width: 500px;
+		.awardCard {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			background: var(--bg-shift-alt);
+			border: 5px solid var(--border-primary);
+			box-shadow: 5px 5px 0 1px var(--shadow-primary);
+			border-radius: 10px;
+			padding: 20px;
+			width: 100%;
+			box-sizing: border-box;
+			flex: 1 0 auto;
+			max-width: 500px;
 
-            .cardImg {
-                height: 100px;
-            }
+			.cardImg {
+				height: 100px;
+			}
 
-            .cardTitle {
-                font-size: 2rem;
-                font-weight: 700;
-            }
+			.cardTitle {
+				font-size: 2rem;
+				font-weight: 700;
+			}
 
-            .cardSubTitle {
-                font-size: 0.75rem;
-            }
+			.cardSubTitle {
+				font-size: 0.75rem;
+			}
 
-            .cardDesc {
-                margin-top: 1rem;
-            }
-        }
-    }
+			.cardDesc {
+				margin-top: 1rem;
+			}
+		}
+	}
 
-    @media (max-width: 768px) {
-        .awardTop {
-            padding: 0 30px;
-            text-align: center;
+	@media (max-width: 768px) {
+		.awardTop {
+			padding: 0 30px;
+			text-align: center;
 
-            .awardImg {
-                width: 100px;
-            }
-        }
+			.awardImg {
+				width: 100px;
+			}
+		}
 
-        .awardBottom {
-            grid-template-columns: 1fr;
-            padding: 0;
-            width: calc(100vw - 40px);
-        }
-    }
-
+		.awardBottom {
+			grid-template-columns: 1fr;
+			padding: 0;
+			width: calc(100vw - 40px);
+		}
+	}
 }
 
 .publicPrize {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 0 80px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background-color: var(--bg-shift-secondary);
+	border: 5px solid var(--border-primary);
+	box-shadow: 5px 5px 0 1px var(--shadow-primary);
+	border-radius: 10px;
+	padding: 20px;
+	width: 100%;
+	max-width: 85vw;
+	box-sizing: border-box;
+	margin: 0 auto 5rem;
 
-    .voteImg {
-        width: 100px;
-    }
+	.voteImg {
+		width: 100px;
+	}
 
-    .title {
-        font-size: 2rem;
-        font-weight: 700;
-    }
+	.title {
+		font-size: 2rem;
+		font-weight: 700;
+	}
 
-    .subTitle {}
+	.time {
+		font-size: 2rem;
+		font-weight: 700;
+	}
 
-    .time {
-        font-size: 2rem;
-        font-weight: 700;
-    }
+	.awardImg {
+		width: 300px;
+		transform: rotate(-10deg);
+	}
 
-    .awardImg {
-        width: 300px;
-        transform: rotate(-10deg);
-    }
+	button {
+		margin-top: 2rem;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 
-    button {
-        margin-top: 2rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        .arrowUp {
-            height: 30px;
-            margin-left: 10px;
-        }
-    }
+		.arrowUp {
+			height: 30px;
+			margin-left: 10px;
+		}
+	}
 }
 
 @media (max-width: 768px) {
-    .publicPrize {
-        &>span {
-            padding: 0 30px;
-            text-align: center;
-        }
+	.publicPrize {
+		max-width: calc(100vw - 40px);
+		margin-bottom: var(--margin-section);
 
-        .subTitle {
-            padding: 0 50px;
-        }
+		& > span {
+			padding: 0 30px;
+			text-align: center;
+		}
 
-        .awardImg {
-            width: 200px;
-        }
+		.subTitle {
+			padding: 0 50px;
+		}
 
-        button {}
-    }
+		.awardImg {
+			width: 200px;
+		}
+	}
+}
+
+@media (min-width: 769px) and (max-width: 870px) {
+	.heroContainer {
+		& > * {
+			width: auto;
+		}
+
+		.landingTop {
+			flex-direction: row;
+			flex-wrap: nowrap;
+		}
+	}
 }

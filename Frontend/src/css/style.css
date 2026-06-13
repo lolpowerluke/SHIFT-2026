@@ -23,10 +23,7 @@ html,
 body {
     touch-action: pan-y;
     scroll-behavior: smooth;
-}
-
-html {
-    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 html::before {

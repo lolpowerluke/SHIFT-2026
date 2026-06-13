@@ -142,7 +142,9 @@ export default function ProjectForm() {
 		setDescription(project.description || "");
 		if (project.course) setCourse(project.course);
 		if (project.promoter) setPromoter(project.promoter);
-		setExistingImages(Array.isArray(project.media) && project.media.length ? project.media : []);
+		setExistingImages(
+			Array.isArray(project.media) && project.media.length ? project.media : [],
+		);
 		setProjectFiles([]);
 		setImagesCleared(false);
 		setMagazineFile(null);
@@ -163,7 +165,7 @@ export default function ProjectForm() {
 		}
 
 		const members = Array.isArray(project.members) ? project.members : [];
-		setProjectMemberIds(members.map(m => m.id));
+		setProjectMemberIds(members.map((m) => m.id));
 		const p1 = members[0] ?? null;
 		const p2 = members[1] ?? null;
 
@@ -173,15 +175,17 @@ export default function ProjectForm() {
 			setFirstName(u.firstname || "");
 			setLastName(u.lastname || "");
 			setEmail(u.email || "");
-			setLinkedinURL(Array.isArray(u.socials) && u.socials.length ? u.socials[0] : "");
+			setLinkedinURL(
+				Array.isArray(u.socials) && u.socials.length ? u.socials[0] : "",
+			);
 
-			const pic = u.images?.length ? u.images[0] : p1.picture ?? null;
+			const pic = u.images?.length ? u.images[0] : (p1.picture ?? null);
 			setSelfieExistingPicture(
 				pic
 					? {
-						url: `https://res.cloudinary.com/${pic.cloud_name}/image/upload/${pic.path}`,
-						name: pic.path.split("/").pop(),
-					}
+							url: `https://res.cloudinary.com/${pic.cloud_name}/image/upload/${pic.path}`,
+							name: pic.path.split("/").pop(),
+						}
 					: null,
 			);
 			setSelfieFile(null);
@@ -192,20 +196,26 @@ export default function ProjectForm() {
 			setP2FirstName(p2.firstname || "");
 			setP2LastName(p2.lastname || "");
 			setP2Email(p2.email || "");
-			setP2LinkedIn(Array.isArray(p2.socials) && p2.socials.length ? p2.socials[0] : "");
+			setP2LinkedIn(
+				Array.isArray(p2.socials) && p2.socials.length ? p2.socials[0] : "",
+			);
 			setP2ExistingPicture(
 				p2.picture
 					? {
-						url: `https://res.cloudinary.com/${p2.picture.cloud_name}/image/upload/${p2.picture.path}`,
-						name: p2.picture.path.split("/").pop(),
-					}
+							url: `https://res.cloudinary.com/${p2.picture.cloud_name}/image/upload/${p2.picture.path}`,
+							name: p2.picture.path.split("/").pop(),
+						}
 					: null,
 			);
 			setP2SelfieFile(null);
 		} else {
 			setShowExtra(false);
-			setP2FirstName(""); setP2LastName(""); setP2Email("");
-			setP2LinkedIn(""); setP2SelfieFile(null); setP2ExistingPicture(null);
+			setP2FirstName("");
+			setP2LastName("");
+			setP2Email("");
+			setP2LinkedIn("");
+			setP2SelfieFile(null);
+			setP2ExistingPicture(null);
 		}
 
 		setSubmitState("idle");
@@ -238,7 +248,8 @@ export default function ProjectForm() {
 		if (!projData.success) return;
 
 		const myProject = projData.projects.find(
-			(p) => Array.isArray(p.members) && p.members.some((m) => m.id === activeId),
+			(p) =>
+				Array.isArray(p.members) && p.members.some((m) => m.id === activeId),
 		);
 		if (!myProject) return;
 
@@ -282,8 +293,10 @@ export default function ProjectForm() {
 	function validateURLFields() {
 		const errors = {};
 		if (videoURL && !isValidURL(videoURL)) errors.videoURL = "Geen geldige URL";
-		if (linkedinURL && !isValidURL(linkedinURL)) errors.linkedinURL = "Geen geldige URL";
-		if (p2LinkedIn && !isValidURL(p2LinkedIn)) errors.p2LinkedIn = "Geen geldige URL";
+		if (linkedinURL && !isValidURL(linkedinURL))
+			errors.linkedinURL = "Geen geldige URL";
+		if (p2LinkedIn && !isValidURL(p2LinkedIn))
+			errors.p2LinkedIn = "Geen geldige URL";
 		return errors;
 	}
 
@@ -329,7 +342,9 @@ export default function ProjectForm() {
 				}
 			}
 		} catch (err) {
-			setSubmitError(typeof err === "string" ? err : err?.message || "Validatie fout");
+			setSubmitError(
+				typeof err === "string" ? err : err?.message || "Validatie fout",
+			);
 			setSubmitState("error");
 			return;
 		}
@@ -363,20 +378,24 @@ export default function ProjectForm() {
 			memberIds = [...projectMemberIds];
 			if (p2Email.trim()) {
 				try {
-					const result = await apiFetch(`/api/user?email=${encodeURIComponent(p2Email.trim())}`);
+					const result = await apiFetch(
+						`/api/user?email=${encodeURIComponent(p2Email.trim())}`,
+					);
 					if (result.success) p2UserId = result.user.id;
-				} catch { }
+				} catch {}
 			}
 		} else {
 			memberIds = currentUserId ? [currentUserId] : [];
 			if (p2Email.trim()) {
 				try {
-					const result = await apiFetch(`/api/user?email=${encodeURIComponent(p2Email.trim())}`);
+					const result = await apiFetch(
+						`/api/user?email=${encodeURIComponent(p2Email.trim())}`,
+					);
 					if (result.success) {
 						p2UserId = result.user.id;
 						memberIds.push(result.user.id);
 					}
-				} catch { }
+				} catch {}
 			}
 		}
 
@@ -387,7 +406,10 @@ export default function ProjectForm() {
 				if (p2LastName) p2FormData.append("lastname", p2LastName.trim());
 				if (p2LinkedIn) p2FormData.append("socials", p2LinkedIn.trim());
 				if (p2SelfieFile) p2FormData.append("image", p2SelfieFile);
-				await apiFetch(`/api/user?id=${p2UserId}`, { method: "PUT", body: p2FormData });
+				await apiFetch(`/api/user?id=${p2UserId}`, {
+					method: "PUT",
+					body: p2FormData,
+				});
 			} catch (err) {
 				console.error("P2 user update failed:", err);
 			}
@@ -415,7 +437,10 @@ export default function ProjectForm() {
 
 		try {
 			const result = selectedProjectId
-				? await apiFetch(`/project/${selectedProjectId}`, { method: "PUT", body: cleanForm })
+				? await apiFetch(`/project/${selectedProjectId}`, {
+						method: "PUT",
+						body: cleanForm,
+					})
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
@@ -454,23 +479,23 @@ export default function ProjectForm() {
 
 	const imagePreviewURLs = projectFiles.length
 		? projectFiles.map((f) => {
-			const url = URL.createObjectURL(f);
-			previewURLsRef.current.push(url);
-			return { key: f.name, url, name: f.name };
-		})
+				const url = URL.createObjectURL(f);
+				previewURLsRef.current.push(url);
+				return { key: f.name, url, name: f.name };
+			})
 		: existingImages.map((img) => ({
-			key: img.id,
-			url: `https://res.cloudinary.com/${img.cloud_name}/image/upload/${img.path}`,
-			name: img.path.split("/").pop(),
-		}));
+				key: img.id,
+				url: `https://res.cloudinary.com/${img.cloud_name}/image/upload/${img.path}`,
+				name: img.path.split("/").pop(),
+			}));
 
 	const magazineLabel = magazineFile
 		? magazineFile.name
 		: existingMagazine
 			? (() => {
-				const name = existingMagazine.split("/").pop();
-				return name.endsWith(".pdf") ? name : `${name}.pdf`;
-			})()
+					const name = existingMagazine.split("/").pop();
+					return name.endsWith(".pdf") ? name : `${name}.pdf`;
+				})()
 			: null;
 
 	return (
@@ -488,10 +513,18 @@ export default function ProjectForm() {
 										className={`${s.adminProjectItem} ${selectedProjectId === proj.id ? s.adminProjectItemActive : ""}`}
 										onClick={() => loadProjectForAdmin(proj)}
 									>
-										<span className={s.adminProjectName}>{proj.name || "(geen naam)"}</span>
+										<span className={s.adminProjectName}>
+											{proj.name || "(geen naam)"}
+										</span>
 										<span className={s.adminProjectMembers}>
 											{Array.isArray(proj.members) && proj.members.length
-												? proj.members.map((m) => `${m.firstname || ""} ${m.lastname || ""}`.trim() || m.email).join(", ")
+												? proj.members
+														.map(
+															(m) =>
+																`${m.firstname || ""} ${m.lastname || ""}`.trim() ||
+																m.email,
+														)
+														.join(", ")
 												: "—"}
 										</span>
 									</span>
@@ -504,7 +537,6 @@ export default function ProjectForm() {
 					<>
 						<h3>Vul je project aan.</h3>
 						<form className={s.form} onSubmit={handleSubmit}>
-
 							{/* Project info */}
 							<div className={s.part}>
 								<h3>Project info</h3>
@@ -544,11 +576,13 @@ export default function ProjectForm() {
 										value={course}
 										onChange={(e) => setCourse(e.target.value)}
 									>
-										<option disabled value="">Specialisatie...</option>
+										<option disabled value="">
+											Specialisatie...
+										</option>
 										<option value="XR & 3D">XR & 3D</option>
 										<option value="Experience Design">Experience Design</option>
 										<option value="Web & Mobile">Web & Mobile</option>
-										<option value="Digital Deisgn">Digital Deisgn</option>
+										<option value="Digital Design">Digital Design</option>
 									</select>
 								</div>
 								<div>
@@ -561,14 +595,26 @@ export default function ProjectForm() {
 										value={promoter}
 										onChange={(e) => setPromoter(e.target.value)}
 									>
-										<option disabled value="">Promoter...</option>
+										<option disabled value="">
+											Promoter...
+										</option>
 										{[
-											"Dennis Baptist", "Maaike Beuten", "Joni De Borger",
-											"Peter Dickx", "Jan Everaert", "Bert Heyman",
-											"Jan Snoekx", "Stefan Tilburgs", "Els Vande Kerckhove",
-											"An Vanlierde", "Kobe Vermeire", "Ben Verschooris",
+											"Dennis Baptist",
+											"Maaike Beuten",
+											"Joni De Borger",
+											"Peter Dickx",
+											"Jan Everaert",
+											"Bert Heyman",
+											"Jan Snoekx",
+											"Stefan Tilburgs",
+											"Els Vande Kerckhove",
+											"An Vanlierde",
+											"Kobe Vermeire",
+											"Ben Verschooris",
 										].map((name) => (
-											<option key={name} value={name}>{name}</option>
+											<option key={name} value={name}>
+												{name}
+											</option>
 										))}
 									</select>
 								</div>
@@ -675,7 +721,11 @@ export default function ProjectForm() {
 								{showExtra && (
 									<div
 										className={s.extraPersonForm}
-										style={{ display: "flex", flexDirection: "column", gap: 10 }}
+										style={{
+											display: "flex",
+											flexDirection: "column",
+											gap: 10,
+										}}
 									>
 										<div>
 											<label htmlFor="2ndStudentFirstName">Voornaam</label>
@@ -724,7 +774,10 @@ export default function ProjectForm() {
 												value={p2LinkedIn}
 												onChange={(e) => {
 													setP2LinkedIn(e.target.value);
-													setUrlErrors((prev) => ({ ...prev, p2LinkedIn: null }));
+													setUrlErrors((prev) => ({
+														...prev,
+														p2LinkedIn: null,
+													}));
 												}}
 											/>
 											{urlErrors.p2LinkedIn && (
@@ -790,8 +843,8 @@ export default function ProjectForm() {
 								<div>
 									<label htmlFor="videoURL">Showreel</label>
 									<small>
-										Plaats je showreel op Youtube (unlisted) en laat hier de link
-										achter.
+										Plaats je showreel op Youtube (unlisted) en laat hier de
+										link achter.
 									</small>
 									<input
 										type="text"
@@ -827,7 +880,9 @@ export default function ProjectForm() {
 								<button
 									className={`submit ${submitState === "success" ? s.submitSuccess : ""}`}
 									type="submit"
-									disabled={submitState === "loading" || submitState === "success"}
+									disabled={
+										submitState === "loading" || submitState === "success"
+									}
 								>
 									{submitState === "loading"
 										? "Bezig..."

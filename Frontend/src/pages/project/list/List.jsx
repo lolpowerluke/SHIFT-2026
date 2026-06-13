@@ -5,8 +5,6 @@ import { useFetch } from "../../../hooks/useFetch.js";
 import { mapProject } from "../../../utils/member.js";
 import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
 import { getCloudinaryUrl } from "../../../utils/cloudinary.js";
-import Throbber from "../../../components/Throbber.jsx";
-import ErrorComponent from "../../../components/errorComponent/ErrorComponent.jsx";
 
 const CATEGORIES = [
 	"Alle Projecten",
@@ -15,6 +13,12 @@ const CATEGORIES = [
 	"XR & 3D",
 	"Web & Mobile",
 ];
+
+const normalizeText = (text) =>
+	text
+		.toLowerCase()
+		.normalize("NFD")
+		.replace(/[\u0300-\u036f]/g, "");
 
 export default function List() {
 	const [projects, setProjects] = useState([]);
@@ -35,19 +39,20 @@ export default function List() {
 	}, []);
 
 	const filteredProjects = projects.filter((project) => {
-		const query = searchQuery.toLowerCase();
+		const query = normalizeText(searchQuery);
+
 		const matchesSearch =
-			project.title.toLowerCase().includes(query) ||
-			project.students.some((s) => s.name.toLowerCase().includes(query));
+			normalizeText(project.title).includes(query) ||
+			project.students.some((s) => normalizeText(s.name).includes(query));
 
 		const matchesCategory =
 			activeCategory === "Alle Projecten" ||
 			project.category === activeCategory;
+
 		return matchesSearch && matchesCategory;
 	});
-	// TODO: add loading element
-	if (loading) return <p className="ctx">Laden...</p>;
-	if (error) return <ErrorComponent error={error}/>;
+	const guard = StatusMessage({ loading, error });
+	if (guard) return guard;
 
 	return (
 		<main className="ctx headerSpacer">
