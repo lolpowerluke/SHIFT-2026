@@ -245,8 +245,8 @@ export default function Countdown() {
 				</div>
 				<div className={`${s.cta}`}>
 					<a
-						href="https://www.erasmushogeschool.be/en/programmes/multimedia-and-creative-technology"
-						className={`${s.linkBtn} linkBtn`}
+						href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
+						className={`${s.linkBtn} linkBtn blueBtn`}
 						target="_blank"
 						rel="noreferrer"
 					>
