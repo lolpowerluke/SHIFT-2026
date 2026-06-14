@@ -45,7 +45,7 @@ export default function Info() {
                         <a className="linkBtn" href="https://maps.app.goo.gl/JWGWbtQpvk9Era6p9" target="_blank">Open in
                             Google Maps </a>
                     </div>
-                    <div className={`${s.infoCard}`}>
+                    <div className={`${s.infoCard}`} id="programma">
                         <h3>
                             wanneer
                         </h3>
