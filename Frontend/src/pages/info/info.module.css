@@ -106,17 +106,17 @@
     }
 }
 
-.infoCard#programma {
+.infoCard#programma, .infoCard#how {
     cursor: pointer;
 }
 
-.calendarWrap{
+.calendarWrap, .howWrap {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.3s ease-in-out;
 }
 
-.calendarWrap.open{
+.calendarWrap.open, .howWrap.open {
     grid-template-rows: 1fr;
 }
 
@@ -179,10 +179,10 @@
             width: 30%;
         }
     }
-.infoCard#programma {
+.infoCard#programma, .infoCard#how {
     cursor: default;
 }
-    .calendarWrap {
+    .calendarWrap, .howWrap {
         grid-template-rows: 1fr;
     }
 }

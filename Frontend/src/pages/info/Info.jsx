@@ -17,11 +17,15 @@ const faq = [
 ]
 
 export default function Info() {
-    const [isOpen, setIsOpen] = useState(false);
-    const eventsRef = useRef(null);
+    const [isProgrammaOpen, setIsProgrammaOpen] = useState(false);
+    const [isHowOpen, setIsHowOpen] = useState(false);
 
-    const handleClick = () => {
-        setIsOpen(!isOpen);
+    const handleProgrammaClick = () => {
+        setIsProgrammaOpen(!isProgrammaOpen);
+    }
+
+    const handleHowClick = () => {
+        setIsHowOpen(!isHowOpen);
     }
     return (
         <>
@@ -55,13 +59,13 @@ export default function Info() {
                                 in
                                 Google Maps </a>
                         </div>
-                        <div className={`${s.infoCard}`} id={s.programma} onClick={handleClick}>
-                                <h3 className={`${s.faqTitle}`}>
-                                    wanneer <span className={`${s.openBtn} ${s.mobile}`}>{isOpen ? "-" : "+"}</span>
-                                </h3>
+                        <div className={`${s.infoCard}`} id={s.programma} onClick={handleProgrammaClick}>
+                            <h3 className={`${s.faqTitle}`}>
+                                wanneer <span className={`${s.openBtn} ${s.mobile}`}>{isProgrammaOpen ? "-" : "+"}</span>
+                            </h3>
                             <h4>Vrijdag 19 juni 2026</h4>
                             <p>17:00 - 21:30</p>
-                            <div className={`${s.calendarWrap} ${isOpen ? `${s.open}` : ''}`}>
+                            <div className={`${s.calendarWrap} ${isProgrammaOpen ? `${s.open}` : ''}`}>
                                 <div style={{overflow: 'hidden', width: '100%', marginLeft: '0', marginRight: '0'}}>
                                     <div className={`${s.calendar}`}>
                                         {events.map((e) => (
@@ -75,33 +79,40 @@ export default function Info() {
                                 </div>
                             </div>
                         </div>
-                        <div className={`${s.infoCard}`}>
-                            <h3>Hoe</h3>
+                        <div className={`${s.infoCard}`} id={s.how} onClick={handleHowClick}>
+                            <h3 className={`${s.faqTitle}`}>
+                                Hoe <span className={`${s.openBtn} ${s.mobile}`}>{isHowOpen ? "-" : "+"}</span>
+                            </h3>
                             <p>Campus Kaai is vlot bereikbaar met het openbaar vervoer, per fiets, en met de auto.</p>
-                            <div className={`${s.flexRow}`}>
-                                {/*TODO: add img*/}
-                                <img src="https://placehold.co/50" alt="public transport"/>
-                                <div>
-                                    <h4>OPENBAAR VERVOER</h4>
-                                    <p>Metro 5 tot Aumale of tram 81 tot Conscience.<br/>Beide op 8 minuten wandelen.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className={`${s.flexRow}`}>
-                                {/*TODO: add img*/}
-                                <img src="https://placehold.co/50" alt="public transport"/>
-                                <div>
-                                    <h4>MET DE FIETS</h4>
-                                    <p>Veilige fietsenstalling aanwezig aan de hoofdingang van Campus Kaai.</p>
-                                </div>
+                            <div className={`${s.howWrap} ${isHowOpen ? `${s.open}` : ''}`}>
+                                <div style={{overflow: 'hidden', width: '100%', marginLeft: '0', marginRight: '0'}}>
+                                    <div className={`${s.flexRow}`}>
+                                        {/*TODO: add img*/}
+                                        <img src="https://placehold.co/50" alt="public transport"/>
+                                        <div>
+                                            <h4>OPENBAAR VERVOER</h4>
+                                            <p>Metro 5 tot Aumale of tram 81 tot Conscience.<br/>Beide op 8 minuten
+                                                wandelen.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className={`${s.flexRow}`}>
+                                        {/*TODO: add img*/}
+                                        <img src="https://placehold.co/50" alt="public transport"/>
+                                        <div>
+                                            <h4>MET DE FIETS</h4>
+                                            <p>Veilige fietsenstalling aanwezig aan de hoofdingang van Campus Kaai.</p>
+                                        </div>
 
-                            </div>
-                            <div className={`${s.flexRow} ${s.traffic}`}>
-                                {/*TODO: add img*/}
-                                <img src="https://placehold.co/50" alt="public transport"/>
-                                <div>
-                                    <h4>MET DE AUTO</h4>
-                                    <p>Beperkt parkeren op de campus. Gratis bezoekersparking in de buurt.</p>
+                                    </div>
+                                    <div className={`${s.flexRow} ${s.traffic}`}>
+                                        {/*TODO: add img*/}
+                                        <img src="https://placehold.co/50" alt="public transport"/>
+                                        <div>
+                                            <h4>MET DE AUTO</h4>
+                                            <p>Beperkt parkeren op de campus. Gratis bezoekersparking in de buurt.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
