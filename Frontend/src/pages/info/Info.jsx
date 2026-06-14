@@ -110,7 +110,7 @@ export default function Info() {
 							</p>
 							<div className={`${s.flexRow}`}>
 								{/*TODO: add img*/}
-								<img src="https://placehold.co/50" alt="public transport" />
+								<img src="/public/assets/icons/openbaarVervoer.svg" alt="public transport" />
 								<div>
 									<h4>OPENBAAR VERVOER</h4>
 									<p>
@@ -122,7 +122,7 @@ export default function Info() {
 							</div>
 							<div className={`${s.flexRow}`}>
 								{/*TODO: add img*/}
-								<img src="https://placehold.co/50" alt="public transport" />
+								<img src="/public/assets/icons/fiets.svg" alt="bike" />
 								<div>
 									<h4>MET DE FIETS</h4>
 									<p>
@@ -133,7 +133,7 @@ export default function Info() {
 							</div>
 							<div className={`${s.flexRow} ${s.traffic}`}>
 								{/*TODO: add img*/}
-								<img src="https://placehold.co/50" alt="public transport" />
+								<img src="/public/assets/icons/auto.svg" alt="car" />
 								<div>
 									<h4>MET DE AUTO</h4>
 									<p>
