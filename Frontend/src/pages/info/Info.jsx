@@ -63,7 +63,7 @@ export default function Info() {
                             <p>17:00 - 21:30</p>
                             <div className={`${s.calendarWrap} ${isOpen ? `${s.open}` : ''}`}>
                                 <div style={{overflow: 'hidden', width: '100%', marginLeft: '0', marginRight: '0'}}>
-                                    <div className={`${s.calendar}`} ref={eventsRef}>
+                                    <div className={`${s.calendar}`}>
                                         {events.map((e) => (
                                             <div className={s.timeSlot}>
                                                 <ClockIcon hour={e.time.hr} minute={e.time.min}/>
