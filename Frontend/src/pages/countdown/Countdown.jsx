@@ -1,7 +1,6 @@
 import s from "./Countdown.module.css";
 import { useCountdown } from "../../js/countdown.js";
 import Carousel from "../../components/Carousel.jsx";
-import Throbber from "../../components/Throbber.jsx";
 
 export default function Countdown() {
 	const { timeLeft, blinkingS } = useCountdown();
@@ -38,12 +37,12 @@ export default function Countdown() {
 			<div className={s.landingWrap}>
 				<div>
 					<div className={s.heroLayout}>
-							<img
-								src="../../assets/logos/shift_logo.svg"
-								id={s.heroLogo}
-								fetchPriority="high"
-								alt="SHIFT Logo"
-							/>
+						<img
+							src="../../assets/logos/shift_logo.svg"
+							id={s.heroLogo}
+							fetchPriority="high"
+							alt="SHIFT Logo"
+						/>
 						<div>
 							<div className={s.heroWrapper}>
 								<div className={s.rotatedText}>

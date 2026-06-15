@@ -28,8 +28,7 @@ export function mapProject(p) {
     title: p.name,
     category: p.course,
     image:
-      getCloudinaryUrl(p.media?.[0]) ??
-      getCloudinaryUrl(p.images?.[0]) ??
+      getCloudinaryUrl(p.image) ??
       "/assets/imageCard.png",
     students: (p.members ?? []).map((m) => ({
       name: memberDisplayName(m),
