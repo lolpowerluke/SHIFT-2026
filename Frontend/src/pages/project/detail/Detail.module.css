@@ -9,12 +9,6 @@
 	}
 }
 
-h2,
-h3,
-p {
-	text-align: left;
-}
-
 .subject {
 	img {
 		margin-right: 0px;
@@ -77,6 +71,10 @@ p {
 .description {
 	margin: 0;
 	margin-top: 16px;
+
+	p {
+		text-align: left;
+	}
 }
 
 .imgDiv {

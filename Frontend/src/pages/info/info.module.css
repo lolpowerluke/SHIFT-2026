@@ -1,0 +1,198 @@
+.heroLayout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    align-items: center;
+    width: 85dvw;
+    margin: 80px auto 5rem;
+}
+
+.heroTitle {
+    margin: 0 0 2rem;
+    text-align: center;
+    font-size: clamp(50px, 7vw, 96px);
+    line-height: 1.05;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.locationIcon {
+    width: clamp(60px, 7.5vw, 110px);
+    height: auto;
+    flex-shrink: 0;
+    rotate: 20deg;
+}
+
+.heroBtn {
+    align-self: flex-end;
+}
+
+.mobile {
+    display: block;
+}
+
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+
+    .infoCard {
+        padding: 2rem 1rem;
+        background-color: var(--bg-shift-secondary);
+        display: flex;
+        flex-direction: column;
+        border: 4px solid var(--border-primary);
+        border-radius: 28px;
+        gap: .8rem;
+
+        * {
+            text-align: left;
+        }
+
+        h2,
+        h3,
+        h4,
+        p,
+        div {
+            margin-left: 5%;
+        }
+
+        .calendar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: left;
+            margin-left: 0;
+        }
+
+        .timeSlot {
+            display: grid;
+            gap: .5rem;
+            grid-template-columns: auto auto 1fr;
+            border: 3px solid var(--border-primary);
+            padding: 0.5rem;
+            width: 80%;
+            border-radius: 10px;
+
+            * span {
+                margin-left: 0;
+            }
+
+            .startTime {
+                font-weight: bold;
+            }
+
+            .event {}
+        }
+
+        iframe {
+            width: 90%;
+            aspect-ratio: 5/4;
+            margin: 0 auto;
+            border: 4px solid var(--border-primary);
+            border-radius: 1rem;
+        }
+
+        .traffic {
+            img {
+                margin-top: 0;
+            }
+        }
+
+        .flexRow {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+}
+
+.infoCard#programma,
+.infoCard#how {
+    cursor: pointer;
+}
+
+.calendarWrap,
+.howWrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-in-out;
+}
+
+.calendarWrap.open,
+.howWrap.open {
+    grid-template-rows: 1fr;
+}
+
+.faq {
+    width: 100%;
+    margin: 2rem 0;
+
+    .faqItem {
+        padding: 1rem 0;
+        background-color: var(--bg-shift-alt);
+        margin-bottom: 1rem;
+        border-radius: 28px;
+        border: 4px solid var(--border-primary);
+        cursor: pointer;
+
+
+        .faqAnswer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-in-out;
+        }
+
+        .faqAnswer.open {
+            grid-template-rows: 1fr;
+        }
+
+        p {
+            text-align: left;
+            margin-left: 1rem;
+        }
+    }
+
+}
+
+.faqTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.openBtn {
+    font-size: 2rem;
+    margin-right: 1rem;
+    aspect-ratio: 1/1;
+    padding: .5rem;
+    width: 3rem;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 1024px) {
+    .mobile {
+        display: none;
+    }
+
+    .infoSection {
+        flex-direction: row;
+        justify-content: space-between;
+
+        .infoCard {
+            width: 30%;
+        }
+    }
+
+    .infoCard#programma,
+    .infoCard#how {
+        cursor: default;
+    }
+
+    .calendarWrap,
+    .howWrap {
+        grid-template-rows: 1fr;
+    }
+}

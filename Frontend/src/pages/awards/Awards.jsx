@@ -11,12 +11,12 @@ export default function Awards() {
 
     useEffect(() => {
         loadProjectCount();
-    })
+    });
 
     async function loadProjectCount() {
-        const projData = await apiFetch("/project/count");
+        const projData = await apiFetch("/project/");
         if (!projData.success) return;
-        setProjectAmount(projData.count);
+        setProjectAmount(projData.projects.length);
     }
 
     return (
@@ -68,7 +68,8 @@ export default function Awards() {
                     <span className={`${s.subTitle} ${s.mobile}`}>Jij mag mee bepalen wie de publiekprijs verdient.</span>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
                     <span className={s.time}>UITREIKING OM 20:00 TIJDENS DE AWARD SHOW</span>
-                    <button>Praktische info<span className={s.mobile}>, klik hier</span> <img src="/assets/icons/arrowLink.svg" alt="arrow up right" className={s.arrowUp} /></button>
+                    {/* Comment tot info pagina online staat */}
+                    {/* <button>Praktische info<span className={s.mobile}>, klik hier</span> <img src="/assets/icons/arrowLink.svg" alt="arrow up right" className={s.arrowUp} /></button> */}
                 </div>
             </div>
         </>

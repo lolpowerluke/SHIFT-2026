@@ -29,23 +29,19 @@ export default function Detail() {
 
 	const project = data?.project ?? null;
 
-	useEffect(() => {
-		if (!project?.magazine) return;
-		const url =
-			project.magazine.url ??
-			`https://res.cloudinary.com/${project.magazine.cloud_name}/raw/upload/${project.magazine.path}`;
-		fetch(url, { method: "HEAD" })
-			.then((r) => {
-				const bytes = parseInt(r.headers.get("content-length"));
-				if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
-			})
-			.catch(() => {});
-	}, [project]);
-
-	useEffect(() => {
-		document.documentElement.classList.add("altBg", "no-icons");
-		return () => document.documentElement.classList.remove("altBg", "no-icons");
-	}, []);
+    useEffect(() => {
+        if (!project?.magazine) return;
+        const url =
+            project.magazine.url ??
+            `https://res.cloudinary.com/${project.magazine.cloud_name}/raw/upload/${project.magazine.path}`;
+        fetch(url, {method: "HEAD"})
+            .then((r) => {
+                const bytes = parseInt(r.headers.get("content-length"));
+                if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
+            })
+            .catch(() => {
+            });
+    }, [project]);
 
 	const guard = StatusMessage({ loading, error });
 	if (guard) return guard;
@@ -69,7 +65,7 @@ export default function Detail() {
 	return (
 		<>
 			<div className="headerSpacer"></div>
-			<div className={`${s.paperBg}`}>
+			<div className={`${s.paperBg} altBg`}>
 				<div className={`${s.ctxDetail}`}>
 					<div className={s.backButton}>
 						<button onClick={() => navigate(-1)}>
