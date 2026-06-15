@@ -51,10 +51,6 @@
             text-align: left;
         }
 
-        h4 {
-            margin: 0 auto;
-        }
-
         h2, h3, h4, p, div {
             margin-left: 5%;
         }
@@ -75,6 +71,10 @@
             padding: 0.5rem;
             width: 80%;
             border-radius: 10px;
+
+            * span {
+                margin-left: 0;
+            }
 
             .startTime {
                 font-weight: bold;
@@ -106,6 +106,20 @@
     }
 }
 
+.infoCard#programma, .infoCard#how {
+    cursor: pointer;
+}
+
+.calendarWrap, .howWrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-in-out;
+}
+
+.calendarWrap.open, .howWrap.open {
+    grid-template-rows: 1fr;
+}
+
 .faq {
     width: 100%;
     margin: 2rem 0;
@@ -118,11 +132,6 @@
         border: 4px solid var(--border-primary);
         cursor: pointer;
 
-        .faqTitle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
 
         .faqAnswer {
             display: grid;
@@ -142,9 +151,15 @@
 
 }
 
+.faqTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .openBtn {
     font-size: 2rem;
-    margin-right: 1.5rem;
+    margin-right: 1rem;
     aspect-ratio: 1/1;
     padding: .5rem;
     width: 3rem;
@@ -163,5 +178,11 @@
         .infoCard {
             width: 30%;
         }
+    }
+.infoCard#programma, .infoCard#how {
+    cursor: default;
+}
+    .calendarWrap, .howWrap {
+        grid-template-rows: 1fr;
     }
 }
