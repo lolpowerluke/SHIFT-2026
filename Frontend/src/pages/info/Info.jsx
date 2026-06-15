@@ -126,7 +126,7 @@ export default function Info() {
                                         <img src="https://placehold.co/50" alt="public transport"/>
                                         <div>
                                             <h4>OPENBAAR VERVOER</h4>
-                                            <p>Metro 5 tot Aumale of tram 81 tot Conscience.<br/>Beide op 8 minuten
+                                            <p>Metro 5 tot Aumale of tram 81 tot Conscience. Beide op 8 minuten
                                                 wandelen.
                                             </p>
                                         </div>

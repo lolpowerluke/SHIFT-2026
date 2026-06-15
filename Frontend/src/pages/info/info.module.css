@@ -39,15 +39,17 @@
 
     .infoCard {
         padding: 2rem 1rem;
-        /* background-color: var(--bg-shift-secondary); */
         display: flex;
         flex-direction: column;
-        /* border: 4px solid var(--border-primary); */
         border-radius: 28px;
         gap: .8rem;
+        background-color: var(--bg-shift-secondary);
+        border: 4px solid var(--border-primary);
+        box-shadow: 5px 5px 0 1px var(--shadow-primary);
+        margin-bottom: 2rem;
 
         * {
-            text-align: center;
+            text-align: left;
         }
 
         h2,
@@ -160,12 +162,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.whereWho {
-    border: 4px solid var(--border-primary);
-    border-radius: 25px;
-    background-color: var(--bg-shift-alt);
+    text-align: center;
 }
 
 .openBtn {
@@ -180,7 +177,7 @@
 @media only screen and (min-width: 1024px) {
     .mobile {
         display: none;
-    }
+    } 
 
     .infoSection {
         flex-direction: row;
@@ -189,6 +186,7 @@
         .infoCard {
             width: 30%;
         }
+
     }
 
     .infoCard#programma,
