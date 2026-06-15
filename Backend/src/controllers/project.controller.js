@@ -187,6 +187,68 @@ const getRandomProjects = async (req, res) => {
   }
 };
 
+const getAllProjectsAdmin = async (req, res) => {
+  try {
+    const [result] = await db.query(
+      `SELECT
+        p.id,
+        p.name,
+        p.description,
+        p.course,
+        p.promoter,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('id', i.id, 'cloud_name', i.cloud_name, 'path', i.path))
+          FROM (SELECT DISTINCT img.id, img.cloud_name, img.path FROM media img
+                JOIN media_project ip2 ON ip2.media = img.id
+                WHERE ip2.project = p.id AND ip2.type = 'image') i
+        ) AS media,
+        (
+          SELECT JSON_OBJECT('id', mg.id, 'cloud_name', mg.cloud_name, 'path', mg.path)
+          FROM media mg
+          JOIN media_project mp3 ON mp3.media = mg.id
+          WHERE mp3.project = p.id AND mp3.type = 'magazine'
+          LIMIT 1
+        ) AS magazine,
+        (
+          SELECT JSON_OBJECT('id', mv.id, 'cloud_name', mv.cloud_name, 'path', mv.path)
+          FROM media mv
+          JOIN media_project mp4 ON mp4.media = mv.id
+          WHERE mp4.project = p.id AND mp4.type = 'video'
+          LIMIT 1
+        ) AS video,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT(
+            'id', u2.id,
+            'firstname', u2.firstname,
+            'lastname', u2.lastname,
+            'email', u2.email,
+            'role', u2.role,
+            'picture', u2.picture,
+            'socials', u2.socials
+          ))
+          FROM (
+            SELECT DISTINCT
+              u3.id, u3.firstname, u3.lastname, u3.email, u3.role,
+              (SELECT JSON_OBJECT('cloud_name', img2.cloud_name, 'path', img2.path) FROM media img2
+               JOIN media_user iu ON iu.media = img2.id
+               WHERE iu.user = u3.id LIMIT 1) AS picture,
+              (SELECT JSON_ARRAYAGG(s.social) FROM socials s
+               WHERE s.user = u3.id) AS socials
+            FROM users u3
+            JOIN project_user pu2 ON pu2.user = u3.id
+            WHERE pu2.project = p.id
+          ) u2
+        ) AS members
+      FROM projects p
+      GROUP BY p.id, p.name, p.course;`,
+    );
+    res.status(200).json({ success: true, projects: result });
+  } catch (error) {
+    console.error(" error:", error);
+    res.status(500).json({ success: false, message: "Failed to get projects", error: error.message });
+  }
+};
+
 const getProjectCount = async (req, res) => {
   try {
     const result = await db.query(`SELECT COUNT(*) as count FROM projects;`);
@@ -491,4 +553,4 @@ const deleteProject = async (req, res) => {
   }
 };
 
-export { getAllProjects, getProject, getRandomProjects, getProjectCount, getAllMediaByType, createProject, updateProject, deleteProject };
+export { getAllProjects, getAllProjectsAdmin, getProject, getRandomProjects, getProjectCount, getAllMediaByType, createProject, updateProject, deleteProject };
