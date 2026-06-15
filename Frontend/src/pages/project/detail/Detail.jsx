@@ -8,6 +8,7 @@ import {
 import { memberDisplayName, memberAvatar } from "../../../utils/member.js";
 import { useFetch } from "../../../hooks/useFetch.js";
 import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
+import WinnerCard from "../../../components/winnerComponent/WinnerCard.jsx";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
@@ -108,6 +109,11 @@ export default function Detail() {
 							}
 							alt={project.name}
 						/>
+						{/* TODO: only render when a project won (need to do something with the backend)
+						    Also set `prize` dynamically (PUBLIEKPRIJS / JURYPRIJS / INNOVATIEPRIJS / IMPACTPRIJS). */}
+						<div className={s.winnerOverlay}>
+							<WinnerCard prize="PUBLIEKPRIJS" />
+						</div>
 					</div>
 
 					<div>

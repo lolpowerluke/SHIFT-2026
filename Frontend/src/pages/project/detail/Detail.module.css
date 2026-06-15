@@ -80,10 +80,38 @@ p {
 }
 
 .imgDiv {
-	img {
+	position: relative;
+
+	/* direct child only — must not leak onto the trophy img inside WinnerCard */
+	> img {
 		width: 100%;
 		outline: 6px solid var(--bg-shift-primary);
 		border-radius: 6px;
+		display: block;
+	}
+}
+
+/* WinnerCard badge laid over the bottom-right of the project image */
+.winnerOverlay {
+	position: absolute;
+	/* move badge right ↓ smaller value | move left ↑ bigger value */
+	right: 14px;
+	/* move badge down ↓ smaller value | move up ↑ bigger value */
+	bottom: 26px;
+	z-index: 2;
+}
+
+@media (max-width: 1024px) {
+	.winnerOverlay {
+		right: 14px;
+		bottom: 14px;
+	}
+}
+
+@media (max-width: 600px) {
+	.winnerOverlay {
+		right: 8px;
+		bottom: 8px;
 	}
 }
 
