@@ -51,7 +51,11 @@
             text-align: left;
         }
 
-        h2, h3, h4, p, div {
+        h2,
+        h3,
+        h4,
+        p,
+        div {
             margin-left: 5%;
         }
 
@@ -64,9 +68,9 @@
         }
 
         .timeSlot {
-            display: flex;
-            flex-direction: row;
-            gap: 1rem;
+            display: grid;
+            gap: .5rem;
+            grid-template-columns: auto auto 1fr;
             border: 3px solid var(--border-primary);
             padding: 0.5rem;
             width: 80%;
@@ -80,8 +84,7 @@
                 font-weight: bold;
             }
 
-            .event {
-            }
+            .event {}
         }
 
         iframe {
@@ -106,17 +109,20 @@
     }
 }
 
-.infoCard#programma, .infoCard#how {
+.infoCard#programma,
+.infoCard#how {
     cursor: pointer;
 }
 
-.calendarWrap, .howWrap {
+.calendarWrap,
+.howWrap {
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.3s ease-in-out;
 }
 
-.calendarWrap.open, .howWrap.open {
+.calendarWrap.open,
+.howWrap.open {
     grid-template-rows: 1fr;
 }
 
@@ -179,10 +185,14 @@
             width: 30%;
         }
     }
-.infoCard#programma, .infoCard#how {
-    cursor: default;
-}
-    .calendarWrap, .howWrap {
+
+    .infoCard#programma,
+    .infoCard#how {
+        cursor: default;
+    }
+
+    .calendarWrap,
+    .howWrap {
         grid-template-rows: 1fr;
     }
 }

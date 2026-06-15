@@ -4,17 +4,47 @@ import FAQItem from "../../components/FAQItem.jsx";
 import {useRef, useState} from "react";
 
 const events = [
-    {time: {hr: 17, min: 0}, event: "start"},
-    {time: {hr: 17, min: 30}, event: "Foodtrucks"},
-    {time: {hr: 19, min: 30}, event: "Sluiting stemmen"},
-    {time: {hr: 20, min: 0}, event: "Liveshow & awards"},
-    {time: {hr: 21, min: 30}, event: "Einde liveshow"},
-]
+	{ time: { hr: 17, min: 0 }, event: "start" },
+	{ time: { hr: 17, min: 30 }, event: "Foodtrucks" },
+	{ time: { hr: 19, min: 30 }, event: "Sluiting stemmen" },
+	{ time: { hr: 20, min: 0 }, event: "Liveshow & awards" },
+	{ time: { hr: 21, min: 30 }, event: "Einde liveshow" },
+];
 
 const faq = [
-    {title: "test", answer: "testAnswer"},
-    {title: "test", answer: "testAnswer"}
-]
+	{
+		title: "Is het festival gratis?",
+		answer: <>Ja, SHIFT festival is gratis.</>,
+	},
+	{
+		title: "Hoe schrijf ik mij in?",
+		answer: (
+			<>
+				Via de{" "}
+				<a
+					href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+					target="_blank"
+					rel="noreferrer"
+				>
+					deze website
+				</a>
+				.
+			</>
+		),
+	},
+	{
+		title: "Voor wie is SHIFT bedoeld?",
+		answer: "SHIFT is bedoeld voor toekomstige studenten die een studiekeuze willen maken, alumni, bedrijven en ouders, familie en vrienden van de derdejaarsstudenten.",
+	},
+	{
+		title: "Is de locatie toegankelijk voor rolstoelgebruikers?",
+		answer: "Ja, de locatie is toegankelijk voor rolstoelgebruikers.",
+	},
+	{
+		title: "Kan ik ter plaatse eten of drinken?",
+		answer: "Ja, er zijn gratis eet- en drinkmogelijkheden voorzien.",
+	},
+];
 
 export default function Info() {
     const [isProgrammaOpen, setIsProgrammaOpen] = useState(false);
