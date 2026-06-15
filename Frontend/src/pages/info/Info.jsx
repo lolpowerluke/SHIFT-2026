@@ -67,7 +67,8 @@ export default function Info() {
                     className={s.locationIcon}
                 />
                 <div className={s.heroTitle}>
-                    <div>Praktische Informatie</div>
+                    <span className={s.title}>PRAKTISCHE <br>
+                    </br>INFORMATIE</span>
                 </div>
                 <a href="#programma" className={`linkBtn ${s.heroBtn} ${s.mobile}`}>
                     Bekijk het programma

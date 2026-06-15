@@ -5,27 +5,25 @@
     z-index: 1;
     align-items: center;
     width: 85dvw;
-    margin: 80px auto 5rem;
+    margin: 8rem auto 5rem;
+    gap: 2.5rem;
 }
 
-.heroTitle {
-    margin: 0 0 2rem;
-    text-align: center;
-    font-size: clamp(50px, 7vw, 96px);
-    line-height: 1.05;
-    font-weight: bold;
-    text-transform: uppercase;
+.title {
+	font-size: 2rem;
+    font-weight: 800;
 }
+
 
 .locationIcon {
-    width: clamp(60px, 7.5vw, 110px);
+    width: clamp(100px, 7.5vw, 110px);
     height: auto;
     flex-shrink: 0;
-    rotate: 20deg;
+    rotate: 10deg;
 }
 
 .heroBtn {
-    align-self: flex-end;
+    align-self: center;
 }
 
 .mobile {
