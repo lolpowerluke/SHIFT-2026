@@ -2,11 +2,11 @@ import s from "../pages/countdown/Countdown.module.css";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { getCloudinaryUrl } from "../../src/utils/cloudinary.js";
 
-function mapProject(p) {
+export function mapProject(p) {
     return {
         id: p.id,
         title: p.name,
-        image: getCloudinaryUrl(p.media?.[0]) ?? "/assets/imageCard.png",
+        image: getCloudinaryUrl(p.image) ?? "/assets/imageCard.png",
         students: (p.members ?? []).map((m) =>
             [m.firstname, m.lastname].filter(Boolean).join(" ") || m.email || "Onbekend"
         ),
@@ -66,12 +66,12 @@ export default function Carousel() {
     };
 
     const fetchRandomProjects = (array) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled.slice(0, 5);
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled.slice(0, 5);
     };
 
     useEffect(() => {
