@@ -1,7 +1,7 @@
 import s from "./info.module.css";
 import ClockIcon from "../../components/clock/ClockIcon.jsx";
 import FAQItem from "../../components/FAQItem.jsx";
-import {useRef, useState} from "react";
+import {useState} from "react";
 
 const events = [
 	{ time: { hr: 17, min: 0 }, event: "start" },
@@ -91,7 +91,7 @@ export default function Info() {
                                     <div className={`${s.calendar}`}>
                                         {events.map((e) => (
                                             <div className={s.timeSlot}>
-                                                <ClockIcon hour={e.time.hr} minute={e.time.min}/>
+                                                <ClockIcon s={s} hour={e.time.hr} minute={e.time.min}/>
                                                 <span
                                                     className={s.startTime}>{`${e.time.hr}:${e.time.min.toString().padStart(2, "0")}`}</span>
                                                 <span className={s.event}>{e.event}</span>
@@ -110,8 +110,7 @@ export default function Info() {
                             <div className={`${s.howWrap} ${isHowOpen ? `${s.open}` : ''}`}>
                                 <div style={{overflow: 'hidden', width: '100%', marginLeft: '0', marginRight: '0'}}>
                                     <div className={`${s.flexRow}`}>
-                                        {/*TODO: add img*/}
-                                        <img src="https://placehold.co/50" alt="public transport"/>
+                                        <img src="/assets/icons/openbaarVervoer.svg" alt="public transport"/>
                                         <div>
                                             <h4>OPENBAAR VERVOER</h4>
                                             <p>Metro 5 tot Aumale of tram 81 tot Conscience. Beide op 8 minuten
@@ -120,17 +119,15 @@ export default function Info() {
                                         </div>
                                     </div>
                                     <div className={`${s.flexRow}`}>
-                                        {/*TODO: add img*/}
-                                        <img src="https://placehold.co/50" alt="public transport"/>
+                                        <img src="/assets/icons/fiets.svg" alt="fiets"/>
                                         <div>
                                             <h4>MET DE FIETS</h4>
                                             <p>Veilige fietsenstalling aanwezig aan de hoofdingang van Campus Kaai.</p>
                                         </div>
 
                                     </div>
-                                    <div className={`${s.flexRow} ${s.traffic}`}>
-                                        {/*TODO: add img*/}
-                                        <img src="https://placehold.co/50" alt="public transport"/>
+                                    <div className={`${s.flexRow}`}>
+                                        <img src="/assets/icons/auto.svg" alt="auto"/>
                                         <div>
                                             <h4>MET DE AUTO</h4>
                                             <p>Beperkt parkeren op de campus. Gratis bezoekersparking in de buurt.</p>
@@ -143,7 +140,7 @@ export default function Info() {
                 </div>
             </div>
             <div className="ctx">
-                <h3>FAQ</h3>
+                <h2>FAQ</h2>
                 <div className={`${s.faq}`}>
                     {faq.map((q, index) => (
                         <FAQItem key={index} title={q.title} answer={q.answer} s={s}/>
