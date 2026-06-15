@@ -88,7 +88,47 @@ export default function List() {
 					))}
 				</div>
 			</div>
-
+			<p><b>Winnaars</b></p>
+			<div className={s.cardWrapper}>
+				<div className={s.winCard}>
+					<div className={s.projectCard}>
+						<p className={s.cardName}>Name student</p>
+						<div className={s.avatarWrap}>
+						<img className={s.avatarImg} src="/assets/icons/3de jaars temp.png" alt="profile" />
+						<img className={s.trophyImg} src="/assets/impact_award.svg" alt="Impact Trophy" />
+						</div>
+						<p className={s.projectName}>Project Name</p>
+						<button className={s.bekijkBtn}>Bekijk project</button>
+					</div>
+					<div className={s.projectCard}>
+						<p className={s.cardName}>Name student</p>
+						<div className={s.avatarWrap}>
+						<img className={s.avatarImg} src="/assets/icons/3de jaars temp.png" alt="profile" />
+						<img className={s.trophyImg} src="/assets/innovative_award.svg" alt="Innovatie Trophy" />
+						</div>
+						<p className={s.projectName}>Project Name</p>
+						<button className={s.bekijkBtn}>Bekijk project</button>
+					</div>
+					<div className={s.projectCard}>
+						<p className={s.cardName}>Name student</p>
+						<div className={s.avatarWrap}>
+						<img className={s.avatarImg} src="/assets/icons/3de jaars temp.png" alt="profile" />
+						<img className={s.trophyImg} src="/assets/jury_award.svg" alt="Jury Trophy" />
+						</div>
+						<p className={s.projectName}>Project Name</p>
+						<button className={s.bekijkBtn}>Bekijk project</button>
+					</div>
+					<div className={s.projectCard}>
+						<p className={s.cardName}>Name student</p>
+						<div className={s.avatarWrap}>
+						<img className={s.avatarImg} src="/assets/icons/3de jaars temp.png" alt="profile" />
+						<img className={s.trophyImg} src="/assets/public_award.svg" alt="Public Trophy" />
+						</div>
+						<p className={s.projectName}>Project Name</p>
+						<button className={s.bekijkBtn}>Bekijk project</button>
+					</div>
+				</div>
+  			</div>
 			<p className={s.projectenCount}>
 				{activeCategory} ({filteredProjects.length} Projecten)
 			</p>
