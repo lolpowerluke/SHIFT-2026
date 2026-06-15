@@ -11,7 +11,7 @@ export default function ClockIcon({s, hour, minute, size = 24}) {
 
     return (
         <div className={s.clock}>
-            <svg viewBox="0 0 100 100" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="-2.5 -2.5 105 105" width={size} height={size} xmlns="http://www.w3.org/2000/svg">
                 <circle cx={c} cy={c} r={48} fill="transparent" stroke="currentColor" strokeWidth={5}/>
                 <line x1={c} y1={c} x2={c} y2={20}
                       stroke="darkred" strokeWidth={5} strokeLinecap="round"
