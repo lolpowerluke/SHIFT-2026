@@ -127,19 +127,25 @@
       width: 100%;;
       margin: 0 auto;
 	  margin-bottom: 25px;
+	  background: var(--bg-shift-secondary);
+      outline: 4px solid var(--bg-shift-secondary);
+	  box-shadow: 1.5px 1.5px 0 6px var(--shadow-primary);
+	  outline-offset: 5px;
+      border-radius: 20px;
+
+	  h3 {
+		text-align: center;
+		padding-top: 15px;
+	  }
+	  
     }
  
     /* Main cream box */
     .winCard {
-      background: var(--bg-shift-secondary);
-      outline: 4px solid var(--bg-shift-secondary);
-	  outline-offset: 5px;
-      border-radius: 20px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       padding: 32px 24px;
       gap: 0;
-	  box-shadow: 1.5px 1.5px 0 6px var(--shadow-primary);
     }
  
     /* Individual card column */
@@ -154,20 +160,20 @@
     .cardName {
       font-weight: 700;
       font-size: 17px;
-      color: #000000;
+      color: var(--txt-shift-primary);
       margin: 0 0 14px 0;
       text-align: center;
     }
  
     .avatarWrap {
       position: relative;
-      width: 150px;
-      height: 160px;
+      width: 200px;
+      height: 225px;
       margin-bottom: 16px;
     }
     .avatarImg {
-      width: 140px;
-      height: 155px;
+      width: 200px;
+      height: 225px;
       border-radius: 14px;
       object-fit: cover;
       display: block;
@@ -191,7 +197,7 @@
       font-weight: 450;
       font-size: 18px;
       line-height: 24px;
-      color: #000000;
+      color: var(--txt-shift-primary);
       margin: 0 0 16px 0;
       text-align: center;
     }
@@ -206,3 +212,38 @@
       box-shadow: 0px 0px 0px #000000;
     }
 
+	.awardBox {
+	position: relative;
+	width: 225px;
+	margin-top: -60px;
+	margin-bottom: 25px;
+	pointer-events: none;
+	z-index: 3;
+	}
+
+	.awardBox img {
+	width: 100%;
+	height: auto;
+	display: block;
+	}
+
+	.awardBoxLabel {
+	position: absolute;
+	left: 37%;
+	transform: translate(-50%, -50%) rotate(-6.6deg);
+	font-weight: 700;
+	color: var(--txt-shift-primary);
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+.awardBoxLabel:first-of-type {
+  top: 18%;
+  font-size: 20px;
+}
+
+.awardBoxLabel:last-of-type {
+  top: 60%;
+  font-size: 15px;
+  left: 28%;
+}

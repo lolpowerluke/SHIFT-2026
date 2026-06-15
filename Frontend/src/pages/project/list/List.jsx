@@ -88,43 +88,55 @@ export default function List() {
 					))}
 				</div>
 			</div>
-			<p><b>Winnaars</b></p>
 			<div className={s.cardWrapper}>
+				<h3>WINNAARS</h3>
 				<div className={s.winCard}>
 					<div className={s.projectCard}>
-						<p className={s.cardName}>Name student</p>
 						<div className={s.avatarWrap}>
 						<img className={s.avatarImg} src="/assets/icons/3de jaars temp.png" alt="profile" />
 						<img className={s.trophyImg} src="/assets/impact_award.svg" alt="Impact Trophy" />
 						</div>
-						<p className={s.projectName}>Project Name</p>
+						<div className={s.awardBox}>
+							<img src="/assets/award_box.svg" alt="award box" />
+							<p className={s.awardBoxLabel}><b>Name student</b></p>
+							<p className={s.awardBoxLabel}>project name</p>
+						</div>
 						<button className={s.bekijkBtn}>Bekijk project</button>
 					</div>
 					<div className={s.projectCard}>
-						<p className={s.cardName}>Name student</p>
 						<div className={s.avatarWrap}>
 						<img className={s.avatarImg} src="/assets/icons/3de jaars temp.png" alt="profile" />
-						<img className={s.trophyImg} src="/assets/innovative_award.svg" alt="Innovatie Trophy" />
+						<img className={s.trophyImg} src="/assets/innovative_award.svg" alt="Impact Trophy" />
 						</div>
-						<p className={s.projectName}>Project Name</p>
+						<div className={s.awardBox}>
+							<img src="/assets/award_box.svg" alt="award box" />
+							<p className={s.awardBoxLabel}><b>Name student</b></p>
+							<p className={s.awardBoxLabel}>project name</p>
+						</div>
 						<button className={s.bekijkBtn}>Bekijk project</button>
 					</div>
 					<div className={s.projectCard}>
-						<p className={s.cardName}>Name student</p>
 						<div className={s.avatarWrap}>
 						<img className={s.avatarImg} src="/assets/icons/3de jaars temp.png" alt="profile" />
-						<img className={s.trophyImg} src="/assets/jury_award.svg" alt="Jury Trophy" />
+						<img className={s.trophyImg} src="/assets/jury_award.svg" alt="Impact Trophy" />
 						</div>
-						<p className={s.projectName}>Project Name</p>
+						<div className={s.awardBox}>
+							<img src="/assets/award_box.svg" alt="award box" />
+							<p className={s.awardBoxLabel}><b>Name student</b></p>
+							<p className={s.awardBoxLabel}>project name</p>
+						</div>
 						<button className={s.bekijkBtn}>Bekijk project</button>
 					</div>
 					<div className={s.projectCard}>
-						<p className={s.cardName}>Name student</p>
 						<div className={s.avatarWrap}>
 						<img className={s.avatarImg} src="/assets/icons/3de jaars temp.png" alt="profile" />
-						<img className={s.trophyImg} src="/assets/public_award.svg" alt="Public Trophy" />
+						<img className={s.trophyImg} src="/assets/public_award.svg" alt="Impact Trophy" />
 						</div>
-						<p className={s.projectName}>Project Name</p>
+						<div className={s.awardBox}>
+							<img src="/assets/award_box.svg" alt="award box" />
+							<p className={s.awardBoxLabel}><b>Name student</b></p>
+							<p className={s.awardBoxLabel}>project name</p>
+						</div>
 						<button className={s.bekijkBtn}>Bekijk project</button>
 					</div>
 				</div>
