@@ -2,7 +2,7 @@ import s from "../pages/countdown/Countdown.module.css";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { getCloudinaryUrl } from "../../src/utils/cloudinary.js";
 
-function mapProject(p) {
+export function mapProject(p) {
     return {
         id: p.id,
         title: p.name,
@@ -65,22 +65,16 @@ export default function Carousel() {
         window.open("/project/", "_blank", "noopener,noreferrer");
     };
 
-    const fetchRandomProjects = (array) => {
-    const shuffled = [...array];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    return shuffled.slice(0, 5);
-    };
-
     useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/project`)
+        fetch(`${import.meta.env.VITE_API_URL}/project/random/5`)
             .then((res) => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
             })
-            .then((data) => setProjects(fetchRandomProjects(data.projects.map(mapProject))))
+            .then((data) => {
+                console.log(data);
+                setProjects(data.projects.map(mapProject))
+            })
             .catch((err) => console.error(err))
             .finally(() => setLoading(false));
     }, []);
