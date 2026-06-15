@@ -54,8 +54,7 @@
         h2,
         h3,
         h4,
-        p,
-        div {
+        p {
             margin-left: 5%;
         }
 
@@ -68,11 +67,13 @@
         }
 
         .timeSlot {
+            align-self: center;
+            margin-left: 0;
             display: grid;
             gap: .5rem;
             grid-template-columns: auto auto 1fr;
             border: 3px solid var(--border-primary);
-            padding: 0.5rem;
+            padding: 0.5rem 0;
             width: 80%;
             border-radius: 10px;
 
@@ -133,6 +134,10 @@
             }
         }
     }
+}
+
+.clock{
+    margin: auto 5px;
 }
 
 .infoCard#programma,

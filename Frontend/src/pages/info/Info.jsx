@@ -100,7 +100,7 @@ export default function Info() {
                                     <div className={`${s.calendar}`}>
                                         {events.map((e) => (
                                             <div className={s.timeSlot}>
-                                                <ClockIcon hour={e.time.hr} minute={e.time.min}/>
+                                                <ClockIcon s={s} hour={e.time.hr} minute={e.time.min}/>
                                                 <span
                                                     className={s.startTime}>{`${e.time.hr}:${e.time.min.toString().padStart(2, "0")}`}</span>
                                                 <span className={s.event}>{e.event}</span>
@@ -147,7 +147,7 @@ export default function Info() {
                 </div>
             </div>
             <div className="ctx">
-                <h3>FAQ</h3>
+                <h2>FAQ</h2>
                 <div className={`${s.faq}`}>
                     {faq.map((q, index) => (
                         <FAQItem key={index} title={q.title} answer={q.answer} s={s}/>
