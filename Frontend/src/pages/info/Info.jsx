@@ -79,7 +79,7 @@ export default function Info() {
                 <div className="ctx">
                     <div className={`${s.infoSection}`}>
                         <div className={`${s.infoCard}`}>
-                            <h3>Waar</h3>
+                            <h2>WAAR?</h2>
                             <h4>Erasmushogeschool Brussel</h4>
                             <p>Campus Kaai<br/>
                                 Nijverheidskaai 170, 1070 Anderlecht</p>
@@ -91,9 +91,11 @@ export default function Info() {
                                 Google Maps </a>
                         </div>
                         <div className={`${s.infoCard}`} id={s.programma} onClick={handleProgrammaClick}>
-                            <h3 className={`${s.faqTitle}`}>
-                                wanneer <span className={`${s.openBtn} ${s.mobile}`}>{isProgrammaOpen ? "-" : "+"}</span>
-                            </h3>
+                            <div className={s.whereWho}>
+                                <h2 className={`${s.faqTitle}`}>
+                                    WANNEER? <span className={`${s.openBtn} ${s.mobile}`}>{isProgrammaOpen ? "-" : "+"}</span>
+                                </h2>
+                            </div>
                             <h4>Vrijdag 19 juni 2026</h4>
                             <p>17:00 - 21:30</p>
                             <div className={`${s.calendarWrap} ${isProgrammaOpen ? `${s.open}` : ''}`}>
@@ -111,9 +113,11 @@ export default function Info() {
                             </div>
                         </div>
                         <div className={`${s.infoCard}`} id={s.how} onClick={handleHowClick}>
-                            <h3 className={`${s.faqTitle}`}>
-                                Hoe <span className={`${s.openBtn} ${s.mobile}`}>{isHowOpen ? "-" : "+"}</span>
-                            </h3>
+                            <div className={s.whereWho}>
+                                <h2 className={`${s.faqTitle}`}>
+                                    HOE? <span className={`${s.openBtn} ${s.mobile}`}>{isHowOpen ? "-" : "+"}</span>
+                                </h2>
+                            </div>
                             <p>Campus Kaai is vlot bereikbaar met het openbaar vervoer, per fiets, en met de auto.</p>
                             <div className={`${s.howWrap} ${isHowOpen ? `${s.open}` : ''}`}>
                                 <div style={{overflow: 'hidden', width: '100%', marginLeft: '0', marginRight: '0'}}>
