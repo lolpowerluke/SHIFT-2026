@@ -1,7 +1,7 @@
 import s from "./info.module.css";
 import ClockIcon from "../../components/clock/ClockIcon.jsx";
 import FAQItem from "../../components/FAQItem.jsx";
-import {useRef, useState} from "react";
+import {useState} from "react";
 
 const events = [
 	{ time: { hr: 17, min: 0 }, event: "start" },
@@ -14,23 +14,11 @@ const events = [
 const faq = [
 	{
 		title: "Is het festival gratis?",
-		answer: <>Ja, SHIFT festival is gratis.</>,
+		answer: "Ja, SHIFT festival is gratis.",
 	},
 	{
 		title: "Hoe schrijf ik mij in?",
-		answer: (
-			<>
-				Via de{" "}
-				<a
-					href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-					target="_blank"
-					rel="noreferrer"
-				>
-					deze website
-				</a>
-				.
-			</>
-		),
+		answer: <>Via {<a href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" target="_blank" rel="noreferrer">deze website</a>}.<br/>Inschrijven is niet verplicht om dit evenement bij te wonen, maar wel sterk aangeraden.</>
 	},
 	{
 		title: "Voor wie is SHIFT bedoeld?",
@@ -67,7 +55,8 @@ export default function Info() {
                     className={s.locationIcon}
                 />
                 <div className={s.heroTitle}>
-                    <div>Praktische Informatie</div>
+                    <span className={s.title}>PRAKTISCHE <br>
+                    </br>INFORMATIE</span>
                 </div>
                 <a href="#programma" className={`linkBtn ${s.heroBtn} ${s.mobile}`}>
                     Bekijk het programma
@@ -78,7 +67,7 @@ export default function Info() {
                 <div className="ctx">
                     <div className={`${s.infoSection}`}>
                         <div className={`${s.infoCard}`}>
-                            <h3>Waar</h3>
+                            <h2>WAAR?</h2>
                             <h4>Erasmushogeschool Brussel</h4>
                             <p>Campus Kaai<br/>
                                 Nijverheidskaai 170, 1070 Anderlecht</p>
@@ -90,9 +79,11 @@ export default function Info() {
                                 Google Maps </a>
                         </div>
                         <div className={`${s.infoCard}`} id={s.programma} onClick={handleProgrammaClick}>
-                            <h3 className={`${s.faqTitle}`}>
-                                wanneer <span className={`${s.openBtn} ${s.mobile}`}>{isProgrammaOpen ? "-" : "+"}</span>
-                            </h3>
+                            <div className={s.whereWho}>
+                                <h2 className={`${s.faqTitle}`}>
+                                    WANNEER? <span className={`${s.openBtn} ${s.mobile}`}>{isProgrammaOpen ? "-" : "+"}</span>
+                                </h2>
+                            </div>
                             <h4>Vrijdag 19 juni 2026</h4>
                             <p>17:00 - 21:30</p>
                             <div className={`${s.calendarWrap} ${isProgrammaOpen ? `${s.open}` : ''}`}>
@@ -100,7 +91,7 @@ export default function Info() {
                                     <div className={`${s.calendar}`}>
                                         {events.map((e) => (
                                             <div className={s.timeSlot}>
-                                                <ClockIcon hour={e.time.hr} minute={e.time.min}/>
+                                                <ClockIcon s={s} hour={e.time.hr} minute={e.time.min}/>
                                                 <span
                                                     className={s.startTime}>{`${e.time.hr}:${e.time.min.toString().padStart(2, "0")}`}</span>
                                                 <span className={s.event}>{e.event}</span>
@@ -110,34 +101,33 @@ export default function Info() {
                             </div>
                         </div>
                         <div className={`${s.infoCard}`} id={s.how} onClick={handleHowClick}>
-                            <h3 className={`${s.faqTitle}`}>
-                                Hoe <span className={`${s.openBtn} ${s.mobile}`}>{isHowOpen ? "-" : "+"}</span>
-                            </h3>
+                            <div className={s.whereWho}>
+                                <h2 className={`${s.faqTitle}`}>
+                                    HOE? <span className={`${s.openBtn} ${s.mobile}`}>{isHowOpen ? "-" : "+"}</span>
+                                </h2>
+                            </div>
                             <p>Campus Kaai is vlot bereikbaar met het openbaar vervoer, per fiets, en met de auto.</p>
                             <div className={`${s.howWrap} ${isHowOpen ? `${s.open}` : ''}`}>
                                 <div style={{overflow: 'hidden', width: '100%', marginLeft: '0', marginRight: '0'}}>
-                                    <div className={`${s.flexRow}`}>
-                                        {/*TODO: add img*/}
-                                        <img src="https://placehold.co/50" alt="public transport"/>
+                                    <div className={`${s.flexRow} ${s.howto}`}>
+                                        <img src="/assets/icons/openbaarVervoer.svg" alt="public transport"/>
                                         <div>
                                             <h4>OPENBAAR VERVOER</h4>
-                                            <p>Metro 5 tot Aumale of tram 81 tot Conscience.<br/>Beide op 8 minuten
+                                            <p>Metro 5 tot Aumale of tram 81 tot Conscience. Beide op 8 minuten
                                                 wandelen.
                                             </p>
                                         </div>
                                     </div>
-                                    <div className={`${s.flexRow}`}>
-                                        {/*TODO: add img*/}
-                                        <img src="https://placehold.co/50" alt="public transport"/>
+                                    <div className={`${s.flexRow} ${s.howto}`}>
+                                        <img src="/assets/icons/fiets.svg" alt="fiets"/>
                                         <div>
                                             <h4>MET DE FIETS</h4>
                                             <p>Veilige fietsenstalling aanwezig aan de hoofdingang van Campus Kaai.</p>
                                         </div>
 
                                     </div>
-                                    <div className={`${s.flexRow} ${s.traffic}`}>
-                                        {/*TODO: add img*/}
-                                        <img src="https://placehold.co/50" alt="public transport"/>
+                                    <div className={`${s.flexRow} ${s.howto}`}>
+                                        <img src="/assets/icons/auto.svg" alt="auto"/>
                                         <div>
                                             <h4>MET DE AUTO</h4>
                                             <p>Beperkt parkeren op de campus. Gratis bezoekersparking in de buurt.</p>
@@ -150,7 +140,7 @@ export default function Info() {
                 </div>
             </div>
             <div className="ctx">
-                <h3>FAQ</h3>
+                <h2>FAQ</h2>
                 <div className={`${s.faq}`}>
                     {faq.map((q, index) => (
                         <FAQItem key={index} title={q.title} answer={q.answer} s={s}/>
