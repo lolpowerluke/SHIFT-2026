@@ -10,10 +10,10 @@ import Login from "./pages/login/Login.jsx";
 import Form from "./pages/project/form/Form.jsx";
 import List from "./pages/project/list/List.jsx";
 import Detail from "./pages/project/detail/Detail.jsx";
+import Info from "./pages/info/Info.jsx";
 import Awards from "./pages/awards/Awards.jsx";
 import NotFound from "./pages/error/NotFound.jsx";
 
-// TODO: add actual page elements instead of placeholder strings
 const router = createBrowserRouter([
     {
         element: <PageLayout />,
@@ -37,11 +37,9 @@ const router = createBrowserRouter([
             { path: Routes.ProjectenPageDetails, element: <Detail /> },
             { path: Routes.uMoeder, element: "is dik" }, //same as {path: "/uMoeder", element: "isDik"
             { path: Routes.NotFound, element: <NotFound /> },
+            { path: Routes.Info, element: <Info /> },
+
         ],
-    },
-    {
-        element: <BareLayout />,
-        children: [{ path: Routes.Root, element: <Countdown /> }],
     },
 ]);
 export default router;

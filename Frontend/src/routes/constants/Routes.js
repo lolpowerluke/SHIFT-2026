@@ -11,6 +11,7 @@ const Routes = {
 	ProjectForm: "/project/form",
 	ProjectFormOld: "/project-form",
 	ProjectenPageDetails: "/project/:id",
+	Info: "/info",
 	Awards: "/awards",
 	uMoeder: "/u/Moeder",
 	NotFound: "/404",
