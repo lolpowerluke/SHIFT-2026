@@ -148,6 +148,45 @@ const getProject = async (req, res) => {
   }
 };
 
+const getRandomProjects = async (req, res) => {
+  try {
+    const { count } = req.params;
+    const [result] = await db.query(
+      `SELECT
+        p.id,
+        p.name,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('id', i.id, 'cloud_name', i.cloud_name, 'path', i.path))
+          FROM (
+            SELECT DISTINCT img.id, img.cloud_name, img.path
+            FROM media img
+            JOIN media_project ip2 ON ip2.media = img.id
+            WHERE ip2.project = p.id AND ip2.type = 'image'
+          ) i
+        ) AS media,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('firstname', u2.firstname, 'lastname', u2.lastname))
+          FROM (
+            SELECT DISTINCT u3.firstname, u3.lastname
+            FROM users u3
+            JOIN project_user pu2 ON pu2.user = u3.id
+            WHERE pu2.project = p.id
+            LIMIT 2
+          ) u2
+        ) AS members
+      FROM projects p
+      ORDER BY RAND()
+      LIMIT ?`,
+      [parseInt(count)]
+    );
+
+    res.status(200).json({ success: true, projects: result });
+  } catch (error) {
+    console.error("error:", error);
+    res.status(500).json({ success: false, message: "Failed to get random projects", error: error.message });
+  }
+};
+
 const getProjectCount = async (req, res) => {
   try {
     const result = await db.query(`SELECT COUNT(*) as count FROM projects;`);
@@ -452,4 +491,4 @@ const deleteProject = async (req, res) => {
   }
 };
 
-export { getAllProjects, getProject, getProjectCount, getAllMediaByType, createProject, updateProject, deleteProject };
+export { getAllProjects, getProject, getRandomProjects, getProjectCount, getAllMediaByType, createProject, updateProject, deleteProject };

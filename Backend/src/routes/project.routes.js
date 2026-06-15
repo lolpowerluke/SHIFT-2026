@@ -12,6 +12,7 @@ const projectUpload = upload.fields([
 ]);
 
 router.get("/", getAllProjects);
+router.get("/random/:count", getAllProjects);
 router.get("/count", getProjectCount);
 router.get("/media/:type", getAllMediaByType);
 router.get("/:id", getProject);
