@@ -14,23 +14,11 @@ const events = [
 const faq = [
 	{
 		title: "Is het festival gratis?",
-		answer: <>Ja, SHIFT festival is gratis.</>,
+		answer: "Ja, SHIFT festival is gratis.",
 	},
 	{
 		title: "Hoe schrijf ik mij in?",
-		answer: (
-			<>
-				Via de{" "}
-				<a
-					href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-					target="_blank"
-					rel="noreferrer"
-				>
-					deze website
-				</a>
-				.
-			</>
-		),
+		answer: <>Via {<a href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival" target="_blank" rel="noreferrer">deze website</a>}.<br/>Inschrijven is niet verplicht om dit evenement bij te wonen, maar wel sterk aangeraden.</>
 	},
 	{
 		title: "Voor wie is SHIFT bedoeld?",
