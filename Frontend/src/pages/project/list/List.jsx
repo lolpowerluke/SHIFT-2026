@@ -5,8 +5,6 @@ import { useFetch } from "../../../hooks/useFetch.js";
 import { mapProject } from "../../../utils/member.js";
 import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
 import { getCloudinaryUrl } from "../../../utils/cloudinary.js";
-import Throbber from "../../../components/Throbber.jsx";
-import ErrorComponent from "../../../components/errorComponent/ErrorComponent.jsx";
 
 const CATEGORIES = [
 	"Alle Projecten",
@@ -53,10 +51,8 @@ export default function List() {
 
 		return matchesSearch && matchesCategory;
 	});
-
-	// TODO: add loading element
-	if (loading) return <p className="ctx">Laden...</p>;
-	if (error) return <ErrorComponent error={error} />;
+	const guard = StatusMessage({ loading, error });
+	if (guard) return guard;
 
 	return (
 		<main className="ctx headerSpacer">
