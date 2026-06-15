@@ -10,6 +10,7 @@ import apiRoutes from "./routes/api.routes.js"
 import authRoutes from "./routes/auth.routes.js";
 // import mailRoutes from "./routes/mail.routes.js";
 import projectRoutes from "./routes/project.routes.js";
+import votingRoutes from "./routes/voting.routes.js";
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use("/api", apiRoutes);
 app.use("/auth", authRoutes);
 // app.use("/mail", mailRoutes);
 app.use("/project", projectRoutes);
+app.use("/voting", votingRoutes);
 
 app.get('/health', async (req, res) => {
   try {
