@@ -109,7 +109,7 @@ export default function Info() {
                             <p>Campus Kaai is vlot bereikbaar met het openbaar vervoer, per fiets, en met de auto.</p>
                             <div className={`${s.howWrap} ${isHowOpen ? `${s.open}` : ''}`}>
                                 <div style={{overflow: 'hidden', width: '100%', marginLeft: '0', marginRight: '0'}}>
-                                    <div className={`${s.flexRow}`}>
+                                    <div className={`${s.flexRow} ${s.howto}`}>
                                         <img src="/assets/icons/openbaarVervoer.svg" alt="public transport"/>
                                         <div>
                                             <h4>OPENBAAR VERVOER</h4>
@@ -118,7 +118,7 @@ export default function Info() {
                                             </p>
                                         </div>
                                     </div>
-                                    <div className={`${s.flexRow}`}>
+                                    <div className={`${s.flexRow} ${s.howto}`}>
                                         <img src="/assets/icons/fiets.svg" alt="fiets"/>
                                         <div>
                                             <h4>MET DE FIETS</h4>
@@ -126,7 +126,7 @@ export default function Info() {
                                         </div>
 
                                     </div>
-                                    <div className={`${s.flexRow}`}>
+                                    <div className={`${s.flexRow} ${s.howto}`}>
                                         <img src="/assets/icons/auto.svg" alt="auto"/>
                                         <div>
                                             <h4>MET DE AUTO</h4>
