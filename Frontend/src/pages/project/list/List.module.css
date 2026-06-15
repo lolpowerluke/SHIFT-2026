@@ -80,6 +80,7 @@
 	margin: 0 0 1rem;
 	font-weight: bold;
 	text-align: left;
+	margin-bottom: 25px;
 }
 
 .projectenGrid {
@@ -121,3 +122,87 @@
 		grid-template-columns: 1fr;
 	}
 }
+
+.cardWrapper {
+      width: 100%;;
+      margin: 0 auto;
+	  margin-bottom: 25px;
+    }
+ 
+    /* Main cream box */
+    .winCard {
+      background: var(--bg-shift-secondary);
+      outline: 4px solid var(--bg-shift-secondary);
+	  outline-offset: 5px;
+      border-radius: 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 32px 24px;
+      gap: 0;
+	  box-shadow: 1.5px 1.5px 0 6px var(--shadow-primary);
+    }
+ 
+    /* Individual card column */
+    .projectCard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px;
+    }
+ 
+    /* Name above avatar */
+    .cardName {
+      font-weight: 700;
+      font-size: 17px;
+      color: #000000;
+      margin: 0 0 14px 0;
+      text-align: center;
+    }
+ 
+    .avatarWrap {
+      position: relative;
+      width: 150px;
+      height: 160px;
+      margin-bottom: 16px;
+    }
+    .avatarImg {
+      width: 140px;
+      height: 155px;
+      border-radius: 14px;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+
+    .trophyImg {
+      position: absolute;
+      top: -8px;
+      right: -6px;
+      width: 65px;
+      height: 65px;
+      z-index: 2;
+	  transform: rotate(15deg);
+    }
+ 
+    .projectName {
+      font-weight: 450;
+      font-size: 18px;
+      line-height: 24px;
+      color: #000000;
+      margin: 0 0 16px 0;
+      text-align: center;
+    }
+ 
+    .bekijk-btn:hover {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0px #000000;
+    }
+ 
+    .bekijk-btn:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0px 0px 0px #000000;
+    }
+
