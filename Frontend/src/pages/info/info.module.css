@@ -138,6 +138,8 @@
 
 .clock{
     margin: auto 5px;
+    padding: 5px;
+    background-color: transparent;
 }
 
 .infoCard#programma,
