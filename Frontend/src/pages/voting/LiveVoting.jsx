@@ -1,5 +1,6 @@
 import { useState } from "react";
 import s from "./LiveVoting.module.css";
+import Loading from "../../components/loadingComponent/Loading.jsx";
 
 export default function LiveVoting() {
 	const [selectedProject, setSelectedProject] = useState(null);
@@ -43,17 +44,14 @@ export default function LiveVoting() {
 
 	if (voteFinished) {
 		return (
-			<div className={`${s.ctx} ${s.successContainer}`}>
-				<h1>JOUW STEM IS OPGENOMEN!</h1>
-				<div className={s.logoWrapper}>
-					<img
-						src="/assets/icons/logo-s.png"
-						alt="Logo"
-						className={s.successLogo}
-					/>
+			<>
+				<div className="headerSpacer"></div>
+				<div className={`${s.ctx} ${s.successContainer}`}>
+					<h1>JOUW STEM IS OPGENOMEN!</h1>
+					<Loading />
+					<p className={s.redirectText}>REDIRECTING</p>
 				</div>
-				<p className={s.redirectText}>REDIRECT</p>
-			</div>
+			</>
 		);
 	}
 
@@ -62,9 +60,7 @@ export default function LiveVoting() {
 			<div className="headerSpacer"></div>
 			<div className={`${s.ctx} ctx`}>
 				<h1>STEM HIER!</h1>
-				<h2>
-					DRUK OP HET PROJECT DIE JOUW STEM KRIJGT.
-				</h2>
+				<h2>DRUK OP HET PROJECT DIE JOUW STEM KRIJGT.</h2>
 				<div className={s.projectsGrid}>
 					{projects.map((project) => (
 						<div

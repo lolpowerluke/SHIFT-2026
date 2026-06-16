@@ -8,7 +8,8 @@
 		margin: 0;
 	}
 
-	h2 {
+	> h2 {
+		margin-top: 0;
 		margin-bottom: 40px;
 		font-size: 30px;
 	}
@@ -17,13 +18,12 @@
 .projectsGrid {
 	display: flex;
 	flex-direction: column;
-	gap: 70px;
-	width: 100%;
+	gap: 20px;
 
 	.projectCard {
 		cursor: pointer;
 		border-radius: 10px;
-		border: 4px solid var(--border-primary);
+		border: 5px solid var(--border-primary);
 		background: var(--shift-orange);
 		padding: 10px;
 		box-shadow:
@@ -51,19 +51,19 @@
 		}
 
 		h2 {
-			margin-bottom: 0;
+			margin: 10px 0 0;
 		}
 
 		&:nth-child(1) {
-			transform: rotate(-10deg);
+			transform: rotate(-6deg);
 		}
 
 		&:nth-child(2) {
-			transform: rotate(10deg);
+			transform: rotate(5deg);
 		}
 
 		&:nth-child(3) {
-			transform: rotate(-12deg);
+			transform: rotate(-6deg);
 		}
 	}
 }
@@ -78,51 +78,54 @@
 	justify-content: center;
 	z-index: 1000;
 	padding: 20px;
-}
 
-.modal {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	background: #f5a623;
-	border: 4px solid black;
-	border-radius: 28px;
-	width: 100%;
-	max-width: 340px;
-	padding: 24px 20px;
-	box-shadow: 8px 8px 0 black;
-}
+	.modal {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		background: var(--shift-orange);
+		border: 5px solid var(--border-primary);
+		border-radius: 10px;
+		width: 100%;
+		padding: 10px 20px 20px 10px;
+		box-shadow:
+			5px 5px 0 1px var(--shadow-primary),
+			7px 4px 0 4px var(--hl-secondary),
+			0 0 0 5px var(--hl-secondary),
+			4px 7px 0 4px var(--hl-secondary),
+			7px 7px 0 4px var(--hl-secondary);
+	}
 
-.modalImage {
-	width: 100%;
-	aspect-ratio: 16 / 9;
-	border-radius: 16px;
-	border: 4px solid black;
-	overflow: hidden;
-}
+	.modalImage {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		border-radius: 10px;
+		border: 5px solid black;
+		overflow: hidden;
 
-.modalImage img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
 
-.modalDescription {
-	margin: 20px 0;
+	.modalDescription {
+		margin: 20px 0;
+	}
 }
 
 .closeButton {
 	position: absolute;
-	top: 16px;
-	right: 16px;
-	width: 28px;
+	top: 0;
+	right: 0;
+	width: 50px;
 	cursor: pointer;
-}
 
-.closeButton img {
-	width: 100%;
+	img {
+		width: 100%;
+	}
 }
-
 .voteButton {
 	align-self: center;
 }
@@ -136,39 +139,26 @@
 
 .successContainer {
 	justify-content: center;
-	min-height: 60vh;
 	text-align: center;
-}
 
-.successTitle {
-	margin-bottom: 24px;
-	max-width: 280px;
-}
-
-.logoWrapper {
-	margin: 16px 0;
-}
-
-.successLogo {
-	width: 70px;
-	height: auto;
-}
-
-.redirectText {
-	margin-top: 16px;
-	letter-spacing: 1px;
+	.redirectText {
+		margin-top: 16px;
+		letter-spacing: 1px;
+	}
 }
 
 @media (min-width: 1024px) {
 	.projectsGrid {
 		flex-direction: row;
-		max-width: 1100px;
 		gap: 40px;
+
+		.projectCard {
+			width: 33.33%;
+            margin: 100px 10px;
+		}
 	}
-	.projectCard {
-		width: 33.33%;
-	}
+    
 	.modal {
-		max-width: 500px;
+		max-width: 750px;
 	}
 }
