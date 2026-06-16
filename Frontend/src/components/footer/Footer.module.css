@@ -78,6 +78,16 @@ footer {
 	.footerCopyright {
 		text-align: center;
 	}
+
+	.navItem,
+	.footerCopyright a {
+		transition: color 0.15s ease;
+	}
+
+	.navItem:hover,
+	.footerCopyright a:hover {
+		color: var(--shift-cream);
+	}
 }
 
 @media (min-width: 1024px) {

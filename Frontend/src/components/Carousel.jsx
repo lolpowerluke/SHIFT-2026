@@ -1,5 +1,6 @@
 import s from "../pages/countdown/Countdown.module.css";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate } from "react-router";
 import { getCloudinaryUrl } from "../../src/utils/cloudinary.js";
 
 export function mapProject(p) {
@@ -16,6 +17,7 @@ export function mapProject(p) {
 /* Rework of carousel sytem for IOS devices (https://claude.ai/share/0f21fec9-8cdb-4047-b0b4-ecb2bdcc76cf) */
 
 export default function Carousel() {
+    const navigate = useNavigate();
     const [currentIndex, setCurrentIndex] = useState(0);
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -62,7 +64,7 @@ export default function Carousel() {
     }, [handleTouchMove]);
 
     const handleButton = () => {
-        window.open("/project/", "_blank", "noopener,noreferrer");
+        navigate("/project/");
     };
 
     useEffect(() => {
