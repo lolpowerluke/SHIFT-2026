@@ -29,19 +29,19 @@ export default function Detail() {
 
 	const project = data?.project ?? null;
 
-    useEffect(() => {
-        if (!project?.magazine) return;
-        const url =
-            project.magazine.url ??
-            `https://res.cloudinary.com/${project.magazine.cloud_name}/raw/upload/${project.magazine.path}`;
-        fetch(url, {method: "HEAD"})
-            .then((r) => {
-                const bytes = parseInt(r.headers.get("content-length"));
-                if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
-            })
-            .catch(() => {
-            });
-    }, [project]);
+	useEffect(() => {
+		if (!project?.magazine) return;
+		const url =
+			project.magazine.url ??
+			`https://res.cloudinary.com/${project.magazine.cloud_name}/raw/upload/${project.magazine.path}`;
+		fetch(url, { method: "HEAD" })
+			.then((r) => {
+				const bytes = parseInt(r.headers.get("content-length"));
+				if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
+			})
+			.catch(() => {
+			});
+	}, [project]);
 
 	const guard = StatusMessage({ loading, error });
 	if (guard) return guard;
@@ -107,7 +107,7 @@ export default function Detail() {
 					</div>
 
 					<div>
-						<p className={s.description}>{project.description}</p>
+						<pre className={s.description}>{project.description}</pre>
 						<p className={s.promoterTitle}>
 							<b>Promoter</b>
 						</p>
