@@ -48,6 +48,16 @@ Everything is in `animations.js`, function `runSiteAnimations()`:
 It automatically respects `prefers-reduced-motion` and has a safety net that
 re-shows everything if an animation ever throws.
 
+## iOS Safari smoothness
+
+Two things keep scrolling smooth on iPhone:
+
+- `gsapInit.js` sets `ScrollTrigger.config({ ignoreMobileResize: true })` so the
+  Safari address bar showing/hiding doesn't trigger a recalc mid-scroll.
+- The `MutationObserver` only processes **newly added** subtrees (not the whole
+  page) and batches `ScrollTrigger.refresh()`, so a live element like the
+  countdown timer can't cause refresh storms.
+
 ## Removing all animations
 
 1. Remove `<SiteAnimations />` (and its import) from `src/layouts/PageLayout.jsx`.
