@@ -6,4 +6,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// iOS Safari shows/hides its address bar while scrolling, which resizes the
+// viewport and makes ScrollTrigger recalc mid-scroll → stutter. Ignoring that
+// resize keeps scrolling smooth on iPhone. `fastScrollEnd` also helps on mobile.
+ScrollTrigger.config({ ignoreMobileResize: true, fastScrollEnd: true });
+
 export { gsap, ScrollTrigger };
