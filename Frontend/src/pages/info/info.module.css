@@ -1,5 +1,5 @@
 .heroImg {
-    background-image: url(../../../public/assets/heroContent/infoHero.jpg);
+	background-image: url(../../../public/assets/heroContent/infoHero.jpg);
 }
 
 .heroLayout {
@@ -10,7 +10,7 @@
 	align-items: center;
 	width: 85dvw;
 	margin: 8rem auto 5rem;
-	gap: 2.5rem;
+	gap: 1.5rem;
 }
 
 .title {
@@ -156,7 +156,7 @@
 
 .faq {
 	width: 100%;
-	margin: 2rem 0;
+	margin: 2rem;
 
 	.faqItem {
 		padding: 1rem 1.5rem;
@@ -217,6 +217,26 @@
 @media only screen and (min-width: 1024px) {
 	.mobile {
 		display: none;
+	}
+
+	.heroLayout {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 3rem;
+		text-align: left;
+	}
+
+	.heroTitle {
+		order: 1;
+	}
+
+	.title {
+		font-size: 5rem;
+	}
+
+	.locationIcon {
+		order: 2;
 	}
 
 	.infoSection {
