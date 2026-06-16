@@ -11,6 +11,9 @@
 	gap: 6px;
 	color: var(--txt-shift-secondary);
 	flex: 1;
+	transition:
+		transform 0.12s,
+		box-shadow 0.12s;
 }
 
 .projectCardBorder {
@@ -18,6 +21,11 @@
 	border-radius: 12px;
 	display: flex;
 	text-decoration: none;
+}
+
+.projectCardBorder:hover .projectCard {
+	transform: translateY(-4px);
+	box-shadow: 6px 8px 0px var(--shadow-primary);
 }
 
 .cardTitle {

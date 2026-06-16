@@ -46,6 +46,10 @@ a {
 	font-weight: bold;
 }
 
+a:not([class]):hover {
+	text-decoration: underline;
+}
+
 .xlarge {
 	font-size: 24px;
 }
