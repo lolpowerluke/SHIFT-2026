@@ -3,6 +3,9 @@ import s from "./LiveVoting.module.css";
 
 export default function LiveVoting() {
 	const [selectedProject, setSelectedProject] = useState(null);
+	const [voteConfirmed, setVoteConfirmed] = useState(false);
+	const [voteFinished, setVoteFinished] = useState(false);
+
 	const projects = [
 		{
 			id: 1,
@@ -26,14 +29,42 @@ export default function LiveVoting() {
 				"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
 		},
 	];
-	const [voteConfirmed, setVoteConfirmed] = useState(false);
+
+	const handleConfirmVote = () => {
+		setVoteConfirmed(true);
+		setVoteFinished(true);
+		setSelectedProject(null);
+	};
+
+	const handleCloseModal = () => {
+		setSelectedProject(null);
+		setVoteConfirmed(false);
+	};
+
+	if (voteFinished) {
+		return (
+			<div className={`${s.ctx} ${s.successContainer}`}>
+				<h1>JOUW STEM IS OPGENOMEN!</h1>
+				<div className={s.logoWrapper}>
+					<img
+						src="/assets/icons/logo-s.png"
+						alt="Logo"
+						className={s.successLogo}
+					/>
+				</div>
+				<p className={s.redirectText}>REDIRECT</p>
+			</div>
+		);
+	}
 
 	return (
 		<>
 			<div className="headerSpacer"></div>
 			<div className={`${s.ctx} ctx`}>
-				<h1>Stem hier!</h1>
-				<h2>Druk op het project dat jouw stem krijgt.</h2>
+				<h1>STEM HIER!</h1>
+				<h2>
+					DRUK OP HET PROJECT DIE JOUW STEM KRIJGT.
+				</h2>
 				<div className={s.projectsGrid}>
 					{projects.map((project) => (
 						<div
@@ -44,31 +75,27 @@ export default function LiveVoting() {
 							<div className={s.imageWrapper}>
 								<img src={project.image} alt={project.name} />
 							</div>
-
 							<h2>{project.name}</h2>
 						</div>
 					))}
 				</div>
 			</div>
 			{selectedProject && (
-				<div className={s.overlay} onClick={() => setSelectedProject(null)}>
+				<div className={s.overlay} onClick={handleCloseModal}>
 					<div className={s.modal} onClick={(e) => e.stopPropagation()}>
-						<div
-							className={s.closeButton}
-							onClick={() => {
-								setSelectedProject(null);
-								setVoteConfirmed(false);
-							}}
-						>
+						<div className={s.closeButton} onClick={handleCloseModal}>
 							<img src="/assets/icons/closeButton.svg" alt="Close modal" />
 						</div>
 						{!voteConfirmed ? (
 							<>
-								<h2>{selectedProject.name}</h2>
+								<h2 className={s.modalTitle}>{selectedProject.name}</h2>
+
 								<div className={s.modalImage}>
 									<img src={selectedProject.image} alt={selectedProject.name} />
 								</div>
-								<p>{selectedProject.description}</p>
+								<p className={s.modalDescription}>
+									{selectedProject.description}
+								</p>
 								<button
 									className={s.voteButton}
 									onClick={() => setVoteConfirmed(true)}
@@ -77,14 +104,12 @@ export default function LiveVoting() {
 								</button>
 							</>
 						) : (
-							<>
-								<h2>Ben je zeker?</h2>
-								<p>
-									Je staat op het punt om te stemmen voor{" "}
-									<b>{selectedProject.name}</b>.
-								</p>
-								<button className={s.voteButton}>Bevestig stem</button>
-							</>
+							<div className={s.confirmWrapper}>
+								<h2 className={s.confirmTitle}>BEN JE ZEKER?</h2>
+								<button className="blueBtn" onClick={handleConfirmVote}>
+									Ja, ik ben zeker
+								</button>
+							</div>
 						)}
 					</div>
 				</div>

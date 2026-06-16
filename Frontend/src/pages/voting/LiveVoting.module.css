@@ -1,79 +1,174 @@
-.ctx h1 {
-    text-align: center;
+.ctx {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+
+	h1 {
+		margin: 0;
+	}
+
+	h2 {
+		margin-bottom: 40px;
+		font-size: 30px;
+	}
 }
 
 .projectsGrid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 70px;
 	width: 100%;
-}
 
-.projectCard {
-	cursor: pointer;
-	border-radius: 18px;
-	overflow: hidden;
-	background: white;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-	transition: transform 0.2s ease;
-}
+	.projectCard {
+		cursor: pointer;
+		border-radius: 10px;
+		border: 4px solid var(--border-primary);
+		background: var(--shift-orange);
+		padding: 10px;
+		box-shadow:
+			5px 5px 0 1px var(--shadow-primary),
+			7px 4px 0 4px var(--hl-secondary),
+			0 0 0 5px var(--hl-secondary),
+			4px 7px 0 4px var(--hl-secondary),
+			7px 7px 0 4px var(--hl-secondary);
+		box-sizing: border-box;
+		overflow: hidden;
 
-.projectCard:active {
-	transform: scale(0.98);
-}
+		.imageWrapper {
+			width: 100%;
+			aspect-ratio: 16 / 9;
+			border-radius: 10px;
+			border: 5px solid var(--border-primary);
+			overflow: hidden;
+			box-sizing: border-box;
 
-.imageWrapper {
-	width: 100%;
-	aspect-ratio: 16 / 9;
-	overflow: hidden;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
 
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
+		h2 {
+			margin-bottom: 0;
+		}
+
+		&:nth-child(1) {
+			transform: rotate(-10deg);
+		}
+
+		&:nth-child(2) {
+			transform: rotate(10deg);
+		}
+
+		&:nth-child(3) {
+			transform: rotate(-12deg);
+		}
 	}
 }
 
 .overlay {
 	position: fixed;
 	inset: 0;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(2px);
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
 	justify-content: center;
 	z-index: 1000;
-	padding: 16px;
+	padding: 20px;
 }
 
 .modal {
 	position: relative;
-	background: white;
-	border-radius: 24px 24px 0 0;
+	display: flex;
+	flex-direction: column;
+	background: #f5a623;
+	border: 4px solid black;
+	border-radius: 28px;
 	width: 100%;
-	max-height: 90vh;
-	overflow-y: auto;
-	padding: 20px;
+	max-width: 340px;
+	padding: 24px 20px;
+	box-shadow: 8px 8px 0 black;
 }
 
 .modalImage {
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	border-radius: 16px;
+	border: 4px solid black;
 	overflow: hidden;
+}
 
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+.modalImage img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.modalDescription {
+	margin: 20px 0;
 }
 
 .closeButton {
 	position: absolute;
-	top: 12px;
-	right: 12px;
+	top: 16px;
+	right: 16px;
+	width: 28px;
+	cursor: pointer;
+}
+
+.closeButton img {
+	width: 100%;
 }
 
 .voteButton {
-	width: 100%;
+	align-self: center;
+}
+
+.confirmWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.successContainer {
+	justify-content: center;
+	min-height: 60vh;
+	text-align: center;
+}
+
+.successTitle {
+	margin-bottom: 24px;
+	max-width: 280px;
+}
+
+.logoWrapper {
+	margin: 16px 0;
+}
+
+.successLogo {
+	width: 70px;
+	height: auto;
+}
+
+.redirectText {
+	margin-top: 16px;
+	letter-spacing: 1px;
+}
+
+@media (min-width: 1024px) {
+	.projectsGrid {
+		flex-direction: row;
+		max-width: 1100px;
+		gap: 40px;
+	}
+	.projectCard {
+		width: 33.33%;
+	}
+	.modal {
+		max-width: 500px;
+	}
 }
