@@ -281,3 +281,34 @@
 		}
 	}
 }
+
+.landingBottom ::selection {
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}
+
+.landingBottom ::-moz-selection {
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}
+
+.awardCard ::selection {
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}
+
+.awardCard ::-moz-selection {
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}
+
+.publicPrize ::selection {
+	background: var(--shift-orange);
+	color: var(--txt-shift-primary);
+}
+
+.publicPrize ::-moz-selection {
+	background: var(--shift-orange);
+	color: var(--txt-shift-primary);
+}
+

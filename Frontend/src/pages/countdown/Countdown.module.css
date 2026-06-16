@@ -830,3 +830,29 @@ h2 {
 		visibility: hidden;
 	}
 }
+
+
+.cd span::selection {
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}
+
+.orangeAudienceCard ::selection {
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}
+
+.orangeAudienceCard ::-moz-selection {
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}
+
+.orange ::selection{
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}
+
+.orange ::-moz-selection{
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}

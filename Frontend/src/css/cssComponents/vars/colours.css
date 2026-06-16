@@ -26,6 +26,19 @@
 	--shadow-primary: var(--border-primary);
 }
 
+
+
+::selection {
+    background: var(--shift-orange);
+    color:  var(--txt-shift-primary);
+}
+
+::-moz-selection {
+    background: var(--shift-orange);
+    color: var(--txt-shift-primary);
+}
+
+
 /* 
 Example how to use in other css files:
 > import:

@@ -132,3 +132,8 @@ footer {
 		}
 	}
 }
+
+footer ::selection {
+	background: var(--bg-shift-primary);
+	color: var(--txt-shift-primary);
+}
