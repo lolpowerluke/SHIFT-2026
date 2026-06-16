@@ -58,10 +58,7 @@ export default function List() {
 		<main className="ctx headerSpacer">
 			<section className={s.projectenHero}>
 				<h1>EindProjecten</h1>
-				<h3>
-					Ontdek de werken van onze derde jaars Multimedia & Creatieve
-					technologie!
-				</h3>
+				<h3>van onze derde jaars Multimedia & Creatieve technologie!</h3>
 			</section>
 
 			<div className={s.filterBar}>

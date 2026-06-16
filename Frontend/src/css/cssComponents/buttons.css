@@ -19,9 +19,17 @@ button {
 	text-decoration: none;
 	transition:
 		transform 0.1s,
-		box-shadow 0.1s;
+		box-shadow 0.1s,
+		filter 0.1s;
 	align-self: center;
 	cursor: pointer;
+}
+
+.linkBtn:hover,
+.btn:hover,
+button:hover {
+	transform: translateY(-2px);
+	filter: brightness(1.07);
 }
 
 .linkBtn:active,
@@ -29,6 +37,7 @@ button {
 button:active {
 	transform: translateY(3px);
 	box-shadow: 2px 2px 0 1px var(--shadow-primary);
+	filter: none;
 	color: var(--txt-shift-secondary);
 }
 

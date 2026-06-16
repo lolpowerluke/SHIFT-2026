@@ -71,10 +71,7 @@ export default function Carousel() {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json();
             })
-            .then((data) => {
-                console.log(data);
-                setProjects(data.projects.map(mapProject))
-            })
+            .then((data) => setProjects(data.projects.map(mapProject)))
             .catch((err) => console.error(err))
             .finally(() => setLoading(false));
     }, []);

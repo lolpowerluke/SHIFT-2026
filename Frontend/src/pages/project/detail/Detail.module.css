@@ -71,6 +71,7 @@
 .description {
 	margin: 0;
 	margin-top: 16px;
+	margin-right: 20%;
 
 	p {
 		text-align: left;
@@ -261,9 +262,12 @@
 		}
 	}
 
-	.description,
 	.promoterTitle,
 	.promoterName {
 		text-align: center;
+	}
+
+	.description {
+		margin-right: 0;
 	}
 }

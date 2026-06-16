@@ -1,4 +1,6 @@
 import {useEffect, useState} from "react";
+import s from "./LiveVoting.module.css";
+import {getCloudinaryUrl} from "../../utils/cloudinary.js";
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -28,6 +30,9 @@ export default function LiveVoting() {
     const [projects, setProjects] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
+    const [voteConfirmed, setVoteConfirmed] = useState(false);
+
 
     useEffect(() => {
         if (!token) {
@@ -107,5 +112,70 @@ export default function LiveVoting() {
     if (hasVoted) {
         return <p>Je hebt al gestemd!</p>;
     }
-    return (<></>)
+
+    return (
+        <>
+            <div className="headerSpacer"></div>
+            <div className={`${s.ctx} ctx`}>
+                <h1>Stem hier!</h1>
+                <h2>Druk op het project dat jouw stem krijgt.</h2>
+                <div className={s.projectsGrid}>
+                    {projects.map((project) => (
+                        <div
+                            key={project.id}
+                            className={s.projectCard}
+                            onClick={() => setSelectedProject(project)}
+                        >
+                            <div className={s.imageWrapper}>
+                                <img src={getCloudinaryUrl(project.media?.[0]) ??
+                                    getCloudinaryUrl(project.images?.[0]) ??
+                                    "/assets/imageCard.png"} alt={project.name}/>
+                            </div>
+
+                            <h2>{project.name}</h2>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            {selectedProject && (
+                <div className={s.overlay} onClick={() => setSelectedProject(null)}>
+                    <div className={s.modal} onClick={(e) => e.stopPropagation()}>
+                        <div
+                            className={s.closeButton}
+                            onClick={() => {
+                                setSelectedProject(null);
+                                setVoteConfirmed(false);
+                            }}
+                        >
+                            <img src="/assets/icons/closeButton.svg" alt="Close modal"/>
+                        </div>
+                        {!voteConfirmed ? (
+                            <>
+                                <h2>{selectedProject.name}</h2>
+                                <div className={s.modalImage}>
+                                    <img src={selectedProject.image} alt={selectedProject.name}/>
+                                </div>
+                                <p>{selectedProject.description}</p>
+                                <button
+                                    className={s.voteButton}
+                                    onClick={() => setVoteConfirmed(true)}
+                                >
+                                    Stem voor dit project!
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <h2>Ben je zeker?</h2>
+                                <p>
+                                    Je staat op het punt om te stemmen voor{" "}
+                                    <b>{selectedProject.name}</b>.
+                                </p>
+                                <button className={s.voteButton}>Bevestig stem</button>
+                            </>
+                        )}
+                    </div>
+                </div>
+            )}
+        </>
+    );
 }

@@ -7,12 +7,12 @@ export default function FAQItem({s, title, answer}) {
         <div className={s.faqItem} onClick={() => setIsOpen(!isOpen)}>
             <div className={s.faqTitle}>
                 <p><b>{title}</b></p>
-                {/*<button className={s.openBtn}>*/}
-                    <span
-                        className={s.openBtn} // comment this out and uncomment other two for different styling
-                    >{isOpen ? '−' : '+'}
+                    <span className={s.openBtn}>
+                        <img
+                            src={isOpen ? "/assets/icons/minBlue.svg" : "/assets/icons/plusBlue.svg"}
+                            alt={isOpen ? "Sluiten" : "Openen"}
+                        />
                     </span>
-                {/*</button>*/}
             </div>
             <div className={`${s.faqAnswer} ${isOpen ? s.open : ''}`}>
                 <div style={{overflow: 'hidden'}}>
