@@ -101,7 +101,7 @@ export default function List() {
 							<p className={s.awardBoxLabel}><b>Name student</b></p>
 							<p className={s.awardBoxLabel}>project name</p>
 						</div>
-						<button className={s.bekijkBtn}>Bekijk project</button>
+						<a className={s.bekijkBtn}><img src="/assets/icons/arrowLink.svg" alt="arrowLink" /></a>
 					</div>
 					<div className={s.projectCard}>
 						<div className={s.avatarWrap}>
@@ -113,7 +113,7 @@ export default function List() {
 							<p className={s.awardBoxLabel}><b>Name student</b></p>
 							<p className={s.awardBoxLabel}>project name</p>
 						</div>
-						<button className={s.bekijkBtn}>Bekijk project</button>
+						<a className={s.bekijkBtn}><img src="/assets/icons/arrowLink.svg" alt="arrowLink" /></a>
 					</div>
 					<div className={s.projectCard}>
 						<div className={s.avatarWrap}>
@@ -125,7 +125,7 @@ export default function List() {
 							<p className={s.awardBoxLabel}><b>Name student</b></p>
 							<p className={s.awardBoxLabel}>project name</p>
 						</div>
-						<button className={s.bekijkBtn}>Bekijk project</button>
+						<a className={s.bekijkBtn}><img src="/assets/icons/arrowLink.svg" alt="arrowLink" /></a>
 					</div>
 					<div className={s.projectCard}>
 						<div className={s.avatarWrap}>
@@ -137,7 +137,7 @@ export default function List() {
 							<p className={s.awardBoxLabel}><b>Name student</b></p>
 							<p className={s.awardBoxLabel}>project name</p>
 						</div>
-						<button className={s.bekijkBtn}>Bekijk project</button>
+						<a className={s.bekijkBtn}><img src="/assets/icons/arrowLink.svg" alt="arrowLink" /></a>
 					</div>
 				</div>
   			</div>
