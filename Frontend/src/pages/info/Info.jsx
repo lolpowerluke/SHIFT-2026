@@ -114,7 +114,14 @@ export default function Info() {
 								<h2 className={`${s.faqTitle}`}>
 									WANNEER?{" "}
 									<span className={`${s.openBtn} ${s.mobile}`}>
-										{isProgrammaOpen ? "-" : "+"}
+										<img
+											src={
+												isProgrammaOpen
+													? "/assets/icons/minBlue.svg"
+													: "/assets/icons/plusBlue.svg"
+											}
+											alt={isProgrammaOpen ? "Sluiten" : "Openen"}
+										/>
 									</span>
 								</h2>
 							</div>
@@ -154,7 +161,14 @@ export default function Info() {
 								<h2 className={`${s.faqTitle}`}>
 									HOE?{" "}
 									<span className={`${s.openBtn} ${s.mobile}`}>
-										{isHowOpen ? "-" : "+"}
+										<img
+											src={
+												isHowOpen
+													? "/assets/icons/minBlue.svg"
+													: "/assets/icons/plusBlue.svg"
+											}
+											alt={isHowOpen ? "Sluiten" : "Openen"}
+										/>
 									</span>
 								</h2>
 							</div>

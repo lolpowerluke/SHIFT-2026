@@ -155,7 +155,7 @@
 	margin: 2rem 0;
 
 	.faqItem {
-		padding: 1rem 0;
+		padding: 1rem 1.5rem;
 		background-color: var(--bg-shift-alt);
 		margin-bottom: 1rem;
 		border-radius: 28px;
@@ -179,7 +179,7 @@
 
 		p {
 			text-align: left;
-			margin-left: 1rem;
+			margin-left: 0;
 		}
 	}
 }
@@ -192,12 +192,18 @@
 }
 
 .openBtn {
-	font-size: 2rem;
-	aspect-ratio: 1/1;
-	padding: 0.5rem;
-	padding-bottom: 0px;
-	width: 3rem;
-	font-weight: bold;
+	width: 2.2rem;
+	height: 2.2rem;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
 }
 
 @media only screen and (min-width: 1024px) {
