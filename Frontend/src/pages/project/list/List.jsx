@@ -99,7 +99,7 @@ export default function List() {
 						<div className={s.awardBox}>
 							<img src="/assets/award_box.svg" alt="award box" />
 							<p className={s.awardBoxLabel}><b>Name student</b></p>
-							<p className={s.awardBoxLabel}>project name</p>
+							<p className={s.awardBoxLabel}>The Last Day In <br/>Lhasa</p>
 						</div>
 						<a className={s.bekijkBtn}><img src="/assets/icons/arrowLink.svg" alt="arrowLink" /></a>
 					</div>

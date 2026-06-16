@@ -264,6 +264,7 @@
   color: var(--txt-shift-primary);
   white-space: nowrap;
   pointer-events: none;
+  display: flex;
 }
 
 .awardBoxLabel:first-of-type {
@@ -272,9 +273,9 @@
 }
 
 .awardBoxLabel:last-of-type {
-  top: 60%;
+  top: 55%;
   font-size: 15px;
-  left: 28%;
+  left: 31%;
 }
 
 /* Responsive breakpoints */
