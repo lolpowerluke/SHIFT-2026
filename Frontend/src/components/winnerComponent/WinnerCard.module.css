@@ -1,11 +1,8 @@
-/* WINNAAR award badge — orange pill with pixel trophy, tilted like a sticker */
-
 .badge {
 	position: relative;
 	display: inline-flex;
 	align-items: center;
 	width: fit-content;
-	/* big left padding leaves room for the trophy that pops out the corner */
 	padding: 20px 32px 22px 90px;
 	background-color: var(--shift-orange);
 	border: 5px solid var(--border-primary);
@@ -15,7 +12,6 @@
 	user-select: none;
 }
 
-/* trophy sticks out past the top-left corner like a sticker */
 .trophy {
 	position: absolute;
 	top: -22px;
