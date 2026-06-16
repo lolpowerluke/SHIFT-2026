@@ -358,14 +358,18 @@ export default function ProjectForm() {
 			return;
 		}
 
-		if (!isAdmin) {
+		// AFTER — get p1 user id from projectMemberIds[0]
+		const p1UserId = isAdmin ? projectMemberIds[0] ?? null : currentUserId;
+
+		if (p1UserId) {
 			try {
 				const userFormData = new FormData();
 				if (firstName) userFormData.append("firstname", firstName.trim());
 				if (lastName) userFormData.append("lastname", lastName.trim());
 				if (linkedinURL) userFormData.append("socials", linkedinURL.trim());
 				if (selfieFile) userFormData.append("image", selfieFile);
-				await apiFetch("/api/user", { method: "PUT", body: userFormData });
+				const endpoint = isAdmin ? `/api/user?id=${p1UserId}` : "/api/user";
+				await apiFetch(endpoint, { method: "PUT", body: userFormData });
 			} catch (err) {
 				console.error("User update failed:", err);
 			}
