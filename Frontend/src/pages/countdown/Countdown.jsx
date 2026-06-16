@@ -67,10 +67,7 @@ export default function Countdown() {
 					{timeLeft ? (
 						<>
 							<div className={s.cd}>
-								<span>We tellen af!</span>
-							</div>
-							<div className={`${s.cd} ${s.smallerCd}`}>
-								<span>Vrijdag 19 juni om 17:00</span>
+								<span>The show is live!</span>
 							</div>
 							<div id={s.timer}>
 								<div className={s.timerBox}>
@@ -100,12 +97,11 @@ export default function Countdown() {
 							</div>
 							<div className={`${s.cta}`}>
 								<a
-									href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+									href="/project"
 									className={`${s.linkBtn} linkBtn`}
-									target="_blank"
 									rel="noreferrer"
 								>
-									Schrijf je nu gratis in
+									Ontdek alle projecten
 								</a>
 							</div>
 						</>
