@@ -521,7 +521,6 @@ h2 {
 	flex-direction: column;
 	gap: var(--margin-between);
 	padding: var(--margin-between);
-	max-width: 90vw;
 	justify-self: center;
 	overflow: hidden;
 	box-sizing: border-box;
