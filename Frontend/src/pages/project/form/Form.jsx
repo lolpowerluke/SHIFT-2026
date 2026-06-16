@@ -130,7 +130,7 @@ export default function ProjectForm() {
 	}, [projectFiles]);
 
 	async function loadAllProjects() {
-		const projData = await apiFetch("/project/");
+		const projData = await apiFetch("/project/admin");
 		if (!projData.success) return;
 		setAllProjects(projData.projects || []);
 	}
@@ -183,9 +183,9 @@ export default function ProjectForm() {
 			setSelfieExistingPicture(
 				pic
 					? {
-							url: `https://res.cloudinary.com/${pic.cloud_name}/image/upload/${pic.path}`,
-							name: pic.path.split("/").pop(),
-						}
+						url: `https://res.cloudinary.com/${pic.cloud_name}/image/upload/${pic.path}`,
+						name: pic.path.split("/").pop(),
+					}
 					: null,
 			);
 			setSelfieFile(null);
@@ -202,9 +202,9 @@ export default function ProjectForm() {
 			setP2ExistingPicture(
 				p2.picture
 					? {
-							url: `https://res.cloudinary.com/${p2.picture.cloud_name}/image/upload/${p2.picture.path}`,
-							name: p2.picture.path.split("/").pop(),
-						}
+						url: `https://res.cloudinary.com/${p2.picture.cloud_name}/image/upload/${p2.picture.path}`,
+						name: p2.picture.path.split("/").pop(),
+					}
 					: null,
 			);
 			setP2SelfieFile(null);
@@ -358,14 +358,18 @@ export default function ProjectForm() {
 			return;
 		}
 
-		if (!isAdmin) {
+		// AFTER — get p1 user id from projectMemberIds[0]
+		const p1UserId = isAdmin ? projectMemberIds[0] ?? null : currentUserId;
+
+		if (p1UserId) {
 			try {
 				const userFormData = new FormData();
 				if (firstName) userFormData.append("firstname", firstName.trim());
 				if (lastName) userFormData.append("lastname", lastName.trim());
 				if (linkedinURL) userFormData.append("socials", linkedinURL.trim());
 				if (selfieFile) userFormData.append("image", selfieFile);
-				await apiFetch("/api/user", { method: "PUT", body: userFormData });
+				const endpoint = isAdmin ? `/api/user?id=${p1UserId}` : "/api/user";
+				await apiFetch(endpoint, { method: "PUT", body: userFormData });
 			} catch (err) {
 				console.error("User update failed:", err);
 			}
@@ -382,7 +386,7 @@ export default function ProjectForm() {
 						`/api/user?email=${encodeURIComponent(p2Email.trim())}`,
 					);
 					if (result.success) p2UserId = result.user.id;
-				} catch {}
+				} catch { }
 			}
 		} else {
 			memberIds = currentUserId ? [currentUserId] : [];
@@ -395,7 +399,7 @@ export default function ProjectForm() {
 						p2UserId = result.user.id;
 						memberIds.push(result.user.id);
 					}
-				} catch {}
+				} catch { }
 			}
 		}
 
@@ -438,9 +442,9 @@ export default function ProjectForm() {
 		try {
 			const result = selectedProjectId
 				? await apiFetch(`/project/${selectedProjectId}`, {
-						method: "PUT",
-						body: cleanForm,
-					})
+					method: "PUT",
+					body: cleanForm,
+				})
 				: await apiFetch("/project/", { method: "POST", body: cleanForm });
 
 			if (result.success) {
@@ -479,23 +483,23 @@ export default function ProjectForm() {
 
 	const imagePreviewURLs = projectFiles.length
 		? projectFiles.map((f) => {
-				const url = URL.createObjectURL(f);
-				previewURLsRef.current.push(url);
-				return { key: f.name, url, name: f.name };
-			})
+			const url = URL.createObjectURL(f);
+			previewURLsRef.current.push(url);
+			return { key: f.name, url, name: f.name };
+		})
 		: existingImages.map((img) => ({
-				key: img.id,
-				url: `https://res.cloudinary.com/${img.cloud_name}/image/upload/${img.path}`,
-				name: img.path.split("/").pop(),
-			}));
+			key: img.id,
+			url: `https://res.cloudinary.com/${img.cloud_name}/image/upload/${img.path}`,
+			name: img.path.split("/").pop(),
+		}));
 
 	const magazineLabel = magazineFile
 		? magazineFile.name
 		: existingMagazine
 			? (() => {
-					const name = existingMagazine.split("/").pop();
-					return name.endsWith(".pdf") ? name : `${name}.pdf`;
-				})()
+				const name = existingMagazine.split("/").pop();
+				return name.endsWith(".pdf") ? name : `${name}.pdf`;
+			})()
 			: null;
 
 	return (
@@ -519,12 +523,12 @@ export default function ProjectForm() {
 										<span className={s.adminProjectMembers}>
 											{Array.isArray(proj.members) && proj.members.length
 												? proj.members
-														.map(
-															(m) =>
-																`${m.firstname || ""} ${m.lastname || ""}`.trim() ||
-																m.email,
-														)
-														.join(", ")
+													.map(
+														(m) =>
+															`${m.firstname || ""} ${m.lastname || ""}`.trim() ||
+															m.email,
+													)
+													.join(", ")
 												: "—"}
 										</span>
 									</span>
