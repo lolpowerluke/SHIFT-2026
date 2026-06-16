@@ -6,9 +6,9 @@ import {useState} from "react";
 const events = [
 	{ time: { hr: 17, min: 0 }, event: "start" },
 	{ time: { hr: 17, min: 30 }, event: "Foodtrucks" },
-	{ time: { hr: 19, min: 30 }, event: "Sluiting stemmen" },
+	{ time: { hr: 19, min: 15 }, event: "Sluiting stemmen" },
 	{ time: { hr: 20, min: 0 }, event: "Liveshow & awards" },
-	{ time: { hr: 21, min: 30 }, event: "Einde liveshow" },
+	{ time: { hr: 20, min: 45 }, event: "Einde liveshow" },
 ];
 
 const faq = [
