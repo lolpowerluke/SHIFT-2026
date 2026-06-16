@@ -230,6 +230,17 @@ export default function Info() {
 						<FAQItem key={index} title={q.title} answer={q.answer} s={s} />
 					))}
 				</div>
+				<div className={`${s.vragen}`}>
+					<h3>HEB JE NOG VRAGEN?</h3>
+					<p>Je kan ons bereiken via:</p>
+					<p></p>
+					<p>
+						<span>E-mail:</span> gdt.kaai.student@ehb.be
+					</p>
+					<p>
+						<span>Tel:</span> 02 523 37 37
+					</p>
+				</div>
 			</div>
 		</>
 	);
