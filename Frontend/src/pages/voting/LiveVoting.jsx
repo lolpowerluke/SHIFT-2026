@@ -83,9 +83,7 @@ export default function LiveVoting() {
 									Je staat op het punt om te stemmen voor{" "}
 									<b>{selectedProject.name}</b>.
 								</p>
-								<div>
-									<button>Bevestig stem</button>
-								</div>
+								<button className={s.voteButton}>Bevestig stem</button>
 							</>
 						)}
 					</div>
