@@ -90,6 +90,9 @@
 - [Claude conversation for reworking carousel sysytem to work on IOS devices](https://claude.ai/share/0f21fec9-8cdb-4047-b0b4-ecb2bdcc76cf)
     - Used in [Carousel.jsx](Frontend/src/components/Carousel.jsx)
 
+- [Claude conversation for popup with iFrame](https://claude.ai/share/582674cf-e29d-4333-838c-6cb7968100a1)
+    - used in [Countdownjsx](Frontend/src/pages/countdown/Countdown.jsx) & [videoPopupjsx](Frontend/src/components/afterShow/videoPopup.jsx)
+
 ## Deployment
 
 ### Frontend

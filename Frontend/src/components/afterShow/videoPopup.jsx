@@ -1,5 +1,6 @@
 import { } from "react";
 
+// Claude conversation for iFrame popup (https://claude.ai/share/582674cf-e29d-4333-838c-6cb7968100a1)
 function IframePopup({ src, title, onClose }) {
   return (
     <div
