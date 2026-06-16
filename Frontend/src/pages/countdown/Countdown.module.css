@@ -150,10 +150,21 @@
 
 .linkBtn {
 	display: flex;
+	align-items: center;
+	gap: 1.5rem;
 	margin-inline: auto;
-	width: fit-content;
 	outline: none;
+	text-decoration: none;
 	-webkit-tap-highlight-color: transparent;
+
+	img {
+		width: 150px;
+	}
+
+	p {
+		margin: 0;
+		font-weight: bold;
+	}
 }
 
 .projectSide {
@@ -626,6 +637,14 @@ h2 {
 			.cta {
 				margin-left: 10px;
 				margin-top: 3rem;
+
+				a {
+					width: 200px;
+				}
+
+				img {
+					width: 20%;
+				}
 			}
 		}
 	}

@@ -2,6 +2,8 @@ import s from "./Countdown.module.css";
 import { useCountdown } from "../../js/countdown.js";
 import Carousel from "../../components/Carousel.jsx";
 import Throbber from "../../components/Throbber.jsx";
+import { useState } from "react";
+import IframePopup from "../../components/afterShow/videoPopup.jsx";
 
 export default function Countdown() {
 	const { timeLeft, blinkingS } = useCountdown();
@@ -13,6 +15,8 @@ export default function Countdown() {
 			"noopener,noreferrer",
 		);
 	};
+
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<>
@@ -102,14 +106,20 @@ export default function Countdown() {
                                 </div>
                             </div>
                             <div className={`${s.cta}`}>
-                                <a
-                                    href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+                                <a	onClick={() => setIsOpen(true)}
                                     className={`${s.linkBtn} linkBtn`}
-                                    target="_blank"
                                     rel="noreferrer"
                                 >
-                                    Schrijf je nu gratis in
+                                    <img src="/assets/play-button.svg" alt="play video button" />
+									<p>Bekijk de aftermovie</p>
                                 </a>
+								{isOpen && (
+									<IframePopup
+									src="https://example.com"
+									title="Aftermovie"
+									onClose={() => setIsOpen(false)}
+									/>
+								)}
                             </div>
                         </>
                     ) : (
