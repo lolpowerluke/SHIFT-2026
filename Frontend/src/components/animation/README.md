@@ -15,10 +15,11 @@ moves:
   (image/svg/iframe/video): gentle fade up by 18px.
 
 It also re-runs for content added **after load** (fetched project lists,
-carousels, …) via a `MutationObserver`, so async content animates too. Nesting
-is de-duplicated (parent and child never both animate), header/footer are
-excluded, full-bleed page backgrounds are ignored (background only, no frame).
-No rotation, no bounce, no layout-breaking parallax.
+carousels, …) via a `MutationObserver`. That callback is a microtask that runs
+**before the browser paints**, so new content is hidden synchronously and never
+flashes in visible before animating. Nesting is de-duplicated (parent and child
+never both animate), header/footer are excluded, full-bleed page backgrounds are
+ignored (background only, no frame). No rotation, no bounce, no parallax.
 
 ## Files
 
