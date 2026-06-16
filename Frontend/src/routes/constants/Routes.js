@@ -15,6 +15,6 @@ const Routes = {
 	Awards: "/awards",
 	uMoeder: "/u/Moeder",
 	NotFound: "/404",
-	LiveVoting: "/live/vote/nooneWillLook/live_vote",
+	LiveVoting: "/live/nooneWillLook/live_vote",
 };
 export default Routes;

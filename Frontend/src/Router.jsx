@@ -12,6 +12,7 @@ import Detail from "./pages/project/detail/Detail.jsx";
 import Info from "./pages/info/Info.jsx";
 import Awards from "./pages/awards/Awards.jsx";
 import NotFound from "./pages/error/NotFound.jsx";
+import LiveVoting from "./pages/voting/LiveVoting.jsx";
 
 const router = createBrowserRouter([
     {
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
             {path: Routes.uMoeder, element: "is dik"}, //same as {path: "/uMoeder", element: "isDik"
             {path: Routes.NotFound, element: <NotFound/>},
             {path: Routes.Info, element: <Info/>},
-            {path: Routes.LiveVoting, element: <liveVoting/>},
+            {path: Routes.LiveVoting, element: <LiveVoting/>},
 
         ],
     },

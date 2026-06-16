@@ -10,7 +10,7 @@ export default function Footer() {
 			<div className={`${s.ctx}`}>
 				<div className={s.footerLogo}>
 					<img
-						src="../../assets/logos/shift_logo.svg"
+						src="/assets/logos/shift_logo.svg"
 						id={s.heroLogo}
 						fetchPriority="high"
 						alt="SHIFT Logo"
