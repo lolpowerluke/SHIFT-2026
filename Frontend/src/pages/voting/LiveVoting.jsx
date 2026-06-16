@@ -153,7 +153,9 @@ export default function LiveVoting() {
                             <>
                                 <h2>{selectedProject.name}</h2>
                                 <div className={s.modalImage}>
-                                    <img src={selectedProject.image} alt={selectedProject.name}/>
+                                    <img src={getCloudinaryUrl(selectedProject.media?.[0]) ??
+                                        getCloudinaryUrl(selectedProject.images?.[0]) ??
+                                        "/assets/imageCard.png"} alt={selectedProject.name}/>
                                 </div>
                                 <p>{selectedProject.description}</p>
                                 <button
