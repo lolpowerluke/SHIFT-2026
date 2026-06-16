@@ -192,8 +192,7 @@ export default function Info() {
 										<div>
 											<h4>OPENBAAR VERVOER</h4>
 											<p>
-												Metro 5 tot Aumale of tram 81 tot Conscience. Beide op 8
-												minuten wandelen.
+												Metro 6/2 naar Delacroix of bus N46/T81 tot Albert I, daarna te voet naar de school.
 											</p>
 										</div>
 									</div>
