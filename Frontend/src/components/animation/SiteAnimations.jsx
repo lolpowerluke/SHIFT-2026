@@ -1,9 +1,8 @@
 import { useLayoutEffect } from "react";
 import { useLocation } from "react-router";
-import { ScrollTrigger } from "./gsapInit";
-import { runSiteAnimations } from "./animations";
+import { runPageIntro } from "./animations";
 
-// Routes where animations are turned off. Currently: the projects list and a
+// Routes where even the intro fade is turned off: the projects list and a
 // project's detail page (but NOT the project form).
 function animationsDisabled(pathname) {
 	const p = pathname.replace(/\/+$/, "") || "/";
@@ -12,26 +11,17 @@ function animationsDisabled(pathname) {
 	return false;
 }
 
-// Mount this ONCE inside a layout (it renders nothing). It re-runs the
-// site-wide GSAP animations every time the route changes.
+// Mount this ONCE inside a layout (it renders nothing). It plays a light fade-in
+// of the page content (#page-root) on each route change.
 //
-// To remove every animation from the site: delete this <SiteAnimations /> from
-// the layout and delete the whole `components/animation` folder.
+// To remove the animation: delete this <SiteAnimations /> from the layout and
+// delete the whole `components/animation` folder.
 export default function SiteAnimations() {
 	const { pathname } = useLocation();
 
-	// useLayoutEffect runs before paint, so the "hidden" start state is applied
-	// without a flash of the content first appearing then jumping.
 	useLayoutEffect(() => {
-		if (animationsDisabled(pathname)) return; // no animations on project pages
-
-		const cleanup = runSiteAnimations();
-
-		return () => {
-			cleanup();
-			// Drop this route's triggers before the next page sets up its own.
-			ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-		};
+		if (animationsDisabled(pathname)) return;
+		return runPageIntro();
 	}, [pathname]);
 
 	return null;
