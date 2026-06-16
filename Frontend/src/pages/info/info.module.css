@@ -1,3 +1,7 @@
+.heroImg {
+	background-image: url(../../../public/assets/heroContent/infoHero.jpg);
+}
+
 .heroLayout {
 	display: flex;
 	flex-direction: column;
@@ -6,7 +10,7 @@
 	align-items: center;
 	width: 85dvw;
 	margin: 8rem auto 5rem;
-	gap: 2.5rem;
+	gap: 1.5rem;
 }
 
 .title {
@@ -210,9 +214,42 @@
 	}
 }
 
+.vragen {
+	margin-top: 4rem;
+	text-align: center;
+}
+
+.vragen span {
+	font-weight: bold;
+}
+
+.vragen h3 {
+	margin-bottom: -16px;
+}
+
 @media only screen and (min-width: 1024px) {
 	.mobile {
 		display: none;
+	}
+
+	.heroLayout {
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		gap: 3rem;
+		text-align: left;
+	}
+
+	.heroTitle {
+		order: 1;
+	}
+
+	.title {
+		font-size: 5rem;
+	}
+
+	.locationIcon {
+		order: 2;
 	}
 
 	.infoSection {

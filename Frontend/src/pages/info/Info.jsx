@@ -64,21 +64,20 @@ export default function Info() {
 	};
 	return (
 		<>
-			<div className={`${s.heroLayout}`}>
-				<img
-					src="/assets/icons/LocationOrange.svg"
-					alt=""
-					aria-hidden="true"
-					className={s.locationIcon}
-				/>
-				<div className={s.heroTitle}>
-					<span className={s.title}>
-						PRAKTISCHE <br></br>INFORMATIE
-					</span>
+			<div className={s.heroImg}>
+				<div className={`${s.heroLayout}`}>
+					<img
+						src="/assets/icons/LocationOrange.svg"
+						alt=""
+						aria-hidden="true"
+						className={s.locationIcon}
+					/>
+					<div className={s.heroTitle}>
+						<h1 className={s.title}>
+							PRAKTISCHE <br></br>INFORMATIE
+						</h1>
+					</div>
 				</div>
-				<a href="#programma" className={`linkBtn ${s.heroBtn} ${s.mobile}`}>
-					Bekijk het programma
-				</a>
 			</div>
 
 			<div className="altBg">
@@ -225,11 +224,22 @@ export default function Info() {
 				</div>
 			</div>
 			<div className="ctx">
-				<h2>FAQ</h2>
+				<h2>VEELGESTELDE VRAGEN</h2>
 				<div className={`${s.faq}`}>
 					{faq.map((q, index) => (
 						<FAQItem key={index} title={q.title} answer={q.answer} s={s} />
 					))}
+				</div>
+				<div className={`${s.vragen}`}>
+					<h3>HEB JE NOG VRAGEN?</h3>
+					<p>Je kan ons bereiken via:</p>
+					<p></p>
+					<p>
+						<span>E-mail:</span> gdt.kaai.student@ehb.be
+					</p>
+					<p>
+						<span>Tel:</span> 02 523 37 37
+					</p>
 				</div>
 			</div>
 		</>
