@@ -64,6 +64,7 @@ export default function Info() {
 	};
 	return (
 		<>
+        <div className={s.heroImg}>
 			<div className={`${s.heroLayout}`}>
 				<img
 					src="/assets/icons/LocationOrange.svg"
@@ -80,6 +81,7 @@ export default function Info() {
 					Bekijk het programma
 				</a>
 			</div>
+        </div>
 
 			<div className="altBg">
 				<div className="ctx">

@@ -1,3 +1,7 @@
+.heroImg {
+    background-image: url(../../../public/assets/heroContent/infoHero.jpg);
+}
+
 .heroLayout {
 	display: flex;
 	flex-direction: column;
