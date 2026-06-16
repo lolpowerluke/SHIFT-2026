@@ -70,9 +70,8 @@ export function runSiteAnimations() {
 	const triggers = [];
 	const hidden = [];
 	let observer = null;
-	let processTimer = 0;
 	let refreshTimer = 0;
-	const pending = [];
+	let killed = false;
 
 	const inExcluded = (el) => el.closest && el.closest(EXCLUDE);
 
@@ -167,48 +166,42 @@ export function runSiteAnimations() {
 		return count;
 	}
 
-	// Process only the subtrees that were just added to the DOM.
-	function flushPending() {
-		let created = 0;
-		const nodes = pending.splice(0);
-		for (const node of nodes) {
-			if (node.nodeType === 1 && node.isConnected && !inExcluded(node)) {
-				created += process(node);
-			}
-		}
-		if (created) scheduleRefresh();
-	}
-
 	try {
 		// Initial pass (runs before paint via useLayoutEffect → no flash).
 		process(document.body);
 		ScrollTrigger.refresh();
 
-		// Re-run only for content added later (fetched lists, carousels…).
+		// Content added later (fetched lists, carousels…). A MutationObserver
+		// callback is a microtask that runs BEFORE the browser paints, so hiding
+		// the new nodes here (synchronously) means they never flash in visible
+		// first — they're set to their start state before they're ever drawn.
 		observer = new MutationObserver((mutations) => {
-			let added = false;
+			let created = 0;
 			for (const m of mutations) {
 				for (const n of m.addedNodes) {
-					if (n.nodeType === 1) {
-						pending.push(n);
-						added = true;
+					if (n.nodeType === 1 && n.isConnected && !inExcluded(n)) {
+						created += process(n);
 					}
 				}
 			}
-			if (added) {
-				clearTimeout(processTimer);
-				processTimer = setTimeout(flushPending, 150);
-			}
+			if (created) scheduleRefresh();
 		});
 		observer.observe(document.body, { childList: true, subtree: true });
 
+		// Recalc trigger positions once images and the web font have settled,
+		// otherwise late layout shifts leave the scroll triggers slightly off.
 		const onLoad = () => ScrollTrigger.refresh();
 		window.addEventListener("load", onLoad);
 		const lateRefresh = setTimeout(onLoad, 600);
+		if (document.fonts && document.fonts.ready) {
+			document.fonts.ready.then(() => {
+				if (!killed) ScrollTrigger.refresh();
+			});
+		}
 
 		return () => {
+			killed = true;
 			if (observer) observer.disconnect();
-			clearTimeout(processTimer);
 			clearTimeout(refreshTimer);
 			clearTimeout(lateRefresh);
 			window.removeEventListener("load", onLoad);
