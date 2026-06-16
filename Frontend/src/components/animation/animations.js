@@ -24,12 +24,9 @@ function isBackgroundMedia(el) {
 	return r.width >= window.innerWidth * 0.9 && r.height >= window.innerHeight * 0.7;
 }
 
-// A "box": a framed panel/card — has a visible border OR a box-shadow. This is
-// what tells real cards/frames apart from full-bleed page backgrounds (which
-// only have a background colour/image and shouldn't animate).
+// A "box": a framed panel/card — has a visible border OR a box-shadow.
 function isBox(el) {
 	const cs = getComputedStyle(el);
-	// Skip full-bleed photo backgrounds — a background image should never animate.
 	if (cs.backgroundImage && cs.backgroundImage !== "none") return false;
 	const border =
 		(parseFloat(cs.borderTopWidth) > 0 && cs.borderTopStyle !== "none") ||
@@ -45,7 +42,7 @@ function isAnimatable(el) {
 	if (SKIP_TAGS.has(tag)) return false;
 	if (MEDIA_TAGS.has(tag)) {
 		if (tag === "IMG" && !keepImage(el)) return false;
-		if (isBackgroundMedia(el)) return false; // full-bleed hero background
+		if (isBackgroundMedia(el)) return false;
 		return true;
 	}
 	for (const node of el.childNodes) {
@@ -56,10 +53,11 @@ function isAnimatable(el) {
 
 /**
  * Animates essentially everything on the page as you scroll, and keeps doing so
- * for content that is fetched / added after load (carousels, project lists, …).
+ * for content added after load (carousels, project lists, …).
  *
- *   - Boxes / framed panels (border or shadow): rise + fade + soft scale.
- *   - Every other text element / image / media: gentle fade up.
+ * Tuned for smooth scrolling on iOS Safari: ScrollTrigger ignores the address
+ * bar resize (see gsapInit), only newly-added DOM subtrees are processed (not
+ * the whole page), and refreshes are batched.
  *
  * Returns a cleanup function.
  */
@@ -72,9 +70,16 @@ export function runSiteAnimations() {
 	const triggers = [];
 	const hidden = [];
 	let observer = null;
-	let debounce = 0;
+	let processTimer = 0;
+	let refreshTimer = 0;
+	const pending = [];
 
 	const inExcluded = (el) => el.closest && el.closest(EXCLUDE);
+
+	const scheduleRefresh = () => {
+		clearTimeout(refreshTimer);
+		refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 250);
+	};
 
 	function collect(root) {
 		const els = [];
@@ -83,11 +88,13 @@ export function runSiteAnimations() {
 
 		const clean = els.filter(
 			(el) =>
-				el.nodeType === 1 && !SKIP_TAGS.has(el.tagName) && !inExcluded(el),
+				el.nodeType === 1 &&
+				!processed.has(el) &&
+				!SKIP_TAGS.has(el.tagName) &&
+				!inExcluded(el),
 		);
 
 		const boxesAll = clean.filter(isBox);
-		// Only the outermost box of each nested group.
 		const boxes = boxesAll.filter(
 			(b) => !boxesAll.some((o) => o !== b && o.contains(b)),
 		);
@@ -101,7 +108,9 @@ export function runSiteAnimations() {
 		return { boxes, leaves };
 	}
 
+	// Returns how many elements it set up (0 = nothing new).
 	function process(root) {
+		let count = 0;
 		try {
 			const { boxes, leaves } = collect(root);
 			const vh = window.innerHeight;
@@ -112,10 +121,10 @@ export function runSiteAnimations() {
 				processed.add(el);
 				gsap.set(el, from);
 				hidden.push(el);
+				count++;
 
 				const top = el.getBoundingClientRect().top;
 				if (top < vh * 0.92) {
-					// already in view → reveal now, lightly staggered
 					gsap.to(el, {
 						...to,
 						delay: Math.min(nowCount, 12) * 0.04,
@@ -124,18 +133,13 @@ export function runSiteAnimations() {
 					});
 					nowCount++;
 				} else {
-					// below the fold → reveal when scrolled to
 					triggers.push(
 						ScrollTrigger.create({
 							trigger: el,
 							start,
 							once: true,
 							onEnter: () =>
-								gsap.to(el, {
-									...to,
-									overwrite: true,
-									clearProps: "transform",
-								}),
+								gsap.to(el, { ...to, overwrite: true, clearProps: "transform" }),
 						}),
 					);
 				}
@@ -157,42 +161,57 @@ export function runSiteAnimations() {
 					"top 92%",
 				),
 			);
-
-			ScrollTrigger.refresh();
 		} catch (err) {
 			console.error("SiteAnimations process error:", err);
 		}
+		return count;
 	}
 
-	const schedule = () => {
-		clearTimeout(debounce);
-		debounce = setTimeout(() => process(document.body), 120);
-	};
+	// Process only the subtrees that were just added to the DOM.
+	function flushPending() {
+		let created = 0;
+		const nodes = pending.splice(0);
+		for (const node of nodes) {
+			if (node.nodeType === 1 && node.isConnected && !inExcluded(node)) {
+				created += process(node);
+			}
+		}
+		if (created) scheduleRefresh();
+	}
 
 	try {
 		// Initial pass (runs before paint via useLayoutEffect → no flash).
 		process(document.body);
+		ScrollTrigger.refresh();
 
-		// Re-run for content added later (fetched lists, carousels, etc.).
+		// Re-run only for content added later (fetched lists, carousels…).
 		observer = new MutationObserver((mutations) => {
+			let added = false;
 			for (const m of mutations) {
-				if (m.addedNodes && m.addedNodes.length) {
-					schedule();
-					break;
+				for (const n of m.addedNodes) {
+					if (n.nodeType === 1) {
+						pending.push(n);
+						added = true;
+					}
 				}
+			}
+			if (added) {
+				clearTimeout(processTimer);
+				processTimer = setTimeout(flushPending, 150);
 			}
 		});
 		observer.observe(document.body, { childList: true, subtree: true });
 
-		const refresh = () => ScrollTrigger.refresh();
-		window.addEventListener("load", refresh);
-		const lateRefresh = setTimeout(refresh, 600);
+		const onLoad = () => ScrollTrigger.refresh();
+		window.addEventListener("load", onLoad);
+		const lateRefresh = setTimeout(onLoad, 600);
 
 		return () => {
 			if (observer) observer.disconnect();
-			clearTimeout(debounce);
+			clearTimeout(processTimer);
+			clearTimeout(refreshTimer);
 			clearTimeout(lateRefresh);
-			window.removeEventListener("load", refresh);
+			window.removeEventListener("load", onLoad);
 			triggers.forEach((t) => t.kill && t.kill());
 			gsap.set(hidden, { clearProps: "all" });
 		};
