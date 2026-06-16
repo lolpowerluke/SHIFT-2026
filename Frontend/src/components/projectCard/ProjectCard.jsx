@@ -1,9 +1,6 @@
 import { Link } from "react-router";
 import s from "./index.module.css";
-
-function toSlug(title, id) {
-	return `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}-${id}`;
-}
+import toSlug from "../../utils/toSlug.js";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
