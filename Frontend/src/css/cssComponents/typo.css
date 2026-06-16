@@ -56,6 +56,7 @@ a:not([class]):hover {
 
 .darkText {
 	color: var(--txt-shift-secondary);
+
 	a {
 		color: var(--txt-shift-secondary);
 	}
@@ -69,6 +70,7 @@ a:not([class]):hover {
 	label,
 	span,
 	p,
+	pre,
 	li {
 		font-size: 24px;
 	}
