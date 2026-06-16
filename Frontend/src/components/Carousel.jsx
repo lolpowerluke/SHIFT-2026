@@ -1,6 +1,8 @@
 import s from "../pages/countdown/Countdown.module.css";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { getCloudinaryUrl } from "../../src/utils/cloudinary.js";
+import toSlug from "../../src/utils/toSlug.js";
+import { useNavigate } from "react-router";
 
 export function mapProject(p) {
     return {
@@ -24,6 +26,8 @@ export default function Carousel() {
     const touchStartY = useRef(null);
     const isDraggingHorizontal = useRef(false);
     const carouselRef = useRef(null);
+
+    const navigate = useNavigate();
 
     function handleTouchStart(e) {
         touchStartX.current = e.touches[0].clientX;
@@ -95,6 +99,8 @@ export default function Carousel() {
                             <div
                                 key={project.id}
                                 className={s.carouselSlide}
+                                onClick={() => navigate(`/project/${toSlug(project.title, project.id)}`)}
+                                style={{ cursor: "pointer" }}
                             >
                                 <img
                                     src={project.image}
