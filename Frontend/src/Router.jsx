@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             {path: Routes.uMoeder, element: "is dik"}, //same as {path: "/uMoeder", element: "isDik"
             {path: Routes.NotFound, element: <NotFound/>},
             {path: Routes.Info, element: <Info/>},
-            {path: Routes.LiveVoting, element: "voting"},
+            {path: Routes.LiveVoting, element: <liveVoting/>},
 
         ],
     },
