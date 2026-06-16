@@ -62,7 +62,6 @@ export default function LiveVoting() {
 						>
 							<img src="/assets/icons/closeButton.svg" alt="Close modal" />
 						</div>
-
 						{!voteConfirmed ? (
 							<>
 								<h2>{selectedProject.name}</h2>
