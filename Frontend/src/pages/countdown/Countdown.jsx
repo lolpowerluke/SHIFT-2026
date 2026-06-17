@@ -74,10 +74,7 @@ export default function Countdown() {
 					{timeLeft ? (
 						<>
 							<div className={s.cd}>
-								<span>We tellen af!</span>
-							</div>
-							<div className={`${s.cd} ${s.smallerCd}`}>
-								<span>Vrijdag 19 juni om 17:00</span>
+								<span>Dit was SHIFT 2026!</span>
 							</div>
 							<div id={s.timer}>
 								<div className={s.timerBox}>

@@ -89,7 +89,7 @@ export default function List() {
 				</div>
 			</div>
 			<div className={s.cardWrapper}>
-				<h3>WINNAARS</h3>
+				<h3>Winnaars SHIFT 2026</h3>
 				<div className={s.winCard}>
 					<div className={s.projectCard}>
 						<div className={s.avatarWrap}>
