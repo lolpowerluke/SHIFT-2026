@@ -37,13 +37,14 @@ export default function ErrorComponent({ error }) {
 
     return (
         <>
-            <div className={`ctx`}>
-                <p>{fault}: {msg}</p>
+            <div className={`ctx headerSpacer`}>
+                <p className={s.error}>{fault}: {msg}</p>
                 <div className={s.throbberCtx}>
                     <div className={`throbber-wrap`}>
                         <Throbber />
                     </div>
                 </div>
             </div>
-        </>)
+        </>
+    )
 }
