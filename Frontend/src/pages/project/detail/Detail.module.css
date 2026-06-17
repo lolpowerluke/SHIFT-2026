@@ -39,7 +39,7 @@
 		margin-bottom: 8px;
 	}
 
-	>div {
+	> div {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -206,10 +206,10 @@
 
 .videoTitle {
 	margin: 32px 0 16px 0;
+	text-align: left;
 }
 
 @media (max-width: 1440px) {
-
 	/* video */
 	.videoWrapper,
 	.videoThumb {
@@ -235,7 +235,7 @@
 	.titleText {
 		text-align: center;
 
-		>div {
+		> div {
 			flex-direction: column;
 			align-items: center;
 			gap: 0px;
