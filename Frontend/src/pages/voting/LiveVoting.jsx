@@ -4,6 +4,7 @@ import s from "./LiveVoting.module.css";
 import { getCloudinaryUrl } from "../../utils/cloudinary.js";
 import Loading from "../../components/loadingComponent/Loading.jsx";
 import ProjectCard from "../../components/projectCard/ProjectCard.jsx";
+import { fireVoteConfetti } from "../../utils/confetti.js";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -98,6 +99,7 @@ export default function LiveVoting() {
 				const backendHasVoted = data.success;
 				localStorage.setItem("hasVoted", backendHasVoted.toString());
 				setHasVoted(true);
+				fireVoteConfetti();
 			} else {
 				const data = await res.json().catch(() => ({}));
 				console.error("400 response body:", data);
