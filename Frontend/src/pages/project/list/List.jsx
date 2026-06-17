@@ -46,7 +46,7 @@ export default function List() {
 			project.students.some((s) => normalizeText(s.name).includes(query));
 
 		const matchesCategory =
-			activeCategory === "Alle Projecten" ||
+			activeCategory === "Alle projecten" ||
 			project.category === activeCategory;
 
 		return matchesSearch && matchesCategory;
@@ -58,7 +58,7 @@ export default function List() {
 		<main className="ctx headerSpacer">
 			<section className={s.projectenHero}>
 				<h1>EindProjecten</h1>
-				<h3>van onze derde jaars Multimedia & Creatieve technologie!</h3>
+				<h3>van onze derdejaars Multimedia & Creatieve technologie</h3>
 			</section>
 
 			<div className={s.filterBar}>
