@@ -3,7 +3,6 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router";
 import { getCloudinaryUrl } from "../../src/utils/cloudinary.js";
 import toSlug from "../../src/utils/toSlug.js";
-import { useNavigate } from "react-router";
 
 export function mapProject(p) {
     return {
@@ -28,8 +27,6 @@ export default function Carousel() {
     const touchStartY = useRef(null);
     const isDraggingHorizontal = useRef(false);
     const carouselRef = useRef(null);
-
-    const navigate = useNavigate();
 
     function handleTouchStart(e) {
         touchStartX.current = e.touches[0].clientX;
