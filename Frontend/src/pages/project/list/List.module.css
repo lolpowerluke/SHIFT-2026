@@ -5,6 +5,9 @@
 	h3 {
 		margin: 0 0 0.25rem;
 	}
+	h3{
+		text-transform: unset;
+	}
 }
 
 .filterBar {
@@ -80,6 +83,11 @@
 	margin: 0 0 1rem;
 	font-weight: bold;
 	text-align: left;
+	text-transform: lowercase;
+}
+
+.projectenCount:first-letter {
+	text-transform: uppercase;
 }
 
 .projectenGrid {

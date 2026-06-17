@@ -211,6 +211,10 @@
 		border: 5px solid var(--border-primary);
 		overflow: hidden;
 		aspect-ratio: 16 / 9;
+
+		img {
+			width: 100%;
+		}
 	}
 
 	.carouselSlideAnimation {
@@ -847,12 +851,12 @@ h2 {
 	color: var(--txt-shift-primary);
 }
 
-.orange ::selection{
+.orange ::selection {
 	background: var(--bg-shift-primary);
 	color: var(--txt-shift-primary);
 }
 
-.orange ::-moz-selection{
+.orange ::-moz-selection {
 	background: var(--bg-shift-primary);
 	color: var(--txt-shift-primary);
 }

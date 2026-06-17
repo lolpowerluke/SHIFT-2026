@@ -1,5 +1,5 @@
 .heroImg {
-	background-image: url(../../../public/assets/heroContent/infoHero.jpg);
+	background-image: url(/assets/heroContent/infoHero.jpg);
 }
 
 .heroLayout {
@@ -35,7 +35,9 @@
 
 .infoSection {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
 	gap: 1.5rem;
 	margin: 2.5rem 0;
 	text-align: center;
@@ -44,10 +46,14 @@
 		padding: 1.5rem 1.25rem;
 		display: flex;
 		flex-direction: column;
+		width: 100%;
+		flex: 1 0 auto;
+		max-width: 500px;
 		border-radius: 28px;
 		gap: 1rem;
 		background-color: var(--bg-shift-secondary);
 		border: 4px solid var(--border-primary);
+		box-sizing: border-box;
 
 		* {
 			text-align: left;
@@ -258,9 +264,7 @@
 		align-items: stretch;
 		gap: 2rem;
 
-		.infoCard {
-			flex: 1 1 0;
-		}
+		.infoCard {}
 	}
 
 	.infoCard#programma,

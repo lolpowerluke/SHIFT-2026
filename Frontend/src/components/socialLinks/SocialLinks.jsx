@@ -2,7 +2,7 @@ export default function SocialLinks({ className = "" }) {
 	return (
 		<div className={`socialLinks${className ? ` ${className}` : ""}`}>
 			<a
-				href="https://www.facebook.com/erasmushogeschool/?locale=nl_BE"
+				href="https://www.facebook.com/erasmushogeschool/"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
@@ -46,7 +46,7 @@ export default function SocialLinks({ className = "" }) {
 				/>
 			</a>
 			<a
-				href="https://www.erasmushogeschool.be/nl"
+				href="https://www.erasmushogeschool.be/"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
