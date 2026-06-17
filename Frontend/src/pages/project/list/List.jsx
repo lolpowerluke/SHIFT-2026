@@ -24,7 +24,7 @@ export default function List() {
 	const [projects, setProjects] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
-	const [activeCategory, setActiveCategory] = useState("Alle Projecten");
+	const [activeCategory, setActiveCategory] = useState("Alle projecten");
 	const [searchQuery, setSearchQuery] = useState("");
 
 	useEffect(() => {
