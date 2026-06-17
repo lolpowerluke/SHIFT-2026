@@ -91,7 +91,7 @@ export default function LiveVoting() {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ token, selectedProject: id }),
+				body: JSON.stringify({ token, project: id }),
 			});
 			if (res.ok) {
 				const data = await res.json();
