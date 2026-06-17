@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 import s from "./LiveVoting.module.css";
 import { getCloudinaryUrl } from "../../utils/cloudinary.js";
 import Loading from "../../components/loadingComponent/Loading.jsx";
 import ProjectCard from "../../components/projectCard/ProjectCard.jsx";
 import { fireVoteConfetti } from "../../utils/confetti.js";
+import { useNavigate } from "react-router";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const votable = []; //TODO when votes are in
+const votable = [22]; //TODO when votes are in
 
 async function getToken() {
 	console.log("getToken");
@@ -36,10 +36,13 @@ export default function LiveVoting() {
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [selectedProject, setSelectedProject] = useState(null);
+	const [submitting, setSubmitting] = useState(false);
+	const [votedName, setVotedName] = useState(
+		() => localStorage.getItem("votedName") ?? "",
+	);
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		console.log("useEff getToken");
 		if (!token) {
 			setLoading(true);
 			getToken()
@@ -47,7 +50,7 @@ export default function LiveVoting() {
 					console.log(fetchedToken);
 					if (fetchedToken) {
 						localStorage.setItem("token", fetchedToken);
-						setToken(fetchedToken);
+						setToken(localStorage.getItem("token"));
 					}
 				})
 				.finally(() => setLoading(false));
@@ -81,11 +84,12 @@ export default function LiveVoting() {
 	async function handleVote() {
 		const id = selectedProject?.id;
 		if (!token || !id) {
+			console.error("Can't identify the device for voting.");
 			return;
 		}
 
 		setError(null);
-		setLoading(true);
+		setSubmitting(true);
 		try {
 			const res = await fetch(`${API_URL}/voting`, {
 				method: "POST",
@@ -98,18 +102,18 @@ export default function LiveVoting() {
 				const data = await res.json();
 				const backendHasVoted = data.success;
 				localStorage.setItem("hasVoted", backendHasVoted.toString());
+				setVotedName(selectedProject.name);
 				setHasVoted(true);
 				fireVoteConfetti();
 			} else {
 				const data = await res.json().catch(() => ({}));
-				console.error("400 response body:", data);
 				setError(data.message || "Fout bij het uitbrengen van je stem.");
 			}
 		} catch (err) {
 			console.error("Error handleVote:", err);
 			setError("Netwerkfout. Probeer het opnieuw.");
 		} finally {
-			setLoading(false);
+			setSubmitting(false);
 			// setSelectedProject(null);
 		}
 	}
