@@ -126,8 +126,7 @@ export default function LiveVoting() {
 					<p className={s.voteText}>
 						{selectedProject ? (
 							<>
-								Bedankt voor je stem op <b>{selectedProject.name}</b>. Veel
-								succes aan alle teams!
+								Bedankt voor je stem op <b>{selectedProject.name}</b>.
 							</>
 						) : (
 							"Bedankt voor je stem. Veel succes aan alle teams!"
@@ -184,7 +183,7 @@ export default function LiveVoting() {
 								className={`${s.voteButton} blueBtn`}
 								onClick={handleVote}
 							>
-								Ja, ik ben zeker
+								Ja, ik bevestig!
 							</button>
 						</div>
 					</div>
