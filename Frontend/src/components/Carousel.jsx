@@ -2,6 +2,7 @@ import s from "../pages/countdown/Countdown.module.css";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router";
 import { getCloudinaryUrl } from "../../src/utils/cloudinary.js";
+import toSlug from "../../src/utils/toSlug.js";
 
 export function mapProject(p) {
     return {
@@ -97,6 +98,8 @@ export default function Carousel() {
                             <div
                                 key={project.id}
                                 className={s.carouselSlide}
+                                onClick={() => navigate(`/project/${toSlug(project.title, project.id)}`)}
+                                style={{ cursor: "pointer" }}
                             >
                                 <img
                                     src={project.image}
