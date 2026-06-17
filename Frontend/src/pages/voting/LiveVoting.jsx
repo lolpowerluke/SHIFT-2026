@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import {useEffect, useState} from "react";
 import s from "./LiveVoting.module.css";
-import { getCloudinaryUrl } from "../../utils/cloudinary.js";
+import {getCloudinaryUrl} from "../../utils/cloudinary.js";
 import Loading from "../../components/loadingComponent/Loading.jsx";
 import ProjectCard from "../../components/projectCard/ProjectCard.jsx";
 import { fireVoteConfetti } from "../../utils/confetti.js";
@@ -38,85 +37,85 @@ export default function LiveVoting() {
 	const [selectedProject, setSelectedProject] = useState(null);
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		console.log("useEff getToken");
-		if (!token) {
-			setLoading(true);
-			getToken()
-				.then((fetchedToken) => {
-					console.log(fetchedToken);
-					if (fetchedToken) {
-						localStorage.setItem("token", fetchedToken);
-						setToken(fetchedToken);
-					}
-				})
-				.finally(() => setLoading(false));
-		}
-	}, [token]);
-	useEffect(() => {
-		// Avoid fetching projects if user has already voted
-		if (hasVoted) return;
+    useEffect(() => {
+        if (!token) {
+            setLoading(true);
+            getToken()
+                .then(fetchedToken => {
+                    console.log(fetchedToken);
+                    if (fetchedToken) {
+                        localStorage.setItem("token", fetchedToken);
+                        setToken(localStorage.getItem("token"));
+                    }
+                })
+                .finally(() => setLoading(false));
+        }
+    }, [token]);
+    useEffect(() => {
+        // Avoid fetching projects if user has already voted
+        if (hasVoted) return (
+            <>
+                <div className="headerSpacer"></div>
+                <h2>Stem uitgebracht!</h2>
+                <p>Bedankt voor je stem op <b>{votedName}</b>.</p>
+            </>);
 
-		const fetchTopProjects = async () => {
-			setLoading(true);
-			try {
-				const promises = votable.map((id) =>
-					fetch(`${API_URL}/project/${id}`)
-						.then((res) => (res.ok ? res.json() : null))
-						.then((data) => data?.project || null)
-						.catch(() => null),
-				);
-				const topProjects = await Promise.all(promises);
-				setProjects(topProjects.filter(Boolean));
-			} catch (error) {
-				console.error("Error fetching top projects:", error);
-			} finally {
-				setLoading(false);
-			}
-		};
+        const fetchTopProjects = async () => {
+            setLoading(true);
+            try {
+                const promises = votable.map(id => fetch(`${API_URL}/project/${id}`)
+                    .then(res => res.ok ? res.json() : null)
+                    .then(data => data?.project || null)
+                    .catch(() => null));
+                const topProjects = await Promise.all(promises);
+                setProjects(topProjects.filter(Boolean));
+            } catch (error) {
+                console.error("Error fetching top projects:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-		fetchTopProjects();
-	}, [hasVoted]);
+        fetchTopProjects();
+    }, [hasVoted]);
 
-	async function handleVote() {
-		const id = selectedProject?.id;
-		if (!token || !id) {
-			return;
-		}
+    async function handleVote() {
+        const id = selectedProject?.id;
+        if (!token || !id) {
+            console.error("Can't identify the device for voting.")
+            return;
+        }
 
-		setError(null);
-		setLoading(true);
-		try {
-			const res = await fetch(`${API_URL}/voting`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ token, project: id }),
-			});
-			if (res.ok) {
-				const data = await res.json();
-				const backendHasVoted = data.success;
-				localStorage.setItem("hasVoted", backendHasVoted.toString());
-				setHasVoted(true);
-				fireVoteConfetti();
-			} else {
-				const data = await res.json().catch(() => ({}));
-				console.error("400 response body:", data);
-				setError(data.message || "Fout bij het uitbrengen van je stem.");
-			}
-		} catch (err) {
-			console.error("Error handleVote:", err);
-			setError("Netwerkfout. Probeer het opnieuw.");
-		} finally {
-			setLoading(false);
-			// setSelectedProject(null);
-		}
-	}
+        setError(null);
+        setSubmitting(true);
+        try {
+            const res = await fetch(`${API_URL}/voting`, {
+                method: "POST", headers: {
+                    "Content-Type": "application/json"
+                }, body: JSON.stringify({token, id})
+            });
+            if (res.ok) {
+                const data = await res.json();
+                const backendHasVoted = data.success;
+                localStorage.setItem("hasVoted", backendHasVoted.toString());
+                setVotedName(selectedProject?.name);
+                setHasVoted(true);
+            } else {
+                const data = await res.json().catch(() => ({}));
+                setError(data.message || "Fout bij het uitbrengen van je stem.");
+            }
+        } catch (err) {
+            console.error("Error handleVote:", err);
+            setError("Netwerkfout. Probeer het opnieuw.");
+        } finally {
+            setSubmitting(false);
+            // setSelectedProject(null);
+        }
+    }
 
-	if (loading) {
-		return <Loading />;
-	}
+    if (loading) {
+        return <Loading/>;
+    }
 
 	if (hasVoted) {
 		return (
