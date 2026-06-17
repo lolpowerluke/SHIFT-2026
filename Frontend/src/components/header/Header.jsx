@@ -74,7 +74,7 @@ export default function Header() {
 						<li className={s.navFooter}>
 							<p>
 								<span>SHIFT FESTIVAL</span> - De eindejaarsexpo van <br />
-								Multimedia & Creatieve Technologie studenten.
+								Multimedia & Creatieve Technologie aan EhB.
 							</p>
 							<SocialLinks className={s.socialLinks} />
 						</li>
