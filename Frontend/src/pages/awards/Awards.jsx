@@ -31,8 +31,8 @@ export default function Awards() {
                 <div className={`${s.landingBottom} ${s.desktop}`}>
                     <img src="/assets/icons/BlueVote.svg" alt="Blue Vote" className={s.voteImg} />
                     <div>
-                        <span>{projectAmount} projecten worden getoond.</span>
-                        <span>4 awards worden uitgereikt.</span>
+                        <span>{projectAmount} projecten werden getoond.</span>
+                        <span>4 awards werden uitgereikt.</span>
                     </div>
                     <button onClick={() => navigate('/project')} className="blueBtn">Ontdek alle projecten</button>
                 </div>
