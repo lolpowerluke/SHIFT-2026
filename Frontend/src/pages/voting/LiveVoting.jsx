@@ -136,7 +136,7 @@ export default function LiveVoting() {
 			<div className="headerSpacer"></div>
 			<div className={`${s.ctx} ctx`}>
 				<h1>Stem hier!</h1>
-				<h2>Druk op het project dat jouw stem krijgt.</h2>
+				<h3>Druk op het project dat jouw stem krijgt.</h3>
 				<div className={s.projectsGrid}>
 					{projects.map((project) => (
 						<ProjectCard
