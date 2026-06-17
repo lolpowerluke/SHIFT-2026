@@ -67,7 +67,7 @@ export default function Awards() {
 						<span className={s.cardTitle}>IMPACTPRIJS</span>
 						<span className={s.cardSubTitle}>GROOTSTE IMPACT</span>
 						<span className={s.cardDesc}>
-							Deze award gaat naar een project dat een concreet probleem aanpakt en het potentieel hebben om echte maatschappelijke impact te creëren.
+							Deze prijs gaat naar een project dat een reëel probleem aanpakt en een positieve impact kan hebben op mensen, organisaties of de samenleving.
 						</span>
 					</div>
 					<div className={s.awardCard}>
@@ -79,7 +79,7 @@ export default function Awards() {
 						<span className={s.cardTitle}>INNOVATIEPRIJS</span>
 						<span className={s.cardSubTitle}>MEEST VERNIEUWEND</span>
 						<span className={s.cardDesc}>
-							Deze award gaat naar een project dat technisch grenzend verlegd en op een originele manier nieuwe technologieën verkent.
+							Deze prijs bekroont een project dat op een creatieve manier nieuwe technologieën gebruikt of verkent en zo nieuwe mogelijkheden laat zien.
 						</span>
 					</div>
 					<div className={s.awardCard}>
@@ -89,9 +89,9 @@ export default function Awards() {
 							className={s.cardImg}
 						/>
 						<span className={s.cardTitle}>JURYPRIJS</span>
-						<span className={s.cardSubTitle}>EXPERT KEUZE</span>
+						<span className={s.cardSubTitle}>EXPERTKEUZE</span>
 						<span className={s.cardDesc}>
-							Voor deze award zoeken we het project dat alle kwaliteiten van een MCT-student bevat. Een sterk project dat uitblinkt van concept tot uitvoering. 
+							Deze prijs gaat naar het project dat het volledige MCT-DNA uitstraalt: een sterk concept, een doordachte uitwerking en een uitstekende uitvoering.
 						</span>
 					</div>
 				</div>
