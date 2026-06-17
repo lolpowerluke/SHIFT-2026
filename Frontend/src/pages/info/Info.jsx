@@ -192,7 +192,7 @@ export default function Info() {
 										<div>
 											<h4>OPENBAAR VERVOER</h4>
 											<p>
-												Metro 6/2 naar Delacroix of bus N46/T81 tot Albert I, daarna te voet naar de school (5 tot 10 min).
+												Metro 6/2 naar Delacroix of bus N46/T81 tot Albert I, daarna te voet naar de campus (5 tot 10 min).
 											</p>
 										</div>
 									</div>

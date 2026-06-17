@@ -57,7 +57,7 @@ export default function List() {
 	return (
 		<main className="ctx headerSpacer">
 			<section className={s.projectenHero}>
-				<h1>EindProjecten</h1>
+				<h1>Eindprojecten</h1>
 				<h3>van onze derdejaars Multimedia & Creatieve technologie</h3>
 			</section>
 
@@ -87,7 +87,7 @@ export default function List() {
 			</div>
 
 			<p className={s.projectenCount}>
-				{activeCategory} ({filteredProjects.length} Projecten)
+				{activeCategory} ({filteredProjects.length} projecten)
 			</p>
 
 			<div className={s.projectenGrid}>
