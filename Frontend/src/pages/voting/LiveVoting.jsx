@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import s from "./LiveVoting.module.css";
 import { getCloudinaryUrl } from "../../utils/cloudinary.js";
 import Loading from "../../components/loadingComponent/Loading.jsx";
@@ -34,6 +35,7 @@ export default function LiveVoting() {
 	const [loading, setLoading] = useState(false);
 	const [selectedProject, setSelectedProject] = useState(null);
 	const [voteConfirmed, setVoteConfirmed] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		console.log("useEff getToken");
@@ -89,7 +91,7 @@ export default function LiveVoting() {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ token, id }),
+				body: JSON.stringify({ token, selectedProject: id }),
 			});
 			if (res.ok) {
 				const data = await res.json();
@@ -98,6 +100,7 @@ export default function LiveVoting() {
 				setHasVoted(true);
 			} else {
 				const data = await res.json().catch(() => ({}));
+				console.error("400 response body:", data);
 				setError(data.message || "Fout bij het uitbrengen van je stem.");
 			}
 		} catch (err) {
@@ -116,11 +119,13 @@ export default function LiveVoting() {
 	if (hasVoted) {
 		return (
 			<>
-				<h2>Stem uitgebracht!</h2>
-				<p>
-					Bedankt voor je stem op <b>{selectedProject.name}</b>.
-				</p>
-				<button onClick={() => setSelectedProject(null)}>Sluiten</button>
+				<h2 className={s.voteTitle}>Stem uitgebracht!</h2>
+				{selectedProject && (
+					<p>
+						Bedankt voor je stem op <b>{selectedProject.name}</b>.
+					</p>
+				)}
+				<button onClick={() => navigate("/")}>Sluiten</button>
 			</>
 		);
 	}
@@ -130,8 +135,8 @@ export default function LiveVoting() {
 			<div className="headerSpacer"></div>
 			<div className={`${s.ctx} ctx`}>
 				<h1>Stem hier!</h1>
-				<h3>Druk op het project dat jouw stem krijgt.</h3>
-				<div className={s.projectsGrid}>
+				<h2>Druk op het project dat jouw stem krijgt.</h2>
+					<div className={s.projectsGrid}>
 					{projects.map((project) => (
 						<div key={project.id} className={s.projectCardBorder}>
 							<div
