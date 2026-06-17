@@ -268,14 +268,41 @@
 }
 
 .awardBoxLabel:first-of-type {
-  top: 18%;
+  top: 15%;
   font-size: 20px;
 }
 
 .awardBoxLabel:last-of-type {
-  top: 55%;
-  font-size: 15px;
-  left: 31%;
+  top: 65%;
+  font-size: 13px;
+  left: 37%;
+}
+
+.awardBoxLabel2 {
+  position: absolute;
+  left: 37%;
+  transform: translate(-50%, -50%) rotate(-6.6deg);
+  font-weight: 700;
+  color: var(--txt-shift-primary);
+  white-space: nowrap;
+  pointer-events: none;
+  display: flex;
+}
+
+.awardBoxLabel2:first-of-type {
+  top: 22%;
+  font-size: 20px;
+  left: 47%;
+}
+
+.awardBoxLabel2:last-of-type {
+  top: 65%;
+  font-size: 13px;
+  left: 37%;
+}
+
+.winTitle {
+  font-size: 20px;
 }
 
 /* Responsive breakpoints */
