@@ -9,7 +9,7 @@
 // Laat `projectId: null` staan om dat badge (nog) niet te tonen.
 
 export const WINNERS = [
-	{ prize: "PUBLIEKSPRIJS", projectId: 7 },
+	{ prize: "PUBLIEKSPRIJS", projectId: null },
 	{ prize: "JURYPRIJS", projectId: null },
 	{ prize: "INNOVATIEPRIJS", projectId: null },
 	{ prize: "IMPACTPRIJS", projectId: null },
