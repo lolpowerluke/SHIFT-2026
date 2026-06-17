@@ -38,7 +38,7 @@ const faq = [
     {
         title: "Voor wie is SHIFT bedoeld?",
         answer:
-            "SHIFT is voor iedereen die van innovatie en creativiteit houdt. Of je nu net bent afgestudeerd van het middelbaar, een nieuwe studierichting zoekt, of gewoon nieuwsgierig bent. Iedereen is van harte welkom. Ook alumni en bedrijven.",
+            "SHIFT is voor iedereen die van innovatie en creativiteit houdt. Of je nu net bent afgestudeerd van het middelbaar, een nieuwe studierichting zoekt, of gewoon nieuwsgierig bent. Ook ouders, familie, vrienden, alumni en bedrijven zijn van harte welkom om de sfeer te komen proeven!",
     },
     {
         title: "Is de locatie toegankelijk voor rolstoelgebruikers?",
