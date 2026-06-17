@@ -62,11 +62,11 @@
 		margin: 0;
 	}
 
-	& > div:first-child {
+	&>div:first-child {
 		font-size: 1rem;
 	}
 
-	& > div:last-child {
+	&>div:last-child {
 		margin-left: 4px;
 		margin-bottom: 0;
 		font-size: 3rem;
@@ -127,7 +127,7 @@
 			flex-direction: column;
 			color: var(--txt-shift-primary);
 
-			& > :first-child {
+			&> :first-child {
 				padding: 0.5rem;
 				border-radius: 0.5rem;
 				margin: 0 0.5rem;
@@ -146,7 +146,7 @@
 				}
 			}
 
-			& > :last-child {
+			&> :last-child {
 				font-size: small;
 				text-align: center;
 				margin-top: 0.3rem;
@@ -177,12 +177,10 @@
 	left: 0;
 	height: 100vh;
 	width: 100vw;
-	background: linear-gradient(
-		to bottom right,
-		var(--shadow-primary) 0%,
-		var(--shadow-primary) 3%,
-		transparent 100%
-	);
+	background: linear-gradient(to bottom right,
+			var(--shadow-primary) 0%,
+			var(--shadow-primary) 3%,
+			transparent 100%);
 	z-index: 0;
 	pointer-events: none;
 }
@@ -463,7 +461,7 @@ h2 {
 	/*gap: 2rem;*/
 	height: 100vh;
 	overflow: hidden;
-	overflow-x: hidden;
+	position: relative;
 
 	.heroLayout {
 		display: flex;
@@ -598,13 +596,11 @@ h2 {
 		height: 100vh;
 		width: 100vw;
 		justify-content: space-between;
-		margin-top: -56px;
-		margin-bottom: 4rem;
 		margin-left: 0;
 
 		.heroLayout {
 			position: relative;
-			margin-top: -70px;
+			margin-top: -120px;
 			margin-left: -50px;
 
 			#heroLogo {
@@ -618,13 +614,15 @@ h2 {
 
 		.timerDiv {
 			display: grid;
-			margin-right: 7.5vw;
 			grid-row: 2/3;
 			grid-column: 2/3;
 			margin-top: unset;
 			text-align: unset;
 			align-self: center;
 			justify-self: end;
+			position: absolute;
+			bottom: 60px;
+			right: 60px;
 
 			#timer {
 				display: flex;
@@ -653,7 +651,7 @@ h2 {
 		width: fit-content;
 		top: 0;
 		left: 50%;
-		bottom: 10px;
+		bottom: 60px;
 		animation: upDown 1.4s ease-in-out infinite;
 	}
 
@@ -675,11 +673,11 @@ h2 {
 			font-size: 28px;
 		}
 
-		& > div:first-child {
+		&>div:first-child {
 			font-size: 2rem;
 		}
 
-		& > div:last-child {
+		&>div:last-child {
 			margin-left: 4px;
 			font-size: 4rem;
 		}
@@ -770,6 +768,7 @@ h2 {
 
 	.audienceCard {
 		z-index: 2;
+
 		&:nth-child(odd) {
 			transform: rotate(5deg);
 		}
@@ -816,6 +815,7 @@ h2 {
 }
 
 @keyframes upDown {
+
 	0%,
 	100% {
 		transform: translateY(0);
