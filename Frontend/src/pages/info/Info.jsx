@@ -6,7 +6,7 @@ import { useState } from "react";
 const events = [
 	{ time: { hr: 17, min: 0 }, event: "Start" },
 	{ time: { hr: 17, min: 30 }, event: "Foodtrucks" },
-	{ time: { hr: 19, min: 15 }, event: "Sluiting stemmen" },
+	{ time: { hr: 19, min: 15 }, event: "Einde voting" },
 	{ time: { hr: 20, min: 0 }, event: "Liveshow & awards" },
 	{ time: { hr: 20, min: 45 }, event: "Einde liveshow" },
 ];
@@ -192,7 +192,7 @@ export default function Info() {
 										<div>
 											<h4>OPENBAAR VERVOER</h4>
 											<p>
-												Metro 6/2 naar Delacroix of bus N46/T81 tot Albert I, daarna te voet naar de school.
+												Metro 6/2 naar Delacroix of bus N46/T81 tot Albert I, daarna te voet naar de school (5 tot 10 min).
 											</p>
 										</div>
 									</div>
