@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import s from "./index.module.css";
+import s from "./ProjectCard.module.css";
 import toSlug from "../../utils/toSlug.js";
 
 const CATEGORY_ICONS = {
