@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import s from "./LiveVoting.module.css";
 import { getCloudinaryUrl } from "../../utils/cloudinary.js";
 import Loading from "../../components/loadingComponent/Loading.jsx";
+import ProjectCard from "../../components/projectCard/ProjectCard.jsx";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -136,27 +137,26 @@ export default function LiveVoting() {
 			<div className={`${s.ctx} ctx`}>
 				<h1>Stem hier!</h1>
 				<h2>Druk op het project dat jouw stem krijgt.</h2>
-					<div className={s.projectsGrid}>
+				<div className={s.projectsGrid}>
 					{projects.map((project) => (
-						<div key={project.id} className={s.projectCardBorder}>
-							<div
-								className={s.projectCard}
-								onClick={() => setSelectedProject(project)}
-							>
-								<div className={s.imageWrapper}>
-									<img
-										src={
-											getCloudinaryUrl(project.media?.[0]) ??
-											getCloudinaryUrl(project.images?.[0]) ??
-											"/assets/imageCard.png"
-										}
-										alt={project.name}
-									/>
-								</div>
-
-								<h4>{project.name}</h4>
-							</div>
-						</div>
+						<ProjectCard
+							key={project.id}
+							onClick={() => setSelectedProject(project)}
+							project={{
+								id: project.id,
+								title: project.name,
+								category: project.course,
+								image:
+									getCloudinaryUrl(project.media?.[0]) ??
+									getCloudinaryUrl(project.images?.[0]) ??
+									"/assets/imageCard.png",
+								students: (project.members ?? []).map((m) => ({
+									name: `${m.firstname} ${m.lastname}`,
+									avatar:
+										getCloudinaryUrl(m.picture) ?? "/assets/imageCard.png",
+								})),
+							}}
+						/>
 					))}
 				</div>
 			</div>
