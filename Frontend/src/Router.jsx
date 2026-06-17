@@ -35,7 +35,7 @@ const router = createBrowserRouter([
             {path: Routes.ProjectenPage, element: <List/>},
             {path: Routes.ProjectenPageOld, element: <Navigate to={Routes.ProjectenPage} replace/>},
             {path: Routes.ProjectenPageDetails, element: <Detail/>},
-            {path: Routes.uMoeder, element: <h1 className={"headerSpacer"}>is dik</h1>}, //same as {path: "/uMoeder", element: "isDik"
+            {path: Routes.uMoeder, element: <h1 className={"headerSpacer"} style={{textAlign: "center"}}>is dik</h1>}, //same as {path: "/uMoeder", element: "isDik"
             {path: Routes.NotFound, element: <NotFound/>},
             {path: Routes.Info, element: <Info/>},
             {path: Routes.LiveVoting, element: <LiveVoting/>},
