@@ -134,20 +134,6 @@ export default function LiveVoting() {
 						)}
 					</p>
 					<button onClick={() => navigate("/")}>Terug naar de site</button>
-
-					{/* 👇 Testing only — remove before production */}
-					<button
-						onClick={() => {
-							localStorage.removeItem("hasVoted");
-							localStorage.removeItem("token");
-							setHasVoted(false);
-							setToken(null);
-							setSelectedProject(null);
-						}}
-						style={{ marginTop: 12, opacity: 0.4, fontSize: "0.75rem" }}
-					>
-						[dev] Reset stem
-					</button>
 				</div>
 			</>
 		);
