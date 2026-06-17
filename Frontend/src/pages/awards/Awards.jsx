@@ -105,9 +105,6 @@ export default function Awards() {
 					<span className={`${s.subTitle} ${s.desktop}`}>
 						Jij bepaalt wie de publiekprijs verdient.
 					</span>
-					<span className={`${s.subTitle} ${s.mobile}`}>
-						Jij mag mee bepalen wie de publiekprijs verdient.
-					</span>
 					<img
 						src="/assets/icons/OrangeTrophy.svg"
 						alt="award"
