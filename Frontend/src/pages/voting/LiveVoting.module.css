@@ -27,7 +27,6 @@ h3 {
 	padding: 24px;
 }
 
-/* même recette que ProjectCard : le wrapper porte l'anneau beige */
 .modalBorder {
 	box-shadow: 1.5px 1.5px 0 6px var(--bg-shift-secondary);
 	border-radius: 25px;
@@ -35,7 +34,6 @@ h3 {
 	max-width: 420px;
 }
 
-/* ... et l'inner porte la bordure noire + l'ombre noire */
 .modal {
 	position: relative;
 	background: var(--bg-shift-secondary);
