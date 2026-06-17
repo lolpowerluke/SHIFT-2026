@@ -7,7 +7,7 @@ import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
 import { getCloudinaryUrl } from "../../../utils/cloudinary.js";
 
 const CATEGORIES = [
-	"Alle Projecten",
+	"Alle projecten",
 	"Digital Design",
 	"Experience Design",
 	"XR & 3D",
