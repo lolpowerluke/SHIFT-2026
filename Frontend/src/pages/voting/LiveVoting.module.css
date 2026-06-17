@@ -15,7 +15,8 @@
 	overflow: hidden;
 	padding: 12px;
 	background: var(--shift-orange);
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+	border: solid 6px var(--border-primary);
+	box-shadow: 3px 3px 0px var(--shadow-primary);
 	transition: transform 0.2s ease;
 }
 
@@ -36,6 +37,7 @@
 		height: 90%;
 		object-fit: contain;
 		border-radius: 12px;
+		border: solid 3px var(--border-primary);
 	}
 }
 
