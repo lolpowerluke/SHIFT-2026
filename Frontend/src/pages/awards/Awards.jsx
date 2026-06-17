@@ -40,8 +40,8 @@ export default function Awards() {
 						className={s.voteImg}
 					/>
 					<div>
-						<span>{projectAmount} projecten worden getoond.</span>
-						<span>4 awards worden uitgereikt.</span>
+						<span>{projectAmount} projecten.</span>
+						<span>4 prijzen om uit te reiken.</span>
 					</div>
 					<button onClick={() => navigate("/project")} className="blueBtn">
 						Ontdek alle projecten
@@ -67,7 +67,7 @@ export default function Awards() {
 						<span className={s.cardTitle}>IMPACTPRIJS</span>
 						<span className={s.cardSubTitle}>GROOTSTE IMPACT</span>
 						<span className={s.cardDesc}>
-							Deze prijs gaat naar een project dat een reëel probleem aanpakt en een positieve impact kan hebben op mensen, organisaties of de samenleving.
+							Deze prijs gaat naar een project dat een reëel probleem aanpakt en een positieve impact heeft op mensen, organisaties of de samenleving.
 						</span>
 					</div>
 					<div className={s.awardCard}>

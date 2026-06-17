@@ -22,6 +22,7 @@ export default function Carousel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     const touchStartX = useRef(null);
     const touchStartY = useRef(null);
@@ -75,11 +76,24 @@ export default function Carousel() {
                 return res.json();
             })
             .then((data) => setProjects(data.projects.map(mapProject)))
-            .catch((err) => console.error(err))
+            .catch((err) => {
+                console.error(err);
+                setError(true);
+            })
             .finally(() => setLoading(false));
     }, []);
 
     if (loading) return null;
+
+    if (error) {
+        return (
+            <div className={s.projectCard}>
+                <div className={s.carouselImage}>
+                    <img src="/assets/server404.webp" alt="Kon projecten niet laden" />
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>
