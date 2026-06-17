@@ -1,5 +1,5 @@
 .ctx h1 {
-    text-align: center;
+	text-align: center;
 }
 
 .projectsGrid {
@@ -13,7 +13,8 @@
 	cursor: pointer;
 	border-radius: 18px;
 	overflow: hidden;
-	background: white;
+	padding: 5px 5px 5px 5px;
+	background: var(--shift-orange);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 	transition: transform 0.2s ease;
 }
@@ -26,11 +27,14 @@
 	width: 100%;
 	aspect-ratio: 16 / 9;
 	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
+		width: 90%;
+		height: 90%;
+		object-fit: contain;
 	}
 }
 
