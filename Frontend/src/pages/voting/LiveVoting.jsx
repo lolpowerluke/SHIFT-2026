@@ -31,7 +31,8 @@ export default function LiveVoting() {
     const [loading, setLoading] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
     const [voteConfirmed, setVoteConfirmed] = useState(false);
-
+    const [submitting, setSubmitting] = useState(false);
+    const [votedName, setVotedName] = useState(null);
 
     useEffect(() => {
         console.log("useEff getToken");
@@ -50,7 +51,12 @@ export default function LiveVoting() {
     }, [token]);
     useEffect(() => {
         // Avoid fetching projects if user has already voted
-        if (hasVoted) return;
+        if (hasVoted) return (
+            <>
+                <div className="headerSpacer"></div>
+                <h2>Stem uitgebracht!</h2>
+                <p>Bedankt voor je stem op <b>{votedName}</b>.</p>
+            </>);
 
         const fetchTopProjects = async () => {
             setLoading(true);
@@ -78,7 +84,7 @@ export default function LiveVoting() {
         }
 
         setError(null);
-        setLoading(true);
+        setSubmitting(true);
         try {
             const res = await fetch(`${API_URL}/voting`, {
                 method: "POST", headers: {
@@ -89,6 +95,7 @@ export default function LiveVoting() {
                 const data = await res.json();
                 const backendHasVoted = data.success;
                 localStorage.setItem("hasVoted", backendHasVoted.toString());
+                setVotedName(selectedProject?.name);
                 setHasVoted(true);
             } else {
                 const data = await res.json().catch(() => ({}));
@@ -98,7 +105,7 @@ export default function LiveVoting() {
             console.error("Error handleVote:", err);
             setError("Netwerkfout. Probeer het opnieuw.");
         } finally {
-            setLoading(false);
+            setSubmitting(false);
             // setSelectedProject(null);
         }
     }
@@ -112,7 +119,6 @@ export default function LiveVoting() {
             <>
                 <h2>Stem uitgebracht!</h2>
                 <p>Bedankt voor je stem op <b>{selectedProject.name}</b>.</p>
-                <button onClick={() => setSelectedProject(null)}>Sluiten</button>
             </>
         );
     }
@@ -169,7 +175,7 @@ export default function LiveVoting() {
                         Je staat op het punt om te stemmen voor{" "}
                         <b>{selectedProject.name}</b>.
                     </p>
-                    <button className={s.voteButton} onClick={handleVote}>Bevestig stem</button>
+                    <button className={s.voteButton} onClick={handleVote} disabled={submitting}>{submitting ? "bezig..." : "Bevestig stem"}</button>
                 </>)}
             </div>
         </div>)}
