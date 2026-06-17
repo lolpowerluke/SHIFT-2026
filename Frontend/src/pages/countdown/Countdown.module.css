@@ -499,6 +499,14 @@ h2 {
 
 		.cta {
 			margin: 0.5rem auto 0;
+
+			a {
+				width: 70%;
+			}
+
+			img {
+				width: 20%;
+			}
 		}
 	}
 }
