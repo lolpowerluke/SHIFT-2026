@@ -133,7 +133,7 @@ export default function LiveVoting() {
 								Bedankt voor je stem op <b>{selectedProject.name}</b>.
 							</>
 						) : (
-							"Bedankt voor je stem. Veel succes aan alle teams!"
+							"Bedankt voor je stem!"
 						)}
 					</p>
 					<button onClick={() => navigate("/")}>Terug naar de site</button>
