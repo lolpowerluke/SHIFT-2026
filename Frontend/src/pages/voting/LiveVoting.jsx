@@ -117,18 +117,32 @@ export default function LiveVoting() {
 	}
 
 	if (hasVoted) {
-		return (
-			<>
-				<h2 className={s.voteTitle}>Stem uitgebracht!</h2>
-				{selectedProject && (
-					<p>
-						Bedankt voor je stem op <b>{selectedProject.name}</b>.
-					</p>
-				)}
-				<button onClick={() => navigate("/")}>Sluiten</button>
-			</>
-		);
-	}
+  return (
+    <>
+      <h2 className={s.voteTitle}>Stem uitgebracht!</h2>
+      {selectedProject && (
+        <p>
+          Bedankt voor je stem op <b>{selectedProject.name}</b>.
+        </p>
+      )}
+      <button onClick={() => navigate("/")}>Sluiten</button>
+
+      {/* 👇 Testing only — remove before production */}
+      <button
+        onClick={() => {
+          localStorage.removeItem("hasVoted");
+          localStorage.removeItem("token");
+          setHasVoted(false);
+          setToken(null);
+          setSelectedProject(null);
+        }}
+        style={{ marginTop: 12, opacity: 0.4, fontSize: "0.75rem" }}
+      >
+        [dev] Reset stem
+      </button>
+    </>
+  );
+}
 
 	return (
 		<>
