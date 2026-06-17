@@ -1,15 +1,14 @@
 footer {
 	box-sizing: border-box;
 	position: relative;
-	z-index: 6;
+	z-index: 10;
 	width: 100%;
 	justify-self: center;
 	background-color: var(--bg-shift-alt);
 	padding: var(--spacing-footer);
 	border-top: 5px solid var(--border-primary);
 	border-bottom: none;
-	box-shadow:
-		0 0 0 13px var(--hl-secondary);
+	box-shadow: 0 0 0 13px var(--hl-secondary);
 
 	margin-top: 3rem;
 

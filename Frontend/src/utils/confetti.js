@@ -1,24 +1,24 @@
 import confetti from "canvas-confetti";
 
-const SHIFT_COLORS = ["#fbf8cd", "#fba927"];
+const SHIFT_COLORS = ["#fba927", "#fbf8cd"];
 
 export function fireVoteConfetti() {
 	const defaults = {
 		colors: SHIFT_COLORS,
 		disableForReducedMotion: true,
-		zIndex: 5,
+		zIndex: 9,
 	};
 
 	confetti({
 		...defaults,
-		particleCount: 12,
-		spread: 70,
-		startVelocity: 38,
+		particleCount: 25,
+		spread: 75,
+		startVelocity: 40,
 		scalar: 1.1,
 		origin: { x: 0.5, y: 0.65 },
 	});
 
-	const end = Date.now() + 350;
+	const end = Date.now() + 500;
 	(function frame() {
 		confetti({
 			...defaults,
