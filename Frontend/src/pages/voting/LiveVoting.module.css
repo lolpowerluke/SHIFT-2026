@@ -6,7 +6,6 @@
 .ctx h3 {
 	text-align: center;
 	margin-top: 0;
-	text-align: center;
 	margin-bottom: var(--spacing-s);
 }
 
@@ -110,6 +109,3 @@
 	color: var(--txt-shift-secondary);
 }
 
-h3 {
-	text-align: center;
-}
