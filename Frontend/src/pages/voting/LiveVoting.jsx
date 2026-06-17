@@ -120,13 +120,18 @@ export default function LiveVoting() {
 		return (
 			<>
 				<div className={s.afterVote}>
-					<h2 className={s.voteTitle}>Stem uitgebracht!</h2>
-					{selectedProject && (
-						<p>
-							Bedankt voor je stem op <b>{selectedProject.name}</b>.
-						</p>
-					)}
-					<button onClick={() => navigate("/")}>Sluiten</button>
+					<h2 className={s.voteTitle}>Jouw stem is opgenomen!</h2>
+					<p className={s.voteText}>
+						{selectedProject ? (
+							<>
+								Bedankt voor je stem op <b>{selectedProject.name}</b>. Veel
+								succes aan alle teams!
+							</>
+						) : (
+							"Bedankt voor je stem. Veel succes aan alle teams!"
+						)}
+					</p>
+					<button onClick={() => navigate("/")}>Terug naar de site</button>
 
 					{/* 👇 Testing only — remove before production */}
 					<button

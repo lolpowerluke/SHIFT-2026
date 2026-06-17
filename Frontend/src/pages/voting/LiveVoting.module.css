@@ -82,3 +82,28 @@ h3 {
 .voteButton {
 	width: 100%;
 }
+
+.afterVote {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	text-align: center;
+	min-height: 70vh;
+	padding: 24px;
+}
+
+.voteTitle {
+	margin: 0;
+	font-weight: 900;
+	text-transform: uppercase;
+	color: var(--txt-shift-secondary);
+}
+
+.voteText {
+	margin: 0;
+	max-width: 340px;
+	font-size: 18px;
+	color: var(--txt-shift-secondary);
+}
