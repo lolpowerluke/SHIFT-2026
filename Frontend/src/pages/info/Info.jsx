@@ -38,7 +38,7 @@ const faq = [
     {
         title: "Voor wie is SHIFT bedoeld?",
         answer:
-            "SHIFT is voornamelijk gericht naar toekomstige studenten erover denken om van multimedia hun toekomst te maken en alumni. Alsook ouders, familie, en vrienden van de derdejaarsstudenten. Ook bedrijfvertegenwoordigers zijn van harte welkom.",
+            "SHIFT is voor iedereen die van innovatie en creativiteit houdt. Of je nu net bent afgestudeerd van het middelbaar, een nieuwe studierichting zoekt, of gewoon nieuwsgierig bent. Iedereen is van harte welkom. Ook alumni en bedrijven.",
     },
     {
         title: "Is de locatie toegankelijk voor rolstoelgebruikers?",
