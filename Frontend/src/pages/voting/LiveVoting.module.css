@@ -3,7 +3,8 @@
 	margin-bottom: 0;
 }
 
-h3 {
+.ctx h3 {
+	text-align: center;
 	margin-top: 0;
 	text-align: center;
 	margin-bottom: var(--spacing-s);
