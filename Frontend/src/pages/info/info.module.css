@@ -263,8 +263,6 @@
 		flex-direction: row;
 		align-items: stretch;
 		gap: 2rem;
-
-		.infoCard {}
 	}
 
 	.infoCard#programma,
