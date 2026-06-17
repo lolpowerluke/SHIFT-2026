@@ -8,7 +8,7 @@ import { fireVoteConfetti } from "../../utils/confetti.js";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const votable = [22, 34, 17];
+const votable = []; //TODO when votes are in
 
 async function getToken() {
 	console.log("getToken");
