@@ -108,3 +108,7 @@
 	font-size: 18px;
 	color: var(--txt-shift-secondary);
 }
+
+h3 {
+	text-align: center;
+}
