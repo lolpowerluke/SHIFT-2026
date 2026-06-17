@@ -1,37 +1,19 @@
 .ctx h1 {
-    text-align: center;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+h3 {
+	margin-top: 0;
+	margin-bottom: var(--spacing-s);
 }
 
 .projectsGrid {
 	display: grid;
 	grid-template-columns: 1fr;
-	gap: 20px;
+	gap: 40px;
 	width: 100%;
-}
-
-.projectCard {
-	cursor: pointer;
-	border-radius: 18px;
-	overflow: hidden;
-	background: white;
-	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-	transition: transform 0.2s ease;
-}
-
-.projectCard:active {
-	transform: scale(0.98);
-}
-
-.imageWrapper {
-	width: 100%;
-	aspect-ratio: 16 / 9;
-	overflow: hidden;
-
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+	justify-items: center;
 }
 
 .overlay {
@@ -39,41 +21,89 @@
 	inset: 0;
 	background: rgba(0, 0, 0, 0.6);
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
 	justify-content: center;
 	z-index: 1000;
-	padding: 16px;
+	padding: 24px;
+}
+
+.modalBorder {
+	box-shadow: 1.5px 1.5px 0 6px var(--bg-shift-secondary);
+	border-radius: 25px;
+	width: 100%;
+	max-width: 420px;
 }
 
 .modal {
 	position: relative;
-	background: white;
-	border-radius: 24px 24px 0 0;
-	width: 100%;
+	background: var(--bg-shift-secondary);
+	border: 6px solid var(--border-primary);
+	border-radius: 25px;
+	box-shadow: 3px 3px 0px var(--shadow-primary);
 	max-height: 90vh;
 	overflow-y: auto;
-	padding: 20px;
+	padding: 56px 28px 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	text-align: center;
 }
 
-.modalImage {
-	width: 100%;
-	aspect-ratio: 16 / 9;
-	border-radius: 16px;
-	overflow: hidden;
+.modalTitle {
+	margin: 0;
+	font-weight: 900;
+	text-transform: uppercase;
+	text-align: center;
+	color: var(--txt-shift-secondary);
+}
 
-	img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+.modalText {
+	margin: 0;
+	font-size: 18px;
+	text-align: center;
+	color: var(--txt-shift-secondary);
 }
 
 .closeButton {
 	position: absolute;
-	top: 12px;
-	right: 12px;
+	top: 14px;
+	right: 14px;
+	width: 44px;
+	height: 44px;
+	cursor: pointer;
+	z-index: 1;
+
+	img {
+		width: 100%;
+		height: 100%;
+	}
 }
 
 .voteButton {
 	width: 100%;
+}
+
+.afterVote {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	text-align: center;
+	min-height: 70vh;
+	padding: 24px;
+}
+
+.voteTitle {
+	margin: 0;
+	font-weight: 900;
+	text-transform: uppercase;
+	color: var(--txt-shift-secondary);
+}
+
+.voteText {
+	margin: 0;
+	max-width: 340px;
+	font-size: 18px;
+	color: var(--txt-shift-secondary);
 }
