@@ -11,9 +11,9 @@
 
 .projectCard {
 	cursor: pointer;
-	border-radius: 18px;
+	border-radius: 25px;
 	overflow: hidden;
-	padding: 5px 5px 5px 5px;
+	padding: 12px;
 	background: var(--shift-orange);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 	transition: transform 0.2s ease;
@@ -35,6 +35,7 @@
 		width: 90%;
 		height: 90%;
 		object-fit: contain;
+		border-radius: 12px;
 	}
 }
 
