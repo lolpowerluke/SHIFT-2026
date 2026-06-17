@@ -4,10 +4,11 @@ import {getCloudinaryUrl} from "../../utils/cloudinary.js";
 import Loading from "../../components/loadingComponent/Loading.jsx";
 import ProjectCard from "../../components/projectCard/ProjectCard.jsx";
 import { fireVoteConfetti } from "../../utils/confetti.js";
+import {useNavigate} from "react-router";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const votable = []; //TODO when votes are in
+const votable = [22]; //TODO when votes are in
 
 async function getToken() {
 	console.log("getToken");
@@ -35,6 +36,10 @@ export default function LiveVoting() {
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [selectedProject, setSelectedProject] = useState(null);
+    const [submitting, setSubmitting] = useState(false);
+    const [votedName, setVotedName] = useState(
+		() => localStorage.getItem("votedName") ?? "",
+	);
 	const navigate = useNavigate();
 
     useEffect(() => {
@@ -53,12 +58,7 @@ export default function LiveVoting() {
     }, [token]);
     useEffect(() => {
         // Avoid fetching projects if user has already voted
-        if (hasVoted) return (
-            <>
-                <div className="headerSpacer"></div>
-                <h2>Stem uitgebracht!</h2>
-                <p>Bedankt voor je stem op <b>{votedName}</b>.</p>
-            </>);
+        if (hasVoted) return;
 
         const fetchTopProjects = async () => {
             setLoading(true);
@@ -92,13 +92,13 @@ export default function LiveVoting() {
             const res = await fetch(`${API_URL}/voting`, {
                 method: "POST", headers: {
                     "Content-Type": "application/json"
-                }, body: JSON.stringify({token, id})
+                }, body: JSON.stringify({token, project: id})
             });
             if (res.ok) {
                 const data = await res.json();
                 const backendHasVoted = data.success;
                 localStorage.setItem("hasVoted", backendHasVoted.toString());
-                setVotedName(selectedProject?.name);
+                setVotedName(selectedProject.name);
                 setHasVoted(true);
             } else {
                 const data = await res.json().catch(() => ({}));
