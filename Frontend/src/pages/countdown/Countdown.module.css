@@ -829,3 +829,9 @@ h2 {
 		visibility: hidden;
 	}
 }
+
+.centerDiv {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}

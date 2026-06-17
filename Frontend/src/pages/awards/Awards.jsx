@@ -3,6 +3,7 @@ import s from "./Awards.module.css";
 import { Link, useNavigate } from "react-router";
 import { apiFetch } from "../../utils/apiFetch";
 import Routes from "../../routes/constants/Routes.js";
+import WinnerBanner from "../../components/winnerComponent/WinnerBanner.jsx";
 
 export default function Awards() {
     const navigate = useNavigate();
@@ -36,6 +37,9 @@ export default function Awards() {
                     <button onClick={() => navigate('/project')} className="blueBtn">Ontdek alle projecten</button>
                 </div>
             </div>
+			<div className={`${s.centerDiv} altBg`}>
+				<WinnerBanner/>
+			</div>
             <div className={s.awardContainer}>
                 <div className={s.awardTop}>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />

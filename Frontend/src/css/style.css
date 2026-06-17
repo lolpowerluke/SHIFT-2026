@@ -57,7 +57,6 @@ body::before {
 
 .altBg {
     position: relative;
-    padding-bottom: 2rem;
 }
 
 .altBg::before {
@@ -80,3 +79,4 @@ body::before {
     pointer-events: none;
     display: none;
 }
+
