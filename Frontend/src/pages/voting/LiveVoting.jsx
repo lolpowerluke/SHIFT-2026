@@ -35,7 +35,6 @@ export default function LiveVoting() {
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [selectedProject, setSelectedProject] = useState(null);
-	const [voteConfirmed, setVoteConfirmed] = useState(false);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -165,46 +164,18 @@ export default function LiveVoting() {
 					<div className={s.modal} onClick={(e) => e.stopPropagation()}>
 						<div
 							className={s.closeButton}
-							onClick={() => {
-								setSelectedProject(null);
-								setVoteConfirmed(false);
-							}}
+							onClick={() => setSelectedProject(null)}
 						>
 							<img src="/assets/icons/closeButton.svg" alt="Close modal" />
 						</div>
-						{!voteConfirmed ? (
-							<>
-								<h2>{selectedProject.name}</h2>
-								<div className={s.modalImage}>
-									<img
-										src={
-											getCloudinaryUrl(selectedProject.media?.[0]) ??
-											getCloudinaryUrl(selectedProject.images?.[0]) ??
-											"/assets/imageCard.png"
-										}
-										alt={selectedProject.name}
-									/>
-								</div>
-								<p>{selectedProject.description}</p>
-								<button
-									className={s.voteButton}
-									onClick={() => setVoteConfirmed(true)}
-								>
-									Stem voor dit project!
-								</button>
-							</>
-						) : (
-							<>
-								<h2>Ben je zeker?</h2>
-								<p>
-									Je staat op het punt om te stemmen voor{" "}
-									<b>{selectedProject.name}</b>.
-								</p>
-								<button className={s.voteButton} onClick={handleVote}>
-									Bevestig stem
-								</button>
-							</>
-						)}
+						<h2>Ben je zeker?</h2>
+						<p>
+							Je staat op het punt om te stemmen voor{" "}
+							<b>{selectedProject.name}</b>.
+						</p>
+						<button className={s.voteButton} onClick={handleVote}>
+							Bevestig stem
+						</button>
 					</div>
 				</div>
 			)}
