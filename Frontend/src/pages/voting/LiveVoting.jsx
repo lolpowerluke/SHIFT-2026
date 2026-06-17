@@ -8,7 +8,7 @@ import { fireVoteConfetti } from "../../utils/confetti.js";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const votable = [22, 34, 17];
+const votable = [22];
 
 async function getToken() {
 	console.log("getToken");
@@ -122,7 +122,7 @@ export default function LiveVoting() {
 		return (
 			<>
 				<div className={s.afterVote}>
-					<h2 className={s.voteTitle}>Jouw stem is opgenomen!</h2>
+					<h2 className={s.voteTitle}>Je stem is geregistreerd</h2>
 					<p className={s.voteText}>
 						{selectedProject ? (
 							<>
@@ -143,8 +143,9 @@ export default function LiveVoting() {
 		<>
 			<div className="headerSpacer"></div>
 			<div className={`${s.ctx} ctx`}>
-				<h1>Stem hier!</h1>
-				<h3>Druk op het project dat jouw stem krijgt.</h3>
+				<h1>Publieksprijs SHIFT 2026</h1>
+				<h2>Breng nu je stem uit!</h2>
+				<h3>(klik op je favoriete project en bevestig)</h3>
 				<div className={s.projectsGrid}>
 					{projects.map((project) => (
 						<ProjectCard
@@ -178,11 +179,7 @@ export default function LiveVoting() {
 							>
 								<img src="/assets/icons/closeButton.svg" alt="Close modal" />
 							</div>
-							<h2 className={s.modalTitle}>Ben je zeker?</h2>
-							<p className={s.modalText}>
-								Je stem gaat naar <b>{selectedProject.name}</b>. Je kan maar één
-								keer stemmen, dus kies goed!
-							</p>
+							<h2 className={s.modalTitle}>Weet je het zeker?</h2>
 							<button
 								className={`${s.voteButton} blueBtn`}
 								onClick={handleVote}
