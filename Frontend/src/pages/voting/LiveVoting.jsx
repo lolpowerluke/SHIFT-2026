@@ -161,21 +161,29 @@ export default function LiveVoting() {
 			</div>
 			{selectedProject && (
 				<div className={s.overlay} onClick={() => setSelectedProject(null)}>
-					<div className={s.modal} onClick={(e) => e.stopPropagation()}>
-						<div
-							className={s.closeButton}
-							onClick={() => setSelectedProject(null)}
-						>
-							<img src="/assets/icons/closeButton.svg" alt="Close modal" />
+					<div
+						className={s.modalBorder}
+						onClick={(e) => e.stopPropagation()}
+					>
+						<div className={s.modal}>
+							<div
+								className={s.closeButton}
+								onClick={() => setSelectedProject(null)}
+							>
+								<img src="/assets/icons/closeButton.svg" alt="Close modal" />
+							</div>
+							<h2 className={s.modalTitle}>Ben je zeker?</h2>
+							<p className={s.modalText}>
+								Je stem gaat naar <b>{selectedProject.name}</b>. Je kan maar
+								één keer stemmen, dus kies goed!
+							</p>
+							<button
+								className={`${s.voteButton} blueBtn`}
+								onClick={handleVote}
+							>
+								Ja, ik ben zeker
+							</button>
 						</div>
-						<h2>Ben je zeker?</h2>
-						<p>
-							Je staat op het punt om te stemmen voor{" "}
-							<b>{selectedProject.name}</b>.
-						</p>
-						<button className={s.voteButton} onClick={handleVote}>
-							Bevestig stem
-						</button>
 					</div>
 				</div>
 			)}
