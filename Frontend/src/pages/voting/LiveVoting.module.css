@@ -1,11 +1,5 @@
-.container {
-	padding: 24px 16px;
-}
-
-.container h1 {
-	text-align: center;
-	margin-bottom: 24px;
-	font-size: 28px;
+.ctx h1 {
+    text-align: center;
 }
 
 .projectsGrid {
@@ -30,23 +24,15 @@
 
 .imageWrapper {
 	width: 100%;
-	aspect-ratio: 16 / 10;
+	aspect-ratio: 16 / 9;
 	overflow: hidden;
-}
 
-.imageWrapper img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 }
-
-.projectCard h2 {
-	margin: 0;
-	padding: 16px;
-	font-size: 20px;
-}
-
-/* MODAL */
 
 .overlay {
 	position: fixed;
@@ -71,58 +57,23 @@
 
 .modalImage {
 	width: 100%;
-	aspect-ratio: 16 / 10;
+	aspect-ratio: 16 / 9;
 	border-radius: 16px;
 	overflow: hidden;
-}
 
-.modalImage img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
-
-.modal h2 {
-	font-size: 24px;
-	margin-top: 18px;
-}
-
-.modal p {
-	line-height: 1.6;
-	margin: 16px 0;
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 }
 
 .closeButton {
 	position: absolute;
 	top: 12px;
 	right: 12px;
-
-    padding: 0;
 }
 
 .voteButton {
 	width: 100%;
-}
-
-@media (min-width: 1024px) {
-	.container {
-		padding: 60px;
-	}
-
-	.projectsGrid {
-		grid-template-columns: repeat(3, 1fr);
-		gap: 30px;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
-	.overlay {
-		align-items: center;
-	}
-
-	.modal {
-		border-radius: 24px;
-		max-width: 700px;
-		padding: 30px;
-	}
 }
