@@ -39,8 +39,7 @@ export default function Detail() {
 				const bytes = parseInt(r.headers.get("content-length"));
 				if (bytes) setMagazineSize((bytes / 1024 / 1024).toFixed(1) + " MB");
 			})
-			.catch(() => {
-			});
+			.catch(() => {});
 	}, [project]);
 
 	const guard = StatusMessage({ loading, error });
@@ -168,7 +167,7 @@ export default function Detail() {
 
 					{embedUrl && (
 						<div>
-							<h1 className={s.videoTitle}>Project video</h1>
+							<h2 className={s.videoTitle}>Project video</h2>
 							<div className={s.videoHolder}>
 								{!playing ? (
 									<div
