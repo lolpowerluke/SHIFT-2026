@@ -4,25 +4,28 @@ import Fotogallery from "../../components/fotoGallery/FotoGallery"
 
 const articles = [
     {
-        articleLink: "lol",
-        excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, cumque cupiditate debitis deleniti dolor, doloremque doloribus et excepturi harum impedit inventore laboriosam minima modi nihil odit quibusdam rerum totam ut. Asperiores atque nostrum perferendis porro vero. Accusamus, ad assumenda ducimus eaque eligendi est nostrum numquam optio. Adipisci, aliquid architecto aut, beatae commodi consequuntur deleniti dicta dolore doloribus ducimus ea enim eum expedita facilis hic labore laborum magnam maiores minima minus nemo nihil nobis nulla placeat quam quas quos sed soluta temporibus ut vitae voluptatem voluptatibus voluptatum. A at consequatur cumque fuga nisi nulla obcaecati temporibus! Aut excepturi mollitia natus sequi.",
-        img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.-Ho2iOlOCWajrep95f39nwHaHE%3Fpid%3DApi&f=1&ipt=7fbc3a71fb216042c796b3b9d0da62164b5cf552068a21e8618c134e54c9cf1b&ipo=images",
-        imgTitle: "lolz",
-        title: "fu"
+        articleLink: "https://www.bruzz.be/videoreeks/said-city/video-nieuwe-apps-en-vr-games-de-techstudenten-van-erasmus-stellen-hun-creaties-tentoon",
+        excerpt: "Tijdens het Shift Festival tonen de derdejaars van de opleiding Multimedia en Creatieve Technologie aan de Erasmushogeschool aanstaande vrijdag hun eindwerken. Dat gaat van mobiele en webapps tot nieuwe games, VR-ervaringen en browser-extensies die willen informeren of beschermen.",
+        img: "https://wmimages.bruzz.be/styles/e22cb3eafdd54a57844ed34d1de56912a49c9848/2021-04/logo_5jaarbruzz_dossier.png?style=W3sicmVzaXplIjp7ImZpdCI6Imluc2lkZSIsIndpZHRoIjoxMjAwLCJoZWlnaHQiOjYzMCwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfX1d&sign=86a12e64ef4a036f494606982a323054ab3e894aa65c7d78d84025b25311a54d",
+        imgTitle: "Bruzz",
+        title: "Nieuwe apps en VR-games: de techstudenten van Erasmus stellen hun creaties tentoon"
     }, {
-        articleLink: "lol",
-        excerpt: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, cumque cupiditate debitis deleniti dolor, doloremque doloribus et excepturi harum impedit inventore laboriosam minima modi nihil odit quibusdam rerum totam ut. Asperiores atque nostrum perferendis porro vero. Accusamus, ad assumenda ducimus eaque eligendi est nostrum numquam optio. Adipisci, aliquid architecto aut, beatae commodi consequuntur deleniti dicta dolore doloribus ducimus ea enim eum expedita facilis hic labore laborum magnam maiores minima minus nemo nihil nobis nulla placeat quam quas quos sed soluta temporibus ut vitae voluptatem voluptatibus voluptatum. A at consequatur cumque fuga nisi nulla obcaecati temporibus! Aut excepturi mollitia natus sequi.",
-        img: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%2Fid%2FOIP.-Ho2iOlOCWajrep95f39nwHaHE%3Fpid%3DApi&f=1&ipt=7fbc3a71fb216042c796b3b9d0da62164b5cf552068a21e8618c134e54c9cf1b&ipo=images",
-        imgTitle: "lolz",
-        title: "fu"
+        articleLink: "https://www.ringtv.be/jeugd-onderwijs/studenten-erasmushogeschool-brussel-koppelen-technologie-aan-maatschappelijke",
+        excerpt: "Voor de derde keer organiseren studenten van de Erasmushogeschool Brussel het Shift-festival. De expo op Campus Kaai toont 34 innovatieve eindwerken van de laatstejaars Multimedia en Creatieve Technologie aan het grote publiek en aan potentiële werkgevers.",
+        img: "/assets/ringTv_logo.png",
+        imgTitle: "RingTV",
+        title: "Studenten Erasmushogeschool Brussel koppelen technologie aan maatschappelijke vraagstukken op Shift-festival"
     },
 ]
 
 export default function News() {
     return (
         <>
-            <div className={`ctx ${s.newsSection}`}>
+            <div className={s.heroPers}>
+                <img src="/assets/icons/persIconOrange.png" alt="persIcon" />
                 <h1>Pers &<br/>media</h1>
+            </div>
+            <div className={`ctx ${s.newsSection}`}>
                 {articles.map((a, i) =>
                     <NewsExcerpt articleLink={a.articleLink} excerpt={a.excerpt} img={a.img} imgTitle={a.imgTitle}
                                  title={a.title}/>

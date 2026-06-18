@@ -1,10 +1,36 @@
+.heroPers {
+    background-image: url(../../../public/assets/heroContent/persHeroImage.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+
+    img {
+        width: 13rem;
+    }
+}
+
 .newsSection {
     display: flex;
     flex-direction: column;
     gap: 3rem;
     margin: 4rem auto;
-    h1 {
-        text-align: center;
+
+    img {
+       box-shadow:
+			5px 5px 0 1px var(--shadow-primary),
+			3px 3px 0 7px var(--hl-secondary);
+		border: 5px solid var(--border-primary);
+        border-radius: 1.5rem;
+    }
+
+    a img {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
     }
 }
 
