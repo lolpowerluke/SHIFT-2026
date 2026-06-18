@@ -13,6 +13,7 @@ import Info from "./pages/info/Info.jsx";
 import Awards from "./pages/awards/Awards.jsx";
 import NotFound from "./pages/error/NotFound.jsx";
 import LiveVoting from "./pages/voting/LiveVoting.jsx";
+import News from "./pages/news/News.jsx";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,7 @@ const router = createBrowserRouter([
             {path: Routes.NotFound, element: <NotFound/>},
             {path: Routes.Info, element: <Info/>},
             {path: Routes.LiveVoting, element: <LiveVoting/>},
+            {path: Routes.News, element: <News/>}
 
         ],
     },
