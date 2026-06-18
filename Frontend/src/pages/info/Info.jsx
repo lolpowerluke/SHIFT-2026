@@ -1,7 +1,7 @@
 import s from "./info.module.css";
 import ClockIcon from "../../components/clock/ClockIcon.jsx";
 import FAQItem from "../../components/FAQItem.jsx";
-import {useState} from "react";
+import { useState } from "react";
 
 const events = [
     {time: {hr: 17, min: 0}, event: "Start"},
@@ -13,8 +13,8 @@ const events = [
 
 const faq = [
     {
-        title: "Is het festival gratis?",
-        answer: "Ja, SHIFT festival is gratis.",
+        title: "Is SHIFT FESTIVAL gratis?",
+        answer: "Ja, SHIFT FESTIVAL is gratis.",
     },
     {
         title: "Hoe schrijf ik mij in?",
@@ -36,9 +36,10 @@ const faq = [
         ),
     },
     {
-        title: "Voor wie is SHIFT bedoeld?",
+        title: "Voor wie is SHIFT FESTIVAL bedoeld?",
         answer:
-            "SHIFT is voor iedereen die van innovatie en creativiteit houdt. Of je nu net bent afgestudeerd van het middelbaar, een nieuwe studierichting zoekt, of gewoon nieuwsgierig bent. Ook ouders, familie, vrienden, alumni en bedrijven zijn van harte welkom om de sfeer te komen proeven!",
+           
+			"SHIFT FESTIVAL is voor iedereen die van innovatie en creativiteit houdt. Of je nu net bent afgestudeerd van het middelbaar, een nieuwe studierichting zoekt, of gewoon nieuwsgierig bent. Ook ouders, familie, vrienden, alumni en bedrijven zijn van harte welkom om de sfeer te komen proeven!",
     },
     {
         title: "Is de locatie toegankelijk voor rolstoelgebruikers?",
@@ -51,8 +52,8 @@ const faq = [
 ];
 
 export default function Info() {
-    const [isProgrammaOpen, setIsProgrammaOpen] = useState(false);
-    const [isHowOpen, setIsHowOpen] = useState(false);
+	const [isProgrammaOpen, setIsProgrammaOpen] = useState(false);
+	const [isHowOpen, setIsHowOpen] = useState(false);
 
     const handleProgrammaClick = () => {
         setIsProgrammaOpen(!isProgrammaOpen);
