@@ -1,7 +1,10 @@
+import { useState } from "react";
 import s from "./news.module.css"
 import NewsExcerpt from "../../components/newsExcerpt/NewsExcerpt.jsx";
 import Fotogallery from "../../components/fotoGallery/FotoGallery"
 import { defaultItems } from "../../components/fotoGallery/FotoGallery";
+
+const VIDEO_ID = "suQst6cwW4A";
 
 const articles = [
     {
@@ -30,6 +33,7 @@ async function handleDownloadAll(items) {
 }
 
 export default function News() {
+    const [playing, setPlaying] = useState(false);
 
     return (
         <>
@@ -73,14 +77,39 @@ export default function News() {
             </div>
 
             <div className={`ctx ${s.voorproefje}`}>
-                <h3>EEN KLEIN VOORPROEFJE VAN SHIFT</h3>
-                <iframe
-                    src={`https://www.youtube.com/embed/suQst6cwW4A?si=HvCFeCzhJCosG1Rh`}
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                />
+                <h2>EEN KLEIN VOORPROEFJE VAN SHIFT</h2>
+                <div className={s.videoHolder}>
+                    {!playing ? (
+                        <div className={s.videoThumb} onClick={() => setPlaying(true)}>
+                            <img
+                                src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
+                                onLoad={(e) => {
+                                    // YouTube renvoie un placeholder gris 120x90 quand maxresdefault n'existe pas
+                                    if (e.currentTarget.naturalWidth <= 120) {
+                                        e.currentTarget.src = `https://img.youtube.com/vi/${VIDEO_ID}/hqdefault.jpg`;
+                                    }
+                                }}
+                                alt="Video thumbnail"
+                                className={s.videoPlayer}
+                            />
+                            <img
+                                src="/assets/play-button.png"
+                                alt="Play"
+                                className={s.playBtn}
+                            />
+                        </div>
+                    ) : (
+                        <div className={s.videoWrapper}>
+                            <iframe
+                                src={`https://www.youtube.com/embed/${VIDEO_ID}?si=HvCFeCzhJCosG1Rh&autoplay=1`}
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerPolicy="strict-origin-when-cross-origin"
+                                allowFullScreen
+                            />
+                        </div>
+                    )}
+                </div>
             </div>
         </>
     )
