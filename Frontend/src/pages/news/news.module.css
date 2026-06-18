@@ -20,6 +20,7 @@
     gap: 3rem;
     margin: 4rem auto;
 
+
     img {
        box-shadow:
 			5px 5px 0 1px var(--shadow-primary),
@@ -37,6 +38,10 @@
 
 .galleryLayout img {
     border: solid 3px var(--shift-cream);
+}
+
+.galleryLayout button img {
+    border: none;
 }
 
 .galleryLayout {
