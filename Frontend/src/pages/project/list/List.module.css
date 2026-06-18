@@ -126,4 +126,8 @@
 	.projectenGrid {
 		grid-template-columns: 1fr;
 	}
+
+	:where(.filterButtons) button{
+		height: 100%;
+	}
 }
