@@ -60,6 +60,12 @@
 		border: 5px solid var(--border-primary);
         border-radius: 1.5rem;
     }
+
+    button img {
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+    }
 }
 
 .downloadZip {
