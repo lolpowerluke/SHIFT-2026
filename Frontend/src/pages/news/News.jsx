@@ -47,15 +47,12 @@ export default function News() {
             <div className="altBg">
 
                 <div className={`${s.mediaSection} ctx`}>
-                    <h2>Media</h2>
-                    <h3>Download ons persbericht</h3>
+                   
                     <div className={`${s.flexRow}`}>
                         {/*    TODO: add text + img    */}
-                        <div>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet autem debitis esse in
-                                necessitatibus officia perferendis perspiciatis tempora! Beatae debitis dolores, dolorum
-                                eos magnam necessitatibus quidem. Adipisci maxime odio tempore.</p>
+                        <div className={s.mediaPart}>
+                            <h2>Media</h2>
+                            <h3>Download ons persbericht</h3>
                             <button style={{display: "flex", flexDirection: "row"}}>Download <img
                                 src="/assets/BlueDownloadFolderPDF.svg"
                                 style={{height: "2rem", margin: "0 5px 0 1rem"}}/></button>
