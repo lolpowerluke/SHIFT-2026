@@ -43,9 +43,25 @@
 .flexRow{
     display: flex;
     flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+
     div {
         max-width: 60%;
     }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.downloadZip {
+    margin-top: 4rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 @media (max-width: 900px) {
@@ -62,5 +78,36 @@
 .mediaSection {
     h3, h2, h1 {
         text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroPers {
+        height: auto;
+        min-height: 40vh;
+        padding: 2rem 1rem;
+        gap: 1rem;
+
+        img {
+            width: 6rem;
+        }
+    }
+
+    .newsSection {
+        margin: 2.5rem auto;
+        gap: 2.5rem;
+    }
+
+    .flexRow {
+        flex-direction: column;
+        align-items: flex-start;
+
+        div {
+            max-width: 100%;
+        }
+
+        img {
+            width: 100%;
+        }
     }
 }

@@ -55,9 +55,12 @@ export default function News() {
                     <div className={s.galleryLayout}>
                         <Fotogallery/>
                     </div>
-                    <p><b>Download alle beelden van SHIFT FESTIVAL 2026.</b></p>
-                    <button style={{display: "flex", flexDirection: "row"}}>Download <img
-                        src="/assets/download_icon.svg" style={{height: "2rem", margin: "0 5px 0 1rem"}}/></button>
+                    <div className={s.downloadZip}>
+                        <p><b>Download alle beelden van SHIFT FESTIVAL 2026.</b></p>
+                        <button style={{display: "flex", flexDirection: "row"}}>Download 
+                            <img src="/assets/download_icon.svg" style={{height: "2rem", margin: "0 5px 0 1rem"}}/>
+                        </button>
+                    </div>
                 </div>
             </div>
 
