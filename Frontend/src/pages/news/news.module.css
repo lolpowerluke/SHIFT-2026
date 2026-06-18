@@ -1,5 +1,7 @@
-.newsDiv {
+.newsSection {
     margin-top: 4rem;
+    margin-bottom: 2rem;
+
     h1 {
         text-align: center;
     }

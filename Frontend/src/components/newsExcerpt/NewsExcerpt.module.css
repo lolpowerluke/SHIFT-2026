@@ -1,9 +1,10 @@
 .wrapper{
     display: flex;
     flex-direction: row;
+    gap: 2rem;
 
     img{
-        height: 120px;
+        height: 250px;
     }
 
     h3{
@@ -14,6 +15,7 @@
         display: flex;
         flex-direction: ROW;
     }
+
     a img {
         width: auto;
         height: 2rem;
