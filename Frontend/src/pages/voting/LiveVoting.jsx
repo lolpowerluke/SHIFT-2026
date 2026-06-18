@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const votable = [22];
+const chosenProj = [22, 38, 25];
 
 async function getToken() {
 	console.log("getToken");
@@ -41,6 +41,8 @@ export default function LiveVoting() {
 		() => localStorage.getItem("votedName") ?? "",
 	);
 	const navigate = useNavigate();
+
+	const votable = chosenProj.sort(() => Math.random() - 0.5);
 
 	useEffect(() => {
 		if (!token) {
