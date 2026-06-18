@@ -13,7 +13,6 @@ const Routes = {
 	ProjectenPageDetails: "/project/:id",
 	Info: "/info",
 	Awards: "/awards",
-	uMoeder: "/u/Moeder",
 	NotFound: "/404",
 	LiveVoting: "/live/voting/show/nooneWillLook/live_vote",
 };
