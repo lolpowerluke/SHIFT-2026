@@ -1,0 +1,25 @@
+.wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    img{
+        height: 250px;
+    }
+
+    h3{
+        text-align: left;
+    }
+
+    a{
+        display: flex;
+        flex-direction: ROW;
+    }
+
+    a img {
+        width: auto;
+        height: 2rem;
+        margin: auto 5px;
+        transform: rotate(180deg);
+    }
+}
