@@ -25,6 +25,13 @@ async function getToken() {
 	}
 }
 
+const CATEGORY_ICONS = {
+	"Digital Design": "/assets/OrangeDesign.svg",
+	"Experience Design": "/assets/OrangeExperience.svg",
+	"XR & 3D": "/assets/Orange3D.svg",
+	"Web & Mobile": "/assets/OrangeCoding.svg",
+};
+
 export default function LiveVoting() {
 	const [token, setToken] = useState(
 		() => localStorage.getItem("token") ?? null,
@@ -72,6 +79,7 @@ export default function LiveVoting() {
 						.catch(() => null),
 				);
 				const topProjects = await Promise.all(promises);
+				console.log(topProjects)
 				setProjects(topProjects.filter(Boolean));
 			} catch (error) {
 				console.error("Error fetching top projects:", error);
@@ -153,24 +161,21 @@ export default function LiveVoting() {
 				<h3>(klik op je favoriete project en bevestig)</h3>
 				<div className={s.projectsGrid}>
 					{projects.map((project) => (
-						<ProjectCard
-							key={project.id}
-							onClick={() => setSelectedProject(project)}
-							project={{
-								id: project.id,
-								title: project.name,
-								category: project.course,
-								image:
-									getCloudinaryUrl(project.media?.[0]) ??
-									getCloudinaryUrl(project.images?.[0]) ??
-									"/assets/imageCard.png",
-								students: (project.members ?? []).map((m) => ({
-									name: `${m.firstname} ${m.lastname}`,
-									avatar:
-										getCloudinaryUrl(m.picture) ?? "/assets/imageCard.png",
-								})),
-							}}
-						/>
+						<>
+							<div className={s.card}>
+								<img src={getCloudinaryUrl(project.media[0])} alt={project.name} />
+								<div>
+									<span className={s.title}>{project.name}</span>
+									<div className={s.course}>
+										{project.course && <img src={CATEGORY_ICONS[project.course]} alt="" aria-hidden="true" />}
+										<span>{project.course}</span>
+									</div>
+									{project.members.map((student) => (
+										<span key={`${student.firstname} ${student.lastname}`}>{`${student.firstname} ${student.lastname}`}</span>
+									))}
+								</div>
+							</div>
+						</>
 					))}
 				</div>
 			</div>

@@ -2,6 +2,8 @@
 	h1 {
 		text-align: center;
 		margin-bottom: 0;
+		margin-top: 0;
+		font-size: 6.5vw;
 	}
 
 	h2 {
@@ -118,4 +120,68 @@
 
 h3 {
 	text-align: center;
+}
+
+.card {
+	width: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+	background-color: var(--hl-secondary);
+	border: 5px solid var(--border-primary);
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	padding: 15px;
+	gap: 25px;
+	border-radius: 12px;
+	box-sizing: border-box;
+
+	&>img {
+		width: 100%;
+		border-radius: 5px;
+		display: block;
+	}
+
+	&>div {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+	}
+
+	.course {
+		display: flex;
+		flex-direction: row;
+		height: fit-content;
+		align-self: self-start;
+		align-items: center;
+
+		&>img {
+			width: 30px;
+		}
+	}
+
+	.title {
+		font-size: 24px;
+		font-weight: 600;
+	}
+}
+
+@media (max-width: 768px) {
+	.card {
+		grid-template-columns: 1fr;
+		gap: 0px;
+		position: relative;
+		margin-top: -35px;
+	}
+
+	.card:nth-child(2n) {
+		transform: rotate(-5deg);
+		margin-top: -60px;
+	}
+
+	.card:nth-child(2n-1) {
+		transform: rotate(5deg);
+	}
+
+	.card:first-child {
+		margin-top: 0;
+	}
 }
