@@ -46,7 +46,7 @@ export default function SocialLinks({ className = "" }) {
 				/>
 			</a>
 			<a
-				href="https://www.erasmushogeschool.be/"
+				href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
