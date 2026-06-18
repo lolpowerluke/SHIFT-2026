@@ -65,6 +65,10 @@
     flex-direction: column;
 }
 
+button {
+    align-items: center;
+}
+
 @media (max-width: 900px) {
     .galleryLayout {
         grid-template-columns: repeat(2, 1fr);
