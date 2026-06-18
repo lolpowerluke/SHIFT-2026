@@ -5,5 +5,5 @@ export const NavRoutes = [
 	{ route: Routes.Awards, label: "Awards" },
 	{ route: Routes.ProjectenPage, label: "Projecten"},
 	{ route: Routes.Info, label: "Praktisch" },
-	{ route: Routes.News, label: "Nieuws en Media" },
+	{ route: Routes.News, label: "Pers en Media" },
 ];

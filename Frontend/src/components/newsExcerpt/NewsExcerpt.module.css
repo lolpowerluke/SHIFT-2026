@@ -5,6 +5,7 @@
 
     img {
         height: 250px;
+        width: auto;
     }
 
     h3 {
@@ -24,11 +25,17 @@
         transform: rotate(180deg);
     }
 
+    .txt h3.title{
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
     .txt .excerpt {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 5;
         overflow: hidden;
         max-width: 75ch;
+        margin-top: 0;
     }
 }
