@@ -76,7 +76,14 @@ export default function News() {
             </div>
 
             <div className={`ctx ${s.voorproefje}`}>
-                {/*    TODO: add video team's vid     */}
+                <h3>EEN KLEIN VOORPROEFJE VAN SHIFT</h3>
+                <iframe
+                    src={`https://www.youtube.com/embed/suQst6cwW4A?si=HvCFeCzhJCosG1Rh`}
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                />
             </div>
         </>
     )
