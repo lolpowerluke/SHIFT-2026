@@ -24,7 +24,7 @@ export default function News() {
                 }
             </div>
             <div className="altBg">
-                <div className={`${s.mediaSection}`}>
+                <div className={`${s.mediaSection} ctx`}>
         <div className={s.galleryLayout}>
             <Fotogallery/>
         </div>
