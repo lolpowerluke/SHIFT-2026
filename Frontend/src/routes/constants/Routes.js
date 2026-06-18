@@ -16,6 +16,6 @@ const Routes = {
 	uMoeder: "/u/Moeder",
 	NotFound: "/404",
 	LiveVoting: "/live/voting/show/nooneWillLook/live_vote",
-	News: "/news",
+	News: "/pers",
 };
 export default Routes;
