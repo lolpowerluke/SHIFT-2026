@@ -118,7 +118,6 @@ export default function Countdown() {
                                 <a
                                     href="/project"
                                     className={`${s.linkBtn} linkBtn`}
-                                    rel="noreferrer"
                                 >
                                     Ontdek alle projecten
                                 </a>
