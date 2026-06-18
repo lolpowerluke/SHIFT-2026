@@ -60,7 +60,7 @@ export default function News() {
                                 src="/assets/BlueDownloadFolderPDF.svg"
                                 style={{height: "2rem", margin: "0 5px 0 1rem"}}/></button>
                         </div>
-                        <img src="https://placehold.co/500x300" alt="SHIFT FESTIVAL 2026"/>
+                        <img src="/assets/persMediaImage.png" alt="SHIFT FESTIVAL 2026"/>
                     </div>
                     <h3>Een beeld zegt meer dan 1000 woorden</h3>
                     <p>Bekijk enkele sfeerbeelden.</p>
