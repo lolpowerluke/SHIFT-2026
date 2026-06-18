@@ -1,6 +1,6 @@
 import s from "./FotoGallery.module.css";
 
-const defaultItems = [
+export const defaultItems = [
     { src: "/assets/gallery_image.jpg", alt: "Gallery image 1", filename: "shift-festival-1.png" },
     { src: "/assets/gallery_image.jpg", alt: "Gallery image 2", filename: "shift-festival-2.png" },
     { src: "/assets/gallery_image.jpg", alt: "Gallery image 3", filename: "shift-festival-3.png" },
@@ -12,6 +12,7 @@ const defaultItems = [
     { src: "/assets/gallery_image.jpg", alt: "Gallery image 9", filename: "shift-festival-9.png" },
 ];
 
+
 function handleDownload(src, filename) {
     const a = document.createElement("a");
     a.href = src;
@@ -21,6 +22,7 @@ function handleDownload(src, filename) {
 
 
 export default function Fotogallery({ items = defaultItems }) {
+
     return (
         <>
             {items.map((item, i) => (
@@ -32,6 +34,7 @@ export default function Fotogallery({ items = defaultItems }) {
                         Download <img src="/assets/BlueDownloadFolderPDF.svg" alt="" />
                     </button>
                 </div>
+                
             ))}
         </>
     );

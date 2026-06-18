@@ -1,6 +1,7 @@
 import s from "./news.module.css"
 import NewsExcerpt from "../../components/newsExcerpt/NewsExcerpt.jsx";
 import Fotogallery from "../../components/fotoGallery/FotoGallery"
+import { defaultItems } from "../../components/fotoGallery/FotoGallery";
 
 const articles = [
     {
@@ -18,7 +19,18 @@ const articles = [
     },
 ]
 
+async function handleDownloadAll(items) {
+    for (const item of defaultItems) {
+        const a = document.createElement("a");
+        a.href = item.src;
+        a.download = item.filename;
+        a.click();
+        await new Promise(resolve => setTimeout(resolve, 300));
+    }
+}
+
 export default function News() {
+
     return (
         <>
             <div className={s.heroPers}>
@@ -56,7 +68,7 @@ export default function News() {
                         <Fotogallery/>
                     </div>
                     <p><b>Download alle beelden van SHIFT FESTIVAL 2026.</b></p>
-                    <button style={{display: "flex", flexDirection: "row"}}>Download <img
+                    <button onClick={() => handleDownloadAll(defaultItems.src, defaultItems.filename)} style={{display: "flex", flexDirection: "row"}}>Download <img
                         src="/assets/download_icon.svg" style={{height: "2rem", margin: "0 5px 0 1rem"}}/></button>
                 </div>
             </div>

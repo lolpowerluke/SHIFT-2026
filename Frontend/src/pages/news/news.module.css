@@ -1,5 +1,5 @@
 .heroPers {
-    background-image: url(../../../public/assets/heroContent/persHeroImage.png);
+    background-image: url(/assets/heroContent/persHeroImage.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 30vw;
