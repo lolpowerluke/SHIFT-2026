@@ -505,7 +505,7 @@ h2 {
 	width: fit-content;
 	align-self: self-end;
 	margin: 0 auto;
-	bottom: 20px;
+	bottom: 100px;
 	animation: upDown 1.4s ease-in-out infinite;
 
 	img {
