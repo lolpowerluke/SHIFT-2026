@@ -162,7 +162,10 @@ export default function LiveVoting() {
 				<div className={s.projectsGrid}>
 					{projects.map((project) => (
 						<>
-							<div className={s.card}>
+							<div
+								className={s.card}
+								onClick={() => setSelectedProject(project)}
+							>
 								<img src={getCloudinaryUrl(project.media[0])} alt={project.name} />
 								<div>
 									<span className={s.title}>{project.name}</span>
