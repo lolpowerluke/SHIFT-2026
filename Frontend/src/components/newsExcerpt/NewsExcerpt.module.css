@@ -1,19 +1,20 @@
-.wrapper{
+.wrapper {
     display: flex;
     flex-direction: row;
     gap: 2rem;
 
-    img{
+    img {
         height: 250px;
     }
 
-    h3{
+    h3 {
         text-align: left;
     }
 
-    a{
+    a {
         display: flex;
-        flex-direction: ROW;
+        flex-direction: row;
+        width: fit-content;
     }
 
     a img {
@@ -21,5 +22,13 @@
         height: 2rem;
         margin: auto 5px;
         transform: rotate(180deg);
+    }
+
+    .txt .excerpt {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+        max-width: 75ch;
     }
 }
