@@ -3,8 +3,8 @@ import s from "./news.module.css"
 export default function News() {
     return (
         <>
-        <div>
-            <h3>TODO NEWS PAGE</h3>
+        <div className={s.newsDiv}>
+            <h1>Pers &<br/>media</h1>
         </div>
         </>
     )
