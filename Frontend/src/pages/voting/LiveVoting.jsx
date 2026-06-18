@@ -8,7 +8,7 @@ import { useNavigate } from "react-router";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const votable = [22];
+const votable = [22, 7 ,12];
 
 async function getToken() {
 	console.log("getToken");
