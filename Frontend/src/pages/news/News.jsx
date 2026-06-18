@@ -25,6 +25,8 @@ export default function News() {
             </div>
             <div className="altBg">
                 <div className={`${s.mediaSection} ctx`}>
+                    <h2>Een beeld zegt meer dan 1000 woorden</h2>
+                    <p>Bekijk enkele sfeerbeelden.</p>
                     <div className={s.galleryLayout}>
                         <Fotogallery/>
                     </div>

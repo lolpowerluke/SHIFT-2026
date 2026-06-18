@@ -12,7 +12,6 @@
             aspect-ratio: 392 / 229;
             object-fit: cover;
             border-radius: 12px;
-            border: var(--bg-shift-secondary) solid 5px;
             display: block;
         }
     }
@@ -23,13 +22,15 @@
         justify-content: center;
         gap: 8px;
 
-        &:hover {
-            background-color: #e09510;
-        }
-
         img {
             width: 28px;
             height: 28px;
         }
+    }
+}
+
+@media (max-width: 540px) {
+    .gallery button {
+        padding: 10px 16px;
     }
 }
