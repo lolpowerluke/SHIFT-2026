@@ -59,6 +59,7 @@
 			3px 3px 0 7px var(--hl-secondary);
 		border: 5px solid var(--border-primary);
         border-radius: 1.5rem;
+        aspect-ratio: 16 / 9;
     }
 
     button img {
