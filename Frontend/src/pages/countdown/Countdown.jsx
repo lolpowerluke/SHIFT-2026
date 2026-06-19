@@ -95,40 +95,37 @@ export default function Countdown() {
 											{timeLeft.seconds}
 										</span>
 									</span>
-                                    <span>Seconden</span>
-                                </div>
-                            </div>
-                            <div className={`${s.cta}`}>
-                                <a
-                                    href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-                                    className={`${s.linkBtn} linkBtn`}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                >
-                                    Schrijf je nu gratis in
-                                </a>
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            <div className={s.cd}>
-                                <span>The show is live!</span>
-                            </div>
-                            <div className={`${s.cta}`}>
-                                <a
-                                    href="/project"
-                                    className={`${s.linkBtn} linkBtn`}
-                                >
-                                    Ontdek alle projecten
-                                </a>
-                            </div>
-                        </>
-                    )}
-                </div>
-                <a href="#experience" id={s.scrollPointer}>
-                    <img src="/assets/icons/pointer2.svg" alt="scroll!"/>
-                </a>
-            </div>
+									<span>Seconden</span>
+								</div>
+							</div>
+							<div className={`${s.cta}`}>
+								<a
+									href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+									className={`${s.linkBtn} linkBtn`}
+									target="_blank"
+									rel="noreferrer"
+								>
+									Schrijf je nu gratis in
+								</a>
+							</div>
+						</>
+					) : (
+						<>
+							<div className={s.cd}>
+								<span>The show is live!</span>
+							</div>
+							<div className={`${s.cta}`}>
+								<a href="/project" className={`${s.linkBtn} linkBtn`}>
+									Ontdek alle projecten
+								</a>
+							</div>
+						</>
+					)}
+				</div>
+				<a href="#experience" id={s.scrollPointer}>
+					<img src="/assets/icons/pointer2.svg" alt="scroll!" />
+				</a>
+			</div>
 
 			<div id="experience" className={`${s.wrap} wrap`}>
 				<div className={s.section}>
@@ -209,7 +206,11 @@ export default function Countdown() {
 
 							<div className={s.audienceCard}>
 								<div className={s.iconPaper}>
-									<img src="/assets/icons/paper.svg" alt="Bedrijven" />
+									<img
+										src="/assets/icons/paper.svg"
+										alt="Bedrijven"
+										loading="lazy"
+									/>
 								</div>
 								<h3>Bedrijven</h3>
 								<p>Ontdek jong digitaal talent voor stages en jobs.</p>
@@ -217,14 +218,22 @@ export default function Countdown() {
 
 							<div className={s.orangeAudienceCard}>
 								<div className={s.iconChatBubble}>
-									<img src="/assets/icons/chatBubbleBLue.svg" alt="Bezoekers" />
+									<img
+										src="/assets/icons/chatBubbleBLue.svg"
+										alt="Bezoekers"
+										loading="lazy"
+									/>
 								</div>
 								<h3>Tech-lovers</h3>
 								<p>Blijf op de hoogte van trends en innovaties.</p>
 							</div>
 							<div className={s.audienceCard}>
 								<div className={s.iconStar}>
-									<img src="/assets/icons/star.svg" alt="Stemmen" />
+									<img
+										src="/assets/icons/star.svg"
+										alt="Stemmen"
+										loading="lazy"
+									/>
 								</div>
 								<h3>bezoekers</h3>
 								<p>Stem mee en bepaal de publiekswinnaar.</p>
@@ -249,15 +258,16 @@ export default function Countdown() {
 							gecreëerd.
 						</p>
 						<img
-							src="/assets/picture_ehb.png"
+							src="/assets/opleidingPlaceholder.jpg"
 							alt="Multimedia & Creatieve Technologie"
+							loading="lazy"
 						/>
 					</div>
 				</div>
 				<div className={`${s.cta}`}>
 					<a
 						href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
-						className={`${s.linkBtn} linkBtn`}
+						className={`${s.linkBtn} linkBtn blueBtn`}
 						target="_blank"
 						rel="noreferrer"
 					>
