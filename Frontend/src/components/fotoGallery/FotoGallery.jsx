@@ -1,7 +1,7 @@
 import s from "./FotoGallery.module.css";
 
 export const defaultItems = [
-    { src: "/assets/gallery_image.jpg", alt: "Gallery image 1", filename: "shift-festival-1.png" },
+    { src: "/assets/galleryPlaceholder1.jpg", alt: "Gallery image 1", filename: "shift-festival-1.png" },
     { src: "/assets/galleryPlaceholder2.jpg", alt: "Gallery image 2", filename: "shift-festival-2.jpg" },
     { src: "/assets/galleryPlaceholder3.jpg", alt: "Gallery image 3", filename: "shift-festival-3.jpg" },
     { src: "/assets/galleryPlaceholder4.jpg", alt: "Gallery image 4", filename: "shift-festival-4.jpg" },
