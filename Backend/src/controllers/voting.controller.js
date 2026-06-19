@@ -16,6 +16,44 @@ const getAllVotes = async (req, res) => {
   }
 }
 
+const getProjects = async (req, res) => {
+  try {
+    const [rows] = await db.query(`
+      SELECT
+        p.id,
+        p.name,
+        p.course,
+        (
+          SELECT JSON_OBJECT('id', m.id, 'cloud_name', m.cloud_name, 'path', m.path)
+          FROM media m
+          JOIN media_project mp ON mp.media = m.id
+          WHERE mp.project = p.id AND mp.type = 'image'
+          LIMIT 1
+        ) AS image,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT(
+            'id', u.id,
+            'firstname', u.firstname,
+            'lastname', u.lastname
+          ))
+          FROM (
+            SELECT DISTINCT u2.id, u2.firstname, u2.lastname
+            FROM users u2
+            JOIN project_user pu ON pu.user = u2.id
+            WHERE pu.project = p.id
+          ) u
+        ) AS members
+      FROM votable v
+      JOIN projects p ON p.id = v.project
+      ORDER BY RAND()
+    `)
+
+    res.json(rows)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+}
+
 const getVotenFromToken = async (req, res) => {
   const { token } = req.query
 
@@ -92,4 +130,4 @@ const token = async (req, res) => {
   }
 }
 
-export { getAllVotes, vote, getVotenFromToken, token };
+export { getAllVotes, getProjects, vote, getVotenFromToken, token };
