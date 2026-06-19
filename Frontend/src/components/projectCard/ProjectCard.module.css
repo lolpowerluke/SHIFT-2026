@@ -42,6 +42,7 @@ button.projectCardBorder {
 .cardTitle {
 	line-height: 24px;
 	margin: 0;
+	text-align: left;
 }
 
 .cardCategory {
