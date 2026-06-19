@@ -1,15 +1,11 @@
 import s from "./Countdown.module.css";
-import { useCountdown } from "../../js/countdown.js";
 import Carousel from "../../components/Carousel.jsx";
 import Throbber from "../../components/Throbber.jsx";
 import { useState } from "react";
 import IframePopup from "../../components/afterShow/videoPopup.jsx";
 import WinnerBanner from "../../components/winnerComponent/WinnerBanner.jsx";
 
-
 export default function Countdown() {
-	const { timeLeft, blinkingS } = useCountdown();
-
 	const handleOpenMaps = () => {
 		window.open(
 			"https://maps.app.goo.gl/rZ8pQ7jYJph3tR3L9",
@@ -71,57 +67,35 @@ export default function Countdown() {
 				</div>
 
 				<div className={`${s.timerDiv} xlarge`}>
-					{timeLeft ? (
-						<>
-							<div className={s.cd}>
-								<span>Dit was SHIFT 2026!</span>
-							</div>
-							<div id={s.timer}>
-								<div className={s.timerBox}>
-									<span className="darkText">{timeLeft.days}</span>
-									<span>Dagen</span>
-								</div>
-								<div className={s.timerBox}>
-									<span className="darkText">{timeLeft.hours}</span>
-									<span>Uren</span>
-								</div>
-								<div className={s.timerBox}>
-									<span className="darkText">{timeLeft.minutes}</span>
-									<span>Minuten</span>
-								</div>
-								<div className={s.timerBox}>
-									<span>
-										<span
-											className={
-												blinkingS === "seconds" ? "hidden" : "darkText"
-											}
-										>
-											{timeLeft.seconds}
-										</span>
-									</span>
-									<span>Seconden</span>
-								</div>
-							</div>
-							<div className={`${s.cta}`}>
-								<a onClick={() => setIsOpen(true)}
-									className={`${s.linkBtn} linkBtn`}
-									rel="noreferrer"
-								>
-									<img src="/assets/play-button.svg" alt="play video button" />
-									<p>Bekijk de aftermovie</p>
-								</a>
-								{isOpen && (
-									<IframePopup
-										src="https://example.com"
-										title="Aftermovie"
-										onClose={() => setIsOpen(false)}
-									/>
-								)}
-							</div>
-						</>
-					) : (
-						"LIVE NOW!"
-					)}
+					<div className={s.cd}>
+						<span>Dit was SHIFT 2026!</span>
+					</div>
+					<div className={`${s.cta}`}>
+						<a
+							onClick={() => setIsOpen(true)}
+							className={`${s.linkBtn} linkBtn blueBtn`}
+							rel="noreferrer"
+						>
+							<p>Blijf op de hoogte van SHIFT 2027</p>
+						</a>
+					</div>
+					<div className={`${s.cta}`}>
+						<a
+							onClick={() => setIsOpen(true)}
+							className={`${s.linkBtn} linkBtn`}
+							rel="noreferrer"
+						>
+							<img src="/assets/play-button.svg" alt="play video button" />
+							<p>Bekijk de aftermovie</p>
+						</a>
+						{isOpen && (
+							<IframePopup
+								src="https://example.com"
+								title="Aftermovie"
+								onClose={() => setIsOpen(false)}
+							/>
+						)}
+					</div>
 				</div>
 				<a href="#experience" id={s.scrollPointer}>
 					<img src="/assets/icons/pointer2.svg" alt="scroll!" />
