@@ -283,8 +283,6 @@
 	}
 }
 
-
-
 .landingBottom ::selection {
 	background: var(--bg-shift-primary);
 	color: var(--txt-shift-primary);
@@ -315,3 +313,9 @@
 	color: var(--txt-shift-primary);
 }
 
+.centerDiv {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	margin-bottom: 25px;
+}
