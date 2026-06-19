@@ -30,7 +30,10 @@ export default function WinnerBanner() {
 							</p>
 							<p className={s.awardBoxLabel2}>KAMIL</p>
 						</div>
-						<a className={s.bekijkBtn}>
+						<a
+							href="https://www.shiftfestival.be/project/kamil-10"
+							className={s.bekijkBtn}
+						>
 							<img src="/assets/icons/arrowLink.svg" alt="arrowLink" />
 						</a>
 					</div>
@@ -57,7 +60,10 @@ export default function WinnerBanner() {
 							</p>
 							<p className={s.awardBoxLabel}>AWAY</p>
 						</div>
-						<a className={s.bekijkBtn}>
+						<a
+							href="https://www.shiftfestival.be/project/away-9"
+							className={s.bekijkBtn}
+						>
 							<img src="/assets/icons/arrowLink.svg" alt="arrowLink" />
 						</a>
 					</div>
@@ -84,7 +90,10 @@ export default function WinnerBanner() {
 							</p>
 							<p className={s.awardBoxLabel}>LUME</p>
 						</div>
-						<a className={s.bekijkBtn}>
+						<a
+							href="https://www.shiftfestival.be/project/lume-29"
+							className={s.bekijkBtn}
+						>
 							<img src="/assets/icons/arrowLink.svg" alt="arrowLink" />
 						</a>
 					</div>
@@ -111,7 +120,10 @@ export default function WinnerBanner() {
 							</p>
 							<p className={s.awardBoxLabel}>KAORTZ</p>
 						</div>
-						<a className={s.bekijkBtn}>
+						<a
+							href="https://www.shiftfestival.be/project/kaortz-41"
+							className={s.bekijkBtn}
+						>
 							<img src="/assets/icons/arrowLink.svg" alt="arrowLink" />
 						</a>
 					</div>
