@@ -8,6 +8,8 @@ import {
 import { memberDisplayName, memberAvatar } from "../../../utils/member.js";
 import { useFetch } from "../../../hooks/useFetch.js";
 import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
+import WinnerCard from "../../../components/winnerComponent/WinnerCard.jsx";
+import { getPrizeForProject } from "../../../utils/winners.js";
 
 const CATEGORY_ICONS = {
 	"Digital Design": "/assets/OrangeDesign.svg",
@@ -48,6 +50,7 @@ export default function Detail() {
 
 	const embedUrl = getYoutubeEmbedUrl(project.video?.path);
 	const categoryIcon = CATEGORY_ICONS[project.course];
+	const wonPrize = getPrizeForProject(project.id);
 
 	/* PDF button opening in new page [https://claude.ai/share/d6f34345-02dc-420b-8cce-af09fd83e019]*/
 
@@ -103,6 +106,12 @@ export default function Detail() {
 							}
 							alt={project.name}
 						/>
+						{/* Only shows when this project's id is filled in src/utils/winners.js */}
+						{wonPrize && (
+							<div className={s.winnerOverlay}>
+								<WinnerCard prize={wonPrize} />
+							</div>
+						)}
 					</div>
 
 					<div>

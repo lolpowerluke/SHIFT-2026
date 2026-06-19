@@ -158,10 +158,21 @@
 
 .linkBtn {
 	display: flex;
+	align-items: center;
+	gap: 1.5rem;
 	margin-inline: auto;
-	width: fit-content;
 	outline: none;
+	text-decoration: none;
 	-webkit-tap-highlight-color: transparent;
+
+	img {
+		width: 150px;
+	}
+
+	p {
+		margin: 0;
+		font-weight: bold;
+	}
 }
 
 .projectSide {
@@ -500,6 +511,14 @@ h2 {
 
 		.cta {
 			margin: 0.5rem auto 0;
+
+			a {
+				width: 70%;
+			}
+
+			img {
+				width: 20%;
+			}
 		}
 	}
 }
@@ -646,6 +665,14 @@ h2 {
 			.cta {
 				margin-left: 10px;
 				margin-top: 3rem;
+
+				a {
+					width: 200px;
+				}
+
+				img {
+					width: 20%;
+				}
 			}
 		}
 	}
@@ -860,4 +887,11 @@ h2 {
 .orange ::-moz-selection {
 	background: var(--bg-shift-primary);
 	color: var(--txt-shift-primary);
+}
+
+.centerDiv {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	margin: 5rem 0 5rem 0;
 }

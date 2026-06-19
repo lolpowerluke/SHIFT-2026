@@ -1,6 +1,11 @@
 import s from "./Countdown.module.css";
 import { useCountdown } from "../../js/countdown.js";
 import Carousel from "../../components/Carousel.jsx";
+import Throbber from "../../components/Throbber.jsx";
+import { useState } from "react";
+import IframePopup from "../../components/afterShow/videoPopup.jsx";
+import WinnerBanner from "../../components/winnerComponent/WinnerBanner.jsx";
+
 
 export default function Countdown() {
 	const { timeLeft, blinkingS } = useCountdown();
@@ -12,6 +17,8 @@ export default function Countdown() {
 			"noopener,noreferrer",
 		);
 	};
+
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<>
@@ -67,10 +74,7 @@ export default function Countdown() {
 					{timeLeft ? (
 						<>
 							<div className={s.cd}>
-								<span>We tellen af!</span>
-							</div>
-							<div className={`${s.cd} ${s.smallerCd}`}>
-								<span>Vrijdag 19 juni om 17:00</span>
+								<span>Dit was SHIFT 2026!</span>
 							</div>
 							<div id={s.timer}>
 								<div className={s.timerBox}>
@@ -95,37 +99,34 @@ export default function Countdown() {
 											{timeLeft.seconds}
 										</span>
 									</span>
-									<span>Seconden</span>
-								</div>
-							</div>
-							<div className={`${s.cta}`}>
-								<a
-									href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
-									className={`${s.linkBtn} linkBtn`}
-									target="_blank"
-									rel="noreferrer"
-								>
-									Schrijf je nu gratis in
-								</a>
-							</div>
-						</>
-					) : (
-						<>
-							<div className={s.cd}>
-								<span>The show is live!</span>
-							</div>
-							<div className={`${s.cta}`}>
-								<a href="/project" className={`${s.linkBtn} linkBtn`}>
-									Ontdek alle projecten
-								</a>
-							</div>
-						</>
-					)}
-				</div>
-				<a href="#experience" id={s.scrollPointer}>
-					<img src="/assets/icons/pointer2.svg" alt="scroll!" />
-				</a>
-			</div>
+                                    <span>Seconden</span>
+                                </div>
+                            </div>
+                            <div className={`${s.cta}`}>
+                                <a	onClick={() => setIsOpen(true)}
+                                    className={`${s.linkBtn} linkBtn`}
+                                    rel="noreferrer"
+                                >
+                                    <img src="/assets/play-button.svg" alt="play video button" />
+									<p>Bekijk de aftermovie</p>
+                                </a>
+								{isOpen && (
+									<IframePopup
+									src="https://example.com"
+									title="Aftermovie"
+									onClose={() => setIsOpen(false)}
+									/>
+								)}
+                            </div>
+                        </>
+                    ) : (
+                        "LIVE NOW!"
+                    )}
+                </div>
+                <a href="#experience" id={s.scrollPointer}>
+                    <img src="/assets/icons/pointer2.svg" alt="scroll!"/>
+                </a>
+            </div>
 
 			<div id="experience" className={`${s.wrap} wrap`}>
 				<div className={s.section}>
@@ -155,92 +156,9 @@ export default function Countdown() {
 				</div>
 			</div>
 			<div className="altBg">
-				<div className={`section wrap ${s.wrap} ${s.infoSection}`}>
-					<div>
-						<h2>WAAR EN WANNEER?</h2>
-						<div className={s.infoPart}>
-							<div className={s.rightSideInfo}>
-								<div className={s.shiftTime}>
-									<div className={s.iconCalendar}>
-										<img src="/assets/icons/CalendarBlue.svg" alt="Kalender" />
-									</div>
-									<div className={s.shiftTimeDate}>
-										<h3>VRIJDAG 19 JUNI</h3>
-										<p>17:00 - 21:30</p>
-									</div>
-								</div>
-							</div>
-							<hr className={s.sectionDivider} />
-							<div className={s.leftSideInfo}>
-								<div className={s.shiftLocation}>
-									<div className={s.iconMap}>
-										<img src="/assets/icons/LocationBlue.svg" alt="Locatie" />
-									</div>
-									<div className={s.shiftLocationCampus}>
-										<h3>ERASMUSHOGESCHOOL BRUSSEL CAMPUS KAAI</h3>
-										<p>
-											Nijverheidskaai 170
-											<br />
-											1070 Anderlecht
-										</p>
-										<div className={s.btnMapDiv}>
-											<button className={s.btnMaps} onClick={handleOpenMaps}>
-												Open in maps
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<h2>VOOR WIE?</h2>
-						<div className={s.audienceContainer}>
-							<div className={s.orangeAudienceCard}>
-								<div className={s.iconHeadphones}>
-									<img src="/assets/icons/headsetBlue.svg" alt="Studenten" />
-								</div>
-								<h3>STUDENTEN</h3>
-								<p>Leer de opleiding kennen adhv concrete realisaties.</p>
-							</div>
-
-							<div className={s.audienceCard}>
-								<div className={s.iconPaper}>
-									<img
-										src="/assets/icons/paper.svg"
-										alt="Bedrijven"
-										loading="lazy"
-									/>
-								</div>
-								<h3>Bedrijven</h3>
-								<p>Ontdek jong digitaal talent voor stages en jobs.</p>
-							</div>
-
-							<div className={s.orangeAudienceCard}>
-								<div className={s.iconChatBubble}>
-									<img
-										src="/assets/icons/chatBubbleBLue.svg"
-										alt="Bezoekers"
-										loading="lazy"
-									/>
-								</div>
-								<h3>Tech-lovers</h3>
-								<p>Blijf op de hoogte van trends en innovaties.</p>
-							</div>
-							<div className={s.audienceCard}>
-								<div className={s.iconStar}>
-									<img
-										src="/assets/icons/star.svg"
-										alt="Stemmen"
-										loading="lazy"
-									/>
-								</div>
-								<h3>bezoekers</h3>
-								<p>Stem mee en bepaal de publiekswinnaar.</p>
-							</div>
-						</div>
-					</div>
-				</div>
+			  <div className={s.centerDiv}>
+				<WinnerBanner/>
+			  </div>		
 			</div>
 			<br />
 			<div className={`${s.infoMultimediaCard} section`}>
