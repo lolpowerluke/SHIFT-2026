@@ -8,8 +8,6 @@ import { useNavigate } from "react-router";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const chosenProj = [22, 38, 25];
-
 async function getToken() {
 	console.log("getToken");
 	try {
@@ -49,8 +47,6 @@ export default function LiveVoting() {
 	);
 	const navigate = useNavigate();
 
-	const votable = chosenProj.sort(() => Math.random() - 0.5);
-
 	useEffect(() => {
 		if (!token) {
 			setLoading(true);
@@ -72,15 +68,10 @@ export default function LiveVoting() {
 		const fetchTopProjects = async () => {
 			setLoading(true);
 			try {
-				const promises = votable.map((id) =>
-					fetch(`${API_URL}/project/${id}`)
-						.then((res) => (res.ok ? res.json() : null))
-						.then((data) => data?.project || null)
-						.catch(() => null),
-				);
-				const topProjects = await Promise.all(promises);
-				console.log(topProjects)
-				setProjects(topProjects.filter(Boolean));
+				const res = await fetch(`${API_URL}/voting/projects`);
+				if (!res.ok) throw new Error("Failed to fetch projects");
+				const data = await res.json();
+				setProjects(data);
 			} catch (error) {
 				console.error("Error fetching top projects:", error);
 			} finally {
@@ -161,24 +152,23 @@ export default function LiveVoting() {
 				<h3>(klik op je favoriete project en bevestig)</h3>
 				<div className={s.projectsGrid}>
 					{projects.map((project) => (
-						<>
-							<div
-								className={s.card}
-								onClick={() => setSelectedProject(project)}
-							>
-								<img src={getCloudinaryUrl(project.media[0])} alt={project.name} />
-								<div>
-									<span className={s.title}>{project.name}</span>
-									<div className={s.course}>
-										{project.course && <img src={CATEGORY_ICONS[project.course]} alt="" aria-hidden="true" />}
-										<span>{project.course}</span>
-									</div>
-									{project.members.map((student) => (
-										<span key={`${student.firstname} ${student.lastname}`}>{`${student.firstname} ${student.lastname}`}</span>
-									))}
+						<div
+							key={project.id}
+							className={s.card}
+							onClick={() => setSelectedProject(project)}
+						>
+							<img src={getCloudinaryUrl(project.image)} alt={project.name} />
+							<div>
+								<span className={s.title}>{project.name}</span>
+								<div className={s.course}>
+									{project.course && <img src={CATEGORY_ICONS[project.course]} alt="" aria-hidden="true" />}
+									<span>{project.course}</span>
 								</div>
+								{project.members.map((student) => (
+									<span key={`${student.firstname} ${student.lastname}`}>{`${student.firstname} ${student.lastname}`}</span>
+								))}
 							</div>
-						</>
+						</div>
 					))}
 				</div>
 			</div>
