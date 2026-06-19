@@ -135,7 +135,7 @@
 
 .awardBoxLabel {
   position: absolute;
-  left: 37%;
+  left: 50%;
   transform: translate(-50%, -50%) rotate(-6.6deg);
   font-weight: 700;
   color: var(--txt-shift-primary);
