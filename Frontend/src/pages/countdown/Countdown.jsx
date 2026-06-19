@@ -99,34 +99,34 @@ export default function Countdown() {
 											{timeLeft.seconds}
 										</span>
 									</span>
-                                    <span>Seconden</span>
-                                </div>
-                            </div>
-                            <div className={`${s.cta}`}>
-                                <a	onClick={() => setIsOpen(true)}
-                                    className={`${s.linkBtn} linkBtn`}
-                                    rel="noreferrer"
-                                >
-                                    <img src="/assets/play-button.svg" alt="play video button" />
+									<span>Seconden</span>
+								</div>
+							</div>
+							<div className={`${s.cta}`}>
+								<a onClick={() => setIsOpen(true)}
+									className={`${s.linkBtn} linkBtn`}
+									rel="noreferrer"
+								>
+									<img src="/assets/play-button.svg" alt="play video button" />
 									<p>Bekijk de aftermovie</p>
-                                </a>
+								</a>
 								{isOpen && (
 									<IframePopup
-									src="https://example.com"
-									title="Aftermovie"
-									onClose={() => setIsOpen(false)}
+										src="https://example.com"
+										title="Aftermovie"
+										onClose={() => setIsOpen(false)}
 									/>
 								)}
-                            </div>
-                        </>
-                    ) : (
-                        "LIVE NOW!"
-                    )}
-                </div>
-                <a href="#experience" id={s.scrollPointer}>
-                    <img src="/assets/icons/pointer2.svg" alt="scroll!"/>
-                </a>
-            </div>
+							</div>
+						</>
+					) : (
+						"LIVE NOW!"
+					)}
+				</div>
+				<a href="#experience" id={s.scrollPointer}>
+					<img src="/assets/icons/pointer2.svg" alt="scroll!" />
+				</a>
+			</div>
 
 			<div id="experience" className={`${s.wrap} wrap`}>
 				<div className={s.section}>
@@ -156,9 +156,9 @@ export default function Countdown() {
 				</div>
 			</div>
 			<div className="altBg">
-			  <div className={s.centerDiv}>
-				<WinnerBanner/>
-			  </div>		
+				<div className={s.centerDiv}>
+					<WinnerBanner />
+				</div>
 			</div>
 			<br />
 			<div className={`${s.infoMultimediaCard} section`}>
@@ -185,7 +185,7 @@ export default function Countdown() {
 				<div className={`${s.cta}`}>
 					<a
 						href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
-						className={`${s.linkBtn} linkBtn blueBtn`}
+						className={`${s.linkBtn} linkBtn`}
 						target="_blank"
 						rel="noreferrer"
 					>
