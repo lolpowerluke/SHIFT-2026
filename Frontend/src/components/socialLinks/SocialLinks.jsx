@@ -10,6 +10,7 @@ export default function SocialLinks({ className = "" }) {
 					src="/assets/logos/facebook_black.svg"
 					height="60"
 					alt="Facebook Icon"
+					loading="lazy"
 				/>
 			</a>
 			<a
@@ -21,6 +22,7 @@ export default function SocialLinks({ className = "" }) {
 					src="/assets/logos/linkedin_black.svg"
 					height="60"
 					alt="Linkedin Icon"
+					loading="lazy"
 				/>
 			</a>
 			<a
@@ -32,6 +34,7 @@ export default function SocialLinks({ className = "" }) {
 					src="/assets/logos/instagram_Glyph_Black.svg"
 					height="60"
 					alt="Instagram Icon"
+					loading="lazy"
 				/>
 			</a>
 			<a
@@ -43,6 +46,7 @@ export default function SocialLinks({ className = "" }) {
 					src="/assets/logos/tiktok_icon_black.svg"
 					height="60"
 					alt="TikTok Icon"
+					loading="lazy"
 				/>
 			</a>
 			<a
@@ -50,7 +54,12 @@ export default function SocialLinks({ className = "" }) {
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				<img src="/assets/logos/EhbLogoColor.svg" height="60" alt="EhB Logo" />
+				<img
+					src="/assets/logos/EhbLogoColor.svg"
+					height="60"
+					alt="EhB Logo"
+					loading="lazy"
+				/>
 			</a>
 		</div>
 	);
