@@ -11,7 +11,8 @@ function IframePopup({ src, title, onClose }) {
           <span>{title}</span>
           <button onClick={onClose} style={{padding: 3, paddingRight: 10, paddingLeft: 10, marginBottom: 5, marginRight: 5 }}>&times;</button>
         </div>
-        <iframe src={"https://www.youtube.com/embed/suQst6cwW4A?si=NWIGszS2Pp3b0Jpb"} title={"Aftermovie"} style={{ width:"100%", aspectRatio: 16/9, border:"none", display:"block" }} />
+        <h2>COMING SOON...</h2>
+        {/* <iframe src={"https://www.youtube.com/embed/suQst6cwW4A?si=NWIGszS2Pp3b0Jpb"} title={"Aftermovie"} style={{ width:"100%", aspectRatio: 16/9, border:"none", display:"block" }} /> */}
       </div>
     </div>
   );
