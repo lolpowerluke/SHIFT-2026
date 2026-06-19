@@ -14,6 +14,7 @@ export default function Footer() {
 						id={s.heroLogo}
 						fetchPriority="high"
 						alt="SHIFT Logo"
+						loading="lazy"
 					/>
 				</div>
 				<div className={s.textInfo}>
