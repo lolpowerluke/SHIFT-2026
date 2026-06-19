@@ -258,7 +258,7 @@ export default function Countdown() {
 							gecreëerd.
 						</p>
 						<img
-							src="/assets/opleidingPlaceholder.jpg"
+							src="/assets/picture_ehb.png"
 							alt="Multimedia & Creatieve Technologie"
 							loading="lazy"
 						/>
