@@ -6,6 +6,4 @@ export const NavRoutes = [
 	{ route: Routes.ProjectenPage, label: "Projecten"},
 	{ route: Routes.Info, label: "Praktisch" },
 	{ route: Routes.News, label: "Pers en Media" },
-	{ route: Routes.LiveVoting, label: "LIVE VOTING" },
-
 ];
