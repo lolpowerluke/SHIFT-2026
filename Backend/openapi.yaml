@@ -1,0 +1,815 @@
+openapi: 3.0.3
+info:
+  title: Project Showcase API
+  version: 1.0.0
+  description: |
+    REST API for a student project showcase platform.
+    - JWT auth (Bearer token)
+    - Roles: `visitor`, `3rdyear`, `admin`
+    - File uploads via multipart/form-data (Cloudinary backend)
+
+servers:
+  - url: http://localhost:3000
+    description: Local dev
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Error:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+
+    AuthResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        token:
+          type: string
+          description: JWT bearer token
+        userId:
+          type: integer
+        role:
+          type: string
+          example: visitor
+
+    Media:
+      type: object
+      properties:
+        id:
+          type: integer
+        cloud_name:
+          type: string
+        path:
+          type: string
+          description: URL or Cloudinary path
+
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstname:
+          type: string
+        lastname:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+        socials:
+          type: array
+          items:
+            type: string
+
+    ProjectSummary:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        course:
+          type: string
+        image:
+          $ref: '#/components/schemas/Media'
+        members:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              firstname:
+                type: string
+              lastname:
+                type: string
+              picture:
+                $ref: '#/components/schemas/Media'
+
+    ProjectDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        course:
+          type: string
+        promoter:
+          type: string
+        media:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+        magazine:
+          $ref: '#/components/schemas/Media'
+        video:
+          $ref: '#/components/schemas/Media'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserProfile'
+
+    VoteEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        vote_count:
+          type: integer
+
+    CountdownEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+        date:
+          type: string
+          format: date-time
+        label:
+          type: string
+
+tags:
+  - name: Auth
+    description: Registration and login
+  - name: User
+    description: User profile management
+  - name: Projects
+    description: Project CRUD and media
+  - name: Voting
+    description: Token-based project voting
+  - name: General
+    description: Health check and countdown
+
+paths:
+  # ── Health ──────────────────────────────────────────────────────────────────
+  /health:
+    get:
+      tags: [General]
+      summary: Health check
+      description: Returns 200 if server and DB are reachable.
+      responses:
+        '200':
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  message:
+                    type: string
+                    example: Server and database are running
+        '500':
+          description: DB unreachable
+
+  # ── Auth ────────────────────────────────────────────────────────────────────
+  /auth/register:
+    post:
+      tags: [Auth]
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 1
+      responses:
+        '201':
+          description: User created, token returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Missing email or password
+        '409':
+          description: Email already in use
+        '500':
+          description: Server error
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '400':
+          description: Missing email or password
+        '401':
+          description: Invalid credentials
+        '500':
+          description: Server error
+
+  # ── User ────────────────────────────────────────────────────────────────────
+  /api/user:
+    get:
+      tags: [User]
+      summary: Get user profile
+      description: |
+        Returns profile for the authenticated user (or a specified user by query param).
+        Requires role `3rdyear` or `admin`.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: integer
+          description: Target user ID (defaults to self)
+        - in: query
+          name: email
+          schema:
+            type: string
+          description: Target user email (takes priority over `id`)
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  user:
+                    $ref: '#/components/schemas/UserProfile'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden (wrong role)
+        '404':
+          description: User not found
+        '500':
+          description: Server error
+
+    put:
+      tags: [User]
+      summary: Update user profile
+      description: |
+        Updates firstname, lastname, profile image, and/or socials.
+        Requires role `3rdyear` or `admin`.
+        Send as `multipart/form-data` when uploading a new profile image.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: integer
+          description: Target user ID (defaults to self)
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                firstname:
+                  type: string
+                lastname:
+                  type: string
+                socials:
+                  type: string
+                  description: Social link (replaces existing)
+                image:
+                  type: string
+                  format: binary
+                  description: Profile picture (max 2MB)
+      responses:
+        '200':
+          description: Profile updated
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Server error
+
+  # ── Countdown ────────────────────────────────────────────────────────────────
+  /api/countDown:
+    get:
+      tags: [General]
+      summary: Get next countdown
+      description: Returns the nearest future countdown entry from the DB.
+      responses:
+        '200':
+          description: Countdown entry
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountdownEntry'
+        '400':
+          description: No future countdowns
+        '500':
+          description: Server error
+
+  # ── Projects ─────────────────────────────────────────────────────────────────
+  /project:
+    get:
+      tags: [Projects]
+      summary: List all projects (public)
+      description: Returns id, name, course, first image, and member list for every project.
+      responses:
+        '200':
+          description: Project list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  projects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProjectSummary'
+        '500':
+          description: Server error
+
+    post:
+      tags: [Projects]
+      summary: Create project
+      description: |
+        Creates a new project with media uploads.
+        Requires role `3rdyear` or `admin`.
+
+        **File limits:** images ≤ 2MB each, magazine ≤ 10MB.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [name, description, course, promoter, memberIds]
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                course:
+                  type: string
+                promoter:
+                  type: string
+                memberIds:
+                  type: string
+                  description: JSON-encoded array of user IDs, e.g. `[1,2,3]`
+                videoURL:
+                  type: string
+                  description: External video URL (YouTube / Vimeo)
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: Project images (multiple allowed, ≤ 2MB each)
+                magazine:
+                  type: string
+                  format: binary
+                  description: Magazine/PDF file (≤ 10MB)
+      responses:
+        '201':
+          description: Project created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  projectId:
+                    type: integer
+                  warnings:
+                    type: array
+                    items:
+                      type: string
+                    description: Non-fatal upload warnings
+        '400':
+          description: Missing required fields
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '412':
+          description: Incomplete body
+        '413':
+          description: File size exceeded
+        '500':
+          description: Server error
+
+  /project/admin:
+    get:
+      tags: [Projects]
+      summary: List all projects (admin view)
+      description: Full project details including media, magazine, video, and all members. No auth enforced at route level — restrict via deployment config.
+      responses:
+        '200':
+          description: Full project list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  projects:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ProjectDetail'
+        '500':
+          description: Server error
+
+  /project/count:
+    get:
+      tags: [Projects]
+      summary: Project count
+      responses:
+        '200':
+          description: Total number of projects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  count:
+                    type: integer
+
+  /project/random/{count}:
+    get:
+      tags: [Projects]
+      summary: Get N random projects
+      parameters:
+        - in: path
+          name: count
+          required: true
+          schema:
+            type: integer
+          description: Number of random projects to return
+      responses:
+        '200':
+          description: Random project subset
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  projects:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        media:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/Media'
+                        members:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              firstname:
+                                type: string
+                              lastname:
+                                type: string
+
+  /project/media/{type}:
+    get:
+      tags: [Projects]
+      summary: Get all media by type
+      parameters:
+        - in: path
+          name: type
+          required: true
+          schema:
+            type: string
+            enum: [image, video, magazine]
+      responses:
+        '200':
+          description: Media list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  media:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        cloud_name:
+                          type: string
+                        path:
+                          type: string
+                        type:
+                          type: string
+                        project:
+                          type: integer
+        '404':
+          description: Invalid type
+
+  /project/{id}:
+    get:
+      tags: [Projects]
+      summary: Get project by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Project detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  project:
+                    $ref: '#/components/schemas/ProjectDetail'
+        '404':
+          description: Project not found
+        '500':
+          description: Server error
+
+    put:
+      tags: [Projects]
+      summary: Update project
+      description: |
+        Partial update — only send fields you want to change.
+        Requires role `3rdyear` (must be a member) or `admin`.
+
+        **Media replacement rules:**
+        - Send new `files` → replaces all images
+        - Send `imageURL: ""` → deletes all images
+        - Send `imageURL: "<url>"` → replaces images with external URL
+        - Same pattern applies to `magazine` / `magazineURL`
+        - Send `videoURL: ""` → deletes video; `videoURL: "<url>"` → replaces
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                course:
+                  type: string
+                promoter:
+                  type: string
+                memberIds:
+                  type: string
+                  description: JSON-encoded array of user IDs (replaces all members)
+                videoURL:
+                  type: string
+                  description: External video URL; empty string removes video
+                imageURL:
+                  type: string
+                  description: External image URL; empty string removes images
+                magazineURL:
+                  type: string
+                  description: External magazine URL; empty string removes magazine
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  description: Replacement images (≤ 2MB each)
+                magazine:
+                  type: string
+                  format: binary
+                  description: Replacement magazine (≤ 10MB)
+      responses:
+        '200':
+          description: Project updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                  warnings:
+                    type: array
+                    items:
+                      type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden / not a member
+        '404':
+          description: Project not found
+        '413':
+          description: File size exceeded
+        '500':
+          description: Server error
+
+    delete:
+      tags: [Projects]
+      summary: Delete project
+      description: |
+        Deletes project and all associated media.
+        Requires role `3rdyear` (must be a member) or `admin`.
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Project deleted
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden / not a member
+        '404':
+          description: Project not found
+        '500':
+          description: Server error
+
+  # ── Voting ───────────────────────────────────────────────────────────────────
+  /voting:
+    get:
+      tags: [Voting]
+      summary: Get all vote counts
+      description: Returns every project with its current vote count, sorted descending.
+      responses:
+        '200':
+          description: Vote counts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VoteEntry'
+        '500':
+          description: Server error
+
+    post:
+      tags: [Voting]
+      summary: Cast a vote
+      description: |
+        Associates a token with a project (one vote per token).
+        Token must exist (obtained via `GET /voting/token`) and must not have voted yet.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [token, project]
+              properties:
+                token:
+                  type: string
+                  description: 64-char hex voting token
+                project:
+                  type: integer
+                  description: Project ID to vote for
+      responses:
+        '200':
+          description: Vote cast
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+        '400':
+          description: Missing token or project
+        '403':
+          description: Invalid token
+        '404':
+          description: Project not found
+        '409':
+          description: Token already used
+        '500':
+          description: Server error
+
+  /voting/me:
+    get:
+      tags: [Voting]
+      summary: Check vote for token
+      description: Returns the project a token voted for (null if not yet voted).
+      parameters:
+        - in: query
+          name: token
+          required: true
+          schema:
+            type: string
+          description: 64-char hex voting token
+      responses:
+        '200':
+          description: Vote status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  project:
+                    type: integer
+                    nullable: true
+                    description: Project ID or null if token hasn't voted
+        '400':
+          description: Token required
+        '404':
+          description: Invalid token
+        '500':
+          description: Server error
+
+  /voting/token:
+    get:
+      tags: [Voting]
+      summary: Issue a new voting token
+      description: Generates and reserves a single-use 64-char hex token. Store it client-side; cannot be re-issued.
+      responses:
+        '200':
+          description: New token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: a3f8c2...
+        '500':
+          description: Server error

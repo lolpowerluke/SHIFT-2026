@@ -3,6 +3,10 @@ import cors from "cors";
 import env from "./utils/env.js";
 import db from "./config/db.js";
 import { keepAlive } from "./utils/keepAlive.js";
+import swaggerUi from "swagger-ui-express";
+import YAML from "yamljs";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import "./config/db.js";
 
@@ -10,8 +14,12 @@ import apiRoutes from "./routes/api.routes.js"
 import authRoutes from "./routes/auth.routes.js";
 // import mailRoutes from "./routes/mail.routes.js";
 import projectRoutes from "./routes/project.routes.js";
+import votingRoutes from "./routes/voting.routes.js";
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const allowedOrigins = env.frontend.url ? env.frontend.url.split(',').map(origin => origin.trim()) : [];
 
@@ -20,10 +28,15 @@ app.use(cors({
 }));
 app.use(express.json());
 
+const swaggerDocument = YAML.load(path.join(__dirname, "..", "openapi.yaml"));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.get("/", (req, res) => res.redirect("/docs"));
+
 app.use("/api", apiRoutes);
 app.use("/auth", authRoutes);
 // app.use("/mail", mailRoutes);
 app.use("/project", projectRoutes);
+app.use("/voting", votingRoutes);
 
 app.get('/health', async (req, res) => {
   try {

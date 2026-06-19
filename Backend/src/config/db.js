@@ -130,6 +130,31 @@ await db.query(`
   )
 `)
 
+await db.query(`
+  CREATE TABLE IF NOT EXISTS votes (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    token VARCHAR(64) UNIQUE,
+    project BIGINT UNSIGNED,
+    CONSTRAINT fk_project_vote
+      FOREIGN KEY(project)
+      REFERENCES projects(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+  )
+`)
+
+await db.query(`
+  CREATE TABLE IF NOT EXISTS votable (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    project BIGINT UNSIGNED,
+    CONSTRAINT fk_project_votable
+      FOREIGN KEY(project)
+      REFERENCES projects(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+  )
+`)
+
 const [rows] = await db.query('SELECT COUNT(*) as count FROM countdown');
 
 if (rows[0].count === 0) {

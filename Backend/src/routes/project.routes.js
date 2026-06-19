@@ -1,6 +1,6 @@
 import { Router } from "express";
 import multer from "multer";
-import { getProject, getAllProjects, createProject, updateProject, deleteProject } from "../controllers/project.controller.js";
+import { getProject, getProjectCount, getAllProjects, createProject, updateProject, deleteProject, getAllMediaByType, getRandomProjects, getAllProjectsAdmin } from "../controllers/project.controller.js";
 import { authenticate } from "../middleware/auth.js";
 
 const router = Router();
@@ -12,6 +12,10 @@ const projectUpload = upload.fields([
 ]);
 
 router.get("/", getAllProjects);
+router.get("/admin", getAllProjectsAdmin);
+router.get("/random/:count", getRandomProjects);
+router.get("/count", getProjectCount);
+router.get("/media/:type", getAllMediaByType);
 router.get("/:id", getProject);
 router.post("/", authenticate, projectUpload, createProject);
 router.put("/:id", authenticate, projectUpload, updateProject);

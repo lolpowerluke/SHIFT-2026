@@ -41,8 +41,53 @@ async function safeUploadMagazine(magazineFile) {
   }
 }
 
-const PROJECT_QUERY = `
-      SELECT
+const getAllProjects = async (req, res) => {
+  try {
+    const [result] = await db.query(
+      `SELECT
+        p.id,
+        p.name,
+        p.course,
+        (
+          SELECT JSON_OBJECT('id', i.id, 'cloud_name', i.cloud_name, 'path', i.path)
+          FROM media i
+          JOIN media_project ip2 ON ip2.media = i.id
+          WHERE ip2.project = p.id AND ip2.type = 'image'
+          LIMIT 1
+        ) AS image,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT(
+            'id', u2.id,
+            'firstname', u2.firstname,
+            'lastname', u2.lastname,
+            'picture', u2.picture
+          ))
+          FROM (
+            SELECT DISTINCT
+              u3.id, u3.firstname, u3.lastname,
+              (SELECT JSON_OBJECT('cloud_name', img2.cloud_name, 'path', img2.path) FROM media img2
+               JOIN media_user iu ON iu.media = img2.id
+               WHERE iu.user = u3.id LIMIT 1) AS picture
+            FROM users u3
+            JOIN project_user pu2 ON pu2.user = u3.id
+            WHERE pu2.project = p.id
+          ) u2
+        ) AS members
+      FROM projects p
+      GROUP BY p.id, p.name, p.course;`,
+    );
+    res.status(200).json({ success: true, projects: result });
+  } catch (error) {
+    console.error(" error:", error);
+    res.status(500).json({ success: false, message: "Failed to get projects", error: error.message });
+  }
+};
+
+const getProject = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [result] = await db.query(
+      `SELECT
         p.id,
         p.name,
         p.description,
@@ -91,24 +136,8 @@ const PROJECT_QUERY = `
             WHERE pu2.project = p.id
           ) u2
         ) AS members
-      FROM projects p`;
-
-const getAllProjects = async (req, res) => {
-  try {
-    const [result] = await db.query(
-      PROJECT_QUERY + ` GROUP BY p.id, p.name, p.description, p.course;`,
-    );
-    res.status(200).json({ success: true, projects: result });
-  } catch (error) {
-    console.error(" error:", error);
-    res.status(500).json({ success: false, message: "Failed to get projects", error: error.message });
-  }
-};
-
-const getProject = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const [result] = await db.query(PROJECT_QUERY + ` WHERE p.id = ?;`, [id]);
+      FROM projects p
+      WHERE p.id = ?;`, [id]);
     if (result.length === 0) {
       return res.status(404).json({ success: false, message: `Project with ID ${id} doesnt exist` });
     }
@@ -118,6 +147,138 @@ const getProject = async (req, res) => {
     res.status(500).json({ success: false, message: "Failed to get project info", error: error.message });
   }
 };
+
+const getRandomProjects = async (req, res) => {
+  try {
+    const { count } = req.params;
+    const [result] = await db.query(
+      `SELECT
+        p.id,
+        p.name,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('id', i.id, 'cloud_name', i.cloud_name, 'path', i.path))
+          FROM (
+            SELECT DISTINCT img.id, img.cloud_name, img.path
+            FROM media img
+            JOIN media_project ip2 ON ip2.media = img.id
+            WHERE ip2.project = p.id AND ip2.type = 'image'
+          ) i
+        ) AS media,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('firstname', u2.firstname, 'lastname', u2.lastname))
+          FROM (
+            SELECT DISTINCT u3.firstname, u3.lastname
+            FROM users u3
+            JOIN project_user pu2 ON pu2.user = u3.id
+            WHERE pu2.project = p.id
+            LIMIT 2
+          ) u2
+        ) AS members
+      FROM projects p
+      ORDER BY RAND()
+      LIMIT ?`,
+      [parseInt(count)]
+    );
+
+    res.status(200).json({ success: true, projects: result });
+  } catch (error) {
+    console.error("error:", error);
+    res.status(500).json({ success: false, message: "Failed to get random projects", error: error.message });
+  }
+};
+
+const getAllProjectsAdmin = async (req, res) => {
+  try {
+    const [result] = await db.query(
+      `SELECT
+        p.id,
+        p.name,
+        p.description,
+        p.course,
+        p.promoter,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT('id', i.id, 'cloud_name', i.cloud_name, 'path', i.path))
+          FROM (SELECT DISTINCT img.id, img.cloud_name, img.path FROM media img
+                JOIN media_project ip2 ON ip2.media = img.id
+                WHERE ip2.project = p.id AND ip2.type = 'image') i
+        ) AS media,
+        (
+          SELECT JSON_OBJECT('id', mg.id, 'cloud_name', mg.cloud_name, 'path', mg.path)
+          FROM media mg
+          JOIN media_project mp3 ON mp3.media = mg.id
+          WHERE mp3.project = p.id AND mp3.type = 'magazine'
+          LIMIT 1
+        ) AS magazine,
+        (
+          SELECT JSON_OBJECT('id', mv.id, 'cloud_name', mv.cloud_name, 'path', mv.path)
+          FROM media mv
+          JOIN media_project mp4 ON mp4.media = mv.id
+          WHERE mp4.project = p.id AND mp4.type = 'video'
+          LIMIT 1
+        ) AS video,
+        (
+          SELECT JSON_ARRAYAGG(JSON_OBJECT(
+            'id', u2.id,
+            'firstname', u2.firstname,
+            'lastname', u2.lastname,
+            'email', u2.email,
+            'role', u2.role,
+            'picture', u2.picture,
+            'socials', u2.socials
+          ))
+          FROM (
+            SELECT DISTINCT
+              u3.id, u3.firstname, u3.lastname, u3.email, u3.role,
+              (SELECT JSON_OBJECT('cloud_name', img2.cloud_name, 'path', img2.path) FROM media img2
+               JOIN media_user iu ON iu.media = img2.id
+               WHERE iu.user = u3.id LIMIT 1) AS picture,
+              (SELECT JSON_ARRAYAGG(s.social) FROM socials s
+               WHERE s.user = u3.id) AS socials
+            FROM users u3
+            JOIN project_user pu2 ON pu2.user = u3.id
+            WHERE pu2.project = p.id
+          ) u2
+        ) AS members
+      FROM projects p
+      GROUP BY p.id, p.name, p.course;`,
+    );
+    res.status(200).json({ success: true, projects: result });
+  } catch (error) {
+    console.error(" error:", error);
+    res.status(500).json({ success: false, message: "Failed to get projects", error: error.message });
+  }
+};
+
+const getProjectCount = async (req, res) => {
+  try {
+    const result = await db.query(`SELECT COUNT(*) as count FROM projects;`);
+    const count = result[0][0].count;
+    res.status(200).json({ success: true, count });
+  } catch (error) {
+    console.error(" error:", error);
+    res.status(500).json({ success: false, message: "Failed to get project count", error: error.message });
+  }
+};
+
+const getAllMediaByType = async (req, res) => {
+  try {
+    const { type } = req.params;
+    if (type !== 'image' && type !== 'video' && type !== 'magazine') {
+      return res.status(404).json({ success: false, message: `Type ${type} doesnt exist!` })
+    }
+    const [media] = await db.query(
+      `SELECT m.id, m.cloud_name, m.path, mp.type, mp.project
+       FROM media_project mp
+       JOIN media m ON m.id = mp.media
+       WHERE mp.type = ?`,
+      [type]
+    );
+    res.status(200).json({ success: true, media });
+  } catch (error) {
+    console.error("error:", error);
+    res.status(500).json({ success: false, message: "Failed to get media by type", error: error.message });
+  }
+}
 
 const createProject = async (req, res) => {
   try {
@@ -392,4 +553,4 @@ const deleteProject = async (req, res) => {
   }
 };
 
-export { getAllProjects, getProject, createProject, updateProject, deleteProject };
+export { getAllProjects, getAllProjectsAdmin, getProject, getRandomProjects, getProjectCount, getAllMediaByType, createProject, updateProject, deleteProject };
