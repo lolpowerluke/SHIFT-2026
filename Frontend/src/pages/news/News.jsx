@@ -89,7 +89,7 @@ export default function News() {
                 <h2>EEN KLEIN VOORPROEFJE VAN SHIFT</h2>
                 <div className={s.videoHolder}>
                         <div className={s.videoWrapper}>
-                           <iframe src="https://ehb-my.sharepoint.com/personal/yarno_vandenplas_student_ehb_be/_layouts/15/embed.aspx?UniqueId=32110fa6-e65a-4684-aa2d-1e43f00d9a79&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="853" frameborder="0" scrolling="no" allowfullscreen title="SuperCut_Done.mp4"></iframe>
+                          <iframe width="853" src="https://www.youtube.com/embed/15QeW-9vdpU?si=TyUM-SxjJS09pfYy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
                 </div>
             </div>
