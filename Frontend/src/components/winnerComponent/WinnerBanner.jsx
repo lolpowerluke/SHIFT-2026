@@ -56,7 +56,7 @@ export default function WinnerBanner() {
 						<div className={s.awardBox}>
 							<img src="/assets/award_box.svg" alt="award box" />
 							<p className={s.awardBoxLabel}>
-								<b>Metteo Giambarresi</b>
+								<b>Matteo Giambarresi</b>
 							</p>
 							<p className={s.awardBoxLabel}>AWAY</p>
 						</div>
