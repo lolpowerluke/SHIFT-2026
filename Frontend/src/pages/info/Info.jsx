@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const events = [
     {time: {hr: 17, min: 0}, event: "Start"},
-    {time: {hr: 17, min: 30}, event: "Foodtrucks"},
+    {time: {hr: 18, min: 0}, event: "Foodtrucks"},
     {time: {hr: 19, min: 15}, event: "Einde voting"},
     {time: {hr: 20, min: 0}, event: "Liveshow & awards"},
     {time: {hr: 20, min: 45}, event: "Einde liveshow"},
