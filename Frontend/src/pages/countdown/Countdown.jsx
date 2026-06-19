@@ -4,8 +4,10 @@ import Throbber from "../../components/Throbber.jsx";
 import { useState } from "react";
 import IframePopup from "../../components/afterShow/videoPopup.jsx";
 import WinnerBanner from "../../components/winnerComponent/WinnerBanner.jsx";
+import { useNavigate } from "react-router";
 
 export default function Countdown() {
+	const navigate = useNavigate();
 	const handleOpenMaps = () => {
 		window.open(
 			"https://maps.app.goo.gl/rZ8pQ7jYJph3tR3L9",
@@ -72,8 +74,8 @@ export default function Countdown() {
 					</div>
 					<div className={`${s.cta}`}>
 						<a
-							onClick={() => setIsOpen(true)}
-							className={`${s.linkBtn} linkBtn blueBtn`}
+							onClick={() => window.open("https://www.erasmushogeschool.be/nl/vond-je-shift-festival-tof")}
+							className={`${s.linkBtn} linkBtn`}
 							rel="noreferrer"
 						>
 							<p>Blijf op de hoogte van SHIFT 2027</p>
