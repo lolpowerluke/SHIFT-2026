@@ -1,4 +1,4 @@
-import s from "./Countdown.module.css";
+	import s from "./Countdown.module.css";
 import { useCountdown } from "../../js/countdown.js";
 import Carousel from "../../components/Carousel.jsx";
 
@@ -267,7 +267,7 @@ export default function Countdown() {
 				<div className={`${s.cta}`}>
 					<a
 						href="https://www.erasmushogeschool.be/nl/opleidingen/multimedia-en-creatieve-technologie"
-						className={`${s.linkBtn} linkBtn blueBtn`}
+						className={`${s.linkBtn} linkBtn`}
 						target="_blank"
 						rel="noreferrer"
 					>
