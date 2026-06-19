@@ -22,6 +22,8 @@ const articles = [
     },
 ]
 
+const wordDoc = {doc: "/Persbericht SHIFT festival_180626.docx_3077.docx", filename: "Shift_Festival_persbericht.docx"}
+
 async function handleDownloadAll(items) {
     for (const item of defaultItems) {
         const a = document.createElement("a");
@@ -30,6 +32,13 @@ async function handleDownloadAll(items) {
         a.click();
         await new Promise(resolve => setTimeout(resolve, 300));
     }
+}
+
+function handleDownloadWord(doc, filename) {
+    const a = document.createElement("a");
+    a.href = doc;
+    a.download = filename;
+    a.click();
 }
 
 export default function News() {
@@ -57,7 +66,7 @@ export default function News() {
                         <div className={s.mediaPart}>
                             <h2>Media</h2>
                             <h3>Download ons persbericht</h3>
-                            <button style={{display: "flex", flexDirection: "row"}}>Download <img
+                            <button onClick={() => handleDownloadWord(wordDoc.doc, wordDoc.filename)} style={{display: "flex", flexDirection: "row"}}>Download <img
                                 src="/assets/BlueDownloadFolderPDF.svg"
                                 style={{height: "2rem", margin: "0 5px 0 1rem"}}/></button>
                         </div>
@@ -79,36 +88,9 @@ export default function News() {
             <div className={`ctx ${s.voorproefje}`}>
                 <h2>EEN KLEIN VOORPROEFJE VAN SHIFT</h2>
                 <div className={s.videoHolder}>
-                    {!playing ? (
-                        <div className={s.videoThumb} onClick={() => setPlaying(true)}>
-                            <img
-                                src={`https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg`}
-                                onLoad={(e) => {
-                                    // YouTube renvoie un placeholder gris 120x90 quand maxresdefault n'existe pas
-                                    if (e.currentTarget.naturalWidth <= 120) {
-                                        e.currentTarget.src = `https://img.youtube.com/vi/${VIDEO_ID}/hqdefault.jpg`;
-                                    }
-                                }}
-                                alt="Video thumbnail"
-                                className={s.videoPlayer}
-                            />
-                            <img
-                                src="/assets/play-button.png"
-                                alt="Play"
-                                className={s.playBtn}
-                            />
-                        </div>
-                    ) : (
                         <div className={s.videoWrapper}>
-                            <iframe
-                                src={`https://www.youtube.com/embed/${VIDEO_ID}?si=HvCFeCzhJCosG1Rh&autoplay=1`}
-                                title="YouTube video player"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerPolicy="strict-origin-when-cross-origin"
-                                allowFullScreen
-                            />
+                          <iframe width="853" src="https://www.youtube.com/embed/15QeW-9vdpU?si=TyUM-SxjJS09pfYy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
-                    )}
                 </div>
             </div>
         </>
