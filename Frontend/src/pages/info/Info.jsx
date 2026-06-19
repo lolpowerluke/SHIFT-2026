@@ -165,6 +165,7 @@ export default function Info() {
 										<img
 											src="/assets/icons/openbaarVervoer.svg"
 											alt="public transport"
+											loading="lazy"
 										/>
 										<div>
 											<h4>OPENBAAR VERVOER</h4>
@@ -176,7 +177,11 @@ export default function Info() {
 										</div>
 									</div>
 									<div className={`${s.flexRow}`}>
-										<img src="/assets/icons/fiets.svg" alt="fiets" />
+										<img
+											src="/assets/icons/fiets.svg"
+											alt="fiets"
+											loading="lazy"
+										/>
 										<div>
 											<h4>MET DE FIETS</h4>
 											<p>
@@ -186,7 +191,11 @@ export default function Info() {
 										</div>
 									</div>
 									<div className={`${s.flexRow}`}>
-										<img src="/assets/icons/auto.svg" alt="auto" />
+										<img
+											src="/assets/icons/auto.svg"
+											alt="auto"
+											loading="lazy"
+										/>
 										<div>
 											<h4>MET DE AUTO</h4>
 											<p>
