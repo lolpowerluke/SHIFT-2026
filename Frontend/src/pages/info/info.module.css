@@ -1,5 +1,6 @@
 .heroImg {
 	background-image: url(/assets/heroContent/infoHero.jpg);
+	background-size: cover;
 }
 
 .heroLayout {
