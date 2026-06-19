@@ -79,6 +79,9 @@ export default function News() {
             <div className={`ctx ${s.voorproefje}`}>
                 <h2>EEN KLEIN VOORPROEFJE VAN SHIFT</h2>
                 <div className={s.videoHolder}>
+                    <video controls src="/assets/heroContent/videohero.webm"></video>
+                </div>
+                {/* <div className={s.videoHolder}>
                     {!playing ? (
                         <div className={s.videoThumb} onClick={() => setPlaying(true)}>
                             <img
@@ -109,7 +112,7 @@ export default function News() {
                             />
                         </div>
                     )}
-                </div>
+                </div> */}
             </div>
         </>
     )
