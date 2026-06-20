@@ -93,6 +93,8 @@
 	width: fit-content;
 	margin: 60px auto 0;
 	font-weight: 800 !important;
+	max-width: 85vw;
+	gap: 1.5rem;
 
 	.cd {
 		background-color: var(--bg-shift-alt);
