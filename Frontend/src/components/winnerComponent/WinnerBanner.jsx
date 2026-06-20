@@ -25,7 +25,7 @@ export default function WinnerBanner() {
 						</div>
 						<div className={s.awardBox}>
 							<img src="/assets/award_box.svg" alt="award box" />
-							<p className={s.awardBoxLabel2}>
+							<p className={s.awardBoxLabel3}>
 								<b>Arno Baeck</b>
 							</p>
 							<p className={s.awardBoxLabel2}>KAMIL</p>
@@ -58,7 +58,7 @@ export default function WinnerBanner() {
 							<p className={s.awardBoxLabel}>
 								<b>Matteo Giambarresi</b>
 							</p>
-							<p className={s.awardBoxLabel}>AWAY</p>
+							<p className={s.awardBoxLabel2}>AWAY</p>
 						</div>
 						<a
 							href="https://www.shiftfestival.be/project/away-9"
@@ -85,10 +85,10 @@ export default function WinnerBanner() {
 						</div>
 						<div className={s.awardBox}>
 							<img src="/assets/award_box.svg" alt="award box" />
-							<p className={s.awardBoxLabel}>
+							<p className={s.awardBoxLabel2}>
 								<b>Beatrice Bjoko</b>
 							</p>
-							<p className={s.awardBoxLabel}>LUME</p>
+							<p className={s.awardBoxLabel2}>LUME</p>
 						</div>
 						<a
 							href="https://www.shiftfestival.be/project/lume-29"
@@ -115,10 +115,10 @@ export default function WinnerBanner() {
 						</div>
 						<div className={s.awardBox}>
 							<img src="/assets/award_box.svg" alt="award box" />
-							<p className={s.awardBoxLabel}>
+							<p className={s.awardBoxLabel2}>
 								<b>Sarah El Fraihi</b>
 							</p>
-							<p className={s.awardBoxLabel}>KAORTZ</p>
+							<p className={s.awardBoxLabel3}>KAORTZ</p>
 						</div>
 						<a
 							href="https://www.shiftfestival.be/project/kaortz-41"

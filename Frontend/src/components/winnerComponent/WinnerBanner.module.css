@@ -155,7 +155,7 @@
   left: 37%;
 }
 
-.awardBoxLabel2 {
+.awardBoxLabel2, .awardBoxLabel3 {
   position: absolute;
   left: 37%;
   transform: translate(-50%, -50%) rotate(-6.6deg);
@@ -167,15 +167,27 @@
 }
 
 .awardBoxLabel2:first-of-type {
-  top: 22%;
+  top: 15%;
   font-size: 20px;
-  left: 47%;
+  left: 37%;
 }
 
 .awardBoxLabel2:last-of-type {
-  top: 65%;
-  font-size: 13px;
-  left: 37%;
+  top: 55%;
+  font-size: 20px;
+  left: 20%;
+}
+
+.awardBoxLabel3:first-of-type {
+  top: 15%;
+  font-size: 20px;
+  left: 30%;
+}
+
+.awardBoxLabel3:last-of-type {
+  top: 55%;
+  font-size: 20px;
+  left: 23%;
 }
 
 .winTitle {
