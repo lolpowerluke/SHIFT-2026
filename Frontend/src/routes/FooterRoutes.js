@@ -3,5 +3,5 @@ import {NavRoutes} from "./NavRoutes.js";
 
 export const FooterRoutes = [
 	...NavRoutes,
-	{ route: Routes.Privacy, label: "Privacybeleid" },
+	{ route: "https://www.erasmushogeschool.be/nl/privacyverklaring", label: "Privacybeleid", external: true },
 ];

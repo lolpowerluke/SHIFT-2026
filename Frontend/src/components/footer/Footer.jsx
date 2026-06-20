@@ -22,14 +22,25 @@ export default function Footer() {
 						<ul>
 							{FooterRoutes.map((link) => (
 								<li key={link.route}>
-									<NavLink
-										to={link.route}
-										className={({ isActive }) =>
-											`${s.navItem} ${isActive ? s.active : ""}`
-										}
-									>
-										{link.label}
-									</NavLink>
+									{link.external ? (
+										<a
+											href={link.route}
+											target="_blank"
+											rel="noopener noreferrer"
+											className={s.navItem}
+										>
+											{link.label}
+										</a>
+									) : (
+										<NavLink
+											to={link.route}
+											className={({ isActive }) =>
+												`${s.navItem} ${isActive ? s.active : ""}`
+											}
+										>
+											{link.label}
+										</NavLink>
+									)}
 								</li>
 							))}
 						</ul>
