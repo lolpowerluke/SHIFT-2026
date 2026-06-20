@@ -57,12 +57,11 @@ export default function Footer() {
 				</div>
 				<div className={s.footerSection2}>
 					<a
-						href="https://www.erasmushogeschool.be/nl/evenementen/shiftfestival"
+						href="/project"
 						className="linkBtn blueBtn"
-						target="_blank"
 						rel="noreferrer"
 					>
-						Schrijf je nu gratis in
+						Ontdek alle projecten
 					</a>
 					<SocialLinks className={s.socialLinks} />
 				</div>
