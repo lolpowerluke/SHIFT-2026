@@ -72,7 +72,7 @@ export default function Awards() {
                     <span className={`${s.subTitle} ${s.mobile}`}>Jij mag mee bepalen wie de publiekprijs verdient.</span>
                     <img src="/assets/icons/OrangeTrophy.svg" alt="award" className={s.awardImg} />
                     <span className={s.time}>UITREIKING OM 20:00 TIJDENS DE AWARD SHOW</span>
-                    <button>Praktische info<span className={s.mobile}>, klik hier</span> <img src="/assets/icons/arrowLink.svg" alt="arrow up right" className={s.arrowUp} /></button>
+                    <button onClick={() => navigate("/info")}>Praktische info<img src="/assets/icons/arrowLink.svg" alt="arrow up right" className={s.arrowUp} /></button>
                 </div>
             </div>
         </>
