@@ -97,12 +97,9 @@
 	gap: 1.5rem;
 
 	.cd {
-		background-color: var(--bg-shift-alt);
 		width: fit-content;
 		padding: 5px 15px;
 		margin-bottom: 8px;
-		border-radius: 6px;
-		border: 3px solid black;
 		text-align: center;
 		justify-self: right;
 		text-transform: uppercase;
