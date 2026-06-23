@@ -32,6 +32,9 @@
     border-radius: 1.5rem;
 }
 
+.newsSection img {
+    max-width: 420px !important;
+}
 
 .newsSection a img,
 .flexRow button img {
