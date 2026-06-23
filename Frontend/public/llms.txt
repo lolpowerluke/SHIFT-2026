@@ -8,6 +8,7 @@ SHIFT Festival is the graduating student expo of the Multimedia & Creative Techn
 - https://shiftfestival.be/: Main event page — date, concept, general info
 - https://shiftfestival.be/project: Overview of all student projects
 - https://shiftfestival.be/awards: Explanation of the awards; winners published after the event
+- https://shiftfestival.be/info: Practical information about the event
 
 ## Excluded
 
