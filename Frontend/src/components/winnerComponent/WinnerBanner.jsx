@@ -104,7 +104,7 @@ export default function WinnerBanner() {
 						<div className={s.avatarWrap}>
 							<img
 								className={s.avatarImg}
-								src="/assets/KAORTZ.webp"
+								src="/assets/SARAH.jpg"
 								alt="profile"
 							/>
 							<img

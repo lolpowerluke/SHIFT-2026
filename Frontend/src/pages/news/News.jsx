@@ -13,12 +13,20 @@ const articles = [
         img: "https://wmimages.bruzz.be/styles/e22cb3eafdd54a57844ed34d1de56912a49c9848/2021-04/logo_5jaarbruzz_dossier.png?style=W3sicmVzaXplIjp7ImZpdCI6Imluc2lkZSIsIndpZHRoIjoxMjAwLCJoZWlnaHQiOjYzMCwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfX1d&sign=86a12e64ef4a036f494606982a323054ab3e894aa65c7d78d84025b25311a54d",
         imgTitle: "Bruzz",
         title: "Nieuwe apps en VR-games: de techstudenten van Erasmus stellen hun creaties tentoon"
-    }, {
+    }, 
+    {
         articleLink: "https://www.ringtv.be/jeugd-onderwijs/studenten-erasmushogeschool-brussel-koppelen-technologie-aan-maatschappelijke",
         excerpt: "Voor de derde keer organiseren studenten van de Erasmushogeschool Brussel het Shift-festival. De expo op Campus Kaai toont 34 innovatieve eindwerken van de laatstejaars Multimedia en Creatieve Technologie aan het grote publiek en aan potentiële werkgevers.",
         img: "/assets/ringTv_logo.png",
         imgTitle: "RingTV",
         title: "Studenten Erasmushogeschool Brussel koppelen technologie aan maatschappelijke vraagstukken op Shift-festival"
+    },
+    {
+        articleLink: "https://www.hln.be/brussel/van-een-digitale-beschermer-tegen-phishing-tot-een-vr-reis-door-tibet-brusselse-studenten-tonen-innovatieve-eindprojecten-op-shift-festival~a692d937/?referrer=https%3A%2F%2Fwww.google.com%2F",
+        excerpt: "Een digitale assistent die vijftigplussers beschermt tegen phishing, een educatieve game over de vrijwillige militaire dienst en een beklijvende VR-ervaring over cultureel verlies in Tibet. Op Campus Kaai van de Erasmushogeschool Brussel stelden 34 studenten van de opleiding Multimedia & Creatieve Technologie (MCT) vrijdag hun eindprojecten voor tijdens het jaarlijkse SHIFT Festival.",
+        img: "../assets/hln_logo.png",
+        imgTitle: "HLN",
+        title: "Van een digitale beschermer tegen phishing tot een VR-reis door Tibet: Brusselse studenten tonen innovatieve eindprojecten op SHIFT Festival"
     },
 ]
 
