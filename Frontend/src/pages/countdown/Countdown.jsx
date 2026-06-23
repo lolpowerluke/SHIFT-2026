@@ -69,14 +69,6 @@ export default function Countdown() {
 				</div>
 
 				<div className={`${s.timerDiv} xlarge`}>
-					<div className={`${s.cd}`}>
-						<a
-						onClick={() => window.open("/project")}
-						className={`${s.linkBtn} linkBtn`}
-						rel="noreferrer"
-						
-						><p>Dit was SHIFT 2026!</p></a>
-					</div>
 					<div className={`${s.cta}`}>
 						<a
 							onClick={() => window.open("https://www.erasmushogeschool.be/nl/vond-je-shift-festival-tof")}
