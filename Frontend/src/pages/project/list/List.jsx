@@ -5,6 +5,7 @@ import { useFetch } from "../../../hooks/useFetch.js";
 import { mapProject } from "../../../utils/member.js";
 import StatusMessage from "../../../components/statusMessage/StatusMessage.jsx";
 import { getCloudinaryUrl } from "../../../utils/cloudinary.js";
+import WinnerBanner from "../../../components/winnerComponent/WinnerBanner.jsx";
 
 const CATEGORIES = [
 	"Alle projecten",
@@ -85,7 +86,9 @@ export default function List() {
 					))}
 				</div>
 			</div>
-
+			<div className={s.centerDiv}>
+				<WinnerBanner/>
+  			</div>
 			<p className={s.projectenCount}>
 				{activeCategory} ({filteredProjects.length} projecten)
 			</p>
