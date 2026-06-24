@@ -4,24 +4,24 @@
     <!-- ROOT -->
     <url>
         <loc>https://shiftfestival.be/</loc>
-        <lastmod>2026-06-11</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-06-23</lastmod>
+        <changefreq>yearly</changefreq>
         <priority>1.0</priority>
     </url>
 
     <!-- PROJECTS -->
     <url>
         <loc>https://shiftfestival.be/project</loc>
-        <lastmod>2026-06-11</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-06-20</lastmod>
+        <changefreq>yearly</changefreq>
         <priority>0.9</priority>
     </url>
 
     <!-- AWARDS -->
     <url>
         <loc>https://shiftfestival.be/awards</loc>
-        <lastmod>2026-06-11</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2026-06-23</lastmod>
+        <changefreq>yearly</changefreq>
         <priority>0.9</priority>
     </url>
 
