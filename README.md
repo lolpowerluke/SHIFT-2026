@@ -123,3 +123,18 @@ A `.env` file is required.
 cd Backend
 docker-compose up --build -d
 ```
+
+##Contributions
+
+###Front end
+
+- Joachim Gautama
+- Yarno Vandenplas
+- Nolan Lamarque
+- Hamza El Aisati
+- Lukas Van Heddegem
+
+###Back end
+
+- Lukas Van Heddegem
+- Joachim Gautama
