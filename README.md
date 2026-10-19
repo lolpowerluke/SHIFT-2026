@@ -124,9 +124,9 @@ cd Backend
 docker-compose up --build -d
 ```
 
-##Contributions
+## Contributions
 
-###Front end
+### Front end
 
 - Joachim Gautama
 - Yarno Vandenplas
@@ -134,7 +134,7 @@ docker-compose up --build -d
 - Hamza El Aisati
 - Lukas Van Heddegem
 
-###Back end
+### Back end
 
 - Lukas Van Heddegem
 - Joachim Gautama
