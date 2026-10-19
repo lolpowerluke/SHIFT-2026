@@ -138,3 +138,7 @@ docker-compose up --build -d
 
 - Lukas Van Heddegem
 - Joachim Gautama
+
+### QA
+
+- Joachim Gautama
