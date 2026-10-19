@@ -123,3 +123,4 @@ A `.env` file is required.
 cd Backend
 docker-compose up --build -d
 ```
+---
